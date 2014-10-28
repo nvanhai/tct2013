@@ -883,9 +883,9 @@ End If
 Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
 Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
    fpSpread1.EventEnabled(EventAllEvents) = False
-   fpSpread1.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
-   fpSpread2.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
-   fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+   fpSpread1.row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
+   fpSpread2.row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
+   fpSpread2.col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
    count1 = Conversion.CInt(xmlDocument.getElementsByTagName("count").Item(0).Text)
    
     
@@ -897,20 +897,20 @@ Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
         Set xmlSecionNode = TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Section")(0)
         'fpSpread1.Visible = False
         If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
-            currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+            currentRow = xmlSecionNode.childNodes.length + fpSpread1.row
             If (xmlSecionNode.childNodes.length = 1) Then
                 fpSpread1.sheet = mCurrentSheet
-                fpSpread1.GetText colStart, fpSpread1.Row, varData1
-                fpSpread1.GetText colStart + 1, fpSpread1.Row, varData2
+                fpSpread1.GetText colStart, fpSpread1.row, varData1
+                fpSpread1.GetText colStart + 1, fpSpread1.row, varData2
                 If Trim(varData1) = vbNullString And Trim(varData2) = vbNullString Then
-                    fpSpread1.Row = fpSpread1.Row
+                    fpSpread1.row = fpSpread1.row
                 Else
                     InsertNode colStart, currentRow - 1
-                    fpSpread1.Row = currentRow
+                    fpSpread1.row = currentRow
                 End If
             Else
                 InsertNode colStart, currentRow - 1
-                fpSpread1.Row = currentRow
+                fpSpread1.row = currentRow
             End If
         End If
     End If
@@ -918,10 +918,10 @@ Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
 ' Dat lai vi tri row cho phu luc 01-2 cua to 02 GTGT
 If Trim(varMenuId) = "02" Then
     For i = 17 To fpSpread2.MaxRows
-        fpSpread2.Col = 2
-        fpSpread2.Row = i
+        fpSpread2.col = 2
+        fpSpread2.row = i
         If Left(fpSpread2.Text, 2) = "3." Then
-            fpSpread2.Row = i + 1
+            fpSpread2.row = i + 1
             Exit For
         End If
     Next
@@ -939,10 +939,10 @@ End If
 Do While count < count1 And count2 < fpSpread2.MaxRows
 DoEvents
 Frame2.Enabled = False
-ProgressBar1.value = fpSpread2.Row
+ProgressBar1.value = fpSpread2.row
 'check next row
     fpSpread1.sheet = mCurrentSheet
-    fpSpread2.Row = fpSpread2.Row + 1
+    fpSpread2.row = fpSpread2.row + 1
     value = fpSpread2.value
     If ((Mid(value, 1, 1) = "T" Or Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "01" Or Trim(varMenuId) = "02" Or Trim(varMenuId) = "71" Or Trim(varMenuId) = "14" Or Trim(varMenuId) = "05" Or Trim(varMenuId) = "59")) Or ((Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "17" Or Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "26" Or Trim(varMenuId) = "44" Or Trim(varMenuId) = "73")) Then
         count = count + 1
@@ -951,32 +951,32 @@ ProgressBar1.value = fpSpread2.Row
     ElseIf count = count1 And value = "" Then
         count = count + 1
     Else
-        InsertNode colStart, fpSpread1.Row
+        InsertNode colStart, fpSpread1.row
         inc = False
         count2 = count2 + 1
     End If
-        fpSpread2.Row = fpSpread2.Row - 1
+        fpSpread2.row = fpSpread2.row - 1
     'insert cell
         For Each xmlNode In xmlNodeListMap
-            fpSpread2.Col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
+            fpSpread2.col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
             value = fpSpread2.value
            If value <> "" Or value <> vbNullString Then
-            fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
+            fpSpread1.col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
     'check type of cell
             If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
                 If fpSpread1.CellType = CellTypeNumber Then
                     fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
                 End If
                 fpSpread1.value = value
-                UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
             ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 12 Then
                 fpSpread1.value = value
-                UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
             ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 2 Then
     '            fpSpread2.CellType = CellTypeNumber
     '            fpSpread2.TypeNumberDecPlaces = 0
                 fpSpread1.Text = Left(fpSpread2.Text, IIf(InStr(1, fpSpread2.Text, ".") <> 0, InStr(1, fpSpread2.Text, ".") - 1, Len(fpSpread2.Text)))
-                UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
             ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 1 Then
               If IsDate(fpSpread2.Text) Then
                 Dim arrStr() As String
@@ -995,7 +995,7 @@ ProgressBar1.value = fpSpread2.Row
                 
                 fpSpread1.Text = sDate
     
-                UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
              End If
             Else
                 Select Case strfileFont
@@ -1010,7 +1010,7 @@ ProgressBar1.value = fpSpread2.Row
                    Case Else
                     fpSpread1.Text = value
                 End Select
-                UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
             End If
             
           End If
@@ -1053,17 +1053,17 @@ ProgressBar1.value = fpSpread2.Row
 
                 Dim temp As Variant
                Dim temp1 As Double
-                fpSpread1.Row = fpSpread1.Row + 5
-                fpSpread2.Row = fpSpread2.Row + 3
+                fpSpread1.row = fpSpread1.row + 5
+                fpSpread2.row = fpSpread2.row + 3
                 If count = 3 And Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 3 Then
                         Do
-                            fpSpread2.Col = fpSpread2.ColLetterToNumber("B")
+                            fpSpread2.col = fpSpread2.ColLetterToNumber("B")
                             temp1 = temp1 + 1
                             temp = fpSpread2.value
-                            fpSpread2.Row = fpSpread2.Row + 1
+                            fpSpread2.row = fpSpread2.row + 1
                         Loop Until (Mid(temp, 1, 1) = "T")
-                        fpSpread1.Row = fpSpread1.Row + 5
-                        fpSpread2.Row = fpSpread2.Row + 1
+                        fpSpread1.row = fpSpread1.row + 5
+                        fpSpread2.row = fpSpread2.row + 1
                         count = count + 1
                 End If
 '            End If
@@ -1072,30 +1072,30 @@ ProgressBar1.value = fpSpread2.Row
                 Set xmlSecionNode = TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Section")(count)
                 'fpSpread1.Visible = False
                 If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
-                    currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+                    currentRow = xmlSecionNode.childNodes.length + fpSpread1.row
                     If (xmlSecionNode.childNodes.length = 1) Then
                         fpSpread1.sheet = mCurrentSheet
-                        fpSpread1.GetText colStart, fpSpread1.Row, varData1
-                        fpSpread1.GetText colStart + 1, fpSpread1.Row, varData2
+                        fpSpread1.GetText colStart, fpSpread1.row, varData1
+                        fpSpread1.GetText colStart + 1, fpSpread1.row, varData2
                         If Trim(varData1) = vbNullString And Trim(varData2) = vbNullString Then
-                            fpSpread1.Row = fpSpread1.Row
+                            fpSpread1.row = fpSpread1.row
                         Else
                             InsertNode colStart, currentRow - 1
-                            fpSpread1.Row = currentRow
+                            fpSpread1.row = currentRow
                         End If
                     Else
                         InsertNode colStart, currentRow - 1
-                        fpSpread1.Row = currentRow
+                        fpSpread1.row = currentRow
                     End If
                 End If
             End If
             
             ' end test
         Else
-            fpSpread1.Row = fpSpread1.Row + 1
-            fpSpread2.Row = fpSpread2.Row + 1
+            fpSpread1.row = fpSpread1.row + 1
+            fpSpread2.row = fpSpread2.row + 1
         End If
-            fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+            fpSpread2.col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
             value = fpSpread2.value
     Loop
  ProgressBar1.Visible = False
@@ -1155,9 +1155,9 @@ End If
 Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
 Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
    fpSpread1.EventEnabled(EventAllEvents) = False
-   fpSpread1.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
-   fpSpread2.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
-   fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+   fpSpread1.row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
+   fpSpread2.row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
+   fpSpread2.col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
    count1 = Conversion.CInt(xmlDocument.getElementsByTagName("count").Item(0).Text)
    
     
@@ -1169,20 +1169,20 @@ Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
         Set xmlSecionNode = TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Section")(2)
         'fpSpread1.Visible = False
         If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
-            currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+            currentRow = xmlSecionNode.childNodes.length + fpSpread1.row
             If (xmlSecionNode.childNodes.length = 1) Then
                 fpSpread1.sheet = mCurrentSheet
-                fpSpread1.GetText colStart, fpSpread1.Row, varData1
-                fpSpread1.GetText colStart + 1, fpSpread1.Row, varData2
+                fpSpread1.GetText colStart, fpSpread1.row, varData1
+                fpSpread1.GetText colStart + 1, fpSpread1.row, varData2
                 If Trim(varData1) = vbNullString And Trim(varData2) = vbNullString Then
-                    fpSpread1.Row = fpSpread1.Row
+                    fpSpread1.row = fpSpread1.row
                 Else
                     InsertNode colStart, currentRow - 1
-                    fpSpread1.Row = currentRow
+                    fpSpread1.row = currentRow
                 End If
             Else
                 InsertNode colStart, currentRow - 1
-                fpSpread1.Row = currentRow
+                fpSpread1.row = currentRow
             End If
         End If
     End If
@@ -1191,10 +1191,10 @@ Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
 Do While count < count1 And count2 < fpSpread2.MaxRows
 DoEvents
 Frame2.Enabled = False
-ProgressBar1.value = fpSpread2.Row
+ProgressBar1.value = fpSpread2.row
 'check next row
     fpSpread1.sheet = mCurrentSheet
-    fpSpread2.Row = fpSpread2.Row + 1
+    fpSpread2.row = fpSpread2.row + 1
     value = fpSpread2.value
     If (Mid(value, 1, 1) = "T" Or Trim(value) = "" Or Trim(value) = vbNullString) Then
         count = count + 1
@@ -1203,11 +1203,11 @@ ProgressBar1.value = fpSpread2.Row
     ElseIf count = count1 And value = "" Then
         count = count + 1
     Else
-        InsertNode colStart, fpSpread1.Row
+        InsertNode colStart, fpSpread1.row
         inc = False
         count2 = count2 + 1
     End If
-        fpSpread2.Row = fpSpread2.Row - 1
+        fpSpread2.row = fpSpread2.row - 1
     'insert cell
         Dim arrStr() As String
         Dim sDate As String
@@ -1221,25 +1221,25 @@ ProgressBar1.value = fpSpread2.Row
                     Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 19 Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 20 _
                     Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 21 Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 22 Then
                 Else
-                    fpSpread2.Col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
+                    fpSpread2.col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
                     value = fpSpread2.Text
                    If value <> "" Or value <> vbNullString Then
-                    fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
+                    fpSpread1.col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
             'check type of cell
                     If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
                         If fpSpread1.CellType = CellTypeNumber Then
                             fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
                         End If
                         fpSpread1.value = value
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 12 Then
                         fpSpread1.value = value
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 2 Then
             '            fpSpread2.CellType = CellTypeNumber
             '            fpSpread2.TypeNumberDecPlaces = 0
                         fpSpread1.Text = Left(fpSpread2.Text, IIf(InStr(1, fpSpread2.Text, ".") <> 0, InStr(1, fpSpread2.Text, ".") - 1, Len(fpSpread2.Text)))
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 1 Then
                       If IsDate(fpSpread2.Text) Then
                         'fpSpread2.CellType = CellTypeDate
@@ -1256,7 +1256,7 @@ ProgressBar1.value = fpSpread2.Row
                         
                         fpSpread1.Text = sDate
             
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                      End If
                     Else
                         Select Case strfileFont
@@ -1271,32 +1271,32 @@ ProgressBar1.value = fpSpread2.Row
                            Case Else
                             fpSpread1.Text = value
                         End Select
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                     End If
                   End If
                End If
             Else
                 If Conversion.CInt(GetAttribute(xmlNode, "c1")) = 7 Then
                 Else
-                    fpSpread2.Col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
+                    fpSpread2.col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
                     value = fpSpread2.Text
                    If value <> "" Or value <> vbNullString Then
-                    fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
+                    fpSpread1.col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
             'check type of cell
                     If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
                         If fpSpread1.CellType = CellTypeNumber Then
                             fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
                         End If
                         fpSpread1.value = value
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 12 Then
                         fpSpread1.value = value
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 2 Then
             '            fpSpread2.CellType = CellTypeNumber
             '            fpSpread2.TypeNumberDecPlaces = 0
                         fpSpread1.Text = Left(fpSpread2.Text, IIf(InStr(1, fpSpread2.Text, ".") <> 0, InStr(1, fpSpread2.Text, ".") - 1, Len(fpSpread2.Text)))
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 1 Then
                       If IsDate(fpSpread2.Text) Then
                         
@@ -1314,7 +1314,7 @@ ProgressBar1.value = fpSpread2.Row
                         
                         fpSpread1.Text = sDate
             
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                      End If
                     Else
                         Select Case strfileFont
@@ -1329,7 +1329,7 @@ ProgressBar1.value = fpSpread2.Row
                            Case Else
                             fpSpread1.Text = value
                         End Select
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                     End If
                   End If
                End If
@@ -1341,38 +1341,38 @@ ProgressBar1.value = fpSpread2.Row
             'have 2 hidden row
                 Dim temp As Variant
                 Dim temp1 As Double
-                fpSpread1.Row = fpSpread1.Row + 9
-                fpSpread2.Row = fpSpread2.Row + 11
+                fpSpread1.row = fpSpread1.row + 9
+                fpSpread2.row = fpSpread2.row + 11
                
             'test
               If themDuLieu Then
                 Set xmlSecionNode = TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Section")(count + 2)
                 'fpSpread1.Visible = False
                 If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
-                    currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+                    currentRow = xmlSecionNode.childNodes.length + fpSpread1.row
                     If (xmlSecionNode.childNodes.length = 1) Then
                         fpSpread1.sheet = mCurrentSheet
-                        fpSpread1.GetText colStart, fpSpread1.Row, varData1
-                        fpSpread1.GetText colStart + 1, fpSpread1.Row, varData2
+                        fpSpread1.GetText colStart, fpSpread1.row, varData1
+                        fpSpread1.GetText colStart + 1, fpSpread1.row, varData2
                         If Trim(varData1) = vbNullString And Trim(varData2) = vbNullString Then
-                            fpSpread1.Row = fpSpread1.Row
+                            fpSpread1.row = fpSpread1.row
                         Else
                             InsertNode colStart, currentRow - 1
-                            fpSpread1.Row = currentRow
+                            fpSpread1.row = currentRow
                         End If
                     Else
                         InsertNode colStart, currentRow - 1
-                        fpSpread1.Row = currentRow
+                        fpSpread1.row = currentRow
                     End If
                 End If
             End If
             
             ' end test
         Else
-            fpSpread1.Row = fpSpread1.Row + 1
-            fpSpread2.Row = fpSpread2.Row + 1
+            fpSpread1.row = fpSpread1.row + 1
+            fpSpread2.row = fpSpread2.row + 1
         End If
-            fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+            fpSpread2.col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
             value = fpSpread2.value
     Loop
  ProgressBar1.Visible = False
@@ -1433,9 +1433,9 @@ End If
 Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
 Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
    fpSpread1.EventEnabled(EventAllEvents) = False
-   fpSpread1.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
-   fpSpread2.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
-   fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+   fpSpread1.row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
+   fpSpread2.row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
+   fpSpread2.col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
    count1 = Conversion.CInt(xmlDocument.getElementsByTagName("count").Item(0).Text)
    
     
@@ -1447,20 +1447,20 @@ Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
         Set xmlSecionNode = TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Section")(2)
         'fpSpread1.Visible = False
         If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
-            currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+            currentRow = xmlSecionNode.childNodes.length + fpSpread1.row
             If (xmlSecionNode.childNodes.length = 1) Then
                 fpSpread1.sheet = mCurrentSheet
-                fpSpread1.GetText colStart, fpSpread1.Row, varData1
-                fpSpread1.GetText colStart + 1, fpSpread1.Row, varData2
+                fpSpread1.GetText colStart, fpSpread1.row, varData1
+                fpSpread1.GetText colStart + 1, fpSpread1.row, varData2
                 If Trim(varData1) = vbNullString And Trim(varData2) = vbNullString Then
-                    fpSpread1.Row = fpSpread1.Row
+                    fpSpread1.row = fpSpread1.row
                 Else
                     InsertNode colStart, currentRow - 1
-                    fpSpread1.Row = currentRow
+                    fpSpread1.row = currentRow
                 End If
             Else
                 InsertNode colStart, currentRow - 1
-                fpSpread1.Row = currentRow
+                fpSpread1.row = currentRow
             End If
         End If
     End If
@@ -1469,10 +1469,10 @@ Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
 Do While count < count1 And count2 < fpSpread2.MaxRows
 DoEvents
 Frame2.Enabled = False
-ProgressBar1.value = fpSpread2.Row
+ProgressBar1.value = fpSpread2.row
 'check next row
     fpSpread1.sheet = mCurrentSheet
-    fpSpread2.Row = fpSpread2.Row + 1
+    fpSpread2.row = fpSpread2.row + 1
     value = fpSpread2.value
     If (Mid(value, 1, 1) = "T" Or Trim(value) = "" Or Trim(value) = vbNullString) Then
         count = count + 1
@@ -1481,11 +1481,11 @@ ProgressBar1.value = fpSpread2.Row
     ElseIf count = count1 And value = "" Then
         count = count + 1
     Else
-        InsertNode colStart, fpSpread1.Row
+        InsertNode colStart, fpSpread1.row
         inc = False
         count2 = count2 + 1
     End If
-        fpSpread2.Row = fpSpread2.Row - 1
+        fpSpread2.row = fpSpread2.row - 1
     'insert cell
         Dim arrStr() As String
         Dim sDate As String
@@ -1499,25 +1499,25 @@ ProgressBar1.value = fpSpread2.Row
                     Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 19 Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 20 _
                     Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 21 Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 22 Then
                 Else
-                    fpSpread2.Col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
+                    fpSpread2.col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
                     value = fpSpread2.Text
                    If value <> "" Or value <> vbNullString Then
-                    fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
+                    fpSpread1.col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
             'check type of cell
                     If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
                         If fpSpread1.CellType = CellTypeNumber Then
                             fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
                         End If
                         fpSpread1.value = value
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 12 Then
                         fpSpread1.value = value
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 2 Then
             '            fpSpread2.CellType = CellTypeNumber
             '            fpSpread2.TypeNumberDecPlaces = 0
                         fpSpread1.Text = Left(fpSpread2.Text, IIf(InStr(1, fpSpread2.Text, ".") <> 0, InStr(1, fpSpread2.Text, ".") - 1, Len(fpSpread2.Text)))
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 1 Then
                       If IsDate(fpSpread2.Text) Then
                         'fpSpread2.CellType = CellTypeDate
@@ -1534,7 +1534,7 @@ ProgressBar1.value = fpSpread2.Row
                         
                         fpSpread1.Text = sDate
             
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                      End If
                     Else
                         Select Case strfileFont
@@ -1549,32 +1549,32 @@ ProgressBar1.value = fpSpread2.Row
                            Case Else
                             fpSpread1.Text = value
                         End Select
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                     End If
                   End If
                End If
             Else
                 If Conversion.CInt(GetAttribute(xmlNode, "c1")) = 7 Then
                 Else
-                    fpSpread2.Col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
+                    fpSpread2.col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
                     value = fpSpread2.Text
                    If value <> "" Or value <> vbNullString Then
-                    fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
+                    fpSpread1.col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
             'check type of cell
                     If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
                         If fpSpread1.CellType = CellTypeNumber Then
                             fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
                         End If
                         fpSpread1.value = value
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 12 Then
                         fpSpread1.value = value
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 2 Then
             '            fpSpread2.CellType = CellTypeNumber
             '            fpSpread2.TypeNumberDecPlaces = 0
                         fpSpread1.Text = Left(fpSpread2.Text, IIf(InStr(1, fpSpread2.Text, ".") <> 0, InStr(1, fpSpread2.Text, ".") - 1, Len(fpSpread2.Text)))
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 1 Then
                       If IsDate(fpSpread2.Text) Then
                         
@@ -1592,7 +1592,7 @@ ProgressBar1.value = fpSpread2.Row
                         
                         fpSpread1.Text = sDate
             
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                      End If
                     Else
                         Select Case strfileFont
@@ -1607,7 +1607,7 @@ ProgressBar1.value = fpSpread2.Row
                            Case Else
                             fpSpread1.Text = value
                         End Select
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                     End If
                   End If
                End If
@@ -1619,38 +1619,38 @@ ProgressBar1.value = fpSpread2.Row
             'have 2 hidden row
                 Dim temp As Variant
                 Dim temp1 As Double
-                fpSpread1.Row = fpSpread1.Row + 9
-                fpSpread2.Row = fpSpread2.Row + 9
+                fpSpread1.row = fpSpread1.row + 9
+                fpSpread2.row = fpSpread2.row + 9
                
             'test
               If themDuLieu Then
                 Set xmlSecionNode = TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Section")(count + 2)
                 'fpSpread1.Visible = False
                 If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
-                    currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+                    currentRow = xmlSecionNode.childNodes.length + fpSpread1.row
                     If (xmlSecionNode.childNodes.length = 1) Then
                         fpSpread1.sheet = mCurrentSheet
-                        fpSpread1.GetText colStart, fpSpread1.Row, varData1
-                        fpSpread1.GetText colStart + 1, fpSpread1.Row, varData2
+                        fpSpread1.GetText colStart, fpSpread1.row, varData1
+                        fpSpread1.GetText colStart + 1, fpSpread1.row, varData2
                         If Trim(varData1) = vbNullString And Trim(varData2) = vbNullString Then
-                            fpSpread1.Row = fpSpread1.Row
+                            fpSpread1.row = fpSpread1.row
                         Else
                             InsertNode colStart, currentRow - 1
-                            fpSpread1.Row = currentRow
+                            fpSpread1.row = currentRow
                         End If
                     Else
                         InsertNode colStart, currentRow - 1
-                        fpSpread1.Row = currentRow
+                        fpSpread1.row = currentRow
                     End If
                 End If
             End If
             
             ' end test
         Else
-            fpSpread1.Row = fpSpread1.Row + 1
-            fpSpread2.Row = fpSpread2.Row + 1
+            fpSpread1.row = fpSpread1.row + 1
+            fpSpread2.row = fpSpread2.row + 1
         End If
-            fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+            fpSpread2.col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
             value = fpSpread2.value
     Loop
  ProgressBar1.Visible = False
@@ -1712,9 +1712,9 @@ fpSpread2.sheet = 4
 Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
 Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
    fpSpread1.EventEnabled(EventAllEvents) = False
-   fpSpread1.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
-   fpSpread2.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
-   fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+   fpSpread1.row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
+   fpSpread2.row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
+   fpSpread2.col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
    count1 = Conversion.CInt(xmlDocument.getElementsByTagName("count").Item(0).Text)
    
     
@@ -1726,20 +1726,20 @@ Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
         Set xmlSecionNode = TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Section")(2)
         'fpSpread1.Visible = False
         If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
-            currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+            currentRow = xmlSecionNode.childNodes.length + fpSpread1.row
             If (xmlSecionNode.childNodes.length = 1) Then
                 fpSpread1.sheet = mCurrentSheet
-                fpSpread1.GetText colStart, fpSpread1.Row, varData1
-                fpSpread1.GetText colStart + 1, fpSpread1.Row, varData2
+                fpSpread1.GetText colStart, fpSpread1.row, varData1
+                fpSpread1.GetText colStart + 1, fpSpread1.row, varData2
                 If Trim(varData1) = vbNullString And Trim(varData2) = vbNullString Then
-                    fpSpread1.Row = fpSpread1.Row
+                    fpSpread1.row = fpSpread1.row
                 Else
                     InsertNode colStart, currentRow - 1
-                    fpSpread1.Row = currentRow
+                    fpSpread1.row = currentRow
                 End If
             Else
                 InsertNode colStart, currentRow - 1
-                fpSpread1.Row = currentRow
+                fpSpread1.row = currentRow
             End If
         End If
     End If
@@ -1748,10 +1748,10 @@ Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
 Do While count < count1 And count2 < fpSpread2.MaxRows
 DoEvents
 Frame2.Enabled = False
-ProgressBar1.value = fpSpread2.Row
+ProgressBar1.value = fpSpread2.row
 'check next row
     fpSpread1.sheet = mCurrentSheet
-    fpSpread2.Row = fpSpread2.Row + 1
+    fpSpread2.row = fpSpread2.row + 1
     value = fpSpread2.value
     If (Mid(value, 1, 1) = "T" Or Trim(value) = "" Or Trim(value) = vbNullString) Then
         count = count + 1
@@ -1760,35 +1760,35 @@ ProgressBar1.value = fpSpread2.Row
     ElseIf count = count1 And value = "" Then
         count = count + 1
     Else
-        InsertNode colStart, fpSpread1.Row
+        InsertNode colStart, fpSpread1.row
         inc = False
         count2 = count2 + 1
     End If
-        fpSpread2.Row = fpSpread2.Row - 1
+        fpSpread2.row = fpSpread2.row - 1
     'insert cell
         Dim arrStr() As String
         Dim sDate As String
         For Each xmlNode In xmlNodeListMap
             If isGroupI = True Then
-                    fpSpread2.Col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
+                    fpSpread2.col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
                     value = fpSpread2.Text
                    If value <> "" Or value <> vbNullString Then
-                    fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
+                    fpSpread1.col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
             'check type of cell
                     If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
                         If fpSpread1.CellType = CellTypeNumber Then
                             fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
                         End If
                         fpSpread1.value = value
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 12 Then
                         fpSpread1.value = value
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 2 Then
             '            fpSpread2.CellType = CellTypeNumber
             '            fpSpread2.TypeNumberDecPlaces = 0
                         fpSpread1.Text = Left(fpSpread2.Text, IIf(InStr(1, fpSpread2.Text, ".") <> 0, InStr(1, fpSpread2.Text, ".") - 1, Len(fpSpread2.Text)))
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 1 Then
                       If IsDate(fpSpread2.Text) Then
                         'fpSpread2.CellType = CellTypeDate
@@ -1805,7 +1805,7 @@ ProgressBar1.value = fpSpread2.Row
                         
                         fpSpread1.Text = sDate
             
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                      End If
                     Else
                         Select Case strfileFont
@@ -1820,29 +1820,29 @@ ProgressBar1.value = fpSpread2.Row
                            Case Else
                             fpSpread1.Text = value
                         End Select
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                     End If
                   End If
             Else
-                    fpSpread2.Col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
+                    fpSpread2.col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
                     value = fpSpread2.Text
                    If value <> "" Or value <> vbNullString Then
-                    fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
+                    fpSpread1.col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
             'check type of cell
                     If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
                         If fpSpread1.CellType = CellTypeNumber Then
                             fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
                         End If
                         fpSpread1.value = value
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 12 Then
                         fpSpread1.value = value
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 2 Then
             '            fpSpread2.CellType = CellTypeNumber
             '            fpSpread2.TypeNumberDecPlaces = 0
                         fpSpread1.Text = Left(fpSpread2.Text, IIf(InStr(1, fpSpread2.Text, ".") <> 0, InStr(1, fpSpread2.Text, ".") - 1, Len(fpSpread2.Text)))
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
                     ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 1 Then
                       If IsDate(fpSpread2.Text) Then
                         
@@ -1860,7 +1860,7 @@ ProgressBar1.value = fpSpread2.Row
                         
                         fpSpread1.Text = sDate
             
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                      End If
                     Else
                         Select Case strfileFont
@@ -1875,7 +1875,7 @@ ProgressBar1.value = fpSpread2.Row
                            Case Else
                             fpSpread1.Text = value
                         End Select
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                     End If
                   End If
             End If
@@ -1887,8 +1887,8 @@ ProgressBar1.value = fpSpread2.Row
             'have 2 hidden row
                 Dim temp As Variant
                 Dim temp1 As Double
-                fpSpread1.Row = fpSpread1.Row + 8
-                fpSpread2.Row = fpSpread2.Row + 8
+                fpSpread1.row = fpSpread1.row + 8
+                fpSpread2.row = fpSpread2.row + 8
                 
                 If isLoadDT = True Then
                     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\TK_PL_09_3_G2_TNCN.xml"))
@@ -1902,30 +1902,30 @@ ProgressBar1.value = fpSpread2.Row
                 Set xmlSecionNode = TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Section")(count + 2)
                 'fpSpread1.Visible = False
                 If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
-                    currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+                    currentRow = xmlSecionNode.childNodes.length + fpSpread1.row
                     If (xmlSecionNode.childNodes.length = 1) Then
                         fpSpread1.sheet = mCurrentSheet
-                        fpSpread1.GetText colStart, fpSpread1.Row, varData1
-                        fpSpread1.GetText colStart + 1, fpSpread1.Row, varData2
+                        fpSpread1.GetText colStart, fpSpread1.row, varData1
+                        fpSpread1.GetText colStart + 1, fpSpread1.row, varData2
                         If Trim(varData1) = vbNullString And Trim(varData2) = vbNullString Then
-                            fpSpread1.Row = fpSpread1.Row
+                            fpSpread1.row = fpSpread1.row
                         Else
                             InsertNode colStart, currentRow - 1
-                            fpSpread1.Row = currentRow
+                            fpSpread1.row = currentRow
                         End If
                     Else
                         InsertNode colStart, currentRow - 1
-                        fpSpread1.Row = currentRow
+                        fpSpread1.row = currentRow
                     End If
                 End If
             End If
             
             ' end test
         Else
-            fpSpread1.Row = fpSpread1.Row + 1
-            fpSpread2.Row = fpSpread2.Row + 1
+            fpSpread1.row = fpSpread1.row + 1
+            fpSpread2.row = fpSpread2.row + 1
         End If
-            fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+            fpSpread2.col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
             value = fpSpread2.value
     Loop
  ProgressBar1.Visible = False
@@ -2492,19 +2492,19 @@ End If
 Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
 Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
    fpSpread1.EventEnabled(EventAllEvents) = False
-   fpSpread1.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
-   fpSpread2.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
-   fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+   fpSpread1.row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
+   fpSpread2.row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
+   fpSpread2.col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
    count1 = Conversion.CInt(xmlDocument.getElementsByTagName("count").Item(0).Text)
    
 Do While count < count1 And count2 < fpSpread2.MaxRows
 DoEvents
 Frame2.Enabled = False
-ProgressBar1.value = fpSpread2.Row
+ProgressBar1.value = fpSpread2.row
 'check next row
     fpSpread1.sheet = mCurrentSheet
     fpSpread2.sheet = mCurrentSheet
-    fpSpread2.Row = fpSpread2.Row + 1
+    fpSpread2.row = fpSpread2.row + 1
     value = fpSpread2.value
     
     If Trim(value) = "" Or Trim(value) = vbNullString Or Trim(value) = "aa" Then
@@ -2514,32 +2514,32 @@ ProgressBar1.value = fpSpread2.Row
     ElseIf count = count1 And value = "" Then
         count = count + 1
     Else
-        InsertNode colStart, fpSpread1.Row
+        InsertNode colStart, fpSpread1.row
         inc = False
         count2 = count2 + 1
     End If
-        fpSpread2.Row = fpSpread2.Row - 1
+        fpSpread2.row = fpSpread2.row - 1
 'insert cell
     For Each xmlNode In xmlNodeListMap
-        fpSpread2.Col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
+        fpSpread2.col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
         value = fpSpread2.value
        If value <> "" Or value <> vbNullString Then
-        fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
+        fpSpread1.col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
 'check type of cell
         If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
             If fpSpread1.CellType = CellTypeNumber Then
                 fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
             End If
             fpSpread1.value = Round(value, 0)
-            UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+            UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
         ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 12 Then
             fpSpread1.value = value
-            UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+            UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
         ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 2 Then
 '            fpSpread2.CellType = CellTypeNumber
 '            fpSpread2.TypeNumberDecPlaces = 0
             fpSpread1.Text = Left(fpSpread2.Text, IIf(InStr(1, fpSpread2.Text, ".") <> 0, InStr(1, fpSpread2.Text, ".") - 1, Len(fpSpread2.Text)))
-            UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+            UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
         ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 1 Then
           If IsDate(fpSpread2.Text) Then
             Dim arrStr() As String
@@ -2558,7 +2558,7 @@ ProgressBar1.value = fpSpread2.Row
             
             fpSpread1.Text = sDate
 
-            UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+            UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
          End If
         Else
             Select Case strfileFont
@@ -2573,7 +2573,7 @@ ProgressBar1.value = fpSpread2.Row
                Case Else
                 fpSpread1.Text = value
             End Select
-            UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+            UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
         End If
         
       End If
@@ -2581,13 +2581,13 @@ ProgressBar1.value = fpSpread2.Row
     'next row
         If inc = True Then
             'have 2 hidden row
-            fpSpread1.Row = fpSpread1.Row + 5
-            fpSpread2.Row = fpSpread2.Row + 3
+            fpSpread1.row = fpSpread1.row + 5
+            fpSpread2.row = fpSpread2.row + 3
         Else
-            fpSpread1.Row = fpSpread1.Row + 1
-            fpSpread2.Row = fpSpread2.Row + 1
+            fpSpread1.row = fpSpread1.row + 1
+            fpSpread2.row = fpSpread2.row + 1
         End If
-            fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+            fpSpread2.col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
             value = fpSpread2.value
     Loop
  ProgressBar1.Visible = False
@@ -2654,7 +2654,7 @@ Private Sub moveDataToKhai5A()
         rowStartSpread2 = 22
     End If
     
-    fpSpread1.Row = rowStart
+    fpSpread1.row = rowStart
     
     Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
     Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
@@ -2669,7 +2669,7 @@ Private Sub moveDataToKhai5A()
     If themDuLieu Then
         'fpSpread1.Visible = False
         If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
-            currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+            currentRow = xmlSecionNode.childNodes.length + fpSpread1.row
         End If
     End If
     ' Ket thuc truong hop them tiep du lieu
@@ -2809,8 +2809,8 @@ Private Sub moveDataToKhai5A()
         'Debug.Print "begin" & Time
         If strfileFont <> "UNICODE" Then
             For lRowCtrl = 1 To lrowCount
-                fpSpread1.Col = fpSpread1.ColLetterToNumber("D")
-                fpSpread1.Row = lRowCtrl + rowStart + 1
+                fpSpread1.col = fpSpread1.ColLetterToNumber("D")
+                fpSpread1.row = lRowCtrl + rowStart + 1
                 Select Case strfileFont
                    Case "TCVN"
                       fpSpread1.Text = TAX_Utilities_v1.Convert(fpSpread1.Text, TCVN, UNICODE)
@@ -2823,18 +2823,18 @@ Private Sub moveDataToKhai5A()
                    Case Else
                     fpSpread1.Text = fpSpread1.Text
                 End Select
-                UpdateCell fpSpread1.ColLetterToNumber("D"), fpSpread1.Row, fpSpread1.Text
+                UpdateCell fpSpread1.ColLetterToNumber("D"), fpSpread1.row, fpSpread1.Text
             Next
         End If
          'Debug.Print "end" & Time
-        .Col = colStart
-        .Row = rowStart + 2
+        .col = colStart
+        .row = rowStart + 2
         UpdateCell colStart, rowStart + 2, .Text
-        .Col = colStart + 1
+        .col = colStart + 1
         UpdateCell colStart + 1, rowStart + 2, .Text
-        .Col = colStart + 2
+        .col = colStart + 2
         UpdateCell colStart + 2, rowStart + 2, .Text
-        .Col = colStart + 3
+        .col = colStart + 3
         UpdateCell colStart + 3, rowStart + 2, .Text
         
 '        Debug.Print "end: " & Time
@@ -2879,8 +2879,8 @@ Dim Y As Long
         so = 1
     End If
     txt_Seach.sheet = 1
-    txt_Seach.Col = 1
-    txt_Seach.Row = 1
+    txt_Seach.col = 1
+    txt_Seach.row = 1
     seach = txt_Seach.Text
     
     With fpSpread1
@@ -3327,8 +3327,8 @@ Private Sub cmdClear_Click()
                 .sheet = lSheetActive
                 iCount = 1
                 Do
-                    .Col = .ColLetterToNumber("B")
-                    .Row = iCount + rowStart
+                    .col = .ColLetterToNumber("B")
+                    .row = iCount + rowStart
                     totalRow5A = iCount
                     iCount = iCount + 1
                 Loop Until .Text = "aa"
@@ -3371,8 +3371,8 @@ Private Sub cmdClear_Click()
                 .sheet = lSheetActive
                 iCount = 1
                 Do
-                    .Col = .ColLetterToNumber("B")
-                    .Row = iCount + rowStart
+                    .col = .ColLetterToNumber("B")
+                    .row = iCount + rowStart
                     totalRow5A = iCount
                     iCount = iCount + 1
                 Loop Until .Text = "aa"
@@ -4107,13 +4107,13 @@ Private Sub cmdExport_Click()
                 fpSpread1.EventEnabled(EventAllEvents) = False
                 .GetText .ColLetterToNumber("I"), 23, strValue
                 If strValue = 1 Then
-                    .Col = .ColLetterToNumber("I")
-                    .Row = 23
+                    .col = .ColLetterToNumber("I")
+                    .row = 23
                     .Text = "X"
                     .TypeHAlign = TypeHAlignCenter
                 Else
-                    .Col = .ColLetterToNumber("I")
-                    .Row = 23
+                    .col = .ColLetterToNumber("I")
+                    .row = 23
                     .Text = ""
                 End If
                 
@@ -4126,57 +4126,57 @@ Private Sub cmdExport_Click()
             With fpSpread1
                 .EventEnabled(EventAllEvents) = False
                 .sheet = 2
-                .Row = 22
+                .row = 22
                 Do
-                    .GetText .ColLetterToNumber("G"), .Row, strValue
+                    .GetText .ColLetterToNumber("G"), .row, strValue
                     If Trim(strValue) = "1" Or Trim(strValue) = "x" Then
                         ' start
-                        .Col = .ColLetterToNumber("Q")
+                        .col = .ColLetterToNumber("Q")
                         .Formula = ""
                         ' end
                         
-                        .Col = .ColLetterToNumber("G")
+                        .col = .ColLetterToNumber("G")
                         .Text = "x"
                         .TypeHAlign = TypeHAlignCenter
                     Else
                         ' start
-                        .Col = .ColLetterToNumber("Q")
+                        .col = .ColLetterToNumber("Q")
                         .Formula = ""
                         ' end
-                        .Col = .ColLetterToNumber("G")
+                        .col = .ColLetterToNumber("G")
                         .Text = ""
                     End If
-                    .Row = .Row + 1
-                    .Col = .ColLetterToNumber("B")
+                    .row = .row + 1
+                    .col = .ColLetterToNumber("B")
                 Loop Until .Text = "aa"
-                .Col = .ColLetterToNumber("C")
+                .col = .ColLetterToNumber("C")
                 .ColHidden = True
                 
-                .Col = .ColLetterToNumber("D")
-                .Row = 5
+                .col = .ColLetterToNumber("D")
+                .row = 5
                 .Text = ""
                 
                 .sheet = 3
-                .Row = 22
+                .row = 22
                 Do
-                    .GetText .ColLetterToNumber("F"), .Row, strValue
+                    .GetText .ColLetterToNumber("F"), .row, strValue
                     If Trim(strValue) = "1" Or Trim(strValue) = "x" Then
-                        .Col = .ColLetterToNumber("F")
+                        .col = .ColLetterToNumber("F")
                         .Text = "x"
                         .TypeHAlign = TypeHAlignCenter
                     Else
-                        .Col = .ColLetterToNumber("F")
+                        .col = .ColLetterToNumber("F")
                         .Text = ""
                     End If
-                    .Row = .Row + 1
-                    .Col = .ColLetterToNumber("B")
+                    .row = .row + 1
+                    .col = .ColLetterToNumber("B")
                 Loop Until .Text = "aa"
                 
-                .Col = .ColLetterToNumber("Y")
+                .col = .ColLetterToNumber("Y")
                 .ColHidden = True
                 
-                .Col = .ColLetterToNumber("C")
-                .Row = 4
+                .col = .ColLetterToNumber("C")
+                .row = 4
                 .Text = ""
                 
                 
@@ -4186,13 +4186,13 @@ Private Sub cmdExport_Click()
             With fpSpread1
                 .EventEnabled(EventAllEvents) = False
                 .sheet = 2
-                .Row = 22
+                .row = 22
                 
-                .Col = .ColLetterToNumber("C")
+                .col = .ColLetterToNumber("C")
                 .ColHidden = True
                         
-                .Col = .ColLetterToNumber("D")
-                .Row = 3
+                .col = .ColLetterToNumber("D")
+                .row = 3
                 .Text = ""
                         
                 .EventEnabled(EventAllEvents) = True
@@ -4203,25 +4203,25 @@ Private Sub cmdExport_Click()
                 .sheet = 1
                 .GetText .ColLetterToNumber("B"), 14, strValue
                 If strValue = 1 Or UCase$(CStr(strValue)) = "X" Then
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 14
+                    .col = .ColLetterToNumber("B")
+                    .row = 14
                     .Text = "X"
                     .TypeHAlign = TypeHAlignCenter
                 Else
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 14
+                    .col = .ColLetterToNumber("B")
+                    .row = 14
                     .Text = ""
                 End If
                 
                 .GetText .ColLetterToNumber("G"), 14, strValue
                 If strValue = 1 Or UCase$(CStr(strValue)) = "X" Then
-                    .Col = .ColLetterToNumber("G")
-                    .Row = 14
+                    .col = .ColLetterToNumber("G")
+                    .row = 14
                     .Text = "X"
                     .TypeHAlign = TypeHAlignCenter
                 Else
-                    .Col = .ColLetterToNumber("G")
-                    .Row = 14
+                    .col = .ColLetterToNumber("G")
+                    .row = 14
                     .Text = ""
                 End If
                 
@@ -4233,13 +4233,13 @@ Private Sub cmdExport_Click()
                 fpSpread1.sheet = 1
                 .GetText .ColLetterToNumber("B"), 15, strValue
                 If strValue = 1 Or UCase$(CStr(strValue)) = "X" Then
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 15
+                    .col = .ColLetterToNumber("B")
+                    .row = 15
                     .Text = "X"
                     .TypeHAlign = TypeHAlignCenter
                 Else
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 15
+                    .col = .ColLetterToNumber("B")
+                    .row = 15
                     .Text = ""
                 End If
                 
@@ -4282,20 +4282,20 @@ Private Sub cmdExport_Click()
                     fpSpread1.sheet = 5
                     Dim countRowDel As Integer
                     countRowDel = 0
-                    fpSpread1.Row = 22
-                    fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
+                    fpSpread1.row = 22
+                    fpSpread1.col = fpSpread1.ColLetterToNumber("B")
                     Do
                         countRowDel = countRowDel + 1
-                        fpSpread1.Row = countRowDel + 22
+                        fpSpread1.row = countRowDel + 22
                     Loop Until fpSpread1.Text = "aa"
                     
                     Dim arrData5A(1, 5) As Variant
-                    fpSpread1.Row = fpSpread1.Row + 1
-                    fpSpread1.GetText fpSpread1.ColLetterToNumber("F"), fpSpread1.Row, arrData5A(1, 0)
-                    fpSpread1.GetText fpSpread1.ColLetterToNumber("G"), fpSpread1.Row, arrData5A(1, 1)
-                    fpSpread1.GetText fpSpread1.ColLetterToNumber("H"), fpSpread1.Row, arrData5A(1, 2)
-                    fpSpread1.GetText fpSpread1.ColLetterToNumber("I"), fpSpread1.Row, arrData5A(1, 3)
-                    fpSpread1.GetText fpSpread1.ColLetterToNumber("J"), fpSpread1.Row, arrData5A(1, 4)
+                    fpSpread1.row = fpSpread1.row + 1
+                    fpSpread1.GetText fpSpread1.ColLetterToNumber("F"), fpSpread1.row, arrData5A(1, 0)
+                    fpSpread1.GetText fpSpread1.ColLetterToNumber("G"), fpSpread1.row, arrData5A(1, 1)
+                    fpSpread1.GetText fpSpread1.ColLetterToNumber("H"), fpSpread1.row, arrData5A(1, 2)
+                    fpSpread1.GetText fpSpread1.ColLetterToNumber("I"), fpSpread1.row, arrData5A(1, 3)
+                    fpSpread1.GetText fpSpread1.ColLetterToNumber("J"), fpSpread1.row, arrData5A(1, 4)
                     
                     fpSpread1.DeleteRows 22, countRowDel
                     fpSpread1.MaxRows = fpSpread1.MaxRows - countRowDel + 1
@@ -4311,12 +4311,12 @@ Private Sub cmdExport_Click()
 '                    fpSpread1.SetText fpSpread1.ColLetterToNumber("I"), fpSpread1.Row, "0"
 '                    fpSpread1.SetText fpSpread1.ColLetterToNumber("J"), fpSpread1.Row, "0"
                     
-                    fpSpread1.Row = 23
-                    fpSpread1.SetText fpSpread1.ColLetterToNumber("F"), fpSpread1.Row, arrData5A(1, 0)
-                    fpSpread1.SetText fpSpread1.ColLetterToNumber("G"), fpSpread1.Row, arrData5A(1, 1)
-                    fpSpread1.SetText fpSpread1.ColLetterToNumber("H"), fpSpread1.Row, arrData5A(1, 2)
-                    fpSpread1.SetText fpSpread1.ColLetterToNumber("I"), fpSpread1.Row, arrData5A(1, 3)
-                    fpSpread1.SetText fpSpread1.ColLetterToNumber("J"), fpSpread1.Row, arrData5A(1, 4)
+                    fpSpread1.row = 23
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("F"), fpSpread1.row, arrData5A(1, 0)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("G"), fpSpread1.row, arrData5A(1, 1)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("H"), fpSpread1.row, arrData5A(1, 2)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("I"), fpSpread1.row, arrData5A(1, 3)
+                    fpSpread1.SetText fpSpread1.ColLetterToNumber("J"), fpSpread1.row, arrData5A(1, 4)
                     fpSpread1.EventEnabled(EventAllEvents) = True
                 End If
                 
@@ -4335,21 +4335,21 @@ Private Sub cmdExport_Click()
              fpSpread1.InsertRows 22, 1
              fpSpread1.CopyRowRange 21, 21, 22
              'fpSpread1.MaxRows = fpSpread1.MaxRows + 1
-             fpSpread1.Row = 22
+             fpSpread1.row = 22
              ' set cong thuc cho chi tieu 12
-             fpSpread1.Col = fpSpread1.ColLetterToNumber("H")
+             fpSpread1.col = fpSpread1.ColLetterToNumber("H")
              fpSpread1.Formula = "ROUND(L22-M22,0)"
              ' set cong thuc cho chi tieu 13
-             fpSpread1.Col = fpSpread1.ColLetterToNumber("I")
+             fpSpread1.col = fpSpread1.ColLetterToNumber("I")
              fpSpread1.Formula = "H22 -J22"
              ' set cong thuc cho col K
-             fpSpread1.Col = fpSpread1.ColLetterToNumber("K")
+             fpSpread1.col = fpSpread1.ColLetterToNumber("K")
              fpSpread1.Formula = "F22/12"
              ' set cong thuc cho col L
-             fpSpread1.Col = fpSpread1.ColLetterToNumber("L")
+             fpSpread1.col = fpSpread1.ColLetterToNumber("L")
              fpSpread1.Formula = "12*IF(K22>80000000,((K22-80000000)*0.35+18150000),IF(AND(K22>52000000,K22<=80000000),((K22-52000000)*0.3+9750000),IF(AND(K22>32000000,K22<=52000000),((K22-32000000)*0.25+4750000),IF(AND(K22>18000000,K22<=32000000),((K22-18000000)*0.2+1950000),IF(AND(K22>10000000,K22<=18000000),((K22-10000000)*0.15+750000),IF(AND(K22>5000000,K22<=10000000),((K22-5000000)*0.1+250000),(K22*0.05)))))))"
              ' set cong thuc cho col M
-             fpSpread1.Col = fpSpread1.ColLetterToNumber("M")
+             fpSpread1.col = fpSpread1.ColLetterToNumber("M")
              fpSpread1.Formula = "IF(N22>0,ROUND(L22*O22/N22/2,0),0)"
              fpSpread1.RowHidden = False
              
@@ -4414,14 +4414,14 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
             .EventEnabled(EventAllEvents) = False
             .sheet = 1
             If UCase(Trim(loaiToKhai)) = "09_TNCN" Then
-                 .Col = .ColLetterToNumber("F")
-                .Row = 10
+                 .col = .ColLetterToNumber("F")
+                .row = 10
             Else
-                .Col = .ColLetterToNumber("D")
-                .Row = 10
+                .col = .ColLetterToNumber("D")
+                .row = 10
             End If
             ' Lay MST cua NNT
-            .GetText .Col, .Row, taxId
+            .GetText .col, .row, taxId
             ' Neu la ma 10 so thi them chuoi 000 vao sau
             If Len(LTrim(RTrim(taxId))) = 10 Then
                 taxId = Left(taxId, 10) & "000"
@@ -4449,27 +4449,27 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
             End If
             ' Lay trang thai va so lan cua to khai
             If UCase(Trim(loaiToKhai)) = "09_TNCN" Then
-                .Col = .ColLetterToNumber("G")
-                .Row = 6
+                .col = .ColLetterToNumber("G")
+                .row = 6
             Else
-                .Col = .ColLetterToNumber("E")
-                .Row = 6
+                .col = .ColLetterToNumber("E")
+                .row = 6
             End If
-            .GetText .Col, .Row, ctBs
+            .GetText .col, .row, ctBs
             If UCase(Trim(ctBs)) = "[X]" Then
                 ctBs = "L00"
             Else
                 If UCase(Trim(loaiToKhai)) = "09_TNCN" Then
-                     .Col = .ColLetterToNumber("K")
-                    .Row = 6
+                     .col = .ColLetterToNumber("K")
+                    .row = 6
                 ElseIf UCase(Trim(loaiToKhai)) = "16_TH_DKNPT" Then
-                     .Col = .ColLetterToNumber("J")
-                    .Row = 6
+                     .col = .ColLetterToNumber("J")
+                    .row = 6
                 Else
-                    .Col = .ColLetterToNumber("I")
-                    .Row = 6
+                    .col = .ColLetterToNumber("I")
+                    .row = 6
                 End If
-                .GetText .Col, .Row, lanBS
+                .GetText .col, .row, lanBS
                 
                 If UCase(Trim(loaiToKhai)) = "16_TH_DKNPT" Then
                     If Len(lanBS) = 1 Then
@@ -4489,20 +4489,20 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
             End If
             ' Lay ma co quan thue cap cuc
             If UCase(Trim(loaiToKhai)) = "09_TNCN" Then
-                .Col = .ColLetterToNumber("F")
+                .col = .ColLetterToNumber("F")
             Else
-                .Col = .ColLetterToNumber("D")
+                .col = .ColLetterToNumber("D")
             End If
             If UCase(Trim(loaiToKhai)) = "05_TNCN" Then
-                    .Row = 30
+                    .row = 30
             ElseIf UCase(Trim(loaiToKhai)) = "09_TNCN" Then
-                    .Row = 36
+                    .row = 36
             ElseIf UCase(Trim(loaiToKhai)) = "16_TH_DKNPT" Then
-                    .Row = 30
+                    .row = 30
             Else
-                     .Row = 34
+                     .row = 34
             End If
-            .GetText .Col, .Row, taxOfficeName
+            .GetText .col, .row, taxOfficeName
             taxOfficeName = Left$(taxOfficeName, 3)
             
             ' Ghep cac thong tin tren vao lam cau truc file chuan cho PIT
@@ -4519,10 +4519,10 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
         With fpSpread1
             .EventEnabled(EventAllEvents) = False
             .sheet = 1
-            .Col = .ColLetterToNumber("E")
-            .Row = 9
+            .col = .ColLetterToNumber("E")
+            .row = 9
             ' Lay MST cua NNT
-            .GetText .Col, .Row, taxId
+            .GetText .col, .row, taxId
             ' Neu la ma 10 so thi them chuoi 000 vao sau
             If Len(LTrim(RTrim(taxId))) = 10 Then
                 taxId = Left(taxId, 10) & "000"
@@ -5154,7 +5154,7 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                          ByVal nodes As MSXML.IXMLDOMNode, _
                          ByRef Blank As Boolean, _
                          ByVal cellRange As Integer, _
-                         ByRef Row As Integer)
+                         ByRef row As Integer)
     Dim cellID           As String
     Dim cellArray()      As String
     Dim cNode            As MSXML.IXMLDOMNode
@@ -5167,7 +5167,7 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
 
             If cNode.hasChildNodes Then
                 If cNode.firstChild.hasChildNodes Then
-                    SetCloneNode CloneNode, cNode, Blank, cellRange, Row
+                    SetCloneNode CloneNode, cNode, Blank, cellRange, row
                 Else
                     cellID = cNode.Text
                     cellArray = Split(cellID, "_")
@@ -5178,8 +5178,8 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                         CloneNode.getElementsByTagName(cNode.nodeName)(0).Text = cellID
 
                     Else
-                        .Col = .ColLetterToNumber(cellArray(0))
-                        .Row = Val(cellArray(1)) + cellRange
+                        .col = .ColLetterToNumber(cellArray(0))
+                        .row = Val(cellArray(1)) + cellRange
                         
                         For Each dNode In CloneNode.getElementsByTagName(cNode.nodeName)
 
@@ -5273,8 +5273,8 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                     End If
                     
                     'lay vi tri cua cot dau tien
-                    If Row = 0 Then
-                        Row = .Row
+                    If row = 0 Then
+                        row = .row
                     End If
                     
                 End If
@@ -5310,8 +5310,8 @@ Private Sub SetValueFromXml(ByVal nodes As MSXML.IXMLDOMNode, _
                     
                     If InStr(cellID, "_") > 0 Then
                         If Val(cellArray(1)) > 0 Then
-                            .Col = .ColLetterToNumber(cellArray(0))
-                            .Row = Val(cellArray(1)) + cellRange
+                            .col = .ColLetterToNumber(cellArray(0))
+                            .row = Val(cellArray(1)) + cellRange
                         
                             For Each dNode In xmlDuLieu.getElementsByTagName(cNode.nodeName)
 
@@ -5320,7 +5320,7 @@ Private Sub SetValueFromXml(ByVal nodes As MSXML.IXMLDOMNode, _
                                     If .CellType = CellTypeNumber Then
 
                                         .value = dNode.Text
-                                        UpdateCell .Col, .Row, .value
+                                        UpdateCell .col, .row, .value
 
                                     ElseIf .CellType = CellTypeCheckBox Then
 
@@ -5332,7 +5332,7 @@ Private Sub SetValueFromXml(ByVal nodes As MSXML.IXMLDOMNode, _
                                             .Text = dNode.Text
                                         End If
 
-                                        UpdateCell .Col, .Row, .Text
+                                        UpdateCell .col, .row, .Text
 
                                     Else
 
@@ -5342,7 +5342,7 @@ Private Sub SetValueFromXml(ByVal nodes As MSXML.IXMLDOMNode, _
                                             .Text = ToDateString(dNode.Text, False)
                                         End If
 
-                                        UpdateCell .Col, .Row, .Text
+                                        UpdateCell .col, .row, .Text
                             
                                     End If
                                 
@@ -5624,8 +5624,8 @@ Private Sub KetXuatXML()
                     ' end test
                     
                     'Truong hop ket thuc group dong thi xoa group cuoi cung di
-                    .Col = .ColLetterToNumber("B")
-                    .Row = sRow
+                    .col = .ColLetterToNumber("B")
+                    .row = sRow
 
                     If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
                         If id > 1 Then
@@ -5646,8 +5646,8 @@ Private Sub KetXuatXML()
                     End If
                     
                     ' Doi voi cac to khai co STT o cot C
-                    .Col = .ColLetterToNumber("C")
-                    .Row = sRow
+                    .col = .ColLetterToNumber("C")
+                    .row = sRow
 
                     If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
                         If id > 1 Then
@@ -5717,12 +5717,12 @@ Private Sub KetXuatXML()
                     If UBound(cellArray) <> 1 Then
                         xmlCellTKNode.Text = cellID
                     Else
-                        .Col = .ColLetterToNumber(cellArray(0))
+                        .col = .ColLetterToNumber(cellArray(0))
                         ' test Dynamic
                         If Val(cellArray(1)) > firstRowDynamic Then
-                            .Row = Val(cellArray(1)) + cellRange
+                            .row = Val(cellArray(1)) + cellRange
                         Else
-                            .Row = Val(cellArray(1))
+                            .row = Val(cellArray(1))
                         End If
                         ' end test
                         'Set gia tri cho cac the la ma so thue
@@ -5893,8 +5893,8 @@ Private Sub KetXuatXML()
                                 sRow = 0
                                 SetCloneNode CloneNode, xmlSection, Blank, cellRange, sRow
                             
-                                .Col = .ColLetterToNumber("B")
-                                .Row = sRow
+                                .col = .ColLetterToNumber("B")
+                                .row = sRow
 
                                 If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
                                     If id > 1 Then
@@ -5913,8 +5913,8 @@ Private Sub KetXuatXML()
                                     Exit Do
                                 End If
 
-                                .Col = .ColLetterToNumber("C")
-                                .Row = sRow
+                                .col = .ColLetterToNumber("C")
+                                .row = sRow
 
                                 If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
                                     If id > 1 Then
@@ -5994,8 +5994,8 @@ Private Sub KetXuatXML()
                                 If UBound(cellArray) <> 1 Then
                                     xmlCellTKNode.Text = cellID
                                 Else
-                                    .Col = .ColLetterToNumber(cellArray(0))
-                                    .Row = Val(cellArray(1)) + cellRange
+                                    .col = .ColLetterToNumber(cellArray(0))
+                                    .row = Val(cellArray(1)) + cellRange
 
                                     If GetAttribute(xmlCellNode, "TINType") = "1" Then
                                         xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
@@ -6104,8 +6104,8 @@ Private Sub KetXuatXML()
 
                                 Do
                                     
-                                    .Col = .ColLetterToNumber(cellArray(0))
-                                    .Row = Val(cellArray(1)) + cellRange
+                                    .col = .ColLetterToNumber(cellArray(0))
+                                    .row = Val(cellArray(1)) + cellRange
                                     
                                     'Tao document moi de inser cac group dong con
                                     childCloneNode.loadXML xmlSection.firstChild.selectNodes(".//Dynamic")(0).firstChild.xml
@@ -6133,8 +6133,8 @@ Private Sub KetXuatXML()
 
                                 Loop
 
-                                .Col = .ColLetterToNumber("B")
-                                .Row = sRow
+                                .col = .ColLetterToNumber("B")
+                                .row = sRow
                                 
                                 'Xoa group dong cha cuoi cung khi ket thuc
                                 If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
@@ -6147,8 +6147,8 @@ Private Sub KetXuatXML()
                                     Exit Do
                                 End If
 
-                                .Col = .ColLetterToNumber("C")
-                                .Row = sRow
+                                .col = .ColLetterToNumber("C")
+                                .row = sRow
 
                                 If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
                                     If id > 1 Then
@@ -6352,27 +6352,27 @@ Private Sub cmdImportXML_Click()
                             GetCQT CQT_CAPCUC, tCQT_CAPCUC
                         End If
                         GetCQT CQT_HOANTHUE, tCQT_HOANTHUE
-                        .Col = .ColLetterToNumber("BE")
+                        .col = .ColLetterToNumber("BE")
     
                         If tCQT_CAPCUC <> vbNullString Then
-                            .Row = .MaxRows - 15
+                            .row = .MaxRows - 15
                             .Text = tCQT_CAPCUC
-                            UpdateCell .Col, .Row, tCQT_CAPCUC
+                            UpdateCell .col, .row, tCQT_CAPCUC
     
                         End If
                         
                         If tCQT_HOANTHUE <> vbNullString Then
-                            .Row = .MaxRows - 13
+                            .row = .MaxRows - 13
                             .Text = tCQT_HOANTHUE
-                            UpdateCell .Col, .Row, tCQT_HOANTHUE
+                            UpdateCell .col, .row, tCQT_HOANTHUE
      
                         End If
                         
                          If CQT_CAPCUC <> vbNullString Then
-                            .Row = .MaxRows - 15
-                            .Col = .ColLetterToNumber("BI")
+                            .row = .MaxRows - 15
+                            .col = .ColLetterToNumber("BI")
                             .Text = CQT_CAPCUC
-                            UpdateCell .Col, .Row, CQT_CAPCUC
+                            UpdateCell .col, .row, CQT_CAPCUC
                         End If
                     End If
                 End If
@@ -7176,15 +7176,15 @@ Private Sub convertData05KK()
             
             fpSpread2.GetText .ColLetterToNumber("E"), 6, varTemp
             If UCase(varTemp) = "[X]" Then
-                .Col = .ColLetterToNumber("C")
-                .Row = 67
+                .col = .ColLetterToNumber("C")
+                .row = 67
                 .Text = "1"
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             Else
-                .Col = .ColLetterToNumber("C")
-                .Row = 67
+                .col = .ColLetterToNumber("C")
+                .row = 67
                 .Text = "0"
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             End If
 '            fpSpread2.GetText .ColLetterToNumber("G"), 4, varTemp
 '            If UCase(varTemp) = "X" Then
@@ -7200,59 +7200,59 @@ Private Sub convertData05KK()
 '            End If
             fpSpread2.GetText .ColLetterToNumber("I"), 6, varTemp
             
-            .Col = .ColLetterToNumber("I")
-            .Row = 67
+            .col = .ColLetterToNumber("I")
+            .row = 67
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
-            .Col = .ColLetterToNumber("I")
+            .col = .ColLetterToNumber("I")
             
             ' set cac gia tri cua cac chi tieu tu 21 den 42
             ' Nghia vu khau tru thue
             For idx = 36 To 57
                 ' Chi tieu idx - 15
-                .Row = idx
-                fpSpread2.GetText .Col, .Row, varTemp
+                .row = idx
+                fpSpread2.GetText .col, .row, varTemp
                 .Text = Round(varTemp, 0)
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             Next idx
             
             ' Nghia vu quyet toan thay
             For idx = 61 To 65
                 ' Chi tieu idx - 18
-                .Row = idx
-                fpSpread2.GetText .Col, .Row, varTemp
+                .row = idx
+                fpSpread2.GetText .col, .row, varTemp
                 .Text = Round(varTemp, 0)
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             Next idx
            
             
-            .Col = .ColLetterToNumber("M")
+            .col = .ColLetterToNumber("M")
             
             ' Nguoi Ky
-            .Row = 69
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 69
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
                         
             ' Ngay Ky
-            .Row = 71
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 71
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
-            .Col = .ColLetterToNumber("D")
+            .col = .ColLetterToNumber("D")
             ' Nhan vien dai ly thue
-            .Row = 69
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 69
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             ' chung chi so
-            .Row = 71
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 71
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             .sheet = 2
             mCurrentSheet = .sheet
@@ -7323,51 +7323,51 @@ Private Sub convertData02BH()
             
             fpSpread2.GetText .ColLetterToNumber("E"), 6, varTemp
             If UCase(varTemp) = "[X]" Then
-                .Col = .ColLetterToNumber("C")
-                .Row = 48
+                .col = .ColLetterToNumber("C")
+                .row = 48
                 .Text = "1"
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             Else
-                .Col = .ColLetterToNumber("C")
-                .Row = 48
+                .col = .ColLetterToNumber("C")
+                .row = 48
                 .Text = ""
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             End If
             fpSpread2.GetText .ColLetterToNumber("I"), 6, varTemp
             
-            .Col = .ColLetterToNumber("I")
-            .Row = 48
+            .col = .ColLetterToNumber("I")
+            .row = 48
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
                         
-            .Col = .ColLetterToNumber("I")
+            .col = .ColLetterToNumber("I")
             
             ' Chi tieu 21
-            .Row = 39
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 39
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 22
-            .Row = 40
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 40
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 23
-            .Row = 41
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 41
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 24
-            .Row = 42
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 42
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 25
-            .Row = 43
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 43
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
                         
                         
             .sheet = 2
@@ -7421,118 +7421,118 @@ Private Sub convertData02BHDC()
             
             fpSpread2.GetText .ColLetterToNumber("E"), 6, varTemp
             If UCase(varTemp) = "[X]" Then
-                .Col = .ColLetterToNumber("C")
-                .Row = 64
+                .col = .ColLetterToNumber("C")
+                .row = 64
                 .Text = "1"
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             Else
-                .Col = .ColLetterToNumber("C")
-                .Row = 64
+                .col = .ColLetterToNumber("C")
+                .row = 64
                 .Text = ""
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             End If
             fpSpread2.GetText .ColLetterToNumber("I"), 6, varTemp
             
-            .Col = .ColLetterToNumber("I")
-            .Row = 64
+            .col = .ColLetterToNumber("I")
+            .row = 64
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
                         
-            .Col = .ColLetterToNumber("I")
+            .col = .ColLetterToNumber("I")
             
             ' Chi tieu 21
-            .Row = 40
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 40
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 22
-            .Row = 41
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 41
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 23
-            .Row = 42
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 42
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 24
-            .Row = 43
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 43
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 25
-            .Row = 44
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 44
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
                         
             'chi tieu 26
-            .Row = 46
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 46
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             'chi tieu 27
-            .Row = 47
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 47
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             'chi tieu 28
-             .Row = 48
-            fpSpread2.GetText .Col, .Row, varTemp
+             .row = 48
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             ' chi tieu 29
-            .Row = 50
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 50
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' chi tieu 30
-            .Row = 51
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 51
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' chi tieu 31
-            .Row = 52
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 52
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             ' chi tieu 32
-            .Row = 54
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 54
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             ' chi tieu 33
-            .Row = 55
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 55
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             ' chi tieu 34
-            .Row = 56
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 56
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             ' chi tieu 35
-            .Row = 57
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 57
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             ' chi tieu 36
-            .Row = 58
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 58
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' chi tieu 37
-            .Row = 59
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 59
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             
             
@@ -7594,50 +7594,50 @@ Private Sub convertData02XS()
             
             fpSpread2.GetText .ColLetterToNumber("E"), 6, varTemp
             If UCase(varTemp) = "[X]" Then
-                .Col = .ColLetterToNumber("C")
-                .Row = 51
+                .col = .ColLetterToNumber("C")
+                .row = 51
                 .Text = "1"
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             Else
-                .Col = .ColLetterToNumber("C")
-                .Row = 51
+                .col = .ColLetterToNumber("C")
+                .row = 51
                 .Text = ""
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             End If
             fpSpread2.GetText .ColLetterToNumber("I"), 51, varTemp
             
-            .Col = .ColLetterToNumber("I")
-            .Row = 51
+            .col = .ColLetterToNumber("I")
+            .row = 51
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
-            .Col = .ColLetterToNumber("I")
+            .col = .ColLetterToNumber("I")
             
             ' Chi tieu 21
-            .Row = 40
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 40
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 22
-            .Row = 41
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 41
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 23
-            .Row = 42
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 42
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 24
-            .Row = 43
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 43
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 25
-            .Row = 44
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 44
+            fpSpread2.GetText .col, .row, varTemp
             .Text = Round(varTemp, 0)
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
                         
             .sheet = 2
             mCurrentSheet = .sheet
@@ -7661,68 +7661,68 @@ Private Sub convertData06KK()
             
             fpSpread2.GetText .ColLetterToNumber("E"), 4, varTemp
             If UCase(varTemp) = "X" Then
-                .Col = .ColLetterToNumber("C")
-                .Row = 45
+                .col = .ColLetterToNumber("C")
+                .row = 45
                 .Text = "1"
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             Else
-                .Col = .ColLetterToNumber("C")
-                .Row = 45
+                .col = .ColLetterToNumber("C")
+                .row = 45
                 .Text = "0"
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             End If
             fpSpread2.GetText .ColLetterToNumber("G"), 4, varTemp
             If UCase(varTemp) = "X" Then
-                .Col = .ColLetterToNumber("F")
-                .Row = 45
+                .col = .ColLetterToNumber("F")
+                .row = 45
                 .Text = "1"
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             Else
-                .Col = .ColLetterToNumber("F")
-                .Row = 45
+                .col = .ColLetterToNumber("F")
+                .row = 45
                 .Text = "0"
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             End If
             fpSpread2.GetText .ColLetterToNumber("I"), 4, varTemp
             
-            .Col = .ColLetterToNumber("I")
-            .Row = 45
+            .col = .ColLetterToNumber("I")
+            .row = 45
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
-            .Col = .ColLetterToNumber("I")
+            .col = .ColLetterToNumber("I")
             
             ' Chi tieu 17
-            .Row = 37
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 37
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 18
-            .Row = 38
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 38
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 19
-            .Row = 39
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 39
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             ' Chi tieu 20
-            .Row = 41
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 41
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 21
-            .Row = 42
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 42
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 22
-            .Row = 43
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 43
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
                                     
             .sheet = 2
             mCurrentSheet = .sheet
@@ -7746,75 +7746,75 @@ Private Sub convertData06KK10()
             
             fpSpread2.GetText .ColLetterToNumber("E"), 6, varTemp
             If UCase(varTemp) = "X" Then
-                .Col = .ColLetterToNumber("C")
-                .Row = 61
+                .col = .ColLetterToNumber("C")
+                .row = 61
                 .Text = "1"
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             Else
-                .Col = .ColLetterToNumber("C")
-                .Row = 61
+                .col = .ColLetterToNumber("C")
+                .row = 61
                 .Text = ""
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             End If
             
             fpSpread2.GetText .ColLetterToNumber("I"), 6, varTemp
             
-            .Col = .ColLetterToNumber("I")
-            .Row = 61
+            .col = .ColLetterToNumber("I")
+            .row = 61
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
-            .Col = .ColLetterToNumber("I")
+            .col = .ColLetterToNumber("I")
             
             ' Chi tieu 21
-            .Row = 41
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 41
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 22
-            .Row = 42
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 42
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 25
-            .Row = 47
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 47
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             ' Chi tieu 27
-            .Row = 50
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 50
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 29
-            .Row = 53
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 53
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' Chi tieu 30
-            .Row = 54
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 54
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
                                     
             ' Chi tieu 31
-            .Row = 55
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 55
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             ' chi tieu 32
-            .Row = 57
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 57
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             ' chi tieu 33
-            .Row = 58
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 58
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
                                     
             .sheet = 2
             mCurrentSheet = .sheet
@@ -7868,41 +7868,41 @@ Private Sub convertData09KK()
             
             fpSpread2.GetText .ColLetterToNumber("G"), 6, varTemp
             If UCase(varTemp) = "[X]" Then
-                .Col = .ColLetterToNumber("E")
-                .Row = 76
+                .col = .ColLetterToNumber("E")
+                .row = 76
                 .Text = "1"
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             Else
-                .Col = .ColLetterToNumber("E")
-                .Row = 76
+                .col = .ColLetterToNumber("E")
+                .row = 76
                 .Text = "0"
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             End If
                         
             fpSpread2.GetText .ColLetterToNumber("K"), 6, varTemp
-            .Col = .ColLetterToNumber("K")
-            .Row = 76
+            .col = .ColLetterToNumber("K")
+            .row = 76
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             
             ' Lay gia tri tu thang
             fpSpread2.GetText .ColLetterToNumber("N"), 4, varTemp
-            .Col = .ColLetterToNumber("N")
-            .Row = 4
+            .col = .ColLetterToNumber("N")
+            .row = 4
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             ' Lay gia tri den thang
             fpSpread2.GetText .ColLetterToNumber("P"), 4, varTemp1
-            .Col = .ColLetterToNumber("P")
-            .Row = 4
+            .col = .ColLetterToNumber("P")
+            .row = 4
             .Text = varTemp1
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             ' Tinh tong so thang giua tu thang den thang
-            .Row = 4
-            .Col = .ColLetterToNumber("R")
+            .row = 4
+            .col = .ColLetterToNumber("R")
             .Text = DateDiff("M", format(Trim(varTemp), "mm/yyyy"), format(Trim(varTemp1), "mm/yyyy")) + 1
             
             
@@ -7920,42 +7920,42 @@ Private Sub convertData09KK()
 '            .Text = varTemp
 '            UpdateCell .Col, .Row, .value
             
-            .Col = .ColLetterToNumber("K")
+            .col = .ColLetterToNumber("K")
             
             ' Cac chi tieu trong to khai 09
             For i = 42 To 67
-                .Row = i
-                fpSpread2.GetText .Col, .Row, varTemp
+                .row = i
+                fpSpread2.GetText .col, .row, varTemp
                 .Text = varTemp
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             Next
             
             .sheet = 2
             fpSpread2.sheet = .sheet
             mCurrentSheet = .sheet
             .ActiveSheet = .sheet
-            .Col = .ColLetterToNumber("J")
+            .col = .ColLetterToNumber("J")
             
             ' Cac chi tieu trong phu luc 09A
             For i = 16 To 25
-                .Row = i
-                fpSpread2.GetText .Col, .Row, varTemp
+                .row = i
+                fpSpread2.GetText .col, .row, varTemp
                 .Text = varTemp
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             Next
                                    
             .sheet = 3
             fpSpread2.sheet = .sheet
             mCurrentSheet = .sheet
             .ActiveSheet = .sheet
-            .Col = .ColLetterToNumber("I")
+            .col = .ColLetterToNumber("I")
             
             ' Cac chi tieu trong phu luc 09B
             For i = 16 To 30
-                .Row = i
-                fpSpread2.GetText .Col, .Row, varTemp
+                .row = i
+                fpSpread2.GetText .col, .row, varTemp
                 .Text = varTemp
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             Next
             
             ' Cac chi tieu trong phu luc 09C
@@ -7964,23 +7964,23 @@ Private Sub convertData09KK()
             mCurrentSheet = .sheet
             .ActiveSheet = .sheet
             
-            .Row = 10
-            .Col = .ColLetterToNumber("E")
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 10
+            .col = .ColLetterToNumber("E")
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
-            .Row = 12
-            .Col = .ColLetterToNumber("E")
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 12
+            .col = .ColLetterToNumber("E")
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
-            .Row = 14
-            .Col = .ColLetterToNumber("E")
-            fpSpread2.GetText .Col, .Row, varTemp
+            .row = 14
+            .col = .ColLetterToNumber("E")
+            fpSpread2.GetText .col, .row, varTemp
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             ' tai du lieu dong
             moveDataTokhai09
             
@@ -7988,14 +7988,14 @@ Private Sub convertData09KK()
             fpSpread2.sheet = .sheet
             mCurrentSheet = .sheet
             .ActiveSheet = .sheet
-            .Col = .ColLetterToNumber("I")
+            .col = .ColLetterToNumber("I")
             
             ' Cac chi tieu trong phu luc 09B
             For i = 16 To 25
-                .Row = i
-                fpSpread2.GetText .Col, .Row, varTemp
+                .row = i
+                fpSpread2.GetText .col, .row, varTemp
                 .Text = varTemp
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             Next
             
             
@@ -8044,30 +8044,30 @@ Private Sub convertData08B()
             
             fpSpread2.GetText .ColLetterToNumber("E"), 6, varTemp
             If UCase(varTemp) = "[X]" Then
-                .Col = .ColLetterToNumber("C")
-                .Row = 38
+                .col = .ColLetterToNumber("C")
+                .row = 38
                 .Text = "1"
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             Else
-                .Col = .ColLetterToNumber("C")
-                .Row = 38
+                .col = .ColLetterToNumber("C")
+                .row = 38
                 .Text = "0"
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             End If
                         
             fpSpread2.GetText .ColLetterToNumber("I"), 6, varTemp
-            .Col = .ColLetterToNumber("I")
-            .Row = 38
+            .col = .ColLetterToNumber("I")
+            .row = 38
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             ' Cac chi tieu trong to khai 08
-            .Col = .ColLetterToNumber("I")
+            .col = .ColLetterToNumber("I")
             For i = 40 To 51
-                .Row = i
-                fpSpread2.GetText .Col, .Row, varTemp
+                .row = i
+                fpSpread2.GetText .col, .row, varTemp
                 .Text = varTemp
-                UpdateCell .Col, .Row, .value
+                UpdateCell .col, .row, .value
             Next
             
             ' Cac chi tieu trong phan II
@@ -8113,10 +8113,10 @@ Private Sub convertData16TH()
             
                                     
             fpSpread2.GetText .ColLetterToNumber("J"), 6, varTemp
-            .Col = .ColLetterToNumber("J")
-            .Row = 6
+            .col = .ColLetterToNumber("J")
+            .row = 6
             .Text = varTemp
-            UpdateCell .Col, .Row, .value
+            UpdateCell .col, .row, .value
             
             ' Cac chi tieu du lieu dong
             moveDataTokhai16TH
@@ -8317,8 +8317,8 @@ Private Sub CallFinish(Optional blFinish As Boolean)
         For i = 1 To arrErrCells.count
             arrStrPosition = Split(CStr(arrStrPositions(i - 1)), "_")
             .sheet = CLng(arrStrPosition(0))
-            .Col = .ColLetterToNumber(arrStrPosition(1))
-            .Row = CLng(arrStrPosition(2))
+            .col = .ColLetterToNumber(arrStrPosition(1))
+            .row = CLng(arrStrPosition(2))
             .CellNote = ""
             .BackColor = arrErrCells.Item(arrStrPositions(i - 1))
         Next
@@ -8332,8 +8332,8 @@ Private Sub CallFinish(Optional blFinish As Boolean)
             arrLActiveCol(i) = .ActiveCol
             arrLActiveRow(i) = .ActiveRow
             
-            .Row = 1
-            .Col = 1
+            .row = 1
+            .col = 1
             .Lock = False
             .SetActiveCell 1, 1
             .EditMode = True
@@ -8352,8 +8352,8 @@ Private Sub CallFinish(Optional blFinish As Boolean)
         For i = 1 To .SheetCount
             .ActiveSheet = i
             .sheet = .ActiveSheet
-            .Row = 1
-            .Col = 1
+            .row = 1
+            .col = 1
             .Lock = True
             .EditMode = False
             .SetActiveCell arrLActiveCol(i), arrLActiveRow(i)
@@ -8361,8 +8361,8 @@ Private Sub CallFinish(Optional blFinish As Boolean)
 
         .ActiveSheet = iActiveSheet
         .sheet = iActiveSheet
-        .Col = lActiveCol
-        .Row = lActiveRow
+        .col = lActiveCol
+        .row = lActiveRow
         .EditMode = True
         .SetActiveCell lActiveCol, lActiveRow
         .ReDraw = True
@@ -8482,65 +8482,65 @@ Private Sub cmdPrint_Click()
                 flgPrintBoSung = False
                 countInBoSung = 1
                 fpSpread1.sheet = 1
-                fpSpread1.Col = fpSpread1.ColLetterToNumber("I")
-                fpSpread1.Row = 6
-                fpSpread1.GetText fpSpread1.Col, fpSpread1.Row, varTemp
+                fpSpread1.col = fpSpread1.ColLetterToNumber("I")
+                fpSpread1.row = 6
+                fpSpread1.GetText fpSpread1.col, fpSpread1.row, varTemp
                 If varTemp = "x" Or Trim(varTemp) <> "" Then
                     With fpSpread1
                         If Trim(varMenuId) = "17" Then
                             .sheet = 2
-                            .Row = 22
+                            .row = 22
                             Do
-                                .Col = .ColLetterToNumber("C")
-                                .GetText .Col, .Row, varTemp
+                                .col = .ColLetterToNumber("C")
+                                .GetText .col, .row, varTemp
                                 If varTemp = "1" Or varTemp = "x" Then
                                     flgPrintBoSung = True
                                     countInBoSung = countInBoSung + 1
                                 End If
-                                .Row = .Row + 1
-                                .Col = .ColLetterToNumber("B")
+                                .row = .row + 1
+                                .col = .ColLetterToNumber("B")
                             Loop Until .Text = "aa"
-                            .Row = 22
+                            .row = 22
                             ReDim listInBoSung5A(countInBoSung - 1) As String
                             countInBoSung = 1
                             Do
-                                .Col = .ColLetterToNumber("C")
-                                .GetText .Col, .Row, varTemp
+                                .col = .ColLetterToNumber("C")
+                                .GetText .col, .row, varTemp
                                 If varTemp = "1" Or varTemp = "x" Then
-                                    .Col = .ColLetterToNumber("B")
+                                    .col = .ColLetterToNumber("B")
                                     listInBoSung5A(countInBoSung - 1) = .Text
                                     countInBoSung = countInBoSung + 1
                                 End If
-                                .Row = .Row + 1
-                                .Col = .ColLetterToNumber("B")
+                                .row = .row + 1
+                                .col = .ColLetterToNumber("B")
                             Loop Until .Text = "aa"
                             
                             .sheet = 3
                             countInBoSung = 1
-                            .Row = 22
+                            .row = 22
                             Do
-                                .Col = .ColLetterToNumber("Y")
-                                .GetText .Col, .Row, varTemp
+                                .col = .ColLetterToNumber("Y")
+                                .GetText .col, .row, varTemp
                                 If varTemp = "1" Or varTemp = "x" Then
                                     flgPrintBoSung = True
                                     countInBoSung = countInBoSung + 1
                                 End If
-                                .Row = .Row + 1
-                                .Col = .ColLetterToNumber("B")
+                                .row = .row + 1
+                                .col = .ColLetterToNumber("B")
                             Loop Until .Text = "aa"
-                            .Row = 22
+                            .row = 22
                             ReDim listInBoSung5B(countInBoSung - 1) As String
                             countInBoSung = 1
                             Do
-                                .Col = .ColLetterToNumber("Y")
-                                .GetText .Col, .Row, varTemp
+                                .col = .ColLetterToNumber("Y")
+                                .GetText .col, .row, varTemp
                                 If varTemp = "1" Or varTemp = "x" Then
-                                    .Col = .ColLetterToNumber("B")
+                                    .col = .ColLetterToNumber("B")
                                     listInBoSung5B(countInBoSung - 1) = .Text
                                     countInBoSung = countInBoSung + 1
                                 End If
-                                .Row = .Row + 1
-                                .Col = .ColLetterToNumber("B")
+                                .row = .row + 1
+                                .col = .ColLetterToNumber("B")
                             Loop Until .Text = "aa"
                         End If
                         
@@ -8556,60 +8556,60 @@ Private Sub cmdPrint_Click()
                         countInBoSung = 1
                         If Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "26" Then
                             .sheet = 2
-                            .Row = 22
+                            .row = 22
                             Do
-                                .Col = .ColLetterToNumber("C")
-                                .GetText .Col, .Row, varTemp
+                                .col = .ColLetterToNumber("C")
+                                .GetText .col, .row, varTemp
                                 If varTemp = "1" Or varTemp = "x" Then
                                     flgPrintBoSung = True
                                     countInBoSung = countInBoSung + 1
                                 End If
-                                .Row = .Row + 1
-                                .Col = .ColLetterToNumber("B")
+                                .row = .row + 1
+                                .col = .ColLetterToNumber("B")
                             Loop Until .Text = "aa"
-                            .Row = 22
+                            .row = 22
                             ReDim listInBoSung2A(countInBoSung - 1) As String
                             countInBoSung = 1
                             Do
-                                .Col = .ColLetterToNumber("C")
-                                .GetText .Col, .Row, varTemp
+                                .col = .ColLetterToNumber("C")
+                                .GetText .col, .row, varTemp
                                 If varTemp = "1" Or varTemp = "x" Then
-                                    .Col = .ColLetterToNumber("B")
+                                    .col = .ColLetterToNumber("B")
                                     listInBoSung2A(countInBoSung - 1) = .Text
                                     countInBoSung = countInBoSung + 1
                                 End If
-                                .Row = .Row + 1
-                                .Col = .ColLetterToNumber("B")
+                                .row = .row + 1
+                                .col = .ColLetterToNumber("B")
                             Loop Until .Text = "aa"
                         End If
                         
                         ' to khai 06KK-TNCN
                          If Trim(varMenuId) = "59" Then
                             .sheet = 2
-                            .Row = 22
+                            .row = 22
                             Do
-                                .Col = .ColLetterToNumber("C")
-                                .GetText .Col, .Row, varTemp
+                                .col = .ColLetterToNumber("C")
+                                .GetText .col, .row, varTemp
                                 If varTemp = "1" Or varTemp = "x" Then
                                     flgPrintBoSung = True
                                     countInBoSung = countInBoSung + 1
                                 End If
-                                .Row = .Row + 1
-                                .Col = .ColLetterToNumber("B")
+                                .row = .row + 1
+                                .col = .ColLetterToNumber("B")
                             Loop Until .Text = "aa"
-                            .Row = 22
+                            .row = 22
                             ReDim listInBoSung6B(countInBoSung - 1) As String
                             countInBoSung = 1
                             Do
-                                .Col = .ColLetterToNumber("C")
-                                .GetText .Col, .Row, varTemp
+                                .col = .ColLetterToNumber("C")
+                                .GetText .col, .row, varTemp
                                 If varTemp = "1" Or varTemp = "x" Then
-                                    .Col = .ColLetterToNumber("B")
+                                    .col = .ColLetterToNumber("B")
                                     listInBoSung6B(countInBoSung - 1) = .Text
                                     countInBoSung = countInBoSung + 1
                                 End If
-                                .Row = .Row + 1
-                                .Col = .ColLetterToNumber("B")
+                                .row = .row + 1
+                                .col = .ColLetterToNumber("B")
                             Loop Until .Text = "aa"
                        End If
                         
@@ -8695,8 +8695,8 @@ Private Sub Command1_Click()
             Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 20)
             ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
             fpSpread1.sheet = fpSpread1.SheetCount - 1
-            fpSpread1.Col = lCol_temp
-            fpSpread1.Row = lRow_temp
+            fpSpread1.col = lCol_temp
+            fpSpread1.row = lRow_temp
             
             fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
             fpSpread1.Formula = "BD5"
@@ -8708,8 +8708,8 @@ Private Sub Command1_Click()
             Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 19)
             ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
             fpSpread1.sheet = fpSpread1.SheetCount - 1
-            fpSpread1.Col = lCol_temp
-            fpSpread1.Row = lRow_temp
+            fpSpread1.col = lCol_temp
+            fpSpread1.row = lRow_temp
             temp = lRow_temp - 21
             ' sua ct tinh
             fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 17 + temp, vSoTien
@@ -8722,8 +8722,8 @@ Private Sub Command1_Click()
              Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 10)
             ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
             fpSpread1.sheet = fpSpread1.SheetCount - 1
-            fpSpread1.Col = lCol_temp
-            fpSpread1.Row = lRow_temp
+            fpSpread1.col = lCol_temp
+            fpSpread1.row = lRow_temp
             temp = lRow_temp - 39
             fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), 37 + temp, vNgayHoan
             fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), 27 + temp, vSoTien
@@ -8736,15 +8736,15 @@ Private Sub Command1_Click()
             Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
             ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
             fpSpread1.sheet = fpSpread1.SheetCount - 1
-            fpSpread1.Col = lCol_temp
-            fpSpread1.Row = lRow_temp
+            fpSpread1.col = lCol_temp
+            fpSpread1.row = lRow_temp
             fpSpread1.Formula = "BD5"
             
             Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 17)
             ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
             fpSpread1.sheet = fpSpread1.SheetCount - 1
-            fpSpread1.Col = lCol_temp
-            fpSpread1.Row = lRow_temp
+            fpSpread1.col = lCol_temp
+            fpSpread1.row = lRow_temp
             temp = lRow_temp - 21
             fpSpread1.Formula = ""
             fpSpread1.value = "0"
@@ -8756,8 +8756,8 @@ Private Sub Command1_Click()
                 Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                 ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                 fpSpread1.sheet = fpSpread1.SheetCount - 1
-                fpSpread1.Col = lCol_temp
-                fpSpread1.Row = lRow_temp
+                fpSpread1.col = lCol_temp
+                fpSpread1.row = lRow_temp
                 
                 fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
                 
@@ -8771,8 +8771,8 @@ Private Sub Command1_Click()
                 Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 17)
                 ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                 fpSpread1.sheet = fpSpread1.SheetCount - 1
-                fpSpread1.Col = lCol_temp
-                fpSpread1.Row = lRow_temp
+                fpSpread1.col = lCol_temp
+                fpSpread1.row = lRow_temp
                 temp = lRow_temp - 21
                 
                 ' sua ct tinh
@@ -8788,8 +8788,8 @@ Private Sub Command1_Click()
                 Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
                 ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                 fpSpread1.sheet = fpSpread1.SheetCount - 1
-                fpSpread1.Col = lCol_temp
-                fpSpread1.Row = lRow_temp
+                fpSpread1.col = lCol_temp
+                fpSpread1.row = lRow_temp
                 
                 fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
                 
@@ -8802,8 +8802,8 @@ Private Sub Command1_Click()
                 Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
                 ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                 fpSpread1.sheet = fpSpread1.SheetCount - 1
-                fpSpread1.Col = lCol_temp
-                fpSpread1.Row = lRow_temp
+                fpSpread1.col = lCol_temp
+                fpSpread1.row = lRow_temp
                 temp = lRow_temp - 18
                 
                 ' sua ct tinh
@@ -8943,13 +8943,13 @@ Private Sub Command1_Click()
         tempCurrSheet = mCurrentSheet
         mCurrentSheet = fpSpread1.SheetCount - 1
         ' xoa dong cu truoc khi them dong
-        fpSpread1.Row = 9
-        fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
+        fpSpread1.row = 9
+        fpSpread1.col = fpSpread1.ColLetterToNumber("B")
 '        fpSpread1.EventEnabled(EventAllEvents) = False
         fpSpread1.sheet = mCurrentSheet
         Do
             countDel = countDel + 1
-            fpSpread1.Row = fpSpread1.Row + 1
+            fpSpread1.row = fpSpread1.row + 1
         Loop Until UCase(fpSpread1.Text) = "AA"
         
         fpSpread1.EventEnabled(EventAllEvents) = False
@@ -9008,13 +9008,13 @@ Private Sub Command1_Click()
         tempCurrSheet = mCurrentSheet
         mCurrentSheet = fpSpread1.SheetCount - 1
         ' xoa dong cu truoc khi them dong
-        fpSpread1.Row = 13 + numRowI
-        fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
+        fpSpread1.row = 13 + numRowI
+        fpSpread1.col = fpSpread1.ColLetterToNumber("B")
 '        fpSpread1.EventEnabled(EventAllEvents) = False
         fpSpread1.sheet = mCurrentSheet
         Do
             countDel = countDel + 1
-            fpSpread1.Row = fpSpread1.Row + 1
+            fpSpread1.row = fpSpread1.row + 1
         Loop Until UCase(fpSpread1.Text) = "BB"
         
         fpSpread1.EventEnabled(EventAllEvents) = False
@@ -9389,12 +9389,12 @@ Private Sub Form_Load()
         'ngay 21/01/2011
             fpSpread1.sheet = 1
             j = 1
-            fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
-            fpSpread1.Row = 22
+            fpSpread1.col = fpSpread1.ColLetterToNumber("B")
+            fpSpread1.row = 22
             Do
                  fpSpread1.Text = str(j)
-                 fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
-                 fpSpread1.Row = j + 22
+                 fpSpread1.col = fpSpread1.ColLetterToNumber("B")
+                 fpSpread1.row = j + 22
                  j = j + 1
             Loop Until fpSpread1.Text = "aa"
     End If
@@ -9625,10 +9625,10 @@ Private Sub FormatGrid()
             .sheet = lSheet
             If .SheetVisible Or .sheet = 1 Or (strKHBS = "TKBS" And .sheet = .SheetCount - 1) Then
                 For i = 1 To .MaxRows
-                    .Row = i
+                    .row = i
                     If .RowHeight(i) > 10 And .RowHeight(i) < 15 Then .RowHeight(i) = 14
                     For j = 1 To .MaxCols
-                        .Col = j
+                        .col = j
                         
                         If .BackColor = 12632256 Then
                             'Form backcolor
@@ -9684,10 +9684,10 @@ Private Sub FormatGrid()
             
             If .sheet = .SheetCount Then
                 For i = 1 To .MaxRows
-                    .Row = i
+                    .row = i
                     If .RowHeight(i) > 10 And .RowHeight(i) < 15 Then .RowHeight(i) = 14
                     For j = 1 To .MaxCols
-                        .Col = j
+                        .col = j
                         
                         If .BackColor = 12632256 Then
                             'Form backcolor
@@ -9754,10 +9754,10 @@ ErrorHandle:
     SaveErrorLog Me.Name, "UpdateCell", Err.Number, Err.Description
 End Function
 
-Private Sub fpSpread1_BeforeEditMode(ByVal Col As Long, ByVal Row As Long, ByVal UserAction As FPUSpreadADO.BeforeEditModeActionConstants, CursorPos As Variant, Cancel As Variant)
+Private Sub fpSpread1_BeforeEditMode(ByVal col As Long, ByVal row As Long, ByVal UserAction As FPUSpreadADO.BeforeEditModeActionConstants, CursorPos As Variant, Cancel As Variant)
     If UserAction = BeforeEditModeMouse Then
         'Action executed by Mouse click
-        fpSpread1.SetActiveCell Col, Row
+        fpSpread1.SetActiveCell col, row
         mCurrentSheet = fpSpread1.ActiveSheet
     End If
 End Sub
@@ -9767,7 +9767,7 @@ End Sub
 ''' Parameter1 pCol         : active column
 ''' Parameter2 pRow         : active row
 ''' Parameter3 ButtonDown   : left, right or center mouse button
-Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonDown As Integer)
+Private Sub fpSpread1_ButtonClicked(ByVal col As Long, ByVal row As Long, ByVal ButtonDown As Integer)
     On Error GoTo ErrorHandle
     Dim frmDD As frmDuongDan
     Dim frmOp_Pr As frm_Opcheck
@@ -9783,13 +9783,13 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
        
     With fpSpread1
         .sheet = mCurrentSheet
-        GetCellSpan fpSpread1, Col, Row
-        .Col = Col
-        .Row = Row
+        GetCellSpan fpSpread1, col, row
+        .col = col
+        .row = row
         If .CellType = CellTypeCheckBox Then
-            UpdateCell Col, Row, IIf(ButtonDown = 1, "x", vbNullString)
+            UpdateCell col, row, IIf(ButtonDown = 1, "x", vbNullString)
         End If
-        If Row < 10 Then
+        If row < 10 Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 strFileName = frmDD.getFileName
@@ -9820,22 +9820,22 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
             End If
         End If
         'dhdang edit dieu khien cell C_19 to 05_09
-        If Row = 19 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "45" Then
+        If row = 19 And col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "45" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 Dim i As Integer
                 If options = 1 Then
                     For i = 0 To .MaxRows - 26
-                            .Row = i + 22
-                            .Col = .ColLetterToNumber("C")
+                            .row = i + 22
+                            .col = .ColLetterToNumber("C")
                             .Text = "1"
                     Next
                 ElseIf options = 2 Then
                             For i = 0 To .MaxRows - 26
-                                    .Row = i + 22
+                                    .row = i + 22
                                     ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                    .Col = .ColLetterToNumber("C")
+                                    .col = .ColLetterToNumber("C")
                                     .Text = "0"
                             Next
                             
@@ -9847,16 +9847,16 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                             Else
                                     If star > 0 And endd < (.MaxRows - 25) Then
                                         For i = 0 To .MaxRows - 26
-                                        .Row = i + 22
+                                        .row = i + 22
                                         ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                        .Col = .ColLetterToNumber("C")
+                                        .col = .ColLetterToNumber("C")
                                         .Text = "0"
                                         Next
                                         
                                         For i = star To endd
-                                                .Row = i + 21
+                                                .row = i + 21
                                                 
-                                                    .Col = .ColLetterToNumber("C")
+                                                    .col = .ColLetterToNumber("C")
                                                     .Text = "1"
                                         Next
                                      Else
@@ -9871,38 +9871,38 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         'dhdang
         'xu ly nut check chon tren to 05A(cell N20)
         
-        If Row = 20 And Col = .ColLetterToNumber("G") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Then
+        If row = 20 And col = .ColLetterToNumber("G") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 'Dim i As Integer
                 If options = 1 Then
                     For i = 0 To .MaxRows - 25
-                            .Row = i + 22
-                            .Col = .ColLetterToNumber("B")
+                            .row = i + 22
+                            .col = .ColLetterToNumber("B")
                             If UCase(.Text) = "AA" Then Exit For
                             ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
                             ' begin nvhai edit
                             ' Lay gia tri cua cot MST de kiem tra, vi neu ko co MST thi ko duoc quyet toan tai CQCT
-                            .Col = .ColLetterToNumber("E")
+                            .col = .ColLetterToNumber("E")
                             ' Kiem tra xem co null hay ko? Neu la null thi ko duoc check
                             If Trim(.Text) = "" Or Trim(.Text) = vbNullString Then
-                                .Col = .ColLetterToNumber("G")
+                                .col = .ColLetterToNumber("G")
                                 .Text = "0"
                             Else ' Neu ko null thi moi check vao
-                                .Col = .ColLetterToNumber("G")
+                                .col = .ColLetterToNumber("G")
                                 .Text = "1"
                             End If
                             ' end nvhai edit
                     Next
                 ElseIf options = 2 Then
                             For i = 0 To .MaxRows - 26
-                                    .Row = i + 22
-                                    .Col = .ColLetterToNumber("B")
+                                    .row = i + 22
+                                    .col = .ColLetterToNumber("B")
                                     If UCase(.Text) = "AA" Then Exit For
     
                                     ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                    .Col = .ColLetterToNumber("G")
+                                    .col = .ColLetterToNumber("G")
                                     .Text = "0"
                             Next
                             
@@ -9915,25 +9915,25 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                                     If star > 0 And endd < (.MaxRows - 24) Then
                                     
                                         For i = 0 To .MaxRows - 26
-                                            .Row = i + 22
-                                            .Col = .ColLetterToNumber("B")
+                                            .row = i + 22
+                                            .col = .ColLetterToNumber("B")
                                             If UCase(.Text) = "AA" Then Exit For
                                             ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                            .Col = .ColLetterToNumber("G")
+                                            .col = .ColLetterToNumber("G")
                                             .Text = "0"
                                         Next
                                         
                                         For i = star To endd
-                                                .Row = i + 21
+                                                .row = i + 21
                                                 ' begin nvhai edit
                                                 ' Lay gia tri cua cot MST de kiem tra, vi neu ko co MST thi ko duoc quyet toan tai CQCT
-                                                .Col = .ColLetterToNumber("E")
+                                                .col = .ColLetterToNumber("E")
                                                 ' Kiem tra xem co null hay ko? Neu la null thi ko duoc check
                                                 If Trim(.Text) = "" Or Trim(.Text) = vbNullString Then
-                                                    .Col = .ColLetterToNumber("G")
+                                                    .col = .ColLetterToNumber("G")
                                                     .Text = "0"
                                                 Else ' Neu ko null thi moi check vao
-                                                    .Col = .ColLetterToNumber("G")
+                                                    .col = .ColLetterToNumber("G")
                                                     .Text = "1"
                                                 End If
                                                 ' end nvhai edit
@@ -9948,27 +9948,27 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
             End If
         End If
         'xu ly nut chech chon 05A_C20
-        If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Then
+        If row = 20 And col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 'Dim i As Integer
                 If options = 1 Then
                     For i = 0 To .MaxRows - 25
-                            .Row = i + 22
-                            .Col = .ColLetterToNumber("B")
+                            .row = i + 22
+                            .col = .ColLetterToNumber("B")
                             If UCase(.Text) = "AA" Then Exit For
                             ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                            .Col = .ColLetterToNumber("C")
+                            .col = .ColLetterToNumber("C")
                             .Text = "1"
                     Next
                 ElseIf options = 2 Then
                             For i = 0 To .MaxRows - 26
-                                    .Row = i + 22
-                                    .Col = .ColLetterToNumber("B")
+                                    .row = i + 22
+                                    .col = .ColLetterToNumber("B")
                                     If UCase(.Text) = "AA" Then Exit For
                                     ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                    .Col = .ColLetterToNumber("C")
+                                    .col = .ColLetterToNumber("C")
                                     .Text = "0"
                             Next
                             
@@ -9981,18 +9981,18 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                                     If star > 0 And endd < (.MaxRows - 24) Then
                                     
                                         For i = 0 To .MaxRows - 26
-                                            .Row = i + 22
-                                            .Col = .ColLetterToNumber("B")
+                                            .row = i + 22
+                                            .col = .ColLetterToNumber("B")
                                             If UCase(.Text) = "AA" Then Exit For
                                             ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                            .Col = .ColLetterToNumber("C")
+                                            .col = .ColLetterToNumber("C")
                                             .Text = "0"
                                         Next
                                         
                                         For i = star To endd
-                                                .Row = i + 21
+                                                .row = i + 21
                                                 ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                                .Col = .ColLetterToNumber("C")
+                                                .col = .ColLetterToNumber("C")
                                                 .Text = "1"
                                         Next
                                      Else
@@ -10006,27 +10006,27 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         End If
         
         'xu ly nut chech chon 05B_W19
-        If Row = 20 And Col = .ColLetterToNumber("Y") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Then
+        If row = 20 And col = .ColLetterToNumber("Y") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "17" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 'Dim i As Integer
                 If options = 1 Then
                     For i = 0 To .MaxRows - 24
-                            .Row = i + 22
-                             .Col = .ColLetterToNumber("B")
+                            .row = i + 22
+                             .col = .ColLetterToNumber("B")
                             If UCase(.Text) = "AA" Then Exit For
                             ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                            .Col = .ColLetterToNumber("Y")
+                            .col = .ColLetterToNumber("Y")
                             .Text = "1"
                     Next
                 ElseIf options = 2 Then
                             For i = 0 To .MaxRows - 25
-                                    .Row = i + 22
-                                     .Col = .ColLetterToNumber("B")
+                                    .row = i + 22
+                                     .col = .ColLetterToNumber("B")
                                     If UCase(.Text) = "AA" Then Exit For
                                     ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                    .Col = .ColLetterToNumber("Y")
+                                    .col = .ColLetterToNumber("Y")
                                     .Text = "0"
                             Next
                             
@@ -10039,20 +10039,20 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                                     If star > 0 And endd < (.MaxRows - 23) Then
                                     
                                         For i = 0 To .MaxRows - 25
-                                        .Row = i + 22
-                                        .Col = .ColLetterToNumber("B")
+                                        .row = i + 22
+                                        .col = .ColLetterToNumber("B")
                                         If UCase(.Text) = "AA" Then Exit For
                                         ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                        .Col = .ColLetterToNumber("Y")
+                                        .col = .ColLetterToNumber("Y")
                                         .Text = "0"
                                         Next
                                         
                                         For i = star To endd
-                                                .Row = i + 21
-                                                .Col = .ColLetterToNumber("B")
+                                                .row = i + 21
+                                                .col = .ColLetterToNumber("B")
                                                 If UCase(.Text) = "AA" Then Exit For
                                                 ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                                .Col = .ColLetterToNumber("Y")
+                                                .col = .ColLetterToNumber("Y")
                                                 .Text = "1"
                                         Next
                                      Else
@@ -10067,23 +10067,23 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         
         ' xu ly nut check chon tren to khai 06KK-TNCN
         'xu ly nut chech chon 06B_C20
-        If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Then
+        If row = 20 And col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 'Dim i As Integer
                 If options = 1 Then
                     For i = 0 To .MaxRows - 25
-                            .Row = i + 22
+                            .row = i + 22
                             ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                            .Col = .ColLetterToNumber("C")
+                            .col = .ColLetterToNumber("C")
                             .Text = "1"
                     Next
                 ElseIf options = 2 Then
                             For i = 0 To .MaxRows - 26
-                                    .Row = i + 22
+                                    .row = i + 22
                                     ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                    .Col = .ColLetterToNumber("C")
+                                    .col = .ColLetterToNumber("C")
                                     .Text = "0"
                             Next
                             
@@ -10096,16 +10096,16 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                                     If star > 0 And endd < (.MaxRows - 24) Then
                                     
                                         For i = 0 To .MaxRows - 26
-                                        .Row = i + 22
+                                        .row = i + 22
                                         ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                        .Col = .ColLetterToNumber("C")
+                                        .col = .ColLetterToNumber("C")
                                         .Text = "0"
                                         Next
                                         
                                         For i = star To endd
-                                                .Row = i + 21
+                                                .row = i + 21
                                                 ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                                .Col = .ColLetterToNumber("C")
+                                                .col = .ColLetterToNumber("C")
                                                 .Text = "1"
                                         Next
                                      Else
@@ -10120,23 +10120,23 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         
         
         'xu ly nut chech chon 02BH_C20
-        If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Then
+        If row = 20 And col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 'Dim i As Integer
                 If options = 1 Then
                     For i = 0 To .MaxRows - 32
-                            .Row = i + 22
+                            .row = i + 22
                             ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                            .Col = .ColLetterToNumber("C")
+                            .col = .ColLetterToNumber("C")
                             .Text = "1"
                     Next
                 ElseIf options = 2 Then
                             For i = 0 To .MaxRows - 32
-                                    .Row = i + 22
+                                    .row = i + 22
                                     ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                    .Col = .ColLetterToNumber("C")
+                                    .col = .ColLetterToNumber("C")
                                     .Text = "0"
                             Next
                             
@@ -10149,16 +10149,16 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                                     If star > 0 And endd < (.MaxRows - 32) Then
                                     
                                         For i = 0 To .MaxRows - 32
-                                        .Row = i + 22
+                                        .row = i + 22
                                         ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                        .Col = .ColLetterToNumber("C")
+                                        .col = .ColLetterToNumber("C")
                                         .Text = "0"
                                         Next
                                         
                                         For i = star To endd
-                                                .Row = i + 21
+                                                .row = i + 21
                                                 ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                                .Col = .ColLetterToNumber("C")
+                                                .col = .ColLetterToNumber("C")
                                                 .Text = "1"
                                         Next
                                      Else
@@ -10172,23 +10172,23 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         End If
         
         'xu ly nut chech chon 02BHDC_C20
-        If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "26" Then
+        If row = 20 And col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "26" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 'Dim i As Integer
                 If options = 1 Then
                     For i = 0 To .MaxRows - 32
-                            .Row = i + 22
+                            .row = i + 22
                             ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                            .Col = .ColLetterToNumber("C")
+                            .col = .ColLetterToNumber("C")
                             .Text = "1"
                     Next
                 ElseIf options = 2 Then
                             For i = 0 To .MaxRows - 32
-                                    .Row = i + 22
+                                    .row = i + 22
                                     ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                    .Col = .ColLetterToNumber("C")
+                                    .col = .ColLetterToNumber("C")
                                     .Text = "0"
                             Next
                             
@@ -10201,16 +10201,16 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                                     If star > 0 And endd < (.MaxRows - 32) Then
                                     
                                         For i = 0 To .MaxRows - 32
-                                        .Row = i + 22
+                                        .row = i + 22
                                         ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                        .Col = .ColLetterToNumber("C")
+                                        .col = .ColLetterToNumber("C")
                                         .Text = "0"
                                         Next
                                         
                                         For i = star To endd
-                                                .Row = i + 21
+                                                .row = i + 21
                                                 ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                                .Col = .ColLetterToNumber("C")
+                                                .col = .ColLetterToNumber("C")
                                                 .Text = "1"
                                         Next
                                      Else
@@ -10223,23 +10223,23 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
             End If
         End If
         'xu ly nut chech chon 02XS_C20
-        If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Then
+        If row = 20 And col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 'Dim i As Integer
                 If options = 1 Then
                     For i = 0 To .MaxRows - 27
-                            .Row = i + 22
+                            .row = i + 22
                             ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                            .Col = .ColLetterToNumber("C")
+                            .col = .ColLetterToNumber("C")
                             .Text = "1"
                     Next
                 ElseIf options = 2 Then
                             For i = 0 To .MaxRows - 27
-                                    .Row = i + 22
+                                    .row = i + 22
                                     ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                    .Col = .ColLetterToNumber("C")
+                                    .col = .ColLetterToNumber("C")
                                     .Text = "0"
                             Next
                             
@@ -10252,16 +10252,16 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                                     If star > 0 And endd < (.MaxRows - 27) Then
                                     
                                         For i = 0 To .MaxRows - 27
-                                        .Row = i + 22
+                                        .row = i + 22
                                         ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                        .Col = .ColLetterToNumber("C")
+                                        .col = .ColLetterToNumber("C")
                                         .Text = "0"
                                         Next
                                         
                                         For i = star To endd
-                                                .Row = i + 21
+                                                .row = i + 21
                                                 ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                                .Col = .ColLetterToNumber("C")
+                                                .col = .ColLetterToNumber("C")
                                                 .Text = "1"
                                         Next
                                      Else
@@ -10275,23 +10275,23 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         End If
         
         
-        If Row = 20 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "26" Then
+        If row = 20 And col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "26" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 'Dim i As Integer
                 If options = 1 Then
                     For i = 0 To .MaxRows - 27
-                            .Row = i + 22
+                            .row = i + 22
                             ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                            .Col = .ColLetterToNumber("C")
+                            .col = .ColLetterToNumber("C")
                             .Text = "1"
                     Next
                 ElseIf options = 2 Then
                             For i = 0 To .MaxRows - 27
-                                    .Row = i + 22
+                                    .row = i + 22
                                     ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                    .Col = .ColLetterToNumber("C")
+                                    .col = .ColLetterToNumber("C")
                                     .Text = "0"
                             Next
                             
@@ -10304,16 +10304,16 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                                     If star > 0 And endd < (.MaxRows - 27) Then
                                     
                                         For i = 0 To .MaxRows - 27
-                                        .Row = i + 22
+                                        .row = i + 22
                                         ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                        .Col = .ColLetterToNumber("C")
+                                        .col = .ColLetterToNumber("C")
                                         .Text = "0"
                                         Next
                                         
                                         For i = star To endd
-                                                .Row = i + 21
+                                                .row = i + 21
                                                 ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
-                                                .Col = .ColLetterToNumber("C")
+                                                .col = .ColLetterToNumber("C")
                                                 .Text = "1"
                                         Next
                                      Else
@@ -10340,7 +10340,7 @@ End Sub
 ''' Event change of grid
 ''' Parameter1 pCol     : active column
 ''' Parameter2 pRow     : active row
-Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
+Private Sub fpSpread1_Change(ByVal col As Long, ByVal row As Long)
     On Error GoTo ErrorHandle
     Dim lValue As String
     Dim IsUpdate As Boolean
@@ -10374,19 +10374,19 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
         'This action occur only on Setttingup Data
         If mOnSetupData Then
             With fpSpread1
-                .Col = Col
-                .Row = Row
+                .col = col
+                .row = row
                 
                 If Not .Lock Then Exit Sub
                 If fpSpread1.sheet = fpSpread1.SheetCount Then Exit Sub
-                If TAX_Utilities_v1.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, Col, Row)) _
+                If TAX_Utilities_v1.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, col, row)) _
                     Is Nothing Then Exit Sub
                     
                 .EventEnabled(EventAllEvents) = False
                 .sheet = mCurrentSheet
                 'This event raise to formula cell
                 If .Formula <> "" Then
-                        .ReCalcCell Col, Row
+                        .ReCalcCell col, row
                         If .CellType = CellTypeNumber Then
                             lValue = .value
                         Else
@@ -10400,7 +10400,7 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
                     Case 10
                     ' Checkbox -> See Business object
                     Case Else
-                        IsUpdate = UpdateCell(Col, Row, lValue)
+                        IsUpdate = UpdateCell(col, row, lValue)
                 End Select
                 If Not mOnLoad Then TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = IIf(IsUpdate = True, IsUpdate, TAX_Utilities_v1.AdjustData(mCurrentSheet - 1))
                 'End If
@@ -10414,13 +10414,13 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
         .EventEnabled(EventAllEvents) = False
         .sheet = mCurrentSheet
         
-        .Col = Col
-        .Row = Row
+        .col = col
+        .row = row
         
-        If arrErrCells.Exists(mCurrentSheet & "_" & GetCellID(fpSpread1, Col, Row)) Then
+        If arrErrCells.Exists(mCurrentSheet & "_" & GetCellID(fpSpread1, col, row)) Then
             .CellNote = ""
-            .BackColor = arrErrCells.Item(mCurrentSheet & "_" & GetCellID(fpSpread1, Col, Row))
-            arrErrCells.Remove mCurrentSheet & "_" & GetCellID(fpSpread1, Col, Row)
+            .BackColor = arrErrCells.Item(mCurrentSheet & "_" & GetCellID(fpSpread1, col, row))
+            arrErrCells.Remove mCurrentSheet & "_" & GetCellID(fpSpread1, col, row)
         End If
         'If .Lock = False Then
         ' When user change value of cell, call UpdateCell function
@@ -10433,7 +10433,7 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
                 
         'Xu ly mst cho thong tin header
         If GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = "0" Then
-            If .Col = 3 And (.Row = 34 Or .Row = 39) Then
+            If .col = 3 And (.row = 34 Or .row = 39) Then
                 If Len(lValue) = 14 Then
                     lValue = Left$(lValue, 10) & Right$(lValue, 3)
                 End If
@@ -10444,12 +10444,12 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
             Case 10
             ' Checkbox -> See Business object
             Case Else
-                IsUpdate = UpdateCell(Col, Row, lValue)
+                IsUpdate = UpdateCell(col, row, lValue)
         End Select
         TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = IIf(IsUpdate = True, IsUpdate, TAX_Utilities_v1.AdjustData(mCurrentSheet - 1))
         'End If
         If .SheetName = "PL 01-1/TTDB" Then
-            fpSpread1_LeaveCell Col, Row, Col, Row, True
+            fpSpread1_LeaveCell col, row, col, row, True
 '        ElseIf .SheetName = "PL 04-1/GTGT" And .sheet = 2 Then
 '            'fpSpread1_LeaveCell Col, Row, Col, Row, True
 '            retvalue = 0
@@ -10475,20 +10475,20 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
                  .sheet = .SheetCount - 1
                  mCurrentSheet = .SheetCount - 1
                  
-                 .Col = lCol_temp
-                 .Row = lRow_temp
+                 .col = lCol_temp
+                 .row = lRow_temp
                  
-                 If Col = .ColLetterToNumber("BE") And Row = lRow_temp Then 'Khi chon Combo
+                 If col = .ColLetterToNumber("BE") And row = lRow_temp Then 'Khi chon Combo
                      'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
                      intIndexCuc = .TypeComboBoxCurSel
-                     .Col = .ColLetterToNumber("BI")
-                     .Row = Row
+                     .col = .ColLetterToNumber("BI")
+                     .row = row
                      .TypeComboBoxCurSel = intIndexCuc
                      'Nhap lai Combo cot Q
-                     .Col = .ColLetterToNumber("BI")
-                     UpdateCell .Col, .Row, .Text
+                     .col = .ColLetterToNumber("BI")
+                     UpdateCell .col, .row, .Text
                      ' Lay Id cua cuc thue vua chon o tren
-                     .GetText .Col, .Row, varIdCucThue
+                     .GetText .col, .row, varIdCucThue
                      
                      If varIdCucThue <> "" Or varIdCucThue <> vbNullString Then
                          ' Lay thong tin cho chi cuc thue
@@ -10511,31 +10511,31 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
                              Set xmlNode = Nothing
                          End If
                          
-                         .Row = lRow_temp + 2
-                         .Col = .ColLetterToNumber("BE")
+                         .row = lRow_temp + 2
+                         .col = .ColLetterToNumber("BE")
                          .TypeComboBoxList = tenChiCucThue
                          .Text = ""
-                         UpdateCell .Col, .Row, .Text
+                         UpdateCell .col, .row, .Text
                          
-                         .Row = lRow_temp + 2
-                         .Col = .ColLetterToNumber("BI")
+                         .row = lRow_temp + 2
+                         .col = .ColLetterToNumber("BI")
                          .TypeComboBoxList = maChiCucThue
                          .Text = ""
-                         UpdateCell .Col, .Row, .Text
+                         UpdateCell .col, .row, .Text
                      End If
                  End If
                              
-                 If Col = .ColLetterToNumber("BE") And Row = lRow_temp + 2 Then 'Khi chon Combo
+                 If col = .ColLetterToNumber("BE") And row = lRow_temp + 2 Then 'Khi chon Combo
                      'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
-                     .Row = Row
-                     .Col = Col
+                     .row = row
+                     .col = col
                      intIndexChiCuc = .TypeComboBoxCurSel
-                     .Col = .ColLetterToNumber("BI")
-                     .Row = Row
+                     .col = .ColLetterToNumber("BI")
+                     .row = row
                      .TypeComboBoxCurSel = intIndexChiCuc
                      'Nhap lai Combo cot Q
-                     .Col = .ColLetterToNumber("BI")
-                     UpdateCell .Col, .Row, .Text
+                     .col = .ColLetterToNumber("BI")
+                     UpdateCell .col, .row, .Text
                  End If
               End If
               .EventEnabled(EventAllEvents) = True
@@ -10547,20 +10547,20 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
                     .sheet = .SheetCount - 1
                     mCurrentSheet = .SheetCount - 1
                     
-                    .Col = Col
-                    .Row = Row
+                    .col = col
+                    .row = row
                     
-                    If Col = lCol_temp And Row = lRow_temp Then 'Khi chon Combo
+                    If col = lCol_temp And row = lRow_temp Then 'Khi chon Combo
                         'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
                         intIndexCuc = .TypeComboBoxCurSel
-                        .Col = .ColLetterToNumber("BI")
-                        .Row = Row
+                        .col = .ColLetterToNumber("BI")
+                        .row = row
                         .TypeComboBoxCurSel = intIndexCuc
                         'Nhap lai Combo cot Q
-                        .Col = .ColLetterToNumber("BI")
-                        UpdateCell .Col, .Row, .Text
+                        .col = .ColLetterToNumber("BI")
+                        UpdateCell .col, .row, .Text
                         ' Lay Id cua cuc thue vua chon o tren
-                        .GetText .Col, .Row, varIdCucThue
+                        .GetText .col, .row, varIdCucThue
                         
                         If varIdCucThue <> "" Or varIdCucThue <> vbNullString Then
                             ' Lay thong tin cho chi cuc thue
@@ -10583,29 +10583,29 @@ Private Sub fpSpread1_Change(ByVal Col As Long, ByVal Row As Long)
                                 Set xmlNode = Nothing
                             End If
                             
-                            .Row = lRow_temp + 2
-                            .Col = .ColLetterToNumber("BE")
+                            .row = lRow_temp + 2
+                            .col = .ColLetterToNumber("BE")
                             .TypeComboBoxList = tenChiCucThue
                             .Text = ""
-                            UpdateCell .Col, .Row, .Text
+                            UpdateCell .col, .row, .Text
                             
-                            .Row = lRow_temp + 2
-                            .Col = .ColLetterToNumber("BI")
+                            .row = lRow_temp + 2
+                            .col = .ColLetterToNumber("BI")
                             .TypeComboBoxList = maChiCucThue
                             .Text = ""
-                            UpdateCell .Col, .Row, .Text
+                            UpdateCell .col, .row, .Text
                         End If
                     End If
                                 
-                    If Col = .ColLetterToNumber("BE") And Row = lRow_temp + 2 Then 'Khi chon Combo
+                    If col = .ColLetterToNumber("BE") And row = lRow_temp + 2 Then 'Khi chon Combo
                         'Chuyen sang du lieu tuong ung Lay gia tri index cot C va gia tri Index cot Q
                         intIndexChiCuc = .TypeComboBoxCurSel
-                        .Col = .ColLetterToNumber("BI")
-                        .Row = Row
+                        .col = .ColLetterToNumber("BI")
+                        .row = row
                         .TypeComboBoxCurSel = intIndexChiCuc
                         'Nhap lai Combo cot Q
-                        .Col = .ColLetterToNumber("BI")
-                        UpdateCell .Col, .Row, .Text
+                        .col = .ColLetterToNumber("BI")
+                        UpdateCell .col, .row, .Text
                     End If
             End If
             .EventEnabled(EventAllEvents) = True
@@ -10941,8 +10941,8 @@ Public Sub InsertNode(ByVal pCol As Long, ByVal pRow As Long)
         SetAttribute xmlNodeNewCell, "FirstCell", "1"
         
         ' Reset empty value for new node
-        fpSpread1.Col = lCol
-        fpSpread1.Row = lRow
+        fpSpread1.col = lCol
+        fpSpread1.row = lRow
         Select Case fpSpread1.CellType
             Case CellTypeNumber
                 SetAttribute xmlNodeNewCell, "Value", "0"
@@ -11087,13 +11087,13 @@ Private Sub DeleteNode(ByVal intSheet As Integer, ByVal pCol As Long, ByVal pRow
     ' Decrease value of row in xmlDocument
     DecreaseRowInDOM intSheet, lLRowBound + 1, lRows, lRow2s
     
-    fpSpread1.Col = fpSpread1.ActiveCol
-    fpSpread1.Row = fpSpread1.ActiveRow
+    fpSpread1.col = fpSpread1.ActiveCol
+    fpSpread1.row = fpSpread1.ActiveRow
     If fpSpread1.Lock = True Then
         Do
-            fpSpread1.Row = fpSpread1.Row - 1
-        Loop Until (Not fpSpread1.Lock) Or (fpSpread1.Row = 1)
-        fpSpread1.SetActiveCell fpSpread1.Col, fpSpread1.Row
+            fpSpread1.row = fpSpread1.row - 1
+        Loop Until (Not fpSpread1.Lock) Or (fpSpread1.row = 1)
+        fpSpread1.SetActiveCell fpSpread1.col, fpSpread1.row
     End If
 '   ************************************
 '    added
@@ -11114,7 +11114,7 @@ End Sub
 ''' allow user edit on cell
 ''' Parameter1 pCol     : active column
 ''' Parameter2 pRow     : active row
-Private Sub fpSpread1_Click(ByVal Col As Long, ByVal Row As Long)
+Private Sub fpSpread1_Click(ByVal col As Long, ByVal row As Long)
     Dim lCurSheet As Long
     Dim lCurCol As Long, lCurRow As Long
     'If BusinessObjOnProcess(objTaxBusiness) = True Then Exit Sub
@@ -11122,56 +11122,56 @@ Private Sub fpSpread1_Click(ByVal Col As Long, ByVal Row As Long)
         .ArrowsExitEditMode = False
         'Backup sheet, col, row values
         lCurSheet = .sheet
-        lCurCol = .Col
-        lCurRow = .Row
+        lCurCol = .col
+        lCurRow = .row
         
         .sheet = .ActiveSheet
-        .Col = Col
-        .Row = Row
+        .col = col
+        .row = row
         If Not (.CellType = CellTypeCheckBox Or .CellType = CellTypeButton) Then
         '*********************************
         'Sua loi xoc xech form
             .Refresh
         '*********************************
-            GetCellSpan fpSpread1, Col, Row
-            .SetActiveCell Col, Row
+            GetCellSpan fpSpread1, col, row
+            .SetActiveCell col, row
             
             '*********************************
             If GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "05_TNCN" Then
-                If .sheet = 2 And .Col = .ColLetterToNumber("D") And .Row = 5 Then
+                If .sheet = 2 And .col = .ColLetterToNumber("D") And .row = 5 Then
                     Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_05_1.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
-                If .sheet = 3 And .Col = .ColLetterToNumber("C") And .Row = 4 Then
+                If .sheet = 3 And .col = .ColLetterToNumber("C") And .row = 4 Then
                     Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_05_2.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
-                If .sheet = 4 And .Col = .ColLetterToNumber("D") And .Row = 5 Then
+                If .sheet = 4 And .col = .ColLetterToNumber("D") And .row = 5 Then
                     Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_05_3.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
-                If .sheet = 5 And .Col = .ColLetterToNumber("C") And .Row = 4 Then
+                If .sheet = 5 And .col = .ColLetterToNumber("C") And .row = 4 Then
                     Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "PhuLuc_01.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
             ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "16_TH_DKNPT" Then
-                If .sheet = 1 And .Col = .ColLetterToNumber("C") And .Row = 4 Then
+                If .sheet = 1 And .col = .ColLetterToNumber("C") And .row = 4 Then
                     Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_16TH_DangKyCapMa.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
             ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "06_TNCN10" Then
-                If .sheet = 2 And .Col = .ColLetterToNumber("D") And .Row = 2 Then
+                If .sheet = 2 And .col = .ColLetterToNumber("D") And .row = 2 Then
                     Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bangke_06BTNCN.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
             ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "09_TNCN" Then
             ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "02_TNCN_BH" Then
-                If .sheet = 2 And .Col = .ColLetterToNumber("D") And .Row = 3 Then
+                If .sheet = 2 And .col = .ColLetterToNumber("D") And .row = 3 Then
                     Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_02ABK_BH.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
             ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "02_TNCN_BHDC" Then
-                If .sheet = 2 And .Col = .ColLetterToNumber("D") And .Row = 3 Then
+                If .sheet = 2 And .col = .ColLetterToNumber("D") And .row = 3 Then
                     Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_02_1_BK_BH.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
-                If .sheet = 3 And .Col = .ColLetterToNumber("D") And .Row = 3 Then
+                If .sheet = 3 And .col = .ColLetterToNumber("D") And .row = 3 Then
                     Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_02_2_BK_DC.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
             ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "02_TNCN_XS" Then
-                If .sheet = 2 And .Col = .ColLetterToNumber("D") And .Row = 3 Then
+                If .sheet = 2 And .col = .ColLetterToNumber("D") And .row = 3 Then
                     Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_02ABK_XS.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
 '            ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") = "02_TNDN" Then
@@ -11183,17 +11183,17 @@ Private Sub fpSpread1_Click(ByVal Col As Long, ByVal Row As Long)
         
         'Restore sheet, col, row value
         .sheet = lCurSheet
-        .Col = lCurCol
-        .Row = lCurRow
+        .col = lCurCol
+        .row = lCurRow
     End With
 End Sub
 
-Private Sub fpSpread1_EditMode(ByVal Col As Long, ByVal Row As Long, ByVal Mode As Integer, ByVal ChangeMade As Boolean)
+Private Sub fpSpread1_EditMode(ByVal col As Long, ByVal row As Long, ByVal Mode As Integer, ByVal ChangeMade As Boolean)
     If Mode = 1 Then
         With fpSpread1
             .sheet = mCurrentSheet
-            .Col = Col
-            .Row = Row
+            .col = col
+            .row = row
             If .CellType = CellTypeNumber Then
                 .TypeNumberNegStyle = TypeNumberNegStyle2
             End If
@@ -11242,18 +11242,18 @@ Private Sub fpSpread1_KeyUp(KeyCode As Integer, Shift As Integer)
      ' xu ly cho to khai 04GTGT
         If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" And fpSpread1.ActiveSheet = "1" Then
             fpSpread1.sheet = mCurrentSheet
-            fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
-            fpSpread1.Row = 45
+            fpSpread1.col = fpSpread1.ColLetterToNumber("B")
+            fpSpread1.row = 45
             i = 1
             Do
-                If fpSpread1.ActiveRow = fpSpread1.Row Then
+                If fpSpread1.ActiveRow = fpSpread1.row Then
                     objTaxBusiness.lViTri = i
                     objTaxBusiness.strMaNhomAdd = fpSpread1.Text
                     Exit Do
                 End If
                 i = i + 1
-                fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
-                fpSpread1.Row = fpSpread1.Row + 1
+                fpSpread1.col = fpSpread1.ColLetterToNumber("B")
+                fpSpread1.row = fpSpread1.row + 1
             Loop Until fpSpread1.Text = "aa"
         End If
     
@@ -11267,18 +11267,18 @@ Private Sub fpSpread1_KeyUp(KeyCode As Integer, Shift As Integer)
         ' xu ly cho to khai 04GTGT
         If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" And fpSpread1.sheet = "1" Then
              fpSpread1.sheet = mCurrentSheet
-            fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
-            fpSpread1.Row = 45
+            fpSpread1.col = fpSpread1.ColLetterToNumber("B")
+            fpSpread1.row = 45
             i = 1
             Do
-                If fpSpread1.ActiveRow = fpSpread1.Row Then
+                If fpSpread1.ActiveRow = fpSpread1.row Then
                     objTaxBusiness.lViTri = i
                     objTaxBusiness.strMaNhomAdd = fpSpread1.Text
                     Exit Do
                 End If
                 i = i + 1
-                fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
-                fpSpread1.Row = fpSpread1.Row + 1
+                fpSpread1.col = fpSpread1.ColLetterToNumber("B")
+                fpSpread1.row = fpSpread1.row + 1
             Loop Until fpSpread1.Text = "aa"
         End If
         
@@ -11292,12 +11292,12 @@ Private Sub fpSpread1_KeyUp(KeyCode As Integer, Shift As Integer)
         If objTaxBusiness.DeleteEnable(KeyCode, Shift) Then
             fpSpread1.EventEnabled(EventAllEvents) = False
             fpSpread1.sheet = mCurrentSheet
-            fpSpread1.Col = fpSpread1.ActiveCol
-            fpSpread1.Row = fpSpread1.ActiveRow
+            fpSpread1.col = fpSpread1.ActiveCol
+            fpSpread1.row = fpSpread1.ActiveRow
             If fpSpread1.CellType = CellTypeComboBox Then
                 fpSpread1.Text = vbNullString
                 UpdateCell fpSpread1.ActiveCol, fpSpread1.ActiveRow, vbNullString
-                If (Not objTaxBusiness Is Nothing) Then objTaxBusiness.CellChange fpSpread1.Col, fpSpread1.Row
+                If (Not objTaxBusiness Is Nothing) Then objTaxBusiness.CellChange fpSpread1.col, fpSpread1.row
                 TAX_Utilities_v1.AdjustData(mCurrentSheet - 1) = True
             End If
         End If
@@ -11311,7 +11311,7 @@ ErrorHandle:
     fpSpread1.Refresh
 End Sub
 
-Private Sub fpSpread1_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As Long, ByVal NewRow As Long, Cancel As Boolean)
+Private Sub fpSpread1_LeaveCell(ByVal col As Long, ByVal row As Long, ByVal NewCol As Long, ByVal NewRow As Long, Cancel As Boolean)
 Dim count2, count3 As Long
 Dim str(20) As Variant
 Dim sum1(20), sum2(20) As Variant
@@ -11329,12 +11329,12 @@ Dim xmlNodeCell_temp As MSXML.IXMLDOMNode
 Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
     With fpSpread1
         .sheet = mCurrentSheet
-        .Col = Col
-        .Row = Row
+        .col = col
+        .row = row
         
         'Xu ly mst cho thong tin header
         If GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = vbNullString Or GetAttribute(TAX_Utilities_v1.NodeMenu, "Year") = "0" Then
-            If .Col = 3 And (.Row = 34 Or .Row = 39) Then
+            If .col = 3 And (.row = 34 Or .row = 39) Then
                 If Len(.Text) = 13 Then
                     .Text = Left$(.Text, 10) & "-" & Right$(.Text, 3)
                 End If
@@ -11346,22 +11346,22 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
         End If
         If .SheetName = "PL 01-1/TTDB" Then
 'tinh so dong
-            .Col = .ColLetterToNumber("B")
-            .Row = 37
+            .col = .ColLetterToNumber("B")
+            .row = 37
             Do While .Text <> "aa"
                  count2 = count2 + 1
-                 .Row = count2 + 37
+                 .row = count2 + 37
             Loop
 'tinh so dong tong
-            .Col = .ColLetterToNumber("B")
-            .Row = 40 + count2
+            .col = .ColLetterToNumber("B")
+            .row = 40 + count2
             Do While .Text <> "aa"
                  count3 = count3 + 1
-                 .Row = count3 + 40 + count2
+                 .row = count3 + 40 + count2
             Loop
 'chuyen? vao phan tong? cong
-            .Row = 37
-            .Col = .ColLetterToNumber("L")
+            .row = 37
+            .col = .ColLetterToNumber("L")
        'tinh exist and move data vao str(),sum1(),sum2()
             Do
                 If exist <> 0 Then
@@ -11379,35 +11379,35 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
                     
                     If exist1 = 0 And .Text <> "" Then
                         str(exist) = .Text
-                        .Col = .ColLetterToNumber("N")
+                        .col = .ColLetterToNumber("N")
                         sum1(exist) = sum1(exist) + .value
-                        .Col = .ColLetterToNumber("P")
+                        .col = .ColLetterToNumber("P")
                         sum2(exist) = .value
-                        .Col = .ColLetterToNumber("L")
+                        .col = .ColLetterToNumber("L")
                         exist = exist + 1
                     ElseIf exist1 = 1 And .Text <> "" Then
-                        .Col = .ColLetterToNumber("N")
+                        .col = .ColLetterToNumber("N")
                         sum1(exist1_num) = sum1(exist1_num) + Conversion.CDbl(.value)
-                        .Col = .ColLetterToNumber("P")
+                        .col = .ColLetterToNumber("P")
                         sum2(exist1_num) = sum2(exist1_num) + Conversion.CDbl(.value)
-                        .Col = .ColLetterToNumber("L")
+                        .col = .ColLetterToNumber("L")
                     End If
                 Else
                     If .Text <> "" Then
                         str(0) = .Text
-                        .Col = .ColLetterToNumber("N")
+                        .col = .ColLetterToNumber("N")
                         sum1(0) = sum1(exist) + .value
-                        .Col = .ColLetterToNumber("P")
+                        .col = .ColLetterToNumber("P")
                         sum2(0) = .value
-                        .Col = .ColLetterToNumber("L")
+                        .col = .ColLetterToNumber("L")
                         exist = exist + 1
                     End If
                 End If
-                .Row = .Row + 1
-            Loop Until .Row = 37 + count2
+                .row = .row + 1
+            Loop Until .row = 37 + count2
             
             If exist <> 0 Then
-                .Row = 37 + count2
+                .row = 37 + count2
                 k = count3
 'them bot dong tong
                 If exist > k Then
@@ -11428,26 +11428,26 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
         
                 'dntai them bien tam de luu gia tri row
                 Dim rowTemp As Integer
-                .Row = 40 + count2
+                .row = 40 + count2
 
                 If exist >= 1 Then
                     j = 0
                     Do
-                        rowTemp = .Row
-                        .Col = .ColLetterToNumber("L")
+                        rowTemp = .row
+                        .col = .ColLetterToNumber("L")
                         .value = str(j)
-                        UpdateCell .Col, .Row, .Text
-                        .Col = .ColLetterToNumber("N")
+                        UpdateCell .col, .row, .Text
+                        .col = .ColLetterToNumber("N")
                         .value = sum1(j)
-                        UpdateCell .Col, .Row, .value
-                        .Col = .ColLetterToNumber("P")
+                        UpdateCell .col, .row, .value
+                        .col = .ColLetterToNumber("P")
                         .value = sum2(j)
                         
                         'luu lai bien row
-                        .Row = rowTemp
-                        UpdateCell .Col, .Row, .value
-                        .Col = .ColLetterToNumber("L")
-                        .Row = .Row + 1
+                        .row = rowTemp
+                        UpdateCell .col, .row, .value
+                        .col = .ColLetterToNumber("L")
+                        .row = .row + 1
                         
                         j = j + 1
                     Loop Until j = exist
@@ -11458,22 +11458,22 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
                         DeleteNode .sheet, .ActiveCol, 39 + count2 + count3
                         count3 = count3 - 1
                     Loop Until count3 = 1
-                    .Row = 41
-                    .Col = .ColLetterToNumber("L")
+                    .row = 41
+                    .col = .ColLetterToNumber("L")
                     .value = ""
-                    UpdateCell .Col, .Row, .value
+                    UpdateCell .col, .row, .value
                 Else
-                        .Row = 41
-                        .Col = .ColLetterToNumber("L")
+                        .row = 41
+                        .col = .ColLetterToNumber("L")
                         .value = ""
-                        UpdateCell .Col, .Row, .Text
-                        .Col = .ColLetterToNumber("N")
+                        UpdateCell .col, .row, .Text
+                        .col = .ColLetterToNumber("N")
                         .value = 0
-                        UpdateCell .Col, .Row, .value
-                        .Col = .ColLetterToNumber("P")
+                        UpdateCell .col, .row, .value
+                        .col = .ColLetterToNumber("P")
                         .value = 0
-                        UpdateCell .Col, .Row, .value
-                        .Col = .ColLetterToNumber("L")
+                        UpdateCell .col, .row, .value
+                        .col = .ColLetterToNumber("L")
                 End If
             End If
 '        ElseIf .SheetName = "PL 04-1/GTGT" Then
@@ -11496,22 +11496,22 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
              If .ActiveSheet = .SheetCount - 1 Then
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 16)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
-                    If Col = lCol_temp And Row = lRow_temp Then
-                        .GetText Col, Row, varTemp
+                    If col = lCol_temp And row = lRow_temp Then
+                        .GetText col, row, varTemp
                          If varTemp <> "" And varTemp <> "../../...." Then
                              If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
-                                 .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                                 .SetText col, row, Format_ddmmyyyy(CStr(varTemp))
                                  .TypeHAlign = TypeHAlignLeft
                              Else
                                  .SetFocus
-                                 .SetActiveCell Col, Row
+                                 .SetActiveCell col, row
                              End If
                          Else
-                          .SetText Col, Row, ""
+                          .SetText col, row, ""
                          End If
-                        .Col = Col
-                        .Row = Row
-                        UpdateCell .Col, .Row, .Text
+                        .col = col
+                        .row = row
+                        UpdateCell .col, .row, .Text
                      End If
                      
                       ' set lai cong thuc tinh tien nop cham
@@ -11520,10 +11520,10 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
                     
                     fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
                     rowTienNC = lRow_temp + 1
-                    If Col = lCol_temp And Row = lRow_temp Then
+                    If col = lCol_temp And row = lRow_temp Then
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
-                        fpSpread1.Col = lCol_temp
-                        fpSpread1.Row = rowTienNC
+                        fpSpread1.col = lCol_temp
+                        fpSpread1.row = rowTienNC
                         temp = lRow_temp - 21
                         ' sua ct tinh
                         fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 17 + temp, vSoTien
@@ -11538,22 +11538,22 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
              If .ActiveSheet = .SheetCount - 1 Then
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 14)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
-                    If Col = lCol_temp And Row = lRow_temp Then
-                        .GetText Col, Row, varTemp
+                    If col = lCol_temp And row = lRow_temp Then
+                        .GetText col, row, varTemp
                          If varTemp <> "" And varTemp <> "../../...." Then
                              If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
-                                 .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
+                                 .SetText col, row, Format_ddmmyyyy(CStr(varTemp))
                                  .TypeHAlign = TypeHAlignLeft
                              Else
                                  .SetFocus
-                                 .SetActiveCell Col, Row
+                                 .SetActiveCell col, row
                              End If
                          Else
-                          .SetText Col, Row, ""
+                          .SetText col, row, ""
                          End If
-                        .Col = Col
-                        .Row = Row
-                        UpdateCell .Col, .Row, .Text
+                        .col = col
+                        .row = row
+                        UpdateCell .col, .row, .Text
                      End If
                      
                     ' set lai cong thuc tinh tien nop cham
@@ -11563,10 +11563,10 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
                         
                         fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
                         rowTienNC = lRow_temp + 1
-                        If Col = lCol_temp And Row = lRow_temp Then
+                        If col = lCol_temp And row = lRow_temp Then
                             fpSpread1.sheet = fpSpread1.SheetCount - 1
-                            fpSpread1.Col = lCol_temp
-                            fpSpread1.Row = rowTienNC
+                            fpSpread1.col = lCol_temp
+                            fpSpread1.row = rowTienNC
                             temp = rowTienNC - 21
                             
                             ' sua ct tinh
@@ -11587,7 +11587,7 @@ Dim i, j, k, l, exist, exist1, exist1_num, inserted As Long
 End Sub
 
 'tinh tong 04-1/GTGT
-Private Function fpSpread1_LeaveCell_PL04_1_GTGT(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As Long, ByVal NewRow As Long, Cancel As Boolean, start_row As Integer, total_pos As Integer, char_end As String) As Integer
+Private Function fpSpread1_LeaveCell_PL04_1_GTGT(ByVal col As Long, ByVal row As Long, ByVal NewCol As Long, ByVal NewRow As Long, Cancel As Boolean, start_row As Integer, total_pos As Integer, char_end As String) As Integer
 Dim count2, count3 As Long
 Dim str(20) As Variant
 Dim sum1(20), sum2(20) As Variant
@@ -11606,29 +11606,29 @@ Const end_1 As String = "aa"
     With fpSpread1
         .sheet = mCurrentSheet
         .sheet = 2
-        .Col = Col
-        .Row = Row
+        .col = col
+        .row = row
         If .CellType = CellTypeNumber Then
             .TypeNumberNegStyle = TypeNumberNegStyle1
         End If
         If .SheetName = "PL 04-1/GTGT" Then
 'tinh so dong
-            .Col = .ColLetterToNumber("B")
-            .Row = startRow1 '37
+            .col = .ColLetterToNumber("B")
+            .row = startRow1 '37
             Do While .Text <> char_end1
                  count2 = count2 + 1
-                 .Row = count2 + startRow1 '37
+                 .row = count2 + startRow1 '37
             Loop
 'tinh so dong tong
-            .Col = .ColLetterToNumber("B")
-            .Row = total1 + count2 '40
+            .col = .ColLetterToNumber("B")
+            .row = total1 + count2 '40
             Do While .Text <> end_1
                  count3 = count3 + 1
-                 .Row = count3 + total1 + count2
+                 .row = count3 + total1 + count2
             Loop
 'chuyen? vao phan tong? cong
-            .Row = startRow1 '37
-            .Col = .ColLetterToNumber("I") 'L
+            .row = startRow1 '37
+            .col = .ColLetterToNumber("I") 'L
        'tinh exist and move data vao str(),sum1(),sum2()
             Do
                 If exist <> 0 Then
@@ -11646,35 +11646,35 @@ Const end_1 As String = "aa"
                     
                     If exist1 = 0 And .Text <> "" Then
                         str(exist) = .Text
-                        .Col = .ColLetterToNumber("J") 'N
+                        .col = .ColLetterToNumber("J") 'N
                         sum1(exist) = sum1(exist) + .value
                         '.Col = .ColLetterToNumber("P")
                         'sum2(exist) = .value
-                        .Col = .ColLetterToNumber("I") 'L
+                        .col = .ColLetterToNumber("I") 'L
                         exist = exist + 1
                     ElseIf exist1 = 1 And .Text <> "" Then
-                        .Col = .ColLetterToNumber("J")
+                        .col = .ColLetterToNumber("J")
                         sum1(exist1_num) = sum1(exist1_num) + Conversion.CDbl(.value)
                         '.Col = .ColLetterToNumber("P")
                         'sum2(exist1_num) = sum2(exist1_num) + Conversion.CDbl(.value)
-                        .Col = .ColLetterToNumber("I")
+                        .col = .ColLetterToNumber("I")
                     End If
                 Else
                     If .Text <> "" Then
                         str(0) = .Text
-                        .Col = .ColLetterToNumber("J")
+                        .col = .ColLetterToNumber("J")
                         sum1(0) = sum1(exist) + .value
                         '.Col = .ColLetterToNumber("P")
                         'sum2(0) = .value
-                        .Col = .ColLetterToNumber("I")
+                        .col = .ColLetterToNumber("I")
                         exist = exist + 1
                     End If
                 End If
-                .Row = .Row + 1
-            Loop Until .Row = startRow1 + count2
+                .row = .row + 1
+            Loop Until .row = startRow1 + count2
             
             If exist <> 0 Then
-                .Row = startRow1 + count2
+                .row = startRow1 + count2
                 k = count3
 'them bot dong tong
                 If exist > k Then
@@ -11696,26 +11696,26 @@ Const end_1 As String = "aa"
         
                 'dntai them bien tam de luu gia tri row
                 Dim rowTemp As Integer
-                .Row = total1 + count2
+                .row = total1 + count2
 
                 If exist >= 1 Then
                     j = 0
                     Do
-                        rowTemp = .Row
-                        .Col = .ColLetterToNumber("I")
+                        rowTemp = .row
+                        .col = .ColLetterToNumber("I")
                         .value = str(j)
-                        UpdateCell .Col, .Row, .Text
-                        .Col = .ColLetterToNumber("J")
+                        UpdateCell .col, .row, .Text
+                        .col = .ColLetterToNumber("J")
                         .value = sum1(j)
-                        UpdateCell .Col, .Row, .value
+                        UpdateCell .col, .row, .value
                         '.Col = .ColLetterToNumber("P")
                         '.value = sum2(j)
                         
                         'luu lai bien row
-                        .Row = rowTemp
+                        .row = rowTemp
                         'UpdateCell .Col, .Row, .value
-                        .Col = .ColLetterToNumber("I")
-                        .Row = .Row + 1
+                        .col = .ColLetterToNumber("I")
+                        .row = .row + 1
                         
                         j = j + 1
                     Loop Until j = exist
@@ -11726,18 +11726,18 @@ Const end_1 As String = "aa"
                         DeleteNode .sheet, .ActiveCol, total1_1 + count2 + count3
                         count3 = count3 - 1
                     Loop Until count3 = 1
-                    .Row = total1 + 1 '41
-                    .Col = .ColLetterToNumber("I")
+                    .row = total1 + 1 '41
+                    .col = .ColLetterToNumber("I")
                     .value = ""
-                    UpdateCell .Col, .Row, .value
+                    UpdateCell .col, .row, .value
                 Else
-                        .Row = total1 + 1 '41
-                        .Col = .ColLetterToNumber("I")
+                        .row = total1 + 1 '41
+                        .col = .ColLetterToNumber("I")
                         .value = ""
-                        UpdateCell .Col, .Row, .Text
-                        .Col = .ColLetterToNumber("J")
+                        UpdateCell .col, .row, .Text
+                        .col = .ColLetterToNumber("J")
                         .value = 0
-                        UpdateCell .Col, .Row, .value
+                        UpdateCell .col, .row, .value
                         '.Col = .ColLetterToNumber("P")
                         '.value = 0
                         'UpdateCell .Col, .Row, .value
@@ -11836,15 +11836,15 @@ Private Function SetCellNote(ByVal pCellString As String, ByVal lNoErrColor As L
 '                    End If
 '                End If
                 If Not GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(.sheet - 1), "Active") <> "0" Then
-                    .Col = lCol
-                    .Row = lRow
+                    .col = lCol
+                    .row = lRow
                     .CellNote = ""
                     .BackColor = lNoErrColor
                     SetCellNote = False
                     Exit Function
                 End If
-                .Col = lCol
-                .Row = lRow
+                .col = lCol
+                .row = lRow
                 
                 If Trim(pNoteText) = "" Then
                     .CellNote = ""
@@ -12008,8 +12008,8 @@ Private Function CheckValidData() As Boolean
         .sheet = mHeaderSheet
         For i = 12 To .MaxRows
             .sheet = mHeaderSheet
-            .Col = 2
-            .Row = i
+            .col = 2
+            .row = i
             vFormulaFunc = .Formula
             
             If Trim(.Text) <> "" Then
@@ -12017,7 +12017,7 @@ Private Function CheckValidData() As Boolean
                 .GetText .ColLetterToNumber("E"), i, vMsg
                 .GetText .ColLetterToNumber("S"), i, vWarning
                 .GetText .ColLetterToNumber("T"), i, vOrder
-                .Col = .Col + 1
+                .col = .col + 1
                 vCell = .Formula
                 lNoErrColor = .BackColor
                 If vFormulaFunc <> vbNullString Then
@@ -12273,8 +12273,8 @@ Private Sub LoadInitFiles()
             For Each xmlNodeIni In xmlNodeListIni
                 fpSpread1.sheet = i + 1
                 ParserCellID fpSpread1, GetAttribute(xmlNodeIni, "CellID"), lCol, lRow
-                fpSpread1.Col = lCol
-                fpSpread1.Row = lRow
+                fpSpread1.col = lCol
+                fpSpread1.row = lRow
                 If Val(GetAttribute(xmlNodeIni, "MaxLen")) <> 0 Then
                     fpSpread1.TypeMaxEditLen = Val(GetAttribute(xmlNodeIni, "MaxLen"))
                 End If
@@ -12333,8 +12333,8 @@ Private Sub ResetData()
         For Each xmlNodeReset In TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             fpSpread1.sheet = mCurrentSheet
             ParserCellID fpSpread1, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
-            fpSpread1.Col = lCol
-            fpSpread1.Row = lRow
+            fpSpread1.col = lCol
+            fpSpread1.row = lRow
 
             If ((idtkhai = "01" And (lRow < 22 Or lRow > 48)) Or (idtkhai = "02" And (lRow < 38 Or lRow > 54)) Or (idtkhai = "04" And (lRow < 34 Or lRow > 41)) Or (idtkhai = "11" And (lRow < 20 Or lRow > 35)) Or (idtkhai = "12" And (lRow < 34 Or lRow > 49)) Or (idtkhai = "06" And (lRow < 34 Or lRow > 48 + (TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 11) / 13)) Or (idtkhai = "05" And (lRow < 31 Or lRow > fpSpread1.MaxRows - 15)) Or (idtkhai = "70" And (lRow < 51 Or lRow > 58 + (TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 19) / 14)) Or (idtkhai = "77" And (lRow < 18 Or lRow > fpSpread1.MaxRows - 11)) _
             Or (idtkhai = "75" And (lRow < 38 Or lRow > fpSpread1.MaxRows - 5)) Or (idtkhai = "74" And (lRow < 19 Or lRow > 61)) Or (idtkhai = "72" And (lRow < 43 Or lRow > 48)) Or (idtkhai = "88" And (lRow < 39 Or lRow > 59)) Or (idtkhai = "26" And (lRow < 37 Or lRow > 60))) And mCurrentSheet = 1 Then
@@ -12368,8 +12368,8 @@ nextClear1:
             'Cac TK TNCN ko cler cac chi tieu hearder và footer
             fpSpread1.sheet = mCurrentSheet
             ParserCellID fpSpread1, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
-            fpSpread1.Col = lCol
-            fpSpread1.Row = lRow
+            fpSpread1.col = lCol
+            fpSpread1.row = lRow
             If ((Trim(GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")) = "41" And countCell <= 3) Or ((idtkhai = "46" Or idtkhai = "47" Or idtkhai = "48" Or idtkhai = "49") And (lRow < 36 Or lRow > 43)) Or ((idtkhai = "15" Or idtkhai = "16") And (lRow < 38 Or lRow > 57)) Or ((idtkhai = "50" Or idtkhai = "51") And (lRow < 36 Or lRow > 56)) Or ((idtkhai = "36") And (lRow < 36 Or lRow > 63)) Or ((idtkhai = "76") And (lRow < 36)) Or ((idtkhai = "59") And (lRow < 27 Or lRow > 60)) Or idtkhai = "42" Or idtkhai = "43") And mCurrentSheet = 1 Then GoTo nextClear
             Select Case fpSpread1.CellType
                 Case CellTypeCheckBox
@@ -12410,8 +12410,8 @@ nextClear:
         For Each xmlNodeReset In TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             fpSpread1.sheet = mCurrentSheet
             ParserCellID fpSpread1, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
-            fpSpread1.Col = lCol
-            fpSpread1.Row = lRow
+            fpSpread1.col = lCol
+            fpSpread1.row = lRow
             Select Case fpSpread1.CellType
                 Case CellTypeCheckBox
                     fpSpread1.Text = vbNullString
@@ -12507,10 +12507,10 @@ With fpSpread1
                 lRow = i
                 lCol = j
                 GetCellSpan fpSpread1, lCol, lRow
-                .Row = lRow
-                .Col = lCol
+                .row = lRow
+                .col = lCol
                 If .Lock = False And .CellType <> CellTypeCheckBox Then
-                    .SetActiveCell .Col, .Row
+                    .SetActiveCell .col, .row
                     blFirstCell = True
                     Exit For
                 End If
@@ -12596,15 +12596,15 @@ On Error GoTo ErrHandle
     fpSpread1.sheet = fpSpread1.ActiveSheet
     fpSpread1.GetCellSpan lCol, lRow, varCol, varRow, varCols, varRows
     If CLng(varCol) <> -1 Then
-        fpSpread1.Col = CLng(varCol)
+        fpSpread1.col = CLng(varCol)
     Else
-        fpSpread1.Col = lCol
+        fpSpread1.col = lCol
     End If
     
     If CLng(varRow) <> -1 Then
-        fpSpread1.Row = CLng(varRow)
+        fpSpread1.row = CLng(varRow)
     Else
-        fpSpread1.Row = lRow
+        fpSpread1.row = lRow
     End If
     
     If fpSpread1.CellTag <> vbNullString Then
@@ -12675,8 +12675,8 @@ Private Sub ClearRows(xmlCellsNode As MSXML.IXMLDOMNode) '(ByVal lRow As Long, B
         For Each xmlCellNode In xmlCellsNode.childNodes
             ParserCellID fpSpread1, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
             .sheet = mCurrentSheet
-            .Col = lCol
-            .Row = lRow
+            .col = lCol
+            .row = lRow
             If .Lock = False Or (.Lock = True And .Formula = vbNullString) Then
                 Select Case .CellType
                     Case CellTypeNumber
@@ -12689,8 +12689,8 @@ Private Sub ClearRows(xmlCellsNode As MSXML.IXMLDOMNode) '(ByVal lRow As Long, B
            End If
                 
             ' set lai col
-            .Col = lCol
-            .Row = lRow
+            .col = lCol
+            .row = lRow
             If .CellNote <> vbNullString Then
                 .CellNote = vbNullString
                 .BackColor = vbWhite
@@ -12714,10 +12714,10 @@ Private Sub ResetErrorCells()
         
         For lCtrl = 12 To .MaxRows
             .sheet = mHeaderSheet
-            .Col = 2
-            .Row = lCtrl
+            .col = 2
+            .row = lCtrl
             If .Formula <> vbNullString Then
-                .Col = .Col + 1
+                .col = .col + 1
                 strCellString = .Formula
                 lNoErrColor = .BackColor
                 SetCellNote strCellString, lNoErrColor, ""
@@ -12759,8 +12759,8 @@ Private Function IsEmptyValue(xmlCellsNode As MSXML.IXMLDOMNode) As Boolean
     
     For Each xmlCellNode In xmlCellsNode.childNodes
         ParserCellID fpSpread1, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
-        fpSpread1.Col = lCol
-        fpSpread1.Row = lRow
+        fpSpread1.col = lCol
+        fpSpread1.row = lRow
         Select Case fpSpread1.CellType
             Case CellTypeNumber, CellTypePercent
                 If Not IsNullNumber(GetAttribute(xmlCellNode, "Value")) Then
@@ -13064,8 +13064,8 @@ Private Function CheckValidKHBSData() As Boolean
                     If GetAttribute(xmlNode, "CellID") = strCellID1 Then
                         fpSpread1.sheet = 1
                         ParserCellID fpSpread1, GetAttribute(xmlNode, "CellID"), lCol, lRow
-                        fpSpread1.Col = lCol
-                        fpSpread1.Row = lRow
+                        fpSpread1.col = lCol
+                        fpSpread1.row = lRow
                         strValueCheck = fpSpread1.value
                         If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Then
                             If GetAttribute(xmlNode, "CellID") = "L_17" Or GetAttribute(xmlNode, "CellID") = "L_7" Then
@@ -13094,15 +13094,15 @@ Private Function CheckValidKHBSData() As Boolean
                             With fpSpread1
                                 .sheet = 1
                                 ParserCellID fpSpread1, GetAttribute(xmlNode, "CellID"), lCol, lRow
-                                .Col = lCol
-                                .Row = lRow
+                                .col = lCol
+                                .row = lRow
                                 .BackColor = &HC0C0FF
                                 .CellNote = GetAttribute(GetMessageCellById("0108"), "Msg")
                                 
                                 .sheet = .SheetCount - 1
                                 ParserCellID fpSpread1, GetAttribute(xmlNodeC, "CellID"), lCol, lRow
-                                .Col = lCol
-                                .Row = lRow
+                                .col = lCol
+                                .row = lRow
                                 .BackColor = &HC0C0FF
                                 .ActiveSheet = .SheetCount - 1
                                 .CellNote = GetAttribute(GetMessageCellById("0109"), "Msg") & "[" & Trim(Right(GetAttribute(xmlNodeCells, "Value"), 10)) & "]"
@@ -13112,15 +13112,15 @@ Private Function CheckValidKHBSData() As Boolean
                              With fpSpread1
                                 .sheet = 1
                                 ParserCellID fpSpread1, GetAttribute(xmlNode, "CellID"), lCol, lRow
-                                .Col = lCol
-                                .Row = lRow
+                                .col = lCol
+                                .row = lRow
                                 .BackColor = vbWhite
                                 .CellNote = ""
                               
                                 .sheet = .SheetCount - 1
                                 ParserCellID fpSpread1, GetAttribute(xmlNodeC, "CellID"), lCol, lRow
-                                .Col = lCol
-                                .Row = lRow
+                                .col = lCol
+                                .row = lRow
                                 .BackColor = vbWhite
                                 .CellNote = ""
                              End With
@@ -13150,7 +13150,7 @@ Public Function delNullRow(sheet As Long)
     Dim xmlNodeSec As MSXML.IXMLDOMNode
     Dim xmlNodeRow As MSXML.IXMLDOMNode
     Dim xmlNodeCell As MSXML.IXMLDOMNode
-    Dim numSec, Row, row1, celllg, hasVl As Long
+    Dim numSec, row, row1, celllg, hasVl As Long
     Dim sumRowDel, countDel As Long
     
     Dim cellID, value As Variant
@@ -13175,10 +13175,10 @@ Public Function delNullRow(sheet As Long)
             If GetAttribute(xmlNodeSec, "Dynamic") = "1" Then
                 Set xmlNodeListRow = xmlNodeListSec.Item(numSec).childNodes
         'row
-                Row = 0
+                row = 0
                 For Each xmlNodeRow In xmlNodeListRow
                     hasVl = 0
-                    Set xmlNodeListCell = xmlNodeListRow.Item(Row).childNodes
+                    Set xmlNodeListCell = xmlNodeListRow.Item(row).childNodes
                'cell
                     For Each xmlNodeCell In xmlNodeListCell
                         value = GetAttribute(xmlNodeCell, "Value")
@@ -13201,7 +13201,7 @@ Public Function delNullRow(sheet As Long)
                             
                         End If
                     End If
-                    Row = Row + 1
+                    row = row + 1
                 Next
             End If
             numSec = numSec + 1
@@ -13615,51 +13615,51 @@ Public Sub UpdateDataKHBS_TT28(pGrid As fpSpread)
                 With pGrid
                 .sheet = .SheetCount - 1
                 i = 1
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 8
+                    .col = .ColLetterToNumber("B")
+                    .row = 8
                     Do
-                         .Col = .ColLetterToNumber("B")
-                         .Row = i + 8
+                         .col = .ColLetterToNumber("B")
+                         .row = i + 8
                          i = i + 1
                     Loop Until .Text = "bb"
                 '------------------------------------------
                 
                     
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 24 + i - 7
-                     UpdateCell .ColLetterToNumber("B"), .Row, .Text
-                    .Col = .ColLetterToNumber("BE")
-                    .Row = 17 + i - 7
-                     UpdateCell .ColLetterToNumber("BE"), .Row, .value
-                     .Row = 18 + i - 7
-                     UpdateCell .ColLetterToNumber("BE"), .Row, IIf(Trim(.value) = "", 0, .value)
-                     .Col = .ColLetterToNumber("BD")
-                    .Row = 20 + i - 7
-                     UpdateCell .ColLetterToNumber("BD"), .Row, .Text
-                    .Col = .ColLetterToNumber("BG")
-                    .Row = 22 + i - 7
-                    UpdateCell .ColLetterToNumber("BG"), .Row, .Text
-                    .Col = .ColLetterToNumber("BG")
-                    .Row = 23 + i - 7
-                    UpdateCell .ColLetterToNumber("BG"), .Row, .Text
-                     .Col = .ColLetterToNumber("BF")
-                     .Row = 15 + i - 7
-                    UpdateCell .ColLetterToNumber("BF"), .Row, IIf(Trim(.value) = "", 0, .value)
-                      .Col = .ColLetterToNumber("BG")
-                     .Row = 15 + i - 7
-                    UpdateCell .ColLetterToNumber("BG"), .Row, IIf(Trim(.value) = "", 0, .value)
-                      .Col = .ColLetterToNumber("BH")
-                     .Row = 15 + i - 7
-                    UpdateCell .ColLetterToNumber("BH"), .Row, IIf(Trim(.value) = "", 0, .value)
-                     .Col = .ColLetterToNumber("BF")
-                     .Row = 16 + i - 7
-                    UpdateCell .ColLetterToNumber("BF"), .Row, IIf(Trim(.value) = "", 0, .value)
-                      .Col = .ColLetterToNumber("BG")
-                     .Row = 16 + i - 7
-                    UpdateCell .ColLetterToNumber("BG"), .Row, IIf(Trim(.value) = "", 0, .value)
-                      .Col = .ColLetterToNumber("BH")
-                     .Row = 16 + i - 7
-                    UpdateCell .ColLetterToNumber("BH"), .Row, IIf(Trim(.value) = "", 0, .value)
+                    .col = .ColLetterToNumber("B")
+                    .row = 24 + i - 7
+                     UpdateCell .ColLetterToNumber("B"), .row, .Text
+                    .col = .ColLetterToNumber("BE")
+                    .row = 17 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .row, .value
+                     .row = 18 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .row, IIf(Trim(.value) = "", 0, .value)
+                     .col = .ColLetterToNumber("BD")
+                    .row = 20 + i - 7
+                     UpdateCell .ColLetterToNumber("BD"), .row, .Text
+                    .col = .ColLetterToNumber("BG")
+                    .row = 22 + i - 7
+                    UpdateCell .ColLetterToNumber("BG"), .row, .Text
+                    .col = .ColLetterToNumber("BG")
+                    .row = 23 + i - 7
+                    UpdateCell .ColLetterToNumber("BG"), .row, .Text
+                     .col = .ColLetterToNumber("BF")
+                     .row = 15 + i - 7
+                    UpdateCell .ColLetterToNumber("BF"), .row, IIf(Trim(.value) = "", 0, .value)
+                      .col = .ColLetterToNumber("BG")
+                     .row = 15 + i - 7
+                    UpdateCell .ColLetterToNumber("BG"), .row, IIf(Trim(.value) = "", 0, .value)
+                      .col = .ColLetterToNumber("BH")
+                     .row = 15 + i - 7
+                    UpdateCell .ColLetterToNumber("BH"), .row, IIf(Trim(.value) = "", 0, .value)
+                     .col = .ColLetterToNumber("BF")
+                     .row = 16 + i - 7
+                    UpdateCell .ColLetterToNumber("BF"), .row, IIf(Trim(.value) = "", 0, .value)
+                      .col = .ColLetterToNumber("BG")
+                     .row = 16 + i - 7
+                    UpdateCell .ColLetterToNumber("BG"), .row, IIf(Trim(.value) = "", 0, .value)
+                      .col = .ColLetterToNumber("BH")
+                     .row = 16 + i - 7
+                    UpdateCell .ColLetterToNumber("BH"), .row, IIf(Trim(.value) = "", 0, .value)
                 End With
     Exit Sub
 ErrorHandle:
@@ -13685,88 +13685,88 @@ Public Sub UpdateDataKHBS_TT156(pGrid As fpSpread)
                 With pGrid
                 .sheet = .SheetCount - 1
                 i = 1
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 8
+                    .col = .ColLetterToNumber("B")
+                    .row = 8
                     Do
-                         .Col = .ColLetterToNumber("B")
-                         .Row = i + 8
+                         .col = .ColLetterToNumber("B")
+                         .row = i + 8
                          i = i + 1
                     Loop Until .Text = "bb"
                 '------------------------------------------
                 
                     
-                    .Col = .ColLetterToNumber("B")
-                    .Row = 47 + i - 7
-                     UpdateCell .ColLetterToNumber("B"), .Row, .Text
-                    .Col = .ColLetterToNumber("BE")
-                    .Row = 20 + i - 7
-                     UpdateCell .ColLetterToNumber("BE"), .Row, .value
-                     .Row = 21 + i - 7
-                     UpdateCell .ColLetterToNumber("BE"), .Row, IIf(Trim(.value) = "", 0, .value)
+                    .col = .ColLetterToNumber("B")
+                    .row = 47 + i - 7
+                     UpdateCell .ColLetterToNumber("B"), .row, .Text
+                    .col = .ColLetterToNumber("BE")
+                    .row = 20 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .row, .value
+                     .row = 21 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .row, IIf(Trim(.value) = "", 0, .value)
                      
-                     .Row = 27 + i - 7
-                     UpdateCell .ColLetterToNumber("BE"), .Row, IIf(Trim(.value) = "", 0, .value)
+                     .row = 27 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .row, IIf(Trim(.value) = "", 0, .value)
                      
-                     .Row = 29 + i - 7
-                     UpdateCell .ColLetterToNumber("BE"), .Row, .Text
+                     .row = 29 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .row, .Text
                      
-                     .Row = 31 + i - 7
-                     UpdateCell .ColLetterToNumber("BE"), .Row, .Text
+                     .row = 31 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .row, .Text
                      
-                     .Row = 33 + i - 7
-                     UpdateCell .ColLetterToNumber("BE"), .Row, .Text
+                     .row = 33 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .row, .Text
                      
-                     .Col = .ColLetterToNumber("BI")
-                     .Row = 33 + i - 7
-                     UpdateCell .ColLetterToNumber("BI"), .Row, .Text
+                     .col = .ColLetterToNumber("BI")
+                     .row = 33 + i - 7
+                     UpdateCell .ColLetterToNumber("BI"), .row, .Text
                      
-                     .Col = .ColLetterToNumber("BE")
-                     .Row = 35 + i - 7
-                     UpdateCell .ColLetterToNumber("BE"), .Row, .Text
+                     .col = .ColLetterToNumber("BE")
+                     .row = 35 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .row, .Text
                      
-                     .Col = .ColLetterToNumber("BI")
-                     .Row = 35 + i - 7
-                     UpdateCell .ColLetterToNumber("BI"), .Row, .Text
+                     .col = .ColLetterToNumber("BI")
+                     .row = 35 + i - 7
+                     UpdateCell .ColLetterToNumber("BI"), .row, .Text
                      
-                     .Col = .ColLetterToNumber("BE")
-                     .Row = 37 + i - 7
-                     UpdateCell .ColLetterToNumber("BE"), .Row, IIf(Trim(.value) = "", 0, .value)
+                     .col = .ColLetterToNumber("BE")
+                     .row = 37 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .row, IIf(Trim(.value) = "", 0, .value)
                      
-                     .Row = 39 + i - 7
-                     UpdateCell .ColLetterToNumber("BE"), .Row, IIf(Trim(.value) = "", 0, .value)
+                     .row = 39 + i - 7
+                     UpdateCell .ColLetterToNumber("BE"), .row, IIf(Trim(.value) = "", 0, .value)
                      
                      
-                     .Col = .ColLetterToNumber("BD")
-                    .Row = 43 + i - 7
-                     UpdateCell .ColLetterToNumber("BD"), .Row, .Text
+                     .col = .ColLetterToNumber("BD")
+                    .row = 43 + i - 7
+                     UpdateCell .ColLetterToNumber("BD"), .row, .Text
                      
-                    .Col = .ColLetterToNumber("BG")
-                    .Row = 45 + i - 7
-                    UpdateCell .ColLetterToNumber("BG"), .Row, .Text
-                    .Col = .ColLetterToNumber("BG")
-                    .Row = 46 + i - 7
-                    UpdateCell .ColLetterToNumber("BG"), .Row, .Text
+                    .col = .ColLetterToNumber("BG")
+                    .row = 45 + i - 7
+                    UpdateCell .ColLetterToNumber("BG"), .row, .Text
+                    .col = .ColLetterToNumber("BG")
+                    .row = 46 + i - 7
+                    UpdateCell .ColLetterToNumber("BG"), .row, .Text
                     
-                     .Col = .ColLetterToNumber("BF")
-                     .Row = 17 + i - 7
-                    UpdateCell .ColLetterToNumber("BF"), .Row, IIf(Trim(.value) = "", 0, .value)
-                      .Col = .ColLetterToNumber("BG")
-                     .Row = 17 + i - 7
-                    UpdateCell .ColLetterToNumber("BG"), .Row, IIf(Trim(.value) = "", 0, .value)
-                      .Col = .ColLetterToNumber("BH")
-                     .Row = 17 + i - 7
-                    UpdateCell .ColLetterToNumber("BH"), .Row, IIf(Trim(.value) = "", 0, .value)
+                     .col = .ColLetterToNumber("BF")
+                     .row = 17 + i - 7
+                    UpdateCell .ColLetterToNumber("BF"), .row, IIf(Trim(.value) = "", 0, .value)
+                      .col = .ColLetterToNumber("BG")
+                     .row = 17 + i - 7
+                    UpdateCell .ColLetterToNumber("BG"), .row, IIf(Trim(.value) = "", 0, .value)
+                      .col = .ColLetterToNumber("BH")
+                     .row = 17 + i - 7
+                    UpdateCell .ColLetterToNumber("BH"), .row, IIf(Trim(.value) = "", 0, .value)
                     
                     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Then
-                                         .Col = .ColLetterToNumber("BF")
-                     .Row = 18 + i - 7
-                    UpdateCell .ColLetterToNumber("BF"), .Row, IIf(Trim(.value) = "", 0, .value)
-                      .Col = .ColLetterToNumber("BG")
-                     .Row = 18 + i - 7
-                    UpdateCell .ColLetterToNumber("BG"), .Row, IIf(Trim(.value) = "", 0, .value)
-                      .Col = .ColLetterToNumber("BH")
-                     .Row = 18 + i - 7
-                    UpdateCell .ColLetterToNumber("BH"), .Row, IIf(Trim(.value) = "", 0, .value)
+                                         .col = .ColLetterToNumber("BF")
+                     .row = 18 + i - 7
+                    UpdateCell .ColLetterToNumber("BF"), .row, IIf(Trim(.value) = "", 0, .value)
+                      .col = .ColLetterToNumber("BG")
+                     .row = 18 + i - 7
+                    UpdateCell .ColLetterToNumber("BG"), .row, IIf(Trim(.value) = "", 0, .value)
+                      .col = .ColLetterToNumber("BH")
+                     .row = 18 + i - 7
+                    UpdateCell .ColLetterToNumber("BH"), .row, IIf(Trim(.value) = "", 0, .value)
                     End If
                 End With
     Exit Sub
@@ -13815,15 +13815,15 @@ Private Sub TonghopKHBS()
                 Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 20)
                 ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                 fpSpread1.sheet = fpSpread1.SheetCount - 1
-                fpSpread1.Col = lCol_temp
-                fpSpread1.Row = lRow_temp
+                fpSpread1.col = lCol_temp
+                fpSpread1.row = lRow_temp
                 fpSpread1.Formula = ""
                 
                 ' so tien nop cham
                 Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 19)
                 ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
-                fpSpread1.Col = lCol_temp
-                fpSpread1.Row = lRow_temp
+                fpSpread1.col = lCol_temp
+                fpSpread1.row = lRow_temp
                 fpSpread1.Formula = ""
          Else
                 ' ca to khai sua theo TT156
@@ -13835,31 +13835,31 @@ Private Sub TonghopKHBS()
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                     fpSpread1.sheet = fpSpread1.SheetCount - 1
-                    fpSpread1.Col = lCol_temp
-                    fpSpread1.Row = lRow_temp
+                    fpSpread1.col = lCol_temp
+                    fpSpread1.row = lRow_temp
                     'temp = fpSpread1.Formula
                     fpSpread1.Formula = ""
                     
                     ' so tien nop cham
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 17)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
-                    fpSpread1.Col = lCol_temp
-                    fpSpread1.Row = lRow_temp
+                    fpSpread1.col = lCol_temp
+                    fpSpread1.row = lRow_temp
                     fpSpread1.Formula = ""
                 
                 Else
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                     fpSpread1.sheet = fpSpread1.SheetCount - 1
-                    fpSpread1.Col = lCol_temp
-                    fpSpread1.Row = lRow_temp
+                    fpSpread1.col = lCol_temp
+                    fpSpread1.row = lRow_temp
                     fpSpread1.Formula = ""
                     
                     
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
-                    fpSpread1.Col = lCol_temp
-                    fpSpread1.Row = lRow_temp
+                    fpSpread1.col = lCol_temp
+                    fpSpread1.row = lRow_temp
                     fpSpread1.Formula = ""
                 End If
         End If
@@ -13985,13 +13985,13 @@ Private Sub TonghopKHBS()
         tempCurrSheet = mCurrentSheet
         mCurrentSheet = fpSpread1.SheetCount - 1
         ' xoa dong cu truoc khi them dong
-        fpSpread1.Row = 9
-        fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
+        fpSpread1.row = 9
+        fpSpread1.col = fpSpread1.ColLetterToNumber("B")
 '        fpSpread1.EventEnabled(EventAllEvents) = False
         fpSpread1.sheet = mCurrentSheet
         Do
             countDel = countDel + 1
-            fpSpread1.Row = fpSpread1.Row + 1
+            fpSpread1.row = fpSpread1.row + 1
         Loop Until UCase(fpSpread1.Text) = "AA"
         
         fpSpread1.EventEnabled(EventAllEvents) = False
@@ -14050,13 +14050,13 @@ Private Sub TonghopKHBS()
         tempCurrSheet = mCurrentSheet
         mCurrentSheet = fpSpread1.SheetCount - 1
         ' xoa dong cu truoc khi them dong
-        fpSpread1.Row = 13 + numRowI
-        fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
+        fpSpread1.row = 13 + numRowI
+        fpSpread1.col = fpSpread1.ColLetterToNumber("B")
 '        fpSpread1.EventEnabled(EventAllEvents) = False
         fpSpread1.sheet = mCurrentSheet
         Do
             countDel = countDel + 1
-            fpSpread1.Row = fpSpread1.Row + 1
+            fpSpread1.row = fpSpread1.row + 1
         Loop Until UCase(fpSpread1.Text) = "BB"
         
         fpSpread1.EventEnabled(EventAllEvents) = False
@@ -14122,8 +14122,8 @@ Private Sub TonghopKHBS()
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 20)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                     fpSpread1.sheet = fpSpread1.SheetCount - 1
-                    fpSpread1.Col = lCol_temp
-                    fpSpread1.Row = lRow_temp
+                    fpSpread1.col = lCol_temp
+                    fpSpread1.row = lRow_temp
     
                     fpSpread1.Formula = "BD5"
                     fpSpread1.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
@@ -14135,8 +14135,8 @@ Private Sub TonghopKHBS()
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 19)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                     fpSpread1.sheet = fpSpread1.SheetCount - 1
-                    fpSpread1.Col = lCol_temp
-                    fpSpread1.Row = lRow_temp
+                    fpSpread1.col = lCol_temp
+                    fpSpread1.row = lRow_temp
                     temp = lRow_temp - 18
                     ' kiem tra neu set lai cong thuc
                     ' sua ct tinh
@@ -14153,8 +14153,8 @@ Private Sub TonghopKHBS()
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                     fpSpread1.sheet = fpSpread1.SheetCount - 1
-                    fpSpread1.Col = lCol_temp
-                    fpSpread1.Row = lRow_temp
+                    fpSpread1.col = lCol_temp
+                    fpSpread1.row = lRow_temp
                     fpSpread1.Formula = "BD5"
                     fpSpread1.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
                                     (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18), "Value")
@@ -14162,8 +14162,8 @@ Private Sub TonghopKHBS()
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 17)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                     fpSpread1.sheet = fpSpread1.SheetCount - 1
-                    fpSpread1.Col = lCol_temp
-                    fpSpread1.Row = lRow_temp
+                    fpSpread1.col = lCol_temp
+                    fpSpread1.row = lRow_temp
                     temp = lRow_temp - 21
                     fpSpread1.Formula = ""
                     fpSpread1.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
@@ -14177,8 +14177,8 @@ Private Sub TonghopKHBS()
                         Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
-                        fpSpread1.Col = lCol_temp
-                        fpSpread1.Row = lRow_temp
+                        fpSpread1.col = lCol_temp
+                        fpSpread1.row = lRow_temp
                         fpSpread1.Formula = "BD5"
                         fpSpread1.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
                                         (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18), "Value")
@@ -14188,8 +14188,8 @@ Private Sub TonghopKHBS()
                         Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 17)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
-                        fpSpread1.Col = lCol_temp
-                        fpSpread1.Row = lRow_temp
+                        fpSpread1.col = lCol_temp
+                        fpSpread1.row = lRow_temp
                         temp = lRow_temp - 21
                         ' kiem tra set lai cong thuc
                         ' sua ct tinh
@@ -14205,8 +14205,8 @@ Private Sub TonghopKHBS()
                         Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
-                        fpSpread1.Col = lCol_temp
-                        fpSpread1.Row = lRow_temp
+                        fpSpread1.col = lCol_temp
+                        fpSpread1.row = lRow_temp
                         fpSpread1.Formula = "BD5"
                         fpSpread1.value = GetAttribute(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell") _
                                         (TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7), "Value")
@@ -14216,8 +14216,8 @@ Private Sub TonghopKHBS()
                         Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
-                        fpSpread1.Col = lCol_temp
-                        fpSpread1.Row = lRow_temp
+                        fpSpread1.col = lCol_temp
+                        fpSpread1.row = lRow_temp
                         temp = lRow_temp - 18
                         ' kiem tra set lai cong thuc
                         ' sua ct tinh
@@ -14237,8 +14237,8 @@ Private Sub TonghopKHBS()
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 20)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                     fpSpread1.sheet = fpSpread1.SheetCount - 1
-                    fpSpread1.Col = lCol_temp
-                    fpSpread1.Row = lRow_temp
+                    fpSpread1.col = lCol_temp
+                    fpSpread1.row = lRow_temp
     
                     fpSpread1.Formula = "BD5"
                     fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
@@ -14247,8 +14247,8 @@ Private Sub TonghopKHBS()
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 19)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                     fpSpread1.sheet = fpSpread1.SheetCount - 1
-                    fpSpread1.Col = lCol_temp
-                    fpSpread1.Row = lRow_temp
+                    fpSpread1.col = lCol_temp
+                    fpSpread1.row = lRow_temp
                     temp = lRow_temp - 18
                     ' kiem tra neu set lai cong thuc
                     ' sua ct tinh
@@ -14264,16 +14264,16 @@ Private Sub TonghopKHBS()
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                     fpSpread1.sheet = fpSpread1.SheetCount - 1
-                    fpSpread1.Col = lCol_temp
-                    fpSpread1.Row = lRow_temp
+                    fpSpread1.col = lCol_temp
+                    fpSpread1.row = lRow_temp
                     fpSpread1.Formula = "BD5"
                     
     
                     Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
                     ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                     fpSpread1.sheet = fpSpread1.SheetCount - 1
-                    fpSpread1.Col = lCol_temp
-                    fpSpread1.Row = lRow_temp
+                    fpSpread1.col = lCol_temp
+                    fpSpread1.row = lRow_temp
                     temp = lRow_temp - 18
                     fpSpread1.Formula = ""
                     
@@ -14285,8 +14285,8 @@ Private Sub TonghopKHBS()
                         Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 18)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
-                        fpSpread1.Col = lCol_temp
-                        fpSpread1.Row = lRow_temp
+                        fpSpread1.col = lCol_temp
+                        fpSpread1.row = lRow_temp
                         fpSpread1.Formula = "BD5"
                         
                         fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
@@ -14294,8 +14294,8 @@ Private Sub TonghopKHBS()
                         Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 17)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
-                        fpSpread1.Col = lCol_temp
-                        fpSpread1.Row = lRow_temp
+                        fpSpread1.col = lCol_temp
+                        fpSpread1.row = lRow_temp
                         temp = lRow_temp - 21
                         ' kiem tra set lai cong thuc
                         ' sua ct tinh
@@ -14309,8 +14309,8 @@ Private Sub TonghopKHBS()
                         Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 7)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
-                        fpSpread1.Col = lCol_temp
-                        fpSpread1.Row = lRow_temp
+                        fpSpread1.col = lCol_temp
+                        fpSpread1.row = lRow_temp
                         fpSpread1.Formula = "BD5"
                         
                         fpSpread1.GetText fpSpread1.ColLetterToNumber("BE"), lRow_temp, vSoNgay
@@ -14318,8 +14318,8 @@ Private Sub TonghopKHBS()
                         Set xmlNodeCell_temp = TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell")(TAX_Utilities_v1.Data(TAX_Utilities_v1.NodeValidity.childNodes.length - 1).getElementsByTagName("Cell").length - 6)
                         ParserCellID fpSpread1, GetAttribute(xmlNodeCell_temp, "CellID"), lCol_temp, lRow_temp
                         fpSpread1.sheet = fpSpread1.SheetCount - 1
-                        fpSpread1.Col = lCol_temp
-                        fpSpread1.Row = lRow_temp
+                        fpSpread1.col = lCol_temp
+                        fpSpread1.row = lRow_temp
                         temp = lRow_temp - 18
                         ' kiem tra set lai cong thuc
                         ' sua ct tinh
@@ -14378,9 +14378,9 @@ End If
 Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
 Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
    fpSpread1.EventEnabled(EventAllEvents) = False
-   fpSpread1.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
-   fpSpread2.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
-   fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+   fpSpread1.row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
+   fpSpread2.row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
+   fpSpread2.col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
    count1 = Conversion.CInt(xmlDocument.getElementsByTagName("count").Item(0).Text)
    
     
@@ -14392,20 +14392,20 @@ Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
         Set xmlSecionNode = TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Section")(0)
         'fpSpread1.Visible = False
         If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
-            currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+            currentRow = xmlSecionNode.childNodes.length + fpSpread1.row
             If (xmlSecionNode.childNodes.length = 1) Then
                 fpSpread1.sheet = mCurrentSheet
-                fpSpread1.GetText colStart, fpSpread1.Row, varData1
-                fpSpread1.GetText colStart + 1, fpSpread1.Row, varData2
+                fpSpread1.GetText colStart, fpSpread1.row, varData1
+                fpSpread1.GetText colStart + 1, fpSpread1.row, varData2
                 If Trim(varData1) = vbNullString And Trim(varData2) = vbNullString Then
-                    fpSpread1.Row = fpSpread1.Row
+                    fpSpread1.row = fpSpread1.row
                 Else
                     InsertNode colStart, currentRow - 1
-                    fpSpread1.Row = currentRow
+                    fpSpread1.row = currentRow
                 End If
             Else
                 InsertNode colStart, currentRow - 1
-                fpSpread1.Row = currentRow
+                fpSpread1.row = currentRow
             End If
         End If
     End If
@@ -14415,10 +14415,10 @@ Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
 Do While count < count1 And count2 < fpSpread2.MaxRows
 DoEvents
 Frame2.Enabled = False
-ProgressBar1.value = fpSpread2.Row
+ProgressBar1.value = fpSpread2.row
 'check next row
     fpSpread1.sheet = mCurrentSheet
-    fpSpread2.Row = fpSpread2.Row + 1
+    fpSpread2.row = fpSpread2.row + 1
     value = fpSpread2.value
     If ((Mid(value, 1, 1) = "T" Or Trim(value) = "" Or Trim(value) = vbNullString)) Then
         count = count + 1
@@ -14427,30 +14427,30 @@ ProgressBar1.value = fpSpread2.Row
     ElseIf count = count1 And value = "" Then
         count = count + 1
     Else
-        InsertNode colStart, fpSpread1.Row
+        InsertNode colStart, fpSpread1.row
         inc = False
         count2 = count2 + 1
     End If
-        fpSpread2.Row = fpSpread2.Row - 1
+        fpSpread2.row = fpSpread2.row - 1
     'insert cell
         For Each xmlNode In xmlNodeListMap
-            fpSpread2.Col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
+            fpSpread2.col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
             value = fpSpread2.value
            If value <> "" Or value <> vbNullString Then
-            fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
+            fpSpread1.col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
     'check type of cell
             If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
                 If fpSpread1.CellType = CellTypeNumber Then
                     fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
                 End If
                 fpSpread1.value = value
-                UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
             ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 12 Then
                 fpSpread1.value = value
-                UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
             ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 2 Then
                 fpSpread1.Text = Left(fpSpread2.Text, IIf(InStr(1, fpSpread2.Text, ".") <> 0, InStr(1, fpSpread2.Text, ".") - 1, Len(fpSpread2.Text)))
-                UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
             ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 1 Then
               If IsDate(fpSpread2.Text) Then
                 Dim arrStr() As String
@@ -14465,7 +14465,7 @@ ProgressBar1.value = fpSpread2.Row
                 
                 fpSpread1.Text = sDate
     
-                UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
              End If
             Else
                 Select Case strfileFont
@@ -14480,7 +14480,7 @@ ProgressBar1.value = fpSpread2.Row
                    Case Else
                     fpSpread1.Text = value
                 End Select
-                UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
             End If
             
           End If
@@ -14489,35 +14489,35 @@ ProgressBar1.value = fpSpread2.Row
         If inc = True Then
                    If themDuLieu Then
                                'have 2 hidden row
-                        fpSpread1.Row = fpSpread1.Row + 5
-                        fpSpread2.Row = fpSpread2.Row + 3
+                        fpSpread1.row = fpSpread1.row + 5
+                        fpSpread2.row = fpSpread2.row + 3
                         Set xmlSecionNode = TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Section")(count)
                         'fpSpread1.Visible = False
                         If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
-                            currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+                            currentRow = xmlSecionNode.childNodes.length + fpSpread1.row
                             If (xmlSecionNode.childNodes.length = 1) Then
                                 fpSpread1.sheet = mCurrentSheet
-                                fpSpread1.GetText colStart, fpSpread1.Row, varData1
-                                fpSpread1.GetText colStart + 1, fpSpread1.Row, varData2
+                                fpSpread1.GetText colStart, fpSpread1.row, varData1
+                                fpSpread1.GetText colStart + 1, fpSpread1.row, varData2
                                 If Trim(varData1) = vbNullString And Trim(varData2) = vbNullString Then
-                                    fpSpread1.Row = fpSpread1.Row
+                                    fpSpread1.row = fpSpread1.row
                                 Else
                                     InsertNode colStart, currentRow - 1
-                                    fpSpread1.Row = currentRow
+                                    fpSpread1.row = currentRow
                                 End If
                             Else
                                 InsertNode colStart, currentRow - 1
-                                fpSpread1.Row = currentRow
+                                fpSpread1.row = currentRow
                             End If
                         End If
                     End If
                     ' Ket thuc truong hop them tiep du lieu
 
         Else
-            fpSpread1.Row = fpSpread1.Row + 1
-            fpSpread2.Row = fpSpread2.Row + 1
+            fpSpread1.row = fpSpread1.row + 1
+            fpSpread2.row = fpSpread2.row + 1
         End If
-            fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+            fpSpread2.col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
             value = fpSpread2.value
     Loop
  ProgressBar1.Visible = False
@@ -14555,8 +14555,8 @@ Private Sub moveDataToKhai08B()
     For Each xmlNodeReset In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
         fpSpread1.sheet = mCurrentSheet
         ParserCellID fpSpread1, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
-        fpSpread1.Col = lCol
-        fpSpread1.Row = lRow
+        fpSpread1.col = lCol
+        fpSpread1.row = lRow
 
         If (lRow < 57 Or lRow > fpSpread1.MaxRows - 4) Then
 
@@ -14606,19 +14606,19 @@ nextClear1:
     Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
     Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
     fpSpread1.EventEnabled(EventAllEvents) = False
-    fpSpread1.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
-    fpSpread2.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
-    fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+    fpSpread1.row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
+    fpSpread2.row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
+    fpSpread2.col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
     count1 = Conversion.CInt(xmlDocument.getElementsByTagName("count").Item(0).Text)
    
     Do While count < count1 And count2 < fpSpread2.MaxRows
         DoEvents
         Frame2.Enabled = False
-        ProgressBar1.value = fpSpread2.Row
+        ProgressBar1.value = fpSpread2.row
         'check next row
         fpSpread1.sheet = mCurrentSheet
         fpSpread2.sheet = mCurrentSheet
-        fpSpread2.Row = fpSpread2.Row + 1
+        fpSpread2.row = fpSpread2.row + 1
         value = fpSpread2.value
     
         If Trim(value) = "" Or Trim(value) = vbNullString Or Trim(value) = "aa" Then
@@ -14628,20 +14628,20 @@ nextClear1:
         ElseIf count = count1 And value = "" Then
             count = count + 1
         Else
-            InsertNode colStart, fpSpread1.Row
+            InsertNode colStart, fpSpread1.row
             inc = False
             count2 = count2 + 1
         End If
 
-        fpSpread2.Row = fpSpread2.Row - 1
+        fpSpread2.row = fpSpread2.row - 1
 
         'insert cell
         For Each xmlNode In xmlNodeListMap
-            fpSpread2.Col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
+            fpSpread2.col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
             value = fpSpread2.value
 
             If value <> "" Or value <> vbNullString Then
-                fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
+                fpSpread1.col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
 
                 'check type of cell
                 If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
@@ -14650,15 +14650,15 @@ nextClear1:
                     End If
 
                     fpSpread1.value = Round(value, 0)
-                    UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                    UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
                 ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 12 Then
                     fpSpread1.value = value
-                    UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                    UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                 ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 2 Then
                     '            fpSpread2.CellType = CellTypeNumber
                     '            fpSpread2.TypeNumberDecPlaces = 0
                     fpSpread1.Text = Left(fpSpread2.Text, IIf(InStr(1, fpSpread2.Text, ".") <> 0, InStr(1, fpSpread2.Text, ".") - 1, Len(fpSpread2.Text)))
-                    UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                    UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
                 ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 1 Then
 
                     If IsDate(fpSpread2.Text) Then
@@ -14679,7 +14679,7 @@ nextClear1:
             
                         fpSpread1.Text = sDate
 
-                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                        UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                     End If
 
                 Else
@@ -14702,7 +14702,7 @@ nextClear1:
                             fpSpread1.Text = value
                     End Select
 
-                    UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                    UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
                 End If
         
             End If
@@ -14712,14 +14712,14 @@ nextClear1:
         'next row
         If inc = True Then
             'have 2 hidden row
-            fpSpread1.Row = fpSpread1.Row + 5
-            fpSpread2.Row = fpSpread2.Row + 3
+            fpSpread1.row = fpSpread1.row + 5
+            fpSpread2.row = fpSpread2.row + 3
         Else
-            fpSpread1.Row = fpSpread1.Row + 1
-            fpSpread2.Row = fpSpread2.Row + 1
+            fpSpread1.row = fpSpread1.row + 1
+            fpSpread2.row = fpSpread2.row + 1
         End If
 
-        fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+        fpSpread2.col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
         value = fpSpread2.value
     Loop
 
@@ -14785,9 +14785,9 @@ End If
 Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
 Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
    fpSpread1.EventEnabled(EventAllEvents) = False
-   fpSpread1.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
-   fpSpread2.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
-   fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+   fpSpread1.row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
+   fpSpread2.row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
+   fpSpread2.col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
    count1 = Conversion.CInt(xmlDocument.getElementsByTagName("count").Item(0).Text)
    
     
@@ -14799,20 +14799,20 @@ Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
         Set xmlSecionNode = TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Section")(0)
         'fpSpread1.Visible = False
         If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
-            currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+            currentRow = xmlSecionNode.childNodes.length + fpSpread1.row
             If (xmlSecionNode.childNodes.length = 1) Then
                 fpSpread1.sheet = mCurrentSheet
-                fpSpread1.GetText colStart, fpSpread1.Row, varData1
-                fpSpread1.GetText colStart + 1, fpSpread1.Row, varData2
+                fpSpread1.GetText colStart, fpSpread1.row, varData1
+                fpSpread1.GetText colStart + 1, fpSpread1.row, varData2
                 If Trim(varData1) = vbNullString And Trim(varData2) = vbNullString Then
-                    fpSpread1.Row = fpSpread1.Row
+                    fpSpread1.row = fpSpread1.row
                 Else
                     InsertNode colStart, currentRow - 1
-                    fpSpread1.Row = currentRow
+                    fpSpread1.row = currentRow
                 End If
             Else
                 InsertNode colStart, currentRow - 1
-                fpSpread1.Row = currentRow
+                fpSpread1.row = currentRow
             End If
         End If
     End If
@@ -14822,10 +14822,10 @@ Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
 Do While count < count1 And count2 < fpSpread2.MaxRows
 DoEvents
 Frame2.Enabled = False
-ProgressBar1.value = fpSpread2.Row
+ProgressBar1.value = fpSpread2.row
 'check next row
     fpSpread1.sheet = mCurrentSheet
-    fpSpread2.Row = fpSpread2.Row + 1
+    fpSpread2.row = fpSpread2.row + 1
     value = fpSpread2.value
     If ((Mid(value, 1, 1) = "T" Or Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "01" Or Trim(varMenuId) = "02" Or Trim(varMenuId) = "14" Or Trim(varMenuId) = "05" Or Trim(varMenuId) = "59")) Or ((Trim(value) = "" Or Trim(value) = vbNullString)) Then
         count = count + 1
@@ -14834,30 +14834,30 @@ ProgressBar1.value = fpSpread2.Row
     ElseIf count = count1 And value = "" Then
         count = count + 1
     Else
-        InsertNode colStart, fpSpread1.Row
+        InsertNode colStart, fpSpread1.row
         inc = False
         count2 = count2 + 1
     End If
-        fpSpread2.Row = fpSpread2.Row - 1
+        fpSpread2.row = fpSpread2.row - 1
     'insert cell
         For Each xmlNode In xmlNodeListMap
-            fpSpread2.Col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
+            fpSpread2.col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
             value = fpSpread2.value
            If value <> "" Or value <> vbNullString Then
-            fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
+            fpSpread1.col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
     'check type of cell
             If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
                 If fpSpread1.CellType = CellTypeNumber Then
                     fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
                 End If
                 fpSpread1.value = value
-                UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
             ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 12 Then
                 fpSpread1.value = value
-                UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
             ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 2 Then
                 fpSpread1.Text = Left(fpSpread2.Text, IIf(InStr(1, fpSpread2.Text, ".") <> 0, InStr(1, fpSpread2.Text, ".") - 1, Len(fpSpread2.Text)))
-                UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.value
             ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 1 Then
               If IsDate(fpSpread2.Text) Then
                 Dim arrStr() As String
@@ -14872,7 +14872,7 @@ ProgressBar1.value = fpSpread2.Row
                 
                 fpSpread1.Text = sDate
     
-                UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
              End If
             Else
                 Select Case strfileFont
@@ -14887,7 +14887,7 @@ ProgressBar1.value = fpSpread2.Row
                    Case Else
                     fpSpread1.Text = value
                 End Select
-                UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                UpdateCell fpSpread1.col, fpSpread1.row, fpSpread1.Text
             End If
             
           End If
@@ -14898,38 +14898,38 @@ ProgressBar1.value = fpSpread2.Row
                 
                 Dim temp As Variant
                 Dim temp1 As Double
-                fpSpread1.Row = fpSpread1.Row + 9
-                fpSpread2.Row = fpSpread2.Row + 3
+                fpSpread1.row = fpSpread1.row + 9
+                fpSpread2.row = fpSpread2.row + 3
 '            End If
             'test
               If themDuLieu Then
                 Set xmlSecionNode = TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Section")(count)
                 'fpSpread1.Visible = False
                 If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
-                    currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+                    currentRow = xmlSecionNode.childNodes.length + fpSpread1.row
                     If (xmlSecionNode.childNodes.length = 1) Then
                         fpSpread1.sheet = mCurrentSheet
-                        fpSpread1.GetText colStart, fpSpread1.Row, varData1
-                        fpSpread1.GetText colStart + 1, fpSpread1.Row, varData2
+                        fpSpread1.GetText colStart, fpSpread1.row, varData1
+                        fpSpread1.GetText colStart + 1, fpSpread1.row, varData2
                         If Trim(varData1) = vbNullString And Trim(varData2) = vbNullString Then
-                            fpSpread1.Row = fpSpread1.Row
+                            fpSpread1.row = fpSpread1.row
                         Else
                             InsertNode colStart, currentRow - 1
-                            fpSpread1.Row = currentRow
+                            fpSpread1.row = currentRow
                         End If
                     Else
                         InsertNode colStart, currentRow - 1
-                        fpSpread1.Row = currentRow
+                        fpSpread1.row = currentRow
                     End If
                 End If
             End If
             
             ' end test
         Else
-            fpSpread1.Row = fpSpread1.Row + 1
-            fpSpread2.Row = fpSpread2.Row + 1
+            fpSpread1.row = fpSpread1.row + 1
+            fpSpread2.row = fpSpread2.row + 1
         End If
-            fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+            fpSpread2.col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
             value = fpSpread2.value
     Loop
  ProgressBar1.Visible = False
@@ -14938,9 +14938,9 @@ ProgressBar1.value = fpSpread2.Row
  If Not objTaxBusiness Is Nothing Then objTaxBusiness.FinishImport
  ' Group cac mat hang thanh nhom
  If fpSpread1.ActiveSheet = 2 Then
-    fpSpread1.Col = fpSpread1.ColLetterToNumber("L")
-    fpSpread1.Row = 37
-    fpSpread1.SetActiveCell fpSpread1.Col, fpSpread1.Row
+    fpSpread1.col = fpSpread1.ColLetterToNumber("L")
+    fpSpread1.row = 37
+    fpSpread1.SetActiveCell fpSpread1.col, fpSpread1.row
     fpSpread1.SetFocus
     fpSpread1_LeaveCell fpSpread1.ColLetterToNumber("L"), 37, fpSpread1.ColLetterToNumber("N"), 37, True
  End If
@@ -14966,7 +14966,7 @@ Public Function delNullRowOn05(sheet As Long)
     Dim xmlNodeSec As MSXML.IXMLDOMNode
     Dim xmlNodeRow As MSXML.IXMLDOMNode
     Dim xmlNodeCell As MSXML.IXMLDOMNode
-    Dim numSec, Row, row1, celllg, hasVl As Long
+    Dim numSec, row, row1, celllg, hasVl As Long
     Dim sumRowDel, countDel As Long
     Dim strCol As String
     Dim colArr() As String
@@ -14999,12 +14999,12 @@ Public Function delNullRowOn05(sheet As Long)
         End If
         With fpSpread1
             .EventEnabled(EventAllEvents) = False
-            .Col = .ColLetterToNumber("B")
+            .col = .ColLetterToNumber("B")
             'set row to start loop
             i = CLng(Mid(cellID, InStr(1, cellID, "_") + 1, Len(cellID)))
             'set rowStart de dung so sanh
             rowStart = i + 1
-            .Row = i + 1
+            .row = i + 1
             Do
                 If .Text = "aa" Then
                     Exit Do
@@ -15012,7 +15012,7 @@ Public Function delNullRowOn05(sheet As Long)
                 
                 hasVl = 0
                 For j = 0 To UBound(colArr)
-                    .Col = .ColLetterToNumber(colArr(j))
+                    .col = .ColLetterToNumber(colArr(j))
                     value = .Text
                     If (Trim(value) <> vbNullString And Trim(value) <> "0") Then
                         hasVl = hasVl + 1
@@ -15023,24 +15023,24 @@ Public Function delNullRowOn05(sheet As Long)
                 If hasVl = 0 Then
                         fpSpread1.ActiveSheet = sheet + 1
 '                        DeleteNode sheet + 1, .ColLetterToNumber(colArr(0)), .Row, True
-                        .GetText .ColLetterToNumber("B"), .Row + 1, varTemp
+                        .GetText .ColLetterToNumber("B"), .row + 1, varTemp
                         'kiem tra neu tren sheet neu chi co 1 dong thi khong duoc xoa
                         If Trim(varTemp) = "aa" And i = rowStart Then
                             Exit Do
                         End If
-                        DeleteRow sheet + 1, .Row, 1
+                        DeleteRow sheet + 1, .row, 1
                 Else
                         i = i + 1
-                        .Row = i
+                        .row = i
                 End If
-                    .Col = .ColLetterToNumber("B")
+                    .col = .ColLetterToNumber("B")
             Loop Until .Text = "aa"
             
             i = CLng(Mid(cellID, InStr(1, cellID, "_") + 1, Len(cellID)))
-            .Row = i
+            .row = i
             
             For j = 0 To UBound(colArr)
-                .Col = .ColLetterToNumber(colArr(j))
+                .col = .ColLetterToNumber(colArr(j))
                 .CellNote = ""
                 .BackColor = vbWhite
             Next
@@ -15108,7 +15108,7 @@ End Function
 
 Public Function delNullRowOn01(sheet As Long)
     On Error GoTo ErrorHandle
-    Dim Row, row1, celllg, hasVl As Long
+    Dim row, row1, celllg, hasVl As Long
     Dim sumRowDel, countDel As Long
     Dim strCol As String
     Dim colArr() As String
@@ -15140,16 +15140,16 @@ Public Function delNullRowOn01(sheet As Long)
         End If
         With fpSpread1
             .EventEnabled(EventAllEvents) = False
-            .Col = .ColLetterToNumber("B")
+            .col = .ColLetterToNumber("B")
             'set row to start loop
             i = 8
             'set rowStart de dung so sanh
             rowStart = i
-            .Row = i
+            .row = i
             Do
                 hasVl = 0
                 For j = 0 To UBound(colArr)
-                    .Col = .ColLetterToNumber(colArr(j))
+                    .col = .ColLetterToNumber(colArr(j))
                     value = .Text
                     If (Trim(value) <> vbNullString And Trim(value) <> "0") Then
                         hasVl = hasVl + 1
@@ -15160,7 +15160,7 @@ Public Function delNullRowOn01(sheet As Long)
                 If hasVl = 0 Then
                         fpSpread1.ActiveSheet = sheet + 1
 '                        DeleteNode sheet + 1, .ColLetterToNumber(colArr(0)), .Row, True
-                        .GetText .ColLetterToNumber("B"), .Row + 1, varTemp
+                        .GetText .ColLetterToNumber("B"), .row + 1, varTemp
                         'kiem tra neu tren sheet neu chi co 1 dong thi khong duoc xoa
                         If (Trim(varTemp) = "aa" Or Trim(varTemp) = "bb" Or Trim(varTemp) = "cc" Or Trim(varTemp) = "dd" Or Trim(varTemp) = "ee") And i = rowStart Then
                             If Trim(varTemp) = "ee" Then
@@ -15169,22 +15169,22 @@ Public Function delNullRowOn01(sheet As Long)
                                 i = i + 5
                             End If
                             rowStart = i
-                            .Row = i
+                            .row = i
                         Else
-                            DeleteNode sheet + 1, .ColLetterToNumber("C"), .Row, True
-                            .Row = i
+                            DeleteNode sheet + 1, .ColLetterToNumber("C"), .row, True
+                            .row = i
                         End If
                         
                 Else
                         i = i + 1
-                        .Row = i
+                        .row = i
                 End If
                 
-                .Col = .ColLetterToNumber("B")
+                .col = .ColLetterToNumber("B")
                 varTemp = .Text
                 If (Trim(varTemp) = "aa" Or Trim(varTemp) = "bb" Or Trim(varTemp) = "cc" Or Trim(varTemp) = "dd") Then
                         i = i + 4
-                        .Row = i
+                        .row = i
                         rowStart = i
                 End If
             Loop Until .Text = "ee"
@@ -15209,7 +15209,7 @@ Public Function delNullRowOn06(sheet As Long)
     Dim xmlNodeSec As MSXML.IXMLDOMNode
     Dim xmlNodeRow As MSXML.IXMLDOMNode
     Dim xmlNodeCell As MSXML.IXMLDOMNode
-    Dim numSec, Row, row1, celllg, hasVl As Long
+    Dim numSec, row, row1, celllg, hasVl As Long
     Dim sumRowDel, countDel As Long
     Dim strCol As String
     Dim colArr() As String
@@ -15236,12 +15236,12 @@ Public Function delNullRowOn06(sheet As Long)
         End If
         With fpSpread1
             .EventEnabled(EventAllEvents) = False
-            .Col = .ColLetterToNumber("B")
+            .col = .ColLetterToNumber("B")
             'set row to start loop
             i = CLng(Mid(cellID, InStr(1, cellID, "_") + 1, Len(cellID)))
             'set rowStart de dung so sanh
             rowStart = i + 1
-            .Row = i + 1
+            .row = i + 1
             Do
                 If .Text = "aa" Then
                     Exit Do
@@ -15249,7 +15249,7 @@ Public Function delNullRowOn06(sheet As Long)
                 
                 hasVl = 0
                 For j = 0 To UBound(colArr)
-                    .Col = .ColLetterToNumber(colArr(j))
+                    .col = .ColLetterToNumber(colArr(j))
                     value = .Text
                     If (Trim(value) <> vbNullString And Trim(value) <> "0") Then
                         hasVl = hasVl + 1
@@ -15260,24 +15260,24 @@ Public Function delNullRowOn06(sheet As Long)
                 If hasVl = 0 Then
                         fpSpread1.ActiveSheet = sheet + 1
 '                        DeleteNode sheet + 1, .ColLetterToNumber(colArr(0)), .Row, True
-                        .GetText .ColLetterToNumber("B"), .Row + 1, varTemp
+                        .GetText .ColLetterToNumber("B"), .row + 1, varTemp
                         'kiem tra neu tren sheet neu chi co 1 dong thi khong duoc xoa
                         If Trim(varTemp) = "aa" And i = rowStart Then
                             Exit Do
                         End If
-                        DeleteRow sheet + 1, .Row, 1
+                        DeleteRow sheet + 1, .row, 1
                 Else
                         i = i + 1
-                        .Row = i
+                        .row = i
                 End If
-                    .Col = .ColLetterToNumber("B")
+                    .col = .ColLetterToNumber("B")
             Loop Until .Text = "aa"
             
             i = CLng(Mid(cellID, InStr(1, cellID, "_") + 1, Len(cellID)))
-            .Row = i
+            .row = i
             
             For j = 0 To UBound(colArr)
-                .Col = .ColLetterToNumber(colArr(j))
+                .col = .ColLetterToNumber(colArr(j))
                 .CellNote = ""
                 .BackColor = vbWhite
             Next
@@ -15995,7 +15995,7 @@ Public Sub moveDataNKH()
         rowStartSpread2 = 14
     End If
     
-    fpSpread1.Row = rowStartSpread1
+    fpSpread1.row = rowStartSpread1
     
     Dim lrowCount As Long
     Dim varTemp, varTemp1, varTemp2  As Variant
@@ -16136,7 +16136,7 @@ Public Sub moveDataNKH()
     If themDuLieu Then
 
         If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
-                currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+                currentRow = xmlSecionNode.childNodes.length + fpSpread1.row
         End If
     End If
 
@@ -16188,11 +16188,11 @@ Public Sub moveDataNKH()
 
         If strfileFont <> "UNICODE" Then
             If fpSpread1.ActiveSheet = 2 Then
-                fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
-                fpSpread1.Row = rowStartSpread1
+                fpSpread1.col = fpSpread1.ColLetterToNumber("B")
+                fpSpread1.row = rowStartSpread1
 
                 Do
-                    fpSpread1.Col = fpSpread1.ColLetterToNumber("D")
+                    fpSpread1.col = fpSpread1.ColLetterToNumber("D")
 
                     Select Case strfileFont
 
@@ -16212,18 +16212,18 @@ Public Sub moveDataNKH()
                             fpSpread1.Text = fpSpread1.Text
                     End Select
 
-                    UpdateCell fpSpread1.ColLetterToNumber("D"), fpSpread1.Row, fpSpread1.Text
+                    UpdateCell fpSpread1.ColLetterToNumber("D"), fpSpread1.row, fpSpread1.Text
 
-                    fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
-                    fpSpread1.Row = fpSpread1.Row + 1
+                    fpSpread1.col = fpSpread1.ColLetterToNumber("B")
+                    fpSpread1.row = fpSpread1.row + 1
                 Loop While fpSpread1.Text = "aa"
 
             ElseIf fpSpread1.ActiveSheet = 3 Then
-                fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
-                fpSpread1.Row = rowStartSpread1
+                fpSpread1.col = fpSpread1.ColLetterToNumber("B")
+                fpSpread1.row = rowStartSpread1
 
                 Do
-                    fpSpread1.Col = fpSpread1.ColLetterToNumber("C")
+                    fpSpread1.col = fpSpread1.ColLetterToNumber("C")
 
                     Select Case strfileFont
 
@@ -16243,9 +16243,9 @@ Public Sub moveDataNKH()
                             fpSpread1.Text = fpSpread1.Text
                     End Select
 
-                    UpdateCell fpSpread1.ColLetterToNumber("C"), fpSpread1.Row, fpSpread1.Text
-                    fpSpread1.Col = fpSpread1.ColLetterToNumber("B")
-                    fpSpread1.Row = fpSpread1.Row + 1
+                    UpdateCell fpSpread1.ColLetterToNumber("C"), fpSpread1.row, fpSpread1.Text
+                    fpSpread1.col = fpSpread1.ColLetterToNumber("B")
+                    fpSpread1.row = fpSpread1.row + 1
 
                 Loop While fpSpread1.Text = "aa"
 
@@ -16319,25 +16319,25 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
        
 
         '        3. copy du lieu Text tu spread2 sang spread1
-        fpSpread2.Row = rowStartSpread2
+        fpSpread2.row = rowStartSpread2
           If isFirstRow = False Then
             rowStartSpread1 = rowStartSpread1 + 1
         End If
         
-        Do While fpSpread2.Row < lrowCount + 5
+        Do While fpSpread2.row < lrowCount + 5
             DoEvents
             ProgressBar1.value = a
             
-            fpSpread2.Row = rowStartSpread2
+            fpSpread2.row = rowStartSpread2
             
-            .Row = rowStartSpread1
+            .row = rowStartSpread1
             .RowHeight(-2) = 14.5
             
 
-            .Col = .ColLetterToNumber("D")
+            .col = .ColLetterToNumber("D")
             .Text = fparray(a, 0)
 
-            .Col = .ColLetterToNumber("E")
+            .col = .ColLetterToNumber("E")
             ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
             If Not IsNull(fparray(a, 1)) Then
                 .Text = Left(fparray(a, 1), IIf(InStr(1, fparray(a, 1), ".") <> 0, InStr(1, fparray(a, 1), ".") - 1, Len(fparray(a, 1))))  'Replace(fparray(a, 1), ".", "")
@@ -16345,13 +16345,13 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
                 .Text = fparray(a, 1)
             End If
             
-            .Col = .ColLetterToNumber("F")
+            .col = .ColLetterToNumber("F")
             .Text = fparray(a, 2)
 
-            .Col = .ColLetterToNumber("G")
+            .col = .ColLetterToNumber("G")
             .Text = fparray(a, 3)
 
-            .Col = .ColLetterToNumber("H")
+            .col = .ColLetterToNumber("H")
             ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
             If Not IsNull(fparray(a, 4)) Then
                 .Text = Left(fparray(a, 4), IIf(InStr(1, fparray(a, 4), ".") <> 0, InStr(1, fparray(a, 4), ".") - 1, Len(fparray(a, 4)))) 'Replace(fparray(a, 4), ".", "")
@@ -16359,56 +16359,56 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
                 .Text = fparray(a, 4)
             End If
 
-            .Col = .ColLetterToNumber("I")
+            .col = .ColLetterToNumber("I")
             .Text = fparray(a, 5)
 
-            .Col = .ColLetterToNumber("J")
+            .col = .ColLetterToNumber("J")
             .Text = fparray(a, 6)
             
-            .Col = .ColLetterToNumber("K")
+            .col = .ColLetterToNumber("K")
             .Text = fparray(a, 7)
             
-            .Col = .ColLetterToNumber("L")
+            .col = .ColLetterToNumber("L")
             .Text = fparray(a, 8)
            
-           .Col = .ColLetterToNumber("M")
+           .col = .ColLetterToNumber("M")
             .Text = fparray(a, 9)
             
             
-            .Col = .ColLetterToNumber("N")
+            .col = .ColLetterToNumber("N")
             .Text = fparray(a, 10)
 
-            .Col = .ColLetterToNumber("O")
+            .col = .ColLetterToNumber("O")
             .Text = fparray(a, 11)
             
-            .Col = .ColLetterToNumber("P")
+            .col = .ColLetterToNumber("P")
             .Text = fparray(a, 12)
             
-            .Col = .ColLetterToNumber("Q")
+            .col = .ColLetterToNumber("Q")
             .Text = fparray(a, 13)
             
-            .Col = .ColLetterToNumber("R")
+            .col = .ColLetterToNumber("R")
             .Text = fparray(a, 14)
             
-            .Col = .ColLetterToNumber("S")
+            .col = .ColLetterToNumber("S")
             .Text = fparray(a, 15)
             
-            .Col = .ColLetterToNumber("T")
+            .col = .ColLetterToNumber("T")
             .Text = fparray(a, 16)
             
-            .Col = .ColLetterToNumber("U")
+            .col = .ColLetterToNumber("U")
             .Text = fparray(a, 17)
             
-            .Col = .ColLetterToNumber("V")
+            .col = .ColLetterToNumber("V")
             .Text = fparray(a, 18)
             
-            .Col = .ColLetterToNumber("W")
+            .col = .ColLetterToNumber("W")
             .Text = fparray(a, 19)
             
-            .Col = .ColLetterToNumber("X")
+            .col = .ColLetterToNumber("X")
             .Text = fparray(a, 20)
             
-            .Col = .ColLetterToNumber("Y")
+            .col = .ColLetterToNumber("Y")
             .Text = fparray(a, 21)
             
             
@@ -16423,16 +16423,16 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
             DoEvents
             ProgressBar1.value = a
             
-            fpSpread2.Row = rowStartSpread2
+            fpSpread2.row = rowStartSpread2
             
-            .Row = rowStartSpread1
+            .row = rowStartSpread1
             .RowHeight(-2) = 14.5
             
 
-            .Col = .ColLetterToNumber("D")
+            .col = .ColLetterToNumber("D")
             .Text = fparray(a, 0)
 
-            .Col = .ColLetterToNumber("E")
+            .col = .ColLetterToNumber("E")
             ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
             If Not IsNull(fparray(a, 1)) Then
                 .Text = Left(fparray(a, 1), IIf(InStr(1, fparray(a, 1), ".") <> 0, InStr(1, fparray(a, 1), ".") - 1, Len(fparray(a, 1))))  'Replace(fparray(a, 1), ".", "")
@@ -16440,13 +16440,13 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
                 .Text = fparray(a, 1)
             End If
             
-            .Col = .ColLetterToNumber("F")
+            .col = .ColLetterToNumber("F")
             .Text = fparray(a, 2)
 
-            .Col = .ColLetterToNumber("G")
+            .col = .ColLetterToNumber("G")
             .Text = fparray(a, 3)
 
-            .Col = .ColLetterToNumber("H")
+            .col = .ColLetterToNumber("H")
             ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
             If Not IsNull(fparray(a, 4)) Then
                 .Text = Left(fparray(a, 4), IIf(InStr(1, fparray(a, 4), ".") <> 0, InStr(1, fparray(a, 4), ".") - 1, Len(fparray(a, 4)))) 'Replace(fparray(a, 4), ".", "")
@@ -16455,56 +16455,56 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
             End If
 
                 
-            .Col = .ColLetterToNumber("I")
+            .col = .ColLetterToNumber("I")
             .Text = fparray(a, 5)
 
-            .Col = .ColLetterToNumber("J")
+            .col = .ColLetterToNumber("J")
             .Text = fparray(a, 6)
             
-            .Col = .ColLetterToNumber("K")
+            .col = .ColLetterToNumber("K")
             .Text = fparray(a, 7)
             
-            .Col = .ColLetterToNumber("L")
+            .col = .ColLetterToNumber("L")
             .Text = fparray(a, 8)
            
-           .Col = .ColLetterToNumber("M")
+           .col = .ColLetterToNumber("M")
             .Text = fparray(a, 9)
             
             
-            .Col = .ColLetterToNumber("N")
+            .col = .ColLetterToNumber("N")
             .Text = fparray(a, 10)
 
-            .Col = .ColLetterToNumber("O")
+            .col = .ColLetterToNumber("O")
             .Text = fparray(a, 11)
             
-            .Col = .ColLetterToNumber("P")
+            .col = .ColLetterToNumber("P")
             .Text = fparray(a, 12)
             
-            .Col = .ColLetterToNumber("Q")
+            .col = .ColLetterToNumber("Q")
             .Text = fparray(a, 13)
             
-            .Col = .ColLetterToNumber("R")
+            .col = .ColLetterToNumber("R")
             .Text = fparray(a, 14)
             
-            .Col = .ColLetterToNumber("S")
+            .col = .ColLetterToNumber("S")
             .Text = fparray(a, 15)
             
-            .Col = .ColLetterToNumber("T")
+            .col = .ColLetterToNumber("T")
             .Text = fparray(a, 16)
             
-            .Col = .ColLetterToNumber("U")
+            .col = .ColLetterToNumber("U")
             .Text = fparray(a, 17)
             
-            .Col = .ColLetterToNumber("V")
+            .col = .ColLetterToNumber("V")
             .Text = fparray(a, 18)
             
-            .Col = .ColLetterToNumber("W")
+            .col = .ColLetterToNumber("W")
             .Text = fparray(a, 19)
             
-            .Col = .ColLetterToNumber("X")
+            .col = .ColLetterToNumber("X")
             .Text = fparray(a, 20)
             
-            .Col = .ColLetterToNumber("Y")
+            .col = .ColLetterToNumber("Y")
             .Text = fparray(a, 21)
 
             a = a + 1
@@ -16516,8 +16516,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         ' 4. Set format cho Grid
         
         'format chi tieu [7],[D]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("D")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("D")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("D")
         .BlockMode = True
@@ -16525,8 +16525,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         .BlockMode = False
         
         'format chi tieu [8],[E]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("E")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("E")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("E")
         .BlockMode = True
@@ -16534,8 +16534,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         .BlockMode = False
         
         'format chi tieu [9],[F]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("F")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("F")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("F")
         .BlockMode = True
@@ -16543,8 +16543,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         .BlockMode = False
         
         'format chi tieu [10],[H]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("H")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("H")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("H")
         .BlockMode = True
@@ -16552,8 +16552,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         .BlockMode = False
         
         'format chi tieu [11],[G]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("G")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("G")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("G")
         .BlockMode = True
@@ -16561,8 +16561,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         .BlockMode = False
         
         'format chi tieu [13],[K]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("K")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("K")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("K")
         .BlockMode = True
@@ -16571,8 +16571,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         
         
         'format chi tieu [15],[N]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("N")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("N")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("N")
         .BlockMode = True
@@ -16580,8 +16580,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         .BlockMode = False
         
         'format chi tieu [16],[O]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("O")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("O")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("O")
         .BlockMode = True
@@ -16589,8 +16589,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         .BlockMode = False
         
         'format chi tieu [21],[X]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("X")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("X")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("X")
         .BlockMode = True
@@ -16600,8 +16600,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         
         
         'format chi tieu [22],[Y]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("Y")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("Y")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("Y")
         .TypeHAlign = TypeHAlignCenter
@@ -16610,8 +16610,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         .BlockMode = False
         
         'format chi tieu [12],[J]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("J")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("J")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("J")
         .BlockMode = True
@@ -16620,8 +16620,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
 
 
         'format chi tieu ma quoc tich [I]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("I")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("I")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("I")
         .BlockMode = True
@@ -16629,8 +16629,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         .BlockMode = False
         
         'format chi tieu [14],[M]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("M")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("M")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("M")
         .BlockMode = True
@@ -16639,8 +16639,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         
         
         'format chi tieu ma quan he [L]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("L")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("L")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("L")
         .BlockMode = True
@@ -16648,8 +16648,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         .BlockMode = False
         
         'format chi tieu [14],[M]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("Q")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("Q")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("Q")
         .BlockMode = True
@@ -16658,8 +16658,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         
         
         'format chi tieu ma quan he [L]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("P")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("P")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("P")
         .BlockMode = True
@@ -16668,8 +16668,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         
         
         'format chi tieu [14],[M]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("R")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("R")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("R")
         .BlockMode = True
@@ -16678,8 +16678,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         
         
         'format chi tieu ma quan he [L]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("S")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("S")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("S")
         .BlockMode = True
@@ -16688,8 +16688,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         
         
         'format chi tieu [14],[M]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("T")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("T")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("T")
         .BlockMode = True
@@ -16698,8 +16698,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         
         
         'format chi tieu ma quan he [L]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("U")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("U")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("U")
         .BlockMode = True
@@ -16707,8 +16707,8 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         .BlockMode = False
         
         'format chi tieu [14],[M]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("V")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("V")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("V")
         .BlockMode = True
@@ -16717,16 +16717,16 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         
         
         'format chi tieu ma quan he [L]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("W")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("W")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("W")
         .BlockMode = True
         .CellType = CellTypeComboBox
         .BlockMode = False
 
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("C")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("C")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("Y")
         .BlockMode = True
@@ -16813,27 +16813,27 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
        
 
         '        3. copy du lieu Text tu spread2 sang spread1
-        fpSpread2.Row = rowStartSpread2
+        fpSpread2.row = rowStartSpread2
           If isFirstRow = False Then
             rowStartSpread1 = rowStartSpread1 + 1
         End If
         
         temp = rowStartSpread2
         
-        Do While fpSpread2.Row < lrowCount + temp - 1
+        Do While fpSpread2.row < lrowCount + temp - 1
             DoEvents
             ProgressBar1.value = a
             
-            fpSpread2.Row = rowStartSpread2
+            fpSpread2.row = rowStartSpread2
             
-            .Row = rowStartSpread1
+            .row = rowStartSpread1
             .RowHeight(-2) = 14.5
             
             If isGroupI = True Then
-                .Col = .ColLetterToNumber("C")
+                .col = .ColLetterToNumber("C")
                 .Text = fparray(a, 0)
     
-                .Col = .ColLetterToNumber("D")
+                .col = .ColLetterToNumber("D")
                 ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
                 If Not IsNull(fparray(a, 1)) Then
                     .Text = Left(fparray(a, 1), IIf(InStr(1, fparray(a, 1), ".") <> 0, InStr(1, fparray(a, 1), ".") - 1, Len(fparray(a, 1))))  'Replace(fparray(a, 1), ".", "")
@@ -16841,10 +16841,10 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
                     .Text = fparray(a, 1)
                 End If
                 
-                .Col = .ColLetterToNumber("E")
+                .col = .ColLetterToNumber("E")
                 .Text = fparray(a, 2)
     
-                .Col = .ColLetterToNumber("F")
+                .col = .ColLetterToNumber("F")
                 .Text = fparray(a, 3)
     
     '            .Col = .ColLetterToNumber("G")
@@ -16858,62 +16858,62 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
     '            .Col = .ColLetterToNumber("H")
     '            .Text = fparray(a, 5)
     
-                .Col = .ColLetterToNumber("I")
+                .col = .ColLetterToNumber("I")
                 .Text = fparray(a, 5)
                 
-                .Col = .ColLetterToNumber("J")
+                .col = .ColLetterToNumber("J")
                 .Text = fparray(a, 6)
                 
     '            .Col = .ColLetterToNumber("K")
     '            .Text = fparray(a, 8)
                
-               .Col = .ColLetterToNumber("L")
+               .col = .ColLetterToNumber("L")
                 .Text = fparray(a, 7)
                 
                 
-                .Col = .ColLetterToNumber("M")
+                .col = .ColLetterToNumber("M")
                 .Text = fparray(a, 8)
     
-                .Col = .ColLetterToNumber("N")
+                .col = .ColLetterToNumber("N")
                 .Text = fparray(a, 9)
                 
-                .Col = .ColLetterToNumber("O")
+                .col = .ColLetterToNumber("O")
                 .Text = fparray(a, 10)
                 
-                .Col = .ColLetterToNumber("P")
+                .col = .ColLetterToNumber("P")
                 .Text = fparray(a, 11)
                 
-                .Col = .ColLetterToNumber("Q")
+                .col = .ColLetterToNumber("Q")
                 .Text = fparray(a, 12)
                 
-                .Col = .ColLetterToNumber("R")
+                .col = .ColLetterToNumber("R")
                 .Text = fparray(a, 13)
                 
-                .Col = .ColLetterToNumber("S")
+                .col = .ColLetterToNumber("S")
                 .Text = fparray(a, 14)
                 
-                .Col = .ColLetterToNumber("T")
+                .col = .ColLetterToNumber("T")
                 .Text = fparray(a, 15)
                 
-                .Col = .ColLetterToNumber("U")
+                .col = .ColLetterToNumber("U")
                 .Text = fparray(a, 16)
                 
-                .Col = .ColLetterToNumber("V")
+                .col = .ColLetterToNumber("V")
                 .Text = fparray(a, 17)
                 
-                .Col = .ColLetterToNumber("W")
+                .col = .ColLetterToNumber("W")
                 .Text = fparray(a, 18)
                 
-                .Col = .ColLetterToNumber("X")
+                .col = .ColLetterToNumber("X")
                 .Text = fparray(a, 19)
                 
-                .Col = .ColLetterToNumber("Y")
+                .col = .ColLetterToNumber("Y")
                 .Text = fparray(a, 20)
             Else
-                .Col = .ColLetterToNumber("C")
+                .col = .ColLetterToNumber("C")
                 .Text = fparray(a, 0)
     
-                .Col = .ColLetterToNumber("D")
+                .col = .ColLetterToNumber("D")
                 ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
                 If Not IsNull(fparray(a, 1)) Then
                     .Text = Left(fparray(a, 1), IIf(InStr(1, fparray(a, 1), ".") <> 0, InStr(1, fparray(a, 1), ".") - 1, Len(fparray(a, 1))))  'Replace(fparray(a, 1), ".", "")
@@ -16921,13 +16921,13 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
                     .Text = fparray(a, 1)
                 End If
                 
-                .Col = .ColLetterToNumber("E")
+                .col = .ColLetterToNumber("E")
                 .Text = fparray(a, 2)
     
 '                .Col = .ColLetterToNumber("F")
 '                .Text = fparray(a, 3)
     
-                .Col = .ColLetterToNumber("G")
+                .col = .ColLetterToNumber("G")
                 ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
                 If Not IsNull(fparray(a, 4)) Then
                     .Text = Left(fparray(a, 4), IIf(InStr(1, fparray(a, 4), ".") <> 0, InStr(1, fparray(a, 4), ".") - 1, Len(fparray(a, 4)))) 'Replace(fparray(a, 4), ".", "")
@@ -16947,7 +16947,7 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
     '            .Col = .ColLetterToNumber("K")
     '            .Text = fparray(a, 8)
                
-               .Col = .ColLetterToNumber("L")
+               .col = .ColLetterToNumber("L")
                 .Text = fparray(a, 7)
                 
                 
@@ -16981,13 +16981,13 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
 '                .Col = .ColLetterToNumber("V")
 '                .Text = fparray(a, 17)
                 
-                .Col = .ColLetterToNumber("W")
+                .col = .ColLetterToNumber("W")
                 .Text = fparray(a, 18)
                 
-                .Col = .ColLetterToNumber("X")
+                .col = .ColLetterToNumber("X")
                 .Text = fparray(a, 19)
                 
-                .Col = .ColLetterToNumber("Y")
+                .col = .ColLetterToNumber("Y")
                 .Text = fparray(a, 20)
             End If
             
@@ -17002,16 +17002,16 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
             DoEvents
             ProgressBar1.value = a
             
-            fpSpread2.Row = rowStartSpread2
+            fpSpread2.row = rowStartSpread2
             
-            .Row = rowStartSpread1
+            .row = rowStartSpread1
             .RowHeight(-2) = 14.5
             
             If isGroupI = True Then
-                .Col = .ColLetterToNumber("C")
+                .col = .ColLetterToNumber("C")
                 .Text = fparray(a, 0)
     
-                .Col = .ColLetterToNumber("D")
+                .col = .ColLetterToNumber("D")
                 ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
                 If Not IsNull(fparray(a, 1)) Then
                     .Text = Left(fparray(a, 1), IIf(InStr(1, fparray(a, 1), ".") <> 0, InStr(1, fparray(a, 1), ".") - 1, Len(fparray(a, 1))))  'Replace(fparray(a, 1), ".", "")
@@ -17019,10 +17019,10 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
                     .Text = fparray(a, 1)
                 End If
                 
-                .Col = .ColLetterToNumber("E")
+                .col = .ColLetterToNumber("E")
                 .Text = fparray(a, 2)
     
-                .Col = .ColLetterToNumber("F")
+                .col = .ColLetterToNumber("F")
                 .Text = fparray(a, 3)
     
     '            .Col = .ColLetterToNumber("G")
@@ -17036,62 +17036,62 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
     '            .Col = .ColLetterToNumber("H")
     '            .Text = fparray(a, 5)
     
-                .Col = .ColLetterToNumber("I")
+                .col = .ColLetterToNumber("I")
                 .Text = fparray(a, 5)
                 
-                .Col = .ColLetterToNumber("J")
+                .col = .ColLetterToNumber("J")
                 .Text = fparray(a, 6)
                 
     '            .Col = .ColLetterToNumber("K")
     '            .Text = fparray(a, 8)
                
-               .Col = .ColLetterToNumber("L")
+               .col = .ColLetterToNumber("L")
                 .Text = fparray(a, 7)
                 
                 
-                .Col = .ColLetterToNumber("M")
+                .col = .ColLetterToNumber("M")
                 .Text = fparray(a, 8)
     
-                .Col = .ColLetterToNumber("N")
+                .col = .ColLetterToNumber("N")
                 .Text = fparray(a, 9)
                 
-                .Col = .ColLetterToNumber("O")
+                .col = .ColLetterToNumber("O")
                 .Text = fparray(a, 10)
                 
-                .Col = .ColLetterToNumber("P")
+                .col = .ColLetterToNumber("P")
                 .Text = fparray(a, 11)
                 
-                .Col = .ColLetterToNumber("Q")
+                .col = .ColLetterToNumber("Q")
                 .Text = fparray(a, 12)
                 
-                .Col = .ColLetterToNumber("R")
+                .col = .ColLetterToNumber("R")
                 .Text = fparray(a, 13)
                 
-                .Col = .ColLetterToNumber("S")
+                .col = .ColLetterToNumber("S")
                 .Text = fparray(a, 14)
                 
-                .Col = .ColLetterToNumber("T")
+                .col = .ColLetterToNumber("T")
                 .Text = fparray(a, 15)
                 
-                .Col = .ColLetterToNumber("U")
+                .col = .ColLetterToNumber("U")
                 .Text = fparray(a, 16)
                 
-                .Col = .ColLetterToNumber("V")
+                .col = .ColLetterToNumber("V")
                 .Text = fparray(a, 17)
                 
-                .Col = .ColLetterToNumber("W")
+                .col = .ColLetterToNumber("W")
                 .Text = fparray(a, 18)
                 
-                .Col = .ColLetterToNumber("X")
+                .col = .ColLetterToNumber("X")
                 .Text = fparray(a, 19)
                 
-                .Col = .ColLetterToNumber("Y")
+                .col = .ColLetterToNumber("Y")
                 .Text = fparray(a, 20)
             Else
-                 .Col = .ColLetterToNumber("C")
+                 .col = .ColLetterToNumber("C")
                 .Text = fparray(a, 0)
     
-                .Col = .ColLetterToNumber("D")
+                .col = .ColLetterToNumber("D")
                 ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
                 If Not IsNull(fparray(a, 1)) Then
                     .Text = Left(fparray(a, 1), IIf(InStr(1, fparray(a, 1), ".") <> 0, InStr(1, fparray(a, 1), ".") - 1, Len(fparray(a, 1))))  'Replace(fparray(a, 1), ".", "")
@@ -17099,13 +17099,13 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
                     .Text = fparray(a, 1)
                 End If
                 
-                .Col = .ColLetterToNumber("E")
+                .col = .ColLetterToNumber("E")
                 .Text = fparray(a, 2)
     
 '                .Col = .ColLetterToNumber("F")
 '                .Text = fparray(a, 3)
     
-                .Col = .ColLetterToNumber("G")
+                .col = .ColLetterToNumber("G")
                 ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
                 If Not IsNull(fparray(a, 4)) Then
                     .Text = Left(fparray(a, 4), IIf(InStr(1, fparray(a, 4), ".") <> 0, InStr(1, fparray(a, 4), ".") - 1, Len(fparray(a, 4)))) 'Replace(fparray(a, 4), ".", "")
@@ -17125,7 +17125,7 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
     '            .Col = .ColLetterToNumber("K")
     '            .Text = fparray(a, 8)
                
-               .Col = .ColLetterToNumber("L")
+               .col = .ColLetterToNumber("L")
                 .Text = fparray(a, 7)
                 
                 
@@ -17159,13 +17159,13 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
 '                .Col = .ColLetterToNumber("V")
 '                .Text = fparray(a, 17)
 '
-                .Col = .ColLetterToNumber("W")
+                .col = .ColLetterToNumber("W")
                 .Text = fparray(a, 18)
                 
-                .Col = .ColLetterToNumber("X")
+                .col = .ColLetterToNumber("X")
                 .Text = fparray(a, 19)
                 
-                .Col = .ColLetterToNumber("Y")
+                .col = .ColLetterToNumber("Y")
                 .Text = fparray(a, 20)
             End If
 
@@ -17179,8 +17179,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
 
         'format chi tieu [7],[D]
          If isGroupI = True Then
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("C")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("C")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("C")
             .BlockMode = True
@@ -17188,8 +17188,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
             .BlockMode = False
     
             'format chi tieu [8],[E]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("D")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("D")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("D")
             .BlockMode = True
@@ -17197,8 +17197,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
             .BlockMode = False
     
             'format chi tieu [9],[F]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("E")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("E")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("E")
             .BlockMode = True
@@ -17206,8 +17206,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
             .BlockMode = False
     
             'format chi tieu [10],[H]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("F")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("F")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("F")
             .BlockMode = True
@@ -17224,8 +17224,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
     '        .BlockMode = False
     
             'format chi tieu [13],[K]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("J")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("J")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("J")
             .BlockMode = True
@@ -17234,8 +17234,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
     
     
             'format chi tieu [15],[N]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("M")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("M")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("M")
             .BlockMode = True
@@ -17243,8 +17243,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
             .BlockMode = False
     
             'format chi tieu [16],[O]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("N")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("N")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("N")
             .BlockMode = True
@@ -17252,8 +17252,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
             .BlockMode = False
     
             'format chi tieu [21],[W]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("W")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("W")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("W")
             .BlockMode = True
@@ -17263,8 +17263,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
     
     
             'format chi tieu [22],[X]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("X")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("X")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("X")
             .TypeHAlign = TypeHAlignCenter
@@ -17273,8 +17273,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
             .BlockMode = False
     
             'format chi tieu [12],[I]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("I")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("I")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("I")
             .BlockMode = True
@@ -17283,8 +17283,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
     
     
             'format chi tieu ma quoc tich [H]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("H")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("H")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("H")
             .BlockMode = True
@@ -17292,8 +17292,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
             .BlockMode = False
     
             'format chi tieu [14],[L]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("L")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("L")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("L")
             .BlockMode = True
@@ -17302,8 +17302,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
     
     
             'format chi tieu ma quan he [K]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("K")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("K")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("K")
             .BlockMode = True
@@ -17311,8 +17311,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
             .BlockMode = False
     
             'format chi tieu [14],[M]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("P")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("P")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("P")
             .BlockMode = True
@@ -17321,8 +17321,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
     
     
             'format chi tieu ma quan he [O]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("O")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("O")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("O")
             .BlockMode = True
@@ -17331,8 +17331,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
     
     
             'format chi tieu [14],[R]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("R")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("R")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("R")
             .BlockMode = True
@@ -17341,8 +17341,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
     
     
             'format chi tieu ma quan he [Q]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("Q")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("Q")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("Q")
             .BlockMode = True
@@ -17351,8 +17351,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
     
     
             'format chi tieu [14],[M]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("S")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("S")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("S")
             .BlockMode = True
@@ -17361,8 +17361,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
     
     
             'format chi tieu ma quan he [L]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("T")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("T")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("T")
             .BlockMode = True
@@ -17370,8 +17370,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
             .BlockMode = False
     
             'format chi tieu [14],[M]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("U")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("U")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("U")
             .BlockMode = True
@@ -17380,16 +17380,16 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
     
     
             'format chi tieu ma quan he [L]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("V")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("V")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("V")
             .BlockMode = True
             .CellType = CellTypeComboBox
             .BlockMode = False
     
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("C")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("C")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("Y")
             .BlockMode = True
@@ -17397,8 +17397,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
             .Lock = False
             .BlockMode = False
         Else
-             .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("C")
+             .row = rowStartSpread11
+            .col = .ColLetterToNumber("C")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("C")
             .BlockMode = True
@@ -17406,8 +17406,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
             .BlockMode = False
     
             'format chi tieu [8],[E]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("D")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("D")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("D")
             .BlockMode = True
@@ -17415,8 +17415,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
             .BlockMode = False
     
             'format chi tieu [9],[F]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("E")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("E")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("E")
             .BlockMode = True
@@ -17433,8 +17433,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
 '            .BlockMode = False
     
             'format chi tieu [11],[G]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("G")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("G")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("G")
             .BlockMode = True
@@ -17470,8 +17470,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
 '            .BlockMode = False
     
             'format chi tieu [21],[W]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("W")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("W")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("W")
             .BlockMode = True
@@ -17481,8 +17481,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
     
     
             'format chi tieu [22],[X]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("X")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("X")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("X")
             .TypeHAlign = TypeHAlignCenter
@@ -17510,8 +17510,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
 '            .BlockMode = False
     
             'format chi tieu [14],[L]
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("L")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("L")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("L")
             .BlockMode = True
@@ -17606,8 +17606,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
 '            .CellType = CellTypeComboBox
 '            .BlockMode = False
     
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("C")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("C")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("E")
             .BlockMode = True
@@ -17616,8 +17616,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
             .BlockMode = False
             
             
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("G")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("G")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("G")
             .BlockMode = True
@@ -17625,8 +17625,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
             .Lock = False
             .BlockMode = False
             
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("L")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("L")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("L")
             .BlockMode = True
@@ -17634,8 +17634,8 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
             .Lock = False
             .BlockMode = False
             
-            .Row = rowStartSpread11
-            .Col = .ColLetterToNumber("W")
+            .row = rowStartSpread11
+            .col = .ColLetterToNumber("W")
             .Row2 = lrowCount + rowStartSpread11
             .Col2 = .ColLetterToNumber("Y")
             .BlockMode = True
@@ -17737,25 +17737,25 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
         .SetCellBorder .ColLetterToNumber("Z"), rowStartSpread1, .ColLetterToNumber("Z"), (lrowCount + rowStartSpread1), 15, &O0, CellBorderStyleSolid
 
         '        3. copy du lieu Text tu spread2 sang spread1
-        fpSpread2.Row = rowStartSpread2
+        fpSpread2.row = rowStartSpread2
           If isFirstRow = False Then
             rowStartSpread1 = rowStartSpread1 + 1
         End If
         
-        Do While fpSpread2.Row < lrowCount + 4
+        Do While fpSpread2.row < lrowCount + 4
             DoEvents
             ProgressBar1.value = a
             
-            fpSpread2.Row = rowStartSpread2
+            fpSpread2.row = rowStartSpread2
             
-            .Row = rowStartSpread1
+            .row = rowStartSpread1
             .RowHeight(-2) = 14.5
             
 
-            .Col = .ColLetterToNumber("C")
+            .col = .ColLetterToNumber("C")
             .Text = fparray(a, 0)
 
-            .Col = .ColLetterToNumber("D")
+            .col = .ColLetterToNumber("D")
             ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
             If Not IsNull(fparray(a, 1)) Then
                 .Text = Left(fparray(a, 1), IIf(InStr(1, fparray(a, 1), ".") <> 0, InStr(1, fparray(a, 1), ".") - 1, Len(fparray(a, 1))))  'Replace(fparray(a, 1), ".", "")
@@ -17763,7 +17763,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
                 .Text = fparray(a, 1)
             End If
 
-            .Col = .ColLetterToNumber("E")
+            .col = .ColLetterToNumber("E")
             ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
             If Not IsNull(fparray(a, 2)) Then
                 .Text = Left(fparray(a, 2), IIf(InStr(1, fparray(a, 2), ".") <> 0, InStr(1, fparray(a, 2), ".") - 1, Len(fparray(a, 2)))) 'Replace(fparray(a, 2), ".", "")
@@ -17771,10 +17771,10 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
                 .Text = fparray(a, 2)
             End If
 
-            .Col = .ColLetterToNumber("F")
+            .col = .ColLetterToNumber("F")
             .Text = fparray(a, 3)
 
-            .Col = .ColLetterToNumber("G")
+            .col = .ColLetterToNumber("G")
 
             If IsNumeric(fparray(a, 4)) Then
                 If Val(fparray(a, 4)) > 0 Then
@@ -17786,7 +17786,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
                 .Text = 0
             End If
 
-            .Col = .ColLetterToNumber("H")
+            .col = .ColLetterToNumber("H")
             
             If IsNumeric(fparray(a, 5)) Then
                 If Val(fparray(a, 5)) > 0 Then
@@ -17798,7 +17798,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
                 .Text = 0
             End If
 
-            .Col = .ColLetterToNumber("I")
+            .col = .ColLetterToNumber("I")
            
             If IsNumeric(fparray(a, 6)) Then
                 If Val(fparray(a, 6)) > 0 Then
@@ -17810,7 +17810,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
                 .Text = 0
             End If
          
-            .Col = .ColLetterToNumber("J")
+            .col = .ColLetterToNumber("J")
              If IsNumeric(fparray(a, 7)) Then
                 If Val(fparray(a, 7)) > 0 Then
                     .Text = Round(fparray(a, 7))
@@ -17821,7 +17821,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
                 .Text = 0
             End If
             
-            .Col = .ColLetterToNumber("K")
+            .col = .ColLetterToNumber("K")
              If IsNumeric(fparray(a, 8)) Then
                 If Val(fparray(a, 8)) > 0 Then
                     .Text = Round(fparray(a, 8))
@@ -17848,16 +17848,16 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
             DoEvents
             ProgressBar1.value = a
             
-            fpSpread2.Row = rowStartSpread2
+            fpSpread2.row = rowStartSpread2
             
-            .Row = rowStartSpread1
+            .row = rowStartSpread1
             .RowHeight(-2) = 14.5
             
 
-            .Col = .ColLetterToNumber("C")
+            .col = .ColLetterToNumber("C")
             .Text = fparray(a, 0)
 
-            .Col = .ColLetterToNumber("D")
+            .col = .ColLetterToNumber("D")
             ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
             If Not IsNull(fparray(a, 1)) Then
                 .Text = Left(fparray(a, 1), IIf(InStr(1, fparray(a, 1), ".") <> 0, InStr(1, fparray(a, 1), ".") - 1, Len(fparray(a, 1))))  'Replace(fparray(a, 1), ".", "")
@@ -17865,7 +17865,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
                 .Text = fparray(a, 1)
             End If
 
-            .Col = .ColLetterToNumber("E")
+            .col = .ColLetterToNumber("E")
             ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
             If Not IsNull(fparray(a, 2)) Then
                 .Text = Left(fparray(a, 2), IIf(InStr(1, fparray(a, 2), ".") <> 0, InStr(1, fparray(a, 2), ".") - 1, Len(fparray(a, 2)))) 'Replace(fparray(a, 2), ".", "")
@@ -17873,10 +17873,10 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
                 .Text = fparray(a, 2)
             End If
 
-            .Col = .ColLetterToNumber("F")
+            .col = .ColLetterToNumber("F")
             .Text = fparray(a, 3)
 
-            .Col = .ColLetterToNumber("G")
+            .col = .ColLetterToNumber("G")
 
             If IsNumeric(fparray(a, 4)) Then
                 If Val(fparray(a, 4)) > 0 Then
@@ -17888,7 +17888,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
                 .Text = 0
             End If
 
-            .Col = .ColLetterToNumber("H")
+            .col = .ColLetterToNumber("H")
             
             If IsNumeric(fparray(a, 5)) Then
                 If Val(fparray(a, 5)) > 0 Then
@@ -17900,7 +17900,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
                 .Text = 0
             End If
 
-            .Col = .ColLetterToNumber("I")
+            .col = .ColLetterToNumber("I")
            
             If IsNumeric(fparray(a, 6)) Then
                 If Val(fparray(a, 6)) > 0 Then
@@ -17912,7 +17912,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
                 .Text = 0
             End If
          
-            .Col = .ColLetterToNumber("J")
+            .col = .ColLetterToNumber("J")
             If IsNumeric(fparray(a, 7)) Then
                 If Val(fparray(a, 7)) > 0 Then
                     .Text = Round(fparray(a, 7))
@@ -17923,7 +17923,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
                 .Text = 0
             End If
 
-            .Col = .ColLetterToNumber("K")
+            .col = .ColLetterToNumber("K")
             If IsNumeric(fparray(a, 8)) Then
                 If Val(fparray(a, 8)) > 0 Then
                     .Text = Round(fparray(a, 8))
@@ -17946,8 +17946,8 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
         ' 4. Set format cho Grid
         
         'format chi tieu [8],[D]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("D")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("D")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("D")
         .BlockMode = True
@@ -17955,8 +17955,8 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
         .BlockMode = False
         
         'format chi tieu [9],[E]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("E")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("E")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("E")
         .BlockMode = True
@@ -17964,8 +17964,8 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
         .BlockMode = False
         
         'format chi tieu [8]- [9],[D]->[E]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("D")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("D")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("E")
         .BlockMode = True
@@ -17973,8 +17973,8 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
         .BlockMode = False
 
         'format chi tieu [10]- cot [F]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("F")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("F")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("F")
         .BlockMode = True
@@ -17983,8 +17983,8 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
         .BlockMode = False
 
         'format tu chi tieu [11] den [15],[G]->[K]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("G")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("G")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("K")
         .BlockMode = True
@@ -17996,8 +17996,8 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
         .TypeHAlign = TypeHAlignRight
         .BlockMode = False
 
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("C")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("C")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("K")
         .BlockMode = True
@@ -18014,8 +18014,8 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
 '        .Lock = True
 '        .BlockMode = False
         
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("Z")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("Z")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("Z")
         .BlockMode = True
@@ -18089,23 +18089,23 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
         .SetCellBorder .ColLetterToNumber("B"), rowStartSpread1, .ColLetterToNumber("U"), (lrowCount + rowStartSpread1), 15, &O0, CellBorderStyleSolid
         
         '3. copy du lieu Text tu spread2 sang spread1
-        fpSpread2.Row = rowStartSpread2
+        fpSpread2.row = rowStartSpread2
         If isFirstRow = False Then
             rowStartSpread1 = rowStartSpread1 + 1
         End If
 
-        Do While fpSpread2.Row < lrowCount + 4
+        Do While fpSpread2.row < lrowCount + 4
             DoEvents
             ProgressBar1.value = a
-            fpSpread2.Row = rowStartSpread2
+            fpSpread2.row = rowStartSpread2
             
-            .Row = rowStartSpread1
+            .row = rowStartSpread1
             .RowHeight(-2) = 14.5
             
-            .Col = .ColLetterToNumber("D")
+            .col = .ColLetterToNumber("D")
                 
             .Text = fparray(a, 0)
-            .Col = .ColLetterToNumber("E")
+            .col = .ColLetterToNumber("E")
             ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
             If Not IsNull(fparray(a, 1)) Then
                 .Text = Left(fparray(a, 1), IIf(InStr(1, fparray(a, 1), ".") <> 0, InStr(1, fparray(a, 1), ".") - 1, Len(fparray(a, 1)))) 'Replace(fparray(a, 1), ".", "")
@@ -18113,7 +18113,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = fparray(a, 1)
             End If
         
-            .Col = .ColLetterToNumber("F")
+            .col = .ColLetterToNumber("F")
             ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
             If Not IsNull(fparray(a, 2)) Then
                 .Text = Left(fparray(a, 2), IIf(InStr(1, fparray(a, 2), ".") <> 0, InStr(1, fparray(a, 2), ".") - 1, Len(fparray(a, 2))))   'Replace(fparray(a, 2), ".", "")
@@ -18121,10 +18121,10 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = fparray(a, 2)
             End If
                                         
-            .Col = .ColLetterToNumber("G")
+            .col = .ColLetterToNumber("G")
             .Text = fparray(a, 3)
                         
-            .Col = .ColLetterToNumber("H")
+            .col = .ColLetterToNumber("H")
 
             If IsNumeric(fparray(a, 4)) Then
                 If Val(fparray(a, 4)) > 0 Then
@@ -18136,7 +18136,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = 0
             End If
                        
-            .Col = .ColLetterToNumber("I")
+            .col = .ColLetterToNumber("I")
 
             If IsNumeric(fparray(a, 5)) Then
                 If Val(fparray(a, 5)) > 0 Then
@@ -18148,7 +18148,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = 0
             End If
                                            
-            .Col = .ColLetterToNumber("J")
+            .col = .ColLetterToNumber("J")
 
             If IsNumeric(fparray(a, 6)) Then
                 If Val(fparray(a, 6)) > 0 Then
@@ -18160,7 +18160,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = 0
             End If
         
-            .Col = .ColLetterToNumber("K")
+            .col = .ColLetterToNumber("K")
 
             If IsNumeric(fparray(a, 7)) Then
                 If Val(fparray(a, 7)) > 0 Then
@@ -18172,7 +18172,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = 0
             End If
                               
-            .Col = .ColLetterToNumber("L")
+            .col = .ColLetterToNumber("L")
 
             If IsNumeric(fparray(a, 8)) Then
                 If Val(fparray(a, 8)) > 0 Then
@@ -18184,7 +18184,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = 0
             End If
             
-            .Col = .ColLetterToNumber("M")
+            .col = .ColLetterToNumber("M")
             
             If IsNumeric(fparray(a, 9)) Then
                 If Val(fparray(a, 9)) > 0 Then
@@ -18196,7 +18196,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = 0
             End If
 
-            .Col = .ColLetterToNumber("N")
+            .col = .ColLetterToNumber("N")
             
             If IsNumeric(fparray(a, 10)) Then
                 If Val(fparray(a, 10)) > 0 Then
@@ -18208,7 +18208,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = 0
             End If
             
-            .Col = .ColLetterToNumber("P")
+            .col = .ColLetterToNumber("P")
             
             If IsNumeric(fparray(a, 12)) Then
                 If Val(fparray(a, 12)) > 0 Then
@@ -18221,7 +18221,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
             End If
             
             
-            .Col = .ColLetterToNumber("Q")
+            .col = .ColLetterToNumber("Q")
             
             If IsNumeric(fparray(a, 13)) Then
                 If Val(fparray(a, 13)) > 0 Then
@@ -18244,15 +18244,15 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
         If lrowCount = 1 Then
             DoEvents
             ProgressBar1.value = a
-            fpSpread2.Row = rowStartSpread2
+            fpSpread2.row = rowStartSpread2
             
-            .Row = rowStartSpread1
+            .row = rowStartSpread1
             .RowHeight(-2) = 14.5
             
-            .Col = .ColLetterToNumber("D")
+            .col = .ColLetterToNumber("D")
                 
             .Text = fparray(a, 0)
-            .Col = .ColLetterToNumber("E")
+            .col = .ColLetterToNumber("E")
             ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
             If Not IsNull(fparray(a, 1)) Then
                 .Text = Left(fparray(a, 1), IIf(InStr(1, fparray(a, 1), ".") <> 0, InStr(1, fparray(a, 1), ".") - 1, Len(fparray(a, 1)))) 'Replace(fparray(a, 1), ".", "")
@@ -18260,7 +18260,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = fparray(a, 1)
             End If
         
-            .Col = .ColLetterToNumber("F")
+            .col = .ColLetterToNumber("F")
             ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
             If Not IsNull(fparray(a, 2)) Then
                 .Text = Left(fparray(a, 2), IIf(InStr(1, fparray(a, 2), ".") <> 0, InStr(1, fparray(a, 2), ".") - 1, Len(fparray(a, 2))))   'Replace(fparray(a, 2), ".", "")
@@ -18268,10 +18268,10 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = fparray(a, 2)
             End If
                                         
-            .Col = .ColLetterToNumber("G")
+            .col = .ColLetterToNumber("G")
             .Text = fparray(a, 3)
                         
-            .Col = .ColLetterToNumber("H")
+            .col = .ColLetterToNumber("H")
 
             If IsNumeric(fparray(a, 4)) Then
                 If Val(fparray(a, 4)) > 0 Then
@@ -18283,7 +18283,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = 0
             End If
                        
-            .Col = .ColLetterToNumber("I")
+            .col = .ColLetterToNumber("I")
 
             If IsNumeric(fparray(a, 5)) Then
                 If Val(fparray(a, 5)) > 0 Then
@@ -18295,7 +18295,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = 0
             End If
                                            
-            .Col = .ColLetterToNumber("J")
+            .col = .ColLetterToNumber("J")
 
             If IsNumeric(fparray(a, 6)) Then
                 If Val(fparray(a, 6)) > 0 Then
@@ -18307,7 +18307,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = 0
             End If
         
-            .Col = .ColLetterToNumber("K")
+            .col = .ColLetterToNumber("K")
 
             If IsNumeric(fparray(a, 7)) Then
                 If Val(fparray(a, 7)) > 0 Then
@@ -18319,7 +18319,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = 0
             End If
                               
-            .Col = .ColLetterToNumber("L")
+            .col = .ColLetterToNumber("L")
 
             If IsNumeric(fparray(a, 8)) Then
                 If Val(fparray(a, 8)) > 0 Then
@@ -18331,7 +18331,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = 0
             End If
             
-            .Col = .ColLetterToNumber("M")
+            .col = .ColLetterToNumber("M")
             
             If IsNumeric(fparray(a, 10)) Then
                 If Val(fparray(a, 10)) > 0 Then
@@ -18343,7 +18343,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = 0
             End If
 
-            .Col = .ColLetterToNumber("N")
+            .col = .ColLetterToNumber("N")
             
             If IsNumeric(fparray(a, 10)) Then
                 If Val(fparray(a, 10)) > 0 Then
@@ -18358,7 +18358,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
 '            .Col = .ColLetterToNumber("O")
 '            .Text = 0
 
-            .Col = .ColLetterToNumber("P")
+            .col = .ColLetterToNumber("P")
             
             If IsNumeric(fparray(a, 12)) Then
                 If Val(fparray(a, 12)) > 0 Then
@@ -18370,7 +18370,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .Text = 0
             End If
             
-            .Col = .ColLetterToNumber("Q")
+            .col = .ColLetterToNumber("Q")
             
             If IsNumeric(fparray(a, 13)) Then
                 If Val(fparray(a, 13)) > 0 Then
@@ -18391,8 +18391,8 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
 '               4. Set format cho Grid
 
 '               'format max lenght cot [E]
-                .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("C")
+                .row = rowStartSpread11
+        .col = .ColLetterToNumber("C")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("C")
         .BlockMode = True
@@ -18401,8 +18401,8 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
         .BlockMode = False
 
         '               'format max lenght cot [E]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("E")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("E")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("E")
         .BlockMode = True
@@ -18410,8 +18410,8 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
         .BlockMode = False
                 
                 'format max lenght cot [F]
-                .Row = rowStartSpread11
-                .Col = .ColLetterToNumber("F")
+                .row = rowStartSpread11
+                .col = .ColLetterToNumber("F")
                 .Row2 = lrowCount + rowStartSpread11
                 .Col2 = .ColLetterToNumber("F")
                 .BlockMode = True
@@ -18419,8 +18419,8 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .BlockMode = False
 
 '               format chi tieu [8]- [9],[E]->[F]
-                .Row = rowStartSpread11
-                .Col = .ColLetterToNumber("E")
+                .row = rowStartSpread11
+                .col = .ColLetterToNumber("E")
                 .Row2 = lrowCount + rowStartSpread11
                 .Col2 = .ColLetterToNumber("F")
                 .BlockMode = True
@@ -18428,8 +18428,8 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .BlockMode = False
         
                 'format chi tieu [10]- cot [G]
-                .Row = rowStartSpread11
-                .Col = .ColLetterToNumber("G")
+                .row = rowStartSpread11
+                .col = .ColLetterToNumber("G")
                 .Row2 = lrowCount + rowStartSpread11
                 .Col2 = .ColLetterToNumber("G")
                 .BlockMode = True
@@ -18438,8 +18438,8 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                 .BlockMode = False
         
         'format tu chi tieu [11] den [23],[H]->[U]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("H")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("H")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("U")
         .BlockMode = True
@@ -18450,8 +18450,8 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
         .TypeHAlign = TypeHAlignRight
         .BlockMode = False
 
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("C")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("C")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("U")
         .BlockMode = True
@@ -18462,8 +18462,8 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
         .BlockMode = False
         
         ' set lock cot O
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("O")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("O")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("O")
         .BlockMode = True
@@ -18471,8 +18471,8 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
         .BlockMode = False
         
         ' set lock cot T, U
-         .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("T")
+         .row = rowStartSpread11
+        .col = .ColLetterToNumber("T")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("U")
         .BlockMode = True
@@ -18536,35 +18536,35 @@ Private Sub gridData06TNCN(rowStartSpread1 As Long, _
         .SetCellBorder .ColLetterToNumber("B"), rowStartSpread1, .ColLetterToNumber("H"), (lrowCount + rowStartSpread1), 15, &O0, CellBorderStyleSolid
         
         '3. copy du lieu Text tu spread2 sang spread1
-        fpSpread2.Row = rowStartSpread2
+        fpSpread2.row = rowStartSpread2
 
-        Do While fpSpread2.Row < lrowCount + 2
+        Do While fpSpread2.row < lrowCount + 2
             DoEvents
             ProgressBar1.value = a
-            fpSpread2.Row = rowStartSpread2
+            fpSpread2.row = rowStartSpread2
             
-            .Row = rowStartSpread1
+            .row = rowStartSpread1
             .RowHeight(-2) = 14.5
             
 
-            .Col = .ColLetterToNumber("D")
+            .col = .ColLetterToNumber("D")
                 
             .Text = fparray(a, 0)
-            .Col = .ColLetterToNumber("E")
+            .col = .ColLetterToNumber("E")
             If Not IsNull(fparray(a, 1)) Then
                 .Text = Left(fparray(a, 1), IIf(InStr(1, fparray(a, 1), ".") <> 0, InStr(1, fparray(a, 1), ".") - 1, Len(fparray(a, 1))))
             Else
                 .Text = fparray(a, 1)
             End If
         
-            .Col = .ColLetterToNumber("F")
+            .col = .ColLetterToNumber("F")
             If Not IsNull(fparray(a, 1)) Then
                 .Text = Left(fparray(a, 2), IIf(InStr(1, fparray(a, 2), ".") <> 0, InStr(1, fparray(a, 2), ".") - 1, Len(fparray(a, 2))))
             Else
                 .Text = fparray(a, 2)
             End If
                                         
-            .Col = .ColLetterToNumber("G")
+            .col = .ColLetterToNumber("G")
 
             If IsNumeric(fparray(a, 3)) Then
                 If Val(fparray(a, 3)) > 0 Then
@@ -18576,7 +18576,7 @@ Private Sub gridData06TNCN(rowStartSpread1 As Long, _
                 .Text = 0
             End If
                         
-            .Col = .ColLetterToNumber("H")
+            .col = .ColLetterToNumber("H")
 
             If IsNumeric(fparray(a, 4)) Then
                 If Val(fparray(a, 4)) > 0 Then
@@ -18597,8 +18597,8 @@ Private Sub gridData06TNCN(rowStartSpread1 As Long, _
         Loop
             
         '               4. Set format cho Grid
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("C")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("C")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("C")
         .BlockMode = True
@@ -18606,8 +18606,8 @@ Private Sub gridData06TNCN(rowStartSpread1 As Long, _
         .BlockMode = False
 
         '               'format max lenght cot [E]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("E")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("E")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("E")
         .BlockMode = True
@@ -18615,8 +18615,8 @@ Private Sub gridData06TNCN(rowStartSpread1 As Long, _
         .BlockMode = False
                 
         'format max lenght cot [F]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("F")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("F")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("F")
         .BlockMode = True
@@ -18624,8 +18624,8 @@ Private Sub gridData06TNCN(rowStartSpread1 As Long, _
         .BlockMode = False
 
         '               format chi tieu [8]- [9],[E]->[F]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("E")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("E")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("F")
         .BlockMode = True
@@ -18634,8 +18634,8 @@ Private Sub gridData06TNCN(rowStartSpread1 As Long, _
         
 
         'format tu chi tieu [10] den [11],[G]->[H]
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("G")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("G")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("H")
         .BlockMode = True
@@ -18646,8 +18646,8 @@ Private Sub gridData06TNCN(rowStartSpread1 As Long, _
         .TypeHAlign = TypeHAlignRight
         .BlockMode = False
 
-        .Row = rowStartSpread11
-        .Col = .ColLetterToNumber("C")
+        .row = rowStartSpread11
+        .col = .ColLetterToNumber("C")
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("H")
         .BlockMode = True
@@ -18713,32 +18713,32 @@ Private Sub gridData01NTNN(rowStartSpread1 As Long, _
         .EventEnabled(0) = True
         
         '3. copy du lieu Text tu spread2 sang spread1
-        fpSpread2.Row = rowStartSpread2
+        fpSpread2.row = rowStartSpread2
         
         Dim arrStr() As String
         Dim sDate    As String
 
-        Do While fpSpread2.Row < lrowCount + 13
+        Do While fpSpread2.row < lrowCount + 13
             DoEvents
             ProgressBar1.value = a
-            fpSpread2.Row = rowStartSpread2
+            fpSpread2.row = rowStartSpread2
 
             .RowHeight(-2) = 14.5
-            .Row = rowStartSpread1
+            .row = rowStartSpread1
 
-            .Col = .ColLetterToNumber("C")
+            .col = .ColLetterToNumber("C")
             .Text = fparray(a, 0)
 
-            .Col = .ColLetterToNumber("L")
+            .col = .ColLetterToNumber("L")
             If Not IsNull(fparray(a, 1)) Then
                 .Text = Left(fparray(a, 1), IIf(InStr(1, fparray(a, 1), ".") <> 0, InStr(1, fparray(a, 1), ".") - 1, Len(fparray(a, 1))))
             Else
                 .Text = fparray(a, 1)
             End If
-            .Col = .ColLetterToNumber("R")
+            .col = .ColLetterToNumber("R")
             .Text = fparray(a, 2)
 
-            .Col = .ColLetterToNumber("X")
+            .col = .ColLetterToNumber("X")
 
             If IsNumeric(fparray(a, 3)) Then
                 If Val(fparray(a, 3)) > 0 Then
@@ -18750,7 +18750,7 @@ Private Sub gridData01NTNN(rowStartSpread1 As Long, _
                 .Text = 0
             End If
 
-            .Col = .ColLetterToNumber("AD")
+            .col = .ColLetterToNumber("AD")
 
 '            If InStr(1, fparray(a, 4), "-") <> 0 Then
 '                arrStr = Split(fparray(a, 4), "-")
@@ -18762,7 +18762,7 @@ Private Sub gridData01NTNN(rowStartSpread1 As Long, _
             
             .Text = fparray(a, 4)  'sDate
 
-            .Col = .ColLetterToNumber("AI")
+            .col = .ColLetterToNumber("AI")
 
             If IsNumeric(fparray(a, 5)) Then
                 If Val(fparray(a, 5)) > 0 Then
@@ -18774,7 +18774,7 @@ Private Sub gridData01NTNN(rowStartSpread1 As Long, _
                 .Text = 0
             End If
 
-            .Col = .ColLetterToNumber("AM")
+            .col = .ColLetterToNumber("AM")
 
             If IsNumeric(fparray(a, 6)) And CDbl(fparray(a, 6)) < 100 Then
                 If Val(fparray(a, 6)) > 0 Then
@@ -18786,7 +18786,7 @@ Private Sub gridData01NTNN(rowStartSpread1 As Long, _
                 .Text = 0
             End If
 
-            .Col = .ColLetterToNumber("AQ")
+            .col = .ColLetterToNumber("AQ")
 
             If IsNumeric(fparray(a, 7)) And CDbl(fparray(a, 7)) < 100 Then
                 If Val(fparray(a, 7)) > 0 Then
@@ -18798,7 +18798,7 @@ Private Sub gridData01NTNN(rowStartSpread1 As Long, _
                 .Text = 0
             End If
 
-            .Col = .ColLetterToNumber("AY")
+            .col = .ColLetterToNumber("AY")
 
             If IsNumeric(fparray(a, 9)) Then
                 If Val(fparray(a, 9)) > 0 Then
@@ -18810,7 +18810,7 @@ Private Sub gridData01NTNN(rowStartSpread1 As Long, _
                 .Text = 0
             End If
 
-            .Col = .ColLetterToNumber("BC")
+            .col = .ColLetterToNumber("BC")
 
             If IsNumeric(fparray(a, 10)) And CDbl(fparray(a, 10)) < 100 Then
                 If Val(fparray(a, 10)) > 0 Then
@@ -18822,7 +18822,7 @@ Private Sub gridData01NTNN(rowStartSpread1 As Long, _
                 .Text = 0
             End If
 
-            .Col = .ColLetterToNumber("BG")
+            .col = .ColLetterToNumber("BG")
 
             If IsNumeric(fparray(a, 11)) Then
                 If Val(fparray(a, 11)) > 0 Then
