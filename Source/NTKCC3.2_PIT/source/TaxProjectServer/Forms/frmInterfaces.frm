@@ -1680,6 +1680,9 @@ End Sub
 Private Sub Command1_Click()
     Dim str1 As String, str2 As String, str3 As String, str4 As String, str5 As String, str6 As String, str7 As String, str8 As String
 
+'str2 = "aa325770100105951   00201301301300100101/0114/06/2006<S01><S>0102030405</S><S>010103~Kg~100000~4000000~11~0~210" & _
+'"0000~010102~Kg~320000~0~0~2400000~1300000</S><S>010104~TÊn~2100~13000~11~0~1300~010207~Kg~2342~0~0~2342342~2342</S><S>ntvanh~28/10/2014~§inh Xu©n H-¬ng~13442~1~</S></S01>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 ''01_PHLP
 '2014
@@ -2464,7 +2467,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             Or Trim(idToKhai) = "77" Or Trim(idToKhai) = "80" _
             Or Trim(idToKhai) = "82" Or Trim(idToKhai) = "85" _
             Or Trim(idToKhai) = "87" Or Trim(idToKhai) = "88") Then
-            DisplayMessage "145", msOKOnly, miInformation
+            DisplayMessage "0145", msOKOnly, miInformation
             Exit Sub
         End If
         
@@ -6971,12 +6974,30 @@ Private Function checkKyKHBS(ByVal menuId As Integer) As Boolean
         End If
     End If
     'check nhung to co ky kkhai tinh theo nam
-    If menuId = 3 Or menuId = 59 Or menuId = 77 Or menuId = 80 Or menuId = 82 Or menuId = 87 Then
+    If menuId = 3 Or menuId = 59 Then
         If Int(TAX_Utilities_Svr_New.Year) < 2011 Then
             checkKyKHBS = False
             Exit Function
         End If
     End If
+    
+    'check nhung to BS lam trong GD3 co kykekhai<2014
+    'check nhung to co ky kkhai tinh theo thang
+    If menuId = 85 Then
+        If vMonth < 1 And Int(TAX_Utilities_Svr_New.Year) <= 2014 Then
+            checkKyKHBS = False
+            Exit Function
+        End If
+    End If
+    'check nhung to co ky kkhai tinh theo nam
+    If menuId = 88 Or menuId = 87 Or menuId = 80 Or menuId = 82 Or menuId = 77 Or menuId = 3 Then
+        If Int(TAX_Utilities_Svr_New.Year) < 2014 Then
+            checkKyKHBS = False
+            Exit Function
+        End If
+    End If
+    
+    
 End Function
 'ham check ky KHBS cho to 2 to 08
 Private Function checkKyKHBSTo08(ByVal menuId As String) As Boolean

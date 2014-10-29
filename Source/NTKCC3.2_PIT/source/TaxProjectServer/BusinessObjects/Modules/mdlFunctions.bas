@@ -126,7 +126,7 @@ Public Function GetCatalogueFileName(Optional lSheet As Long = 1) As String
     'Get catalogue ID
     strCatalogueID = GetAttribute(TAX_Utilities_Svr_New.NodeValidity, "CatalogueID")
     
-    'Get catalogue pattern name
+    'Get patcataloguetern name
     strCatalogueName = GetCatalogueName(xmlCatalogeValidNode, strCatalogueID)
     
     GetCatalogueFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_Svr_New.NodeValidity.childNodes(lSheet - 1), "TemplateFolder") & _
@@ -922,30 +922,7 @@ ByVal IsTKMonth As Boolean _
         clsDAO.Connect
     End If
 
-    MATHUE = "''"
-    MAPP = "''"
-
-    ' Dat mathue,mapp
-    Select Case matkhai
     
-        Case "01/PHLP"
-            MATHUE = "'20'"
-            MAPP = "'2'"
-        Case "02/PHLP"
-            MATHUE = "'20'"
-            MAPP = "'2'"
-        Case "02/BVMT"
-            MATHUE = "'21'"
-            MAPP = "'2'"
-        Case "02/NTNN"
-            MATHUE = "'23'"
-            MAPP = "'1'"
-        Case "04/NTNN"
-            MATHUE = "'23'"
-            MAPP = "'2'"
-        
-    End Select
-
     With fps
         
         If IsTKMonth Then
@@ -961,6 +938,7 @@ ByVal IsTKMonth As Boolean _
         maTM = "''"   ' khong the lay duoc
         MAPP = "''"
         DANHAN = "''"
+        
         ' Insert so dieu chinh tang
         mact = "'1000'"
         
@@ -1005,13 +983,41 @@ ByVal IsTKMonth As Boolean _
         
         i = 1
         .Row = 9
+        
+        MATHUE = "''"
+    MAPP = "''"
+
+    ' Dat mathue,mapp
+    Select Case matkhai
+    
+        Case "01/PHLP"
+            MATHUE = "'20'"
+            MAPP = "'2'"
+        Case "02/PHLP"
+            MATHUE = "'20'"
+            MAPP = "'2'"
+        Case "02/BVMT"
+            MATHUE = "'21'"
+            MAPP = "'2'"
+        Case "02/NTNN"
+            MATHUE = "'23'"
+            MAPP = "'1'"
+        Case "04/NTNN"
+            MATHUE = "'23'"
+            MAPP = "'2'"
+            
+        Case "02/TAIN"
+            MATHUE = "'04'"
+            MAPP = "'1'"
+    End Select
+
 
         Do
             mact = "''"
             .GetText .ColLetterToNumber("BE"), .Row, MACT2
             If Trim(MACT2) = vbNullString Then
                 MACT2 = "''"
-                Math3 = "''"
+                MACT3 = "''"
             Else
                 MACT2 = "'" & MACT2 & "'"
                 MACT3 = "'1'"
@@ -1062,12 +1068,7 @@ ByVal IsTKMonth As Boolean _
 
         ' Insert so dieu chinh giam
 
-        'MACTG = "'2000'" '
-        If Trim(MACTG) = vbNullString Then
-            MACTG = "''"
-        Else
-            MACTG = "'" & MACTG & "'"
-        End If
+        mact = "'2000'"
         
         MACT2 = "''"
         MACT3 = "''"
@@ -1078,33 +1079,53 @@ ByVal IsTKMonth As Boolean _
         SODC = "0"
         SOCL = "0"
         
-        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & MACTG & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                        
         sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
 
         i = 1
         .Row = .Row + 3
+        
+MATHUE = "''"
+    MAPP = "''"
 
+    ' Dat mathue,mapp
+    Select Case matkhai
+    
+        Case "01/PHLP"
+            MATHUE = "'20'"
+            MAPP = "'2'"
+        Case "02/PHLP"
+            MATHUE = "'20'"
+            MAPP = "'2'"
+        Case "02/BVMT"
+            MATHUE = "'21'"
+            MAPP = "'2'"
+        Case "02/NTNN"
+            MATHUE = "'23'"
+            MAPP = "'1'"
+        Case "04/NTNN"
+            MATHUE = "'23'"
+            MAPP = "'2'"
+            
+        Case "02/TAIN"
+            MATHUE = "'04'"
+            MAPP = "'1'"
+    End Select
         Do
             mact = "''"
             .GetText .ColLetterToNumber("BE"), .Row, MACT2
 
             If Trim(MACT2) = vbNullString Then
                 MACT2 = "''"
-            ElseIf MACT2 = "14" Or MACT2 = "16" Then
-                MACT2 = "'041'"
-                '                ElseIf MACT2 = "23" Then
-                '                    MACT2 = "'041'"
-            ElseIf MACT2 = "24" Or MACT2 = "31" Then
-                MACT2 = "'050'"
-            ElseIf MACT2 = "21" Then
-                MACT2 = "'039'"
+                MACT3 = "''"
             Else
-                MACT2 = "'000'"
+                MACT2 = "'" & MACT2 & "'"
+                MACT3 = "'1'"
             End If
-                
-            MACT3 = "'2'"
+               
+            
             STT = 2
             STT2 = i
             
@@ -1150,12 +1171,7 @@ ByVal IsTKMonth As Boolean _
         
         ' Insert Tong hop dieu chinh
 
-'        MACT = "'3000'"
-        If Trim(MACTDC) = vbNullString Then
-            MACTDC = "''"
-        Else
-            MACTDC = "'" & MACTDC & "'"
-        End If
+        mact = "'3000'"
         
         MACT2 = "''"
         MACT3 = "''"
@@ -1166,7 +1182,7 @@ ByVal IsTKMonth As Boolean _
         SODC = "0"
         SOCL = "0"
         
-        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & MACTDC & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                        
         sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -1178,23 +1194,13 @@ ByVal IsTKMonth As Boolean _
 
         If Trim(MACT2) = vbNullString Then
             MACT2 = "''"
-        ElseIf MACT2 = "14" Then
-            MACT2 = "'041'"
-        ElseIf MACT2 = "16" Then
-            MACT2 = "'041'"
-            '                ElseIf MACT2 = "23" Then
-            '                    MACT2 = "'041'"
-        ElseIf MACT2 = "24" Then
-            MACT2 = "'050'"
-        ElseIf MACT2 = "21" Then
-            MACT2 = "'039'"
-        ElseIf MACT2 = "31" Then
-            MACT2 = "'050'"
+            MACT3 = "''"
         Else
-            MACT2 = "'000'"
+            MACT2 = "'" & MACT2 & "'"
+            MACT3 = "'1'"
         End If
                 
-        MACT3 = "'2'"
+        
         STT = 3
         STT2 = 1
         STTIN = "'1'"
