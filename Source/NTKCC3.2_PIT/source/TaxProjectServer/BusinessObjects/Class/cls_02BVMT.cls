@@ -98,6 +98,7 @@ Private larrPhongXuLy() As String
 Private lSoPhongXL As Long
 Public namQT As Variant
 Private kyLapBo As Variant
+Public sKyKeKhai As String
 
 'Longvh
 Public strMST As String
@@ -124,7 +125,6 @@ Public strNgayHD_DLT As String
 'end
 Public spathVat As String
 Public sSaiCT11 As String
-Public sKyKeKhai As String
 Public dNgayNopDB As Variant
 Public HANNOP As String
 Public TTHTK As String
@@ -999,7 +999,7 @@ Public Function InsertDTL_KHBS() As String
 
     End With
 
-    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/BVMT", ngnop, KYLBO, spathVat, sKyKeKhai, TTHTK, LAN_QUET, False)
+    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/BVMT", ngnop, KYLBO, spathVat, TTHTK, LAN_QUET, False)
     
     InsertHDR_KHBS
     

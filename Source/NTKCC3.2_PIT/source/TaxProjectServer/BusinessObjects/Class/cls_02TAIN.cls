@@ -826,7 +826,7 @@ Dim madtnt As Variant
 
     End With
 
-    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/TAIN", ngnop, KYLBO, spathVat, sKyKeKhai, TTHTK, LAN_QUET, False)
+    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/TAIN", ngnop, KYLBO, spathVat, TTHTK, LAN_QUET, False)
     
     InsertHDR_KHBS
     

@@ -80,6 +80,7 @@ Public strFax_DLT As String
 Public strMail_DLT As String
 Public strSoHD_DLT As String
 Public strNgayHD_DLT As String
+Public sKyKeKhai As String
 'end
 
 Public WithEvents fps As fpSpread
@@ -615,7 +616,7 @@ Dim madtnt As Variant
 
     End With
 
-    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/NTNN", ngnop, KYLBO, spathVat, sKyKeKhai, TTHTK, LAN_QUET, True)
+    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/NTNN", ngnop, KYLBO, spathVat, TTHTK, LAN_QUET, True)
     
     InsertHDR_KHBS
     
@@ -981,11 +982,12 @@ Public Function TKTT() As Boolean
     Dim strFileNameHDR As String
     Dim strFileNameDTL As String
     Dim strFileNameBS As String
-    
+    Dim strFileNameBSHDR As String
     
     strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_QTNT" & namKyLapBo & ".DBF"
     strFileNameDTL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_QTNTD" & namKyLapBo & ".DBF"
     strFileNameBS = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_BS" & namKyLapBo & ".DBF"
+    strFileNameBSHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_ND" & namKyLapBo & ".DBF"
     
     
     'file HDR
@@ -1026,6 +1028,12 @@ Public Function TKTT() As Boolean
             strTepmauBS = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "\tepmau\TMP_BS.DBF"
             fso.CopyFile strTepmauBS, strFileNameBS, False
         End If
+        
+    If fso.FileExists(strFileNameBSHDR) = False Then
+        Dim strTepmauBSHDR As String
+        strTepmauBSHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "\tepmau\TMP_ND.DBF"
+        fso.CopyFile strTepmauBSHDR, strFileNameBSHDR, False
+    End If
     isExistFile = True
     
     If clsDAO.Connected = False Then
