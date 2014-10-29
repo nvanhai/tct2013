@@ -940,7 +940,7 @@ ByVal IsTKMonth As Boolean _
         
         ' Insert so dieu chinh tang
         mact = "'1000'"
-        
+        MaMuc = "'15500'"
         MACT2 = "''"
         MACT3 = "''"
         
@@ -1068,7 +1068,7 @@ ByVal IsTKMonth As Boolean _
         ' Insert so dieu chinh giam
 
         mact = "'2000'"
-        
+        MaMuc = "'15500'"
         MACT2 = "''"
         MACT3 = "''"
         STT = 2
@@ -1171,7 +1171,7 @@ MATHUE = "''"
         ' Insert Tong hop dieu chinh
 
         mact = "'3000'"
-        
+        MaMuc = "'15500'"
         MACT2 = "''"
         MACT3 = "''"
         STT = 3
