@@ -91,7 +91,7 @@ Public strPhongXuLy As String
 Private larrid() As String
 Private larrPhongXuLy() As String
 Private lSoPhongXL As Long
-
+Public sKyKeKhai As String
 'Longvh
 Public strMST As String
 Public strTenGoi As String
@@ -117,7 +117,7 @@ Public strNgayHD_DLT As String
 'end
 Public spathVat As String
 Public sSaiCT11 As String
-Public sKyKeKhai As String
+
 Public dNgayNopDB As Variant
 Public HANNOP As String
 Public TTHTK As String
@@ -899,7 +899,7 @@ Public Function InsertDTL_KHBS() As String
 
     End With
 
-    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "01/PHLP", ngnop, KYLBO, spathVat, sKyKeKhai, TTHTK, LAN_QUET, True)
+    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "01/PHLP", ngnop, KYLBO, spathVat, TTHTK, LAN_QUET, True)
     
     InsertHDR_KHBS
     
@@ -1397,10 +1397,12 @@ Public Function TKTT() As Boolean
     Dim strFileNameHDR1 As String
     Dim strFileNameDTL1 As String
     Dim strFileNameBS As String
+    Dim strFileNameBSHDR As String
     
     strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_TK" & sKyKeKhai & ".DBF"
     strFileNameDTL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_LP" & sKyKeKhai & ".DBF"
     strFileNameBS = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_BS" & sKyKeKhai & ".DBF"
+    strFileNameBSHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_ND" & sKyKeKhai & ".DBF"
     
     'file HDR
     If fso.FileExists(strFileNameHDR) = False Then
@@ -1423,7 +1425,13 @@ Public Function TKTT() As Boolean
             strTepmauBS = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "\tepmau\TMP_BS.DBF"
             fso.CopyFile strTepmauBS, strFileNameBS, False
         End If
-
+        
+    If fso.FileExists(strFileNameBSHDR) = False Then
+        Dim strTepmauBSHDR As String
+        strTepmauBSHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "\tepmau\TMP_ND.DBF"
+        fso.CopyFile strTepmauBSHDR, strFileNameBSHDR, False
+    End If
+    
     isExistFile = True
     
     If clsDAO.Connected = False Then

@@ -869,7 +869,6 @@ ByVal matkhai As Variant, _
 ByVal ngnop As Variant, _
 ByVal KYLBO As Variant, _
 ByVal spathVat As Variant, _
-ByVal sKyKeKhai As Variant, _
 ByVal TTHTK As Variant, _
 ByVal LAN_QUET As Variant, _
 ByVal IsTKMonth As Boolean _

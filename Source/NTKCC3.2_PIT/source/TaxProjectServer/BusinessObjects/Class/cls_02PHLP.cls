@@ -133,6 +133,7 @@ Public isTKTonTai As Boolean
 Public checkDLTTonTai As Boolean
 
 
+
 Public Function Prepared1() As Boolean
     With fps
         .Sheet = 1
@@ -845,7 +846,7 @@ Public Function InsertDTL_KHBS() As String
 
     End With
 
-    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/PHLP", ngnop, KYLBO, spathVat, sKyKeKhai, TTHTK, LAN_QUET, False)
+    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/PHLP", ngnop, KYLBO, spathVat, TTHTK, LAN_QUET, False)
     
     InsertHDR_KHBS
     
@@ -1326,11 +1327,13 @@ Public Function TKTT() As Boolean
     Dim strFileNameHDR1 As String
     Dim strFileNameDTL1 As String
     Dim strFileNameBS As String
+    Dim strFileNameBSHDR As String
     
     strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_PH" & sKyKeKhai & ".DBF"
     strFileNameDTL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_PHD" & sKyKeKhai & ".DBF"
     
     strFileNameBS = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_BS" & sKyKeKhai & ".DBF"
+    strFileNameBSHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_ND" & sKyKeKhai & ".DBF"
     
     'file HDR
     If fso.FileExists(strFileNameHDR) = False Then
@@ -1353,7 +1356,13 @@ Public Function TKTT() As Boolean
             strTepmauBS = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "\tepmau\TMP_BS.DBF"
             fso.CopyFile strTepmauBS, strFileNameBS, False
         End If
-
+        
+    If fso.FileExists(strFileNameBSHDR) = False Then
+        Dim strTepmauBSHDR As String
+        strTepmauBSHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "\tepmau\TMP_ND.DBF"
+        fso.CopyFile strTepmauBSHDR, strFileNameBSHDR, False
+    End If
+    
     isExistFile = True
     
     If clsDAO.Connected = False Then
