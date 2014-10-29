@@ -909,36 +909,13 @@ Public Function InsertHDR_KHBS() As String
         End If
         
         kykkhai = "'" & TAX_Utilities_Svr_New.Year & "'"
-        MaMuc = "''"
+        MaMuc = "'15500'"
         maTM = "''"
         matkhai = "'04/NTNN'"
-        MATHUE = "''"
-        MAPP = "''"
-
-        ' Dat mathue,mapp
-        Select Case matkhai
         
-            Case "01/PHLP"
-                MATHUE = "'20'"
-                MAPP = "'2'"
-            Case "02/PHLP"
-                MATHUE = "'20'"
-                MAPP = "'2'"
-            Case "02/BVMT"
-                MATHUE = "'21'"
-                MAPP = "'2'"
-            Case "02/NTNN"
-                MATHUE = "'23'"
-                MAPP = "'1'"
-            Case "04/NTNN"
-                MATHUE = "'23'"
-                MAPP = "'2'"
-            Case "02/TAIN"
-                MATHUE = "'04'"
-                MAPP = "'1'"
-        End Select
-
-        
+        MATHUE = "'23'"
+        MAPP = "'2'"
+ 
         .GetText .ColLetterToNumber("E"), 24, ngnop
 
         If Trim(ngnop) = vbNullString Then
