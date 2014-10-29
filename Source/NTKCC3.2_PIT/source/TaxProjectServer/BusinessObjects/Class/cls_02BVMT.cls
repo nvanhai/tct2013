@@ -999,7 +999,7 @@ Public Function InsertDTL_KHBS() As String
 
     End With
 
-    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/BVMT", ngnop, KYLBO, "1000", "2000", "3000", spathVat, sKyKeKhai, TTHTK, LAN_QUET, False)
+    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/BVMT", ngnop, KYLBO, spathVat, sKyKeKhai, TTHTK, LAN_QUET, False)
     
     InsertHDR_KHBS
     
@@ -1048,12 +1048,35 @@ Public Function InsertHDR_KHBS() As String
         End If
         
         kykkhai = "'" & TAX_Utilities_Svr_New.Year & "'"
-        matkhai = "'02/BVMT'"
-        MATHUE = "''"
         MaMuc = "''"
         maTM = "''"
+        matkhai = "'02/BVMT'"
+        MATHUE = "''"
         MAPP = "''"
-       
+
+        ' Dat mathue,mapp
+        Select Case matkhai
+        
+            Case "01/PHLP"
+                MATHUE = "'20'"
+                MAPP = "'2'"
+            Case "02/PHLP"
+                MATHUE = "'20'"
+                MAPP = "'2'"
+            Case "02/BVMT"
+                MATHUE = "'21'"
+                MAPP = "'2'"
+            Case "02/NTNN"
+                MATHUE = "'23'"
+                MAPP = "'1'"
+            Case "04/NTNN"
+                MATHUE = "'23'"
+                MAPP = "'2'"
+            Case "02/TAIN"
+                MATHUE = "'04'"
+                MAPP = "'1'"
+        End Select
+
         
         .GetText .ColLetterToNumber("E"), 24, ngnop
 
