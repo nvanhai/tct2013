@@ -80,8 +80,8 @@
 		<tongDoanhSoBan_5>K_30</tongDoanhSoBan_5>
 	</Static>
 	<Static GroupName="PL04_1_GTGT">
-		<tongDThuBRa>H_32</tongDThuBRa>
-		<tongDThuBRaChiuThue>H_33</tongDThuBRaChiuThue>
-		<tongThueBRa>H_34</tongThueBRa>
+		<tongDThuBRa>K_32</tongDThuBRa>
+		<tongDThuBRaChiuThue>K_33</tongDThuBRaChiuThue>
+		<tongThueBRa>K_34</tongThueBRa>
 	</Static>
 </PL04_1_GTGT>
