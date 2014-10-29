@@ -15,11 +15,11 @@
 		</HDonMVao>
 	</Dynamic>
 	<Static GroupName="HHDVDauTuKTru">
-		<tongGTriHHDVMuaVao>H_12</tongGTriHHDVMuaVao>
-		<tThueGTGT_HHDVMuaVao>H_13</tThueGTGT_HHDVMuaVao>
+		<tongGTriHHDVMuaVao>K_12</tongGTriHHDVMuaVao>
+		<tThueGTGT_HHDVMuaVao>K_13</tThueGTGT_HHDVMuaVao>
 	</Static>
 	<Static GroupName="PL01_2_GTGT">
-		<tongCongGTriHHDVMuaVao>H_12</tongCongGTriHHDVMuaVao>
-		<tongCongThueGTGTHHDVMuaVao>H_13</tongCongThueGTGTHHDVMuaVao>
+		<tongCongGTriHHDVMuaVao>K_12</tongCongGTriHHDVMuaVao>
+		<tongCongThueGTGTHHDVMuaVao>K_13</tongCongThueGTGTHHDVMuaVao>
 	</Static>
 </PL01_2_GTGT>
