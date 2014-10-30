@@ -131,6 +131,7 @@ Public strTenPQL As String
 Public strSoTTTKhai As String
 Public isTKTonTai As Boolean
 Public checkDLTTonTai As Boolean
+Private MaMucKHBS As String
 
 
 
@@ -846,7 +847,7 @@ Public Function InsertDTL_KHBS() As String
 
     End With
 
-    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/PHLP", ngnop, KYLBO, spathVat, TTHTK, LAN_QUET, False)
+    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/PHLP", ngnop, KYLBO, spathVat, TTHTK, LAN_QUET, False, sKyKeKhai, MaMucKHBS)
     
     InsertHDR_KHBS
     
@@ -892,7 +893,7 @@ Public Function InsertHDR_KHBS() As String
         End If
         
         kykkhai = "'" & TAX_Utilities_Svr_New.Year & "'"
-        MaMuc = "'15500'"
+        MaMuc = "'2150'"
         maTM = "''"
         matkhai = "'02/PHLP'"
        
@@ -1249,7 +1250,7 @@ Public Function InsertHDR() As String
             Else
                 MaMuc = "'" & MaMuc & "'"
             End If
-            
+            MaMucKHBS = MaMuc
             If Trim(vTemp) <> "" Or Trim(vTemp) <> "''" Then
                 sSQLVal = matkhai & "," & KYLBO & "," & namQT & "," & madtnt & "," & TTHTK & _
                 "," & ngnop & "," & TuKy & "," & DenKy & "," & NgNhap & "," & ThueTKy & _

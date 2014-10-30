@@ -99,7 +99,7 @@ Private lSoPhongXL As Long
 Public namQT As Variant
 Private kyLapBo As Variant
 Public sKyKeKhai As String
-
+Private MaMucKHBS As String
 'Longvh
 Public strMST As String
 Public strTenGoi As String
@@ -690,21 +690,24 @@ Public Function InsertDTL() As String
 
             .GetText .ColLetterToNumber("AB"), .Row, maKhoangSan
             ' Tu maKhoangSan lay ra maTM
-            'DataDM maKhoangSan, , , , , , maTM
-            maTM = "1553"
+            DataDM maKhoangSan, , , , , , , maTM
+            
+            'MaMuc = "'1550'"
+
+            MaMuc = GetMaMuc(maTM)
+            If Trim(MaMuc) = vbNullString Then
+                MaMuc = "''"
+            Else
+                MaMuc = "'" & MaMuc & "'"
+            End If
+            
+            MaMucKHBS = MaMuc
+            'maTM = "1553"
             If Trim(maTM) = vbNullString Then
                 maTM = "''"
             Else
                 maTM = "'" & maTM & "'"
             End If
-            MaMuc = "'1550'"
-'
-'            MaMuc = GetMaMuc(vTemp)
-'            If Trim(MaMuc) = vbNullString Then
-'                MaMuc = "''"
-'            Else
-'                MaMuc = "'" & MaMuc & "'"
-'            End If
             
             
             ' don vi tinh
@@ -820,21 +823,26 @@ Public Function InsertDTL() As String
 
             .GetText .ColLetterToNumber("AB"), .Row, maKhoangSan
             ' Tu maKhoangSan lay ra maTM
-            'DataDM maKhoangSan, , , , , , maTM
-            maTM = "1553"
+            DataDM maKhoangSan, , , , , , , maTM
+            
+            '
+            MaMuc = GetMaMuc(maTM)
+            If Trim(MaMuc) = vbNullString Then
+                MaMuc = "''"
+            Else
+                MaMuc = "'" & MaMuc & "'"
+            End If
+            
+            MaMucKHBS = MaMuc
+            
+            'maTM = "1553"
             If Trim(maTM) = vbNullString Then
                 maTM = "''"
             Else
                 maTM = "'" & maTM & "'"
             End If
-            MaMuc = "'1550'"
-'
-'            MaMuc = GetMaMuc(vTemp)
-'            If Trim(MaMuc) = vbNullString Then
-'                MaMuc = "''"
-'            Else
-'                MaMuc = "'" & MaMuc & "'"
-'            End If
+            'MaMuc = "'1550'"
+
             
 
 
@@ -999,7 +1007,7 @@ Public Function InsertDTL_KHBS() As String
 
     End With
 
-    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/BVMT", ngnop, KYLBO, spathVat, TTHTK, LAN_QUET, False)
+    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/BVMT", ngnop, KYLBO, spathVat, TTHTK, LAN_QUET, False, sKyKeKhai, MaMucKHBS)
     
     InsertHDR_KHBS
     
@@ -1048,7 +1056,10 @@ Public Function InsertHDR_KHBS() As String
         End If
         
         kykkhai = "'" & TAX_Utilities_Svr_New.Year & "'"
-        MaMuc = "'15500'"
+        
+        'Khong xac dinh, nen dien vao de khong bi rong
+        'Tam lay mot ma muc tren to khai chinh
+        MaMuc = "'2600'"
         maTM = "''"
         matkhai = "'02/BVMT'"
         
@@ -1241,7 +1252,7 @@ Public Function InsertHDR() As String
             ' Lay ma khoang san
             .GetText .ColLetterToNumber("AB"), .Row, maKhoangSan
             ' Tu maKhoangSan lay ra maTM
-            DataDM maKhoangSan, , , , , , maTM
+            DataDM maKhoangSan, , , , , , , maTM
             
             vTemp = "~" & maTM & "~"
             vTemp2 = vTemp2 & maTM & "~"
@@ -1267,7 +1278,7 @@ Public Function InsertHDR() As String
             ' Lay ma khoang san
             .GetText .ColLetterToNumber("AB"), .Row, maKhoangSan
             ' Tu maKhoangSan lay ra maTM
-            DataDM maKhoangSan, , , , , , maTM
+            DataDM maKhoangSan, , , , , , , maTM
             
             vTemp = "~" & maTM & "~"
             vTemp2 = vTemp2 & maTM & "~"
@@ -1416,14 +1427,15 @@ Public Function InsertHDR() As String
             ThueTKy = arrThueTKySave(i)
             
             'TODO
-            MaMuc = "'1550'"
-'            MaMuc = GetMaMuc(vTemp)
-'            If Trim(MaMuc) = vbNullString Then
-'                MaMuc = "''"
-'            Else
-'                MaMuc = "'" & MaMuc & "'"
-'            End If
+            'MaMuc = "'1550'"
+            MaMuc = GetMaMuc(vTemp)
             
+            If Trim(MaMuc) = vbNullString Then
+                MaMuc = "''"
+            Else
+                MaMuc = "'" & MaMuc & "'"
+            End If
+            MaMucKHBS = MaMuc
             If Trim(ThueTKy) <> vbNullString Then
                 THUECL = ThueTKy
             Else
@@ -1942,7 +1954,8 @@ Private Sub DataDM(ByVal Id As String, _
                    Optional ByRef DVT As String, _
                    Optional ByRef strThueSuat As String, _
                    Optional ByRef blnSuaThueSuat As Boolean, _
-                   Optional ByRef maTM As String)
+                   Optional ByRef maTMTN As String, _
+                   Optional ByRef maTMMT As String)
     Dim arrDanhsach()   As String
     Dim strDataFileName As String
     Dim xmlDOMdata      As New MSXML.DOMDocument
@@ -1974,7 +1987,8 @@ Private Sub DataDM(ByVal Id As String, _
                     DVT = arrDanhsach(3)
                     strThueSuat = arrDanhsach(4)
                     blnSuaThueSuat = IIf(arrDanhsach(5) = "1", True, False)
-                    maTM = "" 'arrDanhsach(7)
+                    maTMTN = arrDanhsach(7)
+                    maTMMT = arrDanhsach(8)
                     Exit Sub
                 End If
             End If
