@@ -131,7 +131,7 @@ Public strTenPQL As String
 Public strSoTTTKhai As String
 Public isTKTonTai As Boolean
 Public checkDLTTonTai As Boolean
-
+Private MaMucKHBS As String
 
 Public Function Prepared1() As Boolean
     With fps
@@ -899,7 +899,7 @@ Public Function InsertDTL_KHBS() As String
 
     End With
 
-    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "01/PHLP", ngnop, KYLBO, spathVat, TTHTK, LAN_QUET, True)
+    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "01/PHLP", ngnop, KYLBO, spathVat, TTHTK, LAN_QUET, True, sKyKeKhai, MaMucKHBS)
     
     InsertHDR_KHBS
     
@@ -945,7 +945,7 @@ Public Function InsertHDR_KHBS() As String
         End If
         
         kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
-        MaMuc = "'15500'"
+        MaMuc = "'2150'"
         maTM = "''"
         matkhai = "'01/PHLP'"
         

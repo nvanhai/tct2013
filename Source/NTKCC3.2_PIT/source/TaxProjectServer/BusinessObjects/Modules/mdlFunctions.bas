@@ -871,7 +871,9 @@ ByVal KYLBO As Variant, _
 ByVal spathVat As Variant, _
 ByVal TTHTK As Variant, _
 ByVal LAN_QUET As Variant, _
-ByVal IsTKMonth As Boolean _
+ByVal IsTKMonth As Boolean, _
+ByVal prefixTable As String, _
+ByVal MaMucTKC As String _
 ) As String
     Dim sSQL        As String
     Dim sSQLCol     As String
@@ -897,20 +899,23 @@ ByVal IsTKMonth As Boolean _
     Dim SOTIENNC    As Variant
     Dim DANHAN      As Variant
     
-    Dim i           As Integer, iCol As Long, iRow As Long
-    Dim xmlNode     As MSXML.IXMLDOMNode
+    
+    
+    'Dim i           As Integer, iCol As Long, iRow As Long
+    'Dim xmlNode     As MSXML.IXMLDOMNode
 
-    Dim strFileName As String
-    Dim fso         As New FileSystemObject
+    'Dim strFileName As String
+    'Dim fso         As New FileSystemObject
 
-    'kiem tra ton tai tep *.dbf chua
-    strFileName = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_BS" & sKyKeKhai & ".DBF"
-
-    If fso.FileExists(strFileName) = False Then
-        Dim strTepmau As String
-        strTepmau = spathVat & "\tepmau\TMP_BS.DBF"
-        fso.CopyFile strTepmau, strFileName, False
-    End If
+'    'kiem tra ton tai tep *.dbf chua
+'    strFileName = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_BS" & sKyKeKhai & ".DBF"
+'
+'    If fso.FileExists(strFileName) = False Then
+'        Dim strTepmau As String
+'        strTepmau = spathVat & "\tepmau\TMP_BS.DBF"
+'
+'        fso.CopyFile strTepmau, strFileName, False
+'    End If
 
     sSQLCol = "MADTNT, KYKKHAI, MATKHAI, MATHUE, MAMUC, MATM, MAPP, NGNOP, TTHTK," & _
             "KYLBO , MACT, MACT2, MACT3, STT, STT2, STTIN," & " SOKK, SODC, SOCL," & _
@@ -926,21 +931,23 @@ ByVal IsTKMonth As Boolean _
         
         If IsTKMonth Then
             kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+            'prefixTable = TAX_Utilities_Svr_New.Month & TAX_Utilities_Svr_New.Year
         Else
             kykkhai = "'" & TAX_Utilities_Svr_New.Year & "'"
+            'prefixTable = TAX_Utilities_Svr_New.Year
         End If
         
         matkhai = "'" & matkhai & "'"
         
         MATHUE = "''"
-        MaMuc = "''"  ' bang tren to khai chinh khong the lay duoc
+        MaMuc = "''"  ' bang tren to khai chinh
         maTM = "''"   ' khong the lay duoc
         MAPP = "''"
         DANHAN = "''"
         
         ' Insert so dieu chinh tang
         mact = "'1000'"
-        MaMuc = "'15500'"
+        MaMuc = "''"
         MACT2 = "''"
         MACT3 = "''"
         
@@ -953,9 +960,9 @@ ByVal IsTKMonth As Boolean _
         SOTIENNC = "0"
         SONGAYNC = "0"
         
-        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & MACTT & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                        
-        sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        sSQL = "INSERT INTO TMP_BS" & prefixTable & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
         
         'Lay sheet KHBS tren to khai
@@ -985,29 +992,36 @@ ByVal IsTKMonth As Boolean _
         
         MATHUE = "''"
     MAPP = "''"
+MaMuc = "''"
+
 
     ' Dat mathue,mapp
     Select Case matkhai
     
-        Case "01/PHLP"
+        Case "'01/PHLP'"
             MATHUE = "'20'"
             MAPP = "'2'"
-        Case "02/PHLP"
+            MaMuc = "'2150'"
+        Case "'02/PHLP'"
             MATHUE = "'20'"
             MAPP = "'2'"
-        Case "02/BVMT"
+            MaMuc = "'2150'"
+        Case "'02/BVMT'"
             MATHUE = "'21'"
             MAPP = "'2'"
-        Case "02/NTNN"
+            MaMuc = "'2600'"
+        Case "'02/NTNN'"
             MATHUE = "'23'"
             MAPP = "'1'"
-        Case "04/NTNN"
+            MaMuc = "'1700'"
+        Case "'04/NTNN'"
             MATHUE = "'23'"
             MAPP = "'2'"
-            
-        Case "02/TAIN"
+            MaMuc = "'1050'"
+        Case "'02/TAIN'"
             MATHUE = "'04'"
             MAPP = "'1'"
+            MaMuc = "'1550'"
     End Select
 
 
@@ -1054,7 +1068,7 @@ ByVal IsTKMonth As Boolean _
             
             sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                            
-            sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+            sSQL = "INSERT INTO TMP_BS" & prefixTable & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
                 
             If MACT2 <> "''" Then
                 bln = clsDAO.ExecuteDLL(sSQL)
@@ -1068,7 +1082,7 @@ ByVal IsTKMonth As Boolean _
         ' Insert so dieu chinh giam
 
         mact = "'2000'"
-        MaMuc = "'15500'"
+        MaMuc = "''"
         MACT2 = "''"
         MACT3 = "''"
         STT = 2
@@ -1080,7 +1094,7 @@ ByVal IsTKMonth As Boolean _
         
         sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                        
-        sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        sSQL = "INSERT INTO TMP_BS" & prefixTable & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
 
         i = 1
@@ -1088,30 +1102,37 @@ ByVal IsTKMonth As Boolean _
         
 MATHUE = "''"
     MAPP = "''"
-
+MaMuc = "''"
     ' Dat mathue,mapp
     Select Case matkhai
     
-        Case "01/PHLP"
+        Case "'01/PHLP'"
             MATHUE = "'20'"
             MAPP = "'2'"
-        Case "02/PHLP"
+            MaMuc = "'2150'"
+        Case "'02/PHLP'"
             MATHUE = "'20'"
             MAPP = "'2'"
-        Case "02/BVMT"
+            MaMuc = "'2150'"
+        Case "'02/BVMT'"
             MATHUE = "'21'"
             MAPP = "'2'"
-        Case "02/NTNN"
+            MaMuc = "'2600'"
+        Case "'02/NTNN'"
             MATHUE = "'23'"
             MAPP = "'1'"
-        Case "04/NTNN"
+            MaMuc = "'1700'"
+        Case "'04/NTNN'"
             MATHUE = "'23'"
             MAPP = "'2'"
-            
-        Case "02/TAIN"
+            MaMuc = "'1050'"
+        Case "'02/TAIN'"
             MATHUE = "'04'"
             MAPP = "'1'"
+            MaMuc = "'1550'"
     End Select
+
+
         Do
             mact = "''"
             .GetText .ColLetterToNumber("BE"), .Row, MACT2
@@ -1157,7 +1178,7 @@ MATHUE = "''"
             
             sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                            
-            sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+            sSQL = "INSERT INTO TMP_BS" & prefixTable & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
             If MACT2 <> "''" Then
                 bln = clsDAO.ExecuteDLL(sSQL)
@@ -1171,7 +1192,7 @@ MATHUE = "''"
         ' Insert Tong hop dieu chinh
 
         mact = "'3000'"
-        MaMuc = "'15500'"
+        MaMuc = "''"
         MACT2 = "''"
         MACT3 = "''"
         STT = 3
@@ -1183,12 +1204,43 @@ MATHUE = "''"
         
         sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                        
-        sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        sSQL = "INSERT INTO TMP_BS" & prefixTable & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
         
-        
+        MATHUE = "''"
+    MAPP = "''"
+MaMuc = "''"
+    ' Dat mathue,mapp
+    Select Case matkhai
+    
+        Case "'01/PHLP'"
+            MATHUE = "'20'"
+            MAPP = "'2'"
+            MaMuc = "'2150'"
+        Case "'02/PHLP'"
+            MATHUE = "'20'"
+            MAPP = "'2'"
+            MaMuc = "'2150'"
+        Case "'02/BVMT'"
+            MATHUE = "'21'"
+            MAPP = "'2'"
+            MaMuc = "'2600'"
+        Case "'02/NTNN'"
+            MATHUE = "'23'"
+            MAPP = "'1'"
+            MaMuc = "'1700'"
+        Case "'04/NTNN'"
+            MATHUE = "'23'"
+            MAPP = "'2'"
+            MaMuc = "'1050'"
+        Case "'02/TAIN'"
+            MATHUE = "'04'"
+            MAPP = "'1'"
+            MaMuc = "'1550'"
+    End Select
         .Row = .Row + 3
         mact = "''"
+        
         .GetText .ColLetterToNumber("BE"), .Row, MACT2
 
         If Trim(MACT2) = vbNullString Then
@@ -1230,7 +1282,7 @@ MATHUE = "''"
             
         sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
                            
-        sSQL = "INSERT INTO TMP_BS" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        sSQL = "INSERT INTO TMP_BS" & prefixTable & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
         If MACT2 <> "''" Then
             bln = clsDAO.ExecuteDLL(sSQL)

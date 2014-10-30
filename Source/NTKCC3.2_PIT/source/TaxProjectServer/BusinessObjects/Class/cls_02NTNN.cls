@@ -136,6 +136,7 @@ Public KyTTTu As Variant
 Public KyTTDen As Variant
 Public namKyLapBo As Variant
 Public namQT As Variant
+Private MaMucKHBS As String
 
 
 Public Function Prepared1() As Boolean
@@ -616,7 +617,7 @@ Dim madtnt As Variant
 
     End With
 
-    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/NTNN", ngnop, KYLBO, spathVat, TTHTK, LAN_QUET, True)
+    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/NTNN", ngnop, KYLBO, spathVat, TTHTK, LAN_QUET, True, sKyKeKhai, MaMucKHBS)
     
     InsertHDR_KHBS
     
@@ -663,7 +664,8 @@ Public Function InsertHDR_KHBS() As String
         End If
         
         kykkhai = "'" & TAX_Utilities_Svr_New.Year & "'"
-        MaMuc = "'15500'"
+        MaMuc = "'1550'"
+        MaMucKHBS = MaMuc
         maTM = "''"
         matkhai = "'02/NTNN'"
         
