@@ -4262,9 +4262,9 @@ Private Sub cmdExport_Click()
                 ' Khac ky tinh thue nam 2012 se khong ket xuat pl MT 26,27
                 ' To khai 09/KK-TNCN
                 If idToKhaiKHBS = "41" And TAX_Utilities_v1.Year <> "2012" Then
-                    fpSpread1.sheet = 6
+                    fpSpread1.sheet = 5
                     If fpSpread1.SheetName = "26MT-TNCN" Then
-                        fpSpread1.DeleteSheets 6, 1
+                        fpSpread1.DeleteSheets 5, 1
                     End If
                 End If
                 ' To khai 05/KK-TNCN
@@ -4451,6 +4451,9 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
             If UCase(Trim(loaiToKhai)) = "09_TNCN" Then
                 .Col = .ColLetterToNumber("G")
                 .Row = 6
+            ElseIf UCase(Trim(loaiToKhai)) = "05_TNCN" Then
+                .Col = .ColLetterToNumber("L")
+                .Row = 6
             Else
                 .Col = .ColLetterToNumber("E")
                 .Row = 6
@@ -4462,8 +4465,11 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
                 If UCase(Trim(loaiToKhai)) = "09_TNCN" Then
                      .Col = .ColLetterToNumber("K")
                     .Row = 6
+                ElseIf UCase(Trim(loaiToKhai)) = "05_TNCN" Then
+                     .Col = .ColLetterToNumber("O")
+                    .Row = 6
                 ElseIf UCase(Trim(loaiToKhai)) = "16_TH_DKNPT" Then
-                     .Col = .ColLetterToNumber("J")
+                     .Col = .ColLetterToNumber("G")
                     .Row = 6
                 Else
                     .Col = .ColLetterToNumber("I")
@@ -5434,6 +5440,10 @@ Private Sub cmdExportXml_Click()
     '****************************
         
     If CheckValidData = True Then
+        If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "17" And TAX_Utilities_v1.Year = "2012" Then
+            ' to khai 05/TNCN doi voi ky 2012 ket xuat PL mien thue
+            Call objTaxBusiness.fillDataPL27
+        End If
         KetXuatXML
             
     Else
@@ -6961,7 +6971,7 @@ Private Sub cmdLoadToKhai_Click()
             End If
         ElseIf varMenuId = "95" Then
             ' Lay ky ke khai
-            .GetText .ColLetterToNumber("I"), 4, kyKeKhai
+            .GetText .ColLetterToNumber("G"), 4, kyKeKhai
             ' Lay MST
             .GetText .ColLetterToNumber("D"), 10, mstFile
             ' Neu la ma 10 so thi them chuoi 000 vao sau
@@ -6987,8 +6997,8 @@ Private Sub cmdLoadToKhai_Click()
         ' Lay loai to khai
         If Trim(varMenuId) = "17" Or Trim(varMenuId) = "44" Or Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "26" Or Trim(varMenuId) = "59" Or Trim(varMenuId) = "76" Then
             .GetText .ColLetterToNumber("O"), 1, loaiToKhai
-        ElseIf Trim(varMenuId) = "95" Then
-            .GetText .ColLetterToNumber("P"), 1, loaiToKhai
+'        ElseIf Trim(varMenuId) = "95" Then
+'            .GetText .ColLetterToNumber("P"), 1, loaiToKhai
         ElseIf Trim(varMenuId) = "41" Then
             .GetText .ColLetterToNumber("Q"), 1, loaiToKhai
         End If
@@ -7091,10 +7101,10 @@ Private Sub cmdLoadToKhai_Click()
     End If
     
     ' bang tong hop NPT
-    If (varMenuId = "95" And UCase(loaiToKhai) <> "16TH") Then
-        DisplayMessage "0345", msOKOnly, miInformation
-        Exit Sub
-    End If
+'    If (varMenuId = "95" And UCase(loaiToKhai) <> "16TH") Then
+'        DisplayMessage "0345", msOKOnly, miInformation
+'        Exit Sub
+'    End If
     
     ' Lay du lieu cua to khai 05/KK
     If varMenuId = "17" Then
@@ -7152,7 +7162,7 @@ Private Sub convertData05KK()
             mCurrentSheet = .sheet
             .ActiveSheet = .sheet
             
-            fpSpread2.GetText .ColLetterToNumber("E"), 6, varTemp
+            fpSpread2.GetText .ColLetterToNumber("L"), 6, varTemp
             'fpSpread2.GetText .ColLetterToNumber("G"), 4, varTemp1
             fpSpread2.GetText .ColLetterToNumber("I"), 6, varTemp2
             fpSpread2.GetText .ColLetterToNumber("D"), 10, varTemp3
@@ -7176,7 +7186,7 @@ Private Sub convertData05KK()
                 Exit Sub
             End If
             
-            fpSpread2.GetText .ColLetterToNumber("E"), 6, varTemp
+            fpSpread2.GetText .ColLetterToNumber("L"), 6, varTemp
             If UCase(varTemp) = "[X]" Then
                 .Col = .ColLetterToNumber("C")
                 .Row = 67
@@ -7200,16 +7210,39 @@ Private Sub convertData05KK()
 '                .Text = "0"
 '                UpdateCell .Col, .Row, .value
 '            End If
-            fpSpread2.GetText .ColLetterToNumber("I"), 6, varTemp
+            fpSpread2.GetText .ColLetterToNumber("O"), 6, varTemp
             
             .Col = .ColLetterToNumber("I")
             .Row = 67
             .Text = varTemp
             UpdateCell .Col, .Row, .value
             
+            
+            ' Quyet toan tron nam
+            
+            .Col = .ColLetterToNumber("D")
+             .Row = 4
+            fpSpread2.GetText .Col, .Row, varTemp
+            If Trim$(varTemp) = "x" Or Trim$(varTemp) = "X" Or Trim$(varTemp) = "1" Then
+                .value = 1
+                UpdateCell .Col, .Row, .value
+            Else
+                .value = 0
+                UpdateCell .Col, .Row, .value
+            End If
+            
+            .Col = .ColLetterToNumber("D")
+            .Row = 6
+            fpSpread2.GetText .Col, .Row, varTemp
+            .Text = varTemp
+            UpdateCell .Col, .Row, .value
+            
+            
+            
             .Col = .ColLetterToNumber("I")
             
             ' set cac gia tri cua cac chi tieu tu 21 den 42
+            
             ' Nghia vu khau tru thue
             For idx = 36 To 57
                 ' Chi tieu idx - 15
@@ -7986,20 +8019,22 @@ Private Sub convertData09KK()
             ' tai du lieu dong
             moveDataTokhai09
             
-            .sheet = 5
-            fpSpread2.sheet = .sheet
-            mCurrentSheet = .sheet
-            .ActiveSheet = .sheet
-            .Col = .ColLetterToNumber("I")
-            
-            ' Cac chi tieu trong phu luc 09B
-            For i = 16 To 25
-                .Row = i
-                fpSpread2.GetText .Col, .Row, varTemp
-                .Text = varTemp
-                UpdateCell .Col, .Row, .value
-            Next
-            
+            If TAX_Utilities_v1.Year = 2012 Then
+                .sheet = 5
+                ' phu luc MT
+                fpSpread2.sheet = .sheet
+                mCurrentSheet = .sheet
+                .ActiveSheet = .sheet
+                .Col = .ColLetterToNumber("I")
+                
+                ' Cac chi tieu trong phu luc 26MT
+                For i = 19 To 21
+                    .Row = i
+                    fpSpread2.GetText .Col, .Row, varTemp
+                    .Text = varTemp
+                    UpdateCell .Col, .Row, .value
+                Next
+            End If
             
             .sheet = 1
             mCurrentSheet = .sheet
@@ -11146,7 +11181,7 @@ Private Sub fpSpread1_Click(ByVal Col As Long, ByVal Row As Long)
                 If .sheet = 3 And .Col = .ColLetterToNumber("C") And .Row = 4 Then
                     Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_05_2.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
-                If .sheet = 4 And .Col = .ColLetterToNumber("D") And .Row = 5 Then
+                If .sheet = 4 And .Col = .ColLetterToNumber("D") And .Row = 3 Then
                     Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bang_Ke_05_3.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
                 End If
                 If .sheet = 5 And .Col = .ColLetterToNumber("C") And .Row = 4 Then

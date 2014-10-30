@@ -4166,10 +4166,11 @@ Public Function getTemplateTk(ByVal strId As String) As String()
         ' QT TNCN
         ' 05_TNCN \TT28
         Case "17"
-            ReDim strResult(3)
+            ReDim strResult(4)
             strResult(0) = "D_20~Dynamic_0"
-            strResult(1) = "I_36~I_37~I_38~I_39~I_40~I_41~I_42~I_43~I_44~I_45~I_46~I_47~I_48~I_49~I_50~I_51~I_52~I_53~I_54~I_55~I_56~I_57~I_61~I_62~I_63~I_64~I_65~Dynamic_0"
-            strResult(2) = "D_69~D_71~M_69~M_71~C_67~F_67~I_67~M_67~N_67~Dynamic_0"
+            strResult(1) = "D_4~D_6~Dynamic_0"
+            strResult(2) = "I_36~I_37~I_38~I_39~I_40~I_41~I_42~I_43~I_44~I_45~I_46~I_47~I_48~I_49~I_50~I_51~I_52~I_53~I_54~I_55~I_56~I_57~I_61~I_62~I_63~I_64~I_65~Dynamic_0"
+            strResult(3) = "D_69~D_71~M_69~M_71~C_67~F_67~I_67~M_67~N_67~Dynamic_0"
         ' 02_TNCN_BH  \TT28
         Case "42"
             ReDim strResult(3)
