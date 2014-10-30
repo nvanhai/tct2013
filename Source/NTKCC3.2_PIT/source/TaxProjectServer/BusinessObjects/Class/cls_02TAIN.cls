@@ -137,7 +137,7 @@ Public Function InsertDTL() As String
    Dim namQT As Variant
    Dim madtnt As Variant
    Dim MaMuc As Variant
-   Dim maTM As Variant
+   Dim maTM As String
    Dim ngnop As Variant
    Dim LoaiTK As Variant
    Dim NganhTN As Variant
@@ -245,7 +245,7 @@ DANHAN = "''"
 
             .GetText .ColLetterToNumber("AN"), .Row, maKhoangSan
             ' Tu maKhoangSan lay ra maTM
-            DataDM maKhoangSan, , , , , , CStr(maTM)
+            DataDM maKhoangSan, , , , , , maTM
 
             'maTM = "1553"
              'khong duoc phep de trong
@@ -420,7 +420,7 @@ DANHAN = "''"
 
             .GetText .ColLetterToNumber("AN"), .Row, maKhoangSan
             ' Tu maKhoangSan lay ra maTM
-            DataDM maKhoangSan, , , , , , CStr(maTM)
+            DataDM maKhoangSan, , , , , , maTM
 
 '
             MaMuc = GetMaMuc(maTM)
@@ -1108,7 +1108,7 @@ Public Function InsertHDR() As String
             ' Lay ma khoang san
             .GetText .ColLetterToNumber("AN"), .Row, maKhoangSan
             ' Tu maKhoangSan lay ra maTM
-            DataDM maKhoangSan, , , , , , CStr(maTM)
+            DataDM maKhoangSan, , , , , , maTM
             'maTM = "1553"
             vTemp = "~" & maTM & "~"
             vTemp2 = vTemp2 & maTM & "~"
@@ -1134,7 +1134,7 @@ Public Function InsertHDR() As String
             ' Lay ma khoang san
             .GetText .ColLetterToNumber("AN"), .Row, maKhoangSan
             ' Tu maKhoangSan lay ra maTM
-        DataDM maKhoangSan, , , , , , CStr(maTM)
+        DataDM maKhoangSan, , , , , , maTM
             'maTM = "1553"
             
             vTemp = "~" & maTM & "~"
@@ -1296,12 +1296,14 @@ Public Function InsertHDR() As String
         LoaiTK = "'02/TAIN'"
         DANHAN = "''"
 
-        If Trim(HANNOP) = vbNullString Then
-            HANNOP = "CTOD('')"
-        Else
-            HANNOP = ToDate(Trim(HANNOP), DDMMYYYY)
-            HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
-        End If
+'        If Trim(HANNOP) = vbNullString Then
+'            HANNOP = "CTOD('')"
+'        Else
+'            HANNOP = ToDate(Trim(HANNOP), DDMMYYYY)
+'            HANNOP = "CTOD('" & Format(HANNOP, "mm/dd/yyyy") & "')"
+'        End If
+
+        HANNOP = "CTOD('')"
 
         KyDC = "''"
         DATHAY = ".F."
