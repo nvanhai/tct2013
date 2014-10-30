@@ -1193,7 +1193,10 @@ Public Sub finish()
         SSheet = .Sheet
 
         SetData
-
+        
+        If TAX_Utilities_v1.Year = "2012" Then
+            fillDataPL27
+        End If
         ' Lay cac mang MST trong cac bang ke va phu luc 05A, 05B
 '        prepareMSTCMT
 '
@@ -1208,10 +1211,13 @@ Public Sub finish()
         InsertNode 23, .SearchCol(.ColLetterToNumber("B"), 22, -1, "aa", SearchFlagsNone) - 1, 4
 '
 '
+        
+        
         UpdateSheets
         CheckDynamicError 'Set Exception Error on cells of interface
 
-'        If flgErr5A = True And flgErr5B = True Then kiemTraKhac
+''        If flgErr5A = True And flgErr5B = True Then kiemTraKhac
+
 
         .ActiveSheet = ASheet
         .Sheet = SSheet
@@ -1229,7 +1235,14 @@ Private Sub CheckDynamicError()
     'chuoi vitriheader tren to khai, chuoi vi tri tren sheet header de check lai
     Dim viTriHeaderTk As String, viTriSheetHeader As String, mangMessage As String, xmlNode As MSXML.IXMLDOMNode
     Dim MSTDTNT As Variant, tSheet As Integer
-
+    
+    Dim vQTTronNam As Variant
+    Dim vLyDo As Variant
+    Dim iFlagLyDo As Integer
+    Dim vErrLyDo As Variant
+    
+    iFlagLyDo = 0
+    
     With fps
     
         tSheet = .Sheet
@@ -1252,6 +1265,39 @@ Private Sub CheckDynamicError()
         .Sheet = tSheet
     
         CheckErrorMST
+        
+        ' check tren TK
+        .Sheet = .SheetCount
+        .GetText .ColLetterToNumber("E"), 85, vErrLyDo
+        .Sheet = 1
+        .GetText .ColLetterToNumber("D"), 4, vQTTronNam
+        .GetText .ColLetterToNumber("D"), 6, vLyDo
+        
+        
+        
+        If vQTTronNam = "1" Or vQTTronNam = "x" Or vQTTronNam = "X" Then
+            If Trim$(vLyDo) = "" Then
+                .Col = .ColLetterToNumber("D")
+                .Row = 6
+                .CellNote = vErrLyDo
+                .BackColor = mErrorColor
+                iFlagLyDo = 1
+            Else
+                .Col = .ColLetterToNumber("D")
+                .Row = 6
+                .CellNote = ""
+                .BackColor = mNonErrorColor
+            End If
+        Else
+            .Col = .ColLetterToNumber("D")
+            .Row = 6
+            .CellNote = ""
+            .BackColor = mNonErrorColor
+        End If
+        
+        .Sheet = .SheetCount
+        .SetText .ColLetterToNumber("B"), 85, IIf(iFlagLyDo = 1, "0", "1")
+        
         ' Neu ton tai file data bang ke 05A thi kiem tra tren bang ke 5A
         If IIf(TAX_Utilities_v1.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) Then
             CheckDynamicSheet1
@@ -1941,7 +1987,7 @@ Public Sub SetActiveSheet()
                     If TAX_Utilities_v1.Year = 2012 Then
                         blnNullValue = True
                         'Check the third sheet
-                       For Each xmlCellNode In TAX_Utilities_v1.Data(3).getElementsByTagName("Cell")
+                       For Each xmlCellNode In TAX_Utilities_v1.Data(4).getElementsByTagName("Cell")
                             ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
                             'Check value in E column and F column
                             If lCol = fps.ColLetterToNumber("C") Or _
@@ -2086,6 +2132,10 @@ Private Sub UpdateSheets()
        If TAX_Utilities_v1.Year = 2012 Then
             .Sheet = 5
             mCurrentSheet = .Sheet
+            
+            fillDataPL27
+    
+            
             .EventEnabled(EventAllEvents) = False
             i = 1
             .Col = .ColLetterToNumber("B")

@@ -238,7 +238,7 @@ Public Sub Prepare2()
         mCurrentSheet = .Sheet
         
         UpdateCell fps, .Col, .Row, .Text
-        .Col = .ColLetterToNumber("J")
+        .Col = .ColLetterToNumber("G")
         .Row = 6
         .Text = StrSolanBosung
         UpdateCell fps, .Col, .Row, .Text

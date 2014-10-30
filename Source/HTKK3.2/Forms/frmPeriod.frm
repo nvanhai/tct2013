@@ -3918,7 +3918,7 @@ Public Sub cmdOK_Click()
     ' chi ky ke khai nam 2012 bo sung them PL
     If idToKhai = "41" Then
         If TAX_Utilities_v1.Year = "2012" Then
-            SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(5), "Active", "1"
+            SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(4), "Active", "1"
         End If
     End If
     

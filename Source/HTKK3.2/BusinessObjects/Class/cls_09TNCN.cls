@@ -37,8 +37,8 @@ Private soThang1 As Long, soThang2 As Long
 Private Const phuLuc09_1_TNCN = 2
 Private Const phuLuc09_2_TNCN = 3
 Private Const phuLuc09_3_TNCN = 4
-Private Const phuLuc09_4_TNCN = 5
-Private Const phuLuc09_MT_TNCN = 6
+'Private Const phuLuc09_4_TNCN = 5
+Private Const phuLuc09_MT_TNCN = 5
 
   
 'This funtion is called after an object of this class is created
@@ -301,9 +301,9 @@ Public Sub Prepare2()
             soThangKG = getSoThangQTMienGiam(CStr(tuThang), CStr(denThang))
             .SetText .ColLetterToNumber("S"), 4, soThangKG
             If isMienGiamPL26(CStr(tuThang), CStr(denThang)) Then
-                .SetText .ColLetterToNumber("V"), 51, 1
+                .SetText .ColLetterToNumber("V"), 53, 1
             Else
-                .SetText .ColLetterToNumber("V"), 51, 0
+                .SetText .ColLetterToNumber("V"), 53, 0
             End If
         ElseIf TAX_Utilities_v1.Year = "2009" Then
             .SetText .ColLetterToNumber("S"), 4, "6"
@@ -376,19 +376,19 @@ Public Sub Prepare2()
         Loop Until .Text = "bb"
         
         ' chekc sheet 09-4
-        .Sheet = 5
-        Dim vCt6, vCt7 As Variant
-        .GetText .ColLetterToNumber("I"), 16, vCt6
-        .GetText .ColLetterToNumber("I"), 17, vCt7
-        If Val(vCt6) - Val(vCt7) < 0 Then
-            .Col = .ColLetterToNumber("I")
-            .Row = 19
-            .Lock = True
-        Else
-            .Col = .ColLetterToNumber("I")
-            .Row = 19
-            .Lock = False
-        End If
+'        .Sheet = 5
+'        Dim vCt6, vCt7 As Variant
+'        .GetText .ColLetterToNumber("I"), 16, vCt6
+'        .GetText .ColLetterToNumber("I"), 17, vCt7
+'        If Val(vCt6) - Val(vCt7) < 0 Then
+'            .Col = .ColLetterToNumber("I")
+'            .Row = 19
+'            .Lock = True
+'        Else
+'            .Col = .ColLetterToNumber("I")
+'            .Row = 19
+'            .Lock = False
+'        End If
         
         
         .EventEnabled(EventAllEvents) = True
@@ -471,25 +471,25 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
         End If
         
                 'check CT08 <0 thi set chi tieu 09 =0
-        If .ActiveSheet = 5 Then
-            .Sheet = 5
-            fps.EventEnabled(EventAllEvents) = False
-            If Col = .ColLetterToNumber("I") And (Row = 16 Or Row = 17) Then
-                .GetText .ColLetterToNumber("I"), 16, varCT06
-                .GetText .ColLetterToNumber("I"), 17, varCT07
-                If Val(varCT06) - Val(varCT07) < 0 Then
-                    .Col = .ColLetterToNumber("I")
-                    .Row = 19
-                    .Lock = True
-                    .Text = "0"
-                Else
-                    .Col = .ColLetterToNumber("I")
-                    .Row = 19
-                    .Lock = False
-                End If
-            End If
-            fps.EventEnabled(EventAllEvents) = True
-        End If
+'        If .ActiveSheet = 5 Then
+'            .Sheet = 5
+'            fps.EventEnabled(EventAllEvents) = False
+'            If Col = .ColLetterToNumber("I") And (Row = 16 Or Row = 17) Then
+'                .GetText .ColLetterToNumber("I"), 16, varCT06
+'                .GetText .ColLetterToNumber("I"), 17, varCT07
+'                If Val(varCT06) - Val(varCT07) < 0 Then
+'                    .Col = .ColLetterToNumber("I")
+'                    .Row = 19
+'                    .Lock = True
+'                    .Text = "0"
+'                Else
+'                    .Col = .ColLetterToNumber("I")
+'                    .Row = 19
+'                    .Lock = False
+'                End If
+'            End If
+'            fps.EventEnabled(EventAllEvents) = True
+'        End If
 
         
 '            If .ActiveSheet = 4 Then
@@ -1767,30 +1767,30 @@ Public Sub SetActiveSheet()
                 If blnNullValue Then
                     SetAttribute xmlNodeValid, "Active", "0"
                 End If
-            Case "09-4"
-                blnNullValue = True
-
-                For Each xmlCellNode In TAX_Utilities_v1.Data(4).getElementsByTagName("Cell")
-                    ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
-                    'Check value in E column and I column
-'                    If (lCol = fps.ColLetterToNumber("I") And lRow = 11) Or (lCol = fps.ColLetterToNumber("I") And lRow = 17) _
-'                            Or (lCol = fps.ColLetterToNumber("I") And lRow = 26) Or (lCol = fps.ColLetterToNumber("I") And lRow = 27) _
-'                                    Or (lCol = fps.ColLetterToNumber("I") And lRow = 28) Or (lCol = fps.ColLetterToNumber("I") And lRow = 29) Then
-                        strValue = GetAttribute(xmlCellNode, "Value")
-                        If Not IsNullValue(strValue) Then
-                            blnNullValue = False
-                            Exit For
-                        End If
-'                    End If
-                Next
-
-                If blnNullValue Then
-                    SetAttribute xmlNodeValid, "Active", "0"
-                End If
+'            Case "09-4"
+'                blnNullValue = True
+'
+'                For Each xmlCellNode In TAX_Utilities_v1.Data(4).getElementsByTagName("Cell")
+'                    ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
+'                    'Check value in E column and I column
+''                    If (lCol = fps.ColLetterToNumber("I") And lRow = 11) Or (lCol = fps.ColLetterToNumber("I") And lRow = 17) _
+''                            Or (lCol = fps.ColLetterToNumber("I") And lRow = 26) Or (lCol = fps.ColLetterToNumber("I") And lRow = 27) _
+''                                    Or (lCol = fps.ColLetterToNumber("I") And lRow = 28) Or (lCol = fps.ColLetterToNumber("I") And lRow = 29) Then
+'                        strValue = GetAttribute(xmlCellNode, "Value")
+'                        If Not IsNullValue(strValue) Then
+'                            blnNullValue = False
+'                            Exit For
+'                        End If
+''                    End If
+'                Next
+'
+'                If blnNullValue Then
+'                    SetAttribute xmlNodeValid, "Active", "0"
+'                End If
             Case "26MT"
                 blnNullValue = True
 
-                For Each xmlCellNode In TAX_Utilities_v1.Data(5).getElementsByTagName("Cell")
+                For Each xmlCellNode In TAX_Utilities_v1.Data(4).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
                     'Check value in D column and E column
                     If lCol = fps.ColLetterToNumber("I") Then
@@ -1911,8 +1911,8 @@ Private Sub UpdateSheets()
         End If
         
         If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(4), "Active") <> "0") Then
-        .Sheet = 5
-        mCurrentSheet = .Sheet
+            .Sheet = 5
+            mCurrentSheet = .Sheet
             For Each xmlCellNodeData In TAX_Utilities_v1.Data(4).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
@@ -1921,15 +1921,15 @@ Private Sub UpdateSheets()
         End If
         
         
-         If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(5), "Active") <> "0") Then
-        .Sheet = 6
-        mCurrentSheet = .Sheet
-            For Each xmlCellNodeData In TAX_Utilities_v1.Data(5).getElementsByTagName("Cell")
-               ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               .GetText lCol, lRow, varTemp
-               UpdateCell fps, lCol, lRow, varTemp
-             Next
-        End If
+'         If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(5), "Active") <> "0") Then
+'        .Sheet = 6
+'        mCurrentSheet = .Sheet
+'            For Each xmlCellNodeData In TAX_Utilities_v1.Data(5).getElementsByTagName("Cell")
+'               ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+'               .GetText lCol, lRow, varTemp
+'               UpdateCell fps, lCol, lRow, varTemp
+'             Next
+'        End If
       .Sheet = .ActiveSheet
       .EventEnabled(EventAllEvents) = True
     End With
@@ -2064,7 +2064,7 @@ Public Sub inThongTinDL()
     tuRowDL = 20
     denRowDL = 25
     'TuRow_DenRow_sheet
-    strTuRowDenRowPL = "10_12_2~10_12_3~18_20_4~10_12_5"
+    strTuRowDenRowPL = "10_12_2~10_12_3~18_20_4~13_15_5"
     ' end
 End Sub
 
