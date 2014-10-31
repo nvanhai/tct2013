@@ -142,7 +142,7 @@ Public Function InsertDTL() As String
    Dim LoaiTK As Variant
    Dim NganhTN As Variant
    Dim SanLuong As Variant
-   Dim DVTinh As Variant
+   Dim DVTinh As String
    Dim DONGIA As Variant
    Dim GTTT As Variant
    Dim THUESUAT As Variant
@@ -293,7 +293,7 @@ DANHAN = "''"
                 DVTinh = "''"
             Else
 
-                DVTinh = "'" & DVTinh & "'"
+                DVTinh = "'" & TAX_Utilities_Svr_New.Convert(DVTinh, UNICODE, TCVN) & "'"
             End If
 
 
@@ -468,7 +468,7 @@ DANHAN = "''"
                 DVTinh = "''"
             Else
 
-                DVTinh = "'" & DVTinh & "'"
+                DVTinh = "'" & TAX_Utilities_Svr_New.Convert(DVTinh, UNICODE, TCVN) & "'"
             End If
 
 
@@ -886,13 +886,13 @@ Public Function InsertHDR_KHBS() As String
     Dim songaycn As Variant
     Dim sotiencn As Variant
     Dim tienhoan As Variant
-    Dim lenhhoan As Variant
+    Dim lenhhoan As String
     Dim ngayhoan As Variant
     Dim HANNOP As Variant
     Dim cqt As Variant
     Dim songay As Variant
     Dim SOTIEN As Variant
-    Dim lydokhac As Variant
+    Dim lydokhac As String
     Dim DANHAN As Variant
     
     With fps
@@ -957,7 +957,7 @@ Public Function InsertHDR_KHBS() As String
         If Trim(lenhhoan) = vbNullString Then
             lenhhoan = "''"
         Else
-            lenhhoan = "'" & lenhhoan & "'"
+            lenhhoan = "'" & TAX_Utilities_Svr_New.Convert(lenhhoan, UNICODE, TCVN) & "'"
         End If
         
         .GetText .ColLetterToNumber("E"), .MaxRows - 17, ngayhoan
@@ -992,7 +992,7 @@ Public Function InsertHDR_KHBS() As String
         If Trim(lydokhac) = vbNullString Then
             lydokhac = "''"
         Else
-            lydokhac = "'" & lydokhac & "'"
+            lydokhac = "'" & TAX_Utilities_Svr_New.Convert(lydokhac, UNICODE, TCVN) & "'"
         End If
     
         DANHAN = "''"
@@ -1058,8 +1058,8 @@ Public Function InsertHDR() As String
 '    Dim TEMP2      As Variant
     Dim bln        As Boolean
     'Dim Section    As Integer
-    Dim TENNV      As Variant
-    Dim CHUNGCHI   As Variant
+    Dim TENNV      As String
+    Dim CHUNGCHI   As String
     
     'bien dung xu ly Ma Tieu Muc
     Dim arrMTM()     As String, arrMTMSave() As String
@@ -1093,8 +1093,14 @@ Public Function InsertHDR() As String
         
         'Section = 1
         .GetText .ColLetterToNumber("G"), .MaxRows - 3, TENNV
-        .GetText .ColLetterToNumber("G"), .MaxRows - 1, CHUNGCHI
+        If Trim(TENNV) <> vbNullString Then
+            TENNV = TAX_Utilities_Svr_New.Convert(TENNV, UNICODE, TCVN)
+        End If
         
+        .GetText .ColLetterToNumber("G"), .MaxRows - 1, CHUNGCHI
+        If Trim(CHUNGCHI) <> vbNullString Then
+            CHUNGCHI = TAX_Utilities_Svr_New.Convert(CHUNGCHI, UNICODE, TCVN)
+        End If
         
         'Doan nay tinh ThueTKy theo maTM
         .Col = .ColLetterToNumber("B")

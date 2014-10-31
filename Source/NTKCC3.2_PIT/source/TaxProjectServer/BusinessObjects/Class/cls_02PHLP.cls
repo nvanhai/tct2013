@@ -872,13 +872,13 @@ Public Function InsertHDR_KHBS() As String
     Dim songaycn As Variant
     Dim sotiencn As Variant
     Dim tienhoan As Variant
-    Dim lenhhoan As Variant
+    Dim lenhhoan As String
     Dim ngayhoan As Variant
     Dim HANNOP As Variant
     Dim cqt As Variant
     Dim songay As Variant
     Dim SOTIEN As Variant
-    Dim lydokhac As Variant
+    Dim lydokhac As String
     Dim DANHAN As Variant
     
     With fps
@@ -939,7 +939,7 @@ Public Function InsertHDR_KHBS() As String
         If Trim(lenhhoan) = vbNullString Then
             lenhhoan = "''"
         Else
-            lenhhoan = "'" & lenhhoan & "'"
+            lenhhoan = "'" & TAX_Utilities_Svr_New.Convert(lenhhoan, UNICODE, TCVN) & "'"
         End If
         
         .GetText .ColLetterToNumber("E"), .MaxRows - 17, ngayhoan
@@ -974,7 +974,7 @@ Public Function InsertHDR_KHBS() As String
         If Trim(lydokhac) = vbNullString Then
             lydokhac = "''"
         Else
-            lydokhac = "'" & lydokhac & "'"
+            lydokhac = "'" & TAX_Utilities_Svr_New.Convert(lydokhac, UNICODE, TCVN) & "'"
         End If
     
         DANHAN = "''"
@@ -1031,8 +1031,8 @@ Public Function InsertHDR() As String
     Dim THUECL As Variant
     Dim thuekkcl As Variant
     Dim DAGHI2 As Variant
-    Dim TENNV As Variant
-    Dim CHUNGCHI As Variant
+    Dim TENNV As String
+    Dim CHUNGCHI As String
     Dim HTHUC_NOP As Variant
     Dim DANHAN As Variant
     'Dim LAN_QUET As Variant
@@ -1134,13 +1134,13 @@ Public Function InsertHDR() As String
         If Trim(TENNV) = vbNullString Then
             TENNV = "''"
         Else
-            TENNV = "'" & TENNV & "'"
+            TENNV = "'" & TAX_Utilities_Svr_New.Convert(TENNV, UNICODE, TCVN) & "'"
         End If
         .GetText .ColLetterToNumber("G"), .MaxRows - 2, CHUNGCHI
         If Trim(CHUNGCHI) = vbNullString Then
             CHUNGCHI = "''"
         Else
-            CHUNGCHI = "'" & CHUNGCHI & "'"
+            CHUNGCHI = "'" & TAX_Utilities_Svr_New.Convert(CHUNGCHI, UNICODE, TCVN) & "'"
         End If
         
         DANHAN = "''"

@@ -1035,13 +1035,13 @@ Public Function InsertHDR_KHBS() As String
     Dim songaycn As Variant
     Dim sotiencn As Variant
     Dim tienhoan As Variant
-    Dim lenhhoan As Variant
+    Dim lenhhoan As String
     Dim ngayhoan As Variant
     Dim HANNOP As Variant
     Dim cqt As Variant
     Dim songay As Variant
     Dim SOTIEN As Variant
-    Dim lydokhac As Variant
+    Dim lydokhac As String
     Dim DANHAN As Variant
     
     With fps
@@ -1105,7 +1105,7 @@ Public Function InsertHDR_KHBS() As String
         If Trim(lenhhoan) = vbNullString Then
             lenhhoan = "''"
         Else
-            lenhhoan = "'" & lenhhoan & "'"
+            lenhhoan = "'" & TAX_Utilities_Svr_New.Convert(lenhhoan, UNICODE, TCVN) & "'"
         End If
         
         .GetText .ColLetterToNumber("E"), .MaxRows - 17, ngayhoan
@@ -1140,7 +1140,7 @@ Public Function InsertHDR_KHBS() As String
         If Trim(lydokhac) = vbNullString Then
             lydokhac = "''"
         Else
-            lydokhac = "'" & lydokhac & "'"
+            lydokhac = "'" & TAX_Utilities_Svr_New.Convert(lydokhac, UNICODE, TCVN) & "'"
         End If
     
         DANHAN = "''"
@@ -1435,7 +1435,7 @@ Public Function InsertHDR() As String
             Else
                 MaMuc = "'" & MaMuc & "'"
             End If
-            MaMucKHBS = MaMuc
+            'MaMucKHBS = MaMuc
             If Trim(ThueTKy) <> vbNullString Then
                 THUECL = ThueTKy
             Else
