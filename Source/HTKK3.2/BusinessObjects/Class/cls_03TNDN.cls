@@ -153,13 +153,14 @@ With fps
          Set xmlNodeListItems = xmlDomData.getElementsByTagName("Item")
          For Each xmlNode In xmlNodeListItems
              fldList = Split(GetAttribute(xmlNode, "Value"), "###")
+             'strCboLyDo = strCboLyDo + fldList(0) + "-" + fldList(1) + Chr$(9)
              strCboLyDo = strCboLyDo + fldList(1) + Chr$(9)
              strCboLyDoAn = strCboLyDoAn + fldList(0) + Chr$(9)
          Next
      End If
      'set nganh nghe co ty le doanh thu cao nhat
     .Row = 14
-    .Col = .ColLetterToNumber("K")
+    .Col = .ColLetterToNumber("G")
     .TypeComboBoxList = strCboLyDo
     ' set Ma nganh nghe co ty le doanh thu cao nhat
     .Col = .ColLetterToNumber("P")
@@ -529,12 +530,42 @@ Dim xmlNodeH15 As MSXML.IXMLDOMNode
 
 Dim chiTieuC1, chiTieuC2, chiTieuC3a, chiTieuC3b, chiTieuC4 As Variant
 
+Dim ct01, ct03, ct04, ct05, ct06, ct07, ct08, ct10 As Variant
+
 Dim intIndexCombo As Integer
 Dim strMa As Variant
 
 
 
 With fps
+    If .ActiveSheet = sheetPl03_5_TNDN Then
+        .Sheet = sheetPl03_5_TNDN
+        If Col = .ColLetterToNumber("E") And (Row >= 21 And Row <= 30) Then
+            .GetText .ColLetterToNumber("E"), 21, ct01
+            .GetText .ColLetterToNumber("E"), 23, ct03
+            .GetText .ColLetterToNumber("E"), 24, ct04
+            .GetText .ColLetterToNumber("E"), 25, ct05
+            .GetText .ColLetterToNumber("E"), 26, ct06
+            .GetText .ColLetterToNumber("E"), 27, ct07
+            .GetText .ColLetterToNumber("E"), 28, ct08
+            
+            .GetText .ColLetterToNumber("E"), 30, ct10
+            If Val(ct01) - Val(ct03) - Val(ct04) - Val(ct05) - Val(ct06) - Val(ct07) - Val(ct08) - Val(ct10) < 0 Then
+                ' chi tieu 11a
+                .Row = 32
+                .Col = .ColLetterToNumber("E")
+                .Lock = False
+            Else
+                ' chi tieu 11a
+                .Row = 32
+                .Col = .ColLetterToNumber("E")
+                .Lock = True
+            End If
+               
+               
+        End If
+    End If
+
     If .ActiveSheet = sheetPl03_7_TNDN Then
         .Col = Col
         .Row = Row
@@ -1410,7 +1441,7 @@ Private Sub CheckDynamicError()
         .Sheet = mCurrentSheet
         If blCheck_S3A = True Or blCheck_S3B = True Then
             Dim vC59 As Variant
-            .GetText .ColLetterToNumber("O"), 59, vC59
+            .GetText .ColLetterToNumber("O"), 61, vC59
             If (vC59 = pL_3A_U50 + pL_3B_U60) Then
                 ' Update gia tri dung (khong loi) trong sheet header
                 .Sheet = .SheetCount
@@ -1449,7 +1480,7 @@ Private Sub CheckDynamicError()
         .Sheet = mCurrentSheet
         If blCheck_S3A = True Or blCheck_S3B = True Or blCheck_S3C = True Then
             Dim vC60 As Variant
-            .GetText .ColLetterToNumber("O"), 60, vC60
+            .GetText .ColLetterToNumber("O"), 62, vC60
             If (vC60 = pL_3A_U56 + pL_3B_U65 + pL_3C_X43) Then
                 ' Update gia tri dung trong sheet header
                 .Sheet = .SheetCount
@@ -3545,6 +3576,20 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
                 .typeComboboxCurSel = intIndexChiCuc
                 'Nhap lai Combo cot Q
                 .Col = .ColLetterToNumber("Z")
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+        ElseIf .ActiveSheet = sheetTK03_TNDN Then
+            .Sheet = sheetTK03_TNDN
+            mCurrentSheet = sheetTK03_TNDN
+            .Col = Col
+            .Row = Row
+            
+            If Col = .ColLetterToNumber("G") And Row = 14 Then 'Khi chon Combo
+                'Chuyen sang du lieu tuong ung Lay gia tri index cot G va gia tri Index cot L
+                intIndexChiCuc = .typeComboboxCurSel
+                .Col = .ColLetterToNumber("P")
+                .Row = Row
+                .typeComboboxCurSel = intIndexChiCuc
                 UpdateCell fps, .Col, .Row, .Text
             End If
         ElseIf .ActiveSheet = sheetPl03_9_TNDN Then

@@ -21,7 +21,7 @@
 	<Map MapID="11" MaFile="01A_TNDN" Version ="2.0.2" VersionKHBS ="2.0.4" MaTK="11"/>
 	<Map MapID="12" MaFile="01B_TNDN" Version ="2.0.2" VersionKHBS ="2.0.4" MaTK="12"/>
 	<Map MapID="73" MaFile="02_TNDN" Version ="2.0.1" VersionKHBS ="2.0.4" MaTK="71"/>
-	<Map MapID="03" MaFile="03_TNDN" Version ="2.0.5" VersionKHBS ="2.0.5" MaTK="03"/>
+	<Map MapID="03" MaFile="03_TNDN" Version ="2.0.7" VersionKHBS ="2.0.5" MaTK="03"/>
 	
 	<Map MapID="102_9" MaFile="" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK=""/>
 	<Map MapID="102_12" MaFile="" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK=""/>
