@@ -69,66 +69,84 @@
 			</TTinTKhaiThue>
 		</TTinChung>
 		<CTieuTKhaiChinh>
-			<tieuMucHachToan/>
-			<doanhNghiepCoQuyMoVuaVaNho/>
-			<doanhNghiepCoCSoHToanPThuoc/>
-			<doanhNghiepKeKhaiTTinLienKet/>
-			<ct_04/>
-			<ct_05/>
-			<ctA1/>
-			<ctB1/>
-			<ctB2/>
-			<ctB3/>
-			<ctB4/>
-			<ctB5/>
-			<ctB6/>
-			<ctB7/>
-			<ctB8/>
-			<ctB9/>
-			<ctB10/>
-			<ctB11/>
-			<ctB12/>
-			<ctB13/>
-			<ctB14/>
-			<ctC1/>
-			<ctC2/>
-			<ctC3/>
-			<ctC4/>
-			<ctC5/>
-			<ctC6/>
-			<ctC7/>
-			<ctC8/>
-			<ctC9/>
-			<ctC9a/>
-			<ctC10/>
-			<ctC11/>
-			<ctC12/>
-			<ctC13/>
-			<ctC14/>
-			<ctC15/>
-			<ctC16/>
-			<ctD/>
-			<ctE/>
-			<ctE1/>
-			<ctE2/>
-			<ctE3/>
-			<ctF/>
-			<ctG/>
+			<tieuMucHachToan></tieuMucHachToan>
+			<doanhNghiepCoQuyMoVuaVaNho></doanhNghiepCoQuyMoVuaVaNho>
+			<doanhNghiepCoCSoHToanPThuoc></doanhNghiepCoCSoHToanPThuoc>
+			<doanhNghiepKeKhaiTTinLienKet></doanhNghiepKeKhaiTTinLienKet>
+			<ct_04_ma></ct_04_ma>
+			<ct_04_ten></ct_04_ten>
+			<ct_05>0.0</ct_05>
+			<ctA1></ctA1>
+			<ctB1></ctB1>
+			<ctB2></ctB2>
+			<ctB3></ctB3>
+			<ctB4></ctB4>
+			<ctB5></ctB5>
+			<ctB6></ctB6>
+			<ctB7></ctB7>
+			<ctB8></ctB8>
+			<ctB9></ctB9>
+			<ctB10></ctB10>
+			<ctB11></ctB11>
+			<ctB12></ctB12>
+			<ctB13></ctB13>
+			<ctB14></ctB14>
+			<ctC1></ctC1>
+			<ctC2></ctC2>
+			<ctC3></ctC3>
+			<ctC3a></ctC3a>
+			<ctC3b></ctC3b>
+			<ctC4></ctC4>
+			<ctC5></ctC5>
+			<ctC6></ctC6>
+			<ctC7></ctC7>
+			<ctC8></ctC8>
+			<ctC9></ctC9>
+			<ctC9a>0.0</ctC9a>
+			<ctC10></ctC10>
+			<ctC11></ctC11>
+			<ctC12></ctC12>
+			<ctC13></ctC13>
+			<ctC14></ctC14>
+			<ctC15></ctC15>
+			<ctC16></ctC16>
+			<ctD></ctD>
+			<ctD1></ctD1>
+			<ctD2></ctD2>
+			<ctD3></ctD3>
+			<ctE></ctE>
+			<ctE1></ctE1>
+			<ctE2></ctE2>
+			<ctE3></ctE3>
+			<ctG></ctG>
+			<ctG1></ctG1>
+			<ctG2></ctG2>
+			<ctG3></ctG3>
+			<ctH></ctH>
+			<ctI></ctI>
 			<GiaHanNopThue>
-				<ctH1/>
-				<ctH2_ma/>
-				<ctH2_ten/>
-				<ctH3/>
-				<ctH4/>
-				<ctH5/>
+				<ctL1></ctL1>
+				<ctL2_ma></ctL2_ma>
+				<ctL2_ten></ctL2_ten>
+				<ctL3></ctL3>
+				<ctL4></ctL4>
+				<ctL5></ctL5>
 			</GiaHanNopThue>
+			<TienChamNop>
+				<CTM1>
+					<soNgay></soNgay>
+					<tuNgay></tuNgay>
+					<denNgay></denNgay>
+				</CTM1>
+				<ctM2></ctM2>
+			</TienChamNop>
 			<TaiLieu_Guikem>
-				<Tailieuguikem id="String">
-					<tenTaiLieu/>
+				<Tailieuguikem id="">
+					<tenTaiLieu></tenTaiLieu>
 				</Tailieuguikem>
 			</TaiLieu_Guikem>
 		</CTieuTKhaiChinh>
-		<PLuc>
+		<PLuc>	
 		</PLuc>
 	</HSoKhaiThue>
 </HSoThueDTu>
