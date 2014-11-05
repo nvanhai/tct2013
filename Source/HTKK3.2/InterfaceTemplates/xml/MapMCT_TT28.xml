@@ -42,10 +42,7 @@
 		<Item CellID="K_51" MCT="30" Caption="Thuế thu nhập doanh nghiệp dự kiến miễn, giảm"/>
 	</Map>
 	<Map ID ="02_TNDN">
-		<Item CellID="AW_73" MCT="37" Caption="Thuế TNDN phải nộp ([37]=[35] x [36])"/>
-		<Item CellID="AW_74" MCT="38" Caption="Thuế TNDN đã kê khai theo tiến độ"/>
-		<Item CellID="AW_75" MCT="39" Caption="Thuế TNDN bổ sung kê khai kỳ này ([39] = [37] - [38])"/>
-		<Item CellID="AW_81" MCT="44" Caption="Thuế TNDN tạm nộp"/>
+		<Item CellID="AW_73" MCT="35" Caption="Thuế TNDN phải nộp"/>
 	</Map>	
 	<Map ID ="03_TNDN">
 		<Item CellID="O_60" MCT="C10" Caption="Thuế TNDN từ hoạt động SXKD tính theo thuế suất không ưu đãi (C10 =(C7 x 22%) + (C8 x 20%) + (C9 x C9a))"/>
