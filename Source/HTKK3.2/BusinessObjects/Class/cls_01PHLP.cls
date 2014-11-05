@@ -62,8 +62,10 @@ Public Sub Prepare1()
         For Each xmlNode In xmlNodeListCell
             If GetAttribute(xmlNode, "Value") <> "" Then
                     arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
-                    strCombo = strCombo + arrDanhsach(1) + "###" + arrDanhsach(4) + Chr$(9)
-                    strComboHien = strComboHien + arrDanhsach(2) + Chr$(9)
+                    If arrDanhsach(4) <> "0000" Then
+                        strCombo = strCombo + arrDanhsach(1) + "###" + arrDanhsach(4) + Chr$(9)
+                        strComboHien = strComboHien + arrDanhsach(2) + Chr$(9)
+                    End If
             End If
         Next
        
