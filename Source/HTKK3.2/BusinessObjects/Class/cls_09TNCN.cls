@@ -916,6 +916,7 @@ Private Sub checkSheet4()
      Dim strColReset As String
     Dim arrColReset() As String
     Dim vErrEmptyCMNDNPT As Variant
+    Dim mErrNgaySinhPhuThuoc1 As Variant
      
     With fps
         iCurrentSheet = .Sheet
@@ -953,6 +954,8 @@ Private Sub checkSheet4()
         .GetText .ColLetterToNumber("E"), 61, vErrMsgCMT2
         .GetText .ColLetterToNumber("E"), 62, vErrDuLieuKhongHL
         .GetText .ColLetterToNumber("E"), 63, vErrEmptyCMNDNPT
+        
+        .GetText .ColLetterToNumber("E"), 64, mErrNgaySinhPhuThuoc1
         
         .Sheet = 4 'Check tinh xac thuc cua cac thong tin tren bang ke 09-3/TNCN
         
@@ -1117,9 +1120,22 @@ Private Sub checkSheet4()
                         .CellNote = mErrNgaySinhPhuThuoc
                         iFlagNgaySinhPhuThuoc = 1
                     Else
-                        .Col = .ColLetterToNumber("E")
-                        .BackColor = mNonErrorColor
-                        .CellNote = ""
+                         If Trim(vTuThang) <> "" Then
+                            If DateDiff("M", vNgaySinh, Format(vTuThang, "mm/yyyy")) < 0 Then
+                                .Col = .ColLetterToNumber("E")
+                                .BackColor = mErrorColor
+                                .CellNote = mErrNgaySinhPhuThuoc1
+                                iFlagNgaySinhPhuThuoc = 1
+                            Else
+                                .Col = .ColLetterToNumber("E")
+                                .BackColor = mNonErrorColor
+                                .CellNote = ""
+                            End If
+                        Else
+                            .Col = .ColLetterToNumber("E")
+                            .BackColor = mNonErrorColor
+                            .CellNote = ""
+                        End If
                     End If
                 End If
                 
@@ -1417,9 +1433,22 @@ Private Sub checkSheet4()
                         .CellNote = mErrNgaySinhPhuThuoc
                         iFlagNgaySinhPhuThuoc = 1
                     Else
-                        .Col = .ColLetterToNumber("E")
-                        .BackColor = mNonErrorColor
-                        .CellNote = ""
+                        If Trim(vTuThang) <> "" Then
+                            If DateDiff("M", vNgaySinh, Format(vTuThang, "mm/yyyy")) < 0 Then
+                                .Col = .ColLetterToNumber("E")
+                                .BackColor = mErrorColor
+                                .CellNote = mErrNgaySinhPhuThuoc1
+                                iFlagNgaySinhPhuThuoc = 1
+                            Else
+                                .Col = .ColLetterToNumber("E")
+                                .BackColor = mNonErrorColor
+                                .CellNote = ""
+                            End If
+                        Else
+                            .Col = .ColLetterToNumber("E")
+                            .BackColor = mNonErrorColor
+                            .CellNote = ""
+                        End If
                     End If
                 End If
                 

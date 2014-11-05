@@ -1100,6 +1100,7 @@ Private Sub CheckDynamicSheet3()
     Dim arrColReset() As String
     Dim strCheck As String
     Dim i As Integer
+    Dim vErrNgaySinhNPT1 As Variant
     
     With fps
         .Sheet = .SheetCount
@@ -1117,6 +1118,8 @@ Private Sub CheckDynamicSheet3()
         
         .GetText .ColLetterToNumber("E"), 83, vErrEmptyCMNDNPT
         .GetText .ColLetterToNumber("E"), 84, vErrDuLieuKhongHL
+        .GetText .ColLetterToNumber("E"), 85, vErrNgaySinhNPT1
+        
         
         .Sheet = 1
         .Row = 40
@@ -1213,9 +1216,23 @@ Private Sub CheckDynamicSheet3()
                         .CellNote = vErrNgaySinhNPT
                         iFlagNgaySinhNPT = 1
                     Else
-                        .Col = .ColLetterToNumber("F")
-                        .BackColor = mNonErrorColor
-                        .CellNote = ""
+                         If Trim(vTuThang) <> "" Then
+                            If DateDiff("M", vNgaySinhNPT, Format(vTuThang, "mm/yyyy")) < 0 Then
+                                .Col = .ColLetterToNumber("F")
+                                .BackColor = mErrorColor
+                                .CellNote = vErrNgaySinhNPT1
+                                iFlagNgaySinhNPT = 1
+                            Else
+                                .Col = .ColLetterToNumber("F")
+                                .BackColor = mNonErrorColor
+                                .CellNote = ""
+                            End If
+                        Else
+                             .Col = .ColLetterToNumber("F")
+                            .BackColor = mNonErrorColor
+                            .CellNote = ""
+                        End If
+                        
                     End If
                 Else
                     .Col = .ColLetterToNumber("F")
