@@ -789,6 +789,7 @@ nextPrinter:
             If objTaxBusiness.isCheckGH = True Then
                 fpsReport.sheet = 1
                 fpsReport.Row = 83
+                fpsReport.RowHidden = True
                 fpsReport.Col = fpsReport.ColLetterToNumber("C")
                 fpsReport.Text = ""
             End If
