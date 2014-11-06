@@ -4760,6 +4760,14 @@ Private Sub CheckDynamicSheet3()
                 
                 ' kiem tra khong co cot 11 va 13 bat buoc nhap cot 18,19,20
                 If Trim(vMSTNPT) = "" And Trim(vSoCMNDNPT) = "" Then
+                    ' bat buoc nhap thong tin quoc gia
+                    If Trim(vQuocGia) = "" Then
+                        .Col = .ColLetterToNumber("Q")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
                     ' bat buoc nhap thong tin tinh
                     If Trim(vTinh) = "" Then
                         .Col = .ColLetterToNumber("S")
@@ -4834,7 +4842,7 @@ Private Sub CheckDynamicSheet3()
                 End If
                 
                 ' bat buoc nhap thong so
-                If Trim(vSo) = "" Then
+                If Trim(vSo) = "" And Trim$(vSoCMNDNPT) = "" And Trim$(vMSTNPT) Then
                     .Col = .ColLetterToNumber("N")
                     .CellNote = vErrEmpty
                     .BackColor = mErrorColor
@@ -4843,7 +4851,7 @@ Private Sub CheckDynamicSheet3()
                 
                 
                 ' bat buoc nhap thong quyen so
-                If Trim(vSo) = "" Then
+                If Trim(vSo) = "" And Trim$(vSoCMNDNPT) = "" And Trim$(vMSTNPT) Then
                     .Col = .ColLetterToNumber("O")
                     .CellNote = vErrEmpty
                     .BackColor = mErrorColor

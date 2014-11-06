@@ -29,7 +29,7 @@
 		<ngayHD>AC_42</ngayHD>
 		<ngayXN>AH_44</ngayXN>
 	</Static>
-	<Static GroupName="KKhaiKhiBanGiaoBDS">
+	<Static GroupName="CTieuTKhaiChinh">
 		<ct25>AW_61</ct25>
 		<ct26>AW_62</ct26>
 		<ct27>AW_63</ct27>
@@ -39,21 +39,11 @@
 		<ct31>AW_67</ct31>
 		<ct32>AW_68</ct32>
 		<ct33>AW_69</ct33>
-		<ct34>AW_70</ct34>
-		<ct35>AW_71</ct35>
-		<ct36>AW_72</ct36>
-		<ct37>AW_73</ct37>
-		<ct38>AW_74</ct38>
-		<ct39>AW_75</ct39>
+		<ct34>AW_72</ct34>
+		<ct35>AW_73</ct35>
+	
 	</Static>
-	<Static GroupName="KKhaiThuTienTheoTienDo">
-
-		<ct40>AW_77</ct40>
-		<ct41>AW_78</ct41>
-		<ct42>AW_79</ct42>
-		<ct43>AW_80</ct43>
-		<ct44>AW_81</ct44>
-	</Static>
+	
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>AP_89</nguoiKy>
 		<ngayKy>AP_91</ngayKy>
