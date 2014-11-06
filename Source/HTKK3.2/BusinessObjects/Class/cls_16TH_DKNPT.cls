@@ -1102,6 +1102,10 @@ Private Sub CheckDynamicSheet3()
     Dim i As Integer
     Dim vErrNgaySinhNPT1 As Variant
     
+    Dim vMstDN As Variant
+    Dim vErrMstDN As Variant
+    Dim iFlagMstDN As Variant
+    
     With fps
         .Sheet = .SheetCount
         
@@ -1120,8 +1124,11 @@ Private Sub CheckDynamicSheet3()
         .GetText .ColLetterToNumber("E"), 84, vErrDuLieuKhongHL
         .GetText .ColLetterToNumber("E"), 85, vErrNgaySinhNPT1
         
+        .GetText .ColLetterToNumber("E"), 86, vErrMstDN
         
         .Sheet = 1
+        .GetText .ColLetterToNumber("D"), 10, vMstDN
+                
         .Row = 40
         Do
             .GetText .ColLetterToNumber("C"), .Row, vHoVaTenNNT
@@ -1183,9 +1190,16 @@ Private Sub CheckDynamicSheet3()
                         .BackColor = mErrorColor
                         iFlagMSTNNT = 1
                     Else
-                        .Col = .ColLetterToNumber("D")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
+                        If Trim(vMSTNNT) = Trim$(vMstDN) Then
+                            .Col = .ColLetterToNumber("D")
+                            .CellNote = vErrMstDN
+                            .BackColor = mErrorColor
+                            iFlagMstDN = 1
+                        Else
+                            .Col = .ColLetterToNumber("D")
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
                      End If
                 Else
                         .Col = .ColLetterToNumber("D")
@@ -1347,8 +1361,8 @@ Private Sub CheckDynamicSheet3()
                     iFlagEmpty = 1
                 End If
                 
-                 ' kiem tra bat buoc nhap cot so
-                If Trim(vSo) = "" Then
+                 ' kiem tra bat buoc nhap cot so neu chua nhap CMND
+                If Trim(vSo) = "" And Trim(vSoCMNDNPT) = "" And Trim(vMSTNPT) = "" Then
                     .Col = .ColLetterToNumber("M")
                     .CellNote = vErrEmpty
                     .BackColor = mErrorColor
@@ -1356,7 +1370,7 @@ Private Sub CheckDynamicSheet3()
                 End If
                 
                  ' kiem tra bat buoc nhap cot quyen so
-                If Trim(vQuyenSo) = "" Then
+                If Trim(vQuyenSo) = "" And Trim(vSoCMNDNPT) = "" And Trim(vMSTNPT) = "" Then
                     .Col = .ColLetterToNumber("N")
                     .CellNote = vErrEmpty
                     .BackColor = mErrorColor
@@ -1480,9 +1494,16 @@ Private Sub CheckDynamicSheet3()
                         .BackColor = mErrorColor
                         iFlagMSTNNT = 1
                     Else
-                        .Col = .ColLetterToNumber("D")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
+                        If Trim(vMSTNNT) = Trim$(vMstDN) Then
+                            .Col = .ColLetterToNumber("D")
+                            .CellNote = vErrMstDN
+                            .BackColor = mErrorColor
+                            iFlagMstDN = 1
+                        Else
+                            .Col = .ColLetterToNumber("D")
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
                      End If
                 Else
                         .Col = .ColLetterToNumber("D")
@@ -1734,6 +1755,8 @@ Private Sub CheckDynamicSheet3()
         .SetText .ColLetterToNumber("B"), 77, IIf(iFlagTuThang = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 78, IIf(iFlagDenThang = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 79, IIf(iFlagEmpty = 1, "0", "1")
+        
+        .SetText .ColLetterToNumber("B"), 86, IIf(iFlagMstDN = 1, "0", "1")
     End With
 End Sub
 
