@@ -132,7 +132,6 @@ Public Sub Prepare1()
     Dim arrRowCom() As String
     Dim strTemp As String
     
-    
 With fps
     ' TK 03
     SetDateFormat fps, sheetTK03_TNDN, 87, .ColLetterToNumber("I"), DDMMYYYY
@@ -305,13 +304,36 @@ Public Sub Prepare2()
     ' kiem tra gia tri chi tieu C4
     Dim chiTieuC4 As Variant
 
-    
+    Dim tuNgayPhatNC As String
+    Dim ngayTC As String
+    Dim thangTC As String
     
     Dim arrCellTag() As String
     
     Set arrErrorCells = New Scripting.Dictionary
     
     With fps
+        ' set ngay nop cham tu ngay
+        .Sheet = sheetTK03_TNDN
+        mCurrentSheet = .Sheet
+        If Len(CStr(GetNgayTaiChinh(GetNgayBatDauNamTaiChinh))) = 1 Then
+            ngayTC = "0" & GetNgayTaiChinh(GetNgayBatDauNamTaiChinh)
+        Else
+            ngayTC = GetNgayTaiChinh(GetNgayBatDauNamTaiChinh)
+        End If
+        
+        If Len(CStr(GetNgayTaiChinh(GetNgayBatDauNamTaiChinh) + 1)) = 1 Then
+            thangTC = "0" & GetNgayTaiChinh(GetNgayBatDauNamTaiChinh) + 1
+        Else
+            thangTC = GetNgayTaiChinh(GetNgayBatDauNamTaiChinh) + 1
+        End If
+        
+        tuNgayPhatNC = ngayTC & "/" & thangTC & "/" & CInt(TAX_Utilities_v1.Year) + 1
+        .Row = 95
+        .Col = .ColLetterToNumber("J")
+        .Text = tuNgayPhatNC
+        .TypeHAlign = TypeHAlignLeft
+        UpdateCell fps, .Col, .Row, .Text
         'Phu luc 03_2A TNDN
         .Sheet = sheetPl03_2A_TNDN
             .ActiveSheet = .Sheet
@@ -535,9 +557,37 @@ Dim ct01, ct03, ct04, ct05, ct06, ct07, ct08, ct10 As Variant
 Dim intIndexCombo As Integer
 Dim strMa As Variant
 
-
+Dim vTuNgay As Variant
+Dim vDenNgay As Variant
+Dim arrTemp() As String
+Dim dTuNgay As Date
+Dim dDenNgay As Date
+Dim soNgay As Long
 
 With fps
+    If .ActiveSheet = sheetTK03_TNDN Then
+        .Sheet = sheetTK03_TNDN
+        mCurrentSheet = sheetTK03_TNDN
+        soNgay = 0
+        If Col = .ColLetterToNumber("N") And Row = 95 Then
+            .GetText .ColLetterToNumber("J"), 95, vTuNgay
+            .GetText .ColLetterToNumber("N"), 95, vDenNgay
+            If Trim(vDenNgay) <> "" And Trim(vDenNgay) <> "../../...." Then
+                arrTemp = Split(vTuNgay, "/")
+                dTuNgay = DateSerial(Int(arrTemp(2)), Int(arrTemp(1)), Int(arrTemp(0)))
+                arrTemp = Split(vDenNgay, "/")
+                dDenNgay = DateSerial(Int(arrTemp(2)), Int(arrTemp(1)), Int(arrTemp(0)))
+                soNgay = DateDiff("D", dTuNgay, dDenNgay) + 1
+            End If
+            If soNgay >= 0 Then
+                .Col = .ColLetterToNumber("E")
+                .Row = 95
+                .Text = soNgay
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+        End If
+    End If
+
     If .ActiveSheet = sheetPl03_5_TNDN Then
         .Sheet = sheetPl03_5_TNDN
         If Col = .ColLetterToNumber("E") And (Row >= 21 And Row <= 30) Then
@@ -550,18 +600,44 @@ With fps
             .GetText .ColLetterToNumber("E"), 28, ct08
             
             .GetText .ColLetterToNumber("E"), 30, ct10
+            
+            ' lock chi tieu 10
+            If Val(ct01) - Val(ct03) - Val(ct04) - Val(ct05) - Val(ct06) - Val(ct07) - Val(ct08) < 0 Then
+                .Row = 30
+                .Col = .ColLetterToNumber("E")
+                .Lock = True
+                .Text = "0"
+            Else
+                .Row = 30
+                .Col = .ColLetterToNumber("E")
+                .Lock = False
+            End If
+            
+            
             If Val(ct01) - Val(ct03) - Val(ct04) - Val(ct05) - Val(ct06) - Val(ct07) - Val(ct08) - Val(ct10) < 0 Then
                 ' chi tieu 11a
                 .Row = 32
                 .Col = .ColLetterToNumber("E")
                 .Lock = False
+                ' chi tieu 12
+                .Row = 33
+                .Col = .ColLetterToNumber("E")
+                .Lock = True
+                .Text = "0"
             Else
                 ' chi tieu 11a
                 .Row = 32
                 .Col = .ColLetterToNumber("E")
                 .Lock = True
+                .Text = "0"
+                ' chi tieu 12
+                .Row = 33
+                .Col = .ColLetterToNumber("E")
+                .Lock = False
             End If
                
+            
+            
                
         End If
     End If
@@ -981,9 +1057,9 @@ With fps
             If Row = 32 And Col = .ColLetterToNumber("M") Then
                 .Sheet = 1
                 ' tong hop lo cot (5) len chi tieu C3
-                .Col = .ColLetterToNumber("O")
-                .Row = 50
-                .Formula = "P50"
+'                .Col = .ColLetterToNumber("O")
+'                .Row = 50
+'                .Formula = "P50"
                 
                 ' tong hop lo cot (5) len chi tieu C3a
                 .Col = .ColLetterToNumber("O")
@@ -1348,7 +1424,15 @@ Private Sub CheckDynamicError()
     Dim arrDateGH() As String
     Dim arrDateHanNop() As String
     Dim vErrorCheckHN As Variant
+    Dim dThoiHanGH As Date
+    Dim dHanNop As Date
     ' end
+    Dim vDenNgayNC As Variant
+    Dim vTuNgayNC As Variant
+    Dim vErrDenNgayNC As Variant
+    Dim vErrDenNgayNC1 As Variant
+    Dim iflagDenNgayNC As Integer
+    
     
     ' check TK
     Dim pL_3A_U50, pL_3B_U60 As Double
@@ -1375,6 +1459,9 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 53, vErrorCheckThoiHanGH
         .GetText .ColLetterToNumber("E"), 52, vErrorCheckHN
         .GetText .ColLetterToNumber("E"), 54, vErrorCheckSoThueGH
+        
+        .GetText .ColLetterToNumber("E"), 91, vErrDenNgayNC
+        .GetText .ColLetterToNumber("E"), 92, vErrDenNgayNC1
         
         ' end
         
@@ -1545,9 +1632,6 @@ Private Sub CheckDynamicError()
                  ' kiem tra han nop
                  arrDateGH = Split(vThoiHanGH, "/")
                  arrDateHanNop = Split(hanNopTKTNDN, "/")
-                 Dim dThoiHanGH As Date
-                 Dim dHanNop As Date
-
                 dThoiHanGH = DateSerial(CInt(arrDateGH(2)), CInt(arrDateGH(1)), CInt(arrDateGH(0)))
                 dHanNop = DateSerial(CInt(arrDateHanNop(2)), CInt(arrDateHanNop(1)), CInt(arrDateHanNop(0)))
                 If DateDiff("D", dThoiHanGH, dHanNop) > 0 Then
@@ -1599,6 +1683,45 @@ Private Sub CheckDynamicError()
                  iflagCheckSoThueGH = 0
          End If
          
+         ' Kiem tra den ngay nop cham
+        .GetText .ColLetterToNumber("N"), 95, vDenNgayNC
+        .GetText .ColLetterToNumber("J"), 95, vTuNgayNC
+        If Trim(vDenNgayNC) <> "" And Trim(vDenNgayNC) <> "../../...." Then
+                arrDateGH = Split(vDenNgayNC, "/")
+                arrDateHanNop = Split(vTuNgayNC, "/")
+                dThoiHanGH = DateSerial(CInt(arrDateGH(2)), CInt(arrDateGH(1)), CInt(arrDateGH(0)))
+                dHanNop = DateSerial(CInt(arrDateHanNop(2)), CInt(arrDateHanNop(1)), CInt(arrDateHanNop(0)))
+                If DateDiff("D", dThoiHanGH, dHanNop) > 0 Then
+                    .Col = .ColLetterToNumber("N")
+                    .Row = 95
+                    .CellNote = vErrDenNgayNC1  'static
+                    .BackColor = mErrorColor
+                    iflagDenNgayNC = 1
+                Else
+                    arrDateGH = Split(vDenNgayNC, "/")
+                    arrDateHanNop = Split(hanNopTKTNDN, "/")
+                    dThoiHanGH = DateSerial(CInt(arrDateGH(2)), CInt(arrDateGH(1)), CInt(arrDateGH(0)))
+                    dHanNop = DateSerial(CInt(arrDateHanNop(2)), CInt(arrDateHanNop(1)), CInt(arrDateHanNop(0)))
+                    If DateDiff("D", dHanNop, dThoiHanGH) > 0 Then
+                        .Col = .ColLetterToNumber("N")
+                        .Row = 95
+                        .CellNote = vErrDenNgayNC  'static
+                        .BackColor = mAlertColor
+                    Else
+                        .Col = .ColLetterToNumber("N")
+                        .Row = 95
+                        .CellNote = ""  'static
+                        .BackColor = mNonErrorColor
+                    End If
+                End If
+        Else
+            .Col = .ColLetterToNumber("N")
+            .Row = 95
+            .CellNote = ""  'static
+            .BackColor = mNonErrorColor
+        End If
+         
+         
          .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), 46, IIf(iflagCheckGH = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 53, IIf(iflagCheckThoiHanGH = 1, "0", "1")
@@ -1606,6 +1729,8 @@ Private Sub CheckDynamicError()
         
         .SetText .ColLetterToNumber("B"), 47, IIf(iFlagCheckCSHachToan = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 48, IIf(iFlagCheckLienKet = 1, "0", "1")
+        
+        .SetText .ColLetterToNumber("B"), 92, IIf(iflagDenNgayNC = 1, "0", "1")
         
         
         ' Phu Luc 03-1A
@@ -2850,7 +2975,7 @@ Private Sub UpdateSheets()
         mCurrentSheet = .Sheet
             For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               If (lRow <= 80) And (lRow >= 31) Then
+               If (lRow <= 97) And (lRow >= 31) Then
                     .GetText lCol, lRow, varTemp
                     UpdateCell fps, lCol, lRow, varTemp
                 End If
