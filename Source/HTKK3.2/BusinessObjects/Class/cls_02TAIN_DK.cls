@@ -40,14 +40,16 @@ Public denRowDL As Long
 Public strTuRowDenRowPL As String
 Public strLoaiToKhaiDK As String
 Public isImportXML As Boolean
+
+Private arrStrXMLFileNames() As String
  
 'This funtion is called after an object of this class is created
 'Its functions is 1st preparing for interface sheets, such as
 'add control, data for the control, celltag...
 'No parameter
 Public Sub Prepare1()
-
-    
+    Dim ct29KyTruoc As String
+    Dim arrKytruoc() As String
 
     With fps
         .EventEnabled(EventAllEvents) = False
@@ -81,6 +83,19 @@ Public Sub Prepare1()
             .Col = .ColLetterToNumber("AA")
             .Lock = True
         End If
+        
+        
+        ct29KyTruoc = getCT29
+        arrKytruoc = Split(ct29KyTruoc, "~")
+        ' chi tieu 29
+        .Row = 57
+        .Col = .ColLetterToNumber("AV")
+        .Text = arrKytruoc(0)
+        ' chi tieu 33
+        .Row = 67
+        .Col = .ColLetterToNumber("AV")
+        .Text = arrKytruoc(1)
+        
         
         .Sheet = 2
         .Row = 29
@@ -1189,5 +1204,112 @@ Public Sub SetActiveKHBS() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
     
     Set xmlCellNode = Nothing
     Set xmlNodeValid = Nothing
+End Sub
+
+Private Function getCT29() As String
+    Dim xmlDomLastData As New MSXML.DOMDocument, xmlDomCurrentData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim strDataFileName As String
+    Dim strM41Target As String, strP41Target As String, strS41Target As String
+    Dim iDom As Integer
+    Dim MY As Date
+    Dim tuThang As String
+    Dim denThang As String
+    Dim arrTuThang() As String
+    Dim i As Integer
+    Dim arrFileName() As String
+    Dim dataFileKyTruoc As String
+    Dim tempFile As String
+    Dim arr1() As String
+    Dim arr2() As String
+    Dim dataFileKyTruocBs As String
+    
+    
+    Dim isFirtFile As Boolean
+    
+    iDom = 0
+    With xmlDomLastData
+        .resolveExternals = True
+        .validateOnParse = True
+        .async = False
+        tuThang = TAX_Utilities_v1.FirstDay
+        arrTuThang = Split(tuThang, "/")
+        
+        MY = DateSerial(Val(arrTuThang(1)), Val(arrTuThang(0)), 1)
+        MY = DateAdd("M", -1, MY)
+        
+        If Len(Month(MY)) = 2 Then
+            denThang = Month(MY) & Year(MY)
+        Else
+            denThang = "0" & Month(MY) & Year(MY)
+        End If
+        
+        LoadXMLFileNames
+        
+        For i = 0 To UBound(arrStrXMLFileNames)
+            arrFileName = Split(arrStrXMLFileNames(i), "_")
+            If arrFileName(UBound(arrFileName)) = denThang Then
+                If arrFileName(1) <> "KHBS" And InStr(arrFileName(0), "bs") <= 0 Then
+                    ' to khai chinh thuc
+                    dataFileKyTruoc = arrStrXMLFileNames(i)
+                ElseIf arrFileName(1) <> "KHBS" And InStr(arrFileName(0), "bs") > 0 Then
+                ' to khai bo sung
+                    If isFirtFile = False Then
+                        tempFile = arrStrXMLFileNames(i)
+                        isFirtFile = True
+                    End If
+                    arr1 = Split(tempFile, "_")
+                    arr2 = Split(arrStrXMLFileNames(i), "_")
+                    If Val(Replace(arr1(0), "bs", "")) < Val(Replace(arr2(0), "bs", "")) Then
+                        tempFile = arrStrXMLFileNames(i)
+                    End If
+                    dataFileKyTruocBs = tempFile
+                End If
+            End If
+        Next
+        
+         If dataFileKyTruocBs <> "" Then
+            strDataFileName = TAX_Utilities_v1.DataFolder & dataFileKyTruocBs & ".xml"
+        ElseIf dataFileKyTruoc <> "" Then
+            strDataFileName = TAX_Utilities_v1.DataFolder & dataFileKyTruoc & ".xml"
+        Else
+            strDataFileName = ""
+        End If
+        
+        If .Load(strDataFileName) = True Then
+            Set xmlNode = .nodeFromID("AV_62")
+            getCT29 = GetAttribute(xmlNode, "Value")
+            Set xmlNode = .nodeFromID("AV_70")
+            getCT29 = getCT29 & "~" & GetAttribute(xmlNode, "Value")
+        Else
+            getCT29 = "0~0"
+        End If
+        
+    End With
+    
+   
+    Set xmlDomLastData = Nothing
+    Set xmlNode = Nothing
+    Exit Function
+    
+ErrorHandle:
+    SaveErrorLog "cls_02TAIN_DK", "GetMP36Previous", Err.number, Err.Description
+End Function
+
+
+
+Private Sub LoadXMLFileNames()
+    Dim lngIndex As Long
+    Dim fso As New FileSystemObject
+    Dim fle As File
+    
+    For Each fle In fso.GetFolder(GetAbsolutePath(TAX_Utilities_v1.DataFolder)).Files
+        If Right$(fle.Name, 4) = ".xml" And InStr(fle.Name, "02_TAIN_DK_" & strLoaiToKhaiDK) > 0 Then
+            ReDim Preserve arrStrXMLFileNames(lngIndex)
+            arrStrXMLFileNames(lngIndex) = Mid$(fle.Name, 1, Len(fle.Name) - 4)
+            lngIndex = lngIndex + 1
+        End If
+    Next
 End Sub
 

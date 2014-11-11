@@ -1127,6 +1127,17 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
         .EventEnabled(EventAllEvents) = False
         .Sheet = .ActiveSheet
         mCurrentSheet = .ActiveSheet
+        If .ActiveSheet = 1 Then
+             mCurrentSheet = .Sheet
+             If Col = .ColLetterToNumber("AB") And Row = 30 Then
+                .Formula = ""
+             End If
+                          
+             If Col = .ColLetterToNumber("AB") And Row = 32 Then
+                .Formula = ""
+             End If
+        End If
+        
         If .ActiveSheet = 2 Then
                 mCurrentSheet = .Sheet
                 If Col = .ColLetterToNumber("BD") And Row >= 24 And Row <= .MaxRows - 3 Then

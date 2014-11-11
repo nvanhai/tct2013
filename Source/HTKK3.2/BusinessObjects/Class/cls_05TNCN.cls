@@ -216,6 +216,9 @@ End Sub
 'No parameter
 Public Sub Prepare2()
     Dim viTriMSTDL As String
+    Dim vRowLock As String
+    Dim arrRow() As String
+    Dim i As Integer
     
      With fps
         .EventEnabled(EventAllEvents) = False
@@ -273,40 +276,60 @@ Public Sub Prepare2()
         
         
         
-        
+            vRowLock = "43_44_45_47_48_49_51_52_53_62"
+            arrRow = Split(vRowLock, "_")
         If DateDiff("M", Format(TAX_Utilities_v1.FirstDay, "mm/yyyy"), Format(TAX_Utilities_v1.LastDay, "mm/yyyy")) + 1 < 12 Then
-            ' chi tieu 36 lock
-            .Row = 51
-            .Col = .ColLetterToNumber("I")
-            .Lock = False
-            ' chi tieu 37 lock
-            .Row = 52
-            .Col = .ColLetterToNumber("I")
-            .Lock = False
-            ' chi tieu 38 lock
-            .Row = 53
-            .Col = .ColLetterToNumber("I")
-            .Lock = False
-            ' chi tieu 44
-            .Row = 62
-            .Col = .ColLetterToNumber("I")
+            ' chi tieu 28,29,30,32,33,34,36,37,38,44
+'            For i = 0 To UBound(arrRow)
+'                .Row = arrRow(i)
+'                .Col = .ColLetterToNumber("I")
+'                .Lock = False
+'            Next i
+'            ' chi tieu 36 lock
+'            .Row = 51
+'            .Col = .ColLetterToNumber("I")
+'            .Lock = False
+'            ' chi tieu 37 lock
+'            .Row = 52
+'            .Col = .ColLetterToNumber("I")
+'            .Lock = False
+'            ' chi tieu 38 lock
+'            .Row = 53
+'            .Col = .ColLetterToNumber("I")
+'            .Lock = False
+'            ' chi tieu 44
+'            .Row = 62
+'            .Col = .ColLetterToNumber("I")
+'            .Lock = False
+            
+            .Row = 4
+            .Col = .ColLetterToNumber("D")
             .Lock = False
         Else
-            ' chi tieu 36 lock
-            .Row = 51
-            .Col = .ColLetterToNumber("I")
-            .Lock = True
-            ' chi tieu 37 lock
-            .Row = 52
-            .Col = .ColLetterToNumber("I")
-            .Lock = True
-            ' chi tieu 38 lock
-            .Row = 53
-            .Col = .ColLetterToNumber("I")
-            .Lock = True
-            ' chi tieu 44
-            .Row = 62
-            .Col = .ColLetterToNumber("I")
+'            For i = 0 To UBound(arrRow)
+'                .Row = arrRow(i)
+'                .Col = .ColLetterToNumber("I")
+'                .Lock = True
+'            Next i
+'            ' chi tieu 36 lock
+'            .Row = 51
+'            .Col = .ColLetterToNumber("I")
+'            .Lock = True
+'            ' chi tieu 37 lock
+'            .Row = 52
+'            .Col = .ColLetterToNumber("I")
+'            .Lock = True
+'            ' chi tieu 38 lock
+'            .Row = 53
+'            .Col = .ColLetterToNumber("I")
+'            .Lock = True
+'            ' chi tieu 44
+'            .Row = 62
+'            .Col = .ColLetterToNumber("I")
+'            .Lock = True
+            
+            .Row = 4
+            .Col = .ColLetterToNumber("D")
             .Lock = True
         End If
         
@@ -557,12 +580,42 @@ End Function
 Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonDown As Integer)
     Dim Y As Long
     Dim strCheck As Variant
+    Dim vTempValue As Variant
+    
+    Dim vRowLock As String
+    Dim arrRow() As String
+    Dim i As Integer
+    
+    
     Static so As Long
     If so = 0 Then
         so = 1
     End If
     With fps
         .EventEnabled(EventAllEvents) = False
+            If .ActiveSheet = 1 Then
+                .Sheet = 1
+                If Col = .ColLetterToNumber("D") And Row = 4 Then
+                    .Col = .ColLetterToNumber("D")
+                    .Row = 4
+                    vTempValue = .Text
+                    vRowLock = "43_44_45_47_48_49_51_52_53_62"
+                    arrRow = Split(vRowLock, "_")
+                    If vTempValue = "1" Or UCase$(vTempValue) = "X" Then
+                        For i = 0 To UBound(arrRow)
+                            .Row = arrRow(i)
+                            .Col = .ColLetterToNumber("I")
+                            .Lock = False
+                        Next i
+                    Else
+                        For i = 0 To UBound(arrRow)
+                            .Row = arrRow(i)
+                            .Col = .ColLetterToNumber("I")
+                            .Lock = True
+                        Next i
+                    End If
+                End If
+            End If
             If .ActiveSheet = 2 Then
                .Sheet = 2
                 
@@ -4493,6 +4546,8 @@ Private Sub CheckDynamicSheet3()
     Dim i As Integer
     Dim vErrNgaySinhNPT1 As Variant
     
+    Dim vErrHuyen, vErrXa As Variant
+    
     With fps
         .Sheet = .SheetCount
         
@@ -4511,6 +4566,9 @@ Private Sub CheckDynamicSheet3()
         .GetText .ColLetterToNumber("E"), 84, vErrDuLieuKhongHL
         
         .GetText .ColLetterToNumber("E"), 86, vErrNgaySinhNPT1
+        
+        .GetText .ColLetterToNumber("E"), 87, vErrHuyen
+        .GetText .ColLetterToNumber("E"), 88, vErrXa
         
         
         .Sheet = 4
@@ -4830,6 +4888,10 @@ Private Sub CheckDynamicSheet3()
                         .CellNote = vErrEmpty
                         .BackColor = mErrorColor
                         iFlagEmpty = 1
+                    ElseIf Trim(vHuyen) <> "" And Trim(vTinh) <> "" And Trim(vMaTinh) <> Left(Trim$(vMaHuyen), 3) Then
+                        .Col = .ColLetterToNumber("U")
+                        .CellNote = vErrHuyen
+                        .BackColor = mAlertColor
                     End If
                     
                     ' bat buoc nhap thong tin xa
@@ -4838,11 +4900,15 @@ Private Sub CheckDynamicSheet3()
                         .CellNote = vErrEmpty
                         .BackColor = mErrorColor
                         iFlagEmpty = 1
+                    ElseIf Trim(vHuyen) <> "" And Trim(vXa) <> "" And Trim(vMaHuyen) <> Left(Trim$(vMaXa), 5) Then
+                        .Col = .ColLetterToNumber("W")
+                        .CellNote = vErrXa
+                        .BackColor = mAlertColor
                     End If
                 End If
                 
                 ' bat buoc nhap thong so
-                If Trim(vSo) = "" And Trim$(vSoCMNDNPT) = "" And Trim$(vMSTNPT) Then
+                If Trim(vSo) = "" And Trim$(vSoCMNDNPT) = "" And Trim$(vMSTNPT) = "" Then
                     .Col = .ColLetterToNumber("N")
                     .CellNote = vErrEmpty
                     .BackColor = mErrorColor
@@ -4851,7 +4917,7 @@ Private Sub CheckDynamicSheet3()
                 
                 
                 ' bat buoc nhap thong quyen so
-                If Trim(vSo) = "" And Trim$(vSoCMNDNPT) = "" And Trim$(vMSTNPT) Then
+                If Trim(vSo) = "" And Trim$(vSoCMNDNPT) = "" And Trim$(vMSTNPT) = "" Then
                     .Col = .ColLetterToNumber("O")
                     .CellNote = vErrEmpty
                     .BackColor = mErrorColor

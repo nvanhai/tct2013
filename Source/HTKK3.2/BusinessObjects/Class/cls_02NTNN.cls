@@ -74,7 +74,7 @@ End Sub
 Public Sub Prepare2()
         
     With fps
-        .Sheet = .ActiveSheet
+        .Sheet = 1
         'currentSheet2 = mCurrentSheet
         mCurrentSheet = .Sheet
 
@@ -292,56 +292,56 @@ End Sub
 '                    - iSheet: sheet dag lam viec.
 '--------------------------------------------------------------------------------
 '</CSCM>
-Private Sub CheckHanNop(iRow As Integer, iCol As String, iRowErr As String, isheet As Integer)
-    Dim ngayNop, errHanNop  As Variant, ngayHienTai As Variant
-    Dim strFocusSheetName, strFocusRow, strFocusCol, strFormula As String
-    Dim iFocusFlag, iFlagvMst As Integer
-    With fps
-        .Sheet = .SheetCount
-        .GetText .ColLetterToNumber("E"), iRowErr, errHanNop
-        .Sheet = isheet
-        .Row = iRow
-        Do
-            ' check ngay nop khong dc lon hon ngay hien tai
-            .GetText .ColLetterToNumber(iCol), .Row, ngayNop
-            If Trim$(ngayNop) <> "" Then
-                ngayHienTai = IIf(Len(Day(Now())) = 1, "0" & Day(Now()), Day(Now())) & "/" & IIf(Len(Month(Now())) = 1, "0" & Month(Now()), Month(Now())) & "/" & Year(Now())
-                ngayHienTai = DateSerial(Int(Mid$(ngayHienTai, 7, 4)), Int(Mid$(ngayHienTai, 4, 2)), Int(Mid$(ngayHienTai, 1, 2)))
-                ngayNop = DateSerial(Int(Mid$(ngayNop, 7, 4)), Int(Mid$(ngayNop, 4, 2)), Int(Mid$(ngayNop, 1, 2)))
-                If ngayNop > ngayHienTai Then
-                    .Col = .ColLetterToNumber(iCol)
-                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                    .CellNote = errHanNop   'static
-                    .BackColor = mErrorColor
-                    iFlagvMst = 1
-                    ' Forcus ve Cell co du lieu bi loi
-                    If iFocusFlag = 0 Then
-                        strFocusSheetName = "'" & .SheetName & "'"
-                        strFocusCol = str(.Col)
-                        strFocusRow = str(.Row)
-                        .Sheet = .SheetCount
-                        strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
-                        .Col = .ColLetterToNumber("C")
-                        .Row = iRowErr
-                        .Formula = strFormula
-                    End If
-                Else
-                    .Sheet = isheet
-                    .Col = .ColLetterToNumber(iCol)
-                    .CellNote = ""
-                    .BackColor = mNonErrorColor
-                End If
-            End If
-            
-            .Sheet = isheet
-            iRow = iRow + 1
-            .Row = iRow
-            .Col = .ColLetterToNumber("B")
-        Loop Until .Text = "aa"
-        .Sheet = .SheetCount
-        .SetText .ColLetterToNumber("B"), iRowErr, IIf(iFlagvMst = 1, "0", "1")
-    End With
-End Sub
+'Private Sub CheckHanNop(iRow As Integer, iCol As String, iRowErr As String, isheet As Integer)
+'    Dim ngayNop, errHanNop  As Variant, ngayHienTai As Variant
+'    Dim strFocusSheetName, strFocusRow, strFocusCol, strFormula As String
+'    Dim iFocusFlag, iFlagvMst As Integer
+'    With fps
+'        .Sheet = .SheetCount
+'        .GetText .ColLetterToNumber("E"), iRowErr, errHanNop
+'        .Sheet = isheet
+'        .Row = iRow
+'        Do
+'            ' check ngay nop khong dc lon hon ngay hien tai
+'            .GetText .ColLetterToNumber(iCol), .Row, ngayNop
+'            If Trim$(ngayNop) <> "" Then
+'                ngayHienTai = IIf(Len(Day(Now())) = 1, "0" & Day(Now()), Day(Now())) & "/" & IIf(Len(Month(Now())) = 1, "0" & Month(Now()), Month(Now())) & "/" & Year(Now())
+'                ngayHienTai = DateSerial(Int(Mid$(ngayHienTai, 7, 4)), Int(Mid$(ngayHienTai, 4, 2)), Int(Mid$(ngayHienTai, 1, 2)))
+'                ngayNop = DateSerial(Int(Mid$(ngayNop, 7, 4)), Int(Mid$(ngayNop, 4, 2)), Int(Mid$(ngayNop, 1, 2)))
+'                If ngayNop > ngayHienTai Then
+'                    .Col = .ColLetterToNumber(iCol)
+'                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                    .CellNote = errHanNop   'static
+'                    .BackColor = mErrorColor
+'                    iFlagvMst = 1
+'                    ' Forcus ve Cell co du lieu bi loi
+'                    If iFocusFlag = 0 Then
+'                        strFocusSheetName = "'" & .SheetName & "'"
+'                        strFocusCol = str(.Col)
+'                        strFocusRow = str(.Row)
+'                        .Sheet = .SheetCount
+'                        strFormula = Trim(strFocusSheetName) & "!" & Trim(.ColNumberToLetter(CLng(strFocusCol))) & Trim(strFocusRow)
+'                        .Col = .ColLetterToNumber("C")
+'                        .Row = iRowErr
+'                        .Formula = strFormula
+'                    End If
+'                Else
+'                    .Sheet = isheet
+'                    .Col = .ColLetterToNumber(iCol)
+'                    .CellNote = ""
+'                    .BackColor = mNonErrorColor
+'                End If
+'            End If
+'
+'            .Sheet = isheet
+'            iRow = iRow + 1
+'            .Row = iRow
+'            .Col = .ColLetterToNumber("B")
+'        Loop Until .Text = "aa"
+'        .Sheet = .SheetCount
+'        .SetText .ColLetterToNumber("B"), iRowErr, IIf(iFlagvMst = 1, "0", "1")
+'    End With
+'End Sub
 
 
 Sub CheckErrorMST()
@@ -704,6 +704,31 @@ Private Sub UpdateSheets()
              Next
         End If
         
+        .Sheet = 2
+        mCurrentSheet = .Sheet
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(1), "Active") <> "0") Then
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
+                'If Not (lRow = 5 And (lCol = .ColLetterToNumber("AT") Or lCol = .ColLetterToNumber("BC"))) Then
+                    ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+                    .GetText lCol, lRow, varTemp
+                    UpdateCell fps, lCol, lRow, varTemp
+                'End If
+             Next
+        End If
+        
+        
+        .Sheet = 3
+        mCurrentSheet = .Sheet
+        If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(2), "Active") <> "0") Then
+            For Each xmlCellNodeData In TAX_Utilities_v1.Data(2).getElementsByTagName("Cell")
+                'If Not (lRow = 5 And (lCol = .ColLetterToNumber("AT") Or lCol = .ColLetterToNumber("BC"))) Then
+                    ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+                    .GetText lCol, lRow, varTemp
+                    UpdateCell fps, lCol, lRow, varTemp
+                'End If
+             Next
+        End If
+        
       .Sheet = .ActiveSheet
       .EventEnabled(EventAllEvents) = True
     End With
@@ -1056,15 +1081,43 @@ End Sub
 '**: when this sub is on executing, all events of fpspread will be disabled until the end of the sub
 Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
             
+    Dim xmlNodeValid As MSXML.IXMLDOMNode, xmlCellNode As MSXML.IXMLDOMNode
+    Dim iCol         As Long, iRow As Long
+            
+            
     With fps
         'Because of unclearly-rised events, this function is here for turning it off
         'at the end of this sub, this event will be turned on
-        '.EventEnabled(EventAllEvents) = False
+        .EventEnabled(EventAllEvents) = False
         .Sheet = .ActiveSheet
         mCurrentSheet = .ActiveSheet
+        If .ActiveSheet = 1 Then
+                mCurrentSheet = .Sheet
+                If Col = .ColLetterToNumber("AF") And Row = 30 Then
+                    .Formula = ""
+                End If
+                
+                If Col = .ColLetterToNumber("AF") And Row = 31 Then
+                    .Formula = ""
+                End If
+                
+                If Col = .ColLetterToNumber("AF") And Row = 32 Then
+                    .Formula = ""
+                End If
+        End If
+        
         If .ActiveSheet = 2 Then
                 mCurrentSheet = .Sheet
-                If Col = .ColLetterToNumber("BG") And Row >= 23 And Row <= .MaxRows - 9 Then
+                
+                Set xmlCellNode = TAX_Utilities_v1.Data(1).nodeFromID(GetCellID(fps, .ColLetterToNumber("E"), 23))
+                Set xmlCellNode = xmlCellNode.parentNode
+                Set xmlCellNode = xmlCellNode.parentNode
+                Set xmlCellNode = xmlCellNode.parentNode.lastChild
+                Set xmlCellNode = xmlCellNode.firstChild
+                Set xmlCellNode = xmlCellNode.firstChild
+                ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+                
+                If Col = .ColLetterToNumber("BG") And Row >= 23 And Row <= iRow - 2 Then
                     .Sheet = 1
                     ' tong hop chi tieu cot 10b PL 02-1/NTNN va cot 9b PL 02-2/NTNN
                     .Col = .ColLetterToNumber("AF")
@@ -1072,7 +1125,7 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
                     .Formula = "BK30"
                 End If
                 
-                If Col = .ColLetterToNumber("BY") And Row >= 23 And Row <= .MaxRows - 9 Then
+                If Col = .ColLetterToNumber("BY") And Row >= 23 And Row <= iRow - 2 Then
                     .Sheet = 1
                     ' tong hop chi tieu cot 11b PL 02-1/NTNN
                     .Col = .ColLetterToNumber("AF")
@@ -1083,7 +1136,16 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
         
         If .ActiveSheet = 3 Then
                 mCurrentSheet = .Sheet
-                If Col = .ColLetterToNumber("BG") And Row >= 24 And Row <= .MaxRows - 9 Then
+                
+                Set xmlCellNode = TAX_Utilities_v1.Data(2).nodeFromID(GetCellID(fps, .ColLetterToNumber("E"), 24))
+                Set xmlCellNode = xmlCellNode.parentNode
+                Set xmlCellNode = xmlCellNode.parentNode
+                Set xmlCellNode = xmlCellNode.parentNode.lastChild
+                Set xmlCellNode = xmlCellNode.firstChild
+                Set xmlCellNode = xmlCellNode.firstChild
+                ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), iCol, iRow
+                
+                If Col = .ColLetterToNumber("BD") And Row >= 24 And Row <= iRow - 2 Then
                     .Sheet = 1
                     ' tong hop chi tieu cot 10b PL 02-1/NTNN va cot 9b PL 02-2/NTNN
                     .Col = .ColLetterToNumber("AF")
@@ -1091,7 +1153,7 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
                     .Formula = "BK30"
                 End If
                 
-                If Col = .ColLetterToNumber("BY") And Row >= 24 And Row <= .MaxRows - 9 Then
+                If Col = .ColLetterToNumber("BS") And Row >= 24 And Row <= iRow - 2 Then
                     .Sheet = 1
                     ' tong hop chi tieu cot 10b
                     .Col = .ColLetterToNumber("AF")
@@ -1100,6 +1162,6 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
                 End If
         End If
         
-        '.EventEnabled(EventAllEvents) = True
+        .EventEnabled(EventAllEvents) = True
     End With
 End Sub
