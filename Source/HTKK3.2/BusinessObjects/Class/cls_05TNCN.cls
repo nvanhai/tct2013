@@ -2269,7 +2269,7 @@ Dim ASheet As Integer, SSheet As Integer
         Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
         Dim strQuanHeNNTID As String
         Dim strQuanHeNNT As String
-        
+
         Dim strQuocTich As String
         Dim strMaQuocTich As String
         Dim strTenTinh As String
@@ -2280,7 +2280,7 @@ Dim ASheet As Integer, SSheet As Integer
         Dim strMaXa As String
         Dim temValue As String
         Dim arrValue() As String
-        
+
         Dim index As Integer
         ' Chuoi gia tri ve quan he NNT bao gom:
         ' 01-Con, 02-Vo, 03-Chong, 04-Cha, 05-Me, 06-Chau Ruot, 07-Ho Hang, 99-Khac
@@ -2290,8 +2290,8 @@ Dim ASheet As Integer, SSheet As Integer
             strQuanHeNNT = strQuanHeNNT + arrValue(1) + Chr$(9)
             strQuanHeNNTID = strQuanHeNNTID + arrValue(0) + Chr$(9)
         Next
-        
-        
+
+
         ' lay du lieu danh muc dia ban tinh
         xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Tinh.xml"))
         Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
@@ -2303,7 +2303,7 @@ Dim ASheet As Integer, SSheet As Integer
                 strMaTinh = strMaTinh + arrValue(1) + Chr$(9)
             'End If
         Next
-        
+
         ' lay danh sach huyen
         Set xmlDocument = Nothing
         Set xmlNodeListMap = Nothing
@@ -2318,7 +2318,7 @@ Dim ASheet As Integer, SSheet As Integer
                 strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
             'End If
         Next
-        
+
         ' Lay danh muc xa
         Set xmlDocument = Nothing
         Set xmlNodeListMap = Nothing
@@ -2333,7 +2333,7 @@ Dim ASheet As Integer, SSheet As Integer
                 strMaXa = strMaXa + arrValue(3) + Chr$(9)
             'End If
         Next
-        
+
         ' lay du lieu dia ban
         xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Quoc_Gia.xml"))
         Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
@@ -2344,7 +2344,7 @@ Dim ASheet As Integer, SSheet As Integer
             strQuocTich = strQuocTich + arrValue(1) + Chr$(9)
             strMaQuocTich = strMaQuocTich + arrValue(0) + Chr$(9)
         Next
-        
+
         .Sheet = 4
         .Col = .ColLetterToNumber("B")
         .Row = 22
@@ -2353,62 +2353,62 @@ Dim ASheet As Integer, SSheet As Integer
             .Col = .ColLetterToNumber("L")
             .TypeComboBoxList = strQuanHeNNTID
             index = .typeComboboxCurSel
-            
+
             .Col = .ColLetterToNumber("M")
             .TypeComboBoxList = strQuanHeNNT
             .typeComboboxCurSel = index
-            
+
                 ' set danh sach tinh
             .Col = .ColLetterToNumber("R")
             .TypeComboBoxList = strMaTinh
             index = .typeComboboxCurSel
-            
+
             .Col = .ColLetterToNumber("S")
             .TypeComboBoxList = strTenTinh
             .typeComboboxCurSel = index
-            
+
             ' set danh sach huyen
             .Col = .ColLetterToNumber("T")
             .TypeComboBoxList = strMaHuyen
             index = .typeComboboxCurSel
-            
+
             .Col = .ColLetterToNumber("U")
             .TypeComboBoxList = strTenHuyen
             .typeComboboxCurSel = index
-            
+
             ' set danh sach xa
             .Col = .ColLetterToNumber("V")
             .TypeComboBoxList = strMaXa
             index = .typeComboboxCurSel
-            
+
             .Col = .ColLetterToNumber("W")
             .TypeComboBoxList = strTenXa
             .typeComboboxCurSel = index
-            
+
             ' set danh sach quoc tich
             .Col = .ColLetterToNumber("I")
             .TypeComboBoxList = strMaQuocTich
             index = .typeComboboxCurSel
-            
+
             .Col = .ColLetterToNumber("J")
             .TypeComboBoxList = strQuocTich
             .typeComboboxCurSel = index
-            
+
 
             ' set danh sach quoc gia
             .Col = .ColLetterToNumber("P")
             .TypeComboBoxList = strMaQuocTich
             index = .typeComboboxCurSel
-            
+
             .Col = .ColLetterToNumber("Q")
             .TypeComboBoxList = strQuocTich
             .typeComboboxCurSel = index
-                        
+
 
              .Col = .ColLetterToNumber("B")
              .Row = .Row + 1
         Loop Until .Text = "aa"
-        
+
 '        CheckDynamicError 'Set Exception Error on cells of interface
 '        UpdateSheets
         'end

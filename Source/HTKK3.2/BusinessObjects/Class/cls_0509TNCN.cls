@@ -110,7 +110,7 @@ Public Sub Prepare2()
         'button Lua Chon In
         
         .ActiveSheet = .Sheet
-        .Row = 19
+        .Row = 18
         .Col = .ColLetterToNumber("C")
         .CellType = CellTypeButton
         .TypeButtonAlign = TypeButtonAlignLeft
@@ -127,7 +127,7 @@ Public Sub Prepare2()
         
         .ActiveSheet = .Sheet
         ' Sap xep theo cot Ho va ten
-        .Row = 19
+        .Row = 18
         .Col = .ColLetterToNumber("D")
         .CellType = CellTypeButton
         .TypeButtonAlign = TypeButtonAlignLeft
@@ -140,7 +140,7 @@ Public Sub Prepare2()
         
         ' Sap xep theo cot quyet toan thue
         .Row = 20
-        .Col = .ColLetterToNumber("X")
+        .Col = .ColLetterToNumber("AC")
         .CellType = CellTypeButton
         .TypeButtonAlign = TypeButtonAlignLeft
         .TypeButtonTextColor = vbBlack
@@ -149,8 +149,8 @@ Public Sub Prepare2()
         .FontSize = 8
         .TypeButtonPicture = LoadPicture(GetAbsolutePath("..\Pictures\sort2.bmp"))
         .TypeButtonText = ""
-        
-        .EventEnabled(EventAllEvents) = True
+
+'        .EventEnabled(EventAllEvents) = True
     End With
 End Sub
 
@@ -168,10 +168,10 @@ Private Sub prepareData5A()
     Dim fso As New FileSystemObject
     
     
-    strDataFileName = GetAbsolutePath(TAX_Utilities_v1.DataFolder & "05A_TNCN_" & TAX_Utilities_v1.Year & ".xml")
+    strDataFileName = GetAbsolutePath(TAX_Utilities_v1.DataFolder & "05_1_TNCN_" & TAX_Utilities_v1.Year & "_" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & "_" & Replace(TAX_Utilities_v1.LastDay, "/", "") & ".xml")
     i = 0
     If fso.FileExists(strDataFileName) = False Then
-        ReDim arrData5A(1, 15) As String
+        ReDim arrData5A(1, 18) As String
         arrData5A(0, 0) = ""
         arrData5A(0, 1) = ""
         arrData5A(0, 2) = ""
@@ -187,12 +187,15 @@ Private Sub prepareData5A()
         arrData5A(0, 12) = "0"
         arrData5A(0, 13) = "0"
         arrData5A(0, 14) = "0"
+        arrData5A(0, 15) = "0"
+        arrData5A(0, 16) = "0"
+        arrData5A(0, 17) = ""
         Exit Sub
     End If
     If xmlDomData.Load(strDataFileName) Then
         Set xmlNodeListCells = xmlDomData.getElementsByTagName("Cells")
         
-        ReDim arrData5A(xmlNodeListCells.length, 15) As String
+        ReDim arrData5A(xmlNodeListCells.length, 18) As String
         
         For Each xmlNodeCells In xmlNodeListCells
             Set xmlNodeListCell = xmlNodeListCells.Item(i).childNodes
@@ -230,16 +233,20 @@ Private Sub prepareData5B()
     Dim fso As New FileSystemObject
     
     
-    strDataFileName = GetAbsolutePath(TAX_Utilities_v1.DataFolder & "05B_TNCN_" & TAX_Utilities_v1.Year & ".xml")
+    strDataFileName = GetAbsolutePath(TAX_Utilities_v1.DataFolder & "05_2_TNCN_" & TAX_Utilities_v1.Year & ".xml")
     i = 0
     If fso.FileExists(strDataFileName) = False Then
-        ReDim arrData5B(1, 8) As String
+        ReDim arrData5B(1, 10) As String
         arrData5B(0, 0) = ""
         arrData5B(0, 1) = ""
         arrData5B(0, 2) = ""
         arrData5B(0, 3) = "0"
         arrData5B(0, 4) = "0"
         arrData5B(0, 5) = "0"
+        arrData5B(0, 6) = "0"
+        arrData5B(0, 7) = "0"
+        arrData5B(0, 8) = "0"
+        arrData5B(0, 9) = ""
         Exit Sub
     End If
     If xmlDomData.Load(strDataFileName) Then
@@ -282,9 +289,14 @@ Private Sub prepareData0509()
                     ' Thu nhap chiu thue = Thu nhap chiu thue 5A + Thu nhap chiu thue 5B
                     arrData5A(row5A, 4) = Val(arrData5A(row5A, 4)) + Val(arrData5B(row5B, 4))
                     ' Thu nhap lam can cu tinh giam thue = Thu nhap lam can cu tinh giam thue 5A + Thu nhap lam can cu tinh giam thue 5B
+                    ' lam viec tai KKT
                     arrData5A(row5A, 5) = Val(arrData5A(row5A, 5)) + Val(arrData5B(row5B, 5))
+                    ' lam viec theo HD
+                    arrData5A(row5A, 6) = Val(arrData5A(row5A, 6)) + Val(arrData5B(row5B, 6))
                     ' Thue TNCN da khau tru = Thue TNCN da khau tru 5A + Thue TNCN da khau tru 5B
-                    arrData5A(row5A, 10) = Val(arrData5A(row5A, 10)) + Val(arrData5B(row5B, 6))
+                    arrData5A(row5A, 12) = Val(arrData5A(row5A, 12)) + Val(arrData5B(row5B, 7))
+                    ' giam theo KKT
+                    arrData5A(row5A, 13) = Val(arrData5A(row5A, 13)) + Val(arrData5B(row5B, 8))
                     Exit For
                 End If
             End If
@@ -293,7 +305,7 @@ Private Sub prepareData0509()
     ' arrData0509 la tong hop cac bang ke va phu luc tren co 19 phan tu
     totalRow5A_09 = totalRow5A
     ' Dinh nghia lai mang 0509 lay theo bang ke 5A
-    ReDim arrData0509(totalRow5A, 26) As String
+    ReDim arrData0509(totalRow5A, 29) As String
     For row5A = 0 To totalRow5A - 1
         ' Cot 0 la cot Ho va ten
         arrData0509(row5A, 0) = arrData5A(row5A, 0)
@@ -305,57 +317,68 @@ Private Sub prepareData0509()
         arrData0509(row5A, 3) = arrData5A(row5A, 3)
         ' Cot 4 la Thu nhap chiu thue
         arrData0509(row5A, 4) = arrData5A(row5A, 4)
-        ' Cot 5 la TNCN lam can cu giam tru thue
+        ' Cot 5 la TNCN lam can cu giam tru theo KKT
         arrData0509(row5A, 5) = arrData5A(row5A, 5)
-        ' Cot 6 la cot tong so tien giam tru gia canh
+        ' Cot 6 la cot tong so tien giam tru theo HD
         arrData0509(row5A, 6) = arrData5A(row5A, 6)
-        ' Cot 7 la cot tu thien , nhan dao, khuyen hoc
+        ' Cot 7 la cot tong giam tru gia canh
         arrData0509(row5A, 7) = arrData5A(row5A, 7)
-        ' Cot 8 la cot bao hiem bat buoc
+        ' Cot 8 la cot tu thien , khuyen hoc
         arrData0509(row5A, 8) = arrData5A(row5A, 8)
-        ' Cot 9 la thu nhap tinh thue
+        ' Cot 9 la bao hiem duoc tru
         arrData0509(row5A, 9) = arrData5A(row5A, 9)
-        ' Cot 10 la cot so thue da khau tru
+        ' Cot 10 quy huu tri
         arrData0509(row5A, 10) = arrData5A(row5A, 10)
-        ' Cot 11 la cot Thu nhap chiu thue
-        arrData0509(row5A, 12) = arrData5A(row5A, 4)
+        ' cot 11 thu nhap tinh thue
+        arrData0509(row5A, 11) = arrData5A(row5A, 11)
+        ' cot 12 so thue duoc khau tru
+        arrData0509(row5A, 12) = arrData5A(row5A, 12)
+        ' cot 13 so thue duoc giam theo KKT
+        arrData0509(row5A, 13) = arrData5A(row5A, 13)
+        
+        
+        ' Cot 14 la cot Thu nhap chiu thue
+        arrData0509(row5A, 14) = arrData5A(row5A, 4)
         
         
         
         ' Cot 21 la cot check co quyet toan tai CQCT ko?
-        arrData0509(row5A, 21) = arrData5A(row5A, 3)
+        arrData0509(row5A, 22) = arrData5A(row5A, 3)
         ' Cot 22 la cot tong so thue phai nop tren bang ke 5A
-        arrData0509(row5A, 22) = arrData5A(row5A, 12)
+        arrData0509(row5A, 23) = arrData5A(row5A, 15)
         ' Cot 23 la cot so thue da nop thua
-        arrData0509(row5A, 23) = arrData5A(row5A, 13)
+        arrData0509(row5A, 24) = arrData5A(row5A, 16)
         ' Cot 24 la cot so thue con phai khau tru them
-        arrData0509(row5A, 24) = arrData5A(row5A, 14)
+        arrData0509(row5A, 25) = arrData5A(row5A, 17)
                 
         ' Cot 11 la Giam tru cho ban than
         ' Neu nam 2009 thi giam tru 6 thang la 24.000.000 (Tuong duong voi 4.000.000/Thang) va tu nam 2010 la 12 thang tuong duong voi 48.000.000
         If TAX_Utilities_v1.Year = 2009 Then
-            arrData0509(row5A, 13) = "24000000"
+            arrData0509(row5A, 17) = "24000000"
         ElseIf TAX_Utilities_v1.Year > 2009 Then
-            arrData0509(row5A, 13) = "48000000"
+            arrData0509(row5A, 17) = "48000000"
         Else
-            arrData0509(row5A, 13) = "0"
+            arrData0509(row5A, 17) = "0"
         End If
         
-        ' Cot 13 la giam tru gia canh
-        arrData0509(row5A, 14) = Val(arrData5A(row5A, 6))
-        ' Cot 14 la tu thien
-        arrData0509(row5A, 15) = arrData5A(row5A, 7)
-        ' Cot 15 la bao hiem bat buoc
-        arrData0509(row5A, 16) = arrData5A(row5A, 8)
+        ' Cot 18 la giam tru gia canh
+        arrData0509(row5A, 18) = Val(arrData5A(row5A, 7))
+        ' Cot 19 la tu thien
+        arrData0509(row5A, 19) = arrData5A(row5A, 8)
+        ' Cot 20 la bao hiem bat buoc
+        arrData0509(row5A, 20) = arrData5A(row5A, 9)
+        
+        ' Cot 21 la huu tri
+        arrData0509(row5A, 21) = arrData5A(row5A, 10)
         
         ' Cot 16 la Thu nhap tinh thue la tong thu nhap chiu thue - giam tru ban than - giam tru nguoi phu thuoc - tu thien - bao hiem bat buoc
         
-        arrData0509(row5A, 17) = arrData5A(row5A, 9)
+        arrData0509(row5A, 22) = arrData5A(row5A, 11)
 '        If Val(arrData0509(row5A, 15)) < 0 Then arrData0509(row5A, 15) = "0"
         
         ' Cot 17 la Thue phai nop la thu nhap tinh thue tinh theo bieu thue luy tien (Doi voi nam 2009 thi tinh 6 thang tu nam 2010 thi tinh du 12 thang)
         ' arrData0509(row5A, 16) = tinh theo bieu thue luy tien cua arrData0509(row5A, 14)
-        arrData0509(row5A, 18) = "0"
+        arrData0509(row5A, 23) = "0"
 '        Dim thuNhapTinhThueThang As Double, thuePhaiNopThang As Double
 '        Dim soThangTinhThue As Integer
 '        ' Neu la nam 2009 thi thu nhap tinh thue tren 6 thang
@@ -395,22 +418,22 @@ Private Sub prepareData0509()
 '            arrData0509(row5A, 17) = Round(Val(arrData0509(row5A, 16)) * (Val(arrData5A(row5A, 8)) / Val(arrData5A(row5A, 3))) * 0.5, 0)
 '        End If
 '
-        arrData0509(row5A, 19) = "0"
+        arrData0509(row5A, 24) = "0"
         
         ' Cot 18 la so thue da khau tru la so thue da khau tru tren bang ke 5A
         '= So thue TNCN da khau tru[Tren 5A+ Tren 5B] - So thue nop thua + So thue con khau tru them
-        arrData0509(row5A, 20) = Val(arrData5A(row5A, 10))
+        arrData0509(row5A, 25) = Val(arrData5A(row5A, 10))
 '        arrData0509(row5A, 18) = Val(arrData5A(row5A, 9)) - Val(arrData0509(row5A, 23)) + Val(arrData0509(row5A, 24))
         
         ' Cot 19 la so thue con phai nop
         ' arrData0509(row5A, 19) = Thue phai nop - Thue mien giam - Thue da khau tru
-        arrData0509(row5A, 25) = "0"
+        arrData0509(row5A, 26) = "0"
 '        arrData0509(row5A, 19) = Round(Val(arrData0509(row5A, 16)) - Val(arrData0509(row5A, 17)) - Val(arrData0509(row5A, 18)), 0)
         
 '        If (Val(arrData0509(row5A, 19)) >= -1 And Val(arrData0509(row5A, 19)) <= 1) Then arrData0509(row5A, 19) = 0
         
         ' Cot 20 la co phai quyet toan thue hay khong?
-        arrData0509(row5A, 26) = ""
+        arrData0509(row5A, 27) = ""
 '        If Val(arrData0509(row5A, 19)) = 0 Then
 '            arrData0509(row5A, 20) = TAX_Utilities_v1.Convert("Kh«ng", TCVN, UNICODE)
 '        Else
@@ -449,7 +472,7 @@ Dim Y As Long
             If .ActiveSheet = 1 Then
                .Sheet = 1
                 
-                If Col = .ColLetterToNumber("D") And Row = 19 Then
+                If Col = .ColLetterToNumber("D") And Row = 20 Then
                     Y = Col
                             
                     .Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("X"), 21 + totalRow5A_09, SortByRow, Y, so
@@ -463,10 +486,10 @@ Dim Y As Long
                     End If
                 End If
                 
-                If Col = .ColLetterToNumber("X") And Row = 19 Then
+                If Col = .ColLetterToNumber("AC") And Row = 20 Then
                     Y = Col
                             
-                    .Sort .ColLetterToNumber("X"), 22, .ColLetterToNumber("X"), (21 + totalRow5A_09), SortByRow, Y, so
+                    .Sort .ColLetterToNumber("AC"), 22, .ColLetterToNumber("AC"), (21 + totalRow5A_09), SortByRow, Y, so
                     .Refresh
                     
                     ' Chieu sap xep
