@@ -284,7 +284,7 @@
 	
 	<Menu ID="45" PopID="101" ParentID="101_10" Caption="Hỗ trợ in Quyết toán thuế cho cá nhân" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\excel\05_TNCN_09.xls" ReportTemplate="..\ReportTemplates\excel\05_TNCN_09.xls" CatalogueID="01" Class="TAX_Business_v1.cls_0509TNCN">			
-			<Sheet ID="05A" Caption="05A/BK-TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="05_TNCN_09" InterfaceIni=""/>
+			<Sheet ID="05-1" Caption="05-1BK-TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="05_TNCN_09" InterfaceIni=""/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>
 	</Menu>
