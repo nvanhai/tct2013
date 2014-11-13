@@ -145,7 +145,7 @@ Public Function Prepared1() As Boolean
              Next
          End If
           'set ly do gia han
-        .Row = 92
+        .Row = 101
         .Col = .ColLetterToNumber("M")
         .TypeComboBoxList = strCboLyDo
         ' set Ma ly do gia han
@@ -158,8 +158,9 @@ End Function
 
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     Dim i As Integer
-    Dim varMaDM As Variant
+    Dim varMaDM, varMaTmp As Variant
     Dim TenDM As String
+    Dim TenNN As String
     i = 0
     ReDim Preserve larrPhongXuLy(0)
     larrPhongXuLy(0) = "00"
@@ -189,6 +190,16 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
         
+        'Set nganh nge co ty le doanh thu cao nhat
+        .Sheet = 1
+        .Row = 10
+        .GetText .ColLetterToNumber("AB"), .Row, varMaTmp
+        DataDMNganhNghe varMaTmp, TenNN
+        
+        .Col = .ColLetterToNumber("R")
+        .Row = 10
+        .Text = TenNN
+        UpdateCell fps, .Col, .Row, .Text
         
         '#######################################
         'lay ten DM tren PL 03-7
@@ -215,11 +226,11 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         Dim count As Integer
         .Sheet = 1
         .Col = .ColLetterToNumber("AB")
-        .Row = 92
+        .Row = 101
          .GetText .ColLetterToNumber("AB"), .Row, varMaDM
         If Trim(varMaDM) <> vbNullString Then
             .Col = .ColLetterToNumber("M")
-            .Row = 92
+            .Row = 101
             .Text = getTenLyDoGD(varMaDM)
             UpdateCell fps, .Col, .Row, .Text
         End If
@@ -228,14 +239,14 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         ' Neu khong co gia han se khong cho chon combobox
          ' Neu check gia han moi cho phep chon GT
         .Col = .ColLetterToNumber("I") '.ColLetterToNumber("E")
-        .Row = 91 '41
+        .Row = 100 '41
         If .Text = "1" Or UCase$(.Text) = "X" Then
             .Col = .ColLetterToNumber("M")
-            .Row = 92
+            .Row = 101
             .Lock = False
         Else
             .Col = .ColLetterToNumber("M")
-            .Row = 92
+            .Row = 101
             .Lock = True
         End If
         ' End set gia han
@@ -305,6 +316,28 @@ Dim xmlNode As MSXML.IXMLDOMNode
             Next
         End If
 End Sub
+Private Sub DataDMNganhNghe(ByVal Id As String, Optional ByRef TenNN As String)
+Dim arrDanhsach() As String
+Dim strDataFileName As String
+Dim xmlDOMdata As New MSXML.DOMDocument
+Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+Dim xmlNode As MSXML.IXMLDOMNode
+
+       strDataFileName = GetAbsolutePath("..\InterfaceTemplates\xml\DM_nganh_TLDT_cao.xml")
+    
+       If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If arrDanhsach(0) = Id Then
+                            TenNN = arrDanhsach(1)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
 Public Sub GetParams(ByRef strPNgayNhanToKhai As String, ByRef strPPhongXuLy As String)
 '    strPMaSoTep = strMaSoTep
     strPNgayNhanToKhai = strNgayNhanToKhai
@@ -344,24 +377,24 @@ Public Function Prepared3() As Boolean
         ' Dat lai check E_15 Duoc gian thue theo NQ30/NQ-CP
         ' Thoi gian gian thue trong ca nam 2009 cua to quyet toan TNDN
         If Val(TAX_Utilities_Srv_New.Year) = 2009 Then
-            .Row = 91
+            .Row = 100
             .Col = .ColLetterToNumber("I")
             UpdateCell fps, .Col, .Row, .Text
-            .Row = 91
+            .Row = 100
             .Col = .ColLetterToNumber("F")
             .Text = "GIA HAN NOP THEO NQ30/NQ-CP"
         ElseIf Val(TAX_Utilities_Srv_New.Year) = 2010 Then
-            .Row = 91
+            .Row = 100
             .Col = .ColLetterToNumber("I")
             UpdateCell fps, .Col, .Row, .Text
-            .Row = 91
+            .Row = 100
             .Col = .ColLetterToNumber("F")
             .Text = "GIA HAN THEO QD 21/2011/QD-TTG"
         ElseIf Val(TAX_Utilities_Srv_New.Year) = 2011 Then
-            .Row = 91
+            .Row = 100
             .Col = .ColLetterToNumber("I")
             UpdateCell fps, .Col, .Row, .Text
-            .Row = 91
+            .Row = 100
             .Col = .ColLetterToNumber("F")
             .Text = "GIA HAN THEO QD 21/2011/QD-TTG;QD 54/2011/QD-TTG "
         Else
@@ -384,10 +417,10 @@ Public Function Prepared3() As Boolean
 '            .CellType = CellTypeEdit
 '            .Lock = True
 '            .Text = ""
-            .Row = 91
+            .Row = 100
             .Col = .ColLetterToNumber("I")
             UpdateCell fps, .Col, .Row, .Text
-            .Row = 91
+            .Row = 100
             .Col = .ColLetterToNumber("F")
             .Text = "GIA HAN THEO NQ 02/NQ-CP"
         End If
@@ -522,21 +555,21 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
    fps.EventEnabled(EventAllEvents) = False
     If fps.ActiveSheet = 1 Then
             ' Neu check gia han moi cho phep chon GT
-            If Col = fps.ColLetterToNumber("I") And Row = 91 Then
+            If Col = fps.ColLetterToNumber("I") And Row = 100 Then
                 fps.Col = fps.ColLetterToNumber("I")
-                fps.Row = 91
+                fps.Row = 100
                 If fps.Text = "1" Or UCase$(fps.Text) = "X" Then
                     fps.Col = fps.ColLetterToNumber("M")
-                    fps.Row = 92
+                    fps.Row = 101
                     fps.Lock = False
                 Else
                     fps.Col = fps.ColLetterToNumber("M")
-                    fps.Row = 92
+                    fps.Row = 101
                     fps.Lock = True
-                    fps.SetText fps.ColLetterToNumber("M"), 92, ""
-                    fps.SetText fps.ColLetterToNumber("AB"), 92, "00"
-                    UpdateCell fps, fps.ColLetterToNumber("AB"), 92, "00"
-                    UpdateCell fps, fps.ColLetterToNumber("M"), 92, ""
+                    fps.SetText fps.ColLetterToNumber("M"), 101, ""
+                    fps.SetText fps.ColLetterToNumber("AB"), 101, "00"
+                    UpdateCell fps, fps.ColLetterToNumber("AB"), 101, "00"
+                    UpdateCell fps, fps.ColLetterToNumber("M"), 101, ""
                 End If
             End If
     End If
@@ -561,10 +594,10 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
        If .ActiveSheet = 1 Then
             .Col = Col
             .Row = Row
-             If Col = .ColLetterToNumber("M") And Row = 92 Then
+             If Col = .ColLetterToNumber("M") And Row = 101 Then
                 intIndexCombo = .TypeComboBoxCurSel
                 .Col = .ColLetterToNumber("AB")
-                .Row = 92
+                .Row = 101
                 .TypeComboBoxCurSel = intIndexCombo
                 'Update combo C
                 UpdateCell fps, .Col, .Row, .Text
@@ -598,8 +631,8 @@ Public Function CheckValidData() As Boolean
         .GetText .ColLetterToNumber("E"), 36, varCheckValue
         .GetText .ColLetterToNumber("M"), 36, varNoteValue
         '
-        .GetText .ColLetterToNumber("I"), 91, varCheckGhValue
-        .GetText .ColLetterToNumber("M"), 92, varNoteGhValue
+        .GetText .ColLetterToNumber("I"), 100, varCheckGhValue
+        .GetText .ColLetterToNumber("M"), 101, varNoteGhValue
         
         .GetText .ColLetterToNumber("E"), 36, varNgayNop
         If CStr(varCheckValue) = "1" And Trim(CStr(varNoteValue)) = "" Then
@@ -701,7 +734,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
                     Case PHONG_XU_LY_COL & "_" & PHONG_XU_LY_ROW
                         vPHONG_XU_LY = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
 
-                    Case "I_91"
+                    Case "I_100"
                         v_CO_GIA_HAN = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
 
                         If UCase(Trim(v_CO_GIA_HAN)) = "X" Or Trim(v_CO_GIA_HAN) = "1" Then
@@ -710,7 +743,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
                             v_CO_GIA_HAN = "Null"
                         End If
 
-                    Case "AB_92"
+                    Case "AB_101"
                         VMaLyDoGH = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 End Select
 
@@ -861,7 +894,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
             vLAN_BS = "0"
         End If
 
-        .GetText .ColLetterToNumber("I"), 91, v_CO_GIA_HAN
+        .GetText .ColLetterToNumber("I"), 100, v_CO_GIA_HAN
         If UCase(Trim(v_CO_GIA_HAN)) = "X" Or Trim(v_CO_GIA_HAN) = "1" Then
             v_CO_GIA_HAN = "'Y'"
         Else
