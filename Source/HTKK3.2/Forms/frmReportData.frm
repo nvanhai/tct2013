@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   68
+      Quality         =   0
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -1730,6 +1730,8 @@ Private Sub SetupPrinter()
                                         .Row = GetLastDataRowTD(lCtrl)
                                     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "93" And lCtrl = 1 Then
                                         .Row = GetLastDataRow3(lCtrl)
+                                    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" And isDLT = False And lCtrl = 1 Then
+                                        .Row = arrLngRowPageBreak(intIndex2) - 1
                                     Else
                                         .Row = GetLastDataRow(lCtrl)
                                     End If

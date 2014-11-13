@@ -3692,7 +3692,16 @@ Public Sub cmdOK_Click()
             Exit Sub
         End If
     End If
-    
+    ' chan to khai bs 02/TNDN quy
+    If idToKhai = "73" Then
+        If strLoaiTKThang_PS = "TK_THANG" Then
+            If ((Val(TAX_Utilities_v1.ThreeMonths) >= 4 And Val(TAX_Utilities_v1.Year) = 2014) Or Val(TAX_Utilities_v1.Year) > 2014) Or strKHBS = "TKBS" Then
+                DisplayMessage "0341", msOKOnly, miWarning
+                cmbQuy.SetFocus
+                Exit Sub
+            End If
+        End If
+    End If
     ' kiem tra trung khoang doi voi to khai QT co ky bo sung tu thang den thang
     If strKHBS = "TKCT" And strKieuKy = KIEU_KY_NAM Then
         If idToKhai = "93" Or idToKhai = "89" Then
