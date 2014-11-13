@@ -322,10 +322,10 @@ Public Sub Prepare2()
             ngayTC = GetNgayTaiChinh(GetNgayBatDauNamTaiChinh)
         End If
         
-        If Len(CStr(GetNgayTaiChinh(GetNgayBatDauNamTaiChinh) + 1)) = 1 Then
-            thangTC = "0" & GetNgayTaiChinh(GetNgayBatDauNamTaiChinh) + 1
+        If Len(CStr(GetThangTaiChinh(GetNgayBatDauNamTaiChinh) + 1)) = 1 Then
+            thangTC = "0" & GetThangTaiChinh(GetNgayBatDauNamTaiChinh) + 1
         Else
-            thangTC = GetNgayTaiChinh(GetNgayBatDauNamTaiChinh) + 1
+            thangTC = GetThangTaiChinh(GetNgayBatDauNamTaiChinh) + 1
         End If
         
         tuNgayPhatNC = ngayTC & "/" & thangTC & "/" & CInt(TAX_Utilities_v1.Year) + 1
@@ -1334,6 +1334,15 @@ With fps
                 .Row = 65
                 .Formula = "P65"
             End If
+            
+            If Row = cRow And Col = .ColLetterToNumber("Z") Then
+                ' chi tieu C15
+                .Sheet = 1
+                .Col = .ColLetterToNumber("O")
+                .Row = 37
+                .Formula = "P37"
+            End If
+            
         Case sheetPl03_6_TNDN ' Phu luc 03-6
             mCurrentSheet = .Sheet
             Set xmlCellNode = TAX_Utilities_v1.Data(sheetPl03_6_TNDN - 1).nodeFromID(GetCellID(fps, .ColLetterToNumber("E"), 26))
@@ -1359,6 +1368,14 @@ With fps
                 .Col = .ColLetterToNumber("O")
                 .Row = 69
                 .Formula = "P69"
+            End If
+            
+            If Row = 32 And Col = .ColLetterToNumber("E") Then
+                ' chi tieu C3b
+                .Sheet = 1
+                .Col = .ColLetterToNumber("O")
+                .Row = 52
+                .Formula = "P52"
             End If
     End Select
     .EventEnabled(EventAllEvents) = True
@@ -1699,7 +1716,7 @@ Private Sub CheckDynamicError()
                     iflagDenNgayNC = 1
                 Else
                     arrDateGH = Split(vDenNgayNC, "/")
-                    arrDateHanNop = Split(hanNopTKTNDN, "/")
+                    arrDateHanNop = Split(getDenNgayNC, "/")
                     dThoiHanGH = DateSerial(CInt(arrDateGH(2)), CInt(arrDateGH(1)), CInt(arrDateGH(0)))
                     dHanNop = DateSerial(CInt(arrDateHanNop(2)), CInt(arrDateHanNop(1)), CInt(arrDateHanNop(0)))
                     If DateDiff("D", dHanNop, dThoiHanGH) > 0 Then
@@ -2975,7 +2992,7 @@ Private Sub UpdateSheets()
         mCurrentSheet = .Sheet
             For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               If (lRow <= 97) And (lRow >= 31) Then
+               If (lRow <= 97) And (lRow >= 31) And lRow <> 83 Then
                     .GetText lCol, lRow, varTemp
                     UpdateCell fps, lCol, lRow, varTemp
                 End If
@@ -3303,8 +3320,8 @@ Private Sub unLockCell(status As Boolean)
         .Sheet = 1
         .Col = .ColLetterToNumber("O")
         ' chi tieu C3
-        .Row = 50
-        .Lock = status
+'        .Row = 50
+'        .Lock = status
         
         ' chi tieu C3a
         .Row = 51
@@ -3341,15 +3358,15 @@ Public Sub unLockCellPL(strLoaiToKhai As String)
             'If blCheck_S2A Or blCheck_S2B Then
             If blCheck_S2A Then
                 ' chi tieu C3
-                .Row = 50
-                .Lock = True
+'                .Row = 50
+'                .Lock = True
                 ' chi tieu C3a
                 .Row = 51
                 .Lock = True
             Else
                 ' chi tieu C3
-                .Row = 50
-                .Lock = False
+'                .Row = 50
+'                .Lock = False
                 ' chi tieu C3a
                 .Row = 51
                 .Lock = False
@@ -3738,3 +3755,20 @@ Private Sub setChangeComb(ByVal Col As Long, Row As Long)
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub
+
+
+Private Function getDenNgayNC() As String
+    Dim strNgayBatDauNamTC As String
+    Dim strDenNgayNC As String
+    strNgayBatDauNamTC = GetNgayBatDauNamTaiChinh
+    If strNgayBatDauNamTC = "01/01" Then
+        strDenNgayNC = "31/03/" & Val(TAX_Utilities_v1.Year) + 1
+    ElseIf strNgayBatDauNamTC = "01/04" Then
+        strDenNgayNC = "30/06/" & Val(TAX_Utilities_v1.Year) + 1
+    ElseIf strNgayBatDauNamTC = "01/07" Then
+        strDenNgayNC = "30/09/" & Val(TAX_Utilities_v1.Year) + 1
+    ElseIf strNgayBatDauNamTC = "01/10" Then
+        strDenNgayNC = "31/12/" & Val(TAX_Utilities_v1.Year) + 1
+    End If
+    getDenNgayNC = strDenNgayNC
+End Function
