@@ -76,4 +76,10 @@ values ('09_TNCN14', 'Tê khai QuyÕt to¸n thuÕ TNCN mÉu 09/TNCN ', 'Y', '330
 insert into QLT_NTK.RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
 values ('02_TNCN_BHDC', 'Tê khai 02/KK-BH§C', 'Y', '330', to_date('01-01-1900', 'dd-mm-yyyy'), null);
 
+--------------------------------
+--TT 151
+--02/TNDN
+--------------------------------
+insert into QLT_NTK.RCV_DM_TKHAI (MA, TEN, KIEU_KY, PHIEN_BAN, START_DATE, END_DATE)
+values ('02_TNDN14', 'Tê khai thuÕ TNDN mÉu 02/TNDN', 'Q', '330', to_date('01-07-2011', 'dd-mm-yyyy'), null);
 commit;
