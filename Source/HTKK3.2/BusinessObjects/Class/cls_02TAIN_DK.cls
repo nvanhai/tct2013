@@ -1245,26 +1245,29 @@ Private Function getCT29() As String
             denThang = "0" & Month(MY) & Year(MY)
         End If
         
+        ReDim arrStrXMLFileNames(0)
         LoadXMLFileNames
         
         For i = 0 To UBound(arrStrXMLFileNames)
             arrFileName = Split(arrStrXMLFileNames(i), "_")
-            If arrFileName(UBound(arrFileName)) = denThang Then
-                If arrFileName(1) <> "KHBS" And InStr(arrFileName(0), "bs") <= 0 Then
-                    ' to khai chinh thuc
-                    dataFileKyTruoc = arrStrXMLFileNames(i)
-                ElseIf arrFileName(1) <> "KHBS" And InStr(arrFileName(0), "bs") > 0 Then
-                ' to khai bo sung
-                    If isFirtFile = False Then
-                        tempFile = arrStrXMLFileNames(i)
-                        isFirtFile = True
+            If UBound(arrFileName) <> -1 Then
+                If arrFileName(UBound(arrFileName)) = denThang Then
+                    If arrFileName(1) <> "KHBS" And InStr(arrFileName(0), "bs") <= 0 Then
+                        ' to khai chinh thuc
+                        dataFileKyTruoc = arrStrXMLFileNames(i)
+                    ElseIf arrFileName(1) <> "KHBS" And InStr(arrFileName(0), "bs") > 0 Then
+                    ' to khai bo sung
+                        If isFirtFile = False Then
+                            tempFile = arrStrXMLFileNames(i)
+                            isFirtFile = True
+                        End If
+                        arr1 = Split(tempFile, "_")
+                        arr2 = Split(arrStrXMLFileNames(i), "_")
+                        If Val(Replace(arr1(0), "bs", "")) < Val(Replace(arr2(0), "bs", "")) Then
+                            tempFile = arrStrXMLFileNames(i)
+                        End If
+                        dataFileKyTruocBs = tempFile
                     End If
-                    arr1 = Split(tempFile, "_")
-                    arr2 = Split(arrStrXMLFileNames(i), "_")
-                    If Val(Replace(arr1(0), "bs", "")) < Val(Replace(arr2(0), "bs", "")) Then
-                        tempFile = arrStrXMLFileNames(i)
-                    End If
-                    dataFileKyTruocBs = tempFile
                 End If
             End If
         Next
