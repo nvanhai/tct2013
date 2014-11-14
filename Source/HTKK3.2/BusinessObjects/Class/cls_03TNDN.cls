@@ -589,6 +589,7 @@ With fps
     End If
 
     If .ActiveSheet = sheetPl03_5_TNDN Then
+        .EventEnabled(EventAllEvents) = False
         .Sheet = sheetPl03_5_TNDN
         If Col = .ColLetterToNumber("E") And (Row >= 21 And Row <= 30) Then
             .GetText .ColLetterToNumber("E"), 21, ct01
@@ -640,6 +641,7 @@ With fps
             
                
         End If
+        .EventEnabled(EventAllEvents) = True
     End If
 
     If .ActiveSheet = sheetPl03_7_TNDN Then
