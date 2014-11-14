@@ -1323,6 +1323,8 @@ SELECT   dtl.hdr_id, dtl.so_tt so_tt, dtl.row_id row_id,
                      OR tkd.loai_dlieu = 'KHBS_01B_TNDN_DK'
                      OR tkd.loai_dlieu = 'KHBS_01_TD_GTGT'
                      OR tkd.loai_dlieu = 'KHBS_03_TD_TAIN'
+					 --TT 151
+                     OR tkd.loai_dlieu = 'KHBS_02_TNDN14'					 
                      --Bo sung to QT 2014
                      OR tkd.loai_dlieu = 'KHBS_03_TNDN14'
                      OR tkd.loai_dlieu = 'KHBS_02_TAIN14'
@@ -1355,6 +1357,8 @@ SELECT   dtl.hdr_id, dtl.so_tt so_tt, dtl.row_id row_id,
              OR gd.loai_dlieu = 'KHBS_01B_TNDN_DK'
              OR gd.loai_dlieu = 'KHBS_01_TD_GTGT'
              OR gd.loai_dlieu = 'KHBS_03_TD_TAIN'
+			 --TT 151
+			 OR gd.loai_dlieu = 'KHBS_02_TNDN14'
                      --Bo sung to QT 2014
                      OR gd.loai_dlieu = 'KHBS_03_TNDN14'
                      OR gd.loai_dlieu = 'KHBS_02_TAIN14'
@@ -1371,4 +1375,81 @@ SELECT   dtl.hdr_id, dtl.so_tt so_tt, dtl.row_id row_id,
             )
         AND (dtl.ID = gd.ID)
    GROUP BY dtl.hdr_id, dtl.so_tt, dtl.row_id;
+--TT151
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_02_TNDN_14 AS
+SELECT dtl.hdr_id
+     , dtl.row_id
+     , dtl.so_tt
+     , MAX(dtl.so_tien) so_tien
+     , MAX('['||dtl.ky_hieu||']') ky_hieu
+     , MAX(dtl.ma_ctieu) ma_ctieu
+FROM QLT_NTK.rcv_gdien_tkhai gd,
+(
+  SELECT tkd.hdr_id,
+         NVL(tkd.row_id,0) row_id,
+         gdien.id,
+         gdien.so_tt,
+         DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL) so_tien,
+         ctieu.ky_hieu,
+         gdien.ma_ctieu
+  FROM QLT_NTK.rcv_tkhai_dtl tkd,
+       QLT_NTK.rcv_gdien_tkhai gdien,
+       QLT_NTK.rcv_map_ctieu ctieu
+  WHERE (ctieu.gdn_id = gdien.id)
+  AND (ctieu.ky_hieu = tkd.ky_hieu)
+  AND (tkd.loai_dlieu = '02_TNDN14')
+  AND gdien.loai_dlieu =  '02_TNDN14'
+  AND ctieu.loai_dlieu =  '02_TNDN14'
+  AND gdien.ma_ctieu Is Not Null
+) dtl
+WHERE (gd.loai_dlieu = '02_TNDN14')
+  AND (dtl.id = gd.id)
+GROUP BY dtl.hdr_id,
+         dtl.row_id,
+         dtl.so_tt;
+	--PL 02-1/TNDN
+CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_TKHAI_TNDN_02_14 AS
+SELECT
+    dtl.hdr_id ,
+    MAX(dtl.row_id)               row_id ,
+    MAX(dtl.so_tt)                so_tt ,
+    MAX(dtl.ten_ben_cn)                  ten_ben_cn ,
+    MAX(dtl.ma_so_thue) ma_so_thue ,
+    MAX(dtl.dia_chi)                dia_chi ,
+    MAX(dtl.HD_chuyen_nhuong)      HD_chuyen_nhuong
+FROM
+    QLT_NTK.rcv_gdien_tkhai gd,
+    (
+        SELECT
+            tkd.hdr_id,
+            tkd.loai_dlieu,
+            gdien.id,
+            tkd.row_id,
+            gdien.so_tt                                          so_tt,
+            DECODE(gdien.cot_02, tkd.ky_hieu, tkd.gia_tri, NULL) ten_ben_cn,
+            DECODE(gdien.cot_03, tkd.ky_hieu, tkd.gia_tri, NULL)ma_so_thue,
+            DECODE(gdien.cot_04, tkd.ky_hieu, tkd.gia_tri, NULL) dia_chi,
+            DECODE(gdien.cot_05, tkd.ky_hieu, tkd.gia_tri, NULL) HD_chuyen_nhuong
+        FROM
+            QLT_NTK.rcv_tkhai_dtl tkd,
+            QLT_NTK.rcv_gdien_tkhai gdien,
+            QLT_NTK.rcv_map_ctieu ctieu
+        WHERE
+            (
+                ctieu.gdn_id = gdien.id)
+        AND (
+                ctieu.ky_hieu = tkd.ky_hieu)
+        AND (
+                tkd.loai_dlieu = '02_01_TNDN14'
+            OR  tkd.loai_dlieu = '02_01_TNDN14') ) dtl
+WHERE
+    (
+        gd.loai_dlieu = dtl.loai_dlieu)
+AND (
+        dtl.id = gd.id)
+GROUP BY
+    dtl.hdr_id,
+    dtl.row_id,
+    dtl.so_tt;
+
 commit;	
