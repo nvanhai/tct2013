@@ -550,7 +550,7 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                             If GetAttribute(xmlNode, "Value") <> "" Then
                                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                                 
-                                If arrDanhsach(1) = varIDTinh Then
+                                If arrDanhsach(1) = varIDTinh Or arrDanhsach(1) = "000" Then
                                     tenHuyen = tenHuyen + arrDanhsach(3) + Chr$(9)
                                     maHuyen = maHuyen + arrDanhsach(2) + Chr$(9)
                                 End If
@@ -657,7 +657,7 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                             If GetAttribute(xmlNode, "Value") <> "" Then
                                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                                 
-                                If arrDanhsach(2) = varIDHuyen Then
+                                If arrDanhsach(2) = varIDHuyen Or arrDanhsach(2) = "00000" Then
                                     tenXa = tenXa + arrDanhsach(4) + Chr$(9)
                                     maXa = maXa + arrDanhsach(3) + Chr$(9)
                                 End If

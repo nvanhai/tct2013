@@ -40,6 +40,11 @@ Public denRowDL As Long
 Public strTuRowDenRowPL As String
 
 Private rowData As Long
+
+Private arrStrXMLFileNames() As String
+Private arrData05_3() As String
+Public rowGroup1 As Long
+Public rowGroup2 As Long
   
 'This funtion is called after an object of this class is created
 'Its functions is 1st preparing for interface sheets, such as
@@ -48,6 +53,8 @@ Private rowData As Long
 Public Sub Prepare1()
     Dim vCell As Variant
     With fps
+    
+        SetDateFormat fps, sheetTk, 18, .ColLetterToNumber("Z"), DDMMYYYY
         ' PL 16TH
         SetDateFormat fps, sheetTk, 40, .ColLetterToNumber("W"), MMYYYY
         SetDateFormat fps, sheetTk, 40, .ColLetterToNumber("X"), MMYYYY
@@ -56,6 +63,12 @@ Public Sub Prepare1()
         SetDateFormat fps, sheetTk, 49, .ColLetterToNumber("W"), MMYYYY
         SetDateFormat fps, sheetTk, 49, .ColLetterToNumber("X"), MMYYYY
         SetDateFormat fps, sheetTk, 49, .ColLetterToNumber("F"), DDMMYYYY
+        
+        .Sheet = sheetTk
+        .Col = .ColLetterToNumber("Z")
+        .Row = 18
+        .Text = Format(Date, "dd/mm/yyyy")
+        .TypeHAlign = TypeHAlignLeft
         
         .Sheet = sheetTk
         ' Lay danh muc quan he voi NNT
@@ -223,6 +236,8 @@ Public Sub Prepare1()
 '        .Col = .ColLetterToNumber("O")
 '        .TypeComboBoxList = strMaQuocTich
 '        .typeComboboxCurSel = 0
+
+
     End With
 End Sub
 
@@ -262,8 +277,19 @@ Public Sub Prepare2()
         .FontSize = 8
         .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
         
+        
+        .Col = .ColLetterToNumber("D")
+        .CellType = CellTypeButton
+        .TypeButtonTextColor = RGB(0, 0, 255)
+        .TypeButtonColor = &H8000000F
+        .TypeButtonAlign = TypeButtonAlignRight
+        .Font = "Tahoma"
+        .FontSize = 8
+        .TypeButtonText = GetAttribute(GetMessageCellById("0346"), "Msg")
         .EventEnabled(EventAllEvents) = True
     End With
+    
+         prepareData05_3
 End Sub
 
 Private Function GetValidatedCellIndex(ByVal lSheet As Long, lAnchorRow As Long, ByVal lAnchorCol As Long) As Integer
@@ -281,6 +307,16 @@ Private Function GetValidatedCellIndex(ByVal lSheet As Long, lAnchorRow As Long,
     GetValidatedCellIndex = lCtrl
     
 End Function
+
+Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonDown As Integer)
+    With fps
+        If Col = .ColLetterToNumber("D") And Row = 1 Then
+           fillData
+           UpdateSheets
+        End If
+    End With
+    
+End Sub
 
 Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
     Dim intIndexCombo As Integer
@@ -301,6 +337,7 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
     
     With fps
         If .ActiveSheet = 1 Then
+            .EventEnabled(EventAllEvents) = False
             ' chon quoc tich
             If Col = .ColLetterToNumber("I") And .Text <> "" Then
                 intIndexCombo = .typeComboboxCurSel
@@ -360,32 +397,32 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                 Else
                     .Col = .ColLetterToNumber("Q")
                     .Row = Row
-                    .typeComboboxCurSel = .TypeComboBoxCount - 1
+                    .Text = "000"
                     .Lock = True
                     
                     .Col = .ColLetterToNumber("R")
                     .Row = Row
-                    .typeComboboxCurSel = .TypeComboBoxCount - 1
+                    .Text = "Khác"
                     .Lock = True
                     
                     .Col = .ColLetterToNumber("S")
                     .Row = Row
-                    .typeComboboxCurSel = .TypeComboBoxCount - 1
+                    .Text = "00000"
                     .Lock = True
                     
                     .Col = .ColLetterToNumber("T")
                     .Row = Row
-                    .typeComboboxCurSel = .TypeComboBoxCount - 1
+                    .Text = "Khác"
                     .Lock = True
                     
                     .Col = .ColLetterToNumber("U")
                     .Row = Row
-                    .typeComboboxCurSel = .TypeComboBoxCount - 1
+                    .Text = "0000000"
                     .Lock = True
                     
                     .Col = .ColLetterToNumber("V")
                     .Row = Row
-                    .typeComboboxCurSel = .TypeComboBoxCount - 1
+                    .Text = "Khác"
                     .Lock = True
                 End If
             End If
@@ -407,7 +444,7 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                             If GetAttribute(xmlNode, "Value") <> "" Then
                                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                                 
-                                If arrDanhsach(1) = varIDTinh Then
+                                If arrDanhsach(1) = varIDTinh Or arrDanhsach(1) = "000" Then
                                     tenHuyen = tenHuyen + arrDanhsach(3) + Chr$(9)
                                     maHuyen = maHuyen + arrDanhsach(2) + Chr$(9)
                                 End If
@@ -459,7 +496,7 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                             If GetAttribute(xmlNode, "Value") <> "" Then
                                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                                 
-                                If arrDanhsach(2) = varIDHuyen Then
+                                If arrDanhsach(2) = varIDHuyen Or arrDanhsach(2) = "00000" Then
                                     tenXa = tenXa + arrDanhsach(4) + Chr$(9)
                                     maXa = maXa + arrDanhsach(3) + Chr$(9)
                                 End If
@@ -492,7 +529,7 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                  .typeComboboxCurSel = intIndexCombo
                 UpdateCell fps, .Col, .Row, .value
             End If
-            
+            .EventEnabled(EventAllEvents) = True
         End If
     End With
 End Sub
@@ -776,6 +813,13 @@ Public Sub SetData()
 
     With fps
         If fps.ActiveSheet = 1 Then
+            fps.Row = 6
+            fps.Col = fps.ColLetterToNumber("G")
+            fps.Text = StrSolanBosung
+            
+            'check thong tin ma so thue dai ly
+            updateMSTDL_16TH
+        
             fps.Row = 40
             fps.Col = fps.ColLetterToNumber("B")
             fps.Formula = "B39 + 1"
@@ -994,71 +1038,71 @@ Public Sub kiemTraDuLieuImport()
 
 End Sub
 
-Public Sub InsertNode(ByVal fRow As Long, ByVal lRow As Long, ByVal mSheet As Byte)
-    On Error GoTo ErrorHandle
-    
-    Dim xmlNodeCells As MSXML.IXMLDOMNode
-    Dim xmlNodeNewCells As MSXML.IXMLDOMNode
-    Dim xmlNodeNewCell As MSXML.IXMLDOMNode
-    Dim arrTemp() As String
-    
-    
-    Dim ctlRow As Long
-    Dim cTemplate, cReport As String
-    
-    Dim sumRowDel As Long
-    sumRowDel = TAX_Utilities_v1.Data(mSheet - 1).getElementsByTagName("Section").Item(0).childNodes.length
-    For ctlRow = 1 To sumRowDel - 1
-        If mSheet = 1 Then
-            Set xmlNodeCells = TAX_Utilities_v1.Data(mSheet - 1).nodeFromID("C" & "_" & 40 + ctlRow & "").parentNode
-            xmlNodeCells.parentNode.removeChild xmlNodeCells
-        End If
-    Next
-    
-    If mSheet = 1 Then
-        Set xmlNodeCells = TAX_Utilities_v1.Data(mSheet - 1).nodeFromID("C_40").parentNode
-    End If
-    
-    For ctlRow = fRow To lRow
-        
-        Set xmlNodeNewCells = xmlNodeCells.cloneNode(True)
-        
-        For Each xmlNodeNewCell In xmlNodeNewCells.childNodes
-            cTemplate = Left$(GetAttribute(xmlNodeNewCell, "CellID"), 2)
-            arrTemp = Split(GetAttribute(xmlNodeNewCell, "CellID2"), "_")
-            'cReport = Left$(GetAttribute(xmlNodeNewCell, "CellID2"), 2)
-            cReport = Trim(arrTemp(0)) & "_"
-            
-            SetAttribute xmlNodeNewCell, "CellID", cTemplate & ctlRow
-                    
-            ' Set first cell = 1
-            SetAttribute xmlNodeNewCell, "FirstCell", "1"
-            If mSheet = 1 Then
-                SetAttribute xmlNodeNewCell, "Value", vbNullString
-                SetAttribute xmlNodeNewCell, "CellID2", cReport & (ctlRow - 2)
-            End If
-            
-        Next
-        xmlNodeCells.parentNode.insertBefore xmlNodeNewCells, Null
-        
-    
-    Next
-'   **********************************
-'    added
-'   Date: 12/04/06
-    'mAdjustData = True
-    TAX_Utilities_v1.AdjustData(mSheet - 1) = True
-'   **********************************
-EXIT_SUB:
-    Set xmlNodeNewCell = Nothing
-    Set xmlNodeNewCells = Nothing
-    Set xmlNodeCells = Nothing
-    
-    Exit Sub
-    
-ErrorHandle:
-    SaveErrorLog "cls_16TH_DKNPT", "InsertNode 05_TNCN", Err.number, Err.Description
-End Sub
+'Public Sub InsertNode(ByVal fRow As Long, ByVal lRow As Long, ByVal mSheet As Byte)
+'    On Error GoTo ErrorHandle
+'
+'    Dim xmlNodeCells As MSXML.IXMLDOMNode
+'    Dim xmlNodeNewCells As MSXML.IXMLDOMNode
+'    Dim xmlNodeNewCell As MSXML.IXMLDOMNode
+'    Dim arrTemp() As String
+'
+'
+'    Dim ctlRow As Long
+'    Dim cTemplate, cReport As String
+'
+'    Dim sumRowDel As Long
+'    sumRowDel = TAX_Utilities_v1.Data(mSheet - 1).getElementsByTagName("Section").Item(0).childNodes.length
+'    For ctlRow = 1 To sumRowDel - 1
+'        If mSheet = 1 Then
+'            Set xmlNodeCells = TAX_Utilities_v1.Data(mSheet - 1).nodeFromID("C" & "_" & 40 + ctlRow & "").parentNode
+'            xmlNodeCells.parentNode.removeChild xmlNodeCells
+'        End If
+'    Next
+'
+'    If mSheet = 1 Then
+'        Set xmlNodeCells = TAX_Utilities_v1.Data(mSheet - 1).nodeFromID("C_40").parentNode
+'    End If
+'
+'    For ctlRow = fRow To lRow
+'
+'        Set xmlNodeNewCells = xmlNodeCells.cloneNode(True)
+'
+'        For Each xmlNodeNewCell In xmlNodeNewCells.childNodes
+'            cTemplate = Left$(GetAttribute(xmlNodeNewCell, "CellID"), 2)
+'            arrTemp = Split(GetAttribute(xmlNodeNewCell, "CellID2"), "_")
+'            'cReport = Left$(GetAttribute(xmlNodeNewCell, "CellID2"), 2)
+'            cReport = Trim(arrTemp(0)) & "_"
+'
+'            SetAttribute xmlNodeNewCell, "CellID", cTemplate & ctlRow
+'
+'            ' Set first cell = 1
+'            SetAttribute xmlNodeNewCell, "FirstCell", "1"
+'            If mSheet = 1 Then
+'                SetAttribute xmlNodeNewCell, "Value", vbNullString
+'                SetAttribute xmlNodeNewCell, "CellID2", cReport & (ctlRow - 2)
+'            End If
+'
+'        Next
+'        xmlNodeCells.parentNode.insertBefore xmlNodeNewCells, Null
+'
+'
+'    Next
+''   **********************************
+''    added
+''   Date: 12/04/06
+'    'mAdjustData = True
+'    TAX_Utilities_v1.AdjustData(mSheet - 1) = True
+''   **********************************
+'EXIT_SUB:
+'    Set xmlNodeNewCell = Nothing
+'    Set xmlNodeNewCells = Nothing
+'    Set xmlNodeCells = Nothing
+'
+'    Exit Sub
+'
+'ErrorHandle:
+'    SaveErrorLog "cls_16TH_DKNPT", "InsertNode 05_TNCN", Err.number, Err.Description
+'End Sub
 
 ' ham kiem tra thong tin dai ly
 Public Sub inThongTinDL()
@@ -1361,72 +1405,74 @@ Private Sub CheckDynamicSheet3()
                     iFlagEmpty = 1
                 End If
                 
-                 ' kiem tra bat buoc nhap cot so neu chua nhap CMND
-                If Trim(vSo) = "" And Trim(vSoCMNDNPT) = "" And Trim(vMSTNPT) = "" Then
-                    .Col = .ColLetterToNumber("M")
-                    .CellNote = vErrEmpty
-                    .BackColor = mErrorColor
-                    iFlagEmpty = 1
-                End If
-                
-                 ' kiem tra bat buoc nhap cot quyen so
-                If Trim(vQuyenSo) = "" And Trim(vSoCMNDNPT) = "" And Trim(vMSTNPT) = "" Then
-                    .Col = .ColLetterToNumber("N")
-                    .CellNote = vErrEmpty
-                    .BackColor = mErrorColor
-                    iFlagEmpty = 1
-                End If
+'                 ' kiem tra bat buoc nhap cot so neu chua nhap CMND
+'                If Trim(vSo) = "" And Trim(vSoCMNDNPT) = "" And Trim(vMSTNPT) = "" Then
+'                    .Col = .ColLetterToNumber("M")
+'                    .CellNote = vErrEmpty
+'                    .BackColor = mErrorColor
+'                    iFlagEmpty = 1
+'                End If
+'
+'                 ' kiem tra bat buoc nhap cot quyen so
+'                If Trim(vQuyenSo) = "" And Trim(vSoCMNDNPT) = "" And Trim(vMSTNPT) = "" Then
+'                    .Col = .ColLetterToNumber("N")
+'                    .CellNote = vErrEmpty
+'                    .BackColor = mErrorColor
+'                    iFlagEmpty = 1
+'                End If
                 
                 ' kiem tra khong co cot 11 va 13 bat buoc nhap cot 18,19,20
-                If Trim(vMaQuocGia) = "01" Then
-                    ' bat buoc nhap thong tin tinh
-                    If Trim(vTinh) = "" Then
-                        .Col = .ColLetterToNumber("R")
-                        .CellNote = vErrEmpty
-                        .BackColor = mErrorColor
-                        iFlagEmpty = 1
+                If Trim(vSoCMNDNPT) = "" Then
+                    If Trim(vMaQuocGia) = "01" Then
+                        ' bat buoc nhap thong tin tinh
+                        If Trim(vTinh) = "" Then
+                            .Col = .ColLetterToNumber("R")
+                            .CellNote = vErrEmpty
+                            .BackColor = mErrorColor
+                            iFlagEmpty = 1
+                        End If
+                        
+                        ' bat buoc nhap thong tin huyen
+                        If Trim(vHuyen) = "" Then
+                            .Col = .ColLetterToNumber("T")
+                            .CellNote = vErrEmpty
+                            .BackColor = mErrorColor
+                            iFlagEmpty = 1
+                        End If
+                        
+                        ' bat buoc nhap thong tin xa
+                        If Trim(vXa) = "" Then
+                            .Col = .ColLetterToNumber("V")
+                            .CellNote = vErrEmpty
+                            .BackColor = mErrorColor
+                            iFlagEmpty = 1
+                        End If
                     End If
                     
-                    ' bat buoc nhap thong tin huyen
-                    If Trim(vHuyen) = "" Then
-                        .Col = .ColLetterToNumber("T")
-                        .CellNote = vErrEmpty
-                        .BackColor = mErrorColor
-                        iFlagEmpty = 1
+                    ' kiem tra neu chon quoc gia Viet Nam
+                    If Trim(vMaQuocGia) = "01" Then
+                        If Trim$(vMaTinh) = "000" Then
+                            .Col = .ColLetterToNumber("R")
+                            .CellNote = vErrDuLieuKhongHL
+                            .BackColor = mErrorColor
+                            iFlagEmpty = 1
+                        End If
+                        
+                        If Trim$(vMaHuyen) = "00000" Then
+                            .Col = .ColLetterToNumber("T")
+                            .CellNote = vErrDuLieuKhongHL
+                            .BackColor = mErrorColor
+                            iFlagEmpty = 1
+                        End If
+                        
+                        If Trim$(vMaXa) = "0000000" Then
+                            .Col = .ColLetterToNumber("V")
+                            .CellNote = vErrDuLieuKhongHL
+                            .BackColor = mErrorColor
+                            iFlagEmpty = 1
+                        End If
                     End If
-                    
-                    ' bat buoc nhap thong tin xa
-                    If Trim(vXa) = "" Then
-                        .Col = .ColLetterToNumber("V")
-                        .CellNote = vErrEmpty
-                        .BackColor = mErrorColor
-                        iFlagEmpty = 1
-                    End If
-                End If
-                
-                ' kiem tra neu chon quoc gia Viet Nam
-                If Trim(vMaQuocGia) = "01" Then
-                    If Trim$(vMaTinh) = "000" Then
-                        .Col = .ColLetterToNumber("S")
-                        .CellNote = vErrDuLieuKhongHL
-                        .BackColor = mErrorColor
-                        iFlagEmpty = 1
-                    End If
-                    
-                    If Trim$(vMaHuyen) = "00000" Then
-                        .Col = .ColLetterToNumber("U")
-                        .CellNote = vErrDuLieuKhongHL
-                        .BackColor = mErrorColor
-                        iFlagEmpty = 1
-                    End If
-                    
-                    If Trim$(vMaXa) = "0000000" Then
-                        .Col = .ColLetterToNumber("W")
-                        .CellNote = vErrDuLieuKhongHL
-                        .BackColor = mErrorColor
-                        iFlagEmpty = 1
-                    End If
-                End If
+                 End If
             End If
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
@@ -1764,4 +1810,312 @@ End Sub
 
 Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
  
+End Sub
+
+
+Private Sub prepareData05_3()
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCells As MSXML.IXMLDOMNodeList
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    
+    Dim xmlNodeCells As MSXML.IXMLDOMNode
+    Dim xmlNodeCell As MSXML.IXMLDOMNode
+    
+    Dim strDataFileName As String
+    Dim i, j, k As Long
+    
+    Dim fso As New FileSystemObject
+    Dim fle As File
+    Dim countRow As Long
+    
+    Dim rowGrid As Long
+    
+    Dim arrFileName() As String
+    
+    ReDim arrStrXMLFileNames(0)
+    LoadXMLFileNames
+    
+    countRow = 0
+    
+    For k = 0 To UBound(arrStrXMLFileNames)
+        arrFileName = Split(arrStrXMLFileNames(k), "_")
+        If UBound(arrFileName) <> -1 Then
+            strDataFileName = arrStrXMLFileNames(k)
+            If xmlDomData.Load(TAX_Utilities_v1.DataFolder & strDataFileName & ".xml") Then
+                Set xmlNodeListCells = xmlDomData.getElementsByTagName("Cells")
+                countRow = countRow + xmlNodeListCells.length
+            End If
+        End If
+    Next
+    
+    If countRow > 0 Then
+        ReDim arrData05_3(countRow, 22) As String
+        i = 0
+        For k = 0 To UBound(arrStrXMLFileNames)
+            arrFileName = Split(arrStrXMLFileNames(k), "_")
+            If UBound(arrFileName) <> -1 Then
+                strDataFileName = arrStrXMLFileNames(k)
+                If xmlDomData.Load(TAX_Utilities_v1.DataFolder & strDataFileName & ".xml") Then
+                    Set xmlNodeListCells = xmlDomData.getElementsByTagName("Cells")
+                    
+                     For Each xmlNodeCells In xmlNodeListCells
+                        Set xmlNodeListCell = xmlNodeListCells.Item(i).childNodes
+                        j = 0
+                        For Each xmlNodeCell In xmlNodeListCell
+                             arrData05_3(i, j) = GetAttribute(xmlNodeCell, "Value")
+                            j = j + 1
+                        Next
+                        i = i + 1
+                     Next
+                End If
+            End If
+        Next
+        
+        Set xmlDomData = Nothing
+        Set xmlNodeListCells = Nothing
+        Set xmlNodeListCell = Nothing
+        Set xmlNodeCells = Nothing
+        Set xmlNodeCell = Nothing
+    Else
+        ReDim arrData05_3(1, 22) As String
+        arrData05_3(0, 0) = ""
+        arrData05_3(0, 1) = ""
+        arrData05_3(0, 2) = ""
+        arrData05_3(0, 3) = ""
+        arrData05_3(0, 4) = ""
+        arrData05_3(0, 5) = ""
+        arrData05_3(0, 6) = ""
+        arrData05_3(0, 7) = ""
+        arrData05_3(0, 8) = ""
+        arrData05_3(0, 9) = ""
+        arrData05_3(0, 10) = ""
+        arrData05_3(0, 11) = ""
+        arrData05_3(0, 12) = ""
+        arrData05_3(0, 13) = ""
+        arrData05_3(0, 14) = ""
+        arrData05_3(0, 15) = ""
+        arrData05_3(0, 16) = ""
+        arrData05_3(0, 17) = ""
+        arrData05_3(0, 18) = ""
+        arrData05_3(0, 19) = ""
+        arrData05_3(0, 20) = ""
+        arrData05_3(0, 21) = ""
+    End If
+    
+    Dim totalRow As Long
+    totalRow = UBound(arrData05_3) - 1
+    rowGroup2 = 0
+    rowGroup1 = 0
+    For i = 0 To totalRow
+        If Trim(arrData05_3(i, 4)) <> "" Then
+            rowGroup2 = rowGroup2 + 1
+        Else
+            rowGroup1 = rowGroup1 + 1
+        End If
+    Next
+End Sub
+
+
+Private Sub fillData()
+    With fps
+        .Refresh
+        .EventEnabled(EventAllEvents) = False
+        .Sheet = 1
+        .Row = 40
+
+        Dim totalRow As Long
+        Dim strCol As String
+        Dim arrCol() As String
+        Dim idx As Long
+        Dim i As Long
+        Dim j As Long
+
+        strCol = "C_D_E_F_G_H_I_J_K_L_M_N_O_P_Q_R_S_T_U_V_W_X"
+        arrCol = Split(strCol, "_")
+
+        totalRow = UBound(arrData05_3) - 1
+        .Row = 40
+        For i = 0 To totalRow
+            If Trim(arrData05_3(i, 4)) <> "" Then
+            Else
+                For j = 0 To 21
+                    ' Tu cot Ho va ten cho den cot thue da khau tru (C -> L). Dung cac thong tin theo bang ke 05-3
+                    .Col = .ColLetterToNumber(arrCol(j))
+                    .Text = arrData05_3(i, j)
+                Next
+                .Row = .Row + 1
+            End If
+        Next
+
+
+
+        .Row = .Row + 8
+        idx = .Row + 8
+        For i = 0 To totalRow
+            If Trim(arrData05_3(i, 4)) <> "" Then
+                For j = 0 To 21
+                    ' Tu cot Ho va ten cho den cot thue da khau tru (C -> L). Dung cac thong tin theo bang ke 05-3
+                    .Col = .ColLetterToNumber(arrCol(j))
+                    .Text = arrData05_3(i, j)
+                Next
+                .Row = .Row + 1
+            End If
+        Next
+
+        .EventEnabled(EventAllEvents) = True
+        .Refresh
+    End With
+End Sub
+
+
+
+Private Sub LoadXMLFileNames()
+    Dim lngIndex As Long
+    Dim fso As New FileSystemObject
+    Dim fle As File
+    
+    For Each fle In fso.GetFolder(GetAbsolutePath(TAX_Utilities_v1.DataFolder)).Files
+        If Right$(fle.Name, 4) = ".xml" And InStr(fle.Name, "05_3_TNCN_" & TAX_Utilities_v1.Year & "_") > 0 Then
+            ReDim Preserve arrStrXMLFileNames(lngIndex)
+            arrStrXMLFileNames(lngIndex) = Mid$(fle.Name, 1, Len(fle.Name) - 4)
+            lngIndex = lngIndex + 1
+        End If
+    Next
+End Sub
+
+
+
+'Private Sub updateData(ByVal Row As Long, ByVal rowData As Long)
+'    Dim varTemp As Variant
+'    Dim lCol As Long, lRow As Long
+'    Dim xmlCellNode As MSXML.IXMLDOMNodeList
+'    Dim xmlCellNodeData As MSXML.IXMLDOMNode
+'    With fps
+'        .Sheet = 1
+'        mCurrentSheet = .Sheet
+'        .Row = Row
+'        ' Cot D la cot chua Ho ten nguoi quyet toan
+'        .Col = .ColLetterToNumber("D")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot E la cot MST cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("E")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot F la tong thu nhap chiu thue cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("F")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot G la thu nhap luong cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("G")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot H la cot thu nhap thuong cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("H")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot I la cot thu nhap khac cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("I")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot J la tong so nguoi phu thuoc cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("J")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot K la cot tong so thang giam tru cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("K")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        'Cot L Thue da khau tru cua cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("L")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot M la cot thu nhap chiu thue cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("M")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot N la cot giam tru cho ban than cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("N")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot O la cot giam tru cho nguoi phu thuoc cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("O")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot P la cot thu nhap tinh thue cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("P")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot Q la cot thue phai nop cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("Q")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot R la cot thue mien giam cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("R")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot S la cot thu nhap khac cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("S")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot T la cot so thue da khau tru cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("T")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot T la cot so thue da khau tru cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("U")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot V la cot thu nhap do lam viec trong khu kinh te cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("V")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot T la cot so thue da khau tru cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("W")
+'        UpdateCell fps, .Col, rowData, .value
+'
+'        ' Cot T la cot so thue da khau tru cua nguoi quyet toan
+'        .Col = .ColLetterToNumber("X")
+'        UpdateCell fps, .Col, rowData, .value
+'    End With
+'
+'    Set xmlCellNodeData = Nothing
+'    Set xmlCellNode = Nothing
+'End Sub
+
+
+Public Sub updateData()
+    UpdateSheets
+End Sub
+
+
+
+Private Sub updateMSTDL_16TH()
+    Dim lRow As Long, lCol As Long
+    Dim mstDL As Variant
+    Dim xmlNodeList As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim xmlDom2 As New MSXML.DOMDocument
+    Dim value As String
+    
+    With fps
+    
+        .Sheet = 1
+        If isCheckTTDLT = True Then
+            'check MST DaiLy, ten NVDLT, chungchi hanh nghe da ke khai tu lan truoc chua
+            xmlDom2.Load TAX_Utilities_v1.DataFolder & "\Header_01.xml"
+            Set xmlNodeList = xmlDom2.getElementsByTagName("Cell")
+            
+            'get MSTDL vu
+            .GetText .ColLetterToNumber("D"), 20, mstDL
+            If Trim(mstDL) = vbNullString Then
+                 Set xmlNode = xmlNodeList.Item(32)
+                value = GetAttribute(xmlNode, "Value")
+                .SetText lCol, lRow, value
+                UpdateCell fps, lCol, lRow, value
+            End If
+        Else
+            Exit Sub
+        End If
+    End With
 End Sub
