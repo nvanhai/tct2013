@@ -489,10 +489,10 @@ Private Sub CheckDynamicError()
             
             If colC <> vbNullString Or vMST <> vbNullString Or TiLeTNCT <> 0 Or vKhoanGT <> 0 Or vThueTNCN <> 0 Or vThueTNCNgiam <> 0 Then
                  'tim MST cua DNTN co trong danh sach chi tiet ke khai khong
-'                 rowMST = .SearchCol(.ColLetterToNumber("G"), 56, -1, vCT5MST, SearchFlagsNone)
-'                 If rowMST = -1 Then
-'                    iFlagMSTTonTai = 1
-'                 End If
+                 rowMST = .SearchCol(.ColLetterToNumber("G"), 56, -1, vCT5MST, SearchFlagsNone)
+                 If rowMST = -1 Then
+                    iFlagMSTTonTai = 1
+                 End If
                  
                   If colC = vbNullString Then
                     .Col = .ColLetterToNumber("C")

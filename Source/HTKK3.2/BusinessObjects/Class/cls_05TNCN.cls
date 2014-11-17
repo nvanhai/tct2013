@@ -892,6 +892,10 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                     .Row = Row
                     .typeComboboxCurSel = .TypeComboBoxCount - 1
                     
+                    .Col = .ColLetterToNumber("R")
+                    .Row = Row
+                    .Text = "000"
+                    
                     .Col = .ColLetterToNumber("T")
                     .Row = Row
                     .Text = "00000"
@@ -919,7 +923,7 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                             If GetAttribute(xmlNode, "Value") <> "" Then
                                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                                 
-                                If arrDanhsach(1) = varIDTinh Then
+                                If arrDanhsach(1) = varIDTinh Or arrDanhsach(1) = "000" Then
                                     tenHuyen = tenHuyen + arrDanhsach(3) + Chr$(9)
                                     maHuyen = maHuyen + arrDanhsach(2) + Chr$(9)
                                 End If
@@ -971,7 +975,7 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                             If GetAttribute(xmlNode, "Value") <> "" Then
                                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                                 
-                                If arrDanhsach(2) = varIDHuyen Then
+                                If arrDanhsach(2) = varIDHuyen Or arrDanhsach(2) = "00000" Then
                                     tenXa = tenXa + arrDanhsach(4) + Chr$(9)
                                     maXa = maXa + arrDanhsach(3) + Chr$(9)
                                 End If
@@ -4849,9 +4853,8 @@ Private Sub CheckDynamicSheet3()
                         .BackColor = mErrorColor
                         iFlagEmpty = 1
                     End If
-                End If
-                
-                ' kiem tra neu chon quoc gia Viet Nam
+                    
+                    ' kiem tra neu chon quoc gia Viet Nam
                 If Trim(vMaQuocGia) = "01" Then
                     If Trim$(vMaTinh) = "000" Then
                         .Col = .ColLetterToNumber("S")
@@ -4906,23 +4909,26 @@ Private Sub CheckDynamicSheet3()
                         .BackColor = mAlertColor
                     End If
                 End If
-                
-                ' bat buoc nhap thong so
-                If Trim(vSo) = "" And Trim$(vSoCMNDNPT) = "" And Trim$(vMSTNPT) = "" Then
-                    .Col = .ColLetterToNumber("N")
-                    .CellNote = vErrEmpty
-                    .BackColor = mErrorColor
-                    iFlagEmpty = 1
                 End If
                 
                 
-                ' bat buoc nhap thong quyen so
-                If Trim(vSo) = "" And Trim$(vSoCMNDNPT) = "" And Trim$(vMSTNPT) = "" Then
-                    .Col = .ColLetterToNumber("O")
-                    .CellNote = vErrEmpty
-                    .BackColor = mErrorColor
-                    iFlagEmpty = 1
-                End If
+                
+'                ' bat buoc nhap thong so
+'                If Trim(vSo) = "" And Trim$(vSoCMNDNPT) = "" And Trim$(vMSTNPT) = "" Then
+'                    .Col = .ColLetterToNumber("N")
+'                    .CellNote = vErrEmpty
+'                    .BackColor = mErrorColor
+'                    iFlagEmpty = 1
+'                End If
+                
+                
+'                ' bat buoc nhap thong quyen so
+'                If Trim(vSo) = "" And Trim$(vSoCMNDNPT) = "" And Trim$(vMSTNPT) = "" Then
+'                    .Col = .ColLetterToNumber("O")
+'                    .CellNote = vErrEmpty
+'                    .BackColor = mErrorColor
+'                    iFlagEmpty = 1
+'                End If
             End If
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1

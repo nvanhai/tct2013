@@ -18,6 +18,10 @@
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>Z_16</nguoiKy>
+		<ngayKy>Z_18</ngayKy>
+	</Static>
 	<Dynamic GroupName="CapMSTChoNPT">
 			<BKeCapMSTChoNPT id="ID_1">
 				<ct07>C_40</ct07>

@@ -2634,8 +2634,18 @@ End Sub
 Public Sub finishImportXML()
     Dim i As Integer
     Dim CQT As Variant
+    Dim idx As Integer
     With fps
         .EventEnabled(EventAllEvents) = False
+        .Sheet = 1
+        .Col = .ColLetterToNumber("P")
+        .Row = 58
+        idx = .typeComboboxCurSel
+        ' set cho cot ten gia han
+        .Col = .ColLetterToNumber("H")
+        .Row = 58
+        .typeComboboxCurSel = idx
+        
          .Sheet = 3
          If .SheetVisible = True Then
                 .Row = 42

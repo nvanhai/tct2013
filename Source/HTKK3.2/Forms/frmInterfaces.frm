@@ -8528,7 +8528,7 @@ Private Sub CallFinish(Optional blFinish As Boolean)
         
         'Reset all of error satatus on form
         ResetErrorCells
-        
+            
         If (Not objTaxBusiness Is Nothing) And blFinish = False Then
             objTaxBusiness.finish
         End If
@@ -9961,6 +9961,42 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
     Dim endd As String
     
     If mOnLoad Then Exit Sub
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" And fpSpread1.ActiveSheet = 1 And fpSpread1.Row = 1 And fpSpread1.Col = fpSpread1.ColLetterToNumber("D") Then
+        Dim idx As Long
+        
+        fpSpread1.EventEnabled(EventAllEvents) = False
+        ResetData
+        SetActiveFirstCell 0, 0, 0
+        ResetErrorCells
+        fpSpread1.EventEnabled(EventAllEvents) = True
+        
+        With fpSpread1
+            .Row = 40
+            If objTaxBusiness.rowGroup1 > 1 Then
+                For idx = 0 To objTaxBusiness.rowGroup1 - 2
+                    .EventEnabled(EventAllEvents) = False
+                    .sheet = 1
+                    InsertNode .ColLetterToNumber("C"), 40
+                    .Row = .Row + 1
+                    .EventEnabled(EventAllEvents) = True
+                    .Refresh
+                Next
+            End If
+
+            .Row = .Row + 8
+            If objTaxBusiness.rowGroup2 > 1 Then
+                For idx = 0 To objTaxBusiness.rowGroup2 - 2
+                    .EventEnabled(EventAllEvents) = False
+                    .sheet = 1
+                    InsertNode .ColLetterToNumber("C"), .Row
+                    .Row = .Row + 1
+                    .EventEnabled(EventAllEvents) = True
+                    .Refresh
+                Next
+            End If
+        End With
+        Exit Sub
+    End If
     
     Set frmDD = New frmDuongDan
     Set frmOp_Pr = New frm_Opcheck
