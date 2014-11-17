@@ -1000,10 +1000,19 @@ Private Sub cmdSave_Click()
     End If
     
     'Chan theo thong tu QN63: Chan 01A/TNDN, 01B/TNDN tu ky ke khai quy 4/2014
-    'todo 330
-    If Val(idToKhai) = 11 Or Val(idToKhai) = 12 Then
+    'TT151: Khong nhan to khai co ky ke khai tu Q4/2014 tro di: 02/TNDN
+    If Val(idToKhai) = 11 Or Val(idToKhai) = 12 Or Val(idToKhai) = 73 Then
         If (Val(TAX_Utilities_Srv_New.Year) > 2014 Or (TAX_Utilities_Srv_New.Year = "2014" And Val(TAX_Utilities_Srv_New.ThreeMonths) >= 4)) Then
             DisplayMessage "0141", msOKOnly, miInformation
+            Exit Sub
+        End If
+    End If
+    
+    'TODO: TT 151
+    'Khong nhan to khai <=Q3/2014 khong cho phep ke khai bo sung: 02/TNDN
+    If Val(idToKhai) = 73 And UCase(Trim(strLoaiToKhai)) = "BS" Then
+        If (Val(TAX_Utilities_Srv_New.Year) < 2014 Or (TAX_Utilities_Srv_New.Year = "2014" And Val(TAX_Utilities_Srv_New.ThreeMonths) <= 3)) Then
+            DisplayMessage "0132", msOKOnly, miInformation
             Exit Sub
         End If
     End If
@@ -1454,17 +1463,24 @@ Private Sub Command1_Click()
 '    Barcode_Scaned str2
 
     '02/TNDN
-'    str2 = "aa999732100343639   03201400100100100201/0114/06/2006<S02><S></S><S>10000~4262~2000~2000~120~100~20~22~5738~10~574</S><S>1~~Nhan CN~0102030405~18 duy tan~102~01/01/2014~01/01/2014</S><S>hotne~cc~nguoiky~13/11/2014~1~~~~</S></S02>"
-'    Barcode_Scaned str2
-'    str2 = "aa999732100343639   032014001001002002<S02-1><S>ten cn~0102030405~18 duy tan~HD0001~ten cn2~2222222222~18 tam trinh~HD0002</S></S02-1>"
-'    Barcode_Scaned str2
+    str2 = "aa999732100343639   04201400100100100201/0114/06/2006<S02><S></S><S>10000~4262~2000~2000~120~100~20~22~5738~10~574</S><S>1~~Nhan CN~0102030405~18 duy tan~102~01/01/2014~01/01/2014</S><S>hotne~cc~nguoiky~13/11/2014~1~~~~</S></S02>"
+    Barcode_Scaned str2
+    str2 = "aa999732100343639   042014001001002002<S02-1><S>ten cn~0102030405~18 duy tan~HD0001~ten cn2~2222222222~18 tam trinh~HD0002</S></S02-1>"
+    Barcode_Scaned str2
 
         'PS
-    str2 = "aa999732100343639   03201400300300100201/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0</S><S>~1~~~~~~</S><S>~~µ~13/11/2014~1~~13/11/2014~~</S></S02>"
-    Barcode_Scaned str2
-    str2 = "aa999732100343639   032014003003002002<S02-1><S>~~~</S></S02-1>"
-    Barcode_Scaned str2
-    
+'    str2 = "aa999732100343639   03201400300300100201/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0</S><S>~1~~~~~~</S><S>~~µ~13/11/2014~1~~13/11/2014~~</S></S02>"
+'    Barcode_Scaned str2
+'    str2 = "aa999732100343639   032014003003002002<S02-1><S>~~~</S></S02-1>"
+'    Barcode_Scaned str2
+'    str2 = "aa999712100343639   01201400000000100101/0101/01/1900<S01><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~µ~~14/11/2014~1~~~2~14/11/2014</S></S01>"
+'    Barcode_Scaned str2
+
+'str2 = "aa999732100343639   04201400300400100201/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0</S><S>~1~~~~~~</S><S>~~µ~17/11/2014~1~~17/11/2014~~</S></S02>"
+'Barcode_Scaned str2
+'str2 = "aa999732100343639   042014003004002002<S02-1><S>~~~</S></S02-1>"
+'Barcode_Scaned str2
+
 
     
 End Sub

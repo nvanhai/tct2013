@@ -134,5 +134,5 @@
 	<Infor ID="0138" Msg="Chương trình đang sử dụng máy quét bằng cổng USB, nếu muốn sự dụng cổng COM, bạn hãy đăng nhập lại"/>
 	<Infor ID="0139" Msg="Không nhận các tờ khai theo mẫu biểu cũ"/>
 	<Infor ID="0140" Msg="Không nhận các tờ khai bổ sung của mẫu cũ"/>
-	<Infor ID="0141" Msg="Không nhận tờ khai từ kỳ kê khai quý III/2014"/>
+	<Infor ID="0141" Msg="Không nhận tờ khai từ kỳ kê khai quý IV/2014"/>
 </Message>
