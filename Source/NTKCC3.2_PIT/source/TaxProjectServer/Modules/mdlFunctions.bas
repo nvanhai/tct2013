@@ -1285,6 +1285,8 @@ Function hannop() As String
 
     End If
 
+
+
     arrDate = Split(hannop, "/")
     dHanNop = DateSerial(CInt(arrDate(2)), CInt(arrDate(1)), CInt(arrDate(0)))
 
