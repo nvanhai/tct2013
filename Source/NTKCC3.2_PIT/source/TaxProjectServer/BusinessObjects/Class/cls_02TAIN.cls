@@ -1840,8 +1840,8 @@ Public Function Prepared3() As Boolean
         .Col = .ColLetterToNumber(TEN_BPQL_X)
         .Row = TEN_BPQL_Y
         .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenBpql, TCVN, UNICODE))
+        
         ' lan quet
-        'so thu tu to khai
         .Col = .ColLetterToNumber("R")
         .Row = 30
         strSoTTTKhai = Trim(TinhSoLanQuet)
