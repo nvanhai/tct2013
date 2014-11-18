@@ -1394,47 +1394,30 @@ Private Sub CheckDynamicError()
     Dim col9 As Long, Col10 As Long, Col11 As Long
     
     Dim ColLoi As Long, RowLoi As Long
-'    Dim ColLoi7 As Long, RowLoi7 As Long
-'    Dim ColLoi8 As Long, RowLoi8 As Long
-'    Dim ColLoi10 As Long, RowLoi10 As Long
     
     Dim vErrMsg1 As Variant
     
     Dim ValCol3 As Variant, ValCol4 As Variant, ValCol5 As Variant
     Dim ValCol6 As Variant, ValCol7 As Variant, ValCol8 As Variant
     Dim ValCol9 As Variant, ValCol10 As Variant, ValCol11 As Variant
-    'PL 14
-    'Dim XacDinhLoiCol7 As Boolean, XacDinhLoiCol8 As Boolean, XacDinhLoiCol10 As Boolean
-    
-    'Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
-    'Dim GiaTri As Double, TongSo As Double
-    'Dim lCtrl As Long, RowTongSo As Long, ColTongSo As Long
     
     Dim XacDinhLoi As Boolean
     Dim blCheck_S03_1A As Boolean
     Dim blCheck_S03_3C As Boolean, blCheck_S03_4 As Boolean
-    'Dim blCheck_S03_3A As Boolean
-    'Dim strTenDN As Variant, strValue As Variant
     Dim errEmty As Variant, iFlagTongPhanBo As Variant, errTongTLPB As Variant, vMST As Variant
     Dim errMSTDN As Variant, errMst10 As Variant, errMST As Variant
-    'Dim blCheck_S11 As Boolean
+
     Dim iFlagEmpty As Integer, iFlagCheckMaST As Integer
-    'Dim strKyHieu As Variant, strCheckMST As String
 
     ' PL 05
     Dim mErrMSTTrung As Variant
-    'Dim vMSTCheckTrung As Variant
     
     ' PL03-6
     Dim blCheck_S12 As Boolean
     Dim iWhiteRow As Integer, iFlagMST As Integer
 
-
-
-
     ' end
     ' PL 03-3A
-    'Dim vCtieu1, vCTieu5, vCTieuC4TK As Variant
     Dim vErrCtieuC4 As Variant
     
     ' check gh
@@ -1462,6 +1445,36 @@ Private Sub CheckDynamicError()
     Dim errCheckLienKet, errCheckCSHachToan As Variant
     Dim iFlagCheckLienKet As Integer, iFlagCheckCSHachToan As Integer
     
+    'chek PL 03-7
+    Dim vCheckMST, vDiaChi, vTenLK As Variant
+    Dim vCheck(13) As Variant
+    Dim strCol As String
+    Dim arrCol() As String
+    Dim isCheck As Boolean
+    Dim iFlagCheck As Integer
+    Dim errHinhThucLK As Variant
+    
+    Dim vCot5, vCot9 As Variant
+    Dim errCot5, errCot9 As Variant
+    Dim iFlagCot5 As Integer, iFlagCot9 As Integer
+    Dim strRowGroup As String
+    Dim strFinish As String
+    Dim arrRowGroup() As String
+    Dim arrFinish() As String
+    
+    ' PL 03-8
+    Dim vTyLe As Variant
+    Dim vTenDn As Variant, vCQTCapCuc As Variant, vCqtChiCuc As Variant, vSoThueQ1 As Variant, vSoThueQ2 As Variant, vSoThueQ3 As Variant, vSoThueQ4 As Variant, vSoThue As Variant
+    Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String, iFocusFlag As Integer
+    Dim errTongSoThue As Variant
+    Dim iFlagTyLe  As Integer
+    Dim iFlagCheckSoThue As Integer
+    Dim vTongTyLe As Double
+    Dim vTongSoThue As Double
+    Dim vCt5 As Variant
+    Dim vColor As Variant
+    Dim strCheck As String
+
     iFlagCheckLienKet = 0
     iFlagCheckCSHachToan = 0
     
@@ -1490,15 +1503,7 @@ Private Sub CheckDynamicError()
         
         If vCheckCSHachToan = "1" Or UCase$(vCheckCSHachToan) = "X" Then
             If TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_8_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0" Or Strloaitk = "TKBS" Then
-'                .Col = .ColLetterToNumber("D")
-'                .Row = 10
-'                .CellNote = ""
-'                .BackColor = mNonErrorColor
             Else
-'                .Col = .ColLetterToNumber("D")
-'                .Row = 10
-'                .CellNote = errCheckCSHachToan
-'                .BackColor = mErrorColor
                 .Sheet = 1
                 .ActiveSheet = 1
                 If Not .Visible Then
@@ -1514,15 +1519,7 @@ Private Sub CheckDynamicError()
         
         If vCheckLienKet = "1" Or UCase$(vCheckLienKet) = "X" Then
             If TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_7_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0" Or Strloaitk = "TKBS" Then
-'                 .Col = .ColLetterToNumber("D")
-'                .Row = 12
-'                .CellNote = ""
-'                .BackColor = mNonErrorColor
             Else
-'                 .Col = .ColLetterToNumber("D")
-'                .Row = 12
-'                .CellNote = errCheckLienKet
-'                .BackColor = mErrorColor
                 .Sheet = 1
                 .ActiveSheet = 1
                 If Not .Visible Then
@@ -1745,13 +1742,10 @@ Private Sub CheckDynamicError()
         .SetText .ColLetterToNumber("B"), 46, IIf(iflagCheckGH = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 53, IIf(iflagCheckThoiHanGH = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 54, IIf(iflagCheckSoThueGH = 1, "0", "1")
-        
         .SetText .ColLetterToNumber("B"), 47, IIf(iFlagCheckCSHachToan = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 48, IIf(iFlagCheckLienKet = 1, "0", "1")
-        
         .SetText .ColLetterToNumber("B"), 92, IIf(iflagDenNgayNC = 1, "0", "1")
-        
-        
+                
         ' Phu Luc 03-1A
         .Sheet = 2
         blCheck_S03_1A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
@@ -1764,12 +1758,9 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("B"), 27, iFlagTongPhanBo
         .GetText .ColLetterToNumber("E"), 31, errMSTDN
         .GetText .ColLetterToNumber("E"), 28, errMst10
-        
         .GetText .ColLetterToNumber("E"), 35, mErrMSTTrung
         .GetText .ColLetterToNumber("E"), 36, vErrCtieuC4
-        
         .GetText .ColLetterToNumber("E"), 46, vErrorCheckGH
-        
         
         ' Kiem tra validate cua PL 03-3C
         .Sheet = sheetPl03_3C_TNDN
@@ -1777,8 +1768,7 @@ Private Sub CheckDynamicError()
         If blCheck_S03_3C = True Then
             checkPL03_3C
         End If
-        
-        
+                
         ' Check validate PL 03-4
         mCurrentSheet = sheetPl03_4_TNDN
         .Sheet = sheetPl03_4_TNDN
@@ -1847,22 +1837,6 @@ Private Sub CheckDynamicError()
          End If
             
             ' Check validate sheet 03-7
-            Dim vCheckMST, vDiaChi, vTenLK As Variant
-            Dim vCheck(13) As Variant
-            Dim strCol As String
-            Dim ArrCol() As String
-            Dim isCheck As Boolean
-            Dim iFlagCheck As Integer
-            Dim errHinhThucLK As Variant
-            
-            Dim vCot5, vCot9 As Variant
-            Dim errCot5, errCot9 As Variant
-            Dim iFlagCot5 As Integer, iFlagCot9 As Integer
-            Dim strRowGroup As String
-            Dim strFinish As String
-            Dim arrRowGroup() As String
-            Dim arrFinish() As String
-            
             .Sheet = .SheetCount
             .GetText .ColLetterToNumber("E"), 33, errMST
             .GetText .ColLetterToNumber("E"), 38, errHinhThucLK
@@ -1875,7 +1849,7 @@ Private Sub CheckDynamicError()
                 .Row = 31
                 .Col = .ColLetterToNumber("B")
                 strCol = "U~V~W~X~Y~Z~AA~AB~AC~AD~AE~AF~AG"
-                ArrCol = Split(strCol, "~")
+                arrCol = Split(strCol, "~")
                 Do
                     iWhiteRow = 1
                     '.GetText .ColLetterToNumber("AH"), .Row, vCheckMST
@@ -1891,10 +1865,10 @@ Private Sub CheckDynamicError()
                         .BackColor = mNonErrorColor
                         
                         isCheck = False
-                        For i = 0 To UBound(ArrCol)
-                            .GetText .ColLetterToNumber(ArrCol(i)), .Row, vCheck(i)
+                        For i = 0 To UBound(arrCol)
+                            .GetText .ColLetterToNumber(arrCol(i)), .Row, vCheck(i)
                             
-                            .Col = .ColLetterToNumber(ArrCol(i))
+                            .Col = .ColLetterToNumber(arrCol(i))
                             .CellNote = ""
                             .BackColor = mNonErrorColor
                             If UCase$(Trim(CStr(vCheck(i)))) = "X" Or Trim(CStr(vCheck(i))) = "1" Then
@@ -1909,16 +1883,16 @@ Private Sub CheckDynamicError()
                         
                         ' Kiem tra rang buoc check
                         If isCheck = False And iWhiteRow = 0 Then
-                            For i = 0 To UBound(ArrCol)
-                                .Col = .ColLetterToNumber(ArrCol(i))
+                            For i = 0 To UBound(arrCol)
+                                .Col = .ColLetterToNumber(arrCol(i))
                                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                                 .CellNote = errHinhThucLK
                                 .BackColor = mErrorColor
                             Next
                             iFlagCheck = 1
                         Else
-                            For i = 0 To UBound(ArrCol)
-                                .Col = .ColLetterToNumber(ArrCol(i))
+                            For i = 0 To UBound(arrCol)
+                                .Col = .ColLetterToNumber(arrCol(i))
                                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                                 .CellNote = ""
                                 .BackColor = mNonErrorColor
@@ -1985,18 +1959,6 @@ Private Sub CheckDynamicError()
             
             
             ' PL 03-8
-            Dim vTyLe As Variant
-            Dim vTenDn As Variant, vCQTCapCuc As Variant, vCqtChiCuc As Variant, vSoThueQ1 As Variant, vSoThueQ2 As Variant, vSoThueQ3 As Variant, vSoThueQ4 As Variant, vSoThue As Variant
-            Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String, iFocusFlag As Integer
-            Dim errTongSoThue As Variant
-            Dim iFlagTyLe  As Integer
-            Dim iFlagCheckSoThue As Integer
-            Dim vTongTyLe As Double
-            Dim vTongSoThue As Double
-            Dim vCt5 As Variant
-            Dim vColor As Variant
-            Dim strCheck As String
-            
             .Sheet = .SheetCount
             .GetText .ColLetterToNumber("E"), 85, errTongTLPB
             .GetText .ColLetterToNumber("E"), 87, errTongSoThue
@@ -2271,6 +2233,123 @@ Private Sub CheckDynamicError()
             .SetText .ColLetterToNumber("B"), 88, IIf(iFlagEmpty = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 89, IIf(iFlagCheckMaST = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 90, IIf(flagSoThue = 1, "0", "1")
+            
+            ' check PL 03-5
+            Dim vErrCt10, vErrCt11a, vErrCt10_11a, vErrCt12 As Variant
+            Dim iFlagCt10, iFlagCt11a, iFlagCt10_11a, iFlagCt12 As Integer
+            Dim ct9, ct10, ct11a, ct11, ct12 As Variant
+            Dim ctTongCot5 As Variant
+            Dim blCheck_S2B As Boolean
+            
+            .Sheet = .SheetCount
+            .GetText .ColLetterToNumber("E"), 93, vErrCt10
+            .GetText .ColLetterToNumber("E"), 94, vErrCt12
+            .GetText .ColLetterToNumber("E"), 95, vErrCt11a
+            .GetText .ColLetterToNumber("E"), 96, vErrCt10_11a
+            
+            .Sheet = sheetPl03_5_TNDN
+            blCheck_S12 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+            blCheck_S2B = IIf(TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_2B_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
+            If blCheck_S12 = True Then
+                If blCheck_S2B = True Then
+                    .GetText .ColLetterToNumber("F"), 30, ctTongCot5
+                    .GetText .ColLetterToNumber("E"), 29, ct9
+                    .GetText .ColLetterToNumber("E"), 30, ct10
+                    .GetText .ColLetterToNumber("E"), 31, ct11
+                    .GetText .ColLetterToNumber("E"), 32, ct11a
+                    .GetText .ColLetterToNumber("E"), 33, ct12
+                    ' check ct10
+                    If Val(ct9) > 0 Then
+                        If Val(ct10) > Val(ctTongCot5) Then
+                            .Row = 30
+                            .Col = .ColLetterToNumber("E")
+                            .CellNote = vErrCt10
+                            .BackColor = mErrorColor
+                            iFlagCt10 = 1
+                        Else
+                            .Row = 30
+                            .Col = .ColLetterToNumber("E")
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
+                    Else
+                        .Row = 30
+                        .Col = .ColLetterToNumber("E")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
+                    ' check ct11a
+                    If Val(ct11) < 0 Then
+                        If Val(ct11a) > Val(ctTongCot5) Then
+                            .Row = 32
+                            .Col = .ColLetterToNumber("E")
+                            .CellNote = vErrCt11a
+                            .BackColor = mErrorColor
+                            iFlagCt11a = 1
+                        Else
+                            .Row = 32
+                            .Col = .ColLetterToNumber("E")
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        End If
+                    Else
+                        .Row = 32
+                        .Col = .ColLetterToNumber("E")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
+                    'check ct10+ct11a = tong cot 5 03-2B/TNDN
+                    If Val(ct10) + Val(ct11a) <> Val(ctTongCot5) Then
+                        .Row = 30
+                        .Col = .ColLetterToNumber("E")
+                        .CellNote = vErrCt10_11a
+                        .BackColor = mErrorColor
+                                                
+                        .Row = 32
+                        .Col = .ColLetterToNumber("E")
+                        .CellNote = vErrCt10_11a
+                        .BackColor = mErrorColor
+                        iFlagCt10_11a = 1
+                    Else
+                        .Row = 30
+                        .Col = .ColLetterToNumber("E")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                        
+                        .Row = 32
+                        .Col = .ColLetterToNumber("E")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
+                    
+                    ' kiem tra chi tieu 12
+                    If Val(ct11) >= 0 Then
+                        If Val(ct12) <= Round(Val(ct11) * 10 / 100, 0) Then
+                            .Row = 33
+                            .Col = .ColLetterToNumber("E")
+                            .CellNote = ""
+                            .BackColor = mNonErrorColor
+                        Else
+                            .Row = 33
+                            .Col = .ColLetterToNumber("E")
+                            .CellNote = vErrCt12
+                            .BackColor = mErrorColor
+                            iFlagCt12 = 1
+                        End If
+                    Else
+                        .Row = 33
+                        .Col = .ColLetterToNumber("E")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
+                    End If
+                    
+                End If
+            End If
+            .Sheet = .SheetCount
+            .SetText .ColLetterToNumber("B"), 93, IIf(iFlagCt10 = 1, "0", "1")
+            .SetText .ColLetterToNumber("B"), 94, IIf(iFlagCt12 = 1, "0", "1")
+            .SetText .ColLetterToNumber("B"), 95, IIf(iFlagCt11a = 1, "0", "1")
+            .SetText .ColLetterToNumber("B"), 96, IIf(iFlagCt10_11a = 1, "0", "1")
             
         .EventEnabled(EventAllEvents) = True
     End With
