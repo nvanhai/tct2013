@@ -5218,10 +5218,14 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
                                     If dNode.hasChildNodes Then
                                         dNode.removeChild dNode.firstChild
                                     End If
-                                    Set TinTypeAttribute = CloneNode.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
-                                    TinTypeAttribute.nodeValue = "true"
-                                    dNode.Attributes.setNamedItem TinTypeAttribute
                                     
+                                    If Trim(.Text) = "" Then
+                                        Set TinTypeAttribute = CloneNode.createNode(MSXML.NODE_ATTRIBUTE, "xsi:nil", "http://www.w3.org/2001/XMLSchema-instance")
+                                        TinTypeAttribute.nodeValue = "true"
+                                        dNode.Attributes.setNamedItem TinTypeAttribute
+                                    Else
+                                        dNode.Text = .Text
+                                    End If
                                     dNode.Attributes.removeNamedItem "TEXTNumber"
                                 Else
 
@@ -6194,7 +6198,7 @@ Private Sub KetXuatXML()
                             Loop
 
                         
-                        ElseIf UCase(xmlSection.nodeName) = "L_Dynamic" Then
+                        ElseIf UCase(xmlSection.nodeName) = "L_DYNAMIC" Then
                             'Loop all phu luc
                             Dim xmlSource As New MSXML.DOMDocument
                             Dim constCellRange As Long
@@ -6706,7 +6710,7 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                     
                 End If
                 
-            ElseIf nodeMapCT.nodeName = "L_Dynamic" Then
+            ElseIf nodeMapCT.nodeName = "L_DYNAMIC" Then
                 ' loop theo ca phu luc
                 Dim constCellRange As Long
                 Dim ChildNode1   As MSXML.IXMLDOMNode

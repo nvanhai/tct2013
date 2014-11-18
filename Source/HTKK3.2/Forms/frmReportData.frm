@@ -1728,10 +1728,12 @@ Private Sub SetupPrinter()
                                         .Row = 78
                                     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "97" And isDLT = True And lCtrl = 1 Then
                                         .Row = GetLastDataRowTD(lCtrl)
-                                    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "93" And lCtrl = 1 Then
-                                        .Row = GetLastDataRow3(lCtrl)
+                                    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "93" And isDLT = True And lCtrl = 1 Then
+                                        .Row = 85
                                     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" And isDLT = False And lCtrl = 1 Then
                                         .Row = arrLngRowPageBreak(intIndex2) - 1
+                                    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "77" And lCtrl = 1 Then
+                                        .Row = GetLastDataRowTD(lCtrl) + 2
                                     Else
                                         .Row = GetLastDataRow(lCtrl)
                                     End If

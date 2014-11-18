@@ -90,11 +90,11 @@ Public Sub Prepare1()
         ' chi tieu 29
         .Row = 57
         .Col = .ColLetterToNumber("AV")
-        .Text = arrKytruoc(0)
+        .value = arrKytruoc(0)
         ' chi tieu 33
         .Row = 67
         .Col = .ColLetterToNumber("AV")
-        .Text = arrKytruoc(1)
+        .value = arrKytruoc(1)
         
         
         .Sheet = 2
