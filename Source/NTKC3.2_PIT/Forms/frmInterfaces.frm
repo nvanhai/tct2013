@@ -1453,20 +1453,20 @@ Private Sub Command1_Click()
 
     '###################TT151###################
     '03/TNDN
-'    str2 = "aa999032100343639   00201300801300100401/0114/06/200601/01/201331/12/2013<S03><S></S><S>~~~A011~12.00</S><S>10000~23500~20000~100~2000~1000~200~200~311~100"
-'    Barcode_Scaned str2
-'    str2 = "aa999032100343639   002013008013002004~200~11~33189~20~33169~20~0~20~8~12~0~0~0~0~0~0~3~0~0~0~0~0~0~0~10~0~8~2~6~2~2~2~6~0~6~0~2~4</S><S>1~02~01/01/2015"
-'    Barcode_Scaned str2
-'    str2 = "aa999032100343639   002013008013003004~13400000~-13399990~0~01/02/2014~~10</S><S>TL01~TL02</S><S>hoten~nguoiky~ccict_01~12/11/2014~1~1~0~1052</S></S03>"
-'    Barcode_Scaned str2
-'    str2 = "aa999032100343639   002013008013004004<S03-5><S>100~27~2~3~4~5~6~7~73~0~73~0~0~73~11~8</S></S03-5>"
-'    Barcode_Scaned str2
+    str2 = "aa325032100343639   00201300801300100401/0114/06/200601/01/201331/12/2013<S03><S></S><S>~~~A011~12.00</S><S>10000~23500~20000~100~2000~1000~200~200~311~100"
+    Barcode_Scaned str2
+    str2 = "aa325032100343639   002013008013002004~200~11~33189~20~33169~20~0~20~8~12~0~0~0~0~0~0~3~0~0~0~0~0~0~0~10~0~8~2~6~2~2~2~6~0~6~0~2~4</S><S>1~02~01/01/2015"
+    Barcode_Scaned str2
+    str2 = "aa325032100343639   002013008013003004~13400000~-13399990~0~01/02/2014~~10</S><S>TL01~TL02</S><S>hoten~nguoiky~ccict_01~12/11/2014~1~1~0~1052</S></S03>"
+    Barcode_Scaned str2
+    str2 = "aa325032100343639   002013008013004004<S03-5><S>100~27~2~3~4~5~6~7~73~0~73~0~0~73~11~8</S></S03-5>"
+    Barcode_Scaned str2
 
     '02/TNDN
-    str2 = "aa999732100343639   04201400100100100201/0114/06/2006<S02><S></S><S>10000~4262~2000~2000~120~100~20~22~5738~10~574</S><S>1~~Nhan CN~0102030405~18 duy tan~102~01/01/2014~01/01/2014</S><S>hotne~cc~nguoiky~13/11/2014~1~~~~</S></S02>"
-    Barcode_Scaned str2
-    str2 = "aa999732100343639   042014001001002002<S02-1><S>ten cn~0102030405~18 duy tan~HD0001~ten cn2~2222222222~18 tam trinh~HD0002</S></S02-1>"
-    Barcode_Scaned str2
+'    str2 = "aa325732100343639   04201400100100100201/0114/06/2006<S02><S></S><S>10000~4262~2000~2000~120~100~20~22~5738~10~574</S><S>1~~Nhan CN~0102030405~18 duy tan~102~01/01/2014~01/01/2014</S><S>hotne~cc~nguoiky~13/11/2014~1~~~~</S></S02>"
+'    Barcode_Scaned str2
+'    str2 = "aa325732100343639   042014001001002002<S02-1><S>ten cn~0102030405~18 duy tan~HD0001~ten cn2~2222222222~18 tam trinh~HD0002</S></S02-1>"
+'    Barcode_Scaned str2
 
         'PS
 '    str2 = "aa999732100343639   03201400300300100201/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0</S><S>~1~~~~~~</S><S>~~µ~13/11/2014~1~~13/11/2014~~</S></S02>"
@@ -1476,11 +1476,16 @@ Private Sub Command1_Click()
 '    str2 = "aa999712100343639   01201400000000100101/0101/01/1900<S01><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~µ~~14/11/2014~1~~~2~14/11/2014</S></S01>"
 '    Barcode_Scaned str2
 
-'str2 = "aa999732100343639   04201400300400100201/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0</S><S>~1~~~~~~</S><S>~~µ~17/11/2014~1~~17/11/2014~~</S></S02>"
-'Barcode_Scaned str2
-'str2 = "aa999732100343639   042014003004002002<S02-1><S>~~~</S></S02-1>"
+''check chan bo sung lan phat sinh
+'str2 = "aa999732100343639   03201400501000100101/0114/06/2006<S02><S></S><S>21313~213~213~0~0~0~0~0~21100~0~0</S><S>~1~sdsa~sada~~~~</S><S>~~Sep ky~18/11/2014~1~~18/09/2014~~</S></S02>"
 'Barcode_Scaned str2
 
+'str2 = "bs999732100343639   03201400501100100101/0114/06/2006<S02><S></S><S>111111111~3000~213~232~232~0~2323~0~111108111~0~0</S><S>~1~sdsa~sada~~~~</S><S>~~Sep ky~18/11/2014~~1~18/09/2014~~</S></S02>"
+'Barcode_Scaned str2
+
+''
+'str2 = "aa325732100343639   03201400501200100101/0114/06/2006<S02><S></S><S>2323~334443~334443~0~0~0~0~0~-332120~0~0</S><S>~1~sda~2113~2312~~~</S><S>~~Sep ky~18/11/2014~1~~14/10/2014~~</S></S02>"
+'Barcode_Scaned str2
 
     
 End Sub
@@ -1978,8 +1983,8 @@ Private Sub Barcode_Scaned(strBarcode As String)
             If Val(Mid$(strBarcode, 4, 2)) = 73 And UCase(strLoaiToKhai) = "BS" Then
                 tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S02>", vbTextCompare) + 5)
                 tkps_spl = Split(tmp_str, "~")
-
-                If tkps_spl(UBound(tkps_spl) - 15) = "1" Then
+                'cap nhat theo mau bieu TT 151
+                If tkps_spl(UBound(tkps_spl) - 14) = "1" Then
                     DisplayMessage "0132", msOKOnly, miCriticalError
                     Exit Sub
                 End If
@@ -2078,10 +2083,10 @@ Private Sub Barcode_Scaned(strBarcode As String)
             End If
         End If
 
-        'Chan cac to khai Quyet toan 330 <=3.2.5
+        'Chan cac to khai Quyet toan 330 <=3.2.5; 02/TNDN (Cap nhat TT 151)
         'todo
         If (Val(Left$(strPrefix, 3)) < 330) Then
-            If Trim(idToKhai) = "03" Or Trim(idToKhai) = "77" Or Trim(idToKhai) = "43" Or Trim(idToKhai) = "17" Or Trim(idToKhai) = "59" Or Trim(idToKhai) = "76" Or Trim(idToKhai) = "41" Or Trim(idToKhai) = "26" Or Trim(idToKhai) = "87" Or Trim(idToKhai) = "80" Or Trim(idToKhai) = "82" Or Trim(idToKhai) = "85" Or Trim(idToKhai) = "88" Then
+            If Trim(idToKhai) = "03" Or Trim(idToKhai) = "77" Or Trim(idToKhai) = "43" Or Trim(idToKhai) = "17" Or Trim(idToKhai) = "59" Or Trim(idToKhai) = "76" Or Trim(idToKhai) = "41" Or Trim(idToKhai) = "26" Or Trim(idToKhai) = "87" Or Trim(idToKhai) = "80" Or Trim(idToKhai) = "82" Or Trim(idToKhai) = "85" Or Trim(idToKhai) = "88" Or Trim(idToKhai) = "73" Then
 '                If InStr(1, strBarcode, "<S01>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S02>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S03>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S05>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S06>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S09>", vbTextCompare) > 0 Then
 '                    DisplayMessage "0139", msOKOnly, miInformation
 '                    Exit Sub
