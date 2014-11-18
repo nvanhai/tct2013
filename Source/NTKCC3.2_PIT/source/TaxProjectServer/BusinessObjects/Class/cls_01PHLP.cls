@@ -481,6 +481,13 @@ Public Function Prepared3() As Boolean
         strSoTTTKhai = Trim(TinhSoLanQuet)
         .Text = Trim(TAX_Utilities_Svr_New.Convert(strSoTTTKhai, TCVN, UNICODE))
         
+        ' lan quet
+        .Col = .ColLetterToNumber("M")
+        .Row = 22
+        strSoTTTKhai = Trim(TinhSoLanQuet)
+        .Text = Trim(TAX_Utilities_Svr_New.Convert(strSoTTTKhai, TCVN, UNICODE))
+        
+        
         .Col = .ColLetterToNumber(DIEN_THOAI_X)
         .Row = DIEN_THOAI_Y
 
@@ -924,13 +931,13 @@ Public Function InsertHDR_KHBS() As String
     Dim songaycn As Variant
     Dim sotiencn As Variant
     Dim tienhoan As Variant
-    Dim lenhhoan As String
+    Dim lenhhoan As Variant
     Dim ngayhoan As Variant
     Dim HANNOP As Variant
     Dim cqt As Variant
     Dim songay As Variant
     Dim SOTIEN As Variant
-    Dim lydokhac As String
+    Dim lydokhac As Variant
     Dim DANHAN As Variant
     
     With fps
@@ -991,7 +998,7 @@ Public Function InsertHDR_KHBS() As String
         If Trim(lenhhoan) = vbNullString Then
             lenhhoan = "''"
         Else
-            lenhhoan = "'" & TAX_Utilities_Svr_New.Convert(lenhhoan, UNICODE, TCVN) & "'"
+            lenhhoan = "'" & TAX_Utilities_Svr_New.Convert(CStr(lenhhoan), UNICODE, TCVN) & "'"
         End If
         
         .GetText .ColLetterToNumber("E"), .MaxRows - 17, ngayhoan
@@ -1026,7 +1033,7 @@ Public Function InsertHDR_KHBS() As String
         If Trim(lydokhac) = vbNullString Then
             lydokhac = "''"
         Else
-            lydokhac = "'" & TAX_Utilities_Svr_New.Convert(lydokhac, UNICODE, TCVN) & "'"
+            lydokhac = "'" & TAX_Utilities_Svr_New.Convert(CStr(lydokhac), UNICODE, TCVN) & "'"
         End If
     
         DANHAN = "''"
@@ -1060,6 +1067,7 @@ Public Function InsertHDR() As String
     Dim bln          As Boolean
     
     Dim madtnt       As Variant
+    Dim madlt       As Variant
     Dim MATHUE       As Variant
     Dim maTM         As Variant
     Dim MAPP         As Variant
@@ -1112,7 +1120,7 @@ Public Function InsertHDR() As String
     Dim vTemp2       As String
 
     
-    sSQLCol = "madtnt,mathue,matm,mapp,kylbo,ngnop,loaitien,mabpql,shtep,tthtk,kykkhai,ngnhap,thuetky,gttinhthue," & _
+    sSQLCol = "madtnt,madlt,mathue,matm,mapp,kylbo,ngnop,loaitien,mabpql,shtep,tthtk,kykkhai,ngnhap,thuetky,gttinhthue," & _
               "daghi,kttruoc,doanhso,mapp2,mamuc,mavach,matkhai,hannop,thuetky2,hannop2,tenda,daghi1,daghi2,auto_cal," & _
               "nganh,danhan,lan_quet,lanbs,thuecl,dsocl,gtttcl,ngayps,mannkd,tennv,chungchi"
    
@@ -1124,6 +1132,13 @@ Public Function InsertHDR() As String
             madtnt = "''"
         Else
             madtnt = "'" & madtnt & "'"
+        End If
+        
+        .GetText .ColLetterToNumber("G"), 15, madlt
+        If Trim(madlt) = vbNullString Then
+            madlt = "''"
+        Else
+            madlt = "'" & madlt & "'"
         End If
         
         MATHUE = "'1'"
@@ -1319,7 +1334,7 @@ Public Function InsertHDR() As String
             End If
             
             If Trim(vTemp) <> "" Or Trim(vTemp) <> "''" Then
-                sSQLVal = madtnt & "," & MATHUE & "," & maTM & "," & MAPP & "," & KYLBO & "," & ngnop & _
+                sSQLVal = madtnt & "," & madlt & "," & MATHUE & "," & maTM & "," & MAPP & "," & KYLBO & "," & ngnop & _
             "," & LoaiTien & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & kykkhai & _
             "," & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & "," & KTTRUOC & _
             "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & "," & matkhai & _
@@ -1777,7 +1792,7 @@ Public Function TinhSoLanQuet() As Integer
             End If
              sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM TMP_TK" & sKyKeKhai & _
                     " WHERE MADTNT = " & "'" & strMST & "'" & _
-                    " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='01/PHLP'" & " AND (TTHTK = '1' or TTHTK = '3' )"
+                    " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='01/PHLP'"
     
                 Set rs = clsDAO.Execute(sSQL)
                 If Not rs Is Nothing Then
