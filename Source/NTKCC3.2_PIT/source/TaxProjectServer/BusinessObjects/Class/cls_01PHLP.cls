@@ -1298,14 +1298,14 @@ Public Function InsertHDR() As String
     If Trim(TENNV) = vbNullString Then
         TENNV = "''"
     Else
-        TENNV = "'" & TENNV & "'"
+        TENNV = "'" & TAX_Utilities_Svr_New.Convert(CStr(TENNV), UNICODE, TCVN) & "'"
     End If
     'CHUNGCHI
     .GetText .ColLetterToNumber("G"), .MaxRows - 2, CHUNGCHI
     If Trim(CHUNGCHI) = vbNullString Then
         CHUNGCHI = "''"
     Else
-        CHUNGCHI = "'" & CHUNGCHI & "'"
+        CHUNGCHI = "'" & TAX_Utilities_Svr_New.Convert(CStr(CHUNGCHI), UNICODE, TCVN) & "'"
     End If
         
     End With
