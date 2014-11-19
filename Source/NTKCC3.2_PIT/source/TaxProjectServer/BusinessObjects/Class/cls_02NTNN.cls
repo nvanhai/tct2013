@@ -509,7 +509,7 @@ Public Function InsertDTL() As String
     Dim QuyetToan2 As Variant
     Dim KKHAICL    As Variant
     Dim QTOANCL    As Variant
-    Dim GHICHU     As Variant
+    Dim GhiChu     As Variant
     Dim tt         As Variant
     Dim DANHAN     As Variant
    
@@ -579,12 +579,12 @@ Public Function InsertDTL() As String
                 QuyetToan = "0"
             End If
             
-            .GetText .ColLetterToNumber("AA"), .Row, GHICHU
+            .GetText .ColLetterToNumber("AA"), .Row, GhiChu
     
-            If Trim(GHICHU) = vbNullString Then
-                GHICHU = "''"
+            If Trim(GhiChu) = vbNullString Then
+                GhiChu = "''"
             Else
-                GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
+                GhiChu = "'" & TAX_Utilities_Svr_New.Convert(CStr(GhiChu), UNICODE, TCVN) & "'"
             End If
             
             KeKhai2 = KeKhai
@@ -592,7 +592,7 @@ Public Function InsertDTL() As String
             KKHAICL = KeKhai
             QTOANCL = QuyetToan
             CTTN = "'" & arrMaHieu(i) & "'"
-            sSQLVal = LoaiTK & "," & madtnt & "," & namQT & "," & TTHTK & "," & ngnop & "," & CTTN & "," & KeKhai & "," & QuyetToan & "," & KeKhai2 & "," & QuyetToan2 & "," & tt & "," & KKHAICL & "," & QTOANCL & "," & GHICHU & "," & DANHAN & "," & LAN_QUET
+            sSQLVal = LoaiTK & "," & madtnt & "," & namQT & "," & TTHTK & "," & ngnop & "," & CTTN & "," & KeKhai & "," & QuyetToan & "," & KeKhai2 & "," & QuyetToan2 & "," & tt & "," & KKHAICL & "," & QTOANCL & "," & GhiChu & "," & DANHAN & "," & LAN_QUET
             sSQL = "INSERT INTO TMP_QTNTD" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
             
@@ -652,7 +652,7 @@ Public Function InsertDTL_KHBS() As String
 
     End With
 
-    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/NTNN", ngnop, KYLBO, spathVat, TTHTK, LAN_QUET, True, sKyKeKhai, MaMucKHBS)
+    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "02/NTNN", ngnop, KYLBO, spathVat, TTHTK, LAN_QUET, False, sKyKeKhai, MaMucKHBS)
     
     InsertHDR_KHBS
     
@@ -874,15 +874,15 @@ Public Function InsertHDR() As String
             madlt = "'" & madlt & "'"
         End If
         
-        'trang thai to khai
-        Dim TTHTK1 As Variant
-        .GetText .ColLetterToNumber("M"), 6, TTHTK1
-
-        If Trim(TTHTK1) = vbNullString Then
-            TTHTK = "'" & 2 & "'"
-        Else
-            TTHTK = "'" & 1 & "'"
-        End If
+'        'trang thai to khai
+'        Dim TTHTK1 As Variant
+'        .GetText .ColLetterToNumber("M"), 6, TTHTK1
+'
+'        If Trim(TTHTK1) = vbNullString Then
+'            TTHTK = "'" & 2 & "'"
+'        Else
+'            TTHTK = "'" & 1 & "'"
+'        End If
 
         ' han nop
         .GetText .ColLetterToNumber("AD"), 37, HANNOP
