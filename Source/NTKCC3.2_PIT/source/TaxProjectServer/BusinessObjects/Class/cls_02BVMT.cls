@@ -1178,7 +1178,7 @@ Public Function InsertHDR() As String
     Dim TuKy       As Variant
     Dim DenKy      As Variant
     Dim madtnt     As Variant
-    Dim MADLT      As Variant
+    Dim madlt      As Variant
     Dim MaMuc      As Variant
     Dim maTM       As String
     Dim ngnop      As Variant
@@ -1341,12 +1341,12 @@ Public Function InsertHDR() As String
         End If
         
         'ma dai ly thue
-        .GetText .ColLetterToNumber("G"), 15, MADLT
+        .GetText .ColLetterToNumber("G"), 15, madlt
 
-        If Trim(MADLT) = vbNullString Then
-            MADLT = "''"
+        If Trim(madlt) = vbNullString Then
+            madlt = "''"
         Else
-            MADLT = "'" & MADLT & "'"
+            madlt = "'" & madlt & "'"
         End If
         
         'ky tinh thue tu ngay
@@ -1443,7 +1443,7 @@ Public Function InsertHDR() As String
             End If
             
             If Trim(vTemp) <> "" Or Trim(vTemp) <> "''" Then
-                sSQLVal = namQT & ",'" & TuKy & "','" & DenKy & "'," & madtnt & "," & MADLT & "," & MaMuc & "," & maTM & ", " & ngnop & "," & NgNhap & "," & LoaiTien & "," & KyDC & "," & ThueTKy & "," & DaGhi & "," & LoaiTK & "," & TTHTK & "," & MaVach & "," & HANNOP & "," & KYLBO & "," & DoanhSo & "," & GTTinhThue & "," & DAGHI2 & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & DANHAN & "," & AUTO_CAL & "," & LAN_QUET & "," & TENNV & "," & CHUNGCHI
+                sSQLVal = namQT & ",'" & TuKy & "','" & DenKy & "'," & madtnt & "," & madlt & "," & MaMuc & "," & maTM & ", " & ngnop & "," & NgNhap & "," & LoaiTien & "," & KyDC & "," & ThueTKy & "," & DaGhi & "," & LoaiTK & "," & TTHTK & "," & MaVach & "," & HANNOP & "," & KYLBO & "," & DoanhSo & "," & GTTinhThue & "," & DAGHI2 & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & DANHAN & "," & AUTO_CAL & "," & LAN_QUET & "," & TENNV & "," & CHUNGCHI
        
                 sSQL = "INSERT INTO TMP_QTMT" & kyLapBo & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
@@ -1987,7 +1987,7 @@ Private Sub DataDM(ByVal Id As String, _
                     DVT = arrDanhsach(3)
                     strThueSuat = arrDanhsach(4)
                     blnSuaThueSuat = IIf(arrDanhsach(5) = "1", True, False)
-                    maTMTN = arrDanhsach(7)
+                    'maTMTN = arrDanhsach(7)
                     maTMMT = arrDanhsach(8)
                     Exit Sub
                 End If
