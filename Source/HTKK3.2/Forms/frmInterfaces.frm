@@ -1342,7 +1342,7 @@ ProgressBar1.value = fpSpread2.Row
                 Dim temp As Variant
                 Dim temp1 As Double
                 fpSpread1.Row = fpSpread1.Row + 9
-                fpSpread2.Row = fpSpread2.Row + 11
+                fpSpread2.Row = fpSpread2.Row + 13
                
             'test
               If themDuLieu Then
@@ -4514,7 +4514,7 @@ Private Function prepareFileName(ByVal loaiToKhai As String) As String
             ' Ghep cac thong tin tren vao lam cau truc file chuan cho PIT
             'nExcelFile = taxOfficeName & "-" & taxId & "-" & kyHieuToKhai & "-" & "Y" & TAX_Utilities_v1.Year & "-" & ctBs
             If UCase(Trim(loaiToKhai)) = "16_TH_DKNPT" Then
-                nExcelFile = taxOfficeName & "-" & taxId & "-" & kyHieuToKhai & "-" & ctBs
+                nExcelFile = taxOfficeName & "-" & taxId & "-" & kyHieuToKhai & "-" & "Y" & TAX_Utilities_v1.Year & "-" & ctBs
             Else
                 nExcelFile = taxOfficeName & "-" & taxId & "-" & kyHieuToKhai & "-" & Replace(TAX_Utilities_v1.FirstDay, "/", "") & Replace(TAX_Utilities_v1.LastDay, "/", "") & "-" & ctBs
             End If
@@ -5098,7 +5098,7 @@ Private Function getFileName(MaTk As String) As String
             Else
                 ctBs = "L" & strSolanKK
             End If
-            getFileName = Left$(taxOfficeName, 3) & "-" & MstNnt & "-" & MaFile & "-" & ctBs
+            getFileName = Left$(taxOfficeName, 3) & "-" & MstNnt & "-" & MaFile & "-Y" & TAX_Utilities_v1.Year & "-" & ctBs
         Else
             getFileName = Left$(taxOfficeName, 3) & "-" & MstNnt & "-" & MaFile & "-" & Replace$(TAX_Utilities_v1.FirstDay, "/", "") & Replace$(TAX_Utilities_v1.LastDay, "/", "") & "-" & ctBs
         End If
