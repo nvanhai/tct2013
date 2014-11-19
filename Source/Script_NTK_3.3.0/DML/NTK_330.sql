@@ -3,6 +3,8 @@ Spool C:\Temp\Log_NTK_330_DML.txt
 Whenever sqlerror continue
 /
 PROM '===== INSERT - UPDATE ====='
+Prompt 0_Rollback_UAT.sql
+@@0_Rollback_UAT.sql;
 Prompt 1_rcv_dm_tkhai.sql
 @@1_rcv_dm_tkhai.sql;
 Prompt 2_rcv_map_tkhai.sql
