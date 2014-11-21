@@ -1341,8 +1341,31 @@ ProgressBar1.value = fpSpread2.Row
             'have 2 hidden row
                 Dim temp As Variant
                 Dim temp1 As Double
+                Dim lrowCount As Long
+                Dim varTemp, varTemp1, varTemp2 As Variant
+                
+                ' group 1
+                For lrowCount = 40 To fpSpread2.MaxRows Step 1
+                     fpSpread2.GetText fpSpread2.ColLetterToNumber("C"), lrowCount, varTemp
+                     fpSpread2.GetText fpSpread2.ColLetterToNumber("D"), lrowCount, varTemp1
+                     fpSpread2.GetText fpSpread2.ColLetterToNumber("E"), lrowCount, varTemp2
+                     If Trim$(varTemp) = "" And Trim$(varTemp1) = "" And Trim$(varTemp2) = "" Then
+                            Exit For
+                     End If
+                Next
+                
+                ' Tim khoang cach group 2
+                Dim stepGroup As Long
+                For lrowCount = lrowCount To fpSpread2.MaxRows Step 1
+                    fpSpread2.GetText fpSpread2.ColLetterToNumber("B"), lrowCount, varTemp
+                    stepGroup = stepGroup + 1
+                    If UCase$(Trim(varTemp)) = "BB" Then
+                        Exit For
+                    End If
+                Next
+                
                 fpSpread1.Row = fpSpread1.Row + 9
-                fpSpread2.Row = fpSpread2.Row + 13
+                fpSpread2.Row = fpSpread2.Row + stepGroup + 1
                
             'test
               If themDuLieu Then
@@ -16276,7 +16299,7 @@ Public Sub moveDataNKH()
         xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_05_3_TNCN.xml"))
  
         rowStartSpread1 = 22
-        rowStartSpread2 = 6
+        rowStartSpread2 = 40
         
     ElseIf Trim(varMenuId) = "95" And fpSpread1.ActiveSheet = 1 Then
         xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_16_TH_DKNPT.xml"))
@@ -16321,20 +16344,32 @@ Public Sub moveDataNKH()
     If Trim(varMenuId) = "95" Then
         isGroup1 = True
         ' group 1
-        For lrowCount = 6 To fpSpread2.MaxRows Step 1
-             fpSpread2.GetText fpSpread2.ColLetterToNumber("A"), lrowCount, varTemp
-             fpSpread2.GetText fpSpread2.ColLetterToNumber("B"), lrowCount, varTemp1
-             fpSpread2.GetText fpSpread2.ColLetterToNumber("C"), lrowCount, varTemp2
+        For lrowCount = 40 To fpSpread2.MaxRows Step 1
+             fpSpread2.GetText fpSpread2.ColLetterToNumber("B"), lrowCount, varTemp
+             fpSpread2.GetText fpSpread2.ColLetterToNumber("C"), lrowCount, varTemp1
+             fpSpread2.GetText fpSpread2.ColLetterToNumber("D"), lrowCount, varTemp2
              If Trim$(varTemp) = "" And Trim$(varTemp1) = "" And Trim$(varTemp2) = "" Then
                 If isGroup1 = True Then
-                    lrowCount1 = lrowCount - 6
+                    lrowCount1 = lrowCount - 40
                     isGroup1 = False
                     Exit For
                 End If
              End If
         Next
+        
+        ' Tim khoang cach group 2
+        Dim stepGroup As Long
+        For lrowCount = lrowCount To fpSpread2.MaxRows Step 1
+            fpSpread2.GetText fpSpread2.ColLetterToNumber("B"), lrowCount, varTemp
+            stepGroup = stepGroup + 1
+            If UCase$(Trim(varTemp)) = "BB" Then
+                Exit For
+            End If
+        Next
+        
         ' group 2
-        For lrowCount = lrowCount + 11 To fpSpread2.MaxRows Step 1
+        'For lrowCount = lrowCount + 11 To fpSpread2.MaxRows Step 1
+        For lrowCount = lrowCount + stepGroup To fpSpread2.MaxRows Step 1
             fpSpread2.GetText fpSpread2.ColLetterToNumber("A"), lrowCount, varTemp
              fpSpread2.GetText fpSpread2.ColLetterToNumber("B"), lrowCount, varTemp1
              fpSpread2.GetText fpSpread2.ColLetterToNumber("C"), lrowCount, varTemp2
@@ -16344,6 +16379,18 @@ Public Sub moveDataNKH()
                     Exit For
              End If
              
+        Next
+    ' xu ly bang ke 05-3/TNCN ho tro tai tu temp 05-3, BK 16 TH, TK 16TH
+    ElseIf Trim(varMenuId) = "17" And fpSpread1.ActiveSheet = 4 Then
+        For lrowCount = 40 To fpSpread2.MaxRows Step 1
+            fpSpread2.GetText fpSpread2.ColLetterToNumber("C"), lrowCount, varTemp
+            fpSpread2.GetText fpSpread2.ColLetterToNumber("D"), lrowCount, varTemp1
+            
+            'fpSpread2.GetText fpSpread2.ColLetterToNumber("E"), lrowCount, varTemp2
+            If (Trim(varTemp) = vbNullString Or Trim(varTemp) = "") And (Trim(varTemp1) = vbNullString Or Trim(varTemp1) = "") Then
+                    lrowCount = lrowCount - 40
+                    Exit For
+            End If
         Next
     Else
         ' Kiem tra tu dong maxrow len, neu gap bat ky mot dong nao bat dau co du lieu thi se lay do la maxrow luon
@@ -16363,7 +16410,7 @@ Public Sub moveDataNKH()
                         ElseIf mCurrentSheet = 3 Then
                             lrowCount = lrowCount - 4
                         ElseIf mCurrentSheet = 4 Then
-                            lrowCount = lrowCount - 5
+                            lrowCount = lrowCount - 39
                         End If
                         Exit For
                     End If
@@ -16375,7 +16422,7 @@ Public Sub moveDataNKH()
                         ElseIf mCurrentSheet = 3 Then
                             lrowCount = lrowCount - 4
                         ElseIf mCurrentSheet = 4 Then
-                            lrowCount = lrowCount - 5
+                            lrowCount = lrowCount - 39
                         End If
                         Exit For
                     End If
@@ -16584,8 +16631,61 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
                         numSheet As Integer, isFirstRow As Boolean)
         
     ReDim fparray(lrowCount - 1, 22) As Variant
+    ReDim fparray1(lrowCount - 1, 22) As Variant
     isFirstRow = True
-    fpSpread2.GetArray fpSpread2.ColLetterToNumber("B"), rowStartSpread2, fparray
+    fpSpread2.GetArray fpSpread2.ColLetterToNumber("C"), rowStartSpread2, fparray
+    fpSpread2.GetArray fpSpread2.ColLetterToNumber("C"), rowStartSpread2, fparray1
+    ' kiem tra xem BK 05-3 hay BK 16TH
+    Dim idx As Long
+    Dim idx1 As Long
+    Dim lrowCount2 As Long
+    Dim temp1, temp2 As Variant
+    Dim isStartGroup2 As Boolean
+    Dim startGroup2 As Long
+    With fpSpread2
+        .sheet = 1
+        For idx = rowStartSpread2 + lrowCount To .MaxRows
+            .Row = idx
+            .Col = .ColLetterToNumber("B")
+            
+            .GetText .ColLetterToNumber("C"), .Row, temp1
+            .GetText .ColLetterToNumber("D"), .Row, temp2
+            lrowCount2 = lrowCount2 + 1
+            If UCase$(.Text) = "BB" Then
+                isStartGroup2 = True
+                lrowCount2 = 0
+                .Row = .Row + 1
+                .GetText .ColLetterToNumber("C"), .Row, temp1
+                .GetText .ColLetterToNumber("D"), .Row, temp2
+                startGroup2 = .Row
+            End If
+            
+            If lrowCount2 > 100 And isStartGroup2 = False Then
+                Exit For
+            End If
+            
+            If (Trim$(temp1) = "" And Trim$(temp2) = "" And isStartGroup2 = True) Then
+                Exit For
+            End If
+        Next
+        
+        If lrowCount2 - 1 > 0 And isStartGroup2 = True Then
+            ReDim fparray2(lrowCount2 - 2, 22) As Variant
+            'ReDim fparray(lrowCount + lrowCount2 - 2, 22) As Variant
+            fpSpread2.GetArray fpSpread2.ColLetterToNumber("C"), startGroup2, fparray2
+            ' copy du lieu mang 1
+            For idx = 0 To lrowCount
+            
+            Next
+            
+            
+        End If
+        
+    End With
+    
+    ' end
+    
+    
     Dim a                As Long
     Dim rowStartSpread11 As Long
     a = 0
@@ -16639,7 +16739,7 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
             rowStartSpread1 = rowStartSpread1 + 1
         End If
         
-        Do While fpSpread2.Row < lrowCount + 5
+        Do While fpSpread2.Row < lrowCount + 39
             DoEvents
             ProgressBar1.value = a
             
