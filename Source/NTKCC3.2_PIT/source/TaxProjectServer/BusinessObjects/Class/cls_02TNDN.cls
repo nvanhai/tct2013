@@ -1075,6 +1075,9 @@ Public Function InsertDTL_KHBS() As String
     End With
    
     clsDAO.Disconnect
+    
+    InsertHDR_KHBS
+    
     InsertDTL_KHBS = vbNullString
 End Function
 
@@ -1466,155 +1469,155 @@ Public Function InsertHDR() As String
 End Function
 
 Public Function InsertHDR_KHBS() As String
-'    Dim sSQL       As String
-'    Dim sSQLCol    As String
-'    Dim sSQLVal    As String
-'    Dim bln        As Boolean
-'
-'    Dim madtnt As Variant
-'    Dim kykkhai As Variant
-'    Dim matkhai As Variant
-'    Dim MATHUE As Variant
-'    Dim MaMuc As Variant
-'    Dim maTM As Variant
-'    Dim MAPP As Variant
-'    Dim ngnop As Variant
-'    'Dim TTHTK As Variant
-'    Dim KYLBO As Variant
-'    Dim songaycn As Variant
-'    Dim sotiencn As Variant
-'    Dim tienhoan As Variant
-'    Dim lenhhoan As Variant
-'    Dim ngayhoan As Variant
-'    Dim HANNOP As Variant
-'    Dim cqt As Variant
-'    Dim songay As Variant
-'    Dim SOTIEN As Variant
-'    Dim lydokhac As Variant
-'    Dim DANHAN As Variant
-'
-'    With fps
-'        .Sheet = 1
-'
-'        .GetText .ColLetterToNumber("H"), 10, madtnt
-'
-'        If Trim(madtnt) = vbNullString Then
-'            madtnt = "''"
-'        Else
-'            madtnt = "'" & madtnt & "'"
-'        End If
-'
-'        kykkhai = "'" & TAX_Utilities_Svr_New.Year & "'"
-'        MaMuc = "'1550'"
-'        maTM = "''"
-'        matkhai = "'02/TAIN'"
-'
-'
-'
-'        MATHUE = "'04'"
-'        MAPP = "'1'"
-'
-'
-'
-'        .GetText .ColLetterToNumber("E"), 32, ngnop
-'
-'        If Trim(ngnop) = vbNullString Then
-'            ngnop = "CTOD('')"
-'        Else
-'            ngnop = ToDate(Trim(ngnop), DDMMYYYY)
-'            ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
-'        End If
-'
-'        .GetText .ColLetterToNumber("E"), 30, KYLBO
-'
-'        If Trim(KYLBO) = vbNullString Then
-'            KYLBO = "''"
-'        Else
-'            KYLBO = "'" & KYLBO & "'"
-'        End If
-'
-'        'Lay sheet KHBS tren to khai
-'        .Sheet = .SheetCount - 1
-'
-'        .GetText .ColLetterToNumber("BE"), .MaxRows - 28, songaycn
-'        If Trim(songaycn) = vbNullString Then
-'            songaycn = "0"
-'        End If
-'
-'        .GetText .ColLetterToNumber("BE"), .MaxRows - 27, sotiencn
-'        If Trim(sotiencn) = vbNullString Then
-'            sotiencn = "0"
-'        End If
-'
-'        .GetText .ColLetterToNumber("BE"), .MaxRows - 21, tienhoan
-'        If Trim(tienhoan) = vbNullString Then
-'            tienhoan = "0"
-'        End If
-'
-'        .GetText .ColLetterToNumber("BE"), .MaxRows - 19, lenhhoan
-'        If Trim(lenhhoan) = vbNullString Then
-'            lenhhoan = "''"
-'        Else
-'            lenhhoan = "'" & TAX_Utilities_Svr_New.Convert(CStr(lenhhoan), UNICODE, TCVN) & "'"
-'        End If
-'
-'        .GetText .ColLetterToNumber("E"), .MaxRows - 17, ngayhoan
-'
-'        If Trim(ngayhoan) = vbNullString Then
-'            ngayhoan = "CTOD('')"
-'        Else
-'            ngayhoan = ToDate(Trim(ngayhoan), DDMMYYYY)
-'            ngayhoan = "CTOD('" & Format(ngayhoan, "mm/dd/yyyy") & "')"
-'        End If
-'
-'        HANNOP = "CTOD('')"
-'
-'        .GetText .ColLetterToNumber("BI"), .MaxRows - 13, cqt
-'        If Trim(cqt) = vbNullString Then
-'            cqt = "''"
-'        Else
-'            cqt = "'" & cqt & "'"
-'        End If
-'
-'        .GetText .ColLetterToNumber("BE"), .MaxRows - 11, songay
-'        If Trim(songay) = vbNullString Then
-'            songay = "0"
-'        End If
-'
-'        .GetText .ColLetterToNumber("BE"), .MaxRows - 9, SOTIEN
-'        If Trim(SOTIEN) = vbNullString Then
-'            SOTIEN = "0"
-'        End If
-'
-'        .GetText .ColLetterToNumber("BD"), .MaxRows - 5, lydokhac
-'        If Trim(lydokhac) = vbNullString Then
-'            lydokhac = "''"
-'        Else
-'            lydokhac = "'" & TAX_Utilities_Svr_New.Convert(CStr(lydokhac), UNICODE, TCVN) & "'"
-'        End If
-'
-'        DANHAN = "''"
-'
-'        If clsDAO.Connected = False Then
-'            clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
-'            clsDAO.Connect
-'        End If
-'
-'        sSQLCol = "madtnt,kykkhai,matkhai,MATHUE,MaMuc,maTM,MAPP,ngnop,TTHTK,KYLBO,songaycn,sotiencn,tienhoan," & _
-'            "lenhhoan,ngayhoan,HANNOP,cqt,songay,SOTIEN,lydokhac,DANHAN,LAN_QUET"
-'
-'        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & songaycn & "," & sotiencn & "," & tienhoan & "," & _
-'            lenhhoan & "," & ngayhoan & "," & HANNOP & "," & cqt & "," & songay & "," & SOTIEN & "," & lydokhac & "," & DANHAN & "," & LAN_QUET
-'
-'        sSQL = "INSERT INTO TMP_ND" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
-'
-'        bln = clsDAO.ExecuteDLL(sSQL)
-'
-'    End With
+    Dim sSQL       As String
+    Dim sSQLCol    As String
+    Dim sSQLVal    As String
+    Dim bln        As Boolean
+
+    Dim madtnt As Variant
+    Dim kykkhai As Variant
+    Dim matkhai As Variant
+    Dim MATHUE As Variant
+    Dim MaMuc As Variant
+    Dim maTM As Variant
+    Dim MAPP As Variant
+    Dim ngnop As Variant
+    'Dim TTHTK As Variant
+    Dim KYLBO As Variant
+    Dim songaycn As Variant
+    Dim sotiencn As Variant
+    Dim tienhoan As Variant
+    Dim lenhhoan As Variant
+    Dim ngayhoan As Variant
+    Dim HANNOP As Variant
+    Dim cqt As Variant
+    Dim songay As Variant
+    Dim SOTIEN As Variant
+    Dim lydokhac As Variant
+    Dim DANHAN As Variant
+
+    With fps
+        .Sheet = 1
+
+        .GetText .ColLetterToNumber("F"), 10, madtnt
+
+        If Trim(madtnt) = vbNullString Then
+            madtnt = "''"
+        Else
+            madtnt = "'" & madtnt & "'"
+        End If
+
+        kykkhai = "'" & TAX_Utilities_Svr_New.Year & "'"
+        MaMuc = "'1050'"
+        maTM = "'1054'"
+        matkhai = "'02/TNDN'"
+
+
+
+        MATHUE = "'08'"
+        MAPP = "'1'"
+
+
+
+        .GetText .ColLetterToNumber("E"), 44, ngnop
+
+        If Trim(ngnop) = vbNullString Then
+            ngnop = "CTOD('')"
+        Else
+            ngnop = ToDate(Trim(ngnop), DDMMYYYY)
+            ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
+        End If
+
+        .GetText .ColLetterToNumber("E"), 42, KYLBO
+
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
+        Else
+            KYLBO = "'" & KYLBO & "'"
+        End If
+
+        'Lay sheet KHBS tren to khai
+        .Sheet = .SheetCount - 1
+
+        .GetText .ColLetterToNumber("BE"), .MaxRows - 28, songaycn
+        If Trim(songaycn) = vbNullString Then
+            songaycn = "0"
+        End If
+
+        .GetText .ColLetterToNumber("BE"), .MaxRows - 27, sotiencn
+        If Trim(sotiencn) = vbNullString Then
+            sotiencn = "0"
+        End If
+
+        .GetText .ColLetterToNumber("BE"), .MaxRows - 21, tienhoan
+        If Trim(tienhoan) = vbNullString Then
+            tienhoan = "0"
+        End If
+
+        .GetText .ColLetterToNumber("BE"), .MaxRows - 19, lenhhoan
+        If Trim(lenhhoan) = vbNullString Then
+            lenhhoan = "''"
+        Else
+            lenhhoan = "'" & TAX_Utilities_Svr_New.Convert(CStr(lenhhoan), UNICODE, TCVN) & "'"
+        End If
+
+        .GetText .ColLetterToNumber("E"), .MaxRows - 17, ngayhoan
+
+        If Trim(ngayhoan) = vbNullString Then
+            ngayhoan = "CTOD('')"
+        Else
+            ngayhoan = ToDate(Trim(ngayhoan), DDMMYYYY)
+            ngayhoan = "CTOD('" & Format(ngayhoan, "mm/dd/yyyy") & "')"
+        End If
+
+        HANNOP = "CTOD('')"
+
+        .GetText .ColLetterToNumber("BI"), .MaxRows - 13, cqt
+        If Trim(cqt) = vbNullString Then
+            cqt = "''"
+        Else
+            cqt = "'" & cqt & "'"
+        End If
+
+        .GetText .ColLetterToNumber("BE"), .MaxRows - 11, songay
+        If Trim(songay) = vbNullString Then
+            songay = "0"
+        End If
+
+        .GetText .ColLetterToNumber("BE"), .MaxRows - 9, SOTIEN
+        If Trim(SOTIEN) = vbNullString Then
+            SOTIEN = "0"
+        End If
+
+        .GetText .ColLetterToNumber("BD"), .MaxRows - 5, lydokhac
+        If Trim(lydokhac) = vbNullString Then
+            lydokhac = "''"
+        Else
+            lydokhac = "'" & TAX_Utilities_Svr_New.Convert(CStr(lydokhac), UNICODE, TCVN) & "'"
+        End If
+
+        DANHAN = "''"
+
+        If clsDAO.Connected = False Then
+            clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
+            clsDAO.Connect
+        End If
+
+        sSQLCol = "madtnt,kykkhai,matkhai,MATHUE,MaMuc,maTM,MAPP,ngnop,TTHTK,KYLBO,songaycn,sotiencn,tienhoan," & _
+            "lenhhoan,ngayhoan,HANNOP,cqt,songay,SOTIEN,lydokhac,DANHAN,LAN_QUET"
+
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & songaycn & "," & sotiencn & "," & tienhoan & "," & _
+            lenhhoan & "," & ngayhoan & "," & HANNOP & "," & cqt & "," & songay & "," & SOTIEN & "," & lydokhac & "," & DANHAN & "," & LAN_QUET
+
+        sSQL = "INSERT INTO TMP_ND" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+
+        bln = clsDAO.ExecuteDLL(sSQL)
+
+    End With
 
     InsertHDR_KHBS = vbNullString
     
-'    clsDAO.Disconnect
+    clsDAO.Disconnect
     
 End Function
 
