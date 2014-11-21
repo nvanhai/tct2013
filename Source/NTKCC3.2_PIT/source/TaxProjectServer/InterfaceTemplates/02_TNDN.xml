@@ -17,14 +17,14 @@
 			<Cell CellID="V_49" Value="" MinValue="0" MaxValue="9999999999" HelpContexID="01_01_V_10"/>
 			<Cell CellID="E_48" Value=""/>
 			<Cell CellID="M_48" Value="" MaxLen="100" HelpContexID="01_01_M_14"/>
-			<Cell CellID="V_42" Value=""/>			
-			<Cell CellID="H_30" Value=""/>			
+			<Cell CellID="V_42" Value=""/>
+			<Cell CellID="H_30" Value=""/>
 			<Cell CellID="F_34" Value=""/>
 			<Cell CellID="F_38" Value=""/>
 			<Cell CellID="N_38" Value=""/>
 			<Cell CellID="V_38" Value=""/>
 			<Cell CellID="H_40" Value=""/>
-			<Cell CellID="N_40" Value=""/>			
+			<Cell CellID="N_40" Value=""/>
 		</Cells>
 	</Section>
 	<Section Dynamic="0" MaxRows="0">
@@ -34,52 +34,42 @@
 	</Section>	
 	<Section Dynamic="0" MaxRows="0">
 		<Cells>
-			<Cell CellID="V_55"   Value="  "  MCT="  "/> 	  	 
-  	       <Cell CellID="V_56"   Value="  "  MCT="  "/> 	  	 	 
-  	       <Cell CellID="V_57"   Value="  "  MCT="  "/> 	  	 
-  	       <Cell CellID="V_58"   Value="  "  MCT="  "/> 	  	 
-  	       <Cell CellID="V_59"   Value="  "  MCT="  "/> 	  		 
-  	       <Cell CellID="V_60"   Value="  "  MCT="  "/> 	  	
-  	       <Cell CellID="V_61"   Value="  "  MCT="  "/> 	   
-  	       <Cell CellID="V_62"   Value="  "  MCT="  "/> 	  	 
-  	       <Cell CellID="V_63"   Value="  "  MCT="  "/> 	  		 
-  	       <Cell CellID="V_64"   Value="  "  MCT="  "/> 	  	
-  	       <Cell CellID="V_65"   Value="  "  MCT="  "/> 	  	
-  	       <Cell CellID="V_66"   Value="  "  MCT="  "/> 	  		 
-  	       <Cell CellID="V_67"   Value="  "  MCT="  "/> 	  	 
-  	       <Cell CellID="V_68"   Value="  "  MCT="  "/> 	  	 
-  	       <Cell CellID="V_69"   Value="  "  MCT="  "/> 	  		 
-  	       <Cell CellID="V_71"   Value="  "  MCT="  "/> 	  		 
-  	       <Cell CellID="V_72"   Value="  "  MCT="  "/> 	  	
-  	       <Cell CellID="V_73"   Value="  "  MCT="  "/> 	  	 
-  	       <Cell CellID="V_74"   Value="  "  MCT="  "/> 	  	 
-  	       <Cell CellID="V_75"   Value="  "  MCT="  "/> 	  		 
+			<Cell CellID="V_55"   Value=""  MCT="25"/>
+  	       <Cell CellID="V_56"   Value=""  MCT="26"/>
+  	       <Cell CellID="V_57"   Value=""  MCT="27"/>
+  	       <Cell CellID="V_58"   Value=""  MCT="28"/>
+  	       <Cell CellID="V_59"   Value=""  MCT="29"/>
+  	       <Cell CellID="V_60"   Value=""  MCT="30"/>
+  	       <Cell CellID="V_61"   Value=""  MCT="31"/>
+  	       <Cell CellID="V_62"   Value=""  MCT="32"/>
+  	       <Cell CellID="V_63"   Value=""  MCT="33"/>
+  	       <Cell CellID="V_66"   Value=""  MCT="34"/>
+  	       <Cell CellID="V_67"   Value=""  MCT="35"/>
 		</Cells>
 	</Section>
 	<Section Dynamic="0" MaxRows="0">
 		<Cells>			
-			<Cell CellID="P_49"   Value="  "  MCT="  "/> 	  		 
-			<Cell CellID="Q_49"   Value="  "  MCT="  "/> 			
-		   <Cell CellID="K_20"   Value="  "  MCT="  "/> 	  		 
-  	       <Cell CellID="R_22"   Value="  "  MCT="  "/> 
-		   <Cell CellID="E_24"   Value="  "  MCT="  "/> 	  		 
-  	       <Cell CellID="K_26"   Value="  "  MCT="  "/> 	  	 	 
-  	       <Cell CellID="N_26"   Value="  "  MCT="  "/> 	  		 
-  	       <Cell CellID="Q_28"   Value="  "  MCT="  "/>
+			<Cell CellID="P_49"   Value=""/>
+			<Cell CellID="Q_49"   Value=""/>
+		   <Cell CellID="K_20"   Value=""  MCT="46"/>
+  	       <Cell CellID="R_22"   Value=""  MCT="47"/>
+		   <Cell CellID="E_24"   Value=""  MCT="48"/>
+  	       <Cell CellID="K_26"   Value=""  MCT="49"/>
+  	       <Cell CellID="N_26"   Value=""  MCT="50"/>
+  	       <Cell CellID="Q_28"   Value=""  MCT="51"/>
 		</Cells>
-	</Section>
+	</Section>	
 	<Section Dynamic="0" MaxRows="0">
 		<Cells>
-		   	<Cell CellID="G_78"  Value="  "  MCT="  "/> 	  		 
-  	       <Cell CellID="G_80"   Value="  "  MCT="  "/> 	  	 	 
-  	       <Cell CellID="T_78"   Value="  "  MCT="  "/> 	  		 
-  	       <Cell CellID="T_80"   Value="  "  MCT="  "/>   		   	        		
-		   <Cell CellID="M_49"   Value="  "  MCT="  "/> 	  		 
-  	       <Cell CellID="O_49"   Value="  "  MCT="  "/> 	  	 	 
-  	       <Cell CellID="M_50"   Value="  "  MCT="  "/> 
-		   <Cell CellID="S_49"   Value="  "  MCT="  "/>
-		   <Cell CellID="E_47"   Value="" MCT="  "/>
-		   <Cell CellID="H_7"   Value="" MCT="  "/>
+		   	<Cell CellID="G_78"   Value=""/>
+			<Cell CellID="G_80"   Value=""/>
+  	       <Cell CellID="T_78"   Value=""/>  	       
+  	       <Cell CellID="T_80"   Value=""/>
+		   <Cell CellID="M_49"   Value=""/>
+  	       <Cell CellID="O_49"   Value=""/>
+  	       <Cell CellID="M_50"   Value=""/>
+			<Cell CellID="E_47"   Value=""/>
+		   <Cell CellID="H_7"   Value=""/>
 		</Cells>
 	</Section>
 </Sections>
