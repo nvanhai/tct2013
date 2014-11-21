@@ -679,7 +679,8 @@ Public Function TKTT() As Boolean
    End If
    sSQL = "SELECT MADTNT, NGNOP FROM TMP_QTTN" & Right(sKyKeKhai, 4) & _
         " WHERE MADTNT = " & "'" & strMST & "'" & _
-        " AND LOAITK='02/TAIN'"
+        " AND NAMQT =" & TAX_Utilities_Svr_New.Year & _
+        " AND LOAITK='02/TAIN' AND TUKY ='" & strTuKy & "' AND DENKY ='" & strDenKy & "'"
     
    Set rs = clsDAO.Execute(sSQL)
    If Not rs Is Nothing Then
