@@ -17,8 +17,8 @@
 			<Cell CellID="C_11A" Value="257###010208a###Bạch kim (10%)###Kg###10###0###1###1553###2625"/>
 			<Cell CellID="C_12" Value="411###010204###Bạc, thiếc###Kg###10###0###1###1554###2625"/>
 			<Cell CellID="C_12A" Value="258###010209a###Bạc (10%)###Kg###10###0###1###1554###2625"/>
-			<Cell CellID="C_13" Value="412###010205###Thiếc###Kg###10###0###1###1554###2625"/>
-			<Cell CellID="C_13A" Value="259###010210a###Thiếc (10%)###Kg###10###0###1###1554###2625"/>
+			<Cell CellID="C_13" Value="412###010205###Thiếc###Kg###10###0###1###1553###2625"/>
+			<Cell CellID="C_13A" Value="259###010210a###Thiếc (10%)###Kg###10###0###1###1553###2625"/>
 			<Cell CellID="C_14" Value="413###010206###Vôn-phờ-ram (wolfram), ăng-ti-moan (antimoan)###Kg###18###0###1###1553###2625"/>
 			<Cell CellID="C_14A" Value="260###010211a###Vôn-phờ-ram (wolfram), ăng-ti-moan (antimoan) (10%)###Kg###10###0###1###1553###2625"/>
 			<Cell CellID="C_15" Value="414###010207###Chì, kẽm###Kg###10###0###1###1553###2625"/>
@@ -76,8 +76,8 @@
 			<Cell CellID="C_45" Value="291###0406a###A-dít, rô-đô-lít (rodolite), py-rốp (pyrope), bê-rin (berin), sờ-pi-nen (spinen), tô-paz (topaz) (15%)###M3###15###0###1###1554###2625"/>
 			<Cell CellID="C_49" Value="448###0404###Thạch anh tinh thể màu tím xanh, vàng lục, da cam; cờ-ri-ô-lít (cryolite); ô-pan (opan) quý màu trắng, đỏ lửa; phen-sờ-phát (fenspat); birusa; nê-phờ-rít (nefrite)###M3###15###0###1###1554###2625"/>
 			<Cell CellID="C_46A" Value="292###0407a###Thạch anh tinh thể màu tím xanh, vàng lục, da cam; cờ-ri-ô-lít (cryolite); ô-pan (opan) quý màu trắng, đỏ lửa; phen-sờ-phát (fenspat); birusa; nê-phờ-rít (nefrite) (15%)###M3###15###0###1###1554###2625"/>
-			<Cell CellID="C_50" Value="449###0405###Khoáng sản không kim loại khác###M3###5###0###1###1554###2625"/>
-			<Cell CellID="C_47A" Value="293###0404a###Khoáng sản không kim loại khác (5%)###M3###5###0###1###1554###2625"/>
+			<Cell CellID="C_50" Value="449###0405###Khoáng sản không kim loại khác###M3###5###0###1###1555###2625"/>
+			<Cell CellID="C_47A" Value="293###0404a###Khoáng sản không kim loại khác (5%)###M3###5###0###1###1555###2625"/>
 			<Cell CellID="C_53" Value="452###070101###Gỗ nhóm I###M3###35###0###1###1557###2625"/>
 			<Cell CellID="C_74A" Value="320###070101a###Gỗ nhóm I (35%)###M3###35###0###1###1557###2625"/>
 			<Cell CellID="C_54" Value="453###070102###Gỗ nhóm II###M3###30###0###1###1557###2625"/>
@@ -118,42 +118,42 @@
 			<Cell CellID="C_98" Value="344###09030202a###Sử dụng nước dưới đất phục vụ sản xuất (3%)###M3###3###0###1###1599###2625"/>
 			<Cell CellID="C_101A" Value="347###09040101a###Sử dụng nước mặt khai thác dùng cho hoạt động dịch vụ, sản xuất công nghiệp, xây dựng, khai khoáng (3%)###M3###3###0###1###1599###2625"/>
 			<Cell CellID="C_102" Value="348###09040102a###Sử dụng nước dưới đất dùng cho hoạt động dịch vụ, sản xuất công nghiệp, xây dựng, khai khoáng (6%)###M3###6###0###1###1599###2625"/>
-			<Cell CellID="C_80" Value="479###050101###Sản lượng đến 20.000 thùng/ngày###Tấn###7###0###1###1551###2625"/>
-			<Cell CellID="C_50A" Value="296###050101a###Đến 20.000 thùng/ngày (7%)###Tấn###7###0###1###1551###2625"/>
-			<Cell CellID="C_81" Value="480###050102###Sản lượng trên 20.000 thùng đến 50.000 thùng/ngày###Tấn###9###0###1###1551###2625"/>
-			<Cell CellID="C_51" Value="297###050102a###Trên 20.000 thùng đến 50.000 thùng/ngày (9%)###Tấn###9###0###1###1551###2625"/>
-			<Cell CellID="C_82" Value="481###050103###Sản lượng trên 50.000 thùng đến 75.000 thùng/ngày###Tấn###11###0###1###1551###2625"/>
-			<Cell CellID="C_52" Value="298###050103a###Trên 50.000 thùng đến 75.000 thùng/ngày (11%)###Tấn###11###0###1###1551###2625"/>
-			<Cell CellID="C_83" Value="482###050104###Sản lượng trên 75.000 thùng đến 100.000 thùng/ngày###Tấn###13###0###1###1551###2625"/>
-			<Cell CellID="C_53A" Value="299###050104a###Trên 75.000 thùng đến 100.000 thùng/ngày (13%)###Tấn###13###0###1###1551###2625"/>
-			<Cell CellID="C_84" Value="483###050105###Sản lượng trên 100.000 thùng đến 150.000 thùng/ngày###Tấn###18###0###1###1551###2625"/>
-			<Cell CellID="C_54A" Value="300###050105a###Trên 100.000 thùng đến 150.000 thùng/ngày (18%)###Tấn###18###0###1###1551###2625"/>
-			<Cell CellID="C_85" Value="484###050106###Sản lượng trên 150.000 thùng/ngày###Tấn###23###0###1###1551###2625"/>
-			<Cell CellID="C_55A" Value="301###050106a###Trên 150.000 thùng/ngày (23%)###Tấn###23###0###1###1551###2625"/>
-			<Cell CellID="C_87" Value="486###050201###Sản lượng đến 20.000 thùng/ngày (đối với Dự án khác)###Tấn###10###0###1###1551###2625"/>
-			<Cell CellID="C_57" Value="303###050201a###Đến 20.000 thùng/ngày đối với DA khác (10%)###Tấn###10###0###1###1551###2625"/>
-			<Cell CellID="C_88" Value="487###050202###Sản lượng trên 20.000 thùng đến 50.000 thùng/ngày (đối với Dự án khác)###Tấn###12###0###1###1551###2625"/>
-			<Cell CellID="C_58A" Value="304###050202a###Trên 20.000 thùng đến 50.000 thùng/ngày đối với DA khác (12%)###Tấn###12###0###1###1551###2625"/>
-			<Cell CellID="C_89" Value="488###050203###Sản lượng trên 50.000 thùng đến 75.000 thùng/ngày (đối với Dự án khác)###Tấn###14###0###1###1551###2625"/>
-			<Cell CellID="C_59A" Value="305###050203a###Trên 50.000 thùng đến 75.000 thùng/ngày đối với DA khác (14%)###Tấn###14###0###1###1551###2625"/>
-			<Cell CellID="C_90" Value="489###050204###Sản lượng trên 75.000 thùng đến 100.000 thùng/ngày (đối với Dự án khác)###Tấn###19###0###1###1551###2625"/>
-			<Cell CellID="C_60A" Value="306###050204a###Trên 75.000 thùng đến 100.000 thùng/ngày đối với DA khác (19%)###Tấn###19###0###1###1551###2625"/>
-			<Cell CellID="C_91" Value="490###050205###Sản lượng trên 100.000 thùng đến 150.000 (đối với Dự án khác)###Tấn###24###0###1###1551###2625"/>
-			<Cell CellID="C_61" Value="307###050205a###Trên 100.000 thùng đến 150.000 thùng/ngày đối với DA khác (24%)###Tấn###24###0###1###1551###2625"/>
-			<Cell CellID="C_92" Value="491###050206###Sản lượng trên 150.000 thùng/ngày (đối với Dự án khác)###Tấn###29###0###1###1551###2625"/>
-			<Cell CellID="C_62A" Value="308###050206a###Trên 150.000 thùng/ngày đối với DA khác (29%)###Tấn###29###0###1###1551###2625"/>
-			<Cell CellID="C_95" Value="494###060101###Sản lượng đến 5 triệu m3/ngày###M3###1###0###1###1551###2625"/>
-			<Cell CellID="C_65" Value="311###060101a###Đến 5 triệu m3/ngày đối với DAKKĐT (3%)###M3###1###0###1###1551###2625"/>
-			<Cell CellID="C_96" Value="495###060102###Sản lượng trên 5 triệu m3 đến 10 triệu m3/ngày###M3###3###0###1###1551###2625"/>
-			<Cell CellID="C_66A" Value="312###060102a###Trên 5 triệu m3 đến 10 triệu m3/ngày đối với DAKKĐT (3%)###M3###3###0###1###1551###2625"/>
-			<Cell CellID="C_97" Value="496###060103###Sản lượng trên 10 triệu m3/ngày###M3###6###0###1###1551###2625"/>
-			<Cell CellID="C_67A" Value="313###060103a###Trên 10 triệu m3/ngày đối với DAKKĐT (6%)###M3###6###0###1###1551###2625"/>
-			<Cell CellID="C_99" Value="498###060201###Sản lượng đến 5 triệu m3/ngày (đối với Dự án khác)###M3###2###0###1###1551###2625"/>
-			<Cell CellID="C_69A" Value="315###060201a###Đến 5 triệu m3/ngày đối với DA khác (2%)###M3###2###0###1###1551###2625"/>
-			<Cell CellID="C_100" Value="499###060202###Sản lượng trên 5 triệu m3 đến 10 triệu m3/ngày (đối với Dự án khác)###M3###5###0###1###1551###2625"/>
-			<Cell CellID="C_70A" Value="316###060202a###Trên 5 triệu m3 đến 10 triệu m3/ngày đối với DA khác (5%)###M3###5###0###1###1551###2625"/>
-			<Cell CellID="C_101" Value="500###060203###Sản lượng trên 10 triệu m3/ngày (đối với Dự án khác)###M3###10###0###1###1551###2625"/>
-			<Cell CellID="C_71" Value="317###060203a###Trên 10 triệu m3/ngày đối với DA khác (10%)###M3###10###0###1###1551###2625"/>
+			<Cell CellID="C_80" Value="479###050101###Sản lượng đến 20.000 thùng/ngày###Tấn###7###0###1###1551###2624"/>
+			<Cell CellID="C_50A" Value="296###050101a###Đến 20.000 thùng/ngày (7%)###Tấn###7###0###1###1551###2624"/>
+			<Cell CellID="C_81" Value="480###050102###Sản lượng trên 20.000 thùng đến 50.000 thùng/ngày###Tấn###9###0###1###1551###2624"/>
+			<Cell CellID="C_51" Value="297###050102a###Trên 20.000 thùng đến 50.000 thùng/ngày (9%)###Tấn###9###0###1###1551###2624"/>
+			<Cell CellID="C_82" Value="481###050103###Sản lượng trên 50.000 thùng đến 75.000 thùng/ngày###Tấn###11###0###1###1551###2624"/>
+			<Cell CellID="C_52" Value="298###050103a###Trên 50.000 thùng đến 75.000 thùng/ngày (11%)###Tấn###11###0###1###1551###2624"/>
+			<Cell CellID="C_83" Value="482###050104###Sản lượng trên 75.000 thùng đến 100.000 thùng/ngày###Tấn###13###0###1###1551###2624"/>
+			<Cell CellID="C_53A" Value="299###050104a###Trên 75.000 thùng đến 100.000 thùng/ngày (13%)###Tấn###13###0###1###1551###2624"/>
+			<Cell CellID="C_84" Value="483###050105###Sản lượng trên 100.000 thùng đến 150.000 thùng/ngày###Tấn###18###0###1###1551###2624"/>
+			<Cell CellID="C_54A" Value="300###050105a###Trên 100.000 thùng đến 150.000 thùng/ngày (18%)###Tấn###18###0###1###1551###2624"/>
+			<Cell CellID="C_85" Value="484###050106###Sản lượng trên 150.000 thùng/ngày###Tấn###23###0###1###1551###2624"/>
+			<Cell CellID="C_55A" Value="301###050106a###Trên 150.000 thùng/ngày (23%)###Tấn###23###0###1###1551###2624"/>
+			<Cell CellID="C_87" Value="486###050201###Sản lượng đến 20.000 thùng/ngày (đối với Dự án khác)###Tấn###10###0###1###1551###2624"/>
+			<Cell CellID="C_57" Value="303###050201a###Đến 20.000 thùng/ngày đối với DA khác (10%)###Tấn###10###0###1###1551###2624"/>
+			<Cell CellID="C_88" Value="487###050202###Sản lượng trên 20.000 thùng đến 50.000 thùng/ngày (đối với Dự án khác)###Tấn###12###0###1###1551###2624"/>
+			<Cell CellID="C_58A" Value="304###050202a###Trên 20.000 thùng đến 50.000 thùng/ngày đối với DA khác (12%)###Tấn###12###0###1###1551###2624"/>
+			<Cell CellID="C_89" Value="488###050203###Sản lượng trên 50.000 thùng đến 75.000 thùng/ngày (đối với Dự án khác)###Tấn###14###0###1###1551###2624"/>
+			<Cell CellID="C_59A" Value="305###050203a###Trên 50.000 thùng đến 75.000 thùng/ngày đối với DA khác (14%)###Tấn###14###0###1###1551###2624"/>
+			<Cell CellID="C_90" Value="489###050204###Sản lượng trên 75.000 thùng đến 100.000 thùng/ngày (đối với Dự án khác)###Tấn###19###0###1###1551###2624"/>
+			<Cell CellID="C_60A" Value="306###050204a###Trên 75.000 thùng đến 100.000 thùng/ngày đối với DA khác (19%)###Tấn###19###0###1###1551###2624"/>
+			<Cell CellID="C_91" Value="490###050205###Sản lượng trên 100.000 thùng đến 150.000 (đối với Dự án khác)###Tấn###24###0###1###1551###2624"/>
+			<Cell CellID="C_61" Value="307###050205a###Trên 100.000 thùng đến 150.000 thùng/ngày đối với DA khác (24%)###Tấn###24###0###1###1551###2624"/>
+			<Cell CellID="C_92" Value="491###050206###Sản lượng trên 150.000 thùng/ngày (đối với Dự án khác)###Tấn###29###0###1###1551###2624"/>
+			<Cell CellID="C_62A" Value="308###050206a###Trên 150.000 thùng/ngày đối với DA khác (29%)###Tấn###29###0###1###1551###2624"/>
+			<Cell CellID="C_95" Value="494###060101###Sản lượng đến 5 triệu m3/ngày###M3###1###0###1###1551###2624"/>
+			<Cell CellID="C_65" Value="311###060101a###Đến 5 triệu m3/ngày đối với DAKKĐT (3%)###M3###1###0###1###1551###2624"/>
+			<Cell CellID="C_96" Value="495###060102###Sản lượng trên 5 triệu m3 đến 10 triệu m3/ngày###M3###3###0###1###1551###2624"/>
+			<Cell CellID="C_66A" Value="312###060102a###Trên 5 triệu m3 đến 10 triệu m3/ngày đối với DAKKĐT (3%)###M3###3###0###1###1551###2624"/>
+			<Cell CellID="C_97" Value="496###060103###Sản lượng trên 10 triệu m3/ngày###M3###6###0###1###1551###2624"/>
+			<Cell CellID="C_67A" Value="313###060103a###Trên 10 triệu m3/ngày đối với DAKKĐT (6%)###M3###6###0###1###1551###2624"/>
+			<Cell CellID="C_99" Value="498###060201###Sản lượng đến 5 triệu m3/ngày (đối với Dự án khác)###M3###2###0###1###1551###2624"/>
+			<Cell CellID="C_69A" Value="315###060201a###Đến 5 triệu m3/ngày đối với DA khác (2%)###M3###2###0###1###1551###2624"/>
+			<Cell CellID="C_100" Value="499###060202###Sản lượng trên 5 triệu m3 đến 10 triệu m3/ngày (đối với Dự án khác)###M3###5###0###1###1551###2624"/>
+			<Cell CellID="C_70A" Value="316###060202a###Trên 5 triệu m3 đến 10 triệu m3/ngày đối với DA khác (5%)###M3###5###0###1###1551###2624"/>
+			<Cell CellID="C_101" Value="500###060203###Sản lượng trên 10 triệu m3/ngày (đối với Dự án khác)###M3###10###0###1###1551###2624"/>
+			<Cell CellID="C_71" Value="317###060203a###Trên 10 triệu m3/ngày đối với DA khác (10%)###M3###10###0###1###1551###2624"/>
 			<Cell CellID="C_103" Value="502###1001###Yến sào thiên nhiên###Kg###20###0###1###1599###2625"/>
 			<Cell CellID="C_107" Value="353###1001a###Yến sào thiên nhiên (20%)###Kg###20###0###1###1599###2625"/>
 			<Cell CellID="C_105" Value="504###1101###Tài nguyên khác###Kg###10###0###1###1599###2625"/>

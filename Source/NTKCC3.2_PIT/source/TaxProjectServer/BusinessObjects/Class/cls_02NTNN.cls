@@ -544,15 +544,15 @@ Public Function InsertDTL() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
 
-        'trang thai to khai
-        Dim TTHTK1 As Variant
-        .GetText .ColLetterToNumber("M"), 6, TTHTK1
-
-        If Trim(TTHTK1) = vbNullString Then
-            TTHTK = "'" & 3 & "'"
-        Else
-            TTHTK = "'" & 1 & "'"
-        End If
+'        'trang thai to khai
+'        Dim TTHTK1 As Variant
+'        .GetText .ColLetterToNumber("M"), 6, TTHTK1
+'
+'        If Trim(TTHTK1) = vbNullString Then
+'            TTHTK = "'" & 3 & "'"
+'        Else
+'            TTHTK = "'" & 1 & "'"
+'        End If
         
         tt = "' '"
         DANHAN = "' '"
@@ -1060,7 +1060,7 @@ Public Function TKTT() As Boolean
         clsDAO.Connect
     End If
      
-    sSQL = "SELECT MADTNT, NGNOP FROM TMP_QTNT" & Right(sKyKeKhai, 4) & " WHERE MADTNT = " & "'" & strMST & "'" & " AND KyTTTu = CTOD('" & TAX_Utilities_Svr_New.FirstDay & "') AND KyTTDen = CTOD('" & TAX_Utilities_Svr_New.LastDay & "') AND LOAITK = '02/NTNN'"
+    sSQL = "SELECT MADTNT, NGNOP FROM TMP_QTNT" & Right(sKyKeKhai, 4) & " WHERE MADTNT = '" & strMST & "' AND KyTTTu = CTOD('" & Format(TAX_Utilities_Svr_New.FirstDay, "mm/dd/yyyy") & "') AND KyTTDen = CTOD('" & Format(TAX_Utilities_Svr_New.LastDay, "mm/dd/yyyy") & "') AND LOAITK = '02/NTNN'"
     
     Set rs = clsDAO.Execute(sSQL)
 
@@ -1091,7 +1091,7 @@ Public Function InsertDTL_PL1() As String
    
     Dim madtnt    As Variant
 
-    Dim TTHTK     As Variant
+    'Dim TTHTK     As Variant
     Dim ngnop     As Variant
     Dim LanBS     As Variant
     Dim STT       As Variant
@@ -1131,15 +1131,15 @@ Public Function InsertDTL_PL1() As String
             madtnt = "'" & madtnt & "'"
         End If
         
-        'trang thai to khai
-        Dim TTHTK1 As Variant
-        .GetText .ColLetterToNumber("M"), 6, TTHTK1
-
-        If Trim(TTHTK1) = vbNullString Then
-            TTHTK = "'" & 3 & "'"
-        Else
-            TTHTK = "'" & 1 & "'"
-        End If
+'        'trang thai to khai
+'        Dim TTHTK1 As Variant
+'        .GetText .ColLetterToNumber("M"), 6, TTHTK1
+'
+'        If Trim(TTHTK1) = vbNullString Then
+'            TTHTK = "'" & 3 & "'"
+'        Else
+'            TTHTK = "'" & 1 & "'"
+'        End If
 
         ' ngay nop
         .GetText .ColLetterToNumber("E"), 32, ngnop
@@ -1246,14 +1246,14 @@ Public Function InsertDTL_PL1() As String
             .GetText .ColLetterToNumber("AS"), .Row, THOIHAN
 
             If Trim(THOIHAN) = vbNullString Then
-                THOIHAN = "CTOD('')"
+                THOIHAN = "''"
             Else
-                THOIHAN = ToDate(Trim(THOIHAN), DDMMYYYY)
-                THOIHAN = "CTOD('" & Format(THOIHAN, "mm/dd/yyyy") & "')"
+                
+                THOIHAN = "'" & THOIHAN & "'"
             End If
             
             ' gia tri hop dong nuoc ngoai
-             .GetText .ColLetterToNumber("AY"), .Row, GTHDNT
+            .GetText .ColLetterToNumber("AY"), .Row, GTHDNT
 
             If Trim(GTHDNT) = vbNullString Then
                 GTHDNT = "'0'"

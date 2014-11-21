@@ -561,16 +561,16 @@ Public Function InsertDTL() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
 
-        'trang thai to khai
-        Dim TTHTK1 As Variant
-        
-        .GetText .ColLetterToNumber("M"), 6, TTHTK1
-
-        If Trim(TTHTK1) = vbNullString Then
-            TTHTK = "'" & 2 & "'"
-        Else
-            TTHTK = "'" & 1 & "'"
-        End If
+'        'trang thai to khai
+'        Dim TTHTK1 As Variant
+'
+'        .GetText .ColLetterToNumber("M"), 6, TTHTK1
+'
+'        If Trim(TTHTK1) = vbNullString Then
+'            TTHTK = "'" & 2 & "'"
+'        Else
+'            TTHTK = "'" & 1 & "'"
+'        End If
         
         tt = "' '"
         DANHAN = "' '"
@@ -583,7 +583,7 @@ Public Function InsertDTL() As String
         
         Dim arrMaHieu() As Variant
                 
-        arrMaHieu() = Array("001", "002", "003", "004", "005", "006")
+        arrMaHieu() = Array("001", "002", "003", "004", "005", "006", "007")
       
         i = 0
 
@@ -622,7 +622,7 @@ Public Function InsertDTL() As String
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
             i = i + 1
-        Loop Until .Row = 48
+        Loop Until .Row = 49
           
     End With
 
@@ -1260,7 +1260,7 @@ Public Function TKTT() As Boolean
         clsDAO.Connect
     End If
          
-    sSQL = "SELECT MADTNT, NGNOP FROM TMP_QTNT" & Right(sKyKeKhai, 4) & " WHERE MADTNT = " & "'" & strMST & "'" & " AND KyTTTu = " & KyTTTu & " AND KyTTDen = " & KyTTDen & "AND LOAITK = '04/NTNN'"
+    sSQL = "SELECT MADTNT, NGNOP FROM TMP_QTNT" & Right(sKyKeKhai, 4) & " WHERE MADTNT = '" & strMST & "' AND KyTTTu = CTOD('" & Format(TAX_Utilities_Svr_New.FirstDay, "mm/dd/yyyy") & "') AND KyTTDen = CTOD('" & Format(TAX_Utilities_Svr_New.LastDay, "mm/dd/yyyy") & "') AND LOAITK = '04/NTNN'"
     
     Set rs = clsDAO.Execute(sSQL)
 

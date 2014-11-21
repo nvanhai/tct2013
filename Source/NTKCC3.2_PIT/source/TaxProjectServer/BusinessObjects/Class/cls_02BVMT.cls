@@ -1912,7 +1912,7 @@ Public Function TinhSoLanQuet() As Integer
 
             sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM TMP_QTMT" & Right(sKyKeKhai, 4) & _
         " WHERE  MADTNT = " & "'" & strMST & "'" & _
-        " AND NamQT = " & namQT & " AND LoaiTK='02/BVMT'" ' AND (TTHTK = '1' OR TTHTK = '3')"
+        " AND NamQT = " & TAX_Utilities_Svr_New.Year & " AND LoaiTK='02/BVMT' AND TUKY ='" & strTuKy & "' AND DENKY ='" & strDenKy & "'"
             Set rs = clsDAO.Execute(sSQL)
             If Not rs Is Nothing Then
                  LAN_QUET1 = rs.Fields("LAN_QUET")
