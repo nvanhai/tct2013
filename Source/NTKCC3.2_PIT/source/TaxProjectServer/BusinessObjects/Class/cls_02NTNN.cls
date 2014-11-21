@@ -1459,10 +1459,10 @@ Public Function InsertDTL_PL2() As String
             .GetText .ColLetterToNumber("AR"), .Row, THOIHAN
 
             If Trim(THOIHAN) = vbNullString Then
-                THOIHAN = "CTOD('')"
+                THOIHAN = "''"
             Else
-                THOIHAN = ToDate(Trim(THOIHAN), DDMMYYYY)
-                THOIHAN = "CTOD('" & Format(THOIHAN, "mm/dd/yyyy") & "')"
+                
+                THOIHAN = "'" & THOIHAN & "'"
             End If
             
             ' gia tri hop dong nuoc ngoai
