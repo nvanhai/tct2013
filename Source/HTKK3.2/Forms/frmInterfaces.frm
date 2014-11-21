@@ -12553,7 +12553,7 @@ Private Sub ResetData()
     'vttoan: them ID (86,87,88) cua cac to (01_BVMT,02BVMT,01_PHXD)
     'dntai : them ID 77 to 02_TAIN
     idtkhai = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
-    If (idtkhai = "01" Or idtkhai = "02" Or idtkhai = "04" Or idtkhai = "11" Or idtkhai = "12" Or idtkhai = "06" Or idtkhai = "05" Or idtkhai = "70" Or idtkhai = "90" Or idtkhai = "72" Or idtkhai = "77" Or idtkhai = "75" Or idtkhai = "74" Or idtkhai = "23" Or idtkhai = "88" Or idtkhai = "26" Or idtkhai = "96" Or idtkhai = "94" Or idtkhai = "98" Or idtkhai = "99" Or idtkhai = "92") Then
+    If (idtkhai = "01" Or idtkhai = "02" Or idtkhai = "04" Or idtkhai = "11" Or idtkhai = "12" Or idtkhai = "06" Or idtkhai = "05" Or idtkhai = "70" Or idtkhai = "90" Or idtkhai = "72" Or idtkhai = "77" Or idtkhai = "75" Or idtkhai = "74" Or idtkhai = "23" Or idtkhai = "88" Or idtkhai = "26" Or idtkhai = "96" Or idtkhai = "94" Or idtkhai = "98" Or idtkhai = "99" Or idtkhai = "92" Or idtkhai = "89") Then
         For Each xmlNodeReset In TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             fpSpread1.sheet = mCurrentSheet
             ParserCellID fpSpread1, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
@@ -12565,6 +12565,8 @@ Private Sub ResetData()
 
                 GoTo nextClear1
             ElseIf (idtkhai = "11" Or idtkhai = "12") And mCurrentSheet = 2 And lRow < 35 Then
+                GoTo nextClear1
+            ElseIf (idtkhai = "89" Or idtkhai = "92") And mCurrentSheet = 1 And lRow < 47 Then
                 GoTo nextClear1
             Else
                 Select Case fpSpread1.CellType

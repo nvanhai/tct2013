@@ -771,6 +771,7 @@ End Sub
     Dim soThangQT As Integer, soThangKG As Integer
     Dim CT22      As Variant, ct26 As Variant
     
+    Dim firstRowGroup2 As Long
     
     With fps
         .EventEnabled(EventAllEvents) = False
@@ -824,6 +825,82 @@ End Sub
                 UpdateCell fps, .Col, .Row, .Text
             End If
             
+            ' Truong tu thang den thang group 1
+            .Row = 25
+            Do
+                .Col = .ColLetterToNumber("B")
+                .Row = .Row + 1
+            Loop Until .Text = "aa"
+            firstRowGroup2 = .Row + 7
+            ' group 1
+            If Col = .ColLetterToNumber("Q") And Row >= 25 And Row < firstRowGroup2 Then
+                .GetText Col, Row, varTemp
+                If varTemp <> "" And varTemp <> "../...." Then
+                    If Format_mmyyyy(CStr(varTemp)) <> "" Then
+                        .SetText Col, Row, Format_mmyyyy(CStr(varTemp))
+                    Else
+                        '.SetFocus
+                        .SetActiveCell Col, Row
+                    End If
+                Else
+                 .SetText Col, Row, ""
+                End If
+                .Col = Col
+                .Row = Row
+                UpdateCell fps, Col, Row, .Text
+            End If
+            
+            If Col = .ColLetterToNumber("S") And Row >= 25 And Row < firstRowGroup2 Then
+                .GetText Col, Row, varTemp
+                If varTemp <> "" And varTemp <> "../...." Then
+                    If Format_mmyyyy(CStr(varTemp)) <> "" Then
+                        .SetText Col, Row, Format_mmyyyy(CStr(varTemp))
+                    Else
+                        '.SetFocus
+                        .SetActiveCell Col, Row
+                    End If
+                Else
+                 .SetText Col, Row, ""
+                End If
+                .Col = Col
+                .Row = Row
+                UpdateCell fps, Col, Row, .Text
+            End If
+            
+            ' group 2
+            If Col = .ColLetterToNumber("T") And Row >= firstRowGroup2 Then
+                .GetText Col, Row, varTemp
+                If varTemp <> "" And varTemp <> "../...." Then
+                    If Format_mmyyyy(CStr(varTemp)) <> "" Then
+                        .SetText Col, Row, Format_mmyyyy(CStr(varTemp))
+                    Else
+                        '.SetFocus
+                        .SetActiveCell Col, Row
+                    End If
+                Else
+                 .SetText Col, Row, ""
+                End If
+                .Col = Col
+                .Row = Row
+                UpdateCell fps, Col, Row, .Text
+            End If
+            
+            If Col = .ColLetterToNumber("U") And Row >= firstRowGroup2 Then
+                .GetText Col, Row, varTemp
+                If varTemp <> "" And varTemp <> "../...." Then
+                    If Format_mmyyyy(CStr(varTemp)) <> "" Then
+                        .SetText Col, Row, Format_mmyyyy(CStr(varTemp))
+                    Else
+                        '.SetFocus
+                        .SetActiveCell Col, Row
+                    End If
+                Else
+                 .SetText Col, Row, ""
+                End If
+                .Col = Col
+                .Row = Row
+                UpdateCell fps, Col, Row, .Text
+            End If
         End If
         
         .EventEnabled(EventAllEvents) = True
