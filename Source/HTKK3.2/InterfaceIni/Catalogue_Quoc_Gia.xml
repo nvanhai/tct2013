@@ -2,7 +2,7 @@
 	<Section Dynamic="0" MaxRows="0">
 		<Items>
 			<Item Value ="01###Việt Nam"/>
-			<Item Value ="00###Khác"/>			
+			<Item Value ="02###Khác"/>			
 		</Items>
 	</Section>	
 </Sections>

@@ -550,7 +550,7 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                             If GetAttribute(xmlNode, "Value") <> "" Then
                                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                                 
-                                If arrDanhsach(1) = varIDTinh Or arrDanhsach(1) = "000" Then
+                                If arrDanhsach(1) = varIDTinh Or arrDanhsach(1) = "999" Then
                                     tenHuyen = tenHuyen + arrDanhsach(3) + Chr$(9)
                                     maHuyen = maHuyen + arrDanhsach(2) + Chr$(9)
                                 End If
@@ -657,7 +657,7 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                             If GetAttribute(xmlNode, "Value") <> "" Then
                                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                                 
-                                If arrDanhsach(2) = varIDHuyen Or arrDanhsach(2) = "00000" Then
+                                If arrDanhsach(2) = varIDHuyen Or arrDanhsach(2) = "99999" Then
                                     tenXa = tenXa + arrDanhsach(4) + Chr$(9)
                                     maXa = maXa + arrDanhsach(3) + Chr$(9)
                                 End If
@@ -1635,7 +1635,7 @@ Private Sub checkSheet4()
                         .BackColor = mErrorColor
                         iFlagEmpty = 1
                     Else
-                        If Trim$(vMaTinh) = "000" Then
+                        If Trim$(vMaTinh) = "999" Then
                             .Col = .ColLetterToNumber("K")
                             .CellNote = vErrDuLieuKhongHL
                             .BackColor = mErrorColor
@@ -1650,7 +1650,7 @@ Private Sub checkSheet4()
                         .BackColor = mErrorColor
                         iFlagEmpty = 1
                     Else
-                        If Trim$(vMaHuyen) = "00000" Then
+                        If Trim$(vMaHuyen) = "99999" Then
                             .Col = .ColLetterToNumber("M")
                             .CellNote = vErrDuLieuKhongHL
                             .BackColor = mErrorColor
@@ -1665,7 +1665,7 @@ Private Sub checkSheet4()
                         .BackColor = mErrorColor
                         iFlagEmpty = 1
                     Else
-                        If Trim$(vMaXa) = "0000000" Then
+                        If Trim$(vMaXa) = "9999999" Then
                             .Col = .ColLetterToNumber("O")
                             .CellNote = vErrDuLieuKhongHL
                             .BackColor = mErrorColor
@@ -2235,10 +2235,10 @@ Private Sub tinhGiamTruNPT(ByVal Col As Long, ByVal Row As Long, Optional ByVal 
                 .GetText .Col, .Row, tuThang
                 .Col = .ColLetterToNumber(colDenThangBK)
                 .GetText .Col, .Row, denThang
-                If tuThang <> vbNullString And denThang <> vbNullString And tuThang <> "../...." And denThang <> "../...." Then
+                If tuThang <> vbNullString And denThang <> vbNullString And tuThang <> "../...." And denThang <> "../...." And Format_mmyyyy(CStr(denThang)) <> "" And Format_mmyyyy(CStr(tuThang)) <> "" Then
                     .Col = .ColLetterToNumber(colSoThangBK)
                     .Row = Row
-                    .Text = DateDiff("M", Format(CStr(tuThang), "mm/yyyy"), Format(CStr(denThang), "mm/yyyy")) + 1
+                    .Text = DateDiff("M", Format(Format_mmyyyy(CStr(tuThang)), "mm/yyyy"), Format(Format_mmyyyy(CStr(denThang)), "mm/yyyy")) + 1
                     
                     .GetText .ColLetterToNumber(colSoThangBK), Row, soThang
                     
@@ -2310,7 +2310,7 @@ Private Sub tinhGiamTruNPT_Load(ByVal Row As Long)
             .GetText .Col, .Row, denThang
             
             
-            If tuThang <> vbNullString And denThang <> vbNullString And tuThang <> "../...." And denThang <> "../...." Then
+            If tuThang <> vbNullString And denThang <> vbNullString And tuThang <> "../...." And denThang <> "../...." And Format_mmyyyy(CStr(denThang)) <> "" And Format_mmyyyy(CStr(tuThang)) <> "" Then
                 .Col = .ColLetterToNumber(colSoThangBK)
                 .Row = Row
                 .Text = DateDiff("M", Format(CStr(tuThang), "mm/yyyy"), Format(CStr(denThang), "mm/yyyy")) + 1

@@ -710,7 +710,7 @@
 			<Item Value ="0###823###82311###Huyện Đầm Dơi" />
 			<Item Value ="0###823###82312###Huyện Năm Căn" />
 			<Item Value ="0###823###82313###Huyện Ngọc Hiển" />
-			<Item Value ="1###000###00000###Khác" />
+			<Item Value ="1###999###99999###Khác" />
 		</Items>
 	</Section>	
 </Sections>

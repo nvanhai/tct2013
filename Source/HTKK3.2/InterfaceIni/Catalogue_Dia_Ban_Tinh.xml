@@ -64,7 +64,7 @@
 			<Item Value ="0###606###Đắk Nông" />
 			<Item Value ="0###816###Hậu Giang" />
 			<Item Value ="0###302###Lai Châu" />
-			<Item Value ="1###000###Khác" />
+			<Item Value ="1###999###Khác" />
 		</Items>
 	</Section>	
 </Sections>
