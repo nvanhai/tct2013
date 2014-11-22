@@ -4678,30 +4678,37 @@ Private Sub CheckDynamicSheet3()
                 
                 ' kiem tra ngay sinh khong duoc lon hon ngay hien tai
                 If Trim(vNgaySinhNPT) <> "" Then
-                    'If DateDiff("D", ToDate(CStr(vNgaySinhNPT), "dd/mm/yyyy"), Date) > 0 Then
-                    vNgaySinhNPT = DateSerial(CInt(Mid$(vNgaySinhNPT, 7, 4)), CInt(Mid$(vNgaySinhNPT, 4, 2)), CInt(Mid$(vNgaySinhNPT, 1, 2)))
-                    If vNgaySinhNPT > Date Then
-                        .Col = .ColLetterToNumber("G")
-                        .BackColor = mErrorColor
-                        .CellNote = vErrNgaySinhNPT
-                        iFlagNgaySinhNPT = 1
-                    Else
-                        If Trim(vTuThang) <> "" Then
-                            If DateDiff("M", vNgaySinhNPT, Format(vTuThang, "mm/yyyy")) < 0 Then
-                                .Col = .ColLetterToNumber("G")
-                                .BackColor = mErrorColor
-                                .CellNote = vErrNgaySinhNPT1
-                                iFlagNgaySinhNPT = 1
+                    If Format_ddmmyyyy1(CStr(vNgaySinhNPT)) <> "" Then
+                        'If DateDiff("D", ToDate(CStr(vNgaySinhNPT), "dd/mm/yyyy"), Date) > 0 Then
+                        vNgaySinhNPT = DateSerial(CInt(Mid$(vNgaySinhNPT, 7, 4)), CInt(Mid$(vNgaySinhNPT, 4, 2)), CInt(Mid$(vNgaySinhNPT, 1, 2)))
+                        If vNgaySinhNPT > Date Then
+                            .Col = .ColLetterToNumber("G")
+                            .BackColor = mErrorColor
+                            .CellNote = vErrNgaySinhNPT
+                            iFlagNgaySinhNPT = 1
+                        Else
+                            If Trim(vTuThang) <> "" Then
+                                If DateDiff("M", vNgaySinhNPT, Format(vTuThang, "mm/yyyy")) < 0 Then
+                                    .Col = .ColLetterToNumber("G")
+                                    .BackColor = mErrorColor
+                                    .CellNote = vErrNgaySinhNPT1
+                                    iFlagNgaySinhNPT = 1
+                                Else
+                                    .Col = .ColLetterToNumber("G")
+                                    .BackColor = mNonErrorColor
+                                    .CellNote = ""
+                                End If
                             Else
                                 .Col = .ColLetterToNumber("G")
                                 .BackColor = mNonErrorColor
                                 .CellNote = ""
                             End If
-                        Else
-                            .Col = .ColLetterToNumber("G")
-                            .BackColor = mNonErrorColor
-                            .CellNote = ""
                         End If
+                    Else
+                        .Col = .ColLetterToNumber("G")
+                        .BackColor = mErrorColor
+                        .CellNote = vErrDuLieuKhongHL
+                        iFlagNgaySinhNPT = 1
                     End If
                 Else
                     .Col = .ColLetterToNumber("G")

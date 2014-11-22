@@ -212,6 +212,47 @@ e:
     Format_ddmmyyyy = ""
 End Function
 
+
+Public Function Format_ddmmyyyy1(str As String) As String
+    Dim dd As String, mm As String, yyyy As String, dDate As Date
+    
+  If str <> "" Or Len(str) > 0 Then
+    On Error GoTo e
+    dd = Left(str, InStr(str, "/") - 1)
+    mm = Mid(str, 4, 2)
+    yyyy = Right("0000" & str, 4)
+ 
+    
+        If Val(dd) >= 1 And Val(dd) <= 31 Then
+            dd = Format(dd, "0#")
+        Else
+            GoTo e
+        End If
+        
+        If Val(mm) >= 1 And Val(mm) <= 12 Then
+            mm = Format(mm, "0#")
+        Else
+            GoTo e
+        End If
+        
+        If Val(yyyy) >= 0 And Val(yyyy) <= 9999 Then
+            
+            If Val(yyyy) >= 0 And Val(yyyy) <= 999 Then yyyy = CStr(2000 + Val(yyyy))
+            If Val(yyyy) < 1900 Then GoTo e
+            yyyy = Format(yyyy, "####")
+        Else
+            GoTo e
+        End If
+        
+        dDate = Format(mm & "/" & dd & "/" & yyyy, "mm/dd/yyyy")
+        'Format_ddmm = dd & "/" & mm
+        Format_ddmmyyyy1 = dd & "/" & mm & "/" & yyyy
+    End If
+    Exit Function
+e:
+    Format_ddmmyyyy1 = ""
+End Function
+
 'format a day/month/year string as dd/mm/yyyy
 'if not able to format, out: vbnullstring
 'if able, out a dd/mm string
