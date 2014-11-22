@@ -136,7 +136,7 @@ Begin VB.Form frmTraCuu
       End
    End
    Begin VB.Frame Frame1 
-      Caption         =   "Chän kú kª khai"
+      Caption         =   "Chän kú tÝnh thuÕ"
       BeginProperty Font 
          Name            =   "DS Sans Serif"
          Size            =   8.25

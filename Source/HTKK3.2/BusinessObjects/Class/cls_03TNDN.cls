@@ -76,6 +76,7 @@ Public StrSolanBosung As String
 Public FlagThaydoi As String
 Public strLoaiNNKD As String
 
+Private mTempColor As Variant
 
 Public hanNopTKTNDN As String
 
@@ -186,6 +187,10 @@ With fps
     .TypeComboBoxList = strCboLyDoAn
    
     
+    
+    .Row = 46
+    .Col = .ColLetterToNumber("O")
+    mTempColor = .BackColor
     
     ' PL 03-3A
     FormatTextNumber fps, sheetPl03_3A_TNDN, .ColLetterToNumber("N"), 38
@@ -1474,6 +1479,9 @@ Private Sub CheckDynamicError()
     Dim vCt5 As Variant
     Dim vColor As Variant
     Dim strCheck As String
+    
+    Dim ctB14 As Variant
+    
 
     iFlagCheckLienKet = 0
     iFlagCheckCSHachToan = 0
@@ -1500,6 +1508,9 @@ Private Sub CheckDynamicError()
         .Sheet = sheetTK03_TNDN
         .GetText .ColLetterToNumber("D"), 10, vCheckCSHachToan
         .GetText .ColLetterToNumber("D"), 12, vCheckLienKet
+        
+        .GetText .ColLetterToNumber("O"), 46, ctB14
+        
         
         If vCheckCSHachToan = "1" Or UCase$(vCheckCSHachToan) = "X" Then
             If TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_8_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0" Or Strloaitk = "TKBS" Then
@@ -2235,8 +2246,8 @@ Private Sub CheckDynamicError()
             .SetText .ColLetterToNumber("B"), 90, IIf(flagSoThue = 1, "0", "1")
             
             ' check PL 03-5
-            Dim vErrCt10, vErrCt11a, vErrCt10_11a, vErrCt12 As Variant
-            Dim iFlagCt10, iFlagCt11a, iFlagCt10_11a, iFlagCt12 As Integer
+            Dim vErrCt10, vErrCt11a, vErrCt12, vErrCt9  As Variant
+            Dim iFlagCt10, iFlagCt11a, iFlagCt9, iFlagCt12 As Integer
             Dim ct9, ct10, ct11a, ct11, ct12 As Variant
             Dim ctTongCot5 As Variant
             Dim blCheck_S2B As Boolean
@@ -2245,19 +2256,19 @@ Private Sub CheckDynamicError()
             .GetText .ColLetterToNumber("E"), 93, vErrCt10
             .GetText .ColLetterToNumber("E"), 94, vErrCt12
             .GetText .ColLetterToNumber("E"), 95, vErrCt11a
-            .GetText .ColLetterToNumber("E"), 96, vErrCt10_11a
+            .GetText .ColLetterToNumber("E"), 96, vErrCt9
             
             .Sheet = sheetPl03_5_TNDN
             blCheck_S12 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
             blCheck_S2B = IIf(TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_2B_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
             If blCheck_S12 = True Then
+                .GetText .ColLetterToNumber("F"), 30, ctTongCot5
+                .GetText .ColLetterToNumber("E"), 29, ct9
+                .GetText .ColLetterToNumber("E"), 30, ct10
+                .GetText .ColLetterToNumber("E"), 31, ct11
+                .GetText .ColLetterToNumber("E"), 32, ct11a
+                .GetText .ColLetterToNumber("E"), 33, ct12
                 If blCheck_S2B = True Then
-                    .GetText .ColLetterToNumber("F"), 30, ctTongCot5
-                    .GetText .ColLetterToNumber("E"), 29, ct9
-                    .GetText .ColLetterToNumber("E"), 30, ct10
-                    .GetText .ColLetterToNumber("E"), 31, ct11
-                    .GetText .ColLetterToNumber("E"), 32, ct11a
-                    .GetText .ColLetterToNumber("E"), 33, ct12
                     ' check ct10
                     If Val(ct9) > 0 Then
                         If Val(ct10) > Val(ctTongCot5) Then
@@ -2298,31 +2309,35 @@ Private Sub CheckDynamicError()
                         .CellNote = ""
                         .BackColor = mNonErrorColor
                     End If
-                    'check ct10+ct11a = tong cot 5 03-2B/TNDN
-                    If Val(ct10) + Val(ct11a) <> Val(ctTongCot5) Then
-                        .Row = 30
-                        .Col = .ColLetterToNumber("E")
-                        .CellNote = vErrCt10_11a
-                        .BackColor = mErrorColor
-                                                
-                        .Row = 32
-                        .Col = .ColLetterToNumber("E")
-                        .CellNote = vErrCt10_11a
-                        .BackColor = mErrorColor
-                        iFlagCt10_11a = 1
-                    Else
-                        .Row = 30
-                        .Col = .ColLetterToNumber("E")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                        
-                        .Row = 32
-                        .Col = .ColLetterToNumber("E")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                    End If
                     
-                    ' kiem tra chi tieu 12
+                    
+                    
+'                    'check ct10+ct11a = tong cot 5 03-2B/TNDN
+'                    If Val(ct10) + Val(ct11a) <> Val(ctTongCot5) Then
+'                        .Row = 30
+'                        .Col = .ColLetterToNumber("E")
+'                        .CellNote = vErrCt10_11a
+'                        .BackColor = mErrorColor
+'
+'                        .Row = 32
+'                        .Col = .ColLetterToNumber("E")
+'                        .CellNote = vErrCt10_11a
+'                        .BackColor = mErrorColor
+'                        iFlagCt10_11a = 1
+'                    Else
+'                        .Row = 30
+'                        .Col = .ColLetterToNumber("E")
+'                        .CellNote = ""
+'                        .BackColor = mNonErrorColor
+'
+'                        .Row = 32
+'                        .Col = .ColLetterToNumber("E")
+'                        .CellNote = ""
+'                        .BackColor = mNonErrorColor
+'                    End If
+                    
+                End If
+                ' kiem tra chi tieu 12
                     If Val(ct11) >= 0 Then
                         If Val(ct12) <= Round(Val(ct11) * 10 / 100, 0) Then
                             .Row = 33
@@ -2342,14 +2357,25 @@ Private Sub CheckDynamicError()
                         .CellNote = ""
                         .BackColor = mNonErrorColor
                     End If
-                    
-                End If
+                ' Kiem tra B14 = chi tieu 09 tren PL 03-5
+                    If Val(ct9) <> Val(ctB14) Then
+                        .Row = 29
+                        .Col = .ColLetterToNumber("E")
+                        .CellNote = vErrCt9
+                        .BackColor = mErrorColor
+                        iFlagCt9 = 1
+                    Else
+                        .Row = 29
+                        .Col = .ColLetterToNumber("E")
+                        .CellNote = ""
+                        .BackColor = mTempColor
+                    End If
             End If
             .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 93, IIf(iFlagCt10 = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 94, IIf(iFlagCt12 = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 95, IIf(iFlagCt11a = 1, "0", "1")
-            .SetText .ColLetterToNumber("B"), 96, IIf(iFlagCt10_11a = 1, "0", "1")
+            .SetText .ColLetterToNumber("B"), 96, IIf(iFlagCt9 = 1, "0", "1")
             
         .EventEnabled(EventAllEvents) = True
     End With

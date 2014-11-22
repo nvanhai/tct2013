@@ -526,7 +526,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":0344
       UserResize      =   1
       Appearance      =   1
    End
@@ -725,7 +725,7 @@ Begin VB.Form frmPeriod
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
-      Caption         =   "Chän kú kª khai"
+      Caption         =   "Chän kú tÝnh thuÕ"
       BeginProperty Font 
          Name            =   "DS Sans Serif"
          Size            =   8.25
@@ -5390,7 +5390,7 @@ Private Sub SetupLayout01_TAIN_DK()
     lblNgayCuoi.Visible = False
     txtNgayCuoi.Visible = False
     
-    
+    SetControlCaption Me, "frmPeriod"
     strKHBS = "TKCT"
     strQuy = "TK_LANXB"
     
@@ -5478,6 +5478,7 @@ Private Sub SetupLayout02_TNDN_DK()
     txtMonth.Visible = False
     cmbQuy.Visible = False
         
+    SetControlCaption Me, "frmPeriod"
     strKHBS = "TKCT"
         
     Me.Top = (frmSystem.ScaleHeight - Me.ScaleHeight) / 2 - 400
@@ -7693,7 +7694,7 @@ Private Sub SetupLayoutNTNN()
 '
 '
 '
-'         SetControlCaption Me, "frmPeriod"
+         SetControlCaption Me, "frmPeriod"
 '
 '         cmbQuy.Visible = False
 '         txtNgayDau.Visible = False
@@ -7840,6 +7841,8 @@ Private Sub SetupLayoutTTDB()
     cmbQuy.Visible = False
     txtNgayDau.Visible = False
     txtNgayCuoi.Visible = False
+    
+    SetControlCaption Me, "frmPeriod"
         
     strKHBS = "TKCT"
         
@@ -8051,6 +8054,7 @@ Private Sub SetupLayout01TBVMT()
     txtNgayDau.Visible = False
     txtNgayCuoi.Visible = False
         
+    SetControlCaption Me, "frmPeriod"
     strKHBS = "TKCT"
         
     Me.Top = (frmSystem.ScaleHeight - Me.ScaleHeight) / 2
