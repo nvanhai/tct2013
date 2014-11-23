@@ -620,29 +620,50 @@ With fps
             End If
             
             
-            If Val(ct01) - Val(ct03) - Val(ct04) - Val(ct05) - Val(ct06) - Val(ct07) - Val(ct08) - Val(ct10) < 0 Then
+            If Val(ct01) - Val(ct03) - Val(ct04) - Val(ct05) - Val(ct06) - Val(ct07) - Val(ct08) - Val(ct10) <= 0 Then
                 ' chi tieu 11a
                 .Row = 32
                 .Col = .ColLetterToNumber("E")
                 .Lock = False
-                ' chi tieu 12
-                .Row = 33
-                .Col = .ColLetterToNumber("E")
-                .Lock = True
-                .Text = "0"
+'                ' chi tieu 12
+'                .Row = 33
+'                .Col = .ColLetterToNumber("E")
+'                .Lock = True
+'                .Text = "0"
             Else
                 ' chi tieu 11a
                 .Row = 32
                 .Col = .ColLetterToNumber("E")
                 .Lock = True
                 .Text = "0"
+'                ' chi tieu 12
+'                .Row = 33
+'                .Col = .ColLetterToNumber("E")
+'                .Lock = False
+            End If
+               
+            ' Kiem tra chi tieu 12
+            If Val(ct01) - Val(ct03) - Val(ct04) - Val(ct05) - Val(ct06) - Val(ct07) - Val(ct08) - Val(ct10) < 0 Then
+'                ' chi tieu 11a
+'                .Row = 32
+'                .Col = .ColLetterToNumber("E")
+'                .Lock = False
+                ' chi tieu 12
+                .Row = 33
+                .Col = .ColLetterToNumber("E")
+                .Lock = True
+                .Text = "0"
+            Else
+'                ' chi tieu 11a
+'                .Row = 32
+'                .Col = .ColLetterToNumber("E")
+'                .Lock = True
+'                .Text = "0"
                 ' chi tieu 12
                 .Row = 33
                 .Col = .ColLetterToNumber("E")
                 .Lock = False
             End If
-               
-            
             
                
         End If
