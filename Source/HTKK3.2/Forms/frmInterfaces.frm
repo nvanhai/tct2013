@@ -1432,6 +1432,7 @@ Dim varMenuId As String
 
 Dim lRow2s As Long
 Dim incSession As Integer
+Dim stt As Variant
 
 On Error GoTo ErrHandle
 
@@ -1500,7 +1501,8 @@ ProgressBar1.value = fpSpread2.Row
     fpSpread1.sheet = mCurrentSheet
     fpSpread2.Row = fpSpread2.Row + 1
     value = fpSpread2.value
-    If (Mid(value, 1, 1) = "T" Or Trim(value) = "" Or Trim(value) = vbNullString) Then
+    fpSpread2.GetText fpSpread2.ColLetterToNumber("B"), fpSpread2.Row, stt
+    If (Trim(value) = "" Or Trim(value) = vbNullString Or IsNumeric(stt) = False) Then
         count = count + 1
         inc = True
         ProgressBar1.value = fpSpread2.MaxRows
@@ -8311,7 +8313,7 @@ Private Sub convertData16TH()
             .ActiveSheet = .sheet
             
                         
-            fpSpread2.GetText .ColLetterToNumber("J"), 6, varTemp2
+            fpSpread2.GetText .ColLetterToNumber("G"), 6, varTemp2
             fpSpread2.GetText .ColLetterToNumber("D"), 10, varTemp3
             fpSpread1.GetText .ColLetterToNumber("D"), 10, varTemp4
             
