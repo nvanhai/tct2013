@@ -1652,8 +1652,9 @@ Private Sub DataDM(ByVal Id As String, _
                     DVT = arrDanhsach(3)
                     strThueSuat = arrDanhsach(4)
                     blnSuaThueSuat = IIf(arrDanhsach(5) = "1", True, False)
+                    
                     maTMTN = arrDanhsach(7)
-'                    maTMMT = arrDanhsach(8)
+                   
                     Exit Sub
                 End If
             End If

@@ -1995,7 +1995,11 @@ Private Sub DataDM(ByVal Id As String, _
                     strThueSuat = arrDanhsach(4)
                     blnSuaThueSuat = IIf(arrDanhsach(5) = "1", True, False)
                     'maTMTN = arrDanhsach(7)
-                    maTMMT = arrDanhsach(8)
+                    If TAX_Utilities_Svr_New.Year = "2014" Then
+                        maTMMT = arrDanhsach(8)
+                    Else
+                        maTMMT = arrDanhsach(7)
+                    End If
                     Exit Sub
                 End If
             End If

@@ -475,11 +475,11 @@ Public Function Prepared3() As Boolean
             .Text = strNgayHD_DLT
         End If
         
-        'so thu tu to khai
-        .Col = .ColLetterToNumber(STT_X)
-        .Row = STT_Y
-        strSoTTTKhai = Trim(TinhSoLanQuet)
-        .Text = Trim(TAX_Utilities_Svr_New.Convert(strSoTTTKhai, TCVN, UNICODE))
+'        'so thu tu to khai
+'        .Col = .ColLetterToNumber(STT_X)
+'        .Row = STT_Y
+'        strSoTTTKhai = Trim(TinhSoLanQuet)
+'        .Text = Trim(TAX_Utilities_Svr_New.Convert(strSoTTTKhai, TCVN, UNICODE))
         
         ' lan quet
         .Col = .ColLetterToNumber("M")
