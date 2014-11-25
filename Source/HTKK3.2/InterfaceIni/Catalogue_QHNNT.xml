@@ -2,8 +2,8 @@
 	<Section Dynamic="0" MaxRows="0">
 		<Items>
 			<Item value="01###Con"/>
-			<Item value="02###Cha/mẹ"/>
-			<Item value="03###Vợ/chồng"/>			
+			<Item value="02###Vợ/chồng"/>			
+			<Item value="03###Cha/mẹ"/>			
 			<Item value="04###Khác"/>
 		</Items>
 	</Section>	
