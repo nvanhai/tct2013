@@ -62,27 +62,19 @@ Public Sub Prepare2()
             ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
             .Col = .ColLetterToNumber("C")
             .Text = "0"
-            For j = 0 To 20
+            For j = 0 To 24
                 ' Tu cot Ho va ten cho den cot thue da khau tru (D -> L). Dung cac thong tin theo bang ke 05
                 .Col = 4 + j
                 'dhdang sua loi tong hop len cell bi sai do dau "."
                 'ngày 03-07-10
-                If .Col = .ColLetterToNumber("R") Then
-                    .Col = .ColLetterToNumber("AG")
+                If .Col = .ColLetterToNumber("T") Then
+                    .Col = .ColLetterToNumber("AJ")
                 End If
                 If .CellType = CellTypeNumber Then
                     .Text = Round(Val(arrData0509(i, j)), 0)
                 Else
                     .Text = arrData0509(i, j)
                 End If
-                
-'                If Trim(arrData0509(i, 1)) = "" Or Trim(arrData0509(i, 1)) = vbNullString Then
-'                    .Col = .ColLetterToNumber("C")
-'                    .Lock = True
-'                Else
-'                    .Col = .ColLetterToNumber("C")
-'                    .Lock = False
-'                End If
             Next
             ' Trong truong hop la dong cuoi cung trong mang thi ko Insert them row nao.
             If i <> totalRow Then
@@ -93,18 +85,18 @@ Public Sub Prepare2()
             End If
             ' Set cong thuc cho cac cot sau
             ' Thue phai nop
-            .Col = .ColLetterToNumber("V")
-            '.Formula = "AC" & .Row
-            .Formula = "AH" & .Row
-            ' Thue mien giam
-            .Col = .ColLetterToNumber("W")
-            .Formula = "AD" & .Row
-            ' Thue con phai nop
             .Col = .ColLetterToNumber("Y")
-            .Formula = "AE" & .Row
-            ' Con phai quyet toan thue
+            '.Formula = "AC" & .Row
+            .Formula = "AK" & .Row
+            ' Thue mien giam
             .Col = .ColLetterToNumber("Z")
-            .Formula = "AF" & .Row
+            .Formula = "AG" & .Row
+            ' Thue con phai nop
+            .Col = .ColLetterToNumber("AB")
+            .Formula = "AH" & .Row
+            ' Con phai quyet toan thue
+            .Col = .ColLetterToNumber("AC")
+            .Formula = "AI" & .Row
         Next
         'dhdang
         'button Lua Chon In
@@ -172,24 +164,24 @@ Private Sub prepareData5A()
     i = 0
     If fso.FileExists(strDataFileName) = False Then
         ReDim arrData5A(1, 18) As String
-        arrData5A(0, 0) = ""
-        arrData5A(0, 1) = ""
-        arrData5A(0, 2) = ""
-        arrData5A(0, 3) = "0"
-        arrData5A(0, 4) = "0"
-        arrData5A(0, 5) = "0"
-        arrData5A(0, 6) = "0"
-        arrData5A(0, 7) = "0"
-        arrData5A(0, 8) = "0"
-        arrData5A(0, 9) = "0"
-        arrData5A(0, 10) = ""
-        arrData5A(0, 11) = "0"
-        arrData5A(0, 12) = "0"
-        arrData5A(0, 13) = "0"
-        arrData5A(0, 14) = "0"
-        arrData5A(0, 15) = "0"
-        arrData5A(0, 16) = "0"
-        arrData5A(0, 17) = ""
+        arrData5A(0, 0) = ""   ' Ho va ten [07]
+        arrData5A(0, 1) = ""    ' MST [08]
+        arrData5A(0, 2) = ""    ' CMND [09]
+        arrData5A(0, 3) = "0"   ' ca nhan UQ [10]
+        arrData5A(0, 4) = "0"   ' Tong so TNCT [11]
+        arrData5A(0, 5) = "0"   ' Lam viec trong KKT [12]
+        arrData5A(0, 6) = "0"   ' Theo HD [13]
+        arrData5A(0, 7) = "0"   ' Tong so tien giam tru gia canh [14]
+        arrData5A(0, 8) = "0"   ' tu thien, khuyen hoc, nhan dao [15]
+        arrData5A(0, 9) = "0"   ' Bao hiem duoc tru [16]
+        arrData5A(0, 10) = "0"   ' Quy huu tri [17]
+        arrData5A(0, 11) = "0"  ' Thu nhap tinh thue [18]
+        arrData5A(0, 12) = "0"  ' So thue TNCN khau tru [19]
+        arrData5A(0, 13) = "0"  ' So thue TNCN duoc giam trong KKT [20]
+        arrData5A(0, 14) = "0"  ' Tong so thue phai nop [21]
+        arrData5A(0, 15) = "0"  ' So thue da nop thua  [22]
+        arrData5A(0, 16) = "0"  ' So thue con phai nop [23]
+        arrData5A(0, 17) = ""   ' dieu chinh bo sun
         Exit Sub
     End If
     If xmlDomData.Load(strDataFileName) Then
@@ -237,16 +229,16 @@ Private Sub prepareData5B()
     i = 0
     If fso.FileExists(strDataFileName) = False Then
         ReDim arrData5B(1, 10) As String
-        arrData5B(0, 0) = ""
-        arrData5B(0, 1) = ""
-        arrData5B(0, 2) = ""
-        arrData5B(0, 3) = "0"
-        arrData5B(0, 4) = "0"
-        arrData5B(0, 5) = "0"
-        arrData5B(0, 6) = "0"
-        arrData5B(0, 7) = "0"
-        arrData5B(0, 8) = "0"
-        arrData5B(0, 9) = ""
+        arrData5B(0, 0) = ""    '  Ho va ten
+        arrData5B(0, 1) = ""    '  MST
+        arrData5B(0, 2) = ""    ' CMND
+        arrData5B(0, 3) = "0"   ' Ca nhan khong cu tru
+        arrData5B(0, 4) = "0"   ' Tong so TNCT
+        arrData5B(0, 5) = "0"   ' TNCT duoc giam trong KKT
+        arrData5B(0, 6) = "0"   ' TNCT duoc giam theo HD
+        arrData5B(0, 7) = "0"   ' So thue TNCN da khau tru
+        arrData5B(0, 8) = "0"   ' So thue TNCN duoc giam lam trong KKT
+        arrData5B(0, 9) = ""    ' dieu chinh bo sung
         Exit Sub
     End If
     If xmlDomData.Load(strDataFileName) Then
@@ -305,80 +297,46 @@ Private Sub prepareData0509()
     ' arrData0509 la tong hop cac bang ke va phu luc tren co 19 phan tu
     totalRow5A_09 = totalRow5A
     ' Dinh nghia lai mang 0509 lay theo bang ke 5A
-    ReDim arrData0509(totalRow5A, 29) As String
+    ReDim arrData0509(totalRow5A, 27) As String
     For row5A = 0 To totalRow5A - 1
-        ' Cot 0 la cot Ho va ten
-        arrData0509(row5A, 0) = arrData5A(row5A, 0)
-        ' Cot 1 la cot Ma so thue
-        arrData0509(row5A, 1) = arrData5A(row5A, 1)
-        ' Cot 2 la cot So CMT/Ho chieu
-        arrData0509(row5A, 2) = arrData5A(row5A, 2)
-        ' Cot 3 uy quyen quyet toan thay
-        arrData0509(row5A, 3) = arrData5A(row5A, 3)
-        ' Cot 4 la Thu nhap chiu thue
-        arrData0509(row5A, 4) = arrData5A(row5A, 4)
-        ' Cot 5 la TNCN lam can cu giam tru theo KKT
-        arrData0509(row5A, 5) = arrData5A(row5A, 5)
-        ' Cot 6 la cot tong so tien giam tru theo HD
-        arrData0509(row5A, 6) = arrData5A(row5A, 6)
-        ' Cot 7 la cot tong giam tru gia canh
-        arrData0509(row5A, 7) = arrData5A(row5A, 7)
-        ' Cot 8 la cot tu thien , khuyen hoc
-        arrData0509(row5A, 8) = arrData5A(row5A, 8)
-        ' Cot 9 la bao hiem duoc tru
-        arrData0509(row5A, 9) = arrData5A(row5A, 9)
-        ' Cot 10 quy huu tri
-        arrData0509(row5A, 10) = arrData5A(row5A, 10)
-        ' cot 11 thu nhap tinh thue
-        arrData0509(row5A, 11) = arrData5A(row5A, 11)
-        ' cot 12 so thue duoc khau tru
-        arrData0509(row5A, 12) = arrData5A(row5A, 12)
-        ' cot 13 so thue duoc giam theo KKT
-        arrData0509(row5A, 13) = arrData5A(row5A, 13)
         
-        
-        ' Cot 14 la cot Thu nhap chiu thue
-        arrData0509(row5A, 14) = arrData5A(row5A, 4)
-        
-        
-        
-        ' Cot 21 la cot check co quyet toan tai CQCT ko?
-        arrData0509(row5A, 22) = arrData5A(row5A, 3)
-        ' Cot 22 la cot tong so thue phai nop tren bang ke 5A
-        arrData0509(row5A, 23) = arrData5A(row5A, 15)
-        ' Cot 23 la cot so thue da nop thua
-        arrData0509(row5A, 24) = arrData5A(row5A, 16)
-        ' Cot 24 la cot so thue con phai khau tru them
-        arrData0509(row5A, 25) = arrData5A(row5A, 17)
-                
+        arrData0509(row5A, 0) = arrData5A(row5A, 0) ' Ho va ten
+        arrData0509(row5A, 1) = arrData5A(row5A, 1) ' Ma so thue
+        arrData0509(row5A, 2) = arrData5A(row5A, 2) ' CMT/Ho chieu
+        arrData0509(row5A, 3) = arrData5A(row5A, 3) ' Uy quyen quyet toan thay
+        arrData0509(row5A, 4) = arrData5A(row5A, 4) ' Tong so Thu nhap chiu thue
+        arrData0509(row5A, 5) = arrData5A(row5A, 5) ' TNCT lam can cu giam tru theo KKT
+        arrData0509(row5A, 6) = arrData5A(row5A, 6) ' TNCN giam tru theo HD
+        arrData0509(row5A, 7) = arrData5A(row5A, 7) ' Tong giam tru gia canh
+        arrData0509(row5A, 8) = arrData5A(row5A, 8) ' Tu thien , khuyen hoc
+        arrData0509(row5A, 9) = arrData5A(row5A, 9) ' Bao hiem duoc tru
+        arrData0509(row5A, 10) = arrData5A(row5A, 10) ' Quy huu tri
+        arrData0509(row5A, 11) = arrData5A(row5A, 11) ' Thu nhap tinh thue
+        arrData0509(row5A, 12) = arrData5A(row5A, 12) ' So thue duoc khau tru
+        arrData0509(row5A, 13) = arrData5A(row5A, 13) ' So thue duoc giam theo KKT
+        arrData0509(row5A, 14) = arrData5A(row5A, 4) ' Thu nhap chiu thue
         ' Cot 11 la Giam tru cho ban than
         ' Neu nam 2009 thi giam tru 6 thang la 24.000.000 (Tuong duong voi 4.000.000/Thang) va tu nam 2010 la 12 thang tuong duong voi 48.000.000
         If TAX_Utilities_v1.Year = 2009 Then
-            arrData0509(row5A, 17) = "24000000"
-        ElseIf TAX_Utilities_v1.Year > 2009 Then
-            arrData0509(row5A, 17) = "48000000"
+            arrData0509(row5A, 15) = "24000000"
+        ElseIf TAX_Utilities_v1.Year > 2009 And TAX_Utilities_v1.Year <= 2013 Then
+            arrData0509(row5A, 15) = "48000000"
+        ElseIf TAX_Utilities_v1.Year > 2013 Then
+            arrData0509(row5A, 15) = "108000000"
         Else
-            arrData0509(row5A, 17) = "0"
+            arrData0509(row5A, 15) = "0"
         End If
-        
-        ' Cot 18 la giam tru gia canh
-        arrData0509(row5A, 18) = Val(arrData5A(row5A, 7))
-        ' Cot 19 la tu thien
-        arrData0509(row5A, 19) = arrData5A(row5A, 8)
-        ' Cot 20 la bao hiem bat buoc
-        arrData0509(row5A, 20) = arrData5A(row5A, 9)
-        
-        ' Cot 21 la huu tri
-        arrData0509(row5A, 21) = arrData5A(row5A, 10)
-        
-        ' Cot 16 la Thu nhap tinh thue la tong thu nhap chiu thue - giam tru ban than - giam tru nguoi phu thuoc - tu thien - bao hiem bat buoc
-        
-        arrData0509(row5A, 22) = arrData5A(row5A, 11)
-'        If Val(arrData0509(row5A, 15)) < 0 Then arrData0509(row5A, 15) = "0"
-        
-        ' Cot 17 la Thue phai nop la thu nhap tinh thue tinh theo bieu thue luy tien (Doi voi nam 2009 thi tinh 6 thang tu nam 2010 thi tinh du 12 thang)
-        ' arrData0509(row5A, 16) = tinh theo bieu thue luy tien cua arrData0509(row5A, 14)
-        arrData0509(row5A, 23) = "0"
+        arrData0509(row5A, 16) = Val(arrData5A(row5A, 7)) ' Giam tru gia canh
+        arrData0509(row5A, 17) = Val(arrData5A(row5A, 7)) ' Giam tru gia canh
+        arrData0509(row5A, 18) = arrData5A(row5A, 8) ' Tu thien
+        arrData0509(row5A, 19) = arrData5A(row5A, 9) ' Bao hiem bat buoc
+        arrData0509(row5A, 20) = arrData5A(row5A, 10) ' Quy huu tri
+        arrData0509(row5A, 21) = arrData5A(row5A, 10) ' Thu nhap tinh thue
+        arrData0509(row5A, 22) = arrData5A(row5A, 15) ' Thue phai nop
+        arrData0509(row5A, 23) = arrData5A(row5A, 3) ' Thue mien giam
+        arrData0509(row5A, 24) = arrData5A(row5A, 16) ' So thue da khau tru
+        arrData0509(row5A, 25) = arrData5A(row5A, 17) ' Thue con phai nop
+        arrData0509(row5A, 26) = arrData5A(row5A, 3) ' Check co quyet toan tai CQCT ko?
 '        Dim thuNhapTinhThueThang As Double, thuePhaiNopThang As Double
 '        Dim soThangTinhThue As Integer
 '        ' Neu la nam 2009 thi thu nhap tinh thue tren 6 thang
@@ -418,22 +376,22 @@ Private Sub prepareData0509()
 '            arrData0509(row5A, 17) = Round(Val(arrData0509(row5A, 16)) * (Val(arrData5A(row5A, 8)) / Val(arrData5A(row5A, 3))) * 0.5, 0)
 '        End If
 '
-        arrData0509(row5A, 24) = "0"
+        'arrData0509(row5A, 24) = "0"
         
         ' Cot 18 la so thue da khau tru la so thue da khau tru tren bang ke 5A
         '= So thue TNCN da khau tru[Tren 5A+ Tren 5B] - So thue nop thua + So thue con khau tru them
-        arrData0509(row5A, 25) = Val(arrData5A(row5A, 10))
+        'arrData0509(row5A, 25) = Val(arrData5A(row5A, 10))
 '        arrData0509(row5A, 18) = Val(arrData5A(row5A, 9)) - Val(arrData0509(row5A, 23)) + Val(arrData0509(row5A, 24))
         
         ' Cot 19 la so thue con phai nop
         ' arrData0509(row5A, 19) = Thue phai nop - Thue mien giam - Thue da khau tru
-        arrData0509(row5A, 26) = "0"
+        
 '        arrData0509(row5A, 19) = Round(Val(arrData0509(row5A, 16)) - Val(arrData0509(row5A, 17)) - Val(arrData0509(row5A, 18)), 0)
         
 '        If (Val(arrData0509(row5A, 19)) >= -1 And Val(arrData0509(row5A, 19)) <= 1) Then arrData0509(row5A, 19) = 0
         
         ' Cot 20 la co phai quyet toan thue hay khong?
-        arrData0509(row5A, 27) = ""
+        
 '        If Val(arrData0509(row5A, 19)) = 0 Then
 '            arrData0509(row5A, 20) = TAX_Utilities_v1.Convert("Kh«ng", TCVN, UNICODE)
 '        Else
@@ -472,10 +430,10 @@ Dim Y As Long
             If .ActiveSheet = 1 Then
                .Sheet = 1
                 
-                If Col = .ColLetterToNumber("D") And Row = 20 Then
+                If Col = .ColLetterToNumber("D") And Row = 18 Then
                     Y = Col
                             
-                    .Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("X"), 21 + totalRow5A_09, SortByRow, Y, so
+                    .Sort .ColLetterToNumber("D"), 22, .ColLetterToNumber("AK"), 21 + totalRow5A_09, SortByRow, Y, so
                     .Refresh
                     
                     ' Chieu sap xep
@@ -489,7 +447,7 @@ Dim Y As Long
                 If Col = .ColLetterToNumber("AC") And Row = 20 Then
                     Y = Col
                             
-                    .Sort .ColLetterToNumber("AC"), 22, .ColLetterToNumber("AC"), (21 + totalRow5A_09), SortByRow, Y, so
+                    .Sort .ColLetterToNumber("AC"), 22, .ColLetterToNumber("AK"), (21 + totalRow5A_09), SortByRow, Y, so
                     .Refresh
                     
                     ' Chieu sap xep
@@ -986,80 +944,101 @@ Private Sub updateData(ByVal Row As Long, ByVal rowData As Long)
         .Col = .ColLetterToNumber("E")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot F la tong thu nhap chiu thue cua nguoi quyet toan
+        ' Cot F so CMND
         .Col = .ColLetterToNumber("F")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot G la thu nhap luong cua nguoi quyet toan
+        ' Cot G la ca nhan uy quyen
         .Col = .ColLetterToNumber("G")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot H la cot thu nhap thuong cua nguoi quyet toan
+        ' Cot H la cot tong so thu nhap chiu thue
         .Col = .ColLetterToNumber("H")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot I la cot thu nhap khac cua nguoi quyet toan
+        ' Cot I la cot TNCT duoc giam trong KKT
         .Col = .ColLetterToNumber("I")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot J la tong so nguoi phu thuoc cua nguoi quyet toan
+        ' Cot J la TNCT duoc giam theo HD
         .Col = .ColLetterToNumber("J")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot K la cot tong so thang giam tru cua nguoi quyet toan
+        ' Cot K la cot tong so tien giam tru gia canh
         .Col = .ColLetterToNumber("K")
         UpdateCell fps, .Col, rowData, .value
         
-        'Cot L Thue da khau tru cua cua nguoi quyet toan
+        'Cot L Tu thien, khuyen hoc
         .Col = .ColLetterToNumber("L")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot M la cot thu nhap chiu thue cua nguoi quyet toan
+        ' Cot M la cot bao hiem duoc tru
         .Col = .ColLetterToNumber("M")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot N la cot giam tru cho ban than cua nguoi quyet toan
+        ' Cot N la cot quy huu tri tu nguyen
         .Col = .ColLetterToNumber("N")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot O la cot giam tru cho nguoi phu thuoc cua nguoi quyet toan
+        ' Cot O la cot thu nhap tinh thue
         .Col = .ColLetterToNumber("O")
         UpdateCell fps, .Col, rowData, .value
                 
-        ' Cot P la cot thu nhap tinh thue cua nguoi quyet toan
+        ' Cot P la cot so thue TNCN da khau tru
         .Col = .ColLetterToNumber("P")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot Q la cot thue phai nop cua nguoi quyet toan
+        ' Cot Q la cot so thue TNCN duoc giam trong KKT
         .Col = .ColLetterToNumber("Q")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot R la cot thue mien giam cua nguoi quyet toan
+        ' Cot R la cot thu nhap chiu thue
         .Col = .ColLetterToNumber("R")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot S la cot thu nhap khac cua nguoi quyet toan
+        ' Cot S la cot giam tru cho ban than
         .Col = .ColLetterToNumber("S")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot T la cot so thue da khau tru cua nguoi quyet toan
+        ' Cot T la cot so thue giam tru gia canh
         .Col = .ColLetterToNumber("T")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot T la cot so thue da khau tru cua nguoi quyet toan
+        ' Cot U la cot tu thien khuyen hoc
         .Col = .ColLetterToNumber("U")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot V la cot thu nhap do lam viec trong khu kinh te cua nguoi quyet toan
+        ' Cot V la bao hiem duoc tru
         .Col = .ColLetterToNumber("V")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot T la cot so thue da khau tru cua nguoi quyet toan
+        ' Cot W la cot quy huu tri
         .Col = .ColLetterToNumber("W")
         UpdateCell fps, .Col, rowData, .value
         
-        ' Cot T la cot so thue da khau tru cua nguoi quyet toan
+        ' Cot X la cot thu nhap tinh thue
         .Col = .ColLetterToNumber("X")
+        UpdateCell fps, .Col, rowData, .value
+        
+        
+        ' Cot Y la cot thue phai nop
+        .Col = .ColLetterToNumber("Y")
+        UpdateCell fps, .Col, rowData, .value
+        
+        ' Cot Z la cot thue mien giam
+        .Col = .ColLetterToNumber("Z")
+        UpdateCell fps, .Col, rowData, .value
+        
+        ' Cot AA la cot so thue da khau tru
+        .Col = .ColLetterToNumber("AA")
+        UpdateCell fps, .Col, rowData, .value
+        
+        ' Cot AB la cot so thue phai nop
+        .Col = .ColLetterToNumber("AB")
+        UpdateCell fps, .Col, rowData, .value
+        
+        ' Cot AC la cot phai quyet toan
+        .Col = .ColLetterToNumber("AC")
         UpdateCell fps, .Col, rowData, .value
     End With
       

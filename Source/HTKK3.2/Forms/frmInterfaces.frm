@@ -6947,7 +6947,11 @@ Private Function validateTkHeader(ByVal xmlDuLieuImport As MSXML.DOMDocument) As
                     validateTkHeader = False
                     Exit Function
                 End If
-            
+            ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "80" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "82" Then
+                If tuNgay <> TAX_Utilities_v1.FirstDay Or denNgay <> TAX_Utilities_v1.LastDay Then
+                    validateTkHeader = False
+                    Exit Function
+                End If
             Else
                 If Val(strKykk(UBound(strKykk))) <> TAX_Utilities_v1.Year Or tuThang <> TAX_Utilities_v1.FirstDay Or denThang <> TAX_Utilities_v1.LastDay Then
                     validateTkHeader = False
@@ -10072,19 +10076,19 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
             End If
         End If
         'dhdang edit dieu khien cell C_19 to 05_09
-        If Row = 19 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "45" Then
+        If Row = 18 And Col = .ColLetterToNumber("C") And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "45" Then
             If .CellType = CellTypeButton Then
                 'Dim strFileName As String
                 options = frmOp_Pr.getOptions
                 Dim i As Integer
                 If options = 1 Then
-                    For i = 0 To .MaxRows - 26
+                    For i = 0 To .MaxRows - 28
                             .Row = i + 22
                             .Col = .ColLetterToNumber("C")
                             .Text = "1"
                     Next
                 ElseIf options = 2 Then
-                            For i = 0 To .MaxRows - 26
+                            For i = 0 To .MaxRows - 28
                                     .Row = i + 22
                                     ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
                                     .Col = .ColLetterToNumber("C")
@@ -10097,8 +10101,8 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                             If star = "" Or endd = "" Then
                               DisplayMessage "0169", msOKOnly, miCriticalError
                             Else
-                                    If star > 0 And endd < (.MaxRows - 25) Then
-                                        For i = 0 To .MaxRows - 26
+                                    If star > 0 And endd < (.MaxRows - 27) Then
+                                        For i = 0 To .MaxRows - 28
                                         .Row = i + 22
                                         ' Set gia tri ban dau cua hop checkbox la 0, tuc la ko chon de in
                                         .Col = .ColLetterToNumber("C")
