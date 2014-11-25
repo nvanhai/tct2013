@@ -519,84 +519,10 @@ Public Sub Prepare2()
         End If
         ' End set gia han
         
-         ' set lock CQT phan bo
-        .Sheet = sheetPl03_9_TNDN
-        Dim vChon As Variant
-        If .SheetVisible = True Then
-        .Row = 42
-         Do
-                .GetText .ColLetterToNumber("G"), .Row, vChon
-                If vChon = 1 Then
-                    .Col = .ColLetterToNumber("P")
-                    .Lock = True
-                End If
-                
-                .Row = .Row + 1
-                .Col = .ColLetterToNumber("B")
-            Loop Until .Text = "aa"
-         End If
-     .EventEnabled(EventAllEvents) = True
-    .ActiveSheet = 1
-    .Sheet = 1
-    End With
-    
-End Sub
-
-'inner class event: Change
-Public Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
-Dim varTemp As Variant
-Dim strId As Variant
-Dim iCol As Long, iRow As Long
-Dim cCol As Long, cRow As Long
-Dim cValue As Variant, temp As Variant
-Dim cValueG As Variant
-Dim cTagF As String
-Dim cValueF As Variant
-Dim i As Integer
-Dim xmlNodeH15 As MSXML.IXMLDOMNode
-
-Dim chiTieuC1, chiTieuC2, chiTieuC3a, chiTieuC3b, chiTieuC4 As Variant
-
-Dim ct01, ct03, ct04, ct05, ct06, ct07, ct08, ct10 As Variant
-
-Dim intIndexCombo As Integer
-Dim strMa As Variant
-
-Dim vTuNgay As Variant
-Dim vDenNgay As Variant
-Dim arrTemp() As String
-Dim dTuNgay As Date
-Dim dDenNgay As Date
-Dim soNgay As Long
-
-With fps
-    If .ActiveSheet = sheetTK03_TNDN Then
-        .Sheet = sheetTK03_TNDN
-        mCurrentSheet = sheetTK03_TNDN
-        soNgay = 0
-        If Col = .ColLetterToNumber("N") And Row = 95 Then
-            .GetText .ColLetterToNumber("J"), 95, vTuNgay
-            .GetText .ColLetterToNumber("N"), 95, vDenNgay
-            If Trim(vDenNgay) <> "" And Trim(vDenNgay) <> "../../...." Then
-                arrTemp = Split(vTuNgay, "/")
-                dTuNgay = DateSerial(Int(arrTemp(2)), Int(arrTemp(1)), Int(arrTemp(0)))
-                arrTemp = Split(vDenNgay, "/")
-                dDenNgay = DateSerial(Int(arrTemp(2)), Int(arrTemp(1)), Int(arrTemp(0)))
-                soNgay = DateDiff("D", dTuNgay, dDenNgay) + 1
-            End If
-            If soNgay >= 0 Then
-                .Col = .ColLetterToNumber("E")
-                .Row = 95
-                .Text = soNgay
-                UpdateCell fps, .Col, .Row, .Text
-            End If
-        End If
-    End If
-
-    If .ActiveSheet = sheetPl03_5_TNDN Then
-        .EventEnabled(EventAllEvents) = False
+        ' Pl 03-5/TNDN
         .Sheet = sheetPl03_5_TNDN
-        If Col = .ColLetterToNumber("E") And (Row >= 21 And Row <= 30) Then
+        Dim ct01, ct03, ct04, ct05, ct06, ct07, ct08, ct10, ct11a As Variant
+        If .SheetVisible = True Then
             .GetText .ColLetterToNumber("E"), 21, ct01
             .GetText .ColLetterToNumber("E"), 23, ct03
             .GetText .ColLetterToNumber("E"), 24, ct04
@@ -606,6 +532,7 @@ With fps
             .GetText .ColLetterToNumber("E"), 28, ct08
             
             .GetText .ColLetterToNumber("E"), 30, ct10
+            .GetText .ColLetterToNumber("E"), 32, ct11a
             
             ' lock chi tieu 10
             If Val(ct01) - Val(ct03) - Val(ct04) - Val(ct05) - Val(ct06) - Val(ct07) - Val(ct08) < 0 Then
@@ -665,6 +592,182 @@ With fps
                 .Lock = False
             End If
             
+            ' Kiem tra ct13
+            If Val(ct01) - Val(ct03) - Val(ct04) - Val(ct05) - Val(ct06) - Val(ct07) - Val(ct08) - Val(ct10) < 0 And Val(ct11a) > 0 Then
+                .Row = 34
+                .Col = .ColLetterToNumber("E")
+                .Formula = ""
+                .Text = "0"
+            Else
+                .Row = 34
+                .Col = .ColLetterToNumber("E")
+                .Formula = "E31 -E33"
+            End If
+        
+        
+        End If
+        
+        
+         ' set lock CQT phan bo
+        .Sheet = sheetPl03_9_TNDN
+        Dim vChon As Variant
+        If .SheetVisible = True Then
+        .Row = 42
+         Do
+                .GetText .ColLetterToNumber("G"), .Row, vChon
+                If vChon = 1 Then
+                    .Col = .ColLetterToNumber("P")
+                    .Lock = True
+                End If
+                
+                .Row = .Row + 1
+                .Col = .ColLetterToNumber("B")
+            Loop Until .Text = "aa"
+         End If
+         
+         
+     .EventEnabled(EventAllEvents) = True
+    .ActiveSheet = 1
+    .Sheet = 1
+    End With
+    
+End Sub
+
+'inner class event: Change
+Public Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
+Dim varTemp As Variant
+Dim strId As Variant
+Dim iCol As Long, iRow As Long
+Dim cCol As Long, cRow As Long
+Dim cValue As Variant, temp As Variant
+Dim cValueG As Variant
+Dim cTagF As String
+Dim cValueF As Variant
+Dim i As Integer
+Dim xmlNodeH15 As MSXML.IXMLDOMNode
+
+Dim chiTieuC1, chiTieuC2, chiTieuC3a, chiTieuC3b, chiTieuC4 As Variant
+
+Dim ct01, ct03, ct04, ct05, ct06, ct07, ct08, ct10, ct11a As Variant
+
+Dim intIndexCombo As Integer
+Dim strMa As Variant
+
+Dim vTuNgay As Variant
+Dim vDenNgay As Variant
+Dim arrTemp() As String
+Dim dTuNgay As Date
+Dim dDenNgay As Date
+Dim soNgay As Long
+
+With fps
+    If .ActiveSheet = sheetTK03_TNDN Then
+        .Sheet = sheetTK03_TNDN
+        mCurrentSheet = sheetTK03_TNDN
+        soNgay = 0
+        If Col = .ColLetterToNumber("N") And Row = 95 Then
+            .GetText .ColLetterToNumber("J"), 95, vTuNgay
+            .GetText .ColLetterToNumber("N"), 95, vDenNgay
+            If Trim(vDenNgay) <> "" And Trim(vDenNgay) <> "../../...." Then
+                arrTemp = Split(vTuNgay, "/")
+                dTuNgay = DateSerial(Int(arrTemp(2)), Int(arrTemp(1)), Int(arrTemp(0)))
+                arrTemp = Split(vDenNgay, "/")
+                dDenNgay = DateSerial(Int(arrTemp(2)), Int(arrTemp(1)), Int(arrTemp(0)))
+                soNgay = DateDiff("D", dTuNgay, dDenNgay) + 1
+            End If
+            If soNgay >= 0 Then
+                .Col = .ColLetterToNumber("E")
+                .Row = 95
+                .Text = soNgay
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+        End If
+    End If
+
+    If .ActiveSheet = sheetPl03_5_TNDN Then
+        .EventEnabled(EventAllEvents) = False
+        .Sheet = sheetPl03_5_TNDN
+        If Col = .ColLetterToNumber("E") And (Row >= 21 And Row <= 33) Then
+            .GetText .ColLetterToNumber("E"), 21, ct01
+            .GetText .ColLetterToNumber("E"), 23, ct03
+            .GetText .ColLetterToNumber("E"), 24, ct04
+            .GetText .ColLetterToNumber("E"), 25, ct05
+            .GetText .ColLetterToNumber("E"), 26, ct06
+            .GetText .ColLetterToNumber("E"), 27, ct07
+            .GetText .ColLetterToNumber("E"), 28, ct08
+            
+            .GetText .ColLetterToNumber("E"), 30, ct10
+            .GetText .ColLetterToNumber("E"), 32, ct11a
+            
+            ' lock chi tieu 10
+            If Val(ct01) - Val(ct03) - Val(ct04) - Val(ct05) - Val(ct06) - Val(ct07) - Val(ct08) < 0 Then
+                .Row = 30
+                .Col = .ColLetterToNumber("E")
+                .Lock = True
+                .Text = "0"
+            Else
+                .Row = 30
+                .Col = .ColLetterToNumber("E")
+                .Lock = False
+            End If
+            
+            
+            If Val(ct01) - Val(ct03) - Val(ct04) - Val(ct05) - Val(ct06) - Val(ct07) - Val(ct08) - Val(ct10) <= 0 Then
+                ' chi tieu 11a
+                .Row = 32
+                .Col = .ColLetterToNumber("E")
+                .Lock = False
+'                ' chi tieu 12
+'                .Row = 33
+'                .Col = .ColLetterToNumber("E")
+'                .Lock = True
+'                .Text = "0"
+            Else
+                ' chi tieu 11a
+                .Row = 32
+                .Col = .ColLetterToNumber("E")
+                .Lock = True
+                .Text = "0"
+'                ' chi tieu 12
+'                .Row = 33
+'                .Col = .ColLetterToNumber("E")
+'                .Lock = False
+            End If
+               
+            ' Kiem tra chi tieu 12
+            If Val(ct01) - Val(ct03) - Val(ct04) - Val(ct05) - Val(ct06) - Val(ct07) - Val(ct08) - Val(ct10) < 0 Then
+'                ' chi tieu 11a
+'                .Row = 32
+'                .Col = .ColLetterToNumber("E")
+'                .Lock = False
+                ' chi tieu 12
+                .Row = 33
+                .Col = .ColLetterToNumber("E")
+                .Lock = True
+                .Text = "0"
+            Else
+'                ' chi tieu 11a
+'                .Row = 32
+'                .Col = .ColLetterToNumber("E")
+'                .Lock = True
+'                .Text = "0"
+                ' chi tieu 12
+                .Row = 33
+                .Col = .ColLetterToNumber("E")
+                .Lock = False
+            End If
+            
+            ' Kiem tra ct13
+            If Val(ct01) - Val(ct03) - Val(ct04) - Val(ct05) - Val(ct06) - Val(ct07) - Val(ct08) - Val(ct10) < 0 And Val(ct11a) > 0 Then
+                .Row = 34
+                .Col = .ColLetterToNumber("E")
+                .Formula = ""
+                .Text = "0"
+            Else
+                .Row = 34
+                .Col = .ColLetterToNumber("E")
+                .Formula = "E31 -E33"
+            End If
                
         End If
         .EventEnabled(EventAllEvents) = True
@@ -1468,6 +1571,9 @@ Private Sub CheckDynamicError()
     Dim blCheck_S3A, blCheck_S3B, blCheck_S3C As Boolean
     
     Dim vCheckLienKet, vCheckCSHachToan As Variant
+    Dim ctA1 As Variant
+    Dim errCheckCtA1 As Variant
+    Dim iFlagCheckCtA1 As Integer
     Dim errCheckLienKet, errCheckCSHachToan As Variant
     Dim iFlagCheckLienKet As Integer, iFlagCheckCSHachToan As Integer
     
@@ -1524,6 +1630,8 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("E"), 91, vErrDenNgayNC
         .GetText .ColLetterToNumber("E"), 92, vErrDenNgayNC1
         
+        .GetText .ColLetterToNumber("E"), 97, errCheckCtA1
+        
         ' end
         
         .Sheet = sheetTK03_TNDN
@@ -1531,6 +1639,7 @@ Private Sub CheckDynamicError()
         .GetText .ColLetterToNumber("D"), 12, vCheckLienKet
         
         .GetText .ColLetterToNumber("O"), 46, ctB14
+        .GetText .ColLetterToNumber("O"), 31, ctA1
         
         
         If vCheckCSHachToan = "1" Or UCase$(vCheckCSHachToan) = "X" Then
@@ -1564,6 +1673,25 @@ Private Sub CheckDynamicError()
                 iFlagCheckLienKet = 1
             End If
         End If
+        
+        If Val(ctA1) <> 0 Then
+            If TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_1A_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0" _
+            Or TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_1B_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0" _
+            Or TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_1C_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0" Or Strloaitk = "TKBS" Then
+            Else
+                .Sheet = 1
+                .ActiveSheet = 1
+                If Not .Visible Then
+                    .Visible = True
+                    DisplayMessage "0347", msOKOnly, miWarning
+                    .Visible = False
+                Else
+                    DisplayMessage "0347", msOKOnly, miWarning
+                End If
+                iFlagCheckCtA1 = 1
+            End If
+        End If
+        
         
         blCheck_S3A = IIf(TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_3A_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
         blCheck_S3B = IIf(TAX_Utilities_v1.NodeValidity.childNodes(sheetPl03_3B_TNDN - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
@@ -1777,6 +1905,8 @@ Private Sub CheckDynamicError()
         .SetText .ColLetterToNumber("B"), 47, IIf(iFlagCheckCSHachToan = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 48, IIf(iFlagCheckLienKet = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 92, IIf(iflagDenNgayNC = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 97, IIf(iFlagCheckCtA1 = 1, "0", "1")
+        
                 
         ' Phu Luc 03-1A
         .Sheet = 2
