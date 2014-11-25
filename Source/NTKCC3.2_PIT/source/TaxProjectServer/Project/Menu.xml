@@ -79,7 +79,7 @@
 			<Sheet ID="03-4" Caption="03-4/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="03_4_TNDN" Ini="..\Ini\03_4_TNDN.xml"/>
 			<Sheet ID="03-5" Caption="03-5/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="03_5_TNDN" Ini="..\Ini\03_5_TNDN.xml"/>
 			<Sheet ID="03-6" Caption="03-6/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="03_6_TNDN" Ini="..\Ini\03_6_TNDN.xml"/>
-			<Sheet ID="03-7" Caption="GCN-01/QLT" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="03_7_TNDN" Ini="..\Ini\03_7_TNDN.xml"/>
+			<Sheet ID="03-7" Caption="03-7/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="03_7_TNDN" Ini="..\Ini\03_7_TNDN.xml"/>
 			<Sheet ID="03-8" Caption="03-8/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="03_8_TNDN" Ini="..\Ini\03_8_TNDN.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS_03_TNDN" InterfaceIni="..\Ini\KHBS_03_TNDN.xml" ReportIni="..\ReportIni\KHBS_03_TNDN.xml"/>
 		</Validity>
@@ -193,6 +193,13 @@
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\02_PHLP.xls" ReportTemplate="..\ReportTemplates\excel\02_PHLP.xls" CatalogueID="01" Class="Tax_Business_Svr_New.cls_02PHLP">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="02_PHLP" Ini="..\Ini\02_PHLP.xml" ReportIni="..\ReportIni\02_PHLP.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS_02_PHLP" Ini="..\Ini\KHBS_02_PHLP.xml"/>
+		</Validity>
+	</Menu>
+	
+	<Menu ID="84" PopID="101" ParentID="101_19" Caption="Tờ khai thuế môn bài – 01/MBAI" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp" FileName="" DirFile="\NTK_TG\">
+		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\01_MBAI.xls" ReportTemplate="..\ReportTemplates\excel\01_MBAI.xls" CatalogueID="01" Class="Tax_Business_Svr_New.cls_01MBAI">
+			<Sheet ID="01" Caption="01/MBAI" Active="1" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="01_MBAI" Ini="..\Ini\01_MBAI.xml" />
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS_01_MBAI" Ini="..\Ini\KHBS_01_MBAI.xml"/>
 		</Validity>
 	</Menu>
 	
