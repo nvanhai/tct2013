@@ -774,26 +774,7 @@ Private Sub cmdSave_Click()
     ' end
 
     ' end if
-    
-    'Bo sung 24/11/2014-nshung
-     'Chan theo thong tu QN63: Chan 01A/TNDN, 01B/TNDN tu ky ke khai quy 4/2014
-    If Val(menuId) = 11 Or Val(menuId) = 12 Or Val(menuId) = 73 Then
-        If (Val(TAX_Utilities_Svr_New.Year) > 2014 Or (TAX_Utilities_Svr_New.Year = "2014" And Val(TAX_Utilities_Svr_New.ThreeMonths) >= 4)) Then
-            DisplayMessage "0183", msOKOnly, miInformation
-            Exit Sub
-        End If
-    End If
-    
-    'Khong nhan to khai <=Q3/2014 khong cho phep ke khai bo sung: 02/TNDN
-    If Val(menuId) = 73 And LoaiTk = "TKBS" Then
-        If (Val(TAX_Utilities_Svr_New.Year) < 2014 Or (TAX_Utilities_Svr_New.Year = "2014" And Val(TAX_Utilities_Svr_New.ThreeMonths) <= 3)) Then
-            DisplayMessage "0145", msOKOnly, miInformation
-            Exit Sub
-        End If
-    End If
-    
-    
-    '-----end bo sung --
+
     
     
     
@@ -1830,11 +1811,11 @@ Private Sub Command1_Click()
 'str2 = "bs999820100105951   002014002002003003~25085~12000~abc1234~30/09/2014~10100~10101~3~12000~test~0~0~96000</S></SKHBS>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
-'02_TNDN
-str2 = "aa325730100105951   01201400100100100201/0114/06/2006<S02><S></S><S>12000000~10400000~200000~300000~400000~500000~6000000~3000000~1600000~15~240000</S><S>1~~Cty TNHH BaHoaToHo~6868686868~Khong Khong thay - Khong khong biet~12~12/02/2014~15/02/2014</S><S>Nguyen Van A~CCHN123456~Tran Van B~18/11/2015~1~~~~x</S></S02>"
-Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-str2 = "aa999730100105951   012014001001002002<S02-1><S>Cty TNHH Giai phap phan mem CMC~0101650999~Duy Tan - Cau Giay - Ha Noi~HDCN1234~Cty TNHH Tinh Van~0102030405~Lang Ha - Dong Da - Ha Noi~HDCN5678</S></S02-1>"
-Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+''02_TNDN
+'str2 = "aa999730100105951   01201400100100100201/0114/06/2006<S02><S></S><S>12000000~10400000~200000~300000~400000~500000~6000000~3000000~1600000~15~240000</S><S>1~~Cty TNHH BaHoaToHo~6868686868~Khong Khong thay - Khong khong biet~12~12/02/2014~15/02/2014</S><S>Nguyen Van A~CCHN123456~Tran Van B~18/11/2015~1~~~~x</S></S02>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'str2 = "aa999730100105951   012014001001002002<S02-1><S>Cty TNHH Giai phap phan mem CMC~0101650999~Duy Tan - Cau Giay - Ha Noi~HDCN1234~Cty TNHH Tinh Van~0102030405~Lang Ha - Dong Da - Ha Noi~HDCN5678</S></S02-1>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 ''PS
 'str2 = "aa999730100105951   03201400300300100201/0114/06/2006<S02><S></S><S>15000000~7230000~2000000~1000000~500000~700000~3000000~30000~7770000~25~1942500</S><S>~1~Cty TNHH Sao Dat Viet~0102030405~Quan Hoa Cau Giay Ha Noi~10~18/11/2014~20/11/2014</S><S>Nguyen Van A~CCHN123456~Tran Van B~18/11/2015~1~~18/11/2014~~x</S></S02>"
@@ -2433,7 +2414,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
             Exit Sub
         End If
 
-        'NSHUNG - Chan cac to khai lam trong GD3 ma khong in ra tu HTKK 3.3.0
+        'NSHUNG - Chan cac to khai quyet toan lam trong GD3 ma khong in ra tu HTKK 3.3.0
         If (Val((Left$(strPrefix, 3))) < 330) _
             And (Trim(idToKhai) = "03" Or Trim(idToKhai) = "59" _
             Or Trim(idToKhai) = "77" Or Trim(idToKhai) = "80" _
@@ -2457,20 +2438,23 @@ Private Sub Barcode_Scaned(strBarcode As String)
         End If
         
          'Chan 01A/TNDN, 01B/TNDN tu ky ke khai quy 4/2014 theo QN63
-        If Val(menuId) = 11 Or Val(menuId) = 12 Or Val(menuId) = 12 Then
-            If (Val(TAX_Utilities_Svr_New.Year) > 2014 Or (TAX_Utilities_Svr_New.Year = "2014" And Val(TAX_Utilities_Svr_New.ThreeMonths) >= 4)) Then
+        If Val(idToKhai) = 11 Or Val(idToKhai) = 12 Or Val(idToKhai) = 73 Then
+            If (Val(TAX_Utilities_Svr_New.Year) > 2014 Or (TAX_Utilities_Svr_New.Year = "2014" And Val(Mid(strPrefix, 19, 2)) >= 4)) Then
                 DisplayMessage "0183", msOKOnly, miInformation
                 Exit Sub
             End If
         End If
         
         'Khong nhan to khai <=Q3/2014 khong cho phep ke khai bo sung: 02/TNDN
-        If Val(menuId) = 73 And LoaiTk = "TKBS" Then
-            If (Val(TAX_Utilities_Svr_New.Year) < 2014 Or (TAX_Utilities_Svr_New.Year = "2014" And Val(TAX_Utilities_Svr_New.ThreeMonths) <= 3)) Then
+        If Val(idToKhai) = 73 And LoaiTk = "TKBS" Then
+            If (Val(TAX_Utilities_Svr_New.Year) < 2014 Or (TAX_Utilities_Svr_New.Year = "2014" And Val(Mid(strPrefix, 19, 2)) <= 3)) Then
                 DisplayMessage "0145", msOKOnly, miInformation
                 Exit Sub
             End If
         End If
+        
+        
+        
         ' Ket thuc
         
         strBarcode = Mid$(strBarcode, 37)
