@@ -327,16 +327,16 @@ Private Sub prepareData0509()
             arrData0509(row5A, 15) = "0"
         End If
         arrData0509(row5A, 16) = Val(arrData5A(row5A, 7)) ' Giam tru gia canh
-        arrData0509(row5A, 17) = Val(arrData5A(row5A, 7)) ' Giam tru gia canh
-        arrData0509(row5A, 18) = arrData5A(row5A, 8) ' Tu thien
-        arrData0509(row5A, 19) = arrData5A(row5A, 9) ' Bao hiem bat buoc
-        arrData0509(row5A, 20) = arrData5A(row5A, 10) ' Quy huu tri
-        arrData0509(row5A, 21) = arrData5A(row5A, 10) ' Thu nhap tinh thue
-        arrData0509(row5A, 22) = arrData5A(row5A, 15) ' Thue phai nop
-        arrData0509(row5A, 23) = arrData5A(row5A, 3) ' Thue mien giam
-        arrData0509(row5A, 24) = arrData5A(row5A, 16) ' So thue da khau tru
-        arrData0509(row5A, 25) = arrData5A(row5A, 17) ' Thue con phai nop
-        arrData0509(row5A, 26) = arrData5A(row5A, 3) ' Check co quyet toan tai CQCT ko?
+        'arrData0509(row5A, 17) = Val(arrData5A(row5A, 7)) ' Giam tru gia canh
+        arrData0509(row5A, 17) = arrData5A(row5A, 8) ' Tu thien
+        arrData0509(row5A, 18) = arrData5A(row5A, 9) ' Bao hiem bat buoc
+        arrData0509(row5A, 19) = arrData5A(row5A, 10) ' Quy huu tri
+        arrData0509(row5A, 20) = arrData5A(row5A, 10) ' Thu nhap tinh thue
+        arrData0509(row5A, 21) = arrData5A(row5A, 15) ' Thue phai nop
+        arrData0509(row5A, 22) = arrData5A(row5A, 3) ' Thue mien giam
+        arrData0509(row5A, 23) = arrData5A(row5A, 16) ' So thue da khau tru
+        arrData0509(row5A, 24) = arrData5A(row5A, 17) ' Thue con phai nop
+        arrData0509(row5A, 25) = arrData5A(row5A, 3) ' Check co quyet toan tai CQCT ko?
 '        Dim thuNhapTinhThueThang As Double, thuePhaiNopThang As Double
 '        Dim soThangTinhThue As Integer
 '        ' Neu la nam 2009 thi thu nhap tinh thue tren 6 thang
