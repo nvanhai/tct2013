@@ -1501,13 +1501,13 @@ With fps
                 .Formula = "P69"
             End If
             
-            If Row = 32 And Col = .ColLetterToNumber("E") Then
-                ' chi tieu C3b
-                .Sheet = 1
-                .Col = .ColLetterToNumber("O")
-                .Row = 52
-                .Formula = "P52"
-            End If
+'            If Row = 32 And Col = .ColLetterToNumber("E") Then
+'                ' chi tieu C3b
+'                .Sheet = 1
+'                .Col = .ColLetterToNumber("O")
+'                .Row = 52
+'                .Formula = "P52"
+'            End If
     End Select
     .EventEnabled(EventAllEvents) = True
 End With
@@ -2441,25 +2441,25 @@ Private Sub CheckDynamicError()
                         .BackColor = mNonErrorColor
                     End If
                     ' check ct11a
-                    If Val(ct11) < 0 Then
-                        If Val(ct11a) > Val(ctTongCot5) Then
-                            .Row = 32
-                            .Col = .ColLetterToNumber("E")
-                            .CellNote = vErrCt11a
-                            .BackColor = mErrorColor
-                            iFlagCt11a = 1
-                        Else
-                            .Row = 32
-                            .Col = .ColLetterToNumber("E")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
-                        End If
-                    Else
-                        .Row = 32
-                        .Col = .ColLetterToNumber("E")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                    End If
+'                    If Val(ct11) < 0 Then
+'                        If Val(ct11a) > Val(ctTongCot5) Then
+'                            .Row = 32
+'                            .Col = .ColLetterToNumber("E")
+'                            .CellNote = vErrCt11a
+'                            .BackColor = mErrorColor
+'                            iFlagCt11a = 1
+'                        Else
+'                            .Row = 32
+'                            .Col = .ColLetterToNumber("E")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+'                        End If
+'                    Else
+'                        .Row = 32
+'                        .Col = .ColLetterToNumber("E")
+'                        .CellNote = ""
+'                        .BackColor = mNonErrorColor
+'                    End If
                     
                     
                     
@@ -2525,7 +2525,7 @@ Private Sub CheckDynamicError()
             .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 93, IIf(iFlagCt10 = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 94, IIf(iFlagCt12 = 1, "0", "1")
-            .SetText .ColLetterToNumber("B"), 95, IIf(iFlagCt11a = 1, "0", "1")
+            '.SetText .ColLetterToNumber("B"), 95, IIf(iFlagCt11a = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 96, IIf(iFlagCt9 = 1, "0", "1")
             
         .EventEnabled(EventAllEvents) = True
