@@ -2263,6 +2263,9 @@ Dim ASheet As Integer, SSheet As Integer
         ' Tinh so dong DL trong BK (Phuc vu nut sap xep)
         totalRow5B = .SearchCol(.ColLetterToNumber("B"), 22, -1, "aa", SearchFlagsNone)
         ' test tai khong kiem tra de tang toc do
+        .Sheet = 4
+        InsertNode 23, .SearchCol(.ColLetterToNumber("B"), 22, -1, "aa", SearchFlagsNone) - 1, 4
+        
         ' set lai cong thuc
         setFormulaImport
         
