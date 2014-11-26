@@ -15246,13 +15246,15 @@ Public Function delNullRowOn05(sheet As Long)
         cellID = GetAttribute(xmlNodeListSec.Item(0).childNodes(0).firstChild, "CellID")
         'set location cell to array
         If fpSpread1.sheet = 2 Then
-            strCol = "D~E~F~G~H~I~J~K~L~M~N~O~Q~R~S"
+            'strCol = "D~E~F~G~H~I~J~K~L~M~N~O~Q~R~S"
+            strCol = "D~E~F~G~H~I~J~K~L~M~N~O~P~Q~S~T~U~C"
             colArr = Split(strCol, "~")
         ElseIf fpSpread1.sheet = 3 Then
-            strCol = "C~D~E~F~G~H~I~J"
+            'strCol = "C~D~E~F~G~H~I~J"
+            strCol = "C~D~E~F~G~H~I~J~K~Z"
             colArr = Split(strCol, "~")
         ElseIf fpSpread1.sheet = 4 Then
-            strCol = "C~D~E~F~G~H~I~J"
+            strCol = "D~E~F~G~H~I~J~K~L~M~N~O~P~Q~R~S~T~U~V~W~X~Y"
             colArr = Split(strCol, "~")
         End If
         With fpSpread1
@@ -16391,12 +16393,14 @@ Public Sub moveDataNKH()
         Next
     ' xu ly bang ke 05-3/TNCN ho tro tai tu temp 05-3, BK 16 TH, TK 16TH
     ElseIf Trim(varMenuId) = "17" And fpSpread1.ActiveSheet = 4 Then
+        Dim stt As Variant
         For lrowCount = 40 To fpSpread2.MaxRows Step 1
             fpSpread2.GetText fpSpread2.ColLetterToNumber("C"), lrowCount, varTemp
             fpSpread2.GetText fpSpread2.ColLetterToNumber("D"), lrowCount, varTemp1
+            fpSpread2.GetText fpSpread2.ColLetterToNumber("B"), lrowCount, stt
             
             'fpSpread2.GetText fpSpread2.ColLetterToNumber("E"), lrowCount, varTemp2
-            If (Trim(varTemp) = vbNullString Or Trim(varTemp) = "") And (Trim(varTemp1) = vbNullString Or Trim(varTemp1) = "") Then
+            If ((Trim(varTemp) = vbNullString Or Trim(varTemp) = "") And (Trim(varTemp1) = vbNullString Or Trim(varTemp1) = "")) Or IsNumeric(stt) = False Then
                     lrowCount = lrowCount - 40
                     Exit For
             End If
@@ -16505,8 +16509,15 @@ Public Sub moveDataNKH()
         If xmlSecionNode.childNodes.length = 1 Then
             For Each xmlCellNode In xmlSecionNode.childNodes.Item(0).childNodes
                 value = GetAttribute(xmlCellNode, "Value")
-                If (GetAttribute(xmlCellNode, "FirstCell") <> "" And value <> "") Or (GetAttribute(xmlCellNode, "FirstCell") = "" And value <> "" And value <> "0") Then
-                      hasVl = hasVl + 1
+                If fpSpread1.ActiveSheet = 4 Then
+                    ' xu ly cho PL 05-3/TNCN
+                    If value <> "" And Left(GetAttribute(xmlCellNode, "CellID"), 1) <> "I" And Left(GetAttribute(xmlCellNode, "CellID"), 1) <> "J" And Left(GetAttribute(xmlCellNode, "CellID"), 1) <> "P" And Left(GetAttribute(xmlCellNode, "CellID"), 1) <> "Q" Then
+                         hasVl = hasVl + 1
+                    End If
+                Else
+                    If (GetAttribute(xmlCellNode, "FirstCell") <> "" And value <> "") Or (GetAttribute(xmlCellNode, "FirstCell") = "" And value <> "" And value <> "0") Then
+                          hasVl = hasVl + 1
+                    End If
                 End If
             Next
             ' truong hop dong dau tien trang
@@ -16641,7 +16652,7 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         
     ReDim fparray(lrowCount - 1, 22) As Variant
     ReDim fparray1(lrowCount - 1, 22) As Variant
-    isFirstRow = True
+    'isFirstRow = True
     fpSpread2.GetArray fpSpread2.ColLetterToNumber("C"), rowStartSpread2, fparray
     ' kiem tra xem BK 05-3 hay BK 16TH
     Dim idx As Long
