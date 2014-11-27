@@ -4408,15 +4408,15 @@ Private Sub CheckDynamicSheet2()
                 .BackColor = mNonErrorColor
                 
                 'check khong duoc de trong dong thoi MST va CMTDN
-'                If Trim(vMST) = vbNullString And Trim(vCMND) = vbNullString Then
-'                    .Col = .ColLetterToNumber("D")
-'                    .CellNote = vErrMsgMSTCMT
-'                    .BackColor = mErrorColor
-'                    .Col = .ColLetterToNumber("E")
-'                    .CellNote = vErrMsgMSTCMT
-'                    .BackColor = mErrorColor
-'                    iFlagMSTCMND = 1
-'                End If
+                If Trim(vMST) = vbNullString And Trim(vCMND) = vbNullString Then
+                    .Col = .ColLetterToNumber("D")
+                    .CellNote = vErrMsgMSTCMT
+                    .BackColor = mErrorColor
+                    .Col = .ColLetterToNumber("E")
+                    .CellNote = vErrMsgMSTCMT
+                    .BackColor = mErrorColor
+                    iFlagMSTCMND = 1
+                End If
                 
                 'check cmt khong duoc nhap dau cach
                 If Trim(vCMND) <> vbNullString Then
