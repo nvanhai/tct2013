@@ -4944,6 +4944,41 @@ Private Sub CheckDynamicSheet3()
                     End If
                 End If
                 
+                ' Kiem tra truong hop co nhap thong tin tinh, huyen , xa thi bat buoc nhap thong tin quoc gia
+                If Trim$(vTinh) <> "" Or Trim$(vHuyen) <> "" Or Trim$(vXa) <> "" Then
+                    ' bat buoc nhap thong tin quoc gia
+                    If Trim(vQuocGia) = "" Then
+                        .Col = .ColLetterToNumber("Q")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
+                    ' bat buoc nhap thong tin tinh
+                    If Trim(vTinh) = "" Then
+                        .Col = .ColLetterToNumber("S")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
+                    ' bat buoc nhap thong tin huyen
+                    If Trim(vHuyen) = "" Then
+                        .Col = .ColLetterToNumber("U")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
+                    ' bat buoc nhap thong tin xa
+                    If Trim(vXa) = "" Then
+                        .Col = .ColLetterToNumber("W")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
+                End If
                 
                 
 '                ' bat buoc nhap thong so
