@@ -2508,13 +2508,13 @@ Public Function CheckNgayInKyKK(ngay As String, thangQuy As Integer, nam As Inte
     ' kiem tra thuoc thang/quy ke khai va thang quy truoc lien ke
     ' y/c chi Thuy sau dao tao HTKK
     If isQuy = True Then
-        If (DatePart("Q", vdate) = thangQuy And DatePart("YYYY", vdate) = nam) Or (thangQuy = 1 And DatePart("Q", vdate) = 4 And DatePart("YYYY", vdate) = nam - 1) Or (thangQuy > 1 And DatePart("Q", vdate) = thangQuy - 1 And DatePart("YYYY", vdate) = nam) Then
+        If (DatePart("Q", vdate) = thangQuy And DatePart("YYYY", vdate) = nam) Then
             CheckNgayInKyKK = True
         Else
             CheckNgayInKyKK = False
         End If
     Else
-        If (DatePart("M", vdate) = thangQuy And DatePart("YYYY", vdate) = nam) Or (thangQuy = 1 And DatePart("M", vdate) = 12 And DatePart("YYYY", vdate) = nam - 1) Or (thangQuy > 1 And DatePart("M", vdate) = thangQuy - 1 And DatePart("YYYY", vdate) = nam) Then
+        If (DatePart("M", vdate) = thangQuy And DatePart("YYYY", vdate) = nam) Then
             CheckNgayInKyKK = True
         Else
             CheckNgayInKyKK = False
@@ -2522,6 +2522,28 @@ Public Function CheckNgayInKyKK(ngay As String, thangQuy As Integer, nam As Inte
     End If
 End Function
 
+
+Public Function CheckNgayTruocKyKK(ngay As String, thangQuy As Integer, nam As Integer, isQuy As Boolean) As Boolean
+    Dim strDate() As String
+    Dim vdate As Date
+    strDate = Split(ngay, "/")
+    vdate = DateSerial(CInt(strDate(2)), CInt(strDate(1)), CInt(strDate(0)))
+    ' kiem tra thuoc thang/quy ke khai va thang quy truoc lien ke
+    ' y/c chi Thuy sau dao tao HTKK
+    If isQuy = True Then
+        If (DatePart("Q", vdate) = thangQuy And DatePart("YYYY", vdate) = nam) Or (DatePart("Q", vdate) <= thangQuy And DatePart("YYYY", vdate) = nam) Or (DatePart("YYYY", vdate) < nam) Then
+            CheckNgayTruocKyKK = True
+        Else
+            CheckNgayTruocKyKK = False
+        End If
+    Else
+        If (DatePart("M", vdate) = thangQuy And DatePart("YYYY", vdate) = nam) Or (DatePart("M", vdate) <= thangQuy And DatePart("YYYY", vdate) = nam) Or (DatePart("YYYY", vdate) < nam) Then
+            CheckNgayTruocKyKK = True
+        Else
+            CheckNgayTruocKyKK = False
+        End If
+    End If
+End Function
 
 ' Kiem tra ngay nho hon ngay cuoi ky ke khai
 Public Function getNgayCuoiKyKK(thangQuy As Integer, nam As Integer, isQuy As Boolean) As Date
