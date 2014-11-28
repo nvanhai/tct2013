@@ -296,7 +296,7 @@ End Sub
 Public Sub Prepare2()
     Dim i As Long, DataText As Variant
     Dim arrCellTag() As String
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, arrCol As Variant
     Dim arrRowChange As Variant, arrColChange As Variant
     Dim intCtrl As Integer
     Dim strId As Variant
@@ -1034,7 +1034,7 @@ End Sub
 Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, arrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant
@@ -1196,6 +1196,9 @@ Private Sub CheckDynamicError()
     Dim vErrorNgayPHHD As Variant
     Dim iflagNgayPHHD As Integer
     
+    Dim vErrorNgayPHHD_1 As Variant
+    Dim iflagNgayPHHD_1 As Integer
+    
     Dim strTemp As String, result As String, strLoai As String
     Dim iFlagMauSoHD As Integer, iFlagSoLienHD As Integer
     Dim errMauSoHD As Variant, errSoLienHD As Variant
@@ -1252,6 +1255,7 @@ Private Sub CheckDynamicError()
      .GetText .ColLetterToNumber("E"), 81, errEmty
      .GetText .ColLetterToNumber("E"), 88, vErrThueGTGT
      
+     .GetText .ColLetterToNumber("E"), 89, vErrorNgayPHHD_1
      
      
      ' Kiem tra check gia han
@@ -1498,45 +1502,89 @@ Private Sub CheckDynamicError()
 '                            End If
                             
                             If strTkThangQuy = "TK_QUY" Then
-                                 If CheckNgayInKyKK(CStr(vNgayHD), TAX_Utilities_v1.ThreeMonths, TAX_Utilities_v1.Year, True) = False Then
-                                        .Col = .ColLetterToNumber("G")
-                                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                        .CellNote = vErrorNgayPHHD   'static
-                                        .BackColor = mErrorColor
-                                        iflagNgayPHHD = 1
-                                        'capture the first error cell
-'                                        If iFocusFlag = 0 Then
-'                                            strFocusSheetName = "'" & .SheetName & "'"
-'                                            strFocusCol = str(.Col)
-'                                            strFocusRow = str(.Row)
-'                                            iFocusFlag = 1
-'                                        End If
-                                    Else
-                                         .Col = .ColLetterToNumber("G")
-                                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                         .CellNote = ""   'static
-                                         .BackColor = mNonErrorColor
-                                   End If
+                                If strCellTag = "3" Or strCellTag = "4" Then
+                                     If CheckNgayInKyKK(CStr(vNgayHD), TAX_Utilities_v1.ThreeMonths, TAX_Utilities_v1.Year, True) = False Then
+                                            .Col = .ColLetterToNumber("G")
+                                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                            .CellNote = vErrorNgayPHHD   'static
+                                            .BackColor = mErrorColor
+                                            iflagNgayPHHD = 1
+                                            'capture the first error cell
+    '                                        If iFocusFlag = 0 Then
+    '                                            strFocusSheetName = "'" & .SheetName & "'"
+    '                                            strFocusCol = str(.Col)
+    '                                            strFocusRow = str(.Row)
+    '                                            iFocusFlag = 1
+    '                                        End If
+                                        Else
+                                             .Col = .ColLetterToNumber("G")
+                                             .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                             .CellNote = ""   'static
+                                             .BackColor = mNonErrorColor
+                                       End If
+                                  Else
+                                       If CheckNgayTruocKyKK(CStr(vNgayHD), TAX_Utilities_v1.ThreeMonths, TAX_Utilities_v1.Year, True) = False Then
+                                            .Col = .ColLetterToNumber("G")
+                                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                            .CellNote = vErrorNgayPHHD_1   'static
+                                            .BackColor = mErrorColor
+                                            iflagNgayPHHD_1 = 1
+                                            'capture the first error cell
+    '                                        If iFocusFlag = 0 Then
+    '                                            strFocusSheetName = "'" & .SheetName & "'"
+    '                                            strFocusCol = str(.Col)
+    '                                            strFocusRow = str(.Row)
+    '                                            iFocusFlag = 1
+    '                                        End If
+                                        Else
+                                             .Col = .ColLetterToNumber("G")
+                                             .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                             .CellNote = ""   'static
+                                             .BackColor = mNonErrorColor
+                                       End If
+                                  End If
                                 Else
-                                   If CheckNgayInKyKK(CStr(vNgayHD), TAX_Utilities_v1.Month, TAX_Utilities_v1.Year, False) = False Then
-                                        .Col = .ColLetterToNumber("G")
-                                        .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                        .CellNote = vErrorNgayPHHD   'static
-                                        .BackColor = mErrorColor
-                                        iflagNgayPHHD = 1
-                                        'capture the first error cell
-'                                        If iFocusFlag = 0 Then
-'                                            strFocusSheetName = "'" & .SheetName & "'"
-'                                            strFocusCol = str(.Col)
-'                                            strFocusRow = str(.Row)
-'                                            iFocusFlag = 1
-'                                        End If
-                                    Else
-                                         .Col = .ColLetterToNumber("G")
-                                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                                         .CellNote = ""   'static
-                                         .BackColor = mNonErrorColor
-                                   End If
+                                    If strCellTag = "3" Or strCellTag = "4" Then
+                                           If CheckNgayInKyKK(CStr(vNgayHD), TAX_Utilities_v1.Month, TAX_Utilities_v1.Year, False) = False Then
+                                                .Col = .ColLetterToNumber("G")
+                                                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                                .CellNote = vErrorNgayPHHD   'static
+                                                .BackColor = mErrorColor
+                                                iflagNgayPHHD = 1
+                                                'capture the first error cell
+        '                                        If iFocusFlag = 0 Then
+        '                                            strFocusSheetName = "'" & .SheetName & "'"
+        '                                            strFocusCol = str(.Col)
+        '                                            strFocusRow = str(.Row)
+        '                                            iFocusFlag = 1
+        '                                        End If
+                                            Else
+                                                 .Col = .ColLetterToNumber("G")
+                                                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                                 .CellNote = ""   'static
+                                                 .BackColor = mNonErrorColor
+                                           End If
+                                      Else
+                                           If CheckNgayTruocKyKK(CStr(vNgayHD), TAX_Utilities_v1.Month, TAX_Utilities_v1.Year, False) = False Then
+                                                .Col = .ColLetterToNumber("G")
+                                                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                                .CellNote = vErrorNgayPHHD_1   'static
+                                                .BackColor = mErrorColor
+                                                iflagNgayPHHD_1 = 1
+                                                'capture the first error cell
+        '                                        If iFocusFlag = 0 Then
+        '                                            strFocusSheetName = "'" & .SheetName & "'"
+        '                                            strFocusCol = str(.Col)
+        '                                            strFocusRow = str(.Row)
+        '                                            iFocusFlag = 1
+        '                                        End If
+                                            Else
+                                                 .Col = .ColLetterToNumber("G")
+                                                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                                                 .CellNote = ""   'static
+                                                 .BackColor = mNonErrorColor
+                                           End If
+                                      End If
                                 End If
 
                         Else
@@ -1664,6 +1712,7 @@ Private Sub CheckDynamicError()
             .SetText .ColLetterToNumber("B"), 79, IIf(iFlagMauSoHD = 1 And blCheck_S2 = True, "0", "1")
             .SetText .ColLetterToNumber("B"), 80, IIf(iFlagSoLienHD = 1 And blCheck_S2 = True, "0", "1")
             .SetText .ColLetterToNumber("B"), 81, IIf(iFlagEmty = 1 And blCheck_S2 = True, "0", "1")
+            .SetText .ColLetterToNumber("B"), 89, IIf(iflagNgayPHHD_1 = 1 And blCheck_S2 = True, "0", "1")
 '
 '            If countThuSuat0 > 0 And IIf(TAX_Utilities_v1.NodeValidity.childNodes(3).Attributes.getNamedItem("Active").nodeValue <> "0", True, False) = False Then
 '                .SetText .ColLetterToNumber("B"), 69, "0"
@@ -3049,16 +3098,16 @@ End Sub
 'some special data that we want to save to data files
 Public Sub SaveExceptionData()
     Dim i As Long, DataText As Variant
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, arrCol As Variant
     Dim arrCellTag() As String
     With fps
         .Sheet = 1
         mCurrentSheet = .Sheet
         arrRow = Array(10, 10, 16, 19, 19, 21, 21, 28, 28, 30, 31, 33, 20, 22, 23, 24, 23, 24)
-        ArrCol = Array("J", "L", "L", "J", "L", "J", "L", "J", "L", "L", "L", "L", "J", "J", "J", "J", "L", "L")
+        arrCol = Array("J", "L", "L", "J", "L", "J", "L", "J", "L", "L", "L", "L", "J", "J", "J", "J", "L", "L")
         For i = 0 To UBound(arrRow)
             .Row = arrRow(i)
-            .Col = .ColLetterToNumber(ArrCol(i))
+            .Col = .ColLetterToNumber(arrCol(i))
             UpdateCell fps, .Col, .Row, .value
         Next
     End With
@@ -4815,7 +4864,7 @@ Sub CellLock(ByVal Col As Long, ByVal Row As Long)
 
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, arrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant
@@ -4831,13 +4880,13 @@ Sub CellLock(ByVal Col As Long, ByVal Row As Long)
                GetCellSpan fps, Col, Row
                If Row = S1ChkRow And Col = .ColLetterToNumber(S1ChkCol) Then
                    arrRow = Array(27, 27, 28, 30, 31, 31, 32, 33, 33, 34, 34, 35, 35)
-                   ArrCol = Array("J", "L", "L", "J", "J", "L", "J", "J", "L", "J", "L", "J", "L")
+                   arrCol = Array("J", "L", "L", "J", "J", "L", "J", "J", "L", "J", "L", "J", "L")
                    .Col = .ColLetterToNumber("I")
                    .Row = 23
                    If .Text = "1" Then
                        For i = 0 To UBound(arrRow)
                            .Row = arrRow(i)
-                           .Col = .ColLetterToNumber(ArrCol(i))
+                           .Col = .ColLetterToNumber(arrCol(i))
                            .Text = "0"
                            UpdateCell fps, .Col, .Row, .Text
                            .Lock = True
@@ -4845,8 +4894,8 @@ Sub CellLock(ByVal Col As Long, ByVal Row As Long)
                    ElseIf .Text = "0" Then
                        For i = 0 To UBound(arrRow)
                            .Row = arrRow(i)
-                           .Col = .ColLetterToNumber(ArrCol(i))
-                           If (ArrCol(i) = "J" Or ArrCol(i) = "L") And (arrRow(i) = 31 Or arrRow(i) = 35) Then
+                           .Col = .ColLetterToNumber(arrCol(i))
+                           If (arrCol(i) = "J" Or arrCol(i) = "L") And (arrRow(i) = 31 Or arrRow(i) = 35) Then
                                .Lock = True
                            Else
                                .Lock = False
@@ -5197,7 +5246,7 @@ End Sub
 Public Sub LockCellBySheet()
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, arrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant
