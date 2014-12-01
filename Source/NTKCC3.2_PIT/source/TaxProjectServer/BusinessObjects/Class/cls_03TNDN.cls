@@ -6360,8 +6360,7 @@ Public Function InsertDTL_PL03_7() As String
    Dim sSQLCol As String
    Dim sSQLVal As String
    
-   
-  
+
    Dim CK As Variant
    Dim bln  As Boolean
    
@@ -6617,74 +6616,95 @@ Public Function InsertDTL_PL03_7() As String
         FAX = "''"
         MAPP = "''"
         
+        Dim strSTT As String
         Dim Section As Integer
+        Dim iIndexSTT As Integer
+        
         Section = 1
+        iIndexSTT = 0
+        
          Do
          
             ' Bo qua vi tri lap dau tien - vi tri 0
             If .Text = "0" Then
                 .Row = .Row + 1
             End If
-         
-'            .GetText .ColLetterToNumber("B"), .Row, STT
-'            If Trim(STT) = vbNullString Then
-'               STT = "0"
-'            End If
-            STT = 0
+            
+            'STT = 0
             STT2 = 0 'TODO: cho xu ly sau
             
             .GetText .ColLetterToNumber("B"), .Row, STTIN
+            STTIN = Trim(STTIN)
+            If InStr("aa,bb,cc,dd,ee,ff,gg,hh", STTIN) > 0 Then
+                .GetText .ColLetterToNumber("B"), (.Row + 1), STTIN
+                STTIN = Trim(STTIN)
+            End If
             
             'Tinh mact,stt dua vao STTIN
             Select Case STTIN
                 Case "I"
                     mact = "'1000'"
                     STT = "1"
+                    iIndexSTT = 0
                 Case "II"
                     mact = "'2000'"
                     STT = "2"
+                    iIndexSTT = 0
                 Case "1"
                     mact = "'2100'"
                     STT = "21"
+                    iIndexSTT = 0
                 Case "1.1"
                     mact = "'2110'"
                     STT = "211"
+                    iIndexSTT = 0
                 Case "1.2"
                     mact = "'2120'"
                     STT = "212"
+                    iIndexSTT = 0
                 Case "2"
                     mact = "'2200'"
                     STT = "22"
+                    iIndexSTT = 0
                 Case "2.1"
                     mact = "'2210'"
                     STT = "221"
+                    iIndexSTT = 0
                 Case "2.2"
                     mact = "'2220'"
                     STT = "222"
+                    iIndexSTT = 0
                 Case "2.3"
                     mact = "'2230'"
                     STT = "223"
+                    iIndexSTT = 0
                 Case "2.4"
                     mact = "'2240'"
                     STT = "224"
+                    iIndexSTT = 0
                 Case "2.4.1"
                     mact = "'2241'"
                     STT = "2241"
+                    iIndexSTT = 0
                 Case "2.4.2"
                     mact = "'2242'"
                     STT = "2242"
+                    iIndexSTT = 0
                 Case "2.5"
                     mact = "'2250'"
                     STT = "225"
+                    iIndexSTT = 0
                 Case "2.5.1"
                     mact = "'2251'"
                     STT = "2251"
+                    iIndexSTT = 0
                 Case "2.5.2"
                     mact = "'2252'"
                     STT = "2252"
+                    iIndexSTT = 0
                 Case Else
-                    mact = "''"
-                    STT = "0"
+                    iIndexSTT = iIndexSTT + 1
+                    STT2 = iIndexSTT
             End Select
         
         
@@ -6694,10 +6714,7 @@ Public Function InsertDTL_PL03_7() As String
                 STTIN = "'" & STTIN & "'"
             End If
             
-            
-            
-            
-            
+
             .GetText .ColLetterToNumber("D"), .Row, CTIEU
             If Trim(CTIEU) = vbNullString Then
                CTIEU = "''"
@@ -7885,7 +7902,7 @@ Private Function getTenDMPPDG(maDM As Variant) As String
 
         If Left(GetAttribute(xmlNode, "Value"), 3) = maDM1 Then
             arrStrName = Split(GetAttribute(xmlNode, "Value"), "###")
-            getTenDMPPDG = arrStrName(1)
+            getTenDMPPDG = Mid(Trim(arrStrName(1)), InStr(1, Trim(arrStrName(1)), ":") + 1)
         End If
 
     Next
