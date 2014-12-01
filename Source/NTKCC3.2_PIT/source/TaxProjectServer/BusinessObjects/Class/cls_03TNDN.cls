@@ -6139,6 +6139,9 @@ Public Function InsertDTL_PL03_5() As String
    
     sSQLVal = madtnt & "," & ngnop & "," & CTTN & "," & SOTIEN & "," & SOTIEN2 & "," & namQT & "," & TTHTK & "," & LAN_QUET & "," & DANHAN & "," & MAPL & "," & tt
     sSQL = "INSERT INTO TMP_Q31A" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+    
+    bln = clsDAO.ExecuteDLL(sSQL)
+    
     '--------------
    
     With fps
