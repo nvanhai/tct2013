@@ -1765,6 +1765,8 @@ Private Sub UpdateSheets()
                     varTemp = Trim(varTemp)
                     If varTemp = "1" Then
                         varTemp = "x"
+                    Else
+                        varTemp = ""
                     End If
                End If
                UpdateCell fps, lCol, lRow, varTemp
@@ -1784,6 +1786,8 @@ Private Sub UpdateSheets()
                     varTemp = Trim(varTemp)
                     If varTemp = "1" Then
                         varTemp = "x"
+                    ElseIf varTemp = "0" Then
+                        varTemp = ""
                     End If
                End If
                UpdateCell fps, lCol, lRow, varTemp

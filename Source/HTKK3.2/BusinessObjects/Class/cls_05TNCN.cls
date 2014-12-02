@@ -2144,6 +2144,8 @@ Private Sub UpdateSheets()
                ' Update gia tri cua truong check la "x" thi khi hien thi moi dung dinh dang
                If (lCol = .ColLetterToNumber("G") Or lCol = .ColLetterToNumber("P") Or lCol = .ColLetterToNumber("C")) And (varTemp = "1" Or varTemp = "x") Then
                     UpdateCell fps, lCol, lRow, "x"
+               ElseIf (lCol = .ColLetterToNumber("G") Or lCol = .ColLetterToNumber("P") Or lCol = .ColLetterToNumber("C")) And (varTemp = "0" Or varTemp = "") Then
+                    UpdateCell fps, lCol, lRow, ""
                Else
                     If lCol >= 8 Then
                         If Trim(varTemp) <> vbNullString Or Trim(varTemp) <> "" Then
@@ -2163,7 +2165,9 @@ Private Sub UpdateSheets()
                 .GetText lCol, lRow, varTemp
                 If (lCol = .ColLetterToNumber("F") Or lCol = .ColLetterToNumber("Y")) And (varTemp = "1" Or varTemp = "x") Then
                     UpdateCell fps, lCol, lRow, "x"
-               Else
+                ElseIf (lCol = .ColLetterToNumber("F") Or lCol = .ColLetterToNumber("Y")) And (varTemp = "0" Or varTemp = "") Then
+                    UpdateCell fps, lCol, lRow, ""
+                Else
                     If lCol >= 7 Then
                         If Trim(varTemp) <> vbNullString Or Trim(varTemp) <> "" Then
                             UpdateCell fps, lCol, lRow, varTemp
