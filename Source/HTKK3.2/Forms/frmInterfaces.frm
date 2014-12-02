@@ -6422,7 +6422,8 @@ Private Sub cmdImportXML_Click()
     Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "64" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "65" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "66" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "67" _
     Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "18" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "27" _
     Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "07" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "13" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "09" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "10" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "14" _
-    Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "86" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "97" Then
+    Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "86" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "97" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "03" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "77" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "88" _
+    Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "85" Then
         If Not objTaxBusiness Is Nothing Then
             objTaxBusiness.finishImportXML
         Else
@@ -6738,7 +6739,7 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                     
                 End If
                 
-            ElseIf nodeMapCT.nodeName = "L_DYNAMIC" Then
+            ElseIf UCase(nodeMapCT.nodeName) = "L_DYNAMIC" Then
                 ' loop theo ca phu luc
                 Dim constCellRange As Long
                 Dim ChildNode1   As MSXML.IXMLDOMNode

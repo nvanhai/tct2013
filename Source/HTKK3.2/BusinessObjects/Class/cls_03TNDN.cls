@@ -4030,3 +4030,336 @@ Private Function getDenNgayNC() As String
     End If
     getDenNgayNC = strDenNgayNC
 End Function
+
+
+' ham set thong tin sau khi tai XML
+Public Sub finishImportXML()
+    Dim i As Integer
+    Dim CQT As Variant
+    Dim tempValue As Variant
+    Dim strCol As String
+    Dim arrCol() As String
+    Dim strRow As String
+    Dim arrRow() As String
+
+    
+    With fps
+        .EventEnabled(EventAllEvents) = False
+        ' TK 03/TNDN
+         .Sheet = sheetTK03_TNDN
+         mCurrentSheet = sheetTK03_TNDN
+         strRow = "8~10~12"
+         arrRow = Split(strRow, "~")
+         For i = 0 To UBound(arrRow)
+            .Row = arrRow(i)
+            .GetText .ColLetterToNumber("D"), .Row, tempValue
+            If tempValue = "1" Then
+               .Col = .ColLetterToNumber("D")
+               UpdateCell fps, .ColLetterToNumber("D"), .Row, "x"
+            ElseIf tempValue = "0" Then
+               .Col = .ColLetterToNumber("D")
+               UpdateCell fps, .ColLetterToNumber("D"), .Row, ""
+            End If
+         Next
+         
+         .Row = 83
+         .GetText .ColLetterToNumber("F"), .Row, tempValue
+         If tempValue = "1" Then
+           .Col = .ColLetterToNumber("F")
+           UpdateCell fps, .ColLetterToNumber("F"), .Row, "x"
+         ElseIf tempValue = "0" Then
+           .Col = .ColLetterToNumber("F")
+           UpdateCell fps, .ColLetterToNumber("F"), .Row, ""
+         End If
+         
+        
+         ' PL 03-3A
+         .Sheet = sheetPl03_3A_TNDN
+         mCurrentSheet = sheetPl03_3A_TNDN
+         .Row = 25
+         For i = 0 To 10
+              .GetText .ColLetterToNumber("C"), .Row, tempValue
+              If tempValue = "1" Then
+                 .Col = .ColLetterToNumber("C")
+                 UpdateCell fps, .ColLetterToNumber("C"), .Row, "x"
+              ElseIf tempValue = "0" Then
+                 .Col = .ColLetterToNumber("C")
+                 UpdateCell fps, .ColLetterToNumber("C"), .Row, ""
+              End If
+              .Row = .Row + 1
+         Next
+         
+         ' PL 03-3B
+         .Sheet = sheetPl03_3B_TNDN
+         mCurrentSheet = sheetPl03_3B_TNDN
+         .Row = 27
+         For i = 0 To 4
+              .GetText .ColLetterToNumber("D"), .Row, tempValue
+              If tempValue = "1" Then
+                 .Col = .ColLetterToNumber("D")
+                 UpdateCell fps, .ColLetterToNumber("D"), .Row, "x"
+              ElseIf tempValue = "0" Then
+                 .Col = .ColLetterToNumber("D")
+                 UpdateCell fps, .ColLetterToNumber("D"), .Row, ""
+              End If
+              .Row = .Row + 1
+         Next
+         
+        .Row = 33
+        .GetText .ColLetterToNumber("D"), .Row, tempValue
+        If tempValue = "1" Then
+           .Col = .ColLetterToNumber("D")
+           UpdateCell fps, .ColLetterToNumber("D"), .Row, "x"
+        ElseIf tempValue = "0" Then
+           .Col = .ColLetterToNumber("D")
+           UpdateCell fps, .ColLetterToNumber("D"), .Row, ""
+        End If
+          
+          
+        .Row = 34
+        .GetText .ColLetterToNumber("D"), .Row, tempValue
+        If tempValue = "1" Then
+           .Col = .ColLetterToNumber("D")
+           UpdateCell fps, .ColLetterToNumber("D"), .Row, "x"
+        ElseIf tempValue = "0" Then
+           .Col = .ColLetterToNumber("D")
+           UpdateCell fps, .ColLetterToNumber("D"), .Row, ""
+        End If
+        
+        ' PL 03-3C
+         .Sheet = sheetPl03_3C_TNDN
+         mCurrentSheet = sheetPl03_3C_TNDN
+         strRow = "24~28~33~34"
+         arrRow = Split(strRow, "~")
+         For i = 0 To UBound(arrRow)
+            .Row = arrRow(i)
+            .GetText .ColLetterToNumber("D"), .Row, tempValue
+            If tempValue = "1" Then
+               .Col = .ColLetterToNumber("D")
+               UpdateCell fps, .ColLetterToNumber("D"), .Row, "x"
+            ElseIf tempValue = "0" Then
+               .Col = .ColLetterToNumber("D")
+               UpdateCell fps, .ColLetterToNumber("D"), .Row, ""
+            End If
+         Next
+         
+        
+         .Sheet = sheetPl03_7_TNDN
+         mCurrentSheet = sheetPl03_7_TNDN
+         strCol = "U~V~W~X~Y~Z~AA~AB~AC~AD~AE~AF~AG"
+         arrCol = Split(strCol, "~")
+        .Row = 31
+        Do
+               For i = 0 To UBound(arrCol)
+                    .GetText .ColLetterToNumber(arrCol(i)), .Row, tempValue
+                    If tempValue = "1" Then
+                        .Col = .ColLetterToNumber(arrCol(i))
+                        UpdateCell fps, .ColLetterToNumber(arrCol(i)), .Row, "x"
+                    ElseIf tempValue = "0" Then
+                        .Col = .ColLetterToNumber(arrCol(i))
+                        UpdateCell fps, .ColLetterToNumber(arrCol(i)), .Row, ""
+                    End If
+               Next
+              .Col = .ColLetterToNumber("B")
+              .Row = 1 + .Row
+        Loop Until .Text = "kk"
+                            
+         .Col = .ColLetterToNumber("B")
+         .Row = .Row + 19
+         Do
+          .GetText .ColLetterToNumber("N"), .Row, tempValue
+          If Len(Trim$(tempValue)) > 3 Then
+                .Col = .ColLetterToNumber("AJ")
+                .Text = Left(CStr(tempValue), 3)
+                UpdateCell fps, .Col, .Row, .Text
+          End If
+          
+          .GetText .ColLetterToNumber("AB"), .Row, tempValue
+          If Len(Trim$(tempValue)) > 3 Then
+                .Col = .ColLetterToNumber("AK")
+                .Text = Left(CStr(tempValue), 3)
+                UpdateCell fps, .Col, .Row, .Text
+          End If
+          
+          .Col = .ColLetterToNumber("B")
+          .Row = .Row + 1
+         Loop Until .Text = "aa"
+         
+        .Row = .Row + 3
+         Do
+                
+                .GetText .ColLetterToNumber("N"), .Row, tempValue
+                If Len(Trim$(tempValue)) > 3 Then
+                      .Col = .ColLetterToNumber("AJ")
+                      .Text = Left(CStr(tempValue), 3)
+                      UpdateCell fps, .Col, .Row, .Text
+                End If
+                
+                .GetText .ColLetterToNumber("AB"), .Row, tempValue
+                If Len(Trim$(tempValue)) > 3 Then
+                      .Col = .ColLetterToNumber("AK")
+                      .Text = Left(CStr(tempValue), 3)
+                      UpdateCell fps, .Col, .Row, .Text
+                End If
+                
+              .Col = .ColLetterToNumber("B")
+              .Row = 1 + .Row
+         Loop Until .Text = "bb"
+
+
+        .Row = .Row + 4
+         Do
+
+               .GetText .ColLetterToNumber("N"), .Row, tempValue
+                If Len(Trim$(tempValue)) > 3 Then
+                      .Col = .ColLetterToNumber("AJ")
+                      .Text = Left(CStr(tempValue), 3)
+                      UpdateCell fps, .Col, .Row, .Text
+                End If
+                
+                .GetText .ColLetterToNumber("AB"), .Row, tempValue
+                If Len(Trim$(tempValue)) > 3 Then
+                      .Col = .ColLetterToNumber("AK")
+                      .Text = Left(CStr(tempValue), 3)
+                      UpdateCell fps, .Col, .Row, .Text
+                End If
+
+              .Col = .ColLetterToNumber("B")
+              .Row = 1 + .Row
+         Loop Until .Text = "cc"
+
+        .Row = .Row + 3
+         Do
+
+               .GetText .ColLetterToNumber("N"), .Row, tempValue
+                If Len(Trim$(tempValue)) > 3 Then
+                      .Col = .ColLetterToNumber("AJ")
+                      .Text = Left(CStr(tempValue), 3)
+                      UpdateCell fps, .Col, .Row, .Text
+                End If
+                
+                .GetText .ColLetterToNumber("AB"), .Row, tempValue
+                If Len(Trim$(tempValue)) > 3 Then
+                      .Col = .ColLetterToNumber("AK")
+                      .Text = Left(CStr(tempValue), 3)
+                      UpdateCell fps, .Col, .Row, .Text
+                End If
+                
+              .Col = .ColLetterToNumber("B")
+              .Row = 1 + .Row
+         Loop Until .Text = "dd"
+
+
+        .Row = .Row + 3
+         Do
+
+               .GetText .ColLetterToNumber("N"), .Row, tempValue
+                If Len(Trim$(tempValue)) > 3 Then
+                      .Col = .ColLetterToNumber("AJ")
+                      .Text = Left(CStr(tempValue), 3)
+                      UpdateCell fps, .Col, .Row, .Text
+                End If
+                
+                .GetText .ColLetterToNumber("AB"), .Row, tempValue
+                If Len(Trim$(tempValue)) > 3 Then
+                      .Col = .ColLetterToNumber("AK")
+                      .Text = Left(CStr(tempValue), 3)
+                      UpdateCell fps, .Col, .Row, .Text
+                End If
+
+              .Col = .ColLetterToNumber("B")
+              .Row = 1 + .Row
+         Loop Until .Text = "ee"
+
+        .Row = .Row + 4
+         Do
+                
+               .GetText .ColLetterToNumber("N"), .Row, tempValue
+                If Len(Trim$(tempValue)) > 3 Then
+                      .Col = .ColLetterToNumber("AJ")
+                      .Text = Left(CStr(tempValue), 3)
+                      UpdateCell fps, .Col, .Row, .Text
+                End If
+                
+                .GetText .ColLetterToNumber("AB"), .Row, tempValue
+                If Len(Trim$(tempValue)) > 3 Then
+                      .Col = .ColLetterToNumber("AK")
+                      .Text = Left(CStr(tempValue), 3)
+                      UpdateCell fps, .Col, .Row, .Text
+                End If
+                
+              .Col = .ColLetterToNumber("B")
+              .Row = 1 + .Row
+         Loop Until .Text = "ff"
+
+
+        .Row = .Row + 3
+         Do
+                
+               .GetText .ColLetterToNumber("N"), .Row, tempValue
+                If Len(Trim$(tempValue)) > 3 Then
+                      .Col = .ColLetterToNumber("AJ")
+                      .Text = Left(CStr(tempValue), 3)
+                      UpdateCell fps, .Col, .Row, .Text
+                End If
+                
+                .GetText .ColLetterToNumber("AB"), .Row, tempValue
+                If Len(Trim$(tempValue)) > 3 Then
+                      .Col = .ColLetterToNumber("AK")
+                      .Text = Left(CStr(tempValue), 3)
+                      UpdateCell fps, .Col, .Row, .Text
+                End If
+                
+              .Col = .ColLetterToNumber("B")
+              .Row = 1 + .Row
+         Loop Until .Text = "gg"
+
+
+        .Row = .Row + 3
+         Do
+                
+               .GetText .ColLetterToNumber("N"), .Row, tempValue
+                If Len(Trim$(tempValue)) > 3 Then
+                      .Col = .ColLetterToNumber("AJ")
+                      .Text = Left(CStr(tempValue), 3)
+                      UpdateCell fps, .Col, .Row, .Text
+                End If
+                
+                .GetText .ColLetterToNumber("AB"), .Row, tempValue
+                If Len(Trim$(tempValue)) > 3 Then
+                      .Col = .ColLetterToNumber("AK")
+                      .Text = Left(CStr(tempValue), 3)
+                      UpdateCell fps, .Col, .Row, .Text
+                End If
+                
+              .Col = .ColLetterToNumber("B")
+              .Row = 1 + .Row
+         Loop Until .Text = "hh"
+         ' end fill data
+        
+        
+         .Sheet = sheetPl03_9_TNDN
+         mCurrentSheet = sheetPl03_9_TNDN
+         If .SheetVisible = True Then
+                .Row = 42
+                .Col = .ColLetterToNumber("B")
+                i = 1
+                Do
+                     .GetText .ColLetterToNumber("P"), .Row, CQT
+                     If Trim$(CStr(CQT)) = "" Or CQT = vbNullString Then
+                        .Text = i
+                        .Col = .ColLetterToNumber("G")
+                        .value = 1
+                        .Col = .ColLetterToNumber("P")
+                        .Lock = True
+                        i = i + 1
+                     End If
+                     .Col = .ColLetterToNumber("B")
+                    .Row = .Row + 1
+                Loop Until .Text = "aa"
+                
+         End If
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub
+

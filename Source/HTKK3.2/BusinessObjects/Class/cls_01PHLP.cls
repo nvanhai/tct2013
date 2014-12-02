@@ -680,3 +680,51 @@ Public Sub inThongTinDL()
     ' end
 End Sub
 
+
+' ham set thong tin sau khi tai XML
+Public Sub finishImportXML()
+    Dim maPhi As Variant
+    Dim tenPhi As String
+    With fps
+        .EventEnabled(EventAllEvents) = False
+        .Sheet = 1
+         mCurrentSheet = .Sheet
+        .Row = 44
+        .Col = .ColLetterToNumber("B")
+        Do
+            .GetText .ColLetterToNumber("AD"), .Row, maPhi
+            getTenLoaiPhi CStr(maPhi), tenPhi
+            .Col = .ColLetterToNumber("C")
+            .Text = tenPhi
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .Col = .ColLetterToNumber("B")
+            .Row = .Row + 1
+        Loop Until .Text = "aa"
+        
+        
+        .EventEnabled(EventAllEvents) = False
+    End With
+End Sub
+
+Public Sub getTenLoaiPhi(ByVal maLoaiPhi As String, ByRef tenLoaiPhi As String)
+    Dim arrDanhsach() As String
+    Dim strDataFileName As String
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+    
+    strDataFileName = GetAbsolutePath("..\InterfaceTemplates\xml\Catalogue_PHLP_012009_01.xml")
+    If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+         Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+         For Each xmlNode In xmlNodeListCell
+             If GetAttribute(xmlNode, "Value") <> "" Then
+                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                     If maLoaiPhi = arrDanhsach(1) Then
+                         tenLoaiPhi = arrDanhsach(2)
+                         Exit Sub
+                     End If
+             End If
+         Next
+     End If
+End Sub
