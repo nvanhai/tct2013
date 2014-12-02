@@ -1,8 +1,8 @@
 <PL_02_1_TD_TNDN>
-	  <Static GroupName="ChiTietBangPBoThueTNDN">
+	 <Static GroupName="ChiTietBangPBoThueTNDN">
 		    <tenDonViTDPhuThuoc></tenDonViTDPhuThuoc>
 		    <soThueTNDNPNop>1</soThueTNDNPNop>
-	  </Static>
+	  </Static>	
 	  <P_Dynamic GroupName="NhaMayThuyDien" CellID="G_43">
 		    <ChiTietNhaMayThuyDien id="id">
 			      <tenNMayTDien>C_42</tenNMayTDien>
@@ -21,4 +21,5 @@
 			      </Dynamic>
 		    </ChiTietNhaMayThuyDien>
 	  </P_Dynamic>
+
 </PL_02_1_TD_TNDN>

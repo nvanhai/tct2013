@@ -182,7 +182,7 @@ Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
 Dim xmlNode As MSXML.IXMLDOMNode
 Dim iCol As Long, iRow As Long, GTSua As String, tRow As Long
 'bien dung de luu cac section
-Dim iSection, CountRow As Integer
+Dim iSection, countRow As Integer
 Dim count1 As Long
     With fps
         mblKhoiDauToKhai = True
@@ -230,7 +230,7 @@ Dim count1 As Long
             i = 1
             .Col = .ColLetterToNumber("C")
             .Row = 40
-            CountRow = 40
+            countRow = 40
             tRow = .Row
             Do
                 .GetText .ColLetterToNumber("F"), .Row, strLTN
@@ -342,14 +342,14 @@ Dim count1 As Long
                 End If
                 ' end
       '          .Row = i + 40
-                .Row = CountRow + i
+                .Row = countRow + i
                 tRow = .Row
                 i = i + 1
                 
                 If iSection = 1 And .Text = "aa" Then
                     iSection = iSection + 1
                     .Row = .Row + 3
-                    CountRow = .Row
+                    countRow = .Row
                     i = 1
                 End If
              Loop Until .Text = "aa"
@@ -792,7 +792,7 @@ Dim txmlCellNode As MSXML.IXMLDOMNode, txmlCellsNode As MSXML.IXMLDOMNode
 Dim tCol As Long, tRow As Long
 Dim strId As Variant, Col7 As Variant, intIndexCombo As Integer
 'bien dung de luu section
-Dim iSection, CountRow As Integer
+Dim iSection, countRow As Integer
 Dim NguoiKyCol As Long, NguoiKyRow As Long
     With fps
         iCol = .ActiveCol
@@ -837,16 +837,16 @@ Dim NguoiKyCol As Long, NguoiKyRow As Long
                     iSection = 1
                     .Col = .ColLetterToNumber("C")
                     .Row = 40
-                    CountRow = 40
+                    countRow = 40
                     Do
                          .Text = CStr(i)
                          .Col = .ColLetterToNumber("C")
-                         .Row = CountRow + i
+                         .Row = countRow + i
                          i = i + 1
                          If iSection = 1 And .Text = "aa" Then
                             iSection = iSection + 1
                             .Row = .Row + 3
-                            CountRow = .Row
+                            countRow = .Row
                             i = 1
                          End If
                     Loop Until .Text = "aa"
@@ -1593,7 +1593,7 @@ End Sub
 
 
 
-Private Sub filldata()
+Private Sub fillData()
     Dim varTemp As Variant
     Dim lCol As Long, lRow As Long
     Dim xmlCellNode As MSXML.IXMLDOMNodeList
@@ -1896,3 +1896,117 @@ Public Sub inThongTinDL()
 End Sub
 
 
+'
+Public Sub getNhomHH(ByVal maNhom As String, ByRef tenNhom As String)
+    Dim arrDanhsach() As String
+    Dim strDataFileName As String
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim blChon As Boolean
+
+        blChon = False
+        If TAX_Utilities_v1.Year = "2008" Then
+            strDataFileName = Replace(GetCatalogueTemplateFile, "Catalogue_052008_01", "CatalogueQTTN_2008_01")
+        ElseIf TAX_Utilities_v1.Year = "2010" Then
+            strDataFileName = Replace(GetCatalogueTemplateFile, "Catalogue_072010_01", "CatalogueQTTN_2010_01")
+        ElseIf TAX_Utilities_v1.Year = "2014" Then
+            strDataFileName = Replace(GetCatalogueTemplateFile, "Catalogue_022014_01", "CatalogueQTTN_2014_01")
+        Else
+            strDataFileName = GetCatalogueFileName(blChon)
+        End If
+    
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If maNhom = arrDanhsach(1) Then
+                            tenNhom = arrDanhsach(2)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
+
+
+Public Sub getRowDanhMuc(ByVal maNhom As String, ByRef tenNhom As String)
+    Dim arrDanhsach() As String
+    Dim strDataFileName As String
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim blChon As Boolean
+        blChon = False
+        If TAX_Utilities_v1.Year = "2008" Then
+            strDataFileName = Replace(GetCatalogueTemplateFile, "Catalogue_052008_01", "CatalogueQTTN_2008_01")
+        ElseIf TAX_Utilities_v1.Year = "2010" Then
+            strDataFileName = Replace(GetCatalogueTemplateFile, "Catalogue_072010_01", "CatalogueQTTN_2010_01")
+        ElseIf TAX_Utilities_v1.Year = "2014" Then
+            strDataFileName = Replace(GetCatalogueTemplateFile, "Catalogue_022014_01", "CatalogueQTTN_2014_01")
+        Else
+            strDataFileName = GetCatalogueFileName(blChon)
+        End If
+    
+       If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
+            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+            For Each xmlNode In xmlNodeListCell
+                If GetAttribute(xmlNode, "Value") <> "" Then
+                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                        If maNhom = arrDanhsach(1) Then
+                            tenNhom = CPab(arrDanhsach(2), 200) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(3), 10) + CPab(arrDanhsach(4), 10) + CPab(arrDanhsach(5), 1)
+                            Exit Sub
+                        End If
+                End If
+            Next
+        End If
+End Sub
+
+
+' ham set thong tin sau khi tai XML
+Public Sub finishImportXML()
+    Dim maNhom As Variant
+    Dim tenNhom As String
+    Dim tempValue As Variant
+    Dim iSection  As Long
+     With fps
+        .EventEnabled(EventAllEvents) = False
+        .Sheet = 1
+         mCurrentSheet = .Sheet
+        .Row = 40
+        .Col = .ColLetterToNumber("C")
+        iSection = 1
+        Do
+           
+            .GetText .ColLetterToNumber("E"), .Row, maNhom
+            getRowDanhMuc maNhom, tenNhom
+            
+            .Col = .ColLetterToNumber("F")
+            .Text = Trim(tenNhom)
+            UpdateCell fps, .Col, .Row, .Text
+            
+            If tenNhom <> "" Then
+                .Col = .ColLetterToNumber("O")
+                .Text = Trim(tenNhom)
+                UpdateCell fps, .Col, .Row, .Text
+            End If
+            
+            ' lay ten danh tai nguyen
+            .GetText .ColLetterToNumber("G"), .Row, tempValue
+            .Col = .ColLetterToNumber("D")
+            .Text = tempValue
+            
+            
+            .Row = .Row + 1
+            .Col = .ColLetterToNumber("C")
+             
+            If iSection = 1 And .Text = "aa" Then
+                iSection = iSection + 1
+                .Row = .Row + 3
+            End If
+        Loop Until .Text = "aa"
+    
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub

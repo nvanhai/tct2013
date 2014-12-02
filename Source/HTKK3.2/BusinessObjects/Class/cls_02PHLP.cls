@@ -904,3 +904,28 @@ Public Sub inThongTinDL()
     ' end
 End Sub
 
+' ham set thong tin sau khi tai XML
+Public Sub finishImportXML()
+    Dim maPhi As Variant
+    Dim maTM As Variant
+    With fps
+        .EventEnabled(EventAllEvents) = False
+        .Sheet = 1
+         mCurrentSheet = .Sheet
+        .Row = 49
+        .Col = .ColLetterToNumber("B")
+        Do
+            .GetText .ColLetterToNumber("E"), .Row, maTM
+            .GetText .ColLetterToNumber("AC"), .Row, maPhi
+            .Col = .ColLetterToNumber("AB")
+            .Text = maPhi & "###" & maTM
+            UpdateCell fps, .Col, .Row, .Text
+            
+            .Col = .ColLetterToNumber("B")
+            .Row = .Row + 1
+        Loop Until .Text = "aa"
+        
+        
+        .EventEnabled(EventAllEvents) = False
+    End With
+End Sub

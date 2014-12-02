@@ -16,6 +16,11 @@
 		<maHuyenDLyThue/>
 		<maTinhDLyThue/>
 	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+			<tong_ct6>Q_37</tong_ct6>
+			<tong_ct7>V_37</tong_ct7>
+			<tong_ct8>Y_37</tong_ct8>
+	</Static>
 	<Dynamic GroupName="KSCSTuKhaiThac">
 		<CTietKSCSTuKhaiThac id="ID_1">
 			<ct1>AC_45</ct1>
@@ -39,12 +44,7 @@
 			<ct7>V_49</ct7>
 			<ct8>Y_49</ct8>
 		</CTietKSCSThuMua>
-	</Dynamic>
-	<Static GroupName="CTieuTKhaiChinh">
-			<tong_ct6>Q_51</tong_ct6>
-			<tong_ct7>V_51</tong_ct7>
-			<tong_ct8>Y_51</tong_ct8>
-	</Static>
+	</Dynamic>	
 	<Static GroupName="TKhaiThue">
 		<nguoiKy>R_60</nguoiKy>
 		<ngayKy>R_62</ngayKy>

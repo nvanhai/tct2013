@@ -526,7 +526,7 @@ Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
     Dim i, j As Integer
     Dim blCheck_S1, blCheck_S2, blCheck_S3, blCheck_S4, blCheck_S5, blCheck_S6, blCheck_S7 As Boolean
     Dim blCheck_S8, blCheck_S9 As Boolean, iFlagCMT As Integer
-    Dim vErrMsgRow37 As Variant, iFlagErrRow37 As Integer, CountRow As Integer, rowDes As Long
+    Dim vErrMsgRow37 As Variant, iFlagErrRow37 As Integer, countRow As Integer, rowDes As Long
     
     iFlagErrRow37 = 0
     
@@ -781,9 +781,9 @@ Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
                     Else
                         ' Kiem tra cmt trung nhau
                         blCheck_S9 = True
-                        CountRow = 0
-                        CountRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vCMT, SearchFlagsNone)
-                        rowDes = .SearchCol(.ColLetterToNumber("F"), CountRow, -1, vCMT, SearchFlagsNone)
+                        countRow = 0
+                        countRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vCMT, SearchFlagsNone)
+                        rowDes = .SearchCol(.ColLetterToNumber("F"), countRow, -1, vCMT, SearchFlagsNone)
                         If rowDes > -1 Then
                             blCheck_S9 = False
                         End If
@@ -1240,6 +1240,8 @@ Private Sub UpdateSheets()
                     varTemp = Trim(varTemp)
                     If varTemp = "1" Then
                         varTemp = "x"
+                    Else
+                        varTemp = ""
                     End If
                End If
                UpdateCell fps, lCol, lRow, varTemp
@@ -1359,4 +1361,3 @@ Public Sub inThongTinDL()
     strTuRowDenRowPL = "12_13_2"
     ' end
 End Sub
-

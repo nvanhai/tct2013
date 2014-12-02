@@ -688,14 +688,14 @@ Dim Dvtinh As Variant
 Dim Sphainop As Variant
 Dim Skekhai As Variant
 Dim iFlagEmty As Variant
-Dim CountRow As Integer
+Dim countRow As Integer
     With fps
       .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), 15, Error
       .Sheet = 1
       Dim i As Integer
      i = 1
-     CountRow = 0
+     countRow = 0
      .Row = 45
      .Col = .ColLetterToNumber("B")
       Do
@@ -724,11 +724,11 @@ Dim CountRow As Integer
       .Col = .ColLetterToNumber("B")
       .Row = 45 + i
       i = i + 1
-      CountRow = CountRow + 1
+      countRow = countRow + 1
       Loop Until .Text = "aa"
       
       i = 1
-      .Row = 48 + CountRow
+      .Row = 48 + countRow
       .Col = .ColLetterToNumber("B")
       Do
         .GetText .ColLetterToNumber("J"), .Row, sluong
@@ -754,7 +754,7 @@ Dim CountRow As Integer
                 .BackColor = mNonErrorColor
             End If
       .Col = .ColLetterToNumber("B")
-      .Row = 48 + CountRow + i
+      .Row = 48 + countRow + i
       i = i + 1
       Loop Until .Text = "aa"
      .Sheet = .SheetCount
@@ -1137,7 +1137,7 @@ End Sub
 
 
 
-Private Sub filldata()
+Private Sub fillData()
     Dim varTemp As Variant
     Dim lCol As Long, lRow As Long
     Dim xmlCellNode As MSXML.IXMLDOMNodeList
