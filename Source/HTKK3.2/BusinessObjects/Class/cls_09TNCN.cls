@@ -2366,3 +2366,36 @@ Private Sub tinhGiamTruNPT_Load(ByVal Row As Long)
             End If
     End With
 End Sub
+
+
+' ham set thong tin sau khi tai XML
+Public Sub finishImportXML()
+    Dim varTemp As Variant
+    
+    With fps
+        .EventEnabled(EventAllEvents) = False
+        .Sheet = phuLuc09_3_TNCN
+        .Row = 25
+        Do
+            .Col = .ColLetterToNumber("B")
+            tinhGiamTruNPT_Load .Row
+            .Col = .ColLetterToNumber("B")
+            .Row = .Row + 1
+        Loop Until .Text = "aa"
+        
+        .Row = .Row + 7
+        Do
+            .Col = .ColLetterToNumber("B")
+            tinhGiamTruNPT_Load .Row
+            .Col = .ColLetterToNumber("B")
+            .Row = .Row + 1
+        Loop Until .Text = "bb"
+'        .Sheet = 1
+'        mCurrentSheet = .Sheet
+'        .Row = 47
+'        .Col = .ColLetterToNumber("K")
+'        .Formula = "'09-3'!AA23"
+'        UpdateCell fps, .Col, .Row, .Text
+        .EventEnabled(EventAllEvents) = True
+    End With
+End Sub

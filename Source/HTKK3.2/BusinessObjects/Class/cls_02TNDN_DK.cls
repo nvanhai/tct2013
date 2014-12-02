@@ -151,7 +151,7 @@ Dim strColC As String
             .Text = StrSolanBosung
             UpdateCell fps, .Col, .Row, .Text
         End If
-         If isCheckTTDLT = True Then
+        If isCheckTTDLT = True Then
             .Row = 49
             .Col = .ColLetterToNumber("P")
              checkUq = .value
@@ -166,7 +166,14 @@ Dim strColC As String
                  .value = 1
                  UpdateCell fps, .Col, .Row, .value
              End If
+        Else
+            .Row = 49
+            .Col = .ColLetterToNumber("P")
+            .value = 0
              
+            .Row = 49
+            .Col = .ColLetterToNumber("Z")
+            .value = 0
         End If
         
         

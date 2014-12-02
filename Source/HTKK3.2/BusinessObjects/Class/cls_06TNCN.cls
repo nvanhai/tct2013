@@ -431,7 +431,7 @@ Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
     Dim strFocusSheetName As String, strFocusRow As String, strFocusCol As String
     Dim i, j As Integer
     Dim blCheck_S1, blCheck_S2, blCheck_S3 As Boolean
-    Dim vErrMsgTrungMST, vErrMsgTrungCMT As Variant, iFlagTrungMST As Integer, iFlagTrungCMT As Integer, rowDes As Long, CountRow As Long
+    Dim vErrMsgTrungMST, vErrMsgTrungCMT As Variant, iFlagTrungMST As Integer, iFlagTrungCMT As Integer, rowDes As Long, countRow As Long
     Dim mErrMSTTrungMSTCQT, vMSTCQ As Variant, iFlagErrTrungMSTCQT As Integer
     Dim mErrCheckCT11 As Variant, iFlagCheckCT11 As Integer
     
@@ -661,8 +661,8 @@ Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
                             iFlagErrTrungMSTCQT = 1
                         Else
                             'check MST trung nhau
-                            CountRow = .SearchCol(.ColLetterToNumber("E"), -1, -1, vMST, SearchFlagsNone)
-                            rowDes = .SearchCol(.ColLetterToNumber("E"), CountRow, -1, vMST, SearchFlagsNone)
+                            countRow = .SearchCol(.ColLetterToNumber("E"), -1, -1, vMST, SearchFlagsNone)
+                            rowDes = .SearchCol(.ColLetterToNumber("E"), countRow, -1, vMST, SearchFlagsNone)
                             If rowDes > -1 Then
                                .Col = .ColLetterToNumber("E")
                                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
@@ -710,8 +710,8 @@ Dim iFlagTaxCode1 As Integer, iFlagTaxCode2 As Integer, iFlagTaxCode3 As Integer
 
                 If Trim(vCMT) <> vbNullString Then
                     'check CMT trung nhau
-                     CountRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vCMT, SearchFlagsNone)
-                     rowDes = .SearchCol(.ColLetterToNumber("F"), CountRow, -1, vCMT, SearchFlagsNone)
+                     countRow = .SearchCol(.ColLetterToNumber("F"), -1, -1, vCMT, SearchFlagsNone)
+                     rowDes = .SearchCol(.ColLetterToNumber("F"), countRow, -1, vCMT, SearchFlagsNone)
                     If rowDes > -1 Then
                         .Col = .ColLetterToNumber("F")
                         .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
@@ -1076,6 +1076,8 @@ Private Sub UpdateSheets()
                If lCol = .ColLetterToNumber("C") Then
                  If Trim(varTemp) = "1" Then
                     varTemp = "x"
+                 ElseIf Trim(varTemp) = "0" Then
+                    varTemp = ""
                  End If
                End If
                UpdateCell fps, lCol, lRow, varTemp
