@@ -241,12 +241,12 @@ Public Function Prepared3() As Boolean
 
         .Sheet = 1
 
-        'set check loi dinh danh
-        If checkDLTTonTai = False Then
-            .Col = .ColLetterToNumber("E")
-            .Row = 48
-            .Value = 1
-        End If
+'        'set check loi dinh danh
+'        If checkDLTTonTai = False Then
+'            .Col = .ColLetterToNumber("E")
+'            .Row = 48
+'            .Value = 1
+'        End If
 
         'Set NgayNhanToKhai
         '        .Col = .ColLetterToNumber(NGAY_NHAN_TO_KHAI_X)

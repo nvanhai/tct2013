@@ -258,11 +258,21 @@ Public Function Prepared3() As Boolean
         .Sheet = 1
 
         'set check loi dinh danh
-        If checkDLTTonTai = False Then
+        Dim strGhiChu As Variant
+        .Sheet = 1
+        .GetText .ColLetterToNumber("M"), 36, strGhiChu
+        If Trim(strGhiChu) <> vbNullString Then
             .Col = .ColLetterToNumber("E")
             .Row = 36
             .Value = 1
         End If
+        
+'        'set check loi dinh danh
+'        If checkDLTTonTai = False Then
+'            .Col = .ColLetterToNumber("E")
+'            .Row = 36
+'            .Value = 1
+'        End If
         
         'Set NgayNhanToKhai
         .Col = .ColLetterToNumber(NGAY_NHAN_TO_KHAI_X)
@@ -1256,7 +1266,7 @@ Public Function InsertDTL_PL1() As String
             .GetText .ColLetterToNumber("AY"), .Row, GTHDNT
 
             If Trim(GTHDNT) = vbNullString Then
-                GTHDNT = "'0'"
+                GTHDNT = "''"
             Else
                 GTHDNT = "'" & GTHDNT & "'"
             End If
@@ -1272,7 +1282,7 @@ Public Function InsertDTL_PL1() As String
              .GetText .ColLetterToNumber("BQ"), .Row, GTQTHDNT
 
             If Trim(GTQTHDNT) = vbNullString Then
-                GTQTHDNT = "'0'"
+                GTQTHDNT = "''"
                 
                 Else
                 
@@ -1283,7 +1293,7 @@ Public Function InsertDTL_PL1() As String
             
             'gia tri quyet toan hop dong viet nam
             
-            .GetText .ColLetterToNumber("AY"), .Row, GTQTHDVN
+            .GetText .ColLetterToNumber("BY"), .Row, GTQTHDVN
 
             If Trim(GTQTHDVN) = vbNullString Then
                 GTQTHDVN = "0"

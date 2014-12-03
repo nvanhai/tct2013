@@ -81,7 +81,7 @@
 			<Sheet ID="03-6" Caption="03-6/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="03_6_TNDN" Ini="..\Ini\03_6_TNDN.xml"/>
 			<Sheet ID="03-7" Caption="03-7/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="03_7_TNDN" Ini="..\Ini\03_7_TNDN.xml"/>
 			<Sheet ID="03-8" Caption="03-8/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="03_8_TNDN" Ini="..\Ini\03_8_TNDN.xml"/>
-			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS_03_TNDN" InterfaceIni="..\Ini\KHBS_03_TNDN.xml" ReportIni="..\ReportIni\KHBS_03_TNDN.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\" Folder="..\DataFiles\" DataFile="KHBS_03_TNDN" Ini="..\Ini\KHBS_03_TNDN.xml" ReportIni="..\ReportIni\KHBS_03_TNDN.xml"/>
 		</Validity>
 	</Menu>
 	<Menu ID="06" ParentID="101" Caption="Tờ khai thuế tài nguyên(01/TAIN)" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Icon="..\Pictures\tk_tndn.bmp" FileName="" DirFile="\NTK_TG\">

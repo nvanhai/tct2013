@@ -1104,6 +1104,7 @@ MATHUE = "''"
     MAPP = "''"
 MaMuc = "''"
     ' Dat mathue,mapp
+    ' Lay tu DB_HT\DMTOKHAI(MaMuc, MAPP) va DB_HT\DMTHUE2 (MATHUE)
     Select Case matkhai
     
         Case "'01/PHLP'"
@@ -1121,7 +1122,7 @@ MaMuc = "''"
         Case "'02/NTNN'"
             MATHUE = "'23'"
             MAPP = "'1'"
-            MaMuc = "'1700'"
+            MaMuc = "'1050'"
         Case "'04/NTNN'"
             MATHUE = "'23'"
             MAPP = "'2'"
@@ -1293,3 +1294,5 @@ MaMuc = "''"
     clsDAO.Disconnect
     InsertDTL_KHBS = vbNullString
 End Function
+
+

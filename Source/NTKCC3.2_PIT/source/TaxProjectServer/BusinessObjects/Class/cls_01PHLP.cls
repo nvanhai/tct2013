@@ -515,7 +515,10 @@ Public Function Prepared3() As Boolean
 
         
         'set check loi dinh danh
-        If checkDLTTonTai = False Then
+        Dim strGhiChu As Variant
+        .Sheet = 1
+        .GetText .ColLetterToNumber("M"), 28, strGhiChu
+        If Trim(strGhiChu) <> vbNullString Then
             .Col = .ColLetterToNumber("E")
             .Row = 28
             .Value = 1
@@ -707,6 +710,7 @@ Public Function InsertDTL() As String
     Dim MACHUONG    As Variant
     Dim MAPHLP As Variant
     Dim DANHAN As Variant
+    'Dim LanQuet As Variant
   
     
     sSQLCol = "MADTNT,MAMUC,MATM,MATKHAI, KYLBO,KYKKHAI, NGNOP, TTHTK,LOAILP,LEPHI,TYLE" & _
@@ -774,12 +778,13 @@ Public Function InsertDTL() As String
             clsDAO.Connect
         End If
         
+        
         Do
             .GetText .ColLetterToNumber("C"), .Row, LOAILP
             If Trim(LOAILP) = vbNullString Then
                 LOAILP = "''"
             Else
-                LOAILP = "'" & LOAILP & "'"
+                LOAILP = "'" & TAX_Utilities_Svr_New.Convert(Trim(LOAILP), UNICODE, TCVN) & "'"
             End If
         
             .GetText .ColLetterToNumber("AB"), .Row, MAPHLP
@@ -823,11 +828,7 @@ Public Function InsertDTL() As String
             If Trim(SOTIENPN) = vbNullString Then
                 SOTIENPN = "0"
             End If
-            
-            
-            
-    
-            
+
             sSQLVal = madtnt & "," & MaMuc & "," & maTM & "," & matkhai & "," & KYLBO & "," & _
                         kykkhai & "," & ngnop & "," & TTHTK & "," & LOAILP & "," & LEPHI & "," & _
                         TYLE & "," & SOTIENLP & "," & SOTIENPN & "," & MACAP & "," & _
@@ -1106,6 +1107,7 @@ Public Function InsertHDR() As String
     Dim MANNKD       As Variant
     Dim TENNV        As Variant
     Dim CHUNGCHI     As Variant
+    Dim GiaHan       As Variant
     Dim HTHUC_NOP As Variant ' not save
     
     'bien dung xu ly Ma Tieu Muc
@@ -1122,7 +1124,7 @@ Public Function InsertHDR() As String
     
     sSQLCol = "madtnt,madlt,mathue,matm,mapp,kylbo,ngnop,loaitien,mabpql,shtep,tthtk,kykkhai,ngnhap,thuetky,gttinhthue," & _
               "daghi,kttruoc,doanhso,mapp2,mamuc,mavach,matkhai,hannop,thuetky2,hannop2,tenda,daghi1,daghi2,auto_cal," & _
-              "nganh,danhan,lan_quet,lanbs,thuecl,dsocl,gtttcl,ngayps,mannkd,tennv,chungchi"
+              "nganh,danhan,lan_quet,lanbs,thuecl,dsocl,gtttcl,ngayps,mannkd,tennv,chungchi,giahan"
    
     With fps
         .Sheet = 1
@@ -1141,7 +1143,7 @@ Public Function InsertHDR() As String
             madlt = "'" & madlt & "'"
         End If
         
-        MATHUE = "'1'"
+        MATHUE = "'20'"
         
         .GetText .ColLetterToNumber("E"), 22, KYLBO
         
@@ -1197,7 +1199,7 @@ Public Function InsertHDR() As String
             arrThueTKySave(i) = countThueTKy
         Next
 
-        MAPP = "'1'"
+        MAPP = "'2'"
         
         .GetText .ColLetterToNumber("E"), 24, ngnop
         'NGNOP = Date
@@ -1242,7 +1244,7 @@ Public Function InsertHDR() As String
     DaGhi = ".F."
     KTTRUOC = "0"
     DoanhSo = "0"
-    MAPP2 = "'1'"
+    MAPP2 = "'2'"
 
     MaVach = ".T."
     matkhai = "'01/PHLP'"
@@ -1260,7 +1262,7 @@ Public Function InsertHDR() As String
     End If
     
     
-    AUTO_CAL = ".F."
+    AUTO_CAL = ".T."
   
   'Lay truong Nganh trong DTNT2 thuoc folder DTNT
     NGANH = GetMaNganhTheoDTNT(madtnt)
@@ -1307,6 +1309,8 @@ Public Function InsertHDR() As String
     Else
         CHUNGCHI = "'" & TAX_Utilities_Svr_New.Convert(CStr(CHUNGCHI), UNICODE, TCVN) & "'"
     End If
+    
+    GiaHan = ".F."
         
     End With
      
@@ -1341,7 +1345,7 @@ Public Function InsertHDR() As String
             "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & _
             "," & DAGHI2 & "," & AUTO_CAL & "," & NGANH & "," & DANHAN & "," & LAN_QUET & _
             "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & NgayPs & _
-            "," & MANNKD & "," & TENNV & "," & CHUNGCHI
+            "," & MANNKD & "," & TENNV & "," & CHUNGCHI & "," & GiaHan
     
             sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & _
              "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -1838,6 +1842,3 @@ Public Function GetMaCqt() As String
         clsConn.Disconnect
         GetMaCqt = TEMP
 End Function
-
-
-

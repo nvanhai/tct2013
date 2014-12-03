@@ -1361,6 +1361,12 @@ Private Sub cmdSave_Click()
         End If
     End If
 
+    'Kiem tra check dinh danh
+    If Not CheckLoiDinhDanh(menuId) Then
+        DisplayMessage "0184", msOKOnly, miInformation
+        Exit Sub
+    End If
+
     'Kiem tra to khai da ton tai
     If Not objTaxBusiness.TKTT Then
 
@@ -2056,15 +2062,15 @@ Private Sub Command1_Click()
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 ''02_PHLP-2015
-'str2 = "aa999880100105951   00201500200200100101/0101/01/1900<S01><S>0</S><S>2154~120000~35~42000~78000~200000~-122000~21502154~2151~350000~65~227500~122500~150000~-27500~21502151</S><S>470000~269500~200500~350000~-149500</S><S>Nguyen Van A~Tran Van B~CCHN123456~27/10/2015~1~~~01/2015~10/2015</S></S01>"
+'str2 = "aa999880100105951   00201500300300100101/0101/01/1900<S01><S></S><S>3055~12000~10~1200~10800~2000~8800~30503055~2152~48000~5~2400~45600~5000~40600~21502152</S><S>60000~3600~56400~7000~49400</S><S>Nguyen Van A~Tran Van B~CCHN123456~04/12/2016~1~~~01/2015~10/2015</S></S01>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
-''BS
-'str2 = "bs999880100105951   00201500200200100301/0101/01/1900<S01><S>0</S><S>2154~500000~35~175000~325000~200000~125000~21502154~2151~700000~65~455000~245000~150000~95000~21502151</S><S>1200000~630000~570000~350000~220000</S><S>Nguyen Van A~Tran Van B~CCHN123456~27/10/2015~~1~1~01/2015~10/2015</S></S01>"
+'''BS
+'str2 = "bs999880100105951   00201500500500100301/0101/01/1900<S01><S></S><S>3055~12000~2~240~11760~2000~9760~30503055~2152~48000~3~1440~46560~5000~41560~21502152</S><S>60000~1680~58320~7000~51320</S><S>Nguyen Van A~Tran Van B~CCHN123456~04/12/2016~~1~1~01/2015~10/2015</S></S01>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-'str2 = "bs999880100105951   002015002002002003<SKHBS><S>SË ti“n ph›, l÷ ph›  thu Æ≠Óc ~4~470000~1200000~730000</S><S>SË ti“n ph›, l÷ ph› tr›ch sˆ dÙng theo ch’ ÆÈ~6~26"
+'str2 = "bs999880100105951   002015005005002003<SKHBS><S>SË ti“n ph›, l÷ ph› tr›ch sˆ dÙng theo ch’ ÆÈ~6~3600~1680~-1920</S><S>~~0~0~0</S><S>0"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-'str2 = "bs999880100105951   0020150020020030039500~630000~360500</S><S>02/12/2016~247~45633~2000~LHT123456~03/12/2015~10100~10101~12~30000~TEST~0~0~369500</S></SKHBS>"
+'str2 = "bs999880100105951   0020150050050030034/12/2016~249~300~12000~LHT123456~10/05/2015~10700~10701~10~2000~dsfasdf~0~0~1920</S></SKHBS>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 ''02_NTNN-2015
@@ -2083,11 +2089,11 @@ Private Sub Command1_Click()
 'str2 = "bs999800100105951   00201500400400300353~115~12000~LHTNSNN12345~10/10/2015~10300~10301~10~3000~sdfads asdfasdf~0~0~500</S></SKHBS>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
-''04_NTNN-2015
-'str2 = "aa999820100105951   00201500100100100201/0101/01/190001/01/201531/10/2015<S01><S></S><S>HDNTS123456~12/10/2015</S><S>20000~50000~30000~To the~200~500000~499800~Day moi to~12000~330000~318000~Doi mo` ca mat~-11800~170000~181800~~3999~2000~-1999~Am the nay~200~600000~599800~Duong ngay~3799~0~-3799~</S><S>Nguyen Van A~Tran Van B~CCHN123456~02/12/2016~1~~</S></S01>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-'str2 = "aa999820100105951   002015001001002002<S01-1><S>Ba hoa to ho~0102030405~HAMACHI~10/2015~la la la~Viet Nam~12~1200USD~20000~120YEN~30000~to ho ba hoa~2222222222~Chi ha ma~15/2015~ola la la ~Han Quoc~24~1500USD~2000~150Bart~300000</S><S>22000~330000</S></S01-1>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'04_NTNN-2015
+str2 = "aa999820100105951   00201500100100100201/0101/01/190001/01/201531/10/2015<S01><S></S><S>HDNTS123456~12/10/2015</S><S>20000~50000~30000~To the~200~500000~499800~Day moi to~12000~330000~318000~Doi mo` ca mat~-11800~170000~181800~~3999~2000~-1999~Am the nay~200~600000~599800~Duong ngay~3799~0~-3799~</S><S>Nguyen Van A~Tran Van B~CCHN123456~02/12/2016~1~~</S></S01>"
+Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+str2 = "aa999820100105951   002015001001002002<S01-1><S>Ba hoa to ho~0102030405~HAMACHI~10/2015~la la la~Viet Nam~12~1200USD~20000~120YEN~30000~to ho ba hoa~2222222222~Chi ha ma~15/2015~ola la la ~Han Quoc~24~1500USD~2000~150Bart~300000</S><S>22000~330000</S></S01-1>"
+Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 ''BS
 'str2 = "bs999820100105951   00201500400400100301/0101/01/190001/01/201531/10/2015<S01><S></S><S>HDNTS123456~12/10/2015</S><S>20000~50000~30000~To the~200~500000~499800~Day moi to~12000~330000~318000~Doi mo` ca mat~-11800~170000~181800~~900000~20000000~19100000~Am the nay~200~600000~599800~Duong ngay~899800~19400000~18500200~</S><S>Nguyen Van A~Tran Van B~CCHN123456~02/12/2016~~1~1</S></S01>"
@@ -2101,13 +2107,13 @@ Private Sub Command1_Click()
 'str2 = "aa999870100105951   00201500100100100101/0101/01/1900<S01><S></S><S>M3~120.000~2000~240000~1000~239000~060103~Kg~300.000~15000~4500000~50000~4450000~010102</S><S>T n~30000.000~1000~30000000~1500000~28500000~010201~Kg~200.000~20000~4000000~340000~3660000~010103</S><S>Nguyen Van A~Tran Van B~CCHN123456~02/12/2016~1~~~01/2015~10/2015</S></S01>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
-'BS
-str2 = "bs999870100105951   00201500300300100301/0101/01/1900<S01><S></S><S>M3~120.000~30000~3600000~1000~3599000~060103~Kg~300.000~5000~1500000~50000~1450000~010102</S><S>T n~30000.000~6000~180000000~1500000~178500000~010201~Kg~200.000~500~100000~340000~-240000~010103</S><S>Nguyen Van A~Tran Van B~CCHN123456~02/12/2016~~1~1~01/2015~10/2015</S></S01>"
-Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-str2 = "bs999870100105951   002015003003002003<SKHBS><S>SË ph› ph∂i nÈp trong k˙~6~38740000~185200000~146460000</S><S>~~0~0~0</S><S>02/12/2016~"
-Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-str2 = "bs999870100105951   002015003003003003247~22686654~12999~LNSHSHS~10/10/2015~10700~10703~12~3000~dsfs asdf a~0~0~146460000</S></SKHBS>"
-Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+''BS
+'str2 = "bs999870100105951   00201500300300100301/0101/01/1900<S01><S></S><S>M3~120.000~30000~3600000~1000~3599000~060103~Kg~300.000~5000~1500000~50000~1450000~010102</S><S>T n~30000.000~6000~180000000~1500000~178500000~010201~Kg~200.000~500~100000~340000~-240000~010103</S><S>Nguyen Van A~Tran Van B~CCHN123456~02/12/2016~~1~1~01/2015~10/2015</S></S01>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'str2 = "bs999870100105951   002015003003002003<SKHBS><S>SË ph› ph∂i nÈp trong k˙~6~38740000~185200000~146460000</S><S>~~0~0~0</S><S>02/12/2016~"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'str2 = "bs999870100105951   002015003003003003247~22686654~12999~LNSHSHS~10/10/2015~10700~10703~12~3000~dsfs asdf a~0~0~146460000</S></SKHBS>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 
 End Sub
@@ -7412,5 +7418,162 @@ Function ReplacePlucBarcode(strData As String, _
     Next
     strPlucNew = strPlucNew & sectionSpl(UBound(sectionSpl))
     ReplacePlucBarcode = Replace$(strData, "<" & idPluc & "><S>" & strPluc, "<" & idPluc & "><S>" & strPlucNew)
+End Function
+
+Public Function CheckLoiDinhDanh(ByVal idToKhai As String) As Boolean
+Dim sDinhDanh As Variant
+Dim sGhiChu As Variant
+CheckLoiDinhDanh = False
+With fpSpread1
+    .Sheet = 1
+    Select Case idToKhai
+    Case "85" ' 01/PHLP
+        .GetText .ColLetterToNumber("M"), 28, sGhiChu
+        .GetText .ColLetterToNumber("E"), 28, sDinhDanh
+        If (sDinhDanh <> vbNullString Or Trim(sDinhDanh) <> "") Then
+            If Trim(sDinhDanh) = "0" Then
+                CheckLoiDinhDanh = True
+            Else
+                If (sGhiChu <> vbNullString Or Trim(sGhiChu) <> "") Then
+                    CheckLoiDinhDanh = True
+                Else
+                    CheckLoiDinhDanh = False
+                End If
+            End If
+        Else
+           CheckLoiDinhDanh = True
+        End If
+    Case "88" ' 02/PHLP
+        .GetText .ColLetterToNumber("M"), 28, sGhiChu
+        .GetText .ColLetterToNumber("E"), 28, sDinhDanh
+        If (sDinhDanh <> vbNullString Or Trim(sDinhDanh) <> "") Then
+            If Trim(sDinhDanh) = "0" Then
+                CheckLoiDinhDanh = True
+            Else
+                If (sGhiChu <> vbNullString Or Trim(sGhiChu) <> "") Then
+                    CheckLoiDinhDanh = True
+                Else
+                    CheckLoiDinhDanh = False
+                End If
+            End If
+        Else
+           CheckLoiDinhDanh = True
+        End If
+    Case "80" ' 02/NTNN
+        .GetText .ColLetterToNumber("M"), 36, sGhiChu
+        .GetText .ColLetterToNumber("E"), 36, sDinhDanh
+        If (sDinhDanh <> vbNullString Or Trim(sDinhDanh) <> "") Then
+            If Trim(sDinhDanh) = "0" Then
+                CheckLoiDinhDanh = True
+            Else
+                If (sGhiChu <> vbNullString Or Trim(sGhiChu) <> "") Then
+                    CheckLoiDinhDanh = True
+                Else
+                    CheckLoiDinhDanh = False
+                End If
+            End If
+        Else
+           CheckLoiDinhDanh = True
+        End If
+    Case "82" ' 04/NTNN
+        .GetText .ColLetterToNumber("M"), 36, sGhiChu
+        .GetText .ColLetterToNumber("E"), 36, sDinhDanh
+        If (sDinhDanh <> vbNullString Or Trim(sDinhDanh) <> "") Then
+            If Trim(sDinhDanh) = "0" Then
+                CheckLoiDinhDanh = True
+            Else
+                If (sGhiChu <> vbNullString Or Trim(sGhiChu) <> "") Then
+                    CheckLoiDinhDanh = True
+                Else
+                    CheckLoiDinhDanh = False
+                End If
+            End If
+        Else
+           CheckLoiDinhDanh = True
+        End If
+    Case "77" ' 02/TAIN
+        .GetText .ColLetterToNumber("E"), 36, sGhiChu
+        .GetText .ColLetterToNumber("F"), 34, sDinhDanh
+        If (sDinhDanh <> vbNullString Or Trim(sDinhDanh) <> "") Then
+            If Trim(sDinhDanh) = "0" Then
+                CheckLoiDinhDanh = True
+            Else
+                If (sGhiChu <> vbNullString Or Trim(sGhiChu) <> "") Then
+                    CheckLoiDinhDanh = True
+                Else
+                    CheckLoiDinhDanh = False
+                End If
+            End If
+        Else
+           CheckLoiDinhDanh = True
+        End If
+    Case "87" ' 02/BVMT
+        .GetText .ColLetterToNumber("M"), 28, sGhiChu
+        .GetText .ColLetterToNumber("E"), 28, sDinhDanh
+        If (sDinhDanh <> vbNullString Or Trim(sDinhDanh) <> "") Then
+            If Trim(sDinhDanh) = "0" Then
+                CheckLoiDinhDanh = True
+            Else
+                If (sGhiChu <> vbNullString Or Trim(sGhiChu) <> "") Then
+                    CheckLoiDinhDanh = True
+                Else
+                    CheckLoiDinhDanh = False
+                End If
+            End If
+        Else
+           CheckLoiDinhDanh = True
+        End If
+    Case "3" ' 03/TNDN
+        .GetText .ColLetterToNumber("M"), 40, sGhiChu
+        .GetText .ColLetterToNumber("E"), 40, sDinhDanh
+        If (sDinhDanh <> vbNullString Or Trim(sDinhDanh) <> "") Then
+            If Trim(sDinhDanh) = "0" Then
+                CheckLoiDinhDanh = True
+            Else
+                If (sGhiChu <> vbNullString Or Trim(sGhiChu) <> "") Then
+                    CheckLoiDinhDanh = True
+                Else
+                    CheckLoiDinhDanh = False
+                End If
+            End If
+        Else
+           CheckLoiDinhDanh = True
+        End If
+    Case "84" ' 01/MBAI
+        .GetText .ColLetterToNumber("M"), 28, sGhiChu
+        .GetText .ColLetterToNumber("E"), 28, sDinhDanh
+        If (sDinhDanh <> vbNullString Or Trim(sDinhDanh) <> "") Then
+            If Trim(sDinhDanh) = "0" Then
+                CheckLoiDinhDanh = True
+            Else
+                If (sGhiChu <> vbNullString Or Trim(sGhiChu) <> "") Then
+                    CheckLoiDinhDanh = True
+                Else
+                    CheckLoiDinhDanh = False
+                End If
+            End If
+        Else
+           CheckLoiDinhDanh = True
+        End If
+     Case "73" ' 02/TNDN
+        .GetText .ColLetterToNumber("M"), 48, sGhiChu
+        .GetText .ColLetterToNumber("E"), 48, sDinhDanh
+        If (sDinhDanh <> vbNullString Or Trim(sDinhDanh) <> "") Then
+            If Trim(sDinhDanh) = "0" Then
+                CheckLoiDinhDanh = True
+            Else
+                If (sGhiChu <> vbNullString Or Trim(sGhiChu) <> "") Then
+                    CheckLoiDinhDanh = True
+                Else
+                    CheckLoiDinhDanh = False
+                End If
+            End If
+        Else
+           CheckLoiDinhDanh = True
+        End If
+    End Select
+
+End With
+
 End Function
 
