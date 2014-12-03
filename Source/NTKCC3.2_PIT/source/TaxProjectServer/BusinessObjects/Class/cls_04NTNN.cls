@@ -821,7 +821,7 @@ Public Function InsertDTL_PL1() As String
             End If
         
             sSQLVal = madtnt & "," & namQT & "," & TTHTK & "," & ngnop & "," & LanBS & "," & STT & "," & TENNTVN & "," & MADTNTVN & "," & MADTNTNN & ",'" & SOHD & "'," & NOIDUNGHD & "," & DIADIEM & "," & THOIHAN & "," & GTHDNT & "," & GTHDVN & "," & GTQTHDNT & "," & GTQTHDVN & "," & DANHAN & "," & LAN_QUET
-            sSQL = "INSERT INTO TMP_NT02PL2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+            sSQL = "INSERT INTO TMP_NT04PL2" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
             bln = clsDAO.ExecuteDLL(sSQL)
             
@@ -1232,10 +1232,10 @@ Public Function TKTT() As Boolean
     End If
     
     'file phu luc 02
-    strFileNamePL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_NT02PL2" & Right(sKyKeKhai, 4) & ".DBF"
+    strFileNamePL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_NT04PL2" & Right(sKyKeKhai, 4) & ".DBF"
 
     If fso.FileExists(strFileNamePL) = False Then
-        strTepmauPL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "\tepmau\TMP_NT02PL2.DBF"
+        strTepmauPL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "\tepmau\TMP_NT04PL2.DBF"
         fso.CopyFile strTepmauPL, strFileNamePL, False
     End If
 

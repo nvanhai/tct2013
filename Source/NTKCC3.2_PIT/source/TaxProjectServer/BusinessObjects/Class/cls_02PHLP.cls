@@ -431,12 +431,12 @@ Public Function Prepared3() As Boolean
         End If
 
         
-        'set check loi dinh danh
-        If checkDLTTonTai = False Then
-            .Col = .ColLetterToNumber("E")
-            .Row = 28
-            .Value = 1
-        End If
+'        'set check loi dinh danh
+'        If checkDLTTonTai = False Then
+'            .Col = .ColLetterToNumber("E")
+'            .Row = 28
+'            .Value = 1
+'        End If
 
         .Row = 44
         Dim varID As Variant, strID As Variant
