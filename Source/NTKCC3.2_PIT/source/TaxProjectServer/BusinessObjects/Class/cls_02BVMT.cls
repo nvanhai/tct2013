@@ -1211,14 +1211,19 @@ Public Function InsertHDR() As String
     Dim AUTO_CAL As Variant
     Dim TENNV      As Variant
     Dim CHUNGCHI   As Variant
+    Dim ThueCQ   As Variant
+    
     'bien dung xu ly Ma Tieu Muc
     Dim arrMTM()     As String, arrMTMSave() As String
     Dim arrThueTKy() As String, arrThueTKySave() As Double
+    Dim arrThueCQ() As String, arrThueCQSave() As Double
     Dim i, j As Integer
     Dim vTemp        As String
     Dim countThueTKy As Double
+    Dim countThueCQ As Double
     Dim strMTM       As String
     Dim strThueTKy   As String
+    Dim strThueCQ   As String
     Dim ROWNUM       As Variant
     Dim vTemp2       As String
     
@@ -1229,7 +1234,7 @@ Public Function InsertHDR() As String
     
     sSQLCol = "NamQT, TuKy, DenKy, MaDTNT, MaDLT, MaMuc, MaTM, NgNop, NgNhap, LoaiTien, KyDC,"
     sSQLCol = sSQLCol + "ThueTKy, DaGhi, LoaiTK, TTHTK, MaVach, HanNop, KyLBo, DoanhSo, GTTinhThue,"
-    sSQLCol = sSQLCol + "DaGhi2,LanBS, ThueCL, DSoCL, GTTTCL, DANHAN, AUTO_CAL,LAN_QUET, TENNV, CHUNGCHI"
+    sSQLCol = sSQLCol + "DaGhi2,LanBS, ThueCL, DSoCL, GTTTCL, DANHAN, AUTO_CAL,LAN_QUET, TENNV, CHUNGCHI,THUECQ"
        
     With fps
         .Sheet = 1
@@ -1268,9 +1273,13 @@ Public Function InsertHDR() As String
                 strMTM = strMTM & maTM & "~"
             End If
             
-            'Ghep cac gia tri = chenh lech giua so quyet toan va ke khai
-            .Col = .ColLetterToNumber("AC")
+            'Ghep cac gia tri = So phi phai nop trong ky
+            .Col = .ColLetterToNumber("Q")
             strThueTKy = strThueTKy & .Text & "~"
+            
+            'Ghep cac gia tri = So phi da ke khai trong ky
+            .Col = .ColLetterToNumber("V")
+            strThueCQ = strThueCQ & .Text & "~"
             
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
@@ -1294,9 +1303,13 @@ Public Function InsertHDR() As String
                 strMTM = strMTM & maTM & "~"
             End If
             
-            'Ghep cac gia tri phi phai nop
-            .Col = .ColLetterToNumber("AC")
+            'Ghep cac gia tri = So phi phai nop trong ky
+            .Col = .ColLetterToNumber("Q")
             strThueTKy = strThueTKy & .Text & "~"
+            
+            'Ghep cac gia tri = So phi da ke khai trong ky
+            .Col = .ColLetterToNumber("V")
+            strThueCQ = strThueCQ & .Text & "~"
             
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
@@ -1306,23 +1319,26 @@ Public Function InsertHDR() As String
         arrMTMSave = Split(strMTM, "~")
         'Mang nay luu gia tri tuong ung
         arrThueTKy = Split(strThueTKy, "~")
+        arrThueCQ = Split(strThueCQ, "~")
         arrMTM = Split(vTemp2, "~")
         
-        'Mang nay luu cac tong ThueTKy theo tung maTM
+        'fix length
         ReDim arrThueTKySave(UBound(arrMTMSave))
+        ReDim arrThueCQSave(UBound(arrMTMSave))
         
-        'Tinh tong ThueTKy theo tung maTM
+        'Tinh tong ThueTKy,ThueCQ theo tung maTM
         For i = 1 To UBound(arrMTMSave) - 1
             countThueTKy = 0
+            countThueCQ = 0
             For j = 0 To UBound(arrMTM) - 1
                 If arrMTMSave(i) = arrMTM(j) Then
                     countThueTKy = countThueTKy + Val(Replace(arrThueTKy(j), ".", ""))
+                    countThueCQ = countThueCQ + Val(Replace(arrThueCQ(j), ".", ""))
                 End If
             Next
             arrThueTKySave(i) = countThueTKy
+            arrThueCQSave(i) = countThueCQ
         Next
-
-
         
         .GetText .ColLetterToNumber("E"), 22, KYLBO
 
@@ -1432,6 +1448,7 @@ Public Function InsertHDR() As String
             vTemp = arrMTMSave(i)
             maTM = "'" & vTemp & "'"
             ThueTKy = arrThueTKySave(i)
+            ThueCQ = arrThueCQSave(i)
             
             'TODO
             'MaMuc = "'1550'"
@@ -1447,10 +1464,16 @@ Public Function InsertHDR() As String
                 THUECL = ThueTKy
             Else
                 THUECL = "0"
+                ThueTKy = "0"
             End If
             
+            If (Trim(ThueCQ) = vbNullString Or Trim(ThueCQ) = "") Then
+                ThueCQ = "0"
+            End If
+            
+            
             If Trim(vTemp) <> "" Or Trim(vTemp) <> "''" Then
-                sSQLVal = namQT & ",'" & TuKy & "','" & DenKy & "'," & madtnt & "," & madlt & "," & MaMuc & "," & maTM & ", " & ngnop & "," & NgNhap & "," & LoaiTien & "," & KyDC & "," & ThueTKy & "," & DaGhi & "," & LoaiTK & "," & TTHTK & "," & MaVach & "," & HANNOP & "," & KYLBO & "," & DoanhSo & "," & GTTinhThue & "," & DAGHI2 & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & DANHAN & "," & AUTO_CAL & "," & LAN_QUET & "," & TENNV & "," & CHUNGCHI
+                sSQLVal = namQT & ",'" & TuKy & "','" & DenKy & "'," & madtnt & "," & madlt & "," & MaMuc & "," & maTM & ", " & ngnop & "," & NgNhap & "," & LoaiTien & "," & KyDC & "," & ThueTKy & "," & DaGhi & "," & LoaiTK & "," & TTHTK & "," & MaVach & "," & HANNOP & "," & KYLBO & "," & DoanhSo & "," & GTTinhThue & "," & DAGHI2 & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & DANHAN & "," & AUTO_CAL & "," & LAN_QUET & "," & TENNV & "," & CHUNGCHI & "," & ThueCQ
        
                 sSQL = "INSERT INTO TMP_QTMT" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      

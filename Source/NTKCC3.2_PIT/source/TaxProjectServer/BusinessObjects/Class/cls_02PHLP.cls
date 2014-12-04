@@ -1167,19 +1167,19 @@ Public Function InsertHDR() As String
                 strMTM = strMTM & maTM & "~"
             End If
             
-            'Ghep cac gia tri tong chenh lech giua so quyet toan va ke khai
-            .Col = .ColLetterToNumber("AC")
+            'ThueTKy = Tong So phi, lephi phai nop Group theo maTM
+            .Col = .ColLetterToNumber("U")
             strThueTKy = strThueTKy & .Text & "~"
             
-            'Ghep cac gia tri so thu
+            'SoThu = Tong so phi thu duoc
             .Col = .ColLetterToNumber("J")
             strSoThu = strSoThu & .Text & "~"
             
-            'Ghep cac gia tri so chi
+            'SoChi = Tong so phi trich su dung theo che do
             .Col = .ColLetterToNumber("Q")
             strSoChi = strSoChi & .Text & "~"
             
-            'Ghep cac gia tri so thuekk
+            'ThueKK = tong so phi ke khai trong ky
             .Col = .ColLetterToNumber("AB")
             strThueKK = strThueKK & .Text & "~"
             

@@ -1170,7 +1170,7 @@ Public Function InsertHDR() As String
                 strMTM = strMTM & maTM & "~"
             End If
             
-            'Ghep cac gia tri phi, le phi thu duoc
+            'Ghep cac gia tri phi, le phi phai nop
             .Col = .ColLetterToNumber("U")
             strThueTKy = strThueTKy & .Text & "~"
             
