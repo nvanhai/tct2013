@@ -837,6 +837,7 @@ Public Function InsertHDR() As String
     Dim DATHAY  As Variant
     Dim KYLBO   As Variant
     Dim ThueTKy As Variant
+    Dim ThueCQ  As Variant
     Dim THUECL  As Variant
     Dim LanBS   As Variant
     Dim DANHAN  As Variant
@@ -846,7 +847,7 @@ Public Function InsertHDR() As String
     Dim NGAYHD As Variant
     
     sSQLCol = "LOAITK,MADTNT,MaDLT,NamQT,TTHTK,NGNOP,KyTTTu,KyTTDen,NgNhap,HanNop,"
-    sSQLCol = sSQLCol & "MaVach,MaMuc,MaTM,Dathay,KyLBo,ThueTKy,ThueCL,LanBS,DANHAN,LAN_QUET, TENNV, CHUNGCHI,sohd,ngayhd"
+    sSQLCol = sSQLCol & "MaVach,MaMuc,MaTM,Dathay,KyLBo,ThueTKy,ThueCL,LanBS,DANHAN,LAN_QUET, TENNV, CHUNGCHI,sohd,ngayhd,THUECQ"
 
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -971,12 +972,21 @@ Public Function InsertHDR() As String
         
         'ThueTK
         .Sheet = 1
-        .GetText .ColLetterToNumber("S"), 48, ThueTKy
+        .GetText .ColLetterToNumber("S"), 54, ThueTKy
+        .GetText .ColLetterToNumber("O"), 54, ThueCQ
+        
+        If Trim(ThueTKy) = "" Or ThueTKy = vbNullString Then
+            ThueTKy = "0"
+        End If
+        
+        If Trim(ThueCQ) = "" Or ThueCQ = vbNullString Then
+            ThueCQ = "0"
+        End If
         
         sSQLVal = LoaiTK & "," & madtnt & "," & madlt & "," & namQT & "," & TTHTK & "," & ngnop & "," & KyTTTu & ", "
         sSQLVal = sSQLVal & KyTTDen & "," & NgNhap & "," & HANNOP & "," & MaVach & "," & MaMuc & ", "
         sSQLVal = sSQLVal & maTM & "," & DATHAY & "," & KYLBO & "," & ThueTKy & ", "
-        sSQLVal = sSQLVal & THUECL & "," & LanBS & "," & DANHAN & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "','" & SOHD & "'," & NGAYHD
+        sSQLVal = sSQLVal & THUECL & "," & LanBS & "," & DANHAN & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "','" & SOHD & "'," & NGAYHD & "," & ThueCQ
            
         sSQL = "INSERT INTO TMP_QTNT" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -987,12 +997,21 @@ Public Function InsertHDR() As String
        
        'ThueTK
         .Sheet = 1
-        .GetText .ColLetterToNumber("S"), 49, ThueTKy
+        .GetText .ColLetterToNumber("S"), 55, ThueTKy
+        .GetText .ColLetterToNumber("O"), 55, ThueCQ
+        
+        If Trim(ThueTKy) = "" Or ThueTKy = vbNullString Then
+            ThueTKy = "0"
+        End If
+        
+        If Trim(ThueCQ) = "" Or ThueCQ = vbNullString Then
+            ThueCQ = "0"
+        End If
                 
         sSQLVal = LoaiTK & "," & madtnt & "," & madlt & "," & namQT & "," & TTHTK & "," & ngnop & "," & KyTTTu & ", "
         sSQLVal = sSQLVal & KyTTDen & "," & NgNhap & "," & HANNOP & "," & MaVach & "," & MaMuc & ", "
         sSQLVal = sSQLVal & maTM & "," & DATHAY & "," & KYLBO & "," & ThueTKy & ", "
-        sSQLVal = sSQLVal & THUECL & "," & LanBS & "," & DANHAN & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "','" & SOHD & "'," & NGAYHD
+        sSQLVal = sSQLVal & THUECL & "," & LanBS & "," & DANHAN & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "','" & SOHD & "'," & NGAYHD & "," & ThueCQ
            
         sSQL = "INSERT INTO TMP_QTNT" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)

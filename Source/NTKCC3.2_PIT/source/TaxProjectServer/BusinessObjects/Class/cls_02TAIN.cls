@@ -1063,15 +1063,19 @@ Public Function InsertHDR() As String
     'Dim Section    As Integer
     Dim TENNV      As Variant
     Dim CHUNGCHI   As Variant
+    Dim ThueCQ As Variant
     
     'bien dung xu ly Ma Tieu Muc
     Dim arrMTM()     As String, arrMTMSave() As String
     Dim arrThueTKy() As String, arrThueTKySave() As Double
+    Dim arrThueCQ() As String, arrThueCQSave() As Double
     Dim i, j As Integer
     Dim vTemp        As String
     Dim countThueTKy As Double
+    Dim countThueCQ As Double
     Dim strMTM       As String
     Dim strThueTKy   As String
+    Dim strThueCQ    As String
     Dim ROWNUM       As Variant
     Dim vTemp2       As String
 
@@ -1084,7 +1088,7 @@ Public Function InsertHDR() As String
 '    'end test
     
     sSQLCol = "NAMQT,TUKY,DENKY,MADTNT,MAMUC,MATM,NGNOP,NGNHAP,LOAITIEN,KYDC,THUETKY,DAGHI,LOAITK,TTHTK,MAVACH,DATHAY,HANNOP"
-    sSQLCol = sSQLCol & ",KYLBO,DOANHSO,GTTINHTHUE,STT,STT2,STTIN,MACT,MADLT,LANBS,THUECL,DSOCL,GTTTCL,DANHAN,LAN_QUET,TENNV,CHUNGCHI"
+    sSQLCol = sSQLCol & ",KYLBO,DOANHSO,GTTINHTHUE,STT,STT2,STTIN,MACT,MADLT,LANBS,THUECL,DSOCL,GTTTCL,DANHAN,LAN_QUET,TENNV,CHUNGCHI,THUECQ"
 
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -1126,9 +1130,13 @@ Public Function InsertHDR() As String
                 strMTM = strMTM & maTM & "~"
             End If
             
-            'Ghep cac gia tri = chenh lech giua so quyet toan va ke khai
-            .Col = .ColLetterToNumber("AQ")
+            'Ghep cac gia tri = Tong so thue phai nop
+            .Col = .ColLetterToNumber("AL")
             strThueTKy = strThueTKy & .Text & "~"
+            
+            'Ghep cac gia tri = Tong so thue ke khai
+            .Col = .ColLetterToNumber("AP")
+            strThueCQ = strThueCQ & .Text & "~"
             
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
@@ -1153,9 +1161,13 @@ Public Function InsertHDR() As String
                 strMTM = strMTM & maTM & "~"
             End If
             
-            'Ghep cac gia tri = chenh lech giua so quyet toan va ke khai
-            .Col = .ColLetterToNumber("AQ")
+            'Ghep cac gia tri = Tong so thue phai nop
+            .Col = .ColLetterToNumber("AL")
             strThueTKy = strThueTKy & .Text & "~"
+            
+            'Ghep cac gia tri = Tong so thue ke khai
+            .Col = .ColLetterToNumber("AP")
+            strThueCQ = strThueCQ & .Text & "~"
             
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
@@ -1166,73 +1178,30 @@ Public Function InsertHDR() As String
         
         'Mang nay luu gia tri tuong ung
         arrThueTKy = Split(strThueTKy, "~")
+        arrThueCQ = Split(strThueCQ, "~")
         arrMTM = Split(vTemp2, "~")
         
-        'Mang nay luu cac tong ThueTKy theo tung maTM
+        'Fix lai length cua mang luu cac tong THUETKY theo tung maTM
         ReDim arrThueTKySave(UBound(arrMTMSave))
+        'Fix lai length cua mang luu cac tong THUECQ theo tung maTM
+        ReDim arrThueCQSave(UBound(arrMTMSave))
         
-        'Tinh tong ThueTKy theo tung maTM
+        
+        'Tinh tong ThueTKy, ThueCQ theo tung maTM
         For i = 1 To UBound(arrMTMSave) - 1
             countThueTKy = 0
+            countThueCQ = 0
             For j = 0 To UBound(arrMTM) - 1
                 If arrMTMSave(i) = arrMTM(j) Then
                     countThueTKy = countThueTKy + Val(Replace(arrThueTKy(j), ".", ""))
+                    countThueCQ = countThueCQ + Val(Replace(arrThueCQ(j), ".", ""))
                 End If
             Next
             arrThueTKySave(i) = countThueTKy
+            arrThueCQSave(i) = countThueCQ
         Next
         
-'        'Lay ds ma tieu muc
-'        'dhdang phan lay vao mang
-'        'ngay 14/09/2010
-'        .Col = .ColLetterToNumber("B")
-'        .Row = 57
-'
-'        Do
-'            ' Lay ma tieu muc tren cel
-'            .Col = .ColLetterToNumber("AO")
-'            vTemp = vTemp & .Text & "~"
-'
-'            .Col = .ColLetterToNumber("B")
-'            .Row = .Row + 1
-'
-'            If .Text = "aa" And Section = 1 Then
-'                .Row = .Row + 3
-'                Section = 2
-'            End If
-'
-'        Loop Until .Text = "aa"
-'
-'        'set lai section
-'        Section = 1
-'
-'        arrMTM = Split(vTemp, "~")
-'        vTemp = ""
-'        ReDim arrMTMSave(1)
-'        arrMTMSave(0) = arrMTM(0)
-'
-'        ' luu MTM vao mang arrMTMSave, k luu MTM trung nhau
-'        For idx = 1 To UBound(arrMTM) - 1
-'            countMTM = 0
-'            vTemp = arrMTM(idx)
-'
-'            For i = 0 To UBound(arrMTMSave)
-'
-'                If vTemp = arrMTMSave(i) Then
-'                    countMTM = countMTM + 1
-'                End If
-'
-'            Next
-'
-'            If countMTM = 0 Then
-'                ReDim Preserve arrMTMSave(UBound(arrMTMSave) + 1)
-'                arrMTMSave(UBound(arrMTMSave) - 1) = vTemp
-'            End If
-'
-'        Next
-'
-'        '---------------------------------------------------------
-'
+
         'section1
         .GetText .ColLetterToNumber("H"), 10, madtnt
 
@@ -1291,14 +1260,6 @@ Public Function InsertHDR() As String
         'KyTTTu
         .GetText .ColLetterToNumber("N"), 49, DenKy
         
-'        ' sua MAMUC & MATM tu nam 2009
-'        If CLng(Right(sKyKeKhai, 4)) < 2009 Then
-'            maTM = "'01'"
-'            MaMuc = "'012'"
-'        Else
-'            MaMuc = "'1550'"
-'            maTM = "''"
-'        End If
 
         LoaiTien = "''"
         DaGhi = ".T."
@@ -1404,7 +1365,7 @@ Public Function InsertHDR() As String
             vTemp = arrMTMSave(i)
             maTM = "'" & vTemp & "'"
             ThueTKy = arrThueTKySave(i)
-            
+            ThueCQ = arrThueCQSave(i)
             'TODO
             'MaMuc = "'1550'"
             MaMuc = GetMaMuc(vTemp)
@@ -1420,13 +1381,18 @@ Public Function InsertHDR() As String
                 THUECL = ThueTKy
             Else
                 THUECL = "0"
+                ThueTKy = "0"
+            End If
+            
+            If Trim(ThueCQ) = vbNullString Or Trim(ThueCQ) = "" Then
+                ThueCQ = "0"
             End If
             
             If Trim(vTemp) <> "" Or Trim(vTemp) <> "''" Then
             sSQLVal = namQT & ",'" & TuKy & "','" & DenKy & "'," & madtnt & "," & MaMuc & "," & maTM & "," & ngnop & "," & NgNhap
             sSQLVal = sSQLVal & "," & LoaiTien & "," & KyDC & "," & ThueTKy & "," & DaGhi & "," & LoaiTK & "," & TTHTK & "," & MaVach & "," & DATHAY
             sSQLVal = sSQLVal & "," & HANNOP & "," & KYLBO & "," & DoanhSo & "," & GTTinhThue & "," & STT & "," & STT2 & "," & STTIN & "," & mact
-            sSQLVal = sSQLVal & "," & madlt & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & DANHAN & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "'"
+            sSQLVal = sSQLVal & "," & madlt & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & DANHAN & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "'," & ThueCQ
 
 '            If clsDAO.Connected = False Then
 '                clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
