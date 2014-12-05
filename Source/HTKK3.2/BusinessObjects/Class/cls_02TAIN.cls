@@ -1657,8 +1657,10 @@ Public Function getValueTK(strFileLoadData As String) As String
         .validateOnParse = True
         .async = False
         If .Load(strFileLoadData) = True Then
-            Set xmlNode = .nodeFromID("AO_17")
-            result = result & "CT10_" & Val(GetAttribute(xmlNode, "Value"))
+            Set xmlNode = .nodeFromID("AH_17")
+            result = result & "CT8_" & Val(GetAttribute(xmlNode, "Value"))
+            Set xmlNode = .nodeFromID("AK_17")
+            result = result & "~CT9_" & Val(GetAttribute(xmlNode, "Value"))
             Set xmlNode = Nothing
         End If
     End With
@@ -1684,10 +1686,10 @@ Public Function getDieuChinhGiam(strOldValue As String) As String
     strMaCT = getMapCT
     With fps
                 .Sheet = 1
-                .GetText .ColLetterToNumber("AO"), 17, varTemp
-                strCurrentValue = "CT10_" & Trim(varTemp)
-'                .GetText .ColLetterToNumber("AO"), 17, varTemp
-'                strCurrentValue = strCurrentValue & "~CT10_" & Trim(varTemp)
+                .GetText .ColLetterToNumber("AH"), 17, varTemp
+                strCurrentValue = "CT8_" & Trim(varTemp)
+                .GetText .ColLetterToNumber("AK"), 17, varTemp
+                strCurrentValue = strCurrentValue & "~CT9_" & Trim(varTemp)
                 ' tinh chenh lech giua 2 lan dieu chinh
                 tempArrOld = Split(strOldValue, "~")
                 tempArrCurr = Split(strCurrentValue, "~")
@@ -1707,7 +1709,7 @@ Public Function getDieuChinhGiam(strOldValue As String) As String
                         End If
                     Next j
                 'If Left(strMaCT, 3) = "21_" Or Left(strMaCT, 3) = "23_" Or Left(strMaCT, 3) = "28a" Or Left(strMaCT, 3) = "30_" Or Left(strMaCT, 3) = "31_" Then
-                If Left(strMaCT, 3) = "8_" Or Left(strMaCT, 3) = "10_" Then
+                If Left(strMaCT, 2) = "8_" Then
                     If Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1)) < 0 Then
                         ' dieu chinh giam
                         strDieuChinhGiam = strDieuChinhGiam & "~" & strMaCT & "_" & Val(tempArrOldValue(1)) & "_" & Val(tempArrCurrValue(1)) & "_" & Val(tempArrCurrValue(1)) - Val(tempArrOldValue(1))
