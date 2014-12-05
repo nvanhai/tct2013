@@ -439,12 +439,12 @@ Public Function Prepared3() As Boolean
         '        .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenBpql, TCVN, UNICODE))
         '.EventEnabled(EventAllEvents) = True
         
-        'set check loi dinh danh
-        If checkDLTTonTai = False Then
-            .Col = .ColLetterToNumber("E")
-            .Row = 28
-            .Value = 1
-        End If
+'        'set check loi dinh danh
+'        If checkDLTTonTai = False Then
+'            .Col = .ColLetterToNumber("E")
+'            .Row = 28
+'            .Value = 1
+'        End If
         
 '        .GetText .ColLetterToNumber("E"), 22, kyLapBo
 '        kyLapBo = Right$(kyLapBo, 4)

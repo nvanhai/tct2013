@@ -1213,15 +1213,15 @@ Public Function InsertHDR() As String
             For j = 0 To UBound(arrMTM) - 1
                 If arrMTMSave(i) = arrMTM(j) Then
                     countThueTKy = countThueTKy + Val(Replace(arrThueTKy(j), ".", ""))
-                    countSoThu = countThueTKy + Val(Replace(arrSoThu(j), ".", ""))
-                    countSoChi = countThueTKy + Val(Replace(arrSoChi(j), ".", ""))
-                    countThuekk = countThueTKy + Val(Replace(arrThuekk(j), ".", ""))
+                    countSoThu = countSoThu + Val(Replace(arrSoThu(j), ".", ""))
+                    countSoChi = countSoChi + Val(Replace(arrSoChi(j), ".", ""))
+                    countThuekk = countThuekk + Val(Replace(arrThuekk(j), ".", ""))
                 End If
             Next
             arrThueTKySave(i) = countThueTKy
             arrSoThuSave(i) = countSoThu
-            arrSoThuSave(i) = countSoChi
-            arrSoThuSave(i) = countThuekk
+            arrSoChiSave(i) = countSoChi
+            arrThuekkSave(i) = countThuekk
         Next
 
 
