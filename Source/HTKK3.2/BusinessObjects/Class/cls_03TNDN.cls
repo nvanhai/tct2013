@@ -3484,7 +3484,7 @@ Public Function getValueCTDC(strFileLoadData As String) As String
         .validateOnParse = True
         .async = False
         If .Load(strFileLoadData) = True Then
-            Set xmlNode = .nodeFromID("O_68")
+            Set xmlNode = .nodeFromID("O_67")
             result = Val(GetAttribute(xmlNode, "Value"))
         End If
     End With
@@ -3502,7 +3502,7 @@ Public Function getChiTieuTongDC(strOldValue As String) As String
     Dim strCurrentValue As String
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("O"), 68, varTemp
+        .GetText .ColLetterToNumber("O"), 67, varTemp
         strCurrentValue = Val(varTemp) - Val(strOldValue)
         getChiTieuTongDC = strCurrentValue
     End With
