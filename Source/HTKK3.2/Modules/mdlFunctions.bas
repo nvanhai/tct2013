@@ -4693,3 +4693,20 @@ Dim xmlNode As MSXML.IXMLDOMNode
             Next
         End If
 End Sub
+
+
+
+Public Function getMST() As String
+    Dim xmlNodeValid As MSXML.IXMLDOMNode, xmlCellNode As MSXML.IXMLDOMNode
+    Dim lCtrl As Long, lCol As Long, lRow As Long
+    Dim blnNullValue As Boolean
+    Dim mstDN As Variant
+    Dim i As Integer
+    Dim xmlDomHeader As New MSXML.DOMDocument
+    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_v1.DataFolder & "Header_01.xml")
+    For i = 0 To 12
+        mstDN = mstDN & GetAttribute(xmlDomHeader.getElementsByTagName("Cell")(i), "Value")
+    Next
+    Set xmlDomHeader = Nothing
+    getMST = Trim(mstDN)
+End Function

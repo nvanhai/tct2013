@@ -338,5 +338,7 @@
 	<Infor ID="0345" Msg="B¹n ®©ng chän sai mÉu. H·y chän ®óng tê khai 16TH!"/>
 	<Infor ID="0346" Msg="Hỗ trợ lấy dữ liệu BK 05-3/TNCN"/>
 	<Infor ID="0347" Msg="ChØ tiªu A1 kh¸c 0 b¾t buéc nhËp 1 trong 3 phô lôc 03-1A/TNDN, 03-1B/TNDN, 03-1C/TNDN."/>
-	<Infor ID="0348" Msg="Hạch toán chỉ tiêu [35] vào tiểu mục 1053"/>	
+	<Infor ID="0348" Msg="Hạch toán chỉ tiêu [35] vào tiểu mục 1053"/>
+	<Infor ID="0349" Msg="M· sè thuÕ cña file XML kh¸c víi m· sè thuÕ ®¨ng nhËp vµo UD HTKK. §Ò nghÞ kiÓm tra l¹i!"/>
+	<Infor ID="0350" Msg="M· tê khai cña file XML kh¸c víi m· tê khai nhËp vµo UD HTKK. §Ò nghÞ kiÓm tra l¹i!"/>
 </Message>

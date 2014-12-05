@@ -5139,6 +5139,38 @@ ErrHandle:
 
 End Function
 
+
+
+Private Function getMaTKXML(MaTk As String) As String
+    Dim xmlMapMaFile  As New MSXML.DOMDocument
+    Dim xmlMapTenTK  As New MSXML.DOMDocument
+    Dim NodeMaFile    As MSXML.IXMLDOMNode
+    Dim xmlDomHeader  As New MSXML.DOMDocument
+    On Error GoTo ErrHandle
+    xmlMapMaFile.Load GetAbsolutePath("..\Project\MapMaFile.xml")
+
+    For Each NodeMaFile In xmlMapMaFile.lastChild.childNodes
+        If GetAttribute(NodeMaFile, "MapID") = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") Then
+            maTKhaiXML = GetAttribute(NodeMaFile, "MaTK")
+            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Then
+                If strQuy = "TK_QUY" Then
+                    maTKhaiXML = "102"
+                Else
+                    maTKhaiXML = "131"
+                End If
+            End If
+            
+            Exit For
+        End If
+
+    Next
+    getMaTKXML = maTKhaiXML
+    Exit Function
+ErrHandle:
+    SaveErrorLog Me.Name, "getMaTKXML", Err.Number, Err.Description
+
+End Function
+
 'Lay ky ke khai
 Private Function GetKyKeKhai(ByVal ID_TK As String) As String
     Dim KYKKHAI As String
@@ -6343,6 +6375,29 @@ Private Sub cmdImportXML_Click()
         DisplayMessage "0278", msOKOnly, miWarning
         Exit Sub
     End If
+    
+    ' Kiem tra MST
+    Dim mstDN As String
+    Dim maTkXML As String
+    mstDN = getMST
+    If xmlDuLieuImport.getElementsByTagName("mst").length > 0 Then
+        If Len(mstDN) > 10 Then
+            mstDN = Left$(mstDN, 10) & "-" & Right$(mstDN, 3)
+        End If
+        If mstDN <> xmlDuLieuImport.getElementsByTagName("mst")(0).Text Then
+            DisplayMessage "0349", msOKOnly, miWarning
+            Exit Sub
+        End If
+    End If
+    ' Kiem tra loai to khai
+    maTkXML = getMaTKXML(GetAttribute(TAX_Utilities_v1.NodeMenu, "ID"))
+    If xmlDuLieuImport.getElementsByTagName("maTKhai").length > 0 Then
+        If maTkXML <> xmlDuLieuImport.getElementsByTagName("maTKhai")(0).Text Then
+            DisplayMessage "0350", msOKOnly, miWarning
+            Exit Sub
+        End If
+    End If
+    
 
     MaTk = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile")
     
