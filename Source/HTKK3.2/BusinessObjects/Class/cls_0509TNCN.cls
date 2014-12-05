@@ -26,6 +26,11 @@ Dim arrData0509() As String
 Private totalRow5A_09 As Long
 Private rowData As Long
 
+Private arrTuThang() As String
+Private arrDenThang() As String
+Private soThang As Variant
+Private soThang1 As Long, soThang2 As Long
+
 'This funtion is called after an object of this class is created
 'Its functions is 1st preparing for interface sheets, such as
 'add control, data for the control, celltag ...
@@ -84,16 +89,16 @@ Public Sub Prepare2()
                 .CopyRowRange 22, 22, .Row + 1  ' Copy nguyen ban cac format cua dong bat dau la dong 22
             End If
             ' Set cong thuc cho cac cot sau
-            ' Thue phai nop
-            .Col = .ColLetterToNumber("Y")
-            '.Formula = "AC" & .Row
-            .Formula = "AK" & .Row
-            ' Thue mien giam
-            .Col = .ColLetterToNumber("Z")
-            .Formula = "AG" & .Row
-            ' Thue con phai nop
-            .Col = .ColLetterToNumber("AB")
-            .Formula = "AH" & .Row
+'            ' Thue phai nop
+'            .Col = .ColLetterToNumber("Y")
+'            '.Formula = "AC" & .Row
+'            .Formula = "AK" & .Row
+'            ' Thue mien giam
+'            .Col = .ColLetterToNumber("Z")
+'            .Formula = "AG" & .Row
+'            ' Thue con phai nop
+'            .Col = .ColLetterToNumber("AB")
+'            .Formula = "AH" & .Row
             ' Con phai quyet toan thue
             .Col = .ColLetterToNumber("AC")
             .Formula = "AI" & .Row
@@ -317,25 +322,44 @@ Private Sub prepareData0509()
         arrData0509(row5A, 14) = arrData5A(row5A, 4) ' Thu nhap chiu thue
         ' Cot 11 la Giam tru cho ban than
         ' Neu nam 2009 thi giam tru 6 thang la 24.000.000 (Tuong duong voi 4.000.000/Thang) va tu nam 2010 la 12 thang tuong duong voi 48.000.000
-        If TAX_Utilities_v1.Year = 2009 Then
-            arrData0509(row5A, 15) = "24000000"
-        ElseIf TAX_Utilities_v1.Year > 2009 And TAX_Utilities_v1.Year <= 2013 Then
-            arrData0509(row5A, 15) = "48000000"
-        ElseIf TAX_Utilities_v1.Year > 2013 Then
-            arrData0509(row5A, 15) = "108000000"
+        Dim tuThang, denThang As Variant
+        tuThang = TAX_Utilities_v1.FirstDay
+        denThang = TAX_Utilities_v1.LastDay
+        soThang = DateDiff("M", Format(CStr(tuThang), "mm/yyyy"), Format(CStr(denThang), "mm/yyyy")) + 1
+        arrTuThang = Split(tuThang, "/")
+        arrDenThang = Split(denThang, "/")
+        
+        ' neu den thang < 7/2013
+        If Val(arrDenThang(1)) < 2013 Or (Val(arrDenThang(1)) = 2013 And Val(arrDenThang(0)) < 7) Then
+            arrData0509(row5A, 15) = 4000000 * Val(soThang)
+        ElseIf (Val(arrTuThang(1)) > 2013) Or ((Val(arrTuThang(1)) = 2013) And (Val(arrTuThang(0)) >= 7)) Then
+            arrData0509(row5A, 15) = 9000000 * Val(soThang)
         Else
-            arrData0509(row5A, 15) = "0"
+            soThang1 = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy("06/2013")) + 1
+            soThang2 = DateDiff("M", Format_mmyyyy("07/2013"), Format_mmyyyy(CStr(denThang))) + 1
+            arrData0509(row5A, 15) = 4000000 * soThang1 + 9000000 * soThang2
         End If
+        
+        
+'        If TAX_Utilities_v1.Year = 2009 Then
+'            arrData0509(row5A, 15) = "24000000"
+'        ElseIf TAX_Utilities_v1.Year > 2009 And TAX_Utilities_v1.Year <= 2013 Then
+'            arrData0509(row5A, 15) = "48000000"
+'        ElseIf TAX_Utilities_v1.Year > 2013 Then
+'            arrData0509(row5A, 15) = "108000000"
+'        Else
+'            arrData0509(row5A, 15) = "0"
+'        End If
         arrData0509(row5A, 16) = Val(arrData5A(row5A, 7)) ' Giam tru gia canh
         'arrData0509(row5A, 17) = Val(arrData5A(row5A, 7)) ' Giam tru gia canh
         arrData0509(row5A, 17) = arrData5A(row5A, 8) ' Tu thien
         arrData0509(row5A, 18) = arrData5A(row5A, 9) ' Bao hiem bat buoc
         arrData0509(row5A, 19) = arrData5A(row5A, 10) ' Quy huu tri
-        arrData0509(row5A, 20) = arrData5A(row5A, 10) ' Thu nhap tinh thue
-        arrData0509(row5A, 21) = arrData5A(row5A, 15) ' Thue phai nop
-        arrData0509(row5A, 22) = arrData5A(row5A, 3) ' Thue mien giam
-        arrData0509(row5A, 23) = arrData5A(row5A, 16) ' So thue da khau tru
-        arrData0509(row5A, 24) = arrData5A(row5A, 17) ' Thue con phai nop
+        arrData0509(row5A, 20) = arrData5A(row5A, 11) ' Thu nhap tinh thue
+        arrData0509(row5A, 21) = Val(arrData5A(row5A, 14)) + Val(arrData5A(row5A, 13)) ' Thue phai nop
+        arrData0509(row5A, 22) = arrData5A(row5A, 13) ' Thue mien giam
+        arrData0509(row5A, 23) = arrData5A(row5A, 12) ' So thue da khau tru
+        arrData0509(row5A, 24) = arrData5A(row5A, 16) ' Thue con phai nop
         arrData0509(row5A, 25) = arrData5A(row5A, 3) ' Check co quyet toan tai CQCT ko?
 '        Dim thuNhapTinhThueThang As Double, thuePhaiNopThang As Double
 '        Dim soThangTinhThue As Integer
