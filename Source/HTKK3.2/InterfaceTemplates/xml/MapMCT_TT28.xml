@@ -59,7 +59,8 @@
 		<Item CellID="AN_15" MCT="8" Caption="Thuế TTĐB được khấu trừ"/>
 	</Map>
 	<Map ID="02_TAIN">	
-		<Item CellID="AO_17" MCT="10" Caption="Thuế tài nguyên phát sinh phải nộp trong kỳ"/>
+		<Item CellID="AH_17" MCT="8" Caption="Thuế tài nguyên phát sinh trong kỳ"/>
+		<Item CellID="AK_17" MCT="9" Caption="Thuế tài nguyên dự kiến được miễn giảm trong kỳ"/>
 	</Map>	
 	<Map ID="01_BVMT">
 		<Item CellID="T_37" MCT="6" Caption="Số phí phải nộp trong kỳ"/>	
