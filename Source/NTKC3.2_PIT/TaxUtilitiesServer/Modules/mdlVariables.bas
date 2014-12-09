@@ -18,3 +18,4 @@ Public strFinanceStartDate As String
 
 Public isUsePIT As Boolean ' su dung PIT
 Public isQCT As Boolean ' -->QCT
+Public strMaVach As String ' -->version Ma vach

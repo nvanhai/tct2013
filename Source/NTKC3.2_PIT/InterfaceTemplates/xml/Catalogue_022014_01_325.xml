@@ -1,0 +1,85 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSOFT -->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_5" Value="404###010101###Sắt###Kg###12###0###1###1553###2625"/>
+			<Cell CellID="C_6" Value="405###010102###Măng-gan###Kg###11###0###1###1553###2625"/>
+			<Cell CellID="C_7" Value="406###010103###Ti-tan (titan)###Kg###16###0###1###1553###2625"/>
+			<Cell CellID="C_9" Value="408###010201###Đất hiếm###Kg###15###0###1###1553###2625"/>
+			<Cell CellID="C_10" Value="409###010202###Vàng###Kg###15###0###1###1554###2625"/>
+			<Cell CellID="C_11" Value="410###010203###Bạch kim###Kg###10###0###1###1553###2625"/>
+			<Cell CellID="C_12" Value="411###010204###Bạc, thiếc###Kg###10###0###1###1554###2625"/>
+			<Cell CellID="C_13" Value="412###010205###Thiếc###Kg###10###0###1###1553###2625"/>
+			<Cell CellID="C_14" Value="413###010206###Vôn-phờ-ram (wolfram), ăng-ti-moan (antimoan)###Kg###18###0###1###1553###2625"/>
+			<Cell CellID="C_15" Value="414###010207###Chì, kẽm###Kg###10###0###1###1553###2625"/>
+			<Cell CellID="C_16" Value="415###010208###Nhôm, bô-xít (bouxite)###Kg###12###0###1###1553###2625"/>
+			<Cell CellID="C_17" Value="416###010209###Đồng###Kg###13###0###1###1553###2625"/>
+			<Cell CellID="C_18" Value="417###010210###Ni-ken (niken)###Kg###10###0###1###1553###2625"/>
+			<Cell CellID="C_19" Value="418###010211###Cô-ban (coban), mô-lip-đen (molipden), thủy ngân, ma-nhê (magie), va-na-đi (vanadi)###Kg###10###0###1###1553###2625"/>
+			<Cell CellID="C_20" Value="419###0103###Khoáng sản kim loại khác###Kg###10###0###1###1553###2625"/>
+			<Cell CellID="C_23" Value="422###020101###Đất khai thác để san lấp, xây dựng công trình###M3###4###0###1###1555###2625"/>
+			<Cell CellID="C_24" Value="423###020102###Đá, sỏi###M3###7###0###1###1555###2625"/>
+			<Cell CellID="C_25" Value="424###020103###Đá nung vôi và sản xuất xi măng###M3###7###0###1###1555###2625"/>
+			<Cell CellID="C_26" Value="425###020104###Đá hoa trắng###M3###9###0###1###1555###2625"/>
+			<Cell CellID="C_27" Value="426###020105###Cát###M3###11###0###1###1555###2625"/>
+			<Cell CellID="C_28" Value="427###020106###Cát làm thủy tinh###M3###13###0###1###1555###2625"/>
+			<Cell CellID="C_29" Value="428###020107###Đất làm gạch###M3###10###0###1###1555###2625"/>
+			<Cell CellID="C_31" Value="430###020201###Gờ-ra-nít (granite)###M3###10###0###1###1555###2625"/>
+			<Cell CellID="C_32" Value="431###020202###Sét chịu lửa###M3###10###0###1###1555###2625"/>
+			<Cell CellID="C_33" Value="432###020203###Đô-lô-mít (dolomite), quắc-zít (quartzite)###M3###12###0###1###1555###2625"/>
+			<Cell CellID="C_35" Value="434###020301###Cao lanh###M3###10###0###1###1555###2625"/>
+			<Cell CellID="C_36" Value="435###020302###Mi-ca (mica), thạch anh kỹ thuật###M3###10###0###1###1555###2625"/>
+			<Cell CellID="C_37" Value="436###020303###Pi-rít (pirite), phốt-pho-rít (phosphorite)###M3###7###0###1###1555###2625"/>
+			<Cell CellID="C_38" Value="437###020304###A-pa-tít (apatit)###M3###5###0###1###1555###2625"/>
+			<Cell CellID="C_39" Value="438###020305###Séc-păng-tin (secpentin)###M3###3###0###1###1555###2625"/>
+			<Cell CellID="C_41" Value="440###0301###Than an-tra-xít (antraxit) hầm lò###Tấn###7###0###1###1555###2625"/>
+			<Cell CellID="C_42" Value="441###0302###Than an-tra-xít (antraxit) lộ thiên###Tấn###9###0###1###1555###2625"/>
+			<Cell CellID="C_43" Value="442###0303###Than nâu, than mỡ###Tấn###9###0###1###1555###2625"/>
+			<Cell CellID="C_44" Value="443###0304###Than khác###Tấn###7###0###1###1555###2625"/>
+			<Cell CellID="C_46" Value="445###0401###Kim cương, ru-bi (rubi), sa-phia (sapphire)###M3###22###0###1###1554###2625"/>
+			<Cell CellID="C_47" Value="446###0402###E-mô-rốt (emerald), a-lếch-xan-đờ-rít (alexandrite), ô-pan (opan) quý màu đen###M3###20###0###1###1554###2625"/>
+			<Cell CellID="C_48" Value="447###0403###Adít, rô-đô-lít (rodolite), py-rốp (pyrope), bê-rin (berin), sờ-pi-nen (spinen), tô-paz (topaz)###M3###15###0###1###1554###2625"/>
+			<Cell CellID="C_49" Value="448###0404###Thạch anh tinh thể màu tím xanh, vàng lục, da cam; cờ-ri-ô-lít (cryolite); ô-pan (opan) quý màu trắng, đỏ lửa; phen-sờ-phát (fenspat); birusa; nê-phờ-rít (nefrite)###M3###15###0###1###1554###2625"/>
+			<Cell CellID="C_50" Value="449###0405###Khoáng sản không kim loại khác###M3###5###0###1###1555###2625"/>
+			<Cell CellID="C_53" Value="452###050101###Gỗ nhóm I###M3###35###0###1###1557###2625"/>
+			<Cell CellID="C_54" Value="453###050102###Gỗ nhóm II###M3###30###0###1###1557###2625"/>
+			<Cell CellID="C_55" Value="454###050103###Gỗ nhóm III, IV###M3###20###0###1###1557###2625"/>
+			<Cell CellID="C_56" Value="455###050104###Gỗ nhóm V, VI, VII, VIII và các loại gỗ khác###M3###15###0###1###1557###2625"/>
+			<Cell CellID="C_58" Value="457###050201###Cành, ngọn, gốc, rễ###M3###10###0###1###1557###2625"/>
+			<Cell CellID="C_59" Value="458###050202###Củi###M3###5###0###1###1557###2625"/>
+			<Cell CellID="C_60" Value="459###0503###Tre, trúc, nứa, mai, giang, tranh, vầu, lồ ô###M3###10###0###1###1557###2625"/>
+			<Cell CellID="C_62" Value="461###050401###Trầm hương, kỳ nam###Kg###25###0###1###1557###2625"/>
+			<Cell CellID="C_63" Value="462###050402###Hồi, quế, sa nhân, thảo quả###Kg###10###0###1###1557###2625"/>
+			<Cell CellID="C_64" Value="463###0505###Sản phẩm khác của rừng tự nhiên###Kg###5###0###1###1557###2625"/>
+			<Cell CellID="C_66" Value="465###0601###Ngọc trai, bào ngư, hải sâm###Kg###10###0###1###1556###2625"/>
+			<Cell CellID="C_67" Value="466###0602###Hải sản tự nhiên khác###Kg###2###0###1###1556###2625"/>
+			<Cell CellID="C_69" Value="468###0701###Nước khoáng thiên nhiên, nước nóng thiên nhiên, nước thiên nhiên tinh lọc đóng chai, đóng hộp###M3###8###0###1###1599###2625"/>
+			<Cell CellID="C_70" Value="469###0702###Nước thiên nhiên dùng cho sản xuất thủy điện###KWh###4###0###1###1552###2625"/>
+			<Cell CellID="C_73" Value="472###07030101###Nước dùng cho sản xuất nước sạch###M3###1###0###1###1599###2625"/>
+			<Cell CellID="C_74" Value="473###07030102###Nước dùng cho mục đích khác###M3###3###0###1###1599###2625"/>
+			<Cell CellID="C_76" Value="475###07030201###Nước dùng cho sản xuất nước sạch (Nước dưới đất)###M3###3###0###1###1599###2625"/>
+			<Cell CellID="C_77" Value="476###07030202###Nước dùng cho mục đích khác (Nước dưới đất)###M3###5###0###1###1599###2625"/>
+			<Cell CellID="C_80" Value="479###080101###Sản lượng đến 20.000 thùng/ngày###Tấn###7###0###1###1551###2624"/>
+			<Cell CellID="C_81" Value="480###080102###Sản lượng trên 20.000 thùng đến 50.000 thùng/ngày###Tấn###9###0###1###1551###2624"/>
+			<Cell CellID="C_82" Value="481###080103###Sản lượng trên 50.000 thùng đến 75.000 thùng/ngày###Tấn###11###0###1###1551###2624"/>
+			<Cell CellID="C_83" Value="482###080104###Sản lượng trên 75.000 thùng đến 100.000 thùng/ngày###Tấn###13###0###1###1551###2624"/>
+			<Cell CellID="C_84" Value="483###080105###Sản lượng trên 100.000 thùng đến 150.000 thùng/ngày###Tấn###18###0###1###1551###2624"/>
+			<Cell CellID="C_85" Value="484###080106###Sản lượng trên 150.000 thùng/ngày###Tấn###23###0###1###1551###2624"/>
+			<Cell CellID="C_87" Value="486###080201###Sản lượng đến 20.000 thùng/ngày (đối với Dự án khác)###Tấn###10###0###1###1551###2624"/>
+			<Cell CellID="C_88" Value="487###080202###Sản lượng trên 20.000 thùng đến 50.000 thùng/ngày (đối với Dự án khác)###Tấn###12###0###1###1551###2624"/>
+			<Cell CellID="C_89" Value="488###080203###Sản lượng trên 50.000 thùng đến 75.000 thùng/ngày (đối với Dự án khác)###Tấn###14###0###1###1551###2624"/>
+			<Cell CellID="C_90" Value="489###080204###Sản lượng trên 75.000 thùng đến 100.000 thùng/ngày (đối với Dự án khác)###Tấn###19###0###1###1551###2624"/>
+			<Cell CellID="C_91" Value="490###080205###Sản lượng trên 100.000 thùng đến 150.000 (đối với Dự án khác)###Tấn###24###0###1###1551###2624"/>
+			<Cell CellID="C_92" Value="491###080206###Sản lượng trên 150.000 thùng/ngày (đối với Dự án khác)###Tấn###29###0###1###1551###2624"/>
+			<Cell CellID="C_95" Value="494###090101###Sản lượng đến 5 triệu m3/ngày###M3###1###0###1###1551###2624"/>
+			<Cell CellID="C_96" Value="495###090102###Sản lượng trên 5 triệu m3 đến 10 triệu m3/ngày###M3###3###0###1###1551###2624"/>
+			<Cell CellID="C_97" Value="496###090103###Sản lượng trên 10 triệu m3/ngày###M3###6###0###1###1551###2624"/>
+			<Cell CellID="C_99" Value="498###090201###Sản lượng đến 5 triệu m3/ngày (đối với Dự án khác)###M3###2###0###1###1551###2624"/>
+			<Cell CellID="C_100" Value="499###090202###Sản lượng trên 5 triệu m3 đến 10 triệu m3/ngày (đối với Dự án khác)###M3###5###0###1###1551###2624"/>
+			<Cell CellID="C_101" Value="500###090203###Sản lượng trên 10 triệu m3/ngày (đối với Dự án khác)###M3###10###0###1###1551###2624"/>
+			<Cell CellID="C_103" Value="502###1001###Yến sào thiên nhiên###Kg###20###0###1###1599###2625"/>
+			<Cell CellID="C_105" Value="504###1101###Tài nguyên khác###Kg###10###0###1###1599###2625"/>
+		</Cells>
+	</Section>
+</Sections>
