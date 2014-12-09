@@ -296,7 +296,9 @@ Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
 Dim xmlNode As MSXML.IXMLDOMNode
 
        strDataFileName = GetCatalogueFileName
-    
+       If (Val(TAX_Utilities_Srv_New.verMaVach) <= 325 And InStr(strDataFileName, "Catalogue_022014_01") > 0) Then
+            strDataFileName = Replace(strDataFileName, "Catalogue_022014_01", "Catalogue_022014_01_325")
+       End If
        If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
             Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
             For Each xmlNode In xmlNodeListCell
