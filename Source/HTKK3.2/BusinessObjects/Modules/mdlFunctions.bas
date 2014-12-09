@@ -215,13 +215,20 @@ End Function
 
 Public Function Format_ddmmyyyy1(str As String) As String
     Dim dd As String, mm As String, yyyy As String, dDate As Date
-    
+    Dim arrDate() As String
   If str <> "" Or Len(str) > 0 Then
     On Error GoTo e
-    dd = Left(str, InStr(str, "/") - 1)
-    mm = Mid(str, 4, 2)
-    yyyy = Right("0000" & str, 4)
- 
+    arrDate = Split(str, "/")
+    If UBound(arrDate) = 2 Then
+'        dd = Left(str, InStr(str, "/") - 1)
+'        mm = Mid(str, 4, 2)
+'        yyyy = Right("0000" & str, 4)
+        dd = arrDate(0)
+        mm = arrDate(1)
+        yyyy = arrDate(2)
+    Else
+        GoTo e
+    End If
     
         If Val(dd) >= 1 And Val(dd) <= 31 Then
             dd = Format(dd, "0#")
