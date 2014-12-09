@@ -464,7 +464,7 @@ Public Function CheckValidData() As Boolean
     End With
 End Function
 
-Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
+Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR As String, vHdrID As Variant, vKKBS As Byte, ByVal dNgayDauKy As Date) As String
     Dim xmlList As MSXML.IXMLDOMNodeList
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim xmlAttribute As MSXML.IXMLDOMAttribute
@@ -499,7 +499,7 @@ On Error GoTo ErrHandle
     ' end PIT
     'strSQL = strSQL_HDR
     
-    Set xmlList = xmlDomData.getElementsByTagName("Cell")
+    Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
         
@@ -592,6 +592,7 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("O"), 35, vQT_TUNG_NAM
         .GetText .ColLetterToNumber("P"), 35, vQT_DAU_NAM
         
+        'vTKTHANG ghi vao file TO_KHAI_LAN_PS
        vTKTHANG = "0"  ' TK quy
         If Trim$(vTU_NGAY) <> "" Or Trim$(vDEN_NGAY) <> "" Then
             vTKTHANG = "1" ' TK thang

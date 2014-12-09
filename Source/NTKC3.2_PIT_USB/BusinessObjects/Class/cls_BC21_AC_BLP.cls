@@ -16,8 +16,8 @@ Option Explicit
 'Const KY_LAP_BO_COL = "E"
 'Const MA_SO_TEP_ROW = 10
 'Const MA_SO_TEP_COL = "M"
-Const NGAY_NHAN_TO_KHAI_ROW = 15
-Const NGAY_NHAN_TO_KHAI_COL = "S"
+Const NGAY_NHAN_TO_KHAI_ROW = 13
+Const NGAY_NHAN_TO_KHAI_COL = "E"
 Const NGUOI_SU_DUNG_ROW = 15
 Const NGUOI_SU_DUNG_COL = "AC"
 
@@ -179,11 +179,18 @@ Public Function Prepared3() As Boolean
         .Row = 41
         .Col = .ColLetterToNumber("B")
         Do
+            '//04: Da su dung; 02: Chua su dung. ben HTKK dang bi lon - > NTK dao lai
             .GetText .ColLetterToNumber("AI"), .Row, tempValue
-            If CStr(tempValue) = "04" Then
-                .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0133"), "Msg")
-            ElseIf CStr(tempValue) = "02" Then
+            If CStr(tempValue) = "04" Then ' da su dung
                 .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0134"), "Msg")
+                'fix for HTKK
+                .SetText .ColLetterToNumber("AI"), .Row, "02"
+                UpdateCell fps, .ColLetterToNumber("AI"), .Row, "02"
+            ElseIf CStr(tempValue) = "02" Then ' chua
+                .SetText .ColLetterToNumber("AF"), .Row, GetAttribute(GetMessageCellById("0133"), "Msg")
+                'fix for HTKK
+                .SetText .ColLetterToNumber("AI"), .Row, "04"
+                UpdateCell fps, .ColLetterToNumber("AI"), .Row, "04"
             End If
             .Row = .Row + 1
         Loop Until .Text = "aa"
