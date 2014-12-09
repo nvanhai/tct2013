@@ -3125,6 +3125,11 @@ On Error GoTo ErrHandle
     
     ' 03122010 - sua lai doan lay version cua ung dung in ma vach
     strTaxReportVersion = Left$(strData, 3)
+    
+    'set VERION
+    Dim version As Variant
+    TAX_Utilities_Srv_New.verMaVach = Left$(strData, 3)
+    
     strData = Mid$(strData, 4)
     lblVersion.caption = Left$(strTaxReportVersion, 1) & "." & Mid$(strTaxReportVersion, 2, 1) & "." & Right$(strTaxReportVersion, 1)
     ' end doan lay version
@@ -3491,22 +3496,33 @@ On Error GoTo ErrHandle
         LAN_XUAT_BAN_DK = ""
         Loai_TK_DK = ""
         LOAI_KY_DK = ""
-        If (Val(strID) = 92 Or Val(strID) = 98) Then
+        If (Val(strID) = 92 Or Val(strID) = 98 Or Val(strID) = 89 Or Val(strID) = 93) Then
             strTemp = Left$(strData, InStr(1, strData, "</S></S01>") - 1)
             arrCT = Split(strTemp, "~")
             If UBound(arrCT) > 0 Then
-                LOAI_KY_DK = Trim(arrCT(UBound(arrCT)))
-                ngayPS = arrCT(UBound(arrCT) - 1)
-                If (Trim(arrCT(UBound(arrCT))) = "2") Then
-                    LAN_XUAT_BAN_DK = Right(arrCT(0), 1)
-                    isTKLanPS = True
-                End If
-                If (arrCT(4) = "1") Then
-                    Loai_TK_DK = "DT"
-                ElseIf (arrCT(5) = "1") Then
-                    Loai_TK_DK = "CD"
-                ElseIf (arrCT(6) = "1") Then
-                    Loai_TK_DK = "KTN"
+                '02/TAIN-DK, 02/TNDN-DK
+                If (Val(strID) = 89 Or Val(strID) = 93) Then
+                    If (Right(arrCT(0), 1) = "1") Then
+                        Loai_TK_DK = "DT"
+                    ElseIf (arrCT(1) = "1") Then
+                        Loai_TK_DK = "CD"
+                    ElseIf (arrCT(2) = "1") Then
+                        Loai_TK_DK = "KTN"
+                    End If
+                Else
+                    LOAI_KY_DK = Trim(arrCT(UBound(arrCT)))
+                    ngayPS = arrCT(UBound(arrCT) - 1)
+                    If (Trim(arrCT(UBound(arrCT))) = "2") Then
+                        LAN_XUAT_BAN_DK = Right(arrCT(0), 1)
+                        isTKLanPS = True
+                    End If
+                    If (arrCT(4) = "1") Then
+                        Loai_TK_DK = "DT"
+                    ElseIf (arrCT(5) = "1") Then
+                        Loai_TK_DK = "CD"
+                    ElseIf (arrCT(6) = "1") Then
+                        Loai_TK_DK = "KTN"
+                    End If
                 End If
             End If
         End If
@@ -5392,13 +5408,22 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
                 "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
                 "And tkhai.kykk_tu_ngay = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
                 "And tkhai.kykk_den_ngay = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')"
-    ElseIf strID = "02_TAIN14" Or strID = "02_BVMT14" Or strID = "03A_TD_TAIN" Or strID = "02_TNCN_XS11" Or strID = "05_TNCN11" Or strID = "06_TNCN14" Or strID = "09_TNCN14" Or strID = "08B_TNCN11" Or strID = "02_TAIN_DK" Or strID = "02_TNDN_DK" Or strID = "02_PHLP" Or strID = "02_TNCN_BHDC" Then
+    ElseIf strID = "02_TAIN14" Or strID = "02_BVMT14" Or strID = "03A_TD_TAIN" Or strID = "02_TNCN_XS11" Or strID = "05_TNCN11" Or strID = "06_TNCN14" Or strID = "09_TNCN14" Or strID = "08B_TNCN11" Or strID = "02_PHLP" Or strID = "02_TNCN_BHDC" Or strID = "02_TAIN_DK" Or strID = "02_TNDN_DK" Then
     'todo to khai QT
-        strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
-                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-                "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
-                "And tkhai.kykk_tu_ngay = To_Date('" & TuNgay & "','DD/MM/RRRR')" & _
-                "And tkhai.kykk_den_ngay = To_Date('" & DenNgay & "','DD/MM/RRRR')"
+        If (strID = "02_TAIN_DK" Or strID = "02_TNDN_DK") Then
+            strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+                    "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                    "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
+                    "And tkhai.LOAI_TK_DK = '" & Loai_TK_DK & "' " & _
+                    "And tkhai.kykk_tu_ngay = To_Date('" & TuNgay & "','DD/MM/RRRR')" & _
+                    "And tkhai.kykk_den_ngay = To_Date('" & DenNgay & "','DD/MM/RRRR')"
+        Else
+            strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+                    "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                    "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
+                    "And tkhai.kykk_tu_ngay = To_Date('" & TuNgay & "','DD/MM/RRRR')" & _
+                    "And tkhai.kykk_den_ngay = To_Date('" & DenNgay & "','DD/MM/RRRR')"
+        End If
     Else
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
