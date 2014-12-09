@@ -709,7 +709,7 @@ Public Function InsertHDR_KHBS() As String
         End If
         
         kykkhai = "'" & TAX_Utilities_Svr_New.Year & "'"
-        MaMuc = "'1550'"
+        MaMuc = "'1050'"
         MaMucKHBS = MaMuc
         maTM = "''"
         matkhai = "'02/NTNN'"
