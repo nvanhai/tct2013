@@ -30,7 +30,7 @@ Public dNgayDauKy As Date
 Public dNgayCuoiKy As Date
 
 Public Const SS_SORT_ORDER_ASCENDING = 1
-Public Const APP_VERSION = "3.2.7"
+Public Const APP_VERSION = "9.9.9"
 Public Const HTKK_LAST_VERSION = "9.9.9"
 Public Const SS_BORDER_TYPE_NONE = 0
 Public Const SS_BORDER_TYPE_LEFT = 1
