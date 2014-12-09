@@ -4780,12 +4780,19 @@ Private Sub CheckDynamicSheet3()
                 Else
                      ' kiem tra neu tuoi >15 bat buoc nhap CMT
                     If vNgaySinhNPT <> "" Then
-                        If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) > 15 And Trim(vSoCMNDNPT) = "" Then
-                             .Col = .ColLetterToNumber("K")
-                            .CellNote = vErrEmptyCMNDNPT
+                        If Format_ddmmyyyy1(CStr(vNgaySinhNPT)) <> "" Then
+                            If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) > 15 And Trim(vSoCMNDNPT) = "" Then
+                                 .Col = .ColLetterToNumber("K")
+                                .CellNote = vErrEmptyCMNDNPT
+                                .BackColor = mErrorColor
+                                iFlagEmpty = 1
+                            End If
+                         Else
+                            .Col = .ColLetterToNumber("G")
+                            .CellNote = vErrDuLieuKhongHL
                             .BackColor = mErrorColor
                             iFlagEmpty = 1
-                        End If
+                         End If
                     End If
                 End If
                  

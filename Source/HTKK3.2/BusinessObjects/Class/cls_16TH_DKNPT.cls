@@ -1356,7 +1356,7 @@ Private Sub CheckDynamicSheet3()
                                 iFlagEmpty = 1
                             End If
                          Else
-                             .Col = .ColLetterToNumber("J")
+                             .Col = .ColLetterToNumber("F")
                             .CellNote = vErrDuLieuKhongHL
                             .BackColor = mErrorColor
                             iFlagEmpty = 1
