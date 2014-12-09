@@ -1506,8 +1506,17 @@ Private Sub Command1_Click()
 'str2 = "aa999932100343639   00201300400500100101/0101/01/1900<S01><S>2222222222</S><S>0~1~0~~~x</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>NGUYEN VAN A~ICT001~~09/12/2014~1~~~01/2013~12/2013</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa999932100343639   00201300400500100101/0101/01/1900<S01><S>2222222222</S><S>0~0~1~~~x</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>NGUYEN VAN A~ICT001~~09/12/2014~1~~~01/2013~12/2013</S></S01>"
+'str2 = "aa999932100343639   00201300400500100101/0101/01/1900<S01><S>2222222222</S><S>0~0~1~~~x</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>NGUYEN VAN A~ICT001~~09/12/2014~1~~~01/2013~12/2013</S></S01>"
+'Barcode_Scaned str2
+
+'str2 = "aa325062100343639   11201400000000100201/0114/06/2006<S01><S>2222222222</S><S>~~0~0~0~0~0</S><S>~~0~0~0~0~0</S"
+'Barcode_Scaned str2
+'str2 = "aa325062100343639   112014000000002002><S>~~0~0~0~0~0</S><S>NGUYEN VAN A~ICT001~~09/12/2014~1~~0~0~</S></S01>"
+'Barcode_Scaned str2
+
+str2 = "aa325862100343639   11201400000000100101/0101/01/1900<S01><S>2222222222</S><S>~0~0~</S><S>~0~0~</S><S>NGUYEN VAN A~~ICT001~09/12/2014~1~~</S></S01>"
 Barcode_Scaned str2
+
 
 End Sub
 
@@ -3029,6 +3038,11 @@ On Error GoTo ErrHandle
     
     ' 03122010 - sua lai doan lay version cua ung dung in ma vach
     strTaxReportVersion = Left$(strData, 3)
+    
+    'set VERION
+    Dim version As Variant
+    TAX_Utilities_Srv_New.verMaVach = Left$(strData, 3)
+    
     strData = Mid$(strData, 4)
     lblVersion.caption = Left$(strTaxReportVersion, 1) & "." & Mid$(strTaxReportVersion, 2, 1) & "." & Right$(strTaxReportVersion, 1)
     ' end doan lay version
