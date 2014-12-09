@@ -145,6 +145,10 @@ End Property
 Public Property Get isCheckPIT() As Boolean
     isCheckPIT = isUsePIT
 End Property
+'version MV
+Public Property Get verMaVach() As String
+    verMaVach = strMaVach
+End Property
 '--Check MST de ghi du lieu sang QLT hoac QCT (ghi sang QCT cap nhat gia tri Y)--
 Public Property Get isCheckQCT() As Boolean
     isCheckQCT = isQCT
@@ -155,4 +159,7 @@ End Property
 
 Public Property Let isCheckPIT(ByVal checkPIT As Boolean)
     isUsePIT = checkPIT
+End Property
+Public Property Let verMaVach(ByVal strVer As String)
+    strMaVach = strVer
 End Property
