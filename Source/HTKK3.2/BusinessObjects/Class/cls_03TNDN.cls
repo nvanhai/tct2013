@@ -2998,6 +2998,7 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
             
             ' PL 03-7
             If .ActiveSheet = sheetPl03_7_TNDN Then
+                    mCurrentSheet = sheetPl03_7_TNDN
                    fps.EventEnabled(EventAllEvents) = False
                     i = 1
                    .Row = 31
@@ -3013,6 +3014,7 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
                     .Row = .Row + 19
                     Do
                      .Text = "1.1." & Trim(str(i))
+                     UpdateCell fps, .Col, .Row, .Text
                      .Row = .Row + 1
                      i = i + 1
                     Loop Until .Text = "aa"
@@ -3021,6 +3023,7 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
                    .Row = .Row + 3
                     Do
                          .Text = "1.2." & Trim(str(i))
+                         UpdateCell fps, .Col, .Row, .Text
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
@@ -3031,6 +3034,7 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
                    .Row = .Row + 4
                     Do
                          .Text = "2.1." & Trim(str(i))
+                         UpdateCell fps, .Col, .Row, .Text
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
@@ -3040,6 +3044,7 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
                    .Row = .Row + 3
                     Do
                          .Text = "2.2." & Trim(str(i))
+                         UpdateCell fps, .Col, .Row, .Text
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
@@ -3050,6 +3055,7 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
                    .Row = .Row + 3
                     Do
                          .Text = "2.3." & Trim(str(i))
+                         UpdateCell fps, .Col, .Row, .Text
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
@@ -3059,6 +3065,7 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
                    .Row = .Row + 4
                     Do
                          .Text = "2.4.1." & Trim(str(i))
+                         UpdateCell fps, .Col, .Row, .Text
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
@@ -3068,6 +3075,7 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
                    .Row = .Row + 3
                     Do
                          .Text = "2.4.2." & Trim(str(i))
+                         UpdateCell fps, .Col, .Row, .Text
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
@@ -3078,6 +3086,7 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
                    .Row = .Row + 3
                     Do
                          .Text = "2.5." & Trim(str(i))
+                         UpdateCell fps, .Col, .Row, .Text
                          .Col = .ColLetterToNumber("B")
                          .Row = 1 + .Row
                          i = i + 1
@@ -4194,6 +4203,7 @@ Public Sub finishImportXML()
               
               .Col = .ColLetterToNumber("B")
                .Text = "1.1." & Trim(str(i))
+               UpdateCell fps, .Col, .Row, .Text
               .Row = .Row + 1
              Loop Until .Text = "aa"
              
@@ -4217,6 +4227,7 @@ Public Sub finishImportXML()
                     
                   .Col = .ColLetterToNumber("B")
                   .Text = "1.2." & Trim(str(i))
+                  UpdateCell fps, .Col, .Row, .Text
                   .Row = 1 + .Row
              Loop Until .Text = "bb"
     
@@ -4241,6 +4252,7 @@ Public Sub finishImportXML()
     
                   .Col = .ColLetterToNumber("B")
                   .Text = "2.1." & Trim(str(i))
+                  UpdateCell fps, .Col, .Row, .Text
                   .Row = 1 + .Row
              Loop Until .Text = "cc"
     
@@ -4264,6 +4276,7 @@ Public Sub finishImportXML()
                     
                   .Col = .ColLetterToNumber("B")
                   .Text = "2.2." & Trim(str(i))
+                  UpdateCell fps, .Col, .Row, .Text
                   .Row = 1 + .Row
              Loop Until .Text = "dd"
     
@@ -4288,6 +4301,7 @@ Public Sub finishImportXML()
     
                   .Col = .ColLetterToNumber("B")
                   .Text = "2.3." & Trim(str(i))
+                  UpdateCell fps, .Col, .Row, .Text
                   .Row = 1 + .Row
              Loop Until .Text = "ee"
     
@@ -4311,6 +4325,7 @@ Public Sub finishImportXML()
                     
                   .Col = .ColLetterToNumber("B")
                   .Text = "2.4.1." & Trim(str(i))
+                  UpdateCell fps, .Col, .Row, .Text
                   .Row = 1 + .Row
              Loop Until .Text = "ff"
     
@@ -4335,6 +4350,7 @@ Public Sub finishImportXML()
                     
                   .Col = .ColLetterToNumber("B")
                   .Text = "2.4.2." & Trim(str(i))
+                  UpdateCell fps, .Col, .Row, .Text
                   .Row = 1 + .Row
              Loop Until .Text = "gg"
     
@@ -4359,6 +4375,7 @@ Public Sub finishImportXML()
                     
                   .Col = .ColLetterToNumber("B")
                   .Text = "2.5." & Trim(str(i))
+                  UpdateCell fps, .Col, .Row, .Text
                   .Row = 1 + .Row
              Loop Until .Text = "hh"
              ' end fill data
