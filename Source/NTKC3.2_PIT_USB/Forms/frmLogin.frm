@@ -431,7 +431,6 @@ Private Sub Form_Unload(Cancel As Integer)
     Set frmLogin = Nothing
 End Sub
 
-
 Private Sub txtUsername_Change()
     txtUsername.Text = UCase(txtUsername.Text)
 End Sub

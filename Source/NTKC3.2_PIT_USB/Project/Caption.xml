@@ -62,7 +62,7 @@
 		<Item Name="lblBarcode" Caption="Số mã đã quét:"/>
 		<Item Name="lblExit" Caption="Bấm Thoát để quay về màn hình Menu."/>
 		<Item Name="lblLabelVersion" Caption="Phiên bản ứng dụng HTKK dùng để in tờ khai:"/>
-		<Item Name="lblWarning" Caption="(Cần cập nhật phiên bản 3.2.3)" />
+		<Item Name="lblWarning" Caption="(Cần cập nhật phiên bản 3.2.4)" />
 		<Item Name="lblVersion" Caption=""/>
 		<Item Name="cmdClear" Index="" Caption="Xóa"/>
 		<Item Name="cmdSave" Index="" Caption="Ghi"/>

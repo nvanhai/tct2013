@@ -132,4 +132,7 @@
 	<Infor ID="0136" Msg="Đề nghị cán bộ thuế nhập tay vào hệ thống QLT"/>
 	<Infor ID="0137" Msg="Sử dụng máy quét mã vạch qua cổng USB? Nếu chọn không chương trình mặc định sử dụng cổng COM"/>
 	<Infor ID="0138" Msg="Chương trình đang sử dụng máy quét bằng cổng USB, nếu muốn sự dụng cổng COM, bạn hãy đăng nhập lại"/>
+	<Infor ID="0139" Msg="Không nhận các tờ khai theo mẫu biểu cũ"/>
+	<Infor ID="0140" Msg="Không nhận các tờ khai bổ sung của mẫu cũ"/>
+	<Infor ID="0141" Msg="Không nhận tờ khai từ kỳ kê khai quý IV/2014"/>
 </Message>

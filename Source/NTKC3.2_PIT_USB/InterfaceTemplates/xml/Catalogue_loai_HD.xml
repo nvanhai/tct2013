@@ -7,6 +7,7 @@
 			<Item Value ="0###07KPTQ###Hóa đơn bán hàng (dành cho tổ chức, cá nhân trong khu phi thuế quan)"/>
 			<Item Value ="0###03XKNB###Phiếu xuất kho kiêm vận chuyển hàng hóa nội bộ"/>
 			<Item Value ="0###04HGDL###Phiếu xuất kho gửi bán hàng đại lý"/>
+			<Item Value ="0###01BHDT###Hóa đơn bán hàng dự trữ quốc gia"/>
 			<Item Value ="1###01/###Tem thuộc loại hóa đơn GTGT"/>
 			<Item Value ="1###02/###Tem thuộc loại hóa đơn bán hàng"/>
 			<Item Value ="2###01/###Vé thuộc loại hóa đơn GTGT"/>

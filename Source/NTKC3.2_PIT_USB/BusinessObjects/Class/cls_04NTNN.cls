@@ -50,11 +50,11 @@ Const NGAY_HOP_DONG_DL_COL = "N"
 
 
 ' Tu ngay
-Const TU_NGAY_ROW = 37
-Const TU_NGAY_COL = "S"
-'Den ngay
-Const DEN_NGAY_ROW = 37
-Const DEN_NGAY_COL = "Z"
+'Const TU_NGAY_ROW = 37
+'Const TU_NGAY_COL = "S"
+''Den ngay
+'Const DEN_NGAY_ROW = 37
+'Const DEN_NGAY_COL = "Z"
 
 ' Phong quan ly
 Const PHONG_QUAN_LY_ROW = 34
@@ -140,7 +140,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .Sheet = 1
         .Col = .ColLetterToNumber(PHONG_XU_LY_COL)
         .Row = PHONG_XU_LY_ROW
-        If rsPXL.Fields.Count > 0 Then
+        If rsPXL.Fields.count > 0 Then
             Do While Not rsPXL.EOF
                 .TypeComboBoxIndex = -1
                 .TypeComboBoxString = TAX_Utilities_Srv_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
@@ -158,6 +158,17 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .TypeComboBoxCurSel = 0
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
+        
+        'set ky tinh thue
+        .Sheet = 1
+        .Row = 37
+        .Col = .ColLetterToNumber("Y")
+        .Text = TAX_Utilities_Srv_New.FirstDay
+        UpdateCell fps, .Col, .Row, .Text
+        .Col = .ColLetterToNumber("Z")
+        .Text = TAX_Utilities_Srv_New.LastDay
+        UpdateCell fps, .Col, .Row, .Text
+        
     End With
     
     Prepared2 = True
@@ -292,12 +303,12 @@ Dim varTemp As Variant
         .Row = NGAY_NHAN_TO_KHAI_ROW
         strNgayNhanToKhai = .Text
         
-        ' Tu ngay
-        .Col = .ColLetterToNumber(TU_NGAY_COL)
-        .Row = TU_NGAY_ROW
-        varTemp = .Text
-        
-        dNgayDauKy = DateSerial(CInt(Right(varTemp, 4)), CInt(Mid$(CStr(varTemp), 4, 2)), CInt(Left$(CStr(varTemp), 2)))
+'        ' Tu ngay
+'        .Col = .ColLetterToNumber(TU_NGAY_COL)
+'        .Row = TU_NGAY_ROW
+'        varTemp = .Text
+'
+'        dNgayDauKy = DateSerial(CInt(Right(varTemp, 4)), CInt(Mid$(CStr(varTemp), 4, 2)), CInt(Left$(CStr(varTemp), 2)))
         
         'Go to last sheet (header sheet)
         .Sheet = .SheetCount
@@ -524,7 +535,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "04_NTNN11"
+    vLOAI_TKHAI = "04_NTNN14"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
@@ -537,33 +548,12 @@ On Error GoTo ErrHandle
     dDate = DateAdd("d", -1, dDate)
     strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
 
-    
-    'Ky/ Quy KK
-    'Ngay dau ky ke khai va ngay cuoi ky ke khai
-    With fps
-        .Sheet = 1
-        .Col = .ColLetterToNumber(TU_NGAY_COL)
-        .Row = TU_NGAY_ROW
-        varTemp = .Text
-        If Trim$(varTemp) <> "" Then
-            dDate = DateSerial(CInt(Right$(CStr(varTemp), 4)), CInt(Mid$(CStr(varTemp), 4, 2)), Left$(CStr(varTemp), 2))
-            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        Else
-            strSQL = strSQL & " null,"
-        End If
-        'dDate = dNgayDauKy
-'        dDate = DateAdd("m", 1, dDate)
-'        dDate = DateAdd("d", -1, dDate)
-        .Col = .ColLetterToNumber(DEN_NGAY_COL)
-        .Row = DEN_NGAY_ROW
-        varTemp = .Text
-        If Trim$(varTemp) <> "" Then
-            dDate = DateSerial(CInt(Right$(CStr(varTemp), 4)), CInt(Mid$(CStr(varTemp), 4, 2)), Left$(CStr(varTemp), 2))
-            strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        Else
-            strSQL = strSQL & " null,"
-        End If
-    End With
+    'KyKK - tu ngay
+    dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2)))
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    'Ky ke khai den ngay
+    dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2)))
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
     strSQL = strSQL & "'" & vNGUOI_CAP_NHAT & "',"

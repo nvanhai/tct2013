@@ -101,28 +101,29 @@
 	</Menu>	
 	<Menu ID="73" PopID="101" ParentID="103" Caption="TK TNDN cho chuyển nhượng BĐS (02/TNDN)" FormName="" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\02_TNDN11.xls" ReportTemplate="..\ReportTemplates\Excel\02_TNDN11.xls" Class="Tax_Business_Srv.cls_02TNDN" Class2="Tax_Business_Srv.clsReport002">
-			<Sheet ID="02" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_TNDN11" Ini="..\Ini\02_TNDN11.xml"/>
-			<Sheet ID="02-1" Caption="PL 02-1/TNDN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_01_TNDN13" Ini="..\Ini\02_01_TNDN13.xml"/>
-			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_TNDN13" Ini="..\Ini\KHBS_02_TNDN.xml"/>
+			<Sheet ID="02" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_TNDN14" Ini="..\Ini\02_TNDN14.xml"/>
+			<Sheet ID="02-1" Caption="PL 02-1/TNDN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_01_TNDN14" Ini="..\Ini\02_01_TNDN14.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_TNDN14" Ini="..\Ini\KHBS_02_TNDN14.xml"/>
 		</Validity>
 	</Menu>
 	<Menu ID="03" PopID="101" ParentID="103" Caption="Quyết toán TNDN năm (03/TNDN)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="1" FinanceYear="1" Icon="..\Pictures\tk_tncn.bmp">
-		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\03_TNDN11.xls" ReportTemplate="..\ReportTemplates\Excel\03_TNDN11.xls" Class="Tax_Business_Srv.cls_03TNDN">
-			<Sheet ID="03" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_TNDN11" Ini="..\Ini\03_TNDN11.xml"/>
-			<Sheet ID="03-1A" Caption="03-1A/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_1A_TNDN11" Ini="..\Ini\03_1A_TNDN11.xml"/>
-			<Sheet ID="03-1B" Caption="03-1B/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_1B_TNDN11" Ini="..\Ini\03_1B_TNDN11.xml"/>
-			<Sheet ID="03-1C" Caption="03-1C/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_1C_TNDN11" Ini="..\Ini\03_1C_TNDN11.xml"/>
-			<Sheet ID="03-2A" Caption="03-2A/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_2A_TNDN11" Ini="..\Ini\03_2A_TNDN11.xml"/>
-			<Sheet ID="03-2B" Caption="03-2B/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_2B_TNDN11" Ini="..\Ini\03_2B_TNDN11.xml"/>
-			<Sheet ID="03-3A" Caption="03-3A/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_3A_TNDN11" Ini="..\Ini\03_3A_TNDN11.xml"/>
-			<Sheet ID="03-3B" Caption="03-3B/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_3B_TNDN11" Ini="..\Ini\03_3B_TNDN11.xml"/>
-			<Sheet ID="03-3C" Caption="03-3C/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_3C_TNDN11" Ini="..\Ini\03_3C_TNDN11.xml"/>			
-			<Sheet ID="03-4" Caption="03-4/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_4_TNDN11" Ini="..\Ini\03_4_TNDN11.xml"/>
-			<Sheet ID="03-5" Caption="03-5/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_5_TNDN11" Ini="..\Ini\03_5_TNDN11.xml"/>
-			<Sheet ID="03-05" Caption="PL 05/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_05_TNDN11" Ini="..\Ini\03_05_TNDN11.xml"/>
-			<Sheet ID="03-6" Caption="03-6/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_6_TNDN11" Ini="..\Ini\03_6_TNDN11.xml"/>
-			<Sheet ID="03-7" Caption="GCN-01/QLT" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_7_TNDN11" Ini="..\Ini\03_7_TNDN11.xml"/>
-			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_03_TNDN" Ini="..\Ini\KHBS_03_TNDN.xml"/>
+		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\03_TNDN14.xls" ReportTemplate="..\ReportTemplates\Excel\03_TNDN14.xls" Class="Tax_Business_Srv.cls_03TNDN">
+			<Sheet ID="03" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_TNDN14" Ini="..\Ini\03_TNDN14.xml"/>
+			<Sheet ID="03-1A" Caption="03-1A/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_1A_TNDN14" Ini="..\Ini\03_1A_TNDN14.xml"/>
+			<Sheet ID="03-1B" Caption="03-1B/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_1B_TNDN14" Ini="..\Ini\03_1B_TNDN14.xml"/>
+			<Sheet ID="03-1C" Caption="03-1C/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_1C_TNDN14" Ini="..\Ini\03_1C_TNDN14.xml"/>
+			<Sheet ID="03-2A" Caption="03-2A/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_2A_TNDN14" Ini="..\Ini\03_2A_TNDN14.xml"/>
+			<Sheet ID="03-2B" Caption="03-2B/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_2B_TNDN14" Ini="..\Ini\03_2B_TNDN14.xml"/>
+			<Sheet ID="03-3A" Caption="03-3A/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_3A_TNDN14" Ini="..\Ini\03_3A_TNDN14.xml"/>
+			<Sheet ID="03-3B" Caption="03-3B/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_3B_TNDN14" Ini="..\Ini\03_3B_TNDN14.xml"/>
+			<Sheet ID="03-3C" Caption="03-3C/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_3C_TNDN14" Ini="..\Ini\03_3C_TNDN14.xml"/>			
+			<Sheet ID="03-4" Caption="03-4/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_4_TNDN14" Ini="..\Ini\03_4_TNDN14.xml"/>
+			<Sheet ID="03-5" Caption="03-5/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_5_TNDN14" Ini="..\Ini\03_5_TNDN14.xml"/>
+			<Sheet ID="03-6" Caption="03-6/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_6_TNDN14" Ini="..\Ini\03_6_TNDN14.xml"/>
+			<Sheet ID="03-7" Caption="03-7/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_7_TNDN14" Ini="..\Ini\03_7_TNDN14.xml"/>
+			<Sheet ID="03-8" Caption="03-8/TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_8_TNDN14" Ini="..\Ini\03_8_TNDN14.xml"/>
+			<Sheet ID="03-9" Caption="PL 02-1/TĐ-TNDN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03_9_TD_TNDN14" Ini="..\Ini\03_9_TD_TNDN14.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_03_TNDN14" Ini="..\Ini\KHBS_03_TNDN14.xml"/>
 		</Validity>
 	</Menu>
 	<Menu ID="104" PopID="" ParentID="101" Caption="Thuế Thu Nhập Cá Nhân" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\kekhai.gif"/>	
@@ -251,8 +252,8 @@
 	</Menu>
 	
 	<Menu ID="59" PopID="101" ParentID="104" Caption="TK-TNCN Mẫu 06/TNCN Quyết toán TNCN" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
-		<Validity StartDate="01/01/2010" InterfaceTemplate="..\InterfaceTemplates\Excel\06_TNCN11.xls" ReportTemplate="..\ReportTemplates\Excel\06_TNCN11.xls" Class="Tax_Business_Srv.cls_06TNCN">
-			<Sheet ID="06" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="06_TNCN11" Ini="..\Ini\06_TNCN11.xml"/>
+		<Validity StartDate="01/01/2010" InterfaceTemplate="..\InterfaceTemplates\Excel\06_TNCN14.xls" ReportTemplate="..\ReportTemplates\Excel\06_TNCN14.xls" Class="Tax_Business_Srv.cls_06TNCN">
+			<Sheet ID="06" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="06_TNCN14" Ini="..\Ini\06_TNCN14.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>
 	</Menu>	
@@ -267,7 +268,12 @@
 	
 	<Menu ID="41" PopID="101" ParentID="104" Caption="TK-TNCN Mẫu 09/TNCN Quyết toán TNCN" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\Excel\09_TNCN11.xls" ReportTemplate="..\ReportTemplates\Excel\09_TNCN11.xls" Class="Tax_Business_Srv.cls_09TNCN">
-			<Sheet ID="09" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="09_TNCN11" Ini="..\Ini\09_TNCN11.xml"/>
+			<Sheet ID="09" Caption="09KK-TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="09_TNCN14" Ini="..\Ini\09_TNCN14.xml"/>
+			<Sheet ID="09-1" Caption="09-1/TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="09_1_TNCN14" Ini="..\Ini\09_1_TNCN14.xml"/>
+			<Sheet ID="09-2" Caption="09-2/TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="09_2_TNCN14" Ini="..\Ini\09_2_TNCN14.xml"/>
+			<Sheet ID="09-3" Caption="09-3/TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="09_3_TNCN14" Ini="..\Ini\09_3_TNCN14.xml" />			
+			<Sheet ID="09-4" Caption="09-4/TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="09_4_TNCN14" Ini="..\Ini\09_4_TNCN14.xml" />			
+			<Sheet ID="26MT" Caption="26MT-TNCN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="09MT_TNCN14" Ini="..\Ini\09MT_TNCN14.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>
 	</Menu>
@@ -275,16 +281,16 @@
 	<Menu ID="101_8" PopID="" ParentID="101" Caption="Thuế nhà thầu" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\kekhai.gif"/>
 	<Menu ID="70" PopID="101" ParentID="101_11" Caption="Tờ khai thuế nhà thầu nước ngoài - 01/NTNN" FormName="" Year="1" Month="1" ThreeMonth="0" Day="1" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\01_NTNN11.xls" ReportTemplate="..\ReportTemplates\excel\01_NTNN11.xls" Class="Tax_Business_Srv.cls_01NTNN" Class2="Tax_Business_Srv.clsReport008">
-			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_NTNN" Ini="..\Ini\01_NTNN11.xml" ReportIni="..\ReportIni\01_NTNN11.xml"/>
-			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_NTNN13" Ini="..\Ini\KHBS_01_NTNN.xml" ReportIni="..\ReportIni\KHBS_01_NTNN.xml"/>
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_NTNN" Ini="..\Ini\01_NTNN11.xml" />
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_NTNN13" Ini="..\Ini\KHBS_01_NTNN.xml"/>
 		</Validity>
 	</Menu>		
 	<Menu ID="80" PopID="101" ParentID="101_8" Caption="Tờ khai quyết toán thuế NTNN - 02/NTNN" FormName="" Year="1" Month="0" ThreeMonth="0" Day="1" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
-		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\02_NTNN11.xls" ReportTemplate="..\ReportTemplates\Excel\02_NTNN11.xls" Class="Tax_Business_Srv.cls_02NTNN">
-			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_NTNN13" Ini="..\Ini\02_NTNN13.xml"/>
-			<Sheet ID="01-1" Caption="02-1/NTNN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_1_NTNN13" Ini="..\Ini\02_1_NTNN13.xml"/>
-			<Sheet ID="01-2" Caption="02-2/NTNN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_2_NTNN13" Ini="..\Ini\02_2_NTNN13.xml"/>			
-			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_NTNN" Ini="..\Ini\KHBS_02_NTNN.xml"/>	
+		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\02_NTNN.xls" ReportTemplate="..\ReportTemplates\Excel\02_NTNN.xls" Class="Tax_Business_Srv.cls_02NTNN">
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_NTNN14" Ini="..\Ini\02_NTNN14.xml"/>
+			<Sheet ID="01-1" Caption="02-1/NTNN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_1_NTNN14" Ini="..\Ini\02_1_NTNN14.xml"/>
+			<Sheet ID="01-2" Caption="02-2/NTNN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_2_NTNN14" Ini="..\Ini\02_2_NTNN14.xml"/>			
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_NTNN14" Ini="..\Ini\KHBS_02_NTNN14.xml"/>	
 		</Validity>
 	</Menu>
 	<Menu ID="81" PopID="101" ParentID="101_8" Caption="Tờ khai thuế nhà thầu nước ngoài - 03/NTNN" FormName=""  Year="1" Month="1" ThreeMonth="0" Day="1" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
@@ -296,10 +302,10 @@
 
 	
 	<Menu ID="82" PopID="101" ParentID="101_8" Caption="Tờ khai quyết toán thuế NTNN - 04/NTNN" FormName="" Year="1" Month="0" ThreeMonth="0" Day="1" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
-		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\04_NTNN11.xls" ReportTemplate="..\ReportTemplates\Excel\04_NTNN11.xls" Class="Tax_Business_Srv.cls_04NTNN">
-			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="04_NTNN13" Ini="..\Ini\04_NTNN13.xml"/>
-			<Sheet ID="01-1" Caption="02-2/NTNN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="04_1_NTNN13" Ini="..\Ini\04_1_NTNN13.xml"/>
-			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_04_NTNN" Ini="..\Ini\KHBS_04_NTNN.xml"/>	
+		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\04_NTNN.xls" ReportTemplate="..\ReportTemplates\Excel\04_NTNN.xls" Class="Tax_Business_Srv.cls_04NTNN">
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="04_NTNN14" Ini="..\Ini\04_NTNN14.xml"/>
+			<Sheet ID="01-1" Caption="02-2/NTNN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="04_1_NTNN14" Ini="..\Ini\04_1_NTNN14.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_04_NTNN14" Ini="..\Ini\KHBS_04_NTNN14.xml"/>	
 		</Validity>
 	</Menu>
 	
@@ -315,9 +321,8 @@
 
 	<Menu ID="77" PopID="101" ParentID="105" Caption="Tờ khai quyết toán thuế tài nguyên(02/TAIN)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\02_TAIN11.xls" ReportTemplate="..\ReportTemplates\excel\02_TAIN11.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_02TAIN">
-			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_TAIN11" Ini="..\Ini\02_TAIN11.xml"/>
-			<Sheet ID="01_1" Caption="PL 03-1/TĐ-TAIN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_1_TD_TAIN11" Ini="..\Ini\02_1_TD_TAIN11.xml"/>
-			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_TAIN" Ini="..\Ini\KHBS_02_TAIN.xml"/>
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_TAIN14" Ini="..\Ini\02_TAIN14.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_TAIN14" Ini="..\Ini\KHBS_02_TAIN14.xml"/>
 		</Validity>
 	</Menu>		
 
@@ -337,12 +342,19 @@
 		</Validity>
 	</Menu>
 	
-	<Menu ID="93" PopID="101" ParentID="105" Caption="Tờ khai quyết toán thuế tài nguyên(02/TAIN-DK)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
-		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\02_TAIN_DK11.xls" ReportTemplate="..\ReportTemplates\excel\02_TAIN_DK11.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_02TAIN_DK">
-			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_TAIN_DK13" Ini="..\Ini\02_TAIN_DK13.xml"/>
-			<Sheet ID="01-1" Caption="01/PL-DK" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_1_TAIN_DK13" InterfaceIni="..\InterfaceIni\02_1_TAIN_DK13.xml" ReportIni="..\ReportIni\02_1_TAIN_DK13.xml"/>
-			<Sheet ID="01-2" Caption="02-1/TAIN-DK" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_2_TAIN_DK13" InterfaceIni="..\InterfaceIni\02_2_TAIN_DK13.xml" ReportIni="..\ReportIni\02_2_TAIN_DK13.xml"/>
-			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
+	<Menu ID="89" PopID="101" ParentID="105" Caption="Tờ khai quyết toán thuế tài nguyên(02/TAIN-DK)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
+		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\Excel\02_TAIN_DK.xls" ReportTemplate="..\ReportTemplates\excel\02_TAIN_DK.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_02TAIN_DK">
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_TAIN_DK" Ini="..\Ini\02_TAIN_DK.xml"/>
+			<Sheet ID="01-2" Caption="02-1/TAIN-DK" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_2_TAIN_DK" InterfaceIni="..\InterfaceIni\02_2_TAIN_DK.xml" ReportIni="..\ReportIni\02_2_TAIN_DK.xml"/>
+			<Sheet ID="01-1" Caption="01/PL-DK" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_1_TAIN_DK" InterfaceIni="..\InterfaceIni\02_1_TAIN_DK.xml" ReportIni="..\ReportIni\02_1_TAIN_DK.xml"/>			
+			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_TAIN_DK" Ini="..\Ini\KHBS.xml"/>
+		</Validity>
+	</Menu>
+	<Menu ID="93" PopID="101" ParentID="105" Caption="TK Quyết toán TNDN đối với dầu khí(02/TNDN-DK)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
+		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\Excel\02_TNDN_DK.xls" ReportTemplate="..\ReportTemplates\excel\02_TNDN_DK.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_02TNDN_DK">
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_TNDN_DK" Ini="..\Ini\02_TNDN_DK.xml"/>
+			<Sheet ID="01-1" Caption="01/PL-DK" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_1_TNDN_DK" InterfaceIni="..\InterfaceIni\02_1_TNDN_DK.xml" ReportIni="..\ReportIni\02_1_TNDN_DK.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_TNDN_DK" Ini="..\Ini\KHBS_02_TNDN_DK.xml"/>
 		</Validity>
 	</Menu>
 	
@@ -354,9 +366,10 @@
 		</Validity>
 	</Menu>
 	<Menu ID="97" PopID="101" ParentID="105" Caption="Tờ khai thuế tài nguyên (03A/TĐ-TAIN)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
-		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\03A_TD_TAIN11.xls" ReportTemplate="..\ReportTemplates\Excel\03A_TD_TAIN11.xls" Class="Tax_Business_Srv.cls_03ATD_TAIN" Class2="Tax_Business_Srv.clsReport001_1">
-			<Sheet ID="03" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03A_TD_TAIN13" Ini="..\Ini\03A_TD_TAIN13.xml"/>
-			<Sheet ID="03-1" Caption="03-1/TĐ-TAIN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03A_1_TD_TAIN13" InterfaceIni="..\InterfaceIni\03A_1_TD_TAIN13.xml" ReportIni="..\ReportIni\03A_1_TD_TAIN13.xml"/>
+		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\03A_TD_TAIN.xls" ReportTemplate="..\ReportTemplates\Excel\03A_TD_TAIN.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_03ATD_TAIN" Class2="Tax_Business_Srv.clsReport001_1">
+			<Sheet ID="03" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03A_TD_TAIN" Ini="..\Ini\03A_TD_TAIN.xml"/>
+			<Sheet ID="03-1" Caption="03-1/TĐ-TAIN" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="03A_1_TD_TAIN" InterfaceIni="..\InterfaceIni\03A_1_TD_TAIN.xml" ReportIni="..\ReportIni\03A_1_TD_TAIN.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_03A_TD_TAIN" Ini="..\Ini\KHBS_03A_TD_TAIN.xml"/>
 		</Validity>
 	</Menu>
 	<Menu ID="106" PopID="" ParentID="101" Caption="Thuế Tiêu Thụ Đặc Biệt" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\kekhai.gif"/>
@@ -368,16 +381,7 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_TTDB13" Ini="..\Ini\KHBS_01_TTDB.xml"/>
 		</Validity>
 	</Menu>	
-	<Menu ID="18" PopID="101" ParentID="108" Caption="Báo cáo tài chính bộ 15 BCTC" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
-		<Validity StartDate="23/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\15_BCTC.xls" ReportTemplate="..\ReportTemplates\Excel\15_BCTC.xls" Class="Tax_Business_Srv.cls_15_BCTC">
-			<Sheet ID="01" Caption="CĐKT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="15_01_CDKT" Ini="..\Ini\15_01_CDKT.xml"/>
-			<Sheet ID="01-1" Caption="KQHĐSXKD" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="15_02_SXKD" Ini="..\Ini\15_02_SXKD.xml"/>
-			<Sheet ID="01-2" Caption="LCTTTT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="15_03_LCTTTT" Ini="..\Ini\15_03_LCTTTT.xml"/>
-			<Sheet ID="01-3" Caption="LCTTGT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="15_04_LCTTGT" Ini="..\Ini\15_04_LCTTGT.xml"/>
-			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
-		</Validity>
-	</Menu>
-		<Menu ID="69" PopID="101" ParentID="108" Caption="Báo cáo tài chính bộ 15 BCTC10" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
+	<Menu ID="69" PopID="101" ParentID="108" Caption="Báo cáo tài chính bộ 15 BCTC10" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="23/06/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\15_BCTC10.xls" ReportTemplate="..\ReportTemplates\Excel\15_BCTC10.xls" Class="Tax_Business_Srv.cls_15_BCTC10">
 			<Sheet ID="01" Caption="CĐKT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="15_01_CDKT10" Ini="..\Ini\15_01_CDKT10.xml"/>
 			<Sheet ID="01-1" Caption="KQHĐSXKD" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="15_02_SXKD10" Ini="..\Ini\15_02_SXKD10.xml"/>
@@ -475,14 +479,8 @@
 		</Validity>
 	</Menu>
 	<Menu ID="26" PopID="101" ParentID="104" Caption="Tờ khai 02/KK-BHĐC" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
-		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\Excel\02_TNCN_BHDC11.xls" ReportTemplate="..\ReportTemplates\Excel\02_TNCN_BHDC11.xls" Class="Tax_Business_Srv.cls_02TNCN_BHDC">
-			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_TNCN_BHDC13" Ini="..\Ini\02_TNCN_BHDC13.xml"/>
-			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
-		</Validity>
-	</Menu>
-	<Menu ID="27" PopID="101" ParentID="109" Caption="Lưu chuyển tiền tệ (Gián tiếp)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
-		<Validity StartDate="14/09/2006" InterfaceTemplate="..\InterfaceTemplates\Excel\48_04_LCTTGT.xls" ReportTemplate="..\ReportTemplates\Excel\48_04_LCTTGT.xls" Class="Tax_Business_Srv.cls_48_04_LCTTGT">
-			<Sheet ID="01" Caption="LCTTGT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="48_04_LCTTGT" Ini="..\Ini\48_04_LCTTGT.xml"/>
+		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\Excel\02_TNCN_BHDC.xls" ReportTemplate="..\ReportTemplates\Excel\02_TNCN_BHDC.xls" Class="Tax_Business_Srv.cls_02TNCN_BHDC">
+			<Sheet ID="02" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_TNCN_BHDC" Ini="..\Ini\02_TNCN_BHDC.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
 		</Validity>
 	</Menu>
@@ -566,7 +564,7 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
 		</Validity>
 	</Menu>
-	<Menu ID="68" PopID="101" ParentID="112" Caption="Báo cáo tình hình sử dụng hóa đơn" FormName="" Year="1/2" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tncn.bmp">
+	<Menu ID="68" PopID="101" ParentID="112" Caption="B/c tình hình sử dụng hóa đơn" FormName="" Year="1/2" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\Excel\BC26_AC.xls" ReportTemplate="..\ReportTemplates\Excel\BC26_AC.xls" Class="Tax_Business_Srv.cls_BC26AC">
 			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BC26_AC" Ini="..\Ini\BC26_AC.xml"/>
 			<Sheet ID="01_1" Caption="BK01_1/AC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BK26_01_AC" Ini="..\Ini\BK26_01_AC.xml"/>
@@ -574,19 +572,43 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>	
 		</Validity>
 	</Menu>
-	
+	<Menu ID="18" PopID="101" ParentID="112" Caption="B/c tình hình sử dụng hóa đơn theo số lượng" FormName="" Year="1/2" Month="0" ThreeMonth="1" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tncn.bmp">
+		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\Excel\BC26_AC_SL.xls" ReportTemplate="..\ReportTemplates\Excel\BC26_AC_SL.xls" Class="Tax_Business_Srv.cls_BC26ACSL">
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BC26_AC_SL" Ini="..\Ini\BC26_AC_SL.xml"/>
+			<Sheet ID="01_1" Caption="BK01_1/AC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BK26SL_01_AC" Ini="..\Ini\BK26SL_01_AC.xml"/>
+			<Sheet ID="01_2" Caption="BK01_2/AC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="BK26SL_02_AC" Ini="..\Ini\BK26SL_02_AC.xml"/>			
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>	
+		</Validity>
+	</Menu>
+	<Menu ID="27" PopID="101" ParentID="112" Caption="BKHĐ chưa sử dụng của tổ chức, cá nhân (BK01/AC)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
+		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\Excel\01_BK_BC26_AC.xls" ReportTemplate="..\ReportTemplates\Excel\01_BK_BC26_AC.xls" Class="Tax_Business_Srv.cls_BC26AC_BK01">
+			<Sheet ID="01" Caption="Mẫu 3.10(Chuyển địa điểm)" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_BK_BC26_AC" Ini="..\Ini\01_BK_BC26_AC"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
+		</Validity>
+	</Menu>	
 	<Menu ID="113" PopID="" ParentID="101" Caption="Phí - Lệ Phí" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\kekhai.gif"/>
 	<Menu ID="86" PopID="101" ParentID="113" Caption="Tờ khai phí bảo vệ môi trường" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\01_BVMT11.xls" ReportTemplate="..\ReportTemplates\excel\01_BVMT11.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_01BVMT">
 			<Sheet ID="01" Caption="01/BVMT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_BVMT11" Ini="..\Ini\01_BVMT11.xml" ReportIni="..\ReportIni\01_BVMT11.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_BVMT13" Ini="..\Ini\KHBS_01_BVMT.xml" ReportIni="..\ReportIni\KHBS_01_BVMT.xml"/>
 		</Validity>
+	</Menu>	
+	<Menu ID="85" PopID="101" ParentID="113" Caption="Tờ khai Phí, lệ phí (01/PHLP)" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
+		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\01_PHLP.xls" ReportTemplate="..\ReportTemplates\excel\01_PHLP.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_01PHLP">
+			<Sheet ID="01" Caption="01/PHLP" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_PHLP" Ini="..\Ini\01_PHLP.xml" ReportIni="..\ReportIni\01_PHLP.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_PHLP" Ini="..\Ini\KHBS_01_PHLP.xml"/>
+		</Validity>
 	</Menu>
-
+	<Menu ID="88" PopID="101" ParentID="113" Caption="Tờ khai Phí, lệ phí (02/PHLP)" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
+		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\02_PHLP.xls" ReportTemplate="..\ReportTemplates\excel\02_PHLP.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_02PHLP">
+			<Sheet ID="01" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_PHLP" Ini="..\Ini\02_PHLP.xml" ReportIni="..\ReportIni\02_PHLP.xml"/>
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_PHLP" Ini="..\Ini\KHBS_02_PHLP.xml"/>
+		</Validity>
+	</Menu>
 	<Menu ID="87" PopID="101" ParentID="113" Caption="Tờ khai quyết toán phí bảo vệ môi trường" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\02_BVMT11.xls" ReportTemplate="..\ReportTemplates\excel\02_BVMT11.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_02BVMT">
-			<Sheet ID="01" Caption="02/BVMT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_BVMT11" Ini="..\Ini\02_BVMT11.xml" />
-			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_BVMT" Ini="..\Ini\KHBS_02_BVMT.xml"/>
+			<Sheet ID="01" Caption="02/BVMT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_BVMT14" Ini="..\Ini\02_BVMT14.xml" />
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_BVMT14" Ini="..\Ini\KHBS_02_BVMT14.xml"/>
 		</Validity>
 	</Menu>
 	
@@ -596,13 +618,7 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" Ini="..\Ini\KHBS.xml"/>
 		</Validity>
 	</Menu>
-	<Menu ID="89" PopID="101" ParentID="113" Caption="Tờ khai phí xăng dầu" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
-		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\01_PHXD11.xls" ReportTemplate="..\ReportTemplates\excel\01_PHXD11.xls" Class="Tax_Business_Srv.cls_01PHXD">
-			<Sheet ID="01" Caption="01/PHXD" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_PHXD11" Ini="..\Ini\01_PHXD11.xml" ReportIni="..\ReportIni\01_PHXD11.xml"/>
-			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_PHXD" Ini="..\Ini\KHBS_01_PHXD.xml" ReportIni="..\ReportIni\KHBS_01_PHXD.xml"/>
-		</Validity>
-	</Menu>
-	
+
 	<Menu ID="90" PopID="101" ParentID="113" Caption="Tờ khai thuế bảo vệ môi trường" FormName="" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\01_TBVMT11.xls" ReportTemplate="..\ReportTemplates\excel\01_TBVMT11.xls" CatalogueID="" Class="Tax_Business_Srv.cls_01TBVMT">
 			<Sheet ID="01" Caption="01/TBVMT" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_TBVMT13" Ini="..\Ini\01_TBVMT13.xml" ReportIni="..\ReportIni\01_TBVMT13.xml"/>
@@ -610,7 +626,13 @@
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_TBVMT13" Ini="..\Ini\KHBS_01_TBVMT.xml" ReportIni="..\ReportIni\KHBS_01_TBVMT.xml"/>
 		</Validity>
 	</Menu>
-
+	<Menu ID="101_19" PopID="" ParentID="101" Caption="Tờ khai thuế môn bài" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\kekhai.gif"/>
+	<Menu ID="84" PopID="101" ParentID="101_19" Caption="Tờ khai thuế môn bài – 01/MBAI" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tncn.bmp">
+		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\01_MBAI.xls" ReportTemplate="..\ReportTemplates\excel\01_MBAI.xls" CatalogueID="01" Class="Tax_Business_Srv.cls_01MBAI">
+			<Sheet ID="01" Caption="01/MBAI" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="01_MBAI" Ini="..\Ini\01_MBAI.xml" />
+			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_01_MBAI" Ini="..\Ini\KHBS_01_MBAI.xml"/>
+		</Validity>
+	</Menu>
 	
 
 

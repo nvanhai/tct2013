@@ -126,7 +126,8 @@ Public Function GetCatalogueFileName(Optional lSheet As Long = 1) As String
     Dim xmlCatalogeValidNode As MSXML.IXMLDOMNode
     
     'Get valid catalogue node
-    Set xmlCatalogeValidNode = GetValidityNode("107", TAX_Utilities_Srv_New.Month, TAX_Utilities_Srv_New.ThreeMonths, TAX_Utilities_Srv_New.Year)
+        Set xmlCatalogeValidNode = GetValidityNode("107", TAX_Utilities_Srv_New.Month, TAX_Utilities_Srv_New.ThreeMonths, TAX_Utilities_Srv_New.Year)
+
     
     'Get catalogue ID
     strCatalogueID = GetAttribute(TAX_Utilities_Srv_New.NodeValidity, "CatalogueID")    'CatalogueID
@@ -135,7 +136,7 @@ Public Function GetCatalogueFileName(Optional lSheet As Long = 1) As String
     strCatalogueName = GetCatalogueName(xmlCatalogeValidNode, strCatalogueID)
     
     GetCatalogueFileName = GetAbsolutePath(GetAttribute(TAX_Utilities_Srv_New.NodeValidity.childNodes(lSheet - 1), "TemplateFolder") & _
-        strCatalogueName & ".xml")
+       strCatalogueName & ".xml")
 End Function
 
 Public Function GetCatalogueFileNameTk_03TD_TAIN(Optional lSheet As Long = 1, Optional tkQuy As String = "0") As String
@@ -321,10 +322,10 @@ Private Function GetNgayTaiChinh(strDate As String) As Integer
     End If
 End Function
 Private Function MSTBoGach(ByVal strMST As String) As String
-    Dim temp As String
-    temp = strMST
-    temp = Replace(temp, "-", "", 1)
-    MSTBoGach = temp
+    Dim TEMP As String
+    TEMP = strMST
+    TEMP = Replace(TEMP, "-", "", 1)
+    MSTBoGach = TEMP
 End Function
 Public Sub SetDateFormat(FpSpd As fpSpread, SheetNumber As Integer, RowNumber As Long, ColNumber As Long, strFormat As String)
     FpSpd.Sheet = SheetNumber

@@ -1,0 +1,35 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections>
+<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="F_10" Value=""/>
+			<Cell CellID="H_8" Value=""/>
+		</Cells>
+	</Section>	
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+		   <Cell CellID="E_23" FirstCell="0"  Value=""  MCT="1"/>
+  	       <Cell CellID="J_23"   Value=""  MCT="2"/>
+  	       <Cell CellID="O_23"   Value=""  MCT="3"/>
+  	       <Cell CellID="W_23"   Value=""  MCT="4"/>
+  	       <Cell CellID="AE_23"   Value=""  MCT="5"/>
+  	       <Cell CellID="AJ_23"   Value=""  MCT="6"/>
+  	       <Cell CellID="AO_23"   Value=""  MCT="7"/>
+  	       <Cell CellID="AS_23"   Value=""  MCT="8"/>
+  	       <Cell CellID="AY_23"   Value=""  MCT="9"/>
+  	       <Cell CellID="BG_23"   Value="0"  MCT="10"/>
+  	       <Cell CellID="BQ_23"   Value=""  MCT="11"/>
+  	       <Cell CellID="BY_23"   Value="0"  MCT="12"/>
+			<Cell CellID="CJ_23"   Value="0"  MCT="13"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+		   <Cell CellID="BG_25"   Value="0"  MCT="14"/>
+  	       <Cell CellID="BY_25"   Value="0"  MCT="15"/>
+  	       <Cell CellID="CJ_25"   Value="0"  MCT="16"/>
+		</Cells>
+	</Section>
+</Sections>
+	

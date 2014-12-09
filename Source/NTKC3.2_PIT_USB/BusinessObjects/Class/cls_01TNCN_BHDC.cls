@@ -454,7 +454,7 @@ Public Function CheckValidData() As Boolean
     End With
 End Function
 
-Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
+Public Function GenerateSQL_Header(xmlDomData As MSXML.DOMDocument, _
                                    strSQL_HDR As String, _
                                    vHdrID As Variant, _
                                    vKKBS As Byte, _
@@ -490,7 +490,7 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     End If
     ' end PIT
     
-    Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
+    Set xmlList = xmlDomData.getElementsByTagName("Cell")
 
     For Each xmlNode In xmlList
 

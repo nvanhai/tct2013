@@ -24,7 +24,7 @@ Const HEADER_SO_TT_TRONG_TEP_COL = "V"
 Const NGUOI_SU_DUNG_Y = 29
 Const NGUOI_SU_DUNG_X = "AG"
 
-Const HEADER_KY_LAP_BO_ROW = 17
+Const HEADER_KY_LAP_BO_ROW = 13
 Const HEADER_KY_LAP_BO_COL = "B"
 
 Const PHONG_XU_LY_ROW = 27
@@ -430,21 +430,22 @@ Dim blnValid As Boolean
             End If
             
             
-            ' Kiem tra xem ky ke khai trong cung ky hay khac ky
-            If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
-                blnValid = True
-            Else
-                blnValid = False
-            End If
-            
-            .Col = .ColLetterToNumber("B")
-            .Row = 17
-            
-            If Not blnValid Then
-                .Formula = "0"
-            Else
-                .Formula = "1"
-            End If
+'            ' Kiem tra xem ky ke khai trong cung ky hay khac ky
+'            If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
+'                blnValid = True
+'            Else
+'                blnValid = False
+'            End If
+'
+'            .Col = .ColLetterToNumber("B")
+'            .Row = 17
+'
+'            If Not blnValid Then
+'                .Formula = "0"
+'            Else
+'                .Formula = "1"
+'            End If
+
             ' kiem tra ky lap bo khong duoc lon hon ky hien tai
             If DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1) > Date Then
                 blnValid = False
@@ -503,11 +504,13 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, strSQL_HDR A
     Dim vPHONG_XU_LY
     Dim i As Long, j As Long
     Dim strMaPhongXuLy As String
-    
+    Dim sDATE_FROM, sDATE_TO As Variant
     Dim vTIN_DL, vSO_HOP_DONG, vNGAY_HOP_DONG, vLAN_BS, vCHINH_THUC As Variant
+    Dim vDAU_THO, vCONDENSATE, vKHI_THIEN_NHIEN, vLOAI_TK_DK As Variant
     
 On Error GoTo ErrHandle
     strSQL = strSQL_HDR
+    strSQL = Replace(strSQL, ")", ",LOAI_TK_DK)")
     Set xmlList = xmlDOMdata.getElementsByTagName("Cell")
     For Each xmlNode In xmlList
         With xmlNode.Attributes
@@ -551,34 +554,44 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "02_TAIN_DK13"
+    vLOAI_TKHAI = "02_TAIN_DK"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
     'Ky/Quy LB
-    If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
-        'Ngay dau ky lap bo va ngay cuoi ky lap bo
-        strDate = Split(vKyLB, "/")
-        dDate = DateSerial(Val(strDate(1)), Val(strDate(0)), 1)
-        strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        dDate = DateAdd("m", 1, dDate)
-        dDate = DateAdd("d", -1, dDate)
-        strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-    Else
-        strSQL = strSQL & "'','',"
-    End If
+    'Ngay dau ky lap bo va ngay cuoi ky lap bo
+    strDate = Split(vKyLB, "/")
+    dDate = DateSerial(Val(strDate(1)), Val(strDate(0)), 1)
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    dDate = DateAdd("m", 1, dDate)
+    dDate = DateAdd("d", -1, dDate)
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     
     'Ky/ Quy KK
-    If Trim(TAX_Utilities_Srv_New.Month) <> "" Then
-        'Ngay dau ky ke khai va ngay cuoi ky ke khai
-        dDate = dNgayDauKy
-        strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-        dDate = DateAdd("m", 1, dDate)
-        dDate = DateAdd("d", -1, dDate)
-        strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-    Else
-        strSQL = strSQL & "'','',"
+    'Ngay dau ky ke khai va ngay cuoi ky ke khai
+    With fps
+        .Sheet = 1
+        .GetText .ColLetterToNumber("R"), 37, sDATE_FROM
+        .GetText .ColLetterToNumber("S"), 37, sDATE_TO
+        
+        .GetText .ColLetterToNumber("D"), 38, vDAU_THO
+        .GetText .ColLetterToNumber("G"), 38, vCONDENSATE
+        .GetText .ColLetterToNumber("J"), 38, vKHI_THIEN_NHIEN
+    End With
+    'Giá tr?  =”0’ t? khai tháng, =”1’ t? khai l?n phát sinh, =”2” t? khai theo l?n xu?t bán
+    If (vDAU_THO = "1") Then
+        vLOAI_TK_DK = "DT"
+    ElseIf (vCONDENSATE = "1") Then
+        vLOAI_TK_DK = "CD"
+    ElseIf (vKHI_THIEN_NHIEN = "1") Then
+        vLOAI_TK_DK = "KTN"
     End If
+    
+    strSQL = strSQL & "To_date('" & "01/" & sDATE_FROM & "','dd/mm/yyyy'),"
+    dDate = Format(CDate("01/" & sDATE_TO), "dd/mm/yyyy")
+    dDate = DateAdd("m", 1, dDate)
+    dDate = DateAdd("d", -1, dDate)
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
     strSQL = strSQL & "'" & vNGUOI_CAP_NHAT & "',"
@@ -636,7 +649,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & strMaPhongXuLy & "', null,"
     'strSQL = strSQL & "null)"
     strSQL = strSQL & "null,"
-    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ")"
+    strSQL = strSQL & "'" & Trim(vTIN_DL) & "','" & Trim(vSO_HOP_DONG) & "'," & vNGAY_HOP_DONG & "," & Trim(vLAN_BS) & ",'" & vLOAI_TK_DK & "')"
     GenerateSQL_Header = strSQL
     'Debug.Print GenerateSQL_Header
     

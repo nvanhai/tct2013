@@ -150,12 +150,12 @@ Begin VB.Form frmTraCuuAC
       End
       Begin FPUSpreadADO.fpSpread fpsLoaiTK 
          Height          =   525
-         Left            =   360
+         Left            =   240
          TabIndex        =   0
          Top             =   240
-         Width           =   4725
+         Width           =   4965
          _Version        =   458752
-         _ExtentX        =   8334
+         _ExtentX        =   8758
          _ExtentY        =   926
          _StockProps     =   64
          AllowMultiBlocks=   -1  'True
@@ -351,17 +351,19 @@ Private Function changeLoaiToKhai(ByVal strLoaiMaToKhai As String) As String
     If strLoaiMaToKhai = "109" Then changeLoaiToKhai = "'%48%'"
     If strLoaiMaToKhai = "110" Then changeLoaiToKhai = "'%16%'"
     If strLoaiMaToKhai = "111" Then changeLoaiToKhai = "'%99%'"
-    If strLoaiMaToKhai = "64" Then changeLoaiToKhai = "'%01_TBAC%'"
-    If strLoaiMaToKhai = "65" Then changeLoaiToKhai = "'%01_AC%'"
-    If strLoaiMaToKhai = "66" Then changeLoaiToKhai = "'%BC21_AC%'"
-    If strLoaiMaToKhai = "67" Then changeLoaiToKhai = "'%03_TBAC%'"
-    If strLoaiMaToKhai = "91" Then changeLoaiToKhai = "'%04_TBAC%'"
-    If strLoaiMaToKhai = "68" Then changeLoaiToKhai = "'%BC26_AC%'"
-    If strLoaiMaToKhai = "07" Then changeLoaiToKhai = "'%01_TBAC_BLP%'"
+    If strLoaiMaToKhai = "64" Then changeLoaiToKhai = "'01_TBAC'"
+    If strLoaiMaToKhai = "18" Then changeLoaiToKhai = "'BC26_AC_SL'"
+    If strLoaiMaToKhai = "65" Then changeLoaiToKhai = "'01_AC'"
+    If strLoaiMaToKhai = "66" Then changeLoaiToKhai = "'BC21_AC'"
+    If strLoaiMaToKhai = "67" Then changeLoaiToKhai = "'03_TBAC'"
+    If strLoaiMaToKhai = "91" Then changeLoaiToKhai = "'04_TBAC'"
+    If strLoaiMaToKhai = "68" Then changeLoaiToKhai = "'BC26_AC'" 'fix (same %BC26_AC_SL%)
+    If strLoaiMaToKhai = "27" Then changeLoaiToKhai = "'01_BK_BC26_AC'"
+    If (strLoaiMaToKhai = "07" Or strLoaiMaToKhai = "7") Then changeLoaiToKhai = "'01_TBAC_BLP'"
     If strLoaiMaToKhai = "13" Then changeLoaiToKhai = "'%01_AC_BLP%'"
-    If strLoaiMaToKhai = "09" Then changeLoaiToKhai = "'%BC21_AC_BLP%'"
-    If strLoaiMaToKhai = "14" Then changeLoaiToKhai = "'%BC26_AC_BLP%'"
-    If strLoaiMaToKhai = "10" Then changeLoaiToKhai = "'%03_TBAC_BLP%'"
+    If (strLoaiMaToKhai = "09" Or strLoaiMaToKhai = "9") Then changeLoaiToKhai = "'BC21_AC_BLP'"
+    If strLoaiMaToKhai = "14" Then changeLoaiToKhai = "'BC26_AC_BLP'"
+    If strLoaiMaToKhai = "10" Then changeLoaiToKhai = "'03_TBAC_BLP'"
     If strLoaiMaToKhai = "0" Then changeLoaiToKhai = "'%'"
 End Function
 
@@ -448,7 +450,7 @@ Sub SetupData()
                 Parentid = GetAttribute(xmlNode, "ParentID")
                 LoaiTk = GetAttribute(xmlNode, "Caption")
                 '.TypeComboBoxIndex = 0
-                If Parentid = "112" Then
+                If Parentid = "112" Or Parentid = "114" Then
                     i = i + 1
                     .TypeComboBoxIndex = -1
                     .TypeComboBoxString = LoaiTk

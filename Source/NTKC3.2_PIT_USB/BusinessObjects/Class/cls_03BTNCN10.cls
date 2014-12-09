@@ -511,7 +511,7 @@ On Error GoTo ErrHandle
                     SaveSetting "HTKK", "TNCN", "tempKyLb", vKyLB
                 Case "M_28"
                     vNGAY_CAP_NHAT = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "V_24"
+                Case "V_28"
                     vNGUOI_CAP_NHAT = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
                 Case "E_28"
                     vCO_LOI_DDANH = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
