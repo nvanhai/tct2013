@@ -1486,12 +1486,28 @@ Private Sub Command1_Click()
 'str2 = str2 & "fkj~0000000017~fhd jk~10~01/01/2014~02/01/2014</S><S>~~~05/12/2014~1~~05/01/2014~~</S></S02>"
 'Barcode_Scaned str2
 
-str2 = "aa999732100343639   03201500200200100101/0114/06/2006<S02><S></S><S>111~27~2~3~4~5~6~7~84~10~8</S><S>~1~fgnjfgn"
-str2 = str2 & "fkj~0000000017~fhd jk~10~01/01/2015~02/01/2015</S><S>~~~05/12/2015~1~~05/01/2015~~</S></S02>"
-Barcode_Scaned str2
+'str2 = "aa999732100343639   03201500200200100101/0114/06/2006<S02><S></S><S>111~27~2~3~4~5~6~7~84~10~8</S><S>~1~fgnjfgn"
+'str2 = str2 & "fkj~0000000017~fhd jk~10~01/01/2015~02/01/2015</S><S>~~~05/12/2015~1~~05/01/2015~~</S></S02>"
+'Barcode_Scaned str2
 
 'str2 = "aa999732100343639   03201400100100100101/0114/06/2006<S02><S>2222222222</S><S>1000000~531~200~300~3~3~4~21~999469~0~0</S><S>~1~to tuc~0102030405~duy tan  - ha noi~10~01/01/2014~01/01/2014</S><S>NGUYEN VAN A~ICT001~~05/12/2014~1~~05/12/2014~~</S></S02>"
 'Barcode_Scaned str2
+
+'str2 = "aa999892100343639   00201300300500100201/0101/01/1900<S01><S>2222222222</S><S>1~0~0~~~x</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa999892100343639   0020130030050020020~0~0~0~0~0</S><S>NGUYEN VAN A~ICT001~~09/12/2014~1~~2000~01/2013~12/2013</S></S01>"
+'Barcode_Scaned str2
+
+'str2 = "aa999892100343639   00201300300500100201/0101/01/1900<S01><S>2222222222</S><S>0~0~1~~~x</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa999892100343639   0020130030050020020~0~0~0~0~0</S><S>NGUYEN VAN A~ICT001~~09/12/2014~1~~2000~01/2013~12/2013</S></S01>"
+'Barcode_Scaned str2
+
+'str2 = "aa999932100343639   00201300400500100101/0101/01/1900<S01><S>2222222222</S><S>0~1~0~~~x</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>NGUYEN VAN A~ICT001~~09/12/2014~1~~~01/2013~12/2013</S></S01>"
+'Barcode_Scaned str2
+
+str2 = "aa999932100343639   00201300400500100101/0101/01/1900<S01><S>2222222222</S><S>0~0~1~~~x</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>NGUYEN VAN A~ICT001~~09/12/2014~1~~~01/2013~12/2013</S></S01>"
+Barcode_Scaned str2
 
 End Sub
 
@@ -3379,22 +3395,33 @@ On Error GoTo ErrHandle
         LAN_XUAT_BAN_DK = ""
         Loai_TK_DK = ""
         LOAI_KY_DK = ""
-        If (Val(strID) = 92 Or Val(strID) = 98) Then
+        If (Val(strID) = 92 Or Val(strID) = 98 Or Val(strID) = 89 Or Val(strID) = 93) Then
             strTemp = Left$(strData, InStr(1, strData, "</S></S01>") - 1)
             arrCT = Split(strTemp, "~")
             If UBound(arrCT) > 0 Then
-                LOAI_KY_DK = Trim(arrCT(UBound(arrCT)))
-                ngayPS = arrCT(UBound(arrCT) - 1)
-                If (Trim(arrCT(UBound(arrCT))) = "2") Then
-                    LAN_XUAT_BAN_DK = Right(arrCT(0), 1)
-                    isTKLanPS = True
-                End If
-                If (arrCT(4) = "1") Then
-                    Loai_TK_DK = "DT"
-                ElseIf (arrCT(5) = "1") Then
-                    Loai_TK_DK = "CD"
-                ElseIf (arrCT(6) = "1") Then
-                    Loai_TK_DK = "KTN"
+                '02/TAIN-DK, 02/TNDN-DK
+                If (Val(strID) = 89 Or Val(strID) = 93) Then
+                    If (Right(arrCT(0), 1) = "1") Then
+                        Loai_TK_DK = "DT"
+                    ElseIf (arrCT(1) = "1") Then
+                        Loai_TK_DK = "CD"
+                    ElseIf (arrCT(2) = "1") Then
+                        Loai_TK_DK = "KTN"
+                    End If
+                Else
+                    LOAI_KY_DK = Trim(arrCT(UBound(arrCT)))
+                    ngayPS = arrCT(UBound(arrCT) - 1)
+                    If (Trim(arrCT(UBound(arrCT))) = "2") Then
+                        LAN_XUAT_BAN_DK = Right(arrCT(0), 1)
+                        isTKLanPS = True
+                    End If
+                    If (arrCT(4) = "1") Then
+                        Loai_TK_DK = "DT"
+                    ElseIf (arrCT(5) = "1") Then
+                        Loai_TK_DK = "CD"
+                    ElseIf (arrCT(6) = "1") Then
+                        Loai_TK_DK = "KTN"
+                    End If
                 End If
             End If
         End If
@@ -5276,13 +5303,22 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
                 "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
                 "And tkhai.kykk_tu_ngay = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
                 "And tkhai.kykk_den_ngay = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')"
-    ElseIf strID = "02_TAIN14" Or strID = "02_BVMT14" Or strID = "03A_TD_TAIN" Or strID = "02_TNCN_XS11" Or strID = "05_TNCN11" Or strID = "06_TNCN14" Or strID = "09_TNCN14" Or strID = "08B_TNCN11" Or strID = "02_TAIN_DK" Or strID = "02_TNDN_DK" Or strID = "02_PHLP" Or strID = "02_TNCN_BHDC" Then
+    ElseIf strID = "02_TAIN14" Or strID = "02_BVMT14" Or strID = "03A_TD_TAIN" Or strID = "02_TNCN_XS11" Or strID = "05_TNCN11" Or strID = "06_TNCN14" Or strID = "09_TNCN14" Or strID = "08B_TNCN11" Or strID = "02_PHLP" Or strID = "02_TNCN_BHDC" Or strID = "02_TAIN_DK" Or strID = "02_TNDN_DK" Then
     'todo to khai QT
-        strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
-                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
-                "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
-                "And tkhai.kykk_tu_ngay = To_Date('" & TuNgay & "','DD/MM/RRRR')" & _
-                "And tkhai.kykk_den_ngay = To_Date('" & DenNgay & "','DD/MM/RRRR')"
+        If (strID = "02_TAIN_DK" Or strID = "02_TNDN_DK") Then
+            strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+                    "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                    "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
+                    "And tkhai.LOAI_TK_DK = '" & Loai_TK_DK & "' " & _
+                    "And tkhai.kykk_tu_ngay = To_Date('" & TuNgay & "','DD/MM/RRRR')" & _
+                    "And tkhai.kykk_den_ngay = To_Date('" & DenNgay & "','DD/MM/RRRR')"
+        Else
+            strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+                    "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                    "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
+                    "And tkhai.kykk_tu_ngay = To_Date('" & TuNgay & "','DD/MM/RRRR')" & _
+                    "And tkhai.kykk_den_ngay = To_Date('" & DenNgay & "','DD/MM/RRRR')"
+        End If
     Else
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
