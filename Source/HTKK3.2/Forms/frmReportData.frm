@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   68
+      Quality         =   0
    End
 End
 Attribute VB_Name = "frmReportData"
