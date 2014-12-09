@@ -298,6 +298,8 @@ Dim xmlNode As MSXML.IXMLDOMNode
             strDataFileName = Replace(GetCatalogueFileName, "Catalogue_052008_01", "CatalogueQTTN_2008_01")
        ElseIf TAX_Utilities_Srv_New.Year = "2010" Then
             strDataFileName = Replace(GetCatalogueFileName, "Catalogue_072010_01", "CatalogueQTTN_2010_01")
+       ElseIf TAX_Utilities_Srv_New.Year = "2014" Then
+            strDataFileName = Replace(GetCatalogueFileName, "Catalogue_022014_01", "CatalogueQTTN_2014_01")
        Else
             strDataFileName = GetCatalogueFileName
         End If
