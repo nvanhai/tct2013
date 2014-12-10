@@ -5671,10 +5671,11 @@ Private Function Prepare_QLT() As String
             '         "maDTNT~vKYLBO~NGNOP~MST~DIA_CHI~GHICHU~NGUOI_NOP~NGNHAP"
             strToaDo = "E-4~E-42~E-10~E-4~E-6~E-14~E-5~K-12"
             ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
-        ElseIf menuId = 90 Then
+        ElseIf menuId = 90 Or menuId = 85 Or menuId = 88 Then
             '         "maDTNT~vKYLBO~NGNOP~MST~DIA_CHI~GHICHU~NGUOI_NOP~NGNHAP"
             strToaDo = "G-8~E-22~E-24~G-8~G-9~M-28~G-7~M-24"
             ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
+        
         Else
                
             .GetText .ColLetterToNumber("G"), 4, maDTNT
@@ -6275,7 +6276,8 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
             DHS_MA = "181"
 
         Case "87"
-            DHS_MA = "182"
+            'DHS_MA = "182"
+            DHS_MA = "525"
             
         Case "89"
             DHS_MA = "180"
@@ -6355,6 +6357,12 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
 
         Case "23"
             DHS_MA = "570"
+            
+         Case "85"
+            DHS_MA = "84"
+            
+        Case "88"
+            DHS_MA = "150"
 
         Case Else
             DHS_MA = ""
@@ -6453,7 +6461,8 @@ Private Function changeToLoaiToKhaiQHS(strMaToKhai) As String
             DHS_MA = "200501"
 
         Case "80"
-            DHS_MA = "300110"
+            'DHS_MA = "300110"
+            DHS_MA = "83"
 
         Case "81"
 
@@ -6464,14 +6473,15 @@ Private Function changeToLoaiToKhaiQHS(strMaToKhai) As String
             End If
 
         Case "82"
-            DHS_MA = "300122"
+            'DHS_MA = "300122"
+            DHS_MA = "474"
 
         Case "86"
             DHS_MA = "200804"
 
         Case "87"
-            DHS_MA = "200805"
-            
+            'DHS_MA = "200805"
+            DHS_MA = "525"
         Case "89"
             DHS_MA = "200803"
 
@@ -6631,7 +6641,7 @@ Private Sub Insert_QHS()
             .GetText .ColLetterToNumber("E"), 30, vKYLBO
         ElseIf menuId = 73 Then
             .GetText .ColLetterToNumber("E"), 42, vKYLBO
-        ElseIf menuId = 90 Then
+        ElseIf menuId = 90 Or menuId = 85 Or menuId = 88 Then
             .GetText .ColLetterToNumber("E"), 22, vKYLBO
         Else
             .GetText .ColLetterToNumber("E"), 10, vKYLBO
