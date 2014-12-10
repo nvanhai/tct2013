@@ -1,0 +1,90 @@
+<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="H&shy;&iacute;ng d&Eacute;n khai b&aelig; sung, &reg;i&Ograve;u ch&Oslash;nh ph&Yacute; x&die;ng d&Ccedil;u">
+					<param name="Local" value="HTKK\89200.htm">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Ch&Oslash; ti&ordf;u 01 K&uacute; t&Yacute;nh thu&Otilde;">
+						<param name="Local" value="HTKK\89101.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Ch&Oslash; ti&ordf;u 02 L&Ccedil;n &reg;&Ccedil;u">
+						<param name="Local" value="HTKK\89102.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Ch&Oslash; ti&ordf;u 03 B&aelig; sung l&Ccedil;n th&oslash;">
+						<param name="Local" value="HTKK\89103.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Ch&Oslash; ti&ordf;u 04 Ng&shy;&ecirc;i n&eacute;p thu&Otilde;">
+						<param name="Local" value="HTKK\89104.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Ch&Oslash; ti&ordf;u 05 M&middot; s&egrave; thu&Otilde;">
+						<param name="Local" value="HTKK\89105.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Ch&Oslash; ti&ordf;u 06,07,08 &sect;&THORN;a ch&Oslash;, Qu&Euml;n huy&Ouml;n/ T&Oslash;nh th&micro;nh ph&egrave;">
+						<param name="Local" value="HTKK\89106.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Ch&Oslash; ti&ordf;u 09,10,11 &sect;i&Ouml;n tho&sup1;i, Fax, Email">
+						<param name="Local" value="HTKK\89109.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Ch&Oslash; ti&ordf;u 12 T&ordf;n &reg;&sup1;i l&yacute; thu&Otilde;">
+						<param name="Local" value="HTKK\89112.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Ch&Oslash; ti&ordf;u 13 M&middot; s&egrave; thu&Otilde; ">
+						<param name="Local" value="HTKK\89113.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Ch&Oslash; ti&ordf;u 14,15,16 &sect;&THORN;a ch&Oslash;, qu&Euml;n huy&Ouml;n, t&Oslash;nh/ th&micro;nh ph&egrave;">
+						<param name="Local" value="HTKK\89114.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Ch&Oslash; ti&ordf;u 17,18,19 &sect;i&Ouml;n tho&sup1;i, Fax, Email">
+						<param name="Local" value="HTKK\89117.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="C&eacute;t (1): “S&egrave; th&oslash; t&ugrave;”">
+						<param name="Local" value="HTKK\89201.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="C&eacute;t (2): “Ch&Oslash; ti&ordf;u &reg;i&Ograve;u ch&Oslash;nh”">
+						<param name="Local" value="HTKK\89201.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="C&eacute;t (3): “M&middot; s&egrave; ch&Oslash; ti&ordf;u”">
+						<param name="Local" value="HTKK\89203.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="C?t (4): S? ?&atilde; k&ecirc; khai">
+						<param name="Local" value="HTKK\89204.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="C&eacute;t (5): S&egrave; &reg;i&Ograve;u ch&Oslash;nh">
+						<param name="Local" value="HTKK\89205.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="C&eacute;t (6) Ch&ordf;nh l&Ouml;ch gi&divide;a s&egrave; &reg;i&Ograve;u ch&Oslash;nh v&iacute;i s&egrave; &reg;&middot; k&ordf; khai">
+						<param name="Local" value="HTKK\89206.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Ch&Oslash; ti&ordf;u: “T&aelig;ng h&icirc;p &reg;i&Ograve;u ch&Oslash;nh s&egrave; thu&Otilde; ph&para;i n&eacute;p (t&die;ng: +; gi&para;m: -)">
+						<param name="Local" value="HTKK\89207.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Ch&Oslash; ti&ordf;u: “S&egrave; ng&micro;y ch&Euml;m n&eacute;p”">
+						<param name="Local" value="HTKK\89208.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Ch&Oslash; ti&ordf;u: “S&egrave; ti&Ograve;n ph&sup1;t ch&Euml;m n&eacute;p”">
+						<param name="Local" value="HTKK\89209.htm">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Ph&Ccedil;n C: N&eacute;i dung gi&para;i th&Yacute;ch v&micro; t&micro;i li&Ouml;u &reg;&Yacute;nh k&Igrave;m">
+						<param name="Local" value="HTKK\89210.htm">
+						</OBJECT>
+				</UL>
