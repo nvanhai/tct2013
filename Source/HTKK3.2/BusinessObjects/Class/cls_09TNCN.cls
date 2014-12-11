@@ -616,18 +616,46 @@ Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
                     .Col = .ColLetterToNumber("O")
                     .Row = Row
                     .Lock = False
+                    
+                    .Col = .ColLetterToNumber("J")
+                    .Row = Row
+                    .Text = ""
+                    
+                    .Col = .ColLetterToNumber("L")
+                    .Row = Row
+                    .Text = ""
+                    
+                    .Col = .ColLetterToNumber("N")
+                    .Row = Row
+                    .Text = ""
                 Else
                     .Col = .ColLetterToNumber("K")
                     .Row = Row
+                    .Text = "Khác"
                     .Lock = True
                     
                     .Col = .ColLetterToNumber("M")
                     .Row = Row
+                    .Text = "Khác"
                     .Lock = True
                     
                     .Col = .ColLetterToNumber("O")
                     .Row = Row
+                    .Text = "Khác"
                     .Lock = True
+                    
+                    
+                    .Col = .ColLetterToNumber("J")
+                    .Row = Row
+                    .Text = "999"
+                    
+                    .Col = .ColLetterToNumber("L")
+                    .Row = Row
+                    .Text = "99999"
+                    
+                    .Col = .ColLetterToNumber("N")
+                    .Row = Row
+                    .Text = "9999999"
                 End If
             End If
             
