@@ -2391,8 +2391,8 @@ Public Function InsertHDR() As String
             dn_kk = ".T."
         End If
         
-        'Ten NGANH
-        .GetText .ColLetterToNumber("R"), 10, NGANH
+        'Ma NGANH co ti le doanh thu cao nhat
+        .GetText .ColLetterToNumber("AB"), 10, NGANH
         If Trim(NGANH) = vbNullString Then
             NGANH = ""
         Else
@@ -6453,7 +6453,7 @@ Public Function InsertDTL_PL03_7() As String
         End If
         
         namQT = TAX_Utilities_Svr_New.Year
-        MAPL = "'GCN_01/QLT'"
+        MAPL = "'1-GCN/CC'"
         
         
         .Sheet = 13

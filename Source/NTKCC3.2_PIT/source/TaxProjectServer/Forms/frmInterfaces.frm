@@ -1926,13 +1926,13 @@ Private Sub Command1_Click()
 'str2 = "aa999820100105951   002014000000002002<S01-1><S>Seatech~0102030405~IBM/12345~HDKT12345~Cung cap thiet bi~Duy Tan~24 thang~200~4000000~200~4000000~FPT~0101650999~IBM/54321~HDKT54321~Cung cap phan mem loi~Duy Tan~12 thang~100~2000000~100~2000000</S><S>6000000~6000000</S></S01-1>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
-''04_NTNN_BS
-'str2 = "bs999820100105951   00201400200200100301/0101/01/190001/01/201431/08/2014<S01><S></S><S>HDKT12345~25/07/2013</S><S>4000000~6000000~2000000~~4000000~5000000~1000000~~1000000~500000~-500000~~3000000~4500000~1500000~~70000~100000~30000~~30000~4000~-26000~~40000~96000~56000~</S><S>Nguyen Sy Hung~Nguyen Thac Thu~CCHN123456~29/09/2014~~1~1</S></S01>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-'str2 = "bs999820100105951   002014002002002003<SKHBS><S>Sè thuÕ ®· nép~6~100000~4000~-96000</S><S>~~0~0~0</S><S>18/11/2015~399"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-'str2 = "bs999820100105951   002014002002003003~25085~12000~abc1234~30/09/2014~10100~10101~3~12000~test~0~0~96000</S></SKHBS>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'04_NTNN_BS
+str2 = "bs999820100105951   00201400200200100301/0101/01/190001/01/201431/08/2014<S01><S></S><S>HDKT12345~25/07/2013</S><S>4000000~6000000~2000000~~4000000~5000000~1000000~~1000000~500000~-500000~~3000000~4500000~1500000~~70000~100000~30000~~30000~4000~-26000~~40000~96000~56000~</S><S>Nguyen Sy Hung~Nguyen Thac Thu~CCHN123456~29/09/2014~~1~1</S></S01>"
+Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+str2 = "bs999820100105951   002014002002002003<SKHBS><S>Sè thuÕ ®· nép~6~100000~4000~-96000</S><S>~~0~0~0</S><S>18/11/2015~399"
+Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+str2 = "bs999820100105951   002014002002003003~25085~12000~abc1234~30/09/2014~10100~10101~3~12000~test~0~0~96000</S></SKHBS>"
+Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 
 
@@ -1943,9 +1943,9 @@ Private Sub Command1_Click()
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 ''02_TNDN
-'str2 = "aa999730100105951   01201400100100100201/0114/06/2006<S02><S></S><S>12000000~10400000~200000~300000~400000~500000~6000000~3000000~1600000~15~240000</S><S>1~~Cty TNHH BaHoaToHo~6868686868~Khong Khong thay - Khong khong biet~12~12/02/2014~15/02/2014</S><S>Nguyen Van A~CCHN123456~Tran Van B~18/11/2015~1~~~~x</S></S02>"
+'str2 = "aa999730100105951   04201400100100100201/0114/06/2006<S02><S></S><S>12000000~10400000~200000~300000~400000~500000~6000000~3000000~1600000~15~240000</S><S>1~~Cty TNHH BaHoaToHo~6868686868~Khong Khong thay - Khong khong biet~12~12/02/2014~15/02/2014</S><S>Nguyen Van A~CCHN123456~Tran Van B~18/11/2015~1~~~~x</S></S02>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-'str2 = "aa999730100105951   012014001001002002<S02-1><S>Cty TNHH Giai phap phan mem CMC~0101650999~Duy Tan - Cau Giay - Ha Noi~HDCN1234~Cty TNHH Tinh Van~0102030405~Lang Ha - Dong Da - Ha Noi~HDCN5678</S></S02-1>"
+'str2 = "aa999730100105951   042014001001002002<S02-1><S>Cty TNHH Giai phap phan mem CMC~0101650999~Duy Tan - Cau Giay - Ha Noi~HDCN1234~Cty TNHH Tinh Van~0102030405~Lang Ha - Dong Da - Ha Noi~HDCN5678</S></S02-1>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 ''PS
@@ -2802,17 +2802,22 @@ Private Sub Barcode_Scaned(strBarcode As String)
 '        End If
         
         'Khong nhan to khai QUY 02_TNDN  co ky ke khai > Q3/2014
-        If Val(idToKhai) = 73 And TAX_Utilities_Svr_New.ThreeMonths <> "" Then
-            If (Val(Mid(strPrefix, 21, 4)) > 2014 Or (Val(Mid(strPrefix, 21, 4)) = 2014 And Val(Mid(strPrefix, 19, 2)) >= 4)) Then
-                DisplayMessage "0183", msOKOnly, miInformation
-                Exit Sub
-            End If
-        End If
-        
-        If Val(idToKhai) = 73 And LoaiTk = "TKBS" And TAX_Utilities_Svr_New.ThreeMonths <> "" Then
-            If (Val(Mid(strPrefix, 21, 4)) < 2014 Or (Val(Mid(strPrefix, 21, 4)) = 2014 And Val(Mid(strPrefix, 19, 2)) <= 3)) Then
-                DisplayMessage "0145", msOKOnly, miInformation
-                Exit Sub
+        'va to BS mau cu
+        If Val(idToKhai) = 73 Then
+            If InStr(1, strBarcode, "<S02>") > 0 Then
+                If Left(Split(strBarcode, "<S>")(3), 1) = "1" Then
+                    If ((Val(Mid(strPrefix, 21, 4)) > 2014 Or (Val(Mid(strPrefix, 21, 4)) = 2014 And Val(Mid(strPrefix, 19, 2)) >= 4))) Then
+                        DisplayMessage "0183", msOKOnly, miInformation
+                        Exit Sub
+                    End If
+                
+                    If LoaiTk = "TKBS" Then
+                        If (Val(Mid(strPrefix, 21, 4)) < 2014 Or (Val(Mid(strPrefix, 21, 4)) = 2014 And Val(Mid(strPrefix, 19, 2)) <= 3)) Then
+                            DisplayMessage "0145", msOKOnly, miInformation
+                            Exit Sub
+                        End If
+                    End If
+                End If
             End If
         End If
         
@@ -6171,7 +6176,7 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
         Case "07"
             DHS_MA = "33"
 
-        Case "03"
+        Case "03" '03_TNDN
             DHS_MA = "31"
 
         Case "08"
@@ -6258,7 +6263,7 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
         Case "17"
             DHS_MA = "36"
 
-        Case "80"
+        Case "80" '02_NTNN
             DHS_MA = "83"
 
         Case "81"
@@ -6269,13 +6274,13 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
                 DHS_MA = "473"
             End If
 
-        Case "82"
+        Case "82" '04_NTNN
             DHS_MA = "474"
 
         Case "86"
             DHS_MA = "181"
 
-        Case "87"
+        Case "87" '02_BVMT
             'DHS_MA = "182"
             DHS_MA = "525"
             
@@ -6290,7 +6295,7 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
                 DHS_MA = "351"
             End If
 
-        Case "73"
+        Case "73" '02_TNDN
 
             If tkPhatSinh = vbNullString Then
                 DHS_MA = "447"
@@ -6320,7 +6325,7 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
         Case "59"
             DHS_MA = "387"
             
-        Case "77"
+        Case "77" '02_TAIN
             DHS_MA = "450"
             
         Case "91"
@@ -6358,10 +6363,10 @@ Private Function changeToKhaiQHS(strMaToKhai) As String
         Case "23"
             DHS_MA = "570"
             
-         Case "85"
+         Case "85" '01_PHLP
             DHS_MA = "84"
             
-        Case "88"
+        Case "88" '02_PHLP
             DHS_MA = "150"
 
         Case Else
@@ -6460,9 +6465,8 @@ Private Function changeToLoaiToKhaiQHS(strMaToKhai) As String
         Case "15"
             DHS_MA = "200501"
 
-        Case "80"
-            'DHS_MA = "300110"
-            DHS_MA = "83"
+        Case "80" '02_NTNN
+            DHS_MA = "300110"
 
         Case "81"
 
@@ -6472,16 +6476,35 @@ Private Function changeToLoaiToKhaiQHS(strMaToKhai) As String
                 DHS_MA = "200906"
             End If
 
-        Case "82"
-            'DHS_MA = "300122"
-            DHS_MA = "474"
+        Case "82" '04_NTNN
+            DHS_MA = "300122"
 
         Case "86"
             DHS_MA = "200804"
 
-        Case "87"
+        Case "87" '02_BVMT
             'DHS_MA = "200805"
-            DHS_MA = "525"
+            DHS_MA = "301100"
+            
+        Case "85" '01_PHLP
+            DHS_MA = "200806"
+            
+        Case "88" '02_PHLP
+            DHS_MA = "300109"
+            
+        Case "03" '03_TNDN
+            DHS_MA = "300103"
+            
+        Case "77" '02_TAIN
+            DHS_MA = "300104"
+            
+        Case "73" '02_TNDN
+            If tkPhatSinh = vbNullString Then
+                DHS_MA = "200213"
+            Else
+                DHS_MA = "200214"
+            End If
+            
         Case "89"
             DHS_MA = "200803"
 

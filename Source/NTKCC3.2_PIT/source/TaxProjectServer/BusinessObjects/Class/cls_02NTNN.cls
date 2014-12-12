@@ -1250,7 +1250,7 @@ Public Function InsertDTL_PL1() As String
             If Trim(SOHD) = vbNullString Then
                 SOHD = "''"
             Else
-                SOHD = "'" & SOHD & "'"
+                SOHD = "'" & TAX_Utilities_Svr_New.Convert(Trim(SOHD), UNICODE, TCVN) & "'"
             End If
 
             'noi dung
@@ -1278,7 +1278,7 @@ Public Function InsertDTL_PL1() As String
                 THOIHAN = "''"
             Else
                 
-                THOIHAN = "'" & THOIHAN & "'"
+                THOIHAN = "'" & TAX_Utilities_Svr_New.Convert(Trim(THOIHAN), UNICODE, TCVN) & "'"
             End If
             
             ' gia tri hop dong nuoc ngoai
