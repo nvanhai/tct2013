@@ -2,34 +2,38 @@
 --03/TNDN
 --------------------------------
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_TKHAI_QTOAN_TNDN_14 AS
-SELECT dtl.hdr_id, dtl.ctk_id, MAX(dtl.so_tt) so_tt
+SELECT dtl.hdr_id
+       ,dtl.ctk_id
+       ,dtl.row_id
+       ,MAX(dtl.so_tt) so_tt
 , MAX(dtl.so_tien) so_tien
 , MAX(dtl.kieu_dlieu) kieu_dlieu
 , MAX(dtl.ky_hieu_ctieu) ky_hieu_ctieu
 FROM QLT_NTK.rcv_gdien_tkhai gd,
-(SELECT tkd.hdr_id hdr_id,
-gdien.id id,
-tkd.loai_dlieu loai_dlieu,
-gdien.so_tt so_tt,
-tkd.row_id row_id,
-gdien.ma_ctieu ctk_id,
-replace (DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL),',','.') so_tien,
-DECODE(gdien.cot_01, ctieu.ky_hieu, ctieu.kieu_dlieu, NULL) kieu_dlieu,
-DECODE(gdien.cot_01, tkd.ky_hieu, ctieu.ky_hieu_ctieu, NULL) ky_hieu_ctieu
-FROM QLT_NTK.rcv_tkhai_dtl tkd,
-QLT_NTK.rcv_gdien_tkhai gdien,
-QLT_NTK.rcv_map_ctieu ctieu
-WHERE (ctieu.gdn_id = gdien.id)
-AND (ctieu.ky_hieu = tkd.ky_hieu)
-AND (tkd.loai_dlieu = '03_TNDN14')
-) dtl
+  (SELECT tkd.hdr_id hdr_id,
+  gdien.id id,
+  tkd.loai_dlieu loai_dlieu,
+  gdien.so_tt so_tt,
+  tkd.row_id row_id,
+  gdien.ma_ctieu ctk_id,
+  replace (DECODE(gdien.cot_01, tkd.ky_hieu, tkd.gia_tri, NULL),',','.') so_tien,
+  DECODE(gdien.cot_01, ctieu.ky_hieu, ctieu.kieu_dlieu, NULL) kieu_dlieu,
+  DECODE(gdien.cot_01, tkd.ky_hieu, ctieu.ky_hieu_ctieu, NULL) ky_hieu_ctieu
+  FROM QLT_NTK.rcv_tkhai_dtl tkd,
+  QLT_NTK.rcv_gdien_tkhai gdien,
+  QLT_NTK.rcv_map_ctieu ctieu
+  WHERE (ctieu.gdn_id = gdien.id)
+  AND (ctieu.ky_hieu = tkd.ky_hieu)
+  AND (tkd.loai_dlieu = '03_TNDN14')
+  ) dtl
 WHERE (gd.loai_dlieu = dtl.loai_dlieu)
---(gd.loai_dlieu = '03_TNDN11' OR gd.loai_dlieu = '01B_TNDN')
-AND (dtl.id = gd.id)
-GROUP BY dtl.hdr_id,
-dtl.ctk_id
-order by so_tt;
 
+AND (dtl.id = gd.id)
+GROUP BY
+dtl.hdr_id,
+dtl.ctk_id,
+dtl.row_id
+order by so_tt;
 	--PL 03 - 1x/TNDN
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_01ABC_14 AS
 SELECT dtl.hdr_id
