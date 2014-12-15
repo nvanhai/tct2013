@@ -6616,8 +6616,8 @@ Public Function InsertDTL_PL03_7() As String
         'TTHTK -- public
         'ngnop -- tinh ben tren roi
         LOAIHD = "''" ' khong biet lay o dau nen de ""
-        mact = "''"
-
+        mact = "'GCN_01/QLT'"
+        MAPL = "'GCN_01/QLT'"
         DT = "''"
         DCHI = "''"
         FAX = "''"

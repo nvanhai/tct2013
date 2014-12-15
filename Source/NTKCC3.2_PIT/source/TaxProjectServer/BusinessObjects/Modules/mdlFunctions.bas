@@ -939,17 +939,49 @@ ByVal MaMucTKC As String _
         
         matkhai = "'" & matkhai & "'"
         
-        MATHUE = "''"
-        MaMuc = "''"  ' bang tren to khai chinh
         maTM = "''"   ' khong the lay duoc
-        MAPP = "''"
         DANHAN = "''"
         
         ' Insert so dieu chinh tang
         mact = "'1000'"
-        MaMuc = "''"
         MACT2 = "''"
         MACT3 = "''"
+        
+        MATHUE = "''"
+        MAPP = "''"
+        MaMuc = "''"
+        ' Dat mathue,mapp
+        Select Case matkhai
+        
+            Case "'01/PHLP'"
+                MATHUE = "'20'"
+                MAPP = "'2'"
+                MaMuc = "'2150'"
+            Case "'02/PHLP'"
+                MATHUE = "'20'"
+                MAPP = "'2'"
+                MaMuc = "'2150'"
+            Case "'02/BVMT'"
+                MATHUE = "'21'"
+                MAPP = "'2'"
+                MaMuc = "'2600'"
+            Case "'02/NTNN'"
+                MATHUE = "'23'"
+                MAPP = "'1'"
+                MaMuc = "'1050'"
+                maTM = "'1052'"
+            Case "'04/NTNN'"
+                MATHUE = "'23'"
+                MAPP = "'2'"
+                MaMuc = "'1050'"
+                maTM = "'1052'"
+            Case "'02/TAIN'"
+                MATHUE = "'04'"
+                MAPP = "'1'"
+                MaMuc = "'1550'"
+        End Select
+
+        
         
         STT = 1
         STT2 = 0
@@ -989,44 +1021,6 @@ ByVal MaMucTKC As String _
         
         i = 1
         .Row = 9
-        
-        MATHUE = "''"
-    MAPP = "''"
-MaMuc = "''"
-
-
-    ' Dat mathue,mapp
-    Select Case matkhai
-    
-        Case "'01/PHLP'"
-            MATHUE = "'20'"
-            MAPP = "'2'"
-            MaMuc = "'2150'"
-        Case "'02/PHLP'"
-            MATHUE = "'20'"
-            MAPP = "'2'"
-            MaMuc = "'2150'"
-        Case "'02/BVMT'"
-            MATHUE = "'21'"
-            MAPP = "'2'"
-            MaMuc = "'2600'"
-        Case "'02/NTNN'"
-            MATHUE = "'23'"
-            MAPP = "'1'"
-            MaMuc = "'1050'"
-            maTM = "'1052'"
-        Case "'04/NTNN'"
-            MATHUE = "'23'"
-            MAPP = "'2'"
-            MaMuc = "'1050'"
-            maTM = "'1052'"
-        Case "'02/TAIN'"
-            MATHUE = "'04'"
-            MAPP = "'1'"
-            MaMuc = "'1550'"
-    End Select
-
-
         Do
             mact = "''"
             .GetText .ColLetterToNumber("BE"), .Row, MACT2
@@ -1034,7 +1028,7 @@ MaMuc = "''"
                 MACT2 = "''"
                 MACT3 = "''"
             Else
-                MACT2 = "'" & MACT2 & "'"
+                MACT2 = "'" & GetMaCT2KHBS(matkhai, MACT2) & "'"
                 MACT3 = "'1'"
             End If
 
@@ -1084,7 +1078,7 @@ MaMuc = "''"
         ' Insert so dieu chinh giam
 
         mact = "'2000'"
-        MaMuc = "''"
+        'MaMuc = "''"
         MACT2 = "''"
         MACT3 = "''"
         STT = 2
@@ -1102,42 +1096,42 @@ MaMuc = "''"
         i = 1
         .Row = .Row + 3
         
-MATHUE = "''"
-    MAPP = "''"
-MaMuc = "''"
-    ' Dat mathue,mapp
-    ' Lay tu DB_HT\DMTOKHAI(MaMuc, MAPP) va DB_HT\DMTHUE2 (MATHUE)
-    Select Case matkhai
-    
-        Case "'01/PHLP'"
-            MATHUE = "'20'"
-            MAPP = "'2'"
-            MaMuc = "'2150'"
-        Case "'02/PHLP'"
-            MATHUE = "'20'"
-            MAPP = "'2'"
-            MaMuc = "'2150'"
-        Case "'02/BVMT'"
-            MATHUE = "'21'"
-            MAPP = "'2'"
-            MaMuc = "'2600'"
-        Case "'02/NTNN'"
-            MATHUE = "'23'"
-            MAPP = "'1'"
-            MaMuc = "'1050'"
-            maTM = "'1052'"
-        Case "'04/NTNN'"
-            MATHUE = "'23'"
-            MAPP = "'2'"
-            MaMuc = "'1050'"
-            maTM = "'1052'"
-        Case "'02/TAIN'"
-            MATHUE = "'04'"
-            MAPP = "'1'"
-            MaMuc = "'1550'"
-    End Select
-
-
+'MATHUE = "''"
+'    MAPP = "''"
+'MaMuc = "''"
+'    ' Dat mathue,mapp
+'    ' Lay tu DB_HT\DMTOKHAI(MaMuc, MAPP) va DB_HT\DMTHUE2 (MATHUE)
+'    Select Case matkhai
+'
+'        Case "'01/PHLP'"
+'            MATHUE = "'20'"
+'            MAPP = "'2'"
+'            MaMuc = "'2150'"
+'        Case "'02/PHLP'"
+'            MATHUE = "'20'"
+'            MAPP = "'2'"
+'            MaMuc = "'2150'"
+'        Case "'02/BVMT'"
+'            MATHUE = "'21'"
+'            MAPP = "'2'"
+'            MaMuc = "'2600'"
+'        Case "'02/NTNN'"
+'            MATHUE = "'23'"
+'            MAPP = "'1'"
+'            MaMuc = "'1050'"
+'            maTM = "'1052'"
+'        Case "'04/NTNN'"
+'            MATHUE = "'23'"
+'            MAPP = "'2'"
+'            MaMuc = "'1050'"
+'            maTM = "'1052'"
+'        Case "'02/TAIN'"
+'            MATHUE = "'04'"
+'            MAPP = "'1'"
+'            MaMuc = "'1550'"
+'    End Select
+'
+'
         Do
             mact = "''"
             .GetText .ColLetterToNumber("BE"), .Row, MACT2
@@ -1146,7 +1140,7 @@ MaMuc = "''"
                 MACT2 = "''"
                 MACT3 = "''"
             Else
-                MACT2 = "'" & MACT2 & "'"
+                MACT2 = "'" & GetMaCT2KHBS(matkhai, MACT2) & "'"
                 MACT3 = "'1'"
             End If
                
@@ -1197,7 +1191,7 @@ MaMuc = "''"
         ' Insert Tong hop dieu chinh
 
         mact = "'3000'"
-        MaMuc = "''"
+        'MaMuc = "''"
         MACT2 = "''"
         MACT3 = "''"
         STT = 3
@@ -1212,39 +1206,39 @@ MaMuc = "''"
         sSQL = "INSERT INTO TMP_BS" & prefixTable & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
         
-        MATHUE = "''"
-    MAPP = "''"
-MaMuc = "''"
-    ' Dat mathue,mapp
-    Select Case matkhai
-    
-        Case "'01/PHLP'"
-            MATHUE = "'20'"
-            MAPP = "'2'"
-            MaMuc = "'2150'"
-        Case "'02/PHLP'"
-            MATHUE = "'20'"
-            MAPP = "'2'"
-            MaMuc = "'2150'"
-        Case "'02/BVMT'"
-            MATHUE = "'21'"
-            MAPP = "'2'"
-            MaMuc = "'2600'"
-        Case "'02/NTNN'"
-            MATHUE = "'23'"
-            MAPP = "'1'"
-            MaMuc = "'1050'"
-            maTM = "'1052'"
-        Case "'04/NTNN'"
-            MATHUE = "'23'"
-            MAPP = "'2'"
-            MaMuc = "'1050'"
-            maTM = "'1052'"
-        Case "'02/TAIN'"
-            MATHUE = "'04'"
-            MAPP = "'1'"
-            MaMuc = "'1550'"
-    End Select
+'            MATHUE = "''"
+'        MAPP = "''"
+'    MaMuc = "''"
+'        ' Dat mathue,mapp
+'        Select Case matkhai
+'
+'            Case "'01/PHLP'"
+'                MATHUE = "'20'"
+'                MAPP = "'2'"
+'                MaMuc = "'2150'"
+'            Case "'02/PHLP'"
+'                MATHUE = "'20'"
+'                MAPP = "'2'"
+'                MaMuc = "'2150'"
+'            Case "'02/BVMT'"
+'                MATHUE = "'21'"
+'                MAPP = "'2'"
+'                MaMuc = "'2600'"
+'            Case "'02/NTNN'"
+'                MATHUE = "'23'"
+'                MAPP = "'1'"
+'                MaMuc = "'1050'"
+'                maTM = "'1052'"
+'            Case "'04/NTNN'"
+'                MATHUE = "'23'"
+'                MAPP = "'2'"
+'                MaMuc = "'1050'"
+'                maTM = "'1052'"
+'            Case "'02/TAIN'"
+'                MATHUE = "'04'"
+'                MAPP = "'1'"
+'                MaMuc = "'1550'"
+'        End Select
         .Row = .Row + 3
         mact = "''"
         
@@ -1254,7 +1248,7 @@ MaMuc = "''"
             MACT2 = "''"
             MACT3 = "''"
         Else
-            MACT2 = "'" & MACT2 & "'"
+            MACT2 = "'" & GetMaCT2KHBS(matkhai, MACT2) & "'"
             MACT3 = "'1'"
         End If
                 
@@ -1300,5 +1294,46 @@ MaMuc = "''"
     clsDAO.Disconnect
     InsertDTL_KHBS = vbNullString
 End Function
-
+'MaCT2 tren tmp_bs duoc tinh = mact tren KHBS neu to khai chinh co dong` dong
+'MaCT2 tren tmp_bs duoc tinh = chi tieu tuong ung(tren tep chi tieu) cua to khai chinh neu to khai chinh khong co' dong` dong
+Private Function GetMaCT2KHBS(ByVal toKhai As String, ByVal CTKHBS As String) As String
+    Dim ctToKhai As String ' Luu cac chi tieu cua to khai KHBS
+    GetMaCT2KHBS = CTKHBS
+    If Trim(CTKHBS) <> vbNullString Then
+        If toKhai = "'03/TNDN'" Then
+            If CTKHBS = "C10" Then
+                GetMaCT2KHBS = "031"
+            ElseIf CTKHBS = "C11" Then
+                GetMaCT2KHBS = "032"
+            ElseIf CTKHBS = "C12" Then
+                GetMaCT2KHBS = "033"
+            ElseIf CTKHBS = "C15" Then
+                GetMaCT2KHBS = "036"
+            ElseIf CTKHBS = "C16" Then
+                GetMaCT2KHBS = "037"
+            ElseIf CTKHBS = "D" Then
+                GetMaCT2KHBS = "038"
+            End If
+        End If
+        If toKhai = "'02/NTNN'" Then
+            If CTKHBS = "7a" Then
+                GetMaCT2KHBS = "012"
+            ElseIf CTKHBS = "7b" Then
+                GetMaCT2KHBS = "013"
+            ElseIf CTKHBS = "7" Then
+                GetMaCT2KHBS = "011"
+            End If
+        End If
+        If toKhai = "'04/NTNN'" Then
+            If CTKHBS = "5" Then
+                GetMaCT2KHBS = "005"
+            ElseIf CTKHBS = "6" Then
+                GetMaCT2KHBS = "006"
+            ElseIf CTKHBS = "7" Then
+                GetMaCT2KHBS = "007"
+            End If
+        End If
+    End If
+    
+End Function
 
