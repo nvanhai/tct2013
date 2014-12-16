@@ -2363,11 +2363,15 @@ Public Function InsertHDR() As String
         .GetText .ColLetterToNumber("G"), .MaxRows - 18, TENNV
         If Trim(TENNV) = vbNullString Then
             TENNV = ""
+        Else
+            TENNV = TAX_Utilities_Svr_New.Convert(Trim(TENNV), UNICODE, TCVN)
         End If
         'CHUNGCHI
         .GetText .ColLetterToNumber("G"), .MaxRows - 16, CHUNGCHI
         If Trim(CHUNGCHI) = vbNullString Then
             CHUNGCHI = ""
+            Else
+            CHUNGCHI = TAX_Utilities_Svr_New.Convert(Trim(CHUNGCHI), UNICODE, TCVN)
         End If
         'DN_NHO
         .GetText .ColLetterToNumber("H"), 7, dn_nho

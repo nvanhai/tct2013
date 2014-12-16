@@ -925,6 +925,13 @@ Public Function InsertHDR() As String
         
         'sohd
         .GetText .ColLetterToNumber("H"), 29, SOHD
+        If Trim(SOHD) = vbNullString Then
+            SOHD = "''"
+        Else
+            SOHD = "'" & TAX_Utilities_Svr_New.Convert(Trim(SOHD), UNICODE, TCVN) & "'"
+        End If
+        
+        
         'ngayhd
         .GetText .ColLetterToNumber("N"), 29, NGAYHD
         If Trim(NGAYHD) = vbNullString Then
@@ -986,7 +993,7 @@ Public Function InsertHDR() As String
         sSQLVal = LoaiTK & "," & madtnt & "," & madlt & "," & namQT & "," & TTHTK & "," & ngnop & "," & KyTTTu & ", "
         sSQLVal = sSQLVal & KyTTDen & "," & NgNhap & "," & HANNOP & "," & MaVach & "," & MaMuc & ", "
         sSQLVal = sSQLVal & maTM & "," & DATHAY & "," & KYLBO & "," & ThueTKy & ", "
-        sSQLVal = sSQLVal & THUECL & "," & LanBS & "," & DANHAN & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "','" & SOHD & "'," & NGAYHD & "," & ThueCQ
+        sSQLVal = sSQLVal & THUECL & "," & LanBS & "," & DANHAN & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "'," & SOHD & "," & NGAYHD & "," & ThueCQ
            
         sSQL = "INSERT INTO TMP_QTNT" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
