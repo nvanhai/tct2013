@@ -519,7 +519,7 @@ Public Function InsertDTL() As String
     Dim QuyetToan2 As Variant
     Dim KKHAICL    As Variant
     Dim QTOANCL    As Variant
-    Dim GhiChu     As Variant
+    Dim GHICHU     As Variant
     Dim tt         As Variant
     Dim DANHAN     As Variant
    
@@ -589,12 +589,12 @@ Public Function InsertDTL() As String
                 QuyetToan = "0"
             End If
             
-            .GetText .ColLetterToNumber("AA"), .Row, GhiChu
+            .GetText .ColLetterToNumber("AA"), .Row, GHICHU
     
-            If Trim(GhiChu) = vbNullString Then
-                GhiChu = "''"
+            If Trim(GHICHU) = vbNullString Then
+                GHICHU = "''"
             Else
-                GhiChu = "'" & TAX_Utilities_Svr_New.Convert(CStr(GhiChu), UNICODE, TCVN) & "'"
+                GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
             End If
             
             KeKhai2 = KeKhai
@@ -602,7 +602,7 @@ Public Function InsertDTL() As String
             KKHAICL = KeKhai
             QTOANCL = QuyetToan
             CTTN = "'" & arrMaHieu(i) & "'"
-            sSQLVal = LoaiTK & "," & madtnt & "," & namQT & "," & TTHTK & "," & ngnop & "," & CTTN & "," & KeKhai & "," & QuyetToan & "," & KeKhai2 & "," & QuyetToan2 & "," & tt & "," & KKHAICL & "," & QTOANCL & "," & GhiChu & "," & DANHAN & "," & LAN_QUET
+            sSQLVal = LoaiTK & "," & madtnt & "," & namQT & "," & TTHTK & "," & ngnop & "," & CTTN & "," & KeKhai & "," & QuyetToan & "," & KeKhai2 & "," & QuyetToan2 & "," & tt & "," & KKHAICL & "," & QTOANCL & "," & GHICHU & "," & DANHAN & "," & LAN_QUET
             sSQL = "INSERT INTO TMP_QTNTD" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
             bln = clsDAO.ExecuteDLL(sSQL)
             
@@ -826,7 +826,7 @@ Public Function InsertHDR() As String
     
     Dim LoaiTK  As Variant
     Dim madtnt  As Variant
-    Dim madlt   As Variant
+    Dim MADLT   As Variant
 
     Dim ngnop   As Variant
     Dim NgNhap  As Variant
@@ -877,12 +877,12 @@ Public Function InsertHDR() As String
         End If
         
         ' ma dai ly thue
-        .GetText .ColLetterToNumber("F"), 20, madlt
+        .GetText .ColLetterToNumber("F"), 20, MADLT
 
-        If Trim(madlt) = vbNullString Then
-            madlt = "''"
+        If Trim(MADLT) = vbNullString Then
+            MADLT = "''"
         Else
-            madlt = "'" & madlt & "'"
+            MADLT = "'" & MADLT & "'"
         End If
         
 '        'trang thai to khai
@@ -990,7 +990,7 @@ Public Function InsertHDR() As String
             ThueCQ = "0"
         End If
         
-        sSQLVal = LoaiTK & "," & madtnt & "," & madlt & "," & namQT & "," & TTHTK & "," & ngnop & "," & KyTTTu & ", "
+        sSQLVal = LoaiTK & "," & madtnt & "," & MADLT & "," & namQT & "," & TTHTK & "," & ngnop & "," & KyTTTu & ", "
         sSQLVal = sSQLVal & KyTTDen & "," & NgNhap & "," & HANNOP & "," & MaVach & "," & MaMuc & ", "
         sSQLVal = sSQLVal & maTM & "," & DATHAY & "," & KYLBO & "," & ThueTKy & ", "
         sSQLVal = sSQLVal & THUECL & "," & LanBS & "," & DANHAN & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "'," & SOHD & "," & NGAYHD & "," & ThueCQ
@@ -1015,10 +1015,10 @@ Public Function InsertHDR() As String
             ThueCQ = "0"
         End If
                 
-        sSQLVal = LoaiTK & "," & madtnt & "," & madlt & "," & namQT & "," & TTHTK & "," & ngnop & "," & KyTTTu & ", "
+        sSQLVal = LoaiTK & "," & madtnt & "," & MADLT & "," & namQT & "," & TTHTK & "," & ngnop & "," & KyTTTu & ", "
         sSQLVal = sSQLVal & KyTTDen & "," & NgNhap & "," & HANNOP & "," & MaVach & "," & MaMuc & ", "
         sSQLVal = sSQLVal & maTM & "," & DATHAY & "," & KYLBO & "," & ThueTKy & ", "
-        sSQLVal = sSQLVal & THUECL & "," & LanBS & "," & DANHAN & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "','" & SOHD & "'," & NGAYHD & "," & ThueCQ
+        sSQLVal = sSQLVal & THUECL & "," & LanBS & "," & DANHAN & "," & LAN_QUET & ",'" & TENNV & "','" & CHUNGCHI & "'," & SOHD & "," & NGAYHD & "," & ThueCQ
            
         sSQL = "INSERT INTO TMP_QTNT" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -1450,7 +1450,7 @@ Public Function InsertDTL_PL2() As String
             If Trim(MADTNTVN) = vbNullString Then
                 MADTNTVN = "''"
             Else
-                MADTNTVN = "'" & MADTNTVN & "'"
+                MADTNTVN = "'" & TAX_Utilities_Svr_New.Convert(Trim(MADTNTVN), UNICODE, TCVN) & "'"
             End If
 
             ' ma doi tuong nop thue nuoc ngoai
