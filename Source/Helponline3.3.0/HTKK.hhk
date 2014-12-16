@@ -528,11 +528,15 @@
 	<LI> <OBJECT type="text/sitemap">
 				<param name="Name" value="T&ecirc; khai thu&Otilde; thu nh&Euml;p doanh nghi&Ouml;p t&sup1;m t&Yacute;nh m&Eacute;u 01A/TNDN">
 				<param name="Local" value="HTKK\11.htm">
-				</OBJECT>
+				</OBJECT>			
 	<LI> <OBJECT type="text/sitemap">
 				<param name="Name" value="T&ecirc; khai thu&Otilde; thu nh&Euml;p doanh nghi&Ouml;p t&sup1;m t&Yacute;nh m&Eacute;u 01B/TNDN">
 				<param name="Local" value="HTKK\12.htm">
 				</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="TK TNDN cho chuyÓn nh­îng B§S (02/TNDN)">
+				<param name="Local" value="HTKK\73.htm">
+				</OBJECT>			
 	<LI> <OBJECT type="text/sitemap">
 				<param name="Name" value="H&shy;&iacute;ng d&Eacute;n k&ordf; khai c&cedil;c ch&Oslash; ti&ordf;u tr&ordf;n t&ecirc; khai quy&Otilde;t to&cedil;n thu&Otilde; 03/TNDN v&micro; c&cedil;c ph&ocirc; l&ocirc;c &reg;&Yacute;nh k&Igrave;m">
 				<param name="Local" value="HTKK\03TNDN.htm">
@@ -649,6 +653,10 @@
 				<param name="Name" value="H&shy;&iacute;ng d&Eacute;n khai t&ecirc; khai Quy&Otilde;t to&cedil;n thu&Otilde; TNCN m&Eacute;u 09/KK-TNCN">
 				<param name="Local" value="HTKK\41.htm">
 				</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="B&#7843;ng t&#7893;ng h&#7907;p &#273;&#259;ng k&#253; ng&#432;&#7901;i ph&#7909; thu&#7897;c gi&#7843;m tr&#7915; gia c&#7843;nh 16TH">
+				<param name="Local" value="HTKK\95.htm">
+				</OBJECT>			
 	<LI> <OBJECT type="text/sitemap">
 				<param name="Name" value="Th&laquo;ng b&cedil;o ph&cedil;t h&micro;nh h&atilde;a &reg;&not;n">
 				<param name="Local" value="HTKK\64100.htm">
