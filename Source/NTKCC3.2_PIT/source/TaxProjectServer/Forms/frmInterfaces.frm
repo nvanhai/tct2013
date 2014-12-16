@@ -1697,7 +1697,36 @@ End Sub
 Private Sub Command1_Click()
     Dim str1 As String, str2 As String, str3 As String, str4 As String, str5 As String, str6 As String, str7 As String, str8 As String
 
-'02_TAIN
+'02_TNDN_TEST
+''Lan PS
+'str2 = "aa999730100105951   01201500100200100201/0114/06/2006<S02><S></S><S>100000000~48000000~20000000~10000000~3000000~4000000~5000000~6000000~52000000~10~5200000</S><S>~1~C«ng ty XYZ~2222222222~Duy T©n, CÇu GiÊy, Hµ Néi~20~01/01/2014~01/02/2014</S><S>~~NguyÔn Quang A~16/05/2015~1~~16/01/2015~~x</S></S02>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'str2 = "aa999730100105951   012015001002002002<S02-1><S>C«ng ty ABC~0102030405~DÞch Väng, CÇu GiÊy~Hîp ®ång 23~C«ng ty DXZ~6868686868~Ba §×nh Hµ Néi~Hîp ®ång 87</S></S02-1>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+
+''Quy
+'str2 = "aa325733700258793   04201400100100100201/0114/06/2006<S02><S></S><S>100000000~20000000~20000000~0~0~0~0~0~80000000~0~80000000~22~176"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'str2 = "aa325733700258793   04201400100100200200000~0~17600000~0~0~22~1~0</S><S>1~~~~~~~</S><S>~~Nguyen Lan~09/12/2014~1~~~1052~~</S></S02>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+
+''02_TNDN
+'str2 = "aa999730100105951   04201400100100100201/0114/06/2006<S02><S></S><S>12000000~10400000~200000~300000~400000~500000~6000000~3000000~1600000~15~240000</S><S>1~~Cty TNHH BaHoaToHo~6868686868~Khong Khong thay - Khong khong biet~12~12/02/2014~15/02/2014</S><S>Nguyen Van A~CCHN123456~Tran Van B~18/11/2015~1~~~~x</S></S02>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'str2 = "aa999730100105951   042014001001002002<S02-1><S>Cty TNHH Giai phap phan mem CMC~0101650999~Duy Tan - Cau Giay - Ha Noi~HDCN1234~Cty TNHH Tinh Van~0102030405~Lang Ha - Dong Da - Ha Noi~HDCN5678</S></S02-1>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+
+'PS
+str2 = "aa999730100105951   03201400300300100201/0116/01/2015<S02><S></S><S>15000000~7230000~2000000~1000000~500000~700000~3000000~30000~7770000~25~1942500</S><S>~1~Cty TNHH Sao Dat Viet~0102030405~Quan Hoa Cau Giay Ha Noi~10~18/11/2014~20/11/2014</S><S>Nguyen Van A~CCHN123456~Tran Van B~18/11/2015~1~~16/01/2015~~x</S></S02>"
+Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+str2 = "aa999730100105951   032014003003002002<S02-1><S>Cty TNHH Mot thanh vien~0102030405~Duy Tan - Cau Giay - Ha Noi~HDCN123456~Cty TNHH Hai Thanh vien~2222222222~Ba Dinh - Ha Noi~HDCN56789</S></S02-1>"
+Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+
+'str2 = "aa999730100105951   03201500000000100101/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0</S><S>~1~~~~~~</S><S>~~~11/12/2016~1~~16/01/2015~~</S></S02>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+
+
+''02_TAIN
 'str2 = "aa999770100105951   00201500300400100201/0114/06/2006<S01><S></S><S>010102~Kg~12~0~0~30000~360000~10~200~359790~010103~TÊn~30~0~0~555~16650~50~0~16600</S><S>010202~TÊn~20~10000~15~0"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 'str2 = "aa999770100105951   002015003004002002~30000~3000~0~27000~060201~M3~3000~0~0~60~180000~50~0~179950</S><S>Tran Van B~16/12/2016~Nguyen van A~CCHN123456~1~~01/2015~10/2015</S></S01>"
@@ -1957,20 +1986,7 @@ Private Sub Command1_Click()
 'str2 = "aa999110100105951   04201400200200200285000~5~1664950~80000~20000~50000~1584950~~~~0~0</S><S>~</S><S>Nguyen Van A~CCHN123456~Tran Van B~27/05/2015~1~0~~1052</S></S01>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
-'''02_TNDN
-'str2 = "aa999730100105951   01201400100100100201/0114/06/2006<S02><S></S><S>12000000~10400000~200000~300000~400000~500000~6000000~3000000~1600000~15~240000</S><S>1~~Cty TNHH BaHoaToHo~6868686868~Khong Khong thay - Khong khong biet~12~12/02/2014~15/02/2014</S><S>Nguyen Van A~CCHN123456~Tran Van B~18/11/2015~1~~~~x</S></S02>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-'str2 = "aa999730100105951   012014001001002002<S02-1><S>Cty TNHH Giai phap phan mem CMC~0101650999~Duy Tan - Cau Giay - Ha Noi~HDCN1234~Cty TNHH Tinh Van~0102030405~Lang Ha - Dong Da - Ha Noi~HDCN5678</S></S02-1>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
-''PS
-'str2 = "aa999730100105951   03201400300300100201/0116/01/2015<S02><S></S><S>15000000~7230000~2000000~1000000~500000~700000~3000000~30000~7770000~25~1942500</S><S>~1~Cty TNHH Sao Dat Viet~0102030405~Quan Hoa Cau Giay Ha Noi~10~18/11/2014~20/11/2014</S><S>Nguyen Van A~CCHN123456~Tran Van B~18/11/2015~1~~16/01/2015~~x</S></S02>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-'str2 = "aa999730100105951   032014003003002002<S02-1><S>Cty TNHH Mot thanh vien~0102030405~Duy Tan - Cau Giay - Ha Noi~HDCN123456~Cty TNHH Hai Thanh vien~2222222222~Ba Dinh - Ha Noi~HDCN56789</S></S02-1>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-
-'str2 = "aa999730100105951   03201500000000100101/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0</S><S>~1~~~~~~</S><S>~~~11/12/2016~1~~16/01/2015~~</S></S02>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 
 ''PS-BS
@@ -2180,13 +2196,13 @@ Private Sub Command1_Click()
 'str2 = "aa999880100105951   00201500300300100101/0101/01/1900<S01><S></S><S>3055~12000~10~1200~10800~2000~8800~30503055~2152~48000~5~2400~45600~5000~40600~21502152</S><S>60000~3600~56400~7000~49400</S><S>Nguyen Van A~Tran Van B~CCHN123456~04/12/2016~1~~~01/2015~10/2015</S></S01>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
-'''BS
-str2 = "bs999880100105951   00201500500500100301/0101/01/1900<S01><S></S><S>3055~12000~2~240~11760~2000~9760~30503055~2152~48000~3~1440~46560~5000~41560~21502152</S><S>60000~1680~58320~7000~51320</S><S>Nguyen Van A~Tran Van B~CCHN123456~04/12/2016~~1~1~01/2015~10/2015</S></S01>"
-Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-str2 = "bs999880100105951   002015005005002003<SKHBS><S>Sè tiÒn phÝ, lÖ phÝ trÝch sö dông theo chÕ ®é~6~3600~1680~-1920</S><S>~~0~0~0</S><S>0"
-Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-str2 = "bs999880100105951   0020150050050030034/12/2016~249~300~12000~LHT123456~10/05/2015~10700~10701~10~2000~dsfasdf~0~0~1920</S></SKHBS>"
-Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+''BS
+'str2 = "bs999880100105951   00201500500500100301/0101/01/1900<S01><S></S><S>3055~12000~2~240~11760~2000~9760~30503055~2152~48000~3~1440~46560~5000~41560~21502152</S><S>60000~1680~58320~7000~51320</S><S>Nguyen Van A~Tran Van B~CCHN123456~04/12/2016~~1~1~01/2015~10/2015</S></S01>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'str2 = "bs999880100105951   002015005005002003<SKHBS><S>Sè tiÒn phÝ, lÖ phÝ trÝch sö dông theo chÕ ®é~6~3600~1680~-1920</S><S>~~0~0~0</S><S>0"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'str2 = "bs999880100105951   0020150050050030034/12/2016~249~300~12000~LHT123456~10/05/2015~10700~10701~10~2000~dsfasdf~0~0~1920</S></SKHBS>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 '02_NTNN-2015
 'str2 = "aa999800100105951   00201500200200100301/0101/01/190001/01/201531/10/2015<S01><S></S><S>HD nha thau so 1~10/05/2015</S><S>3000~78000~75000~Ke tam the~5000~30000~25000~~1000~3001~2001~Nhap y ma~4000~26999~22999~~300~500~200~~100~200~100~Nhap ~200~300~100~400~35~50~15~~10~15~5~20~25~35~10~~265~450~185~Ghi chu~90~185~95~ghi chu~175~265~90~ho ho la la</S><S>Nguyen Van A~02/12/2016~CCHN123456~Tran Van B~1~~</S></S01>"
@@ -2807,7 +2823,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 Exit Sub
             End If
         End If
-        
+    
 '        'Khong nhan to khai <=Q3/2014 khong cho phep ke khai bo sung: 02/TNDN
 '        If Val(idToKhai) = 73 And LoaiTk = "TKBS" Then
 '            If (Val(Mid(strPrefix, 21, 4)) < 2014 Or (Val(Mid(strPrefix, 21, 4)) = 2014 And Val(Mid(strPrefix, 19, 2)) <= 3)) Then
@@ -2815,26 +2831,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
 '                Exit Sub
 '            End If
 '        End If
-        
-        'Khong nhan to khai QUY 02_TNDN  co ky ke khai > Q3/2014
-        'va to BS mau cu
-        If Val(idToKhai) = 73 Then
-            If InStr(1, strBarcode, "<S02>") > 0 Then
-                If Left(Split(strBarcode, "<S>")(3), 1) = "1" Then
-                    If ((Val(Mid(strPrefix, 21, 4)) > 2014 Or (Val(Mid(strPrefix, 21, 4)) = 2014 And Val(Mid(strPrefix, 19, 2)) >= 4))) Then
-                        DisplayMessage "0183", msOKOnly, miInformation
-                        Exit Sub
-                    End If
 
-                    If LoaiTk = "TKBS" Then
-                        If (Val(Mid(strPrefix, 21, 4)) < 2014 Or (Val(Mid(strPrefix, 21, 4)) = 2014 And Val(Mid(strPrefix, 19, 2)) <= 3)) Then
-                            DisplayMessage "0145", msOKOnly, miInformation
-                            Exit Sub
-                        End If
-                    End If
-                End If
-            End If
-        End If
         
         ' Ket thuc
         
@@ -4111,6 +4108,29 @@ Private Function LoadForm(ByVal strData As String) As Boolean
     End If
     
     'end
+    
+    'nshung-edit 16/12/2014
+    'Khong nhan to khai QUY 02_TNDN  co ky ke khai > Q3/2014
+    'va to BS mau cu
+       
+    If Trim(LoaiTk1) = 73 Then
+        If InStr(1, strData, "<S02>") > 0 Then
+            If Left(Split(strData, "<S>")(3), 1) = "1" Then
+                If ((Val(Mid(strData, 21, 4)) > 2014 Or (Val(Mid(strData, 21, 4)) = 2014 And Val(Mid(strData, 19, 2)) >= 4))) Then
+                    DisplayMessage "0183", msOKOnly, miInformation
+                    Exit Function
+                End If
+
+                If LoaiTk = "TKBS" Then
+                    If (Val(Mid(strData, 21, 4)) < 2014 Or (Val(Mid(strData, 21, 4)) = 2014 And Val(Mid(strData, 19, 2)) <= 3)) Then
+                        DisplayMessage "0145", msOKOnly, miInformation
+                        Exit Function
+                    End If
+                End If
+            End If
+        End If
+    End If
+    '-------nshung- end -----
     
     If clsDAO.Connected = False Then
         Me.MousePointer = vbHourglass
@@ -5650,20 +5670,20 @@ Private Function Prepare_QLT() As String
                 
             .GetText .ColLetterToNumber("T"), 11, NGNHAP
                  
-        ElseIf menuId = 80 Or menuId = 81 Or menuId = 82 Or menuId = 89 Or menuId = 3 Then
+        ElseIf menuId = 80 Or menuId = 81 Or menuId = 82 Or menuId = 89 Then 'nshung-edit menuId=80,82
             '         "maDTNT~vKYLBO~NGNOP~MST~DIA_CHI~GHICHU~NGUOI_NOP~NGNHAP"
             strToaDo = "F-10~E-30~E-32~F-10~F-12~M-36~H-8~M-32"
             ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
             
-        ElseIf menuId = 86 Or menuId = 87 Or menuId = 72 Then
+        ElseIf menuId = 86 Or menuId = 87 Or menuId = 72 Then 'nshung -edit menuId=87
             strToaDo = "G-8~E-22~E-24~G-8~G-9~M-28~G-7~M-24"
             ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
-        ElseIf menuId = 77 Then
+        ElseIf menuId = 77 Then 'nshung-edit 02_TAIN
         
             strToaDo = "H-10~E-30~E-32~H-10~H-12~E-36~H-8~R-32"
             ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
             
-        ElseIf menuId = 73 Then
+        ElseIf menuId = 73 Then 'nshung-edit 02_TNDN
             '         "maDTNT~vKYLBO~NGNOP~MST~DIA_CHI~GHICHU~NGUOI_NOP~NGNHAP"
             strToaDo = "F-10~E-42~E-44~F-10~F-12~M-48~H-8~M-44"
             ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
@@ -5691,11 +5711,14 @@ Private Function Prepare_QLT() As String
             '         "maDTNT~vKYLBO~NGNOP~MST~DIA_CHI~GHICHU~NGUOI_NOP~NGNHAP"
             strToaDo = "E-4~E-42~E-10~E-4~E-6~E-14~E-5~K-12"
             ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
-        ElseIf menuId = 90 Or menuId = 85 Or menuId = 88 Then
+        ElseIf menuId = 90 Or menuId = 85 Or menuId = 88 Then 'nshung - edit menuId=85,88
             '         "maDTNT~vKYLBO~NGNOP~MST~DIA_CHI~GHICHU~NGUOI_NOP~NGNHAP"
             strToaDo = "G-8~E-22~E-24~G-8~G-9~M-28~G-7~M-24"
             ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
-        
+        ElseIf menuId = 3 Then 'nshung-edit
+            '         "maDTNT~vKYLBO~NGNOP~MST~DIA_CHI~GHICHU~NGUOI_NOP~NGNHAP"
+            strToaDo = "F-14~E-34~E-36~F-14~F-16~M-40~H-12~M-36"
+            ThongTin_DLT strToaDo, maDTNT, vKYLBO, NGNOP, MST, DIA_CHI, GHICHU, NGUOI_NOP, NGNHAP
         Else
                
             .GetText .ColLetterToNumber("G"), 4, maDTNT
@@ -6675,9 +6698,11 @@ Private Sub Insert_QHS()
             .GetText .ColLetterToNumber("E"), 23, vKYLBO
         ElseIf menuId = 6 Then
             .GetText .ColLetterToNumber("F"), 23, vKYLBO
-        ElseIf menuId = 1 Or menuId = 2 Or menuId = 4 Or menuId = 11 Or menuId = 12 Or menuId = 80 Or menuId = 81 Or menuId = 82 Or menuId = 89 Or menuId = 71 Or menuId = 3 Or menuId = 59 Or menuId = 74 Or menuId = 75 Or menuId = 77 Then
+        ElseIf menuId = 1 Or menuId = 2 Or menuId = 4 Or menuId = 11 Or menuId = 12 Or menuId = 80 Or menuId = 81 Or menuId = 82 Or menuId = 89 Or menuId = 71 Or menuId = 59 Or menuId = 74 Or menuId = 75 Or menuId = 77 Then
             .GetText .ColLetterToNumber("E"), 30, vKYLBO
-        ElseIf menuId = 73 Then
+        ElseIf menuId = 3 Then 'nshung-03_TNDN
+            .GetText .ColLetterToNumber("E"), 34, vKYLBO
+        ElseIf menuId = 73 Then 'nshung-02_TNDN
             .GetText .ColLetterToNumber("E"), 42, vKYLBO
         ElseIf menuId = 90 Or menuId = 85 Or menuId = 88 Then
             .GetText .ColLetterToNumber("E"), 22, vKYLBO
@@ -6816,12 +6841,13 @@ End Sub
 
 Private Function CheckConnection() As Boolean
     Dim flag As Boolean
-    
+
     clsDAO.CreateConnectionStringCheckSQL spathQHSCC
     clsDAO.Connect_qhs
     flag = clsDAO.Connected_qhs
     clsDAO.DisConnect_qhs
     CheckConnection = flag
+'CheckConnection = True
 
 End Function
 'dhdang tao ham tinh so phu luc cua to khai

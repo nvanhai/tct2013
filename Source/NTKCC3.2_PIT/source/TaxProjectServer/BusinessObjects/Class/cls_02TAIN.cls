@@ -1809,6 +1809,12 @@ Public Function Prepared3() As Boolean
         .Row = TEN_BPQL_Y
         .Text = Trim(TAX_Utilities_Svr_New.Convert(strTenBpql, TCVN, UNICODE))
         
+        'Phuc vu Tinh So Lan Quet
+        'KyTTTu
+        .GetText .ColLetterToNumber("M"), 49, strTuKy
+        'KyTTTu
+        .GetText .ColLetterToNumber("N"), 49, strDenKy
+        
         ' lan quet
         .Col = .ColLetterToNumber("R")
         .Row = 30
@@ -1835,11 +1841,7 @@ Dim blnValid As Boolean
         .Row = KY_LAP_BO_Y
         strKyLapBo = .Text
         
-        'Phuc vu Tinh So Lan Quet
-        'KyTTTu
-        .GetText .ColLetterToNumber("M"), 49, strTuKy
-        'KyTTTu
-        .GetText .ColLetterToNumber("N"), 49, strDenKy
+
         
         ' Get MaSoTep
 '        .Col = .ColLetterToNumber(MA_SO_TEP_X)

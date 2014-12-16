@@ -23,6 +23,7 @@ Const HEADER_KY_LAP_BO_X = "B"
 Const PHONG_XU_LY_Y = 22
 Const PHONG_XU_LY_X = "V"
 
+
 'Longvh
 Const NGAY_NOP_Y = 24
 Const NGAY_NOP_X = "E"
@@ -208,8 +209,8 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
                 'dhdang sua combox ngay xu ly
                 'ngay 05-08
                 .TypeComboBoxIndex = -1
-                '.TypeComboBoxString = TAX_Utilities_Svr_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE) + "     {" + TAX_Utilities_Svr_New.Convert(Trim(rsPXL.Fields(0).Value), TCVN, UNICODE) + "}"
-                .TypeComboBoxString = TAX_Utilities_Svr_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
+                .TypeComboBoxString = TAX_Utilities_Svr_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE) + "                                                       {" + TAX_Utilities_Svr_New.Convert(Trim(rsPXL.Fields(0).Value), TCVN, UNICODE) + "}"
+                '.TypeComboBoxString = TAX_Utilities_Svr_New.Convert(rsPXL.Fields(1).Value, TCVN, UNICODE)
                 .TextTip = TextTipOff
                 i = i + 1
                 ReDim Preserve larrPhongXuLy(i)
@@ -227,6 +228,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         .TypeComboBoxCurSel = 0
         UpdateCell fps, .Col, .Row, .Text
         lSoPhongXL = i
+
         
         'Phuc vu Tinh So Lan Quet
         'KyTTTu

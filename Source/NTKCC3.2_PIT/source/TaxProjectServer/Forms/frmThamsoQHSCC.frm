@@ -139,7 +139,7 @@ Private Type BROWSEINFO
   lpszTitle As String
   ulFlags As Long
   lpfn As Long
-  lParam As Long
+  lparam As Long
   iImage As Long
 End Type
 
@@ -249,11 +249,12 @@ End Sub
 
 Private Function CheckConnection() As Boolean
     Dim flag As Boolean
-    
+
     clsDAO.CreateConnectionStringCheckSQL spathQHSCC
     clsDAO.Connect_qhs
     flag = clsDAO.Connected_qhs
     clsDAO.DisConnect_qhs
     CheckConnection = flag
+'CheckConnection = True
 End Function
 
