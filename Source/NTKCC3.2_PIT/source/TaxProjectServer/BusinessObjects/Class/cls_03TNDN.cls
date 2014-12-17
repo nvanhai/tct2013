@@ -2193,7 +2193,7 @@ Public Function InsertHDR() As String
     
     
     '08/11/2011
-    Dim madlt As Variant
+    Dim MADLT As Variant
     Dim LanBS As Variant
     Dim SOKKQTCL As Variant
     Dim THUECT18CL As Variant
@@ -2266,7 +2266,7 @@ Public Function InsertHDR() As String
         If Trim(MANNKD) = vbNullString Then
             MANNKD = "''"
         Else
-            MANNKD = "'" & MANNKD & "'"
+            MANNKD = "'" & TAX_Utilities_Svr_New.Convert(Trim(MANNKD), UNICODE, TCVN) & "'"
         End If
         
  ' sua MAMUC & MATM tu nam 2009
@@ -2316,11 +2316,11 @@ Public Function InsertHDR() As String
         'set daghi
         DAGHI1 = DaGhi
         'get MADLT
-        .GetText .ColLetterToNumber("F"), 24, madlt
-        If madlt = vbNullString Then
-            madlt = "''"
+        .GetText .ColLetterToNumber("F"), 24, MADLT
+        If MADLT = vbNullString Then
+            MADLT = "''"
         Else
-            madlt = "'" & madlt & "'"
+            MADLT = "'" & MADLT & "'"
         End If
         ' get LANBS
         .GetText .ColLetterToNumber("U"), 6, LanBS
@@ -2411,7 +2411,7 @@ Public Function InsertHDR() As String
         
      End With
 
-    sSQLVal = madtnt & "," & madlt & "," & ngnop & "," & namQT & "," & kykkhai & "," & KyTTTu & "," & KyTTDen & ", " & _
+    sSQLVal = madtnt & "," & MADLT & "," & ngnop & "," & namQT & "," & kykkhai & "," & KyTTTu & "," & KyTTDen & ", " & _
     SOKKQT & "," & SOTHUECT18 & "," & SOTNCN & "," & MaVach & "," & TTHTK & "," & NgNhap & "," & _
     HANNOP & "," & DATHAY & "," & KYLBO & "," & MaMuc & "," & maTM & "," & SHTEP & "," & DaGhi & "," & DAGHI1 & "," & _
     DAGHI2 & "," & AUTO_CAL & "," & LanBS & "," & SOKKQTCL & "," & THUECT18CL & "," & SOTNCNCL & "," & DANHAN & "," & _
@@ -2451,7 +2451,7 @@ Public Function InsertHDR() As String
 '    sSQLVal = sSQLVal & kykkhai & "," & SOKKQT & "," & SOTHUECT18 & "," & SOTNCN & "," & MaVach & "," & TTHTK & "," & HANNOP & "," & KYLBO & "," & MaMuc & "," & maTM & "," & SHTEP & "," & NgNhap & "," & DATHAY & "," & DaGhi & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & "," & LAN_QUET & "," & DANHAN
 '    sSQLVal = sSQLVal & "," & madlt & "," & LanBS & "," & SOKKQTCL & "," & THUECT18CL & "," & SOTNCNCL & "," & MANNKD & "," & TSUAT20 & ",'" & TENNV & "','" & CHUNGCHI & "'," & dn_nho & "," & DN_SX & "," & dn_kk & ",'" & NGANH & "'," & TYLE
 
-    sSQLVal = madtnt & "," & madlt & "," & ngnop & "," & namQT & "," & kykkhai & "," & KyTTTu & "," & KyTTDen & ", " & _
+    sSQLVal = madtnt & "," & MADLT & "," & ngnop & "," & namQT & "," & kykkhai & "," & KyTTTu & "," & KyTTDen & ", " & _
     SOKKQT & "," & SOTHUECT18 & "," & SOTNCN & "," & MaVach & "," & TTHTK & "," & NgNhap & "," & _
     HANNOP & "," & DATHAY & "," & KYLBO & "," & MaMuc & "," & maTM & "," & SHTEP & "," & DaGhi & "," & DAGHI1 & "," & _
     DAGHI2 & "," & AUTO_CAL & "," & LanBS & "," & SOKKQTCL & "," & THUECT18CL & "," & SOTNCNCL & "," & DANHAN & "," & _
@@ -6314,9 +6314,11 @@ Public Function InsertDTL_PL03_6() As String
                         
                      .Col = .ColLetterToNumber("C")
                      nam = .Text
-                     If Trim(nam) = vbNullString Then
+                    If Trim(nam) = vbNullString Then
                         nam = "''"
-                     End If
+                    Else
+                        nam = "'" & TAX_Utilities_Svr_New.Convert(Trim(nam), UNICODE, TCVN) & "'"
+                    End If
                      
                      .Col = .ColLetterToNumber("E")
                      SOTIEN1 = .Value
@@ -6774,7 +6776,7 @@ Public Function InsertDTL_PL03_7() As String
             If Trim(PPCPHI) = vbNullString Then
                PPCPHI = "''"
             Else
-               PPCPHI = "'" & PPCPHI & "'"
+               PPCPHI = "'" & TAX_Utilities_Svr_New.Convert(Trim(PPCPHI), UNICODE, TCVN) & "'"
             End If
             
             .GetText .ColLetterToNumber("AE"), .Row, LN
@@ -6832,7 +6834,7 @@ Public Function InsertDTL_PL03_7() As String
                If Trim(PPDTHU) = vbNullString Then
                   PPDTHU = "''"
                Else
-                  PPDTHU = "'" & PPDTHU & "'"
+                  PPDTHU = "'" & TAX_Utilities_Svr_New.Convert(Trim(PPDTHU), UNICODE, TCVN) & "'"
                End If
                
                .GetText .ColLetterToNumber("R"), .Row, CPHI
@@ -6854,7 +6856,7 @@ Public Function InsertDTL_PL03_7() As String
                If Trim(PPCPHI) = vbNullString Then
                   PPCPHI = "''"
                Else
-                  PPCPHI = "'" & PPCPHI & "'"
+                  PPCPHI = "'" & TAX_Utilities_Svr_New.Convert(Trim(PPCPHI), UNICODE, TCVN) & "'"
                End If
                
                .GetText .ColLetterToNumber("AE"), .Row, LN
@@ -6912,7 +6914,7 @@ Public Function InsertDTL_PL03_7() As String
                    If Trim(PPDTHU) = vbNullString Then
                       PPDTHU = "''"
                    Else
-                      PPDTHU = "'" & PPDTHU & "'"
+                      PPDTHU = "'" & TAX_Utilities_Svr_New.Convert(Trim(PPDTHU), UNICODE, TCVN) & "'"
                    End If
                    
                    .GetText .ColLetterToNumber("R"), .Row, CPHI
@@ -6934,7 +6936,7 @@ Public Function InsertDTL_PL03_7() As String
                    If Trim(PPCPHI) = vbNullString Then
                       PPCPHI = "''"
                    Else
-                      PPCPHI = "'" & PPCPHI & "'"
+                      PPCPHI = "'" & TAX_Utilities_Svr_New.Convert(Trim(PPCPHI), UNICODE, TCVN) & "'"
                    End If
                    
                    .GetText .ColLetterToNumber("AE"), .Row, LN
@@ -6990,7 +6992,7 @@ Public Function InsertDTL_PL03_7() As String
                    If Trim(PPDTHU) = vbNullString Then
                       PPDTHU = "''"
                    Else
-                      PPDTHU = "'" & PPDTHU & "'"
+                      PPDTHU = "'" & TAX_Utilities_Svr_New.Convert(Trim(PPDTHU), UNICODE, TCVN) & "'"
                    End If
                    
                    .GetText .ColLetterToNumber("R"), .Row, CPHI
@@ -7012,7 +7014,7 @@ Public Function InsertDTL_PL03_7() As String
                    If Trim(PPCPHI) = vbNullString Then
                       PPCPHI = "''"
                    Else
-                      PPCPHI = "'" & PPCPHI & "'"
+                      PPCPHI = "'" & TAX_Utilities_Svr_New.Convert(Trim(PPCPHI), UNICODE, TCVN) & "'"
                    End If
                    
                    .GetText .ColLetterToNumber("AE"), .Row, LN
@@ -7068,7 +7070,7 @@ Public Function InsertDTL_PL03_7() As String
                If Trim(PPDTHU) = vbNullString Then
                   PPDTHU = "''"
                Else
-                  PPDTHU = "'" & PPDTHU & "'"
+                  PPDTHU = "'" & TAX_Utilities_Svr_New.Convert(Trim(PPDTHU), UNICODE, TCVN) & "'"
                End If
                
                .GetText .ColLetterToNumber("R"), .Row, CPHI
@@ -7090,7 +7092,7 @@ Public Function InsertDTL_PL03_7() As String
                If Trim(PPCPHI) = vbNullString Then
                   PPCPHI = "''"
                Else
-                  PPCPHI = "'" & PPCPHI & "'"
+                  PPCPHI = "'" & TAX_Utilities_Svr_New.Convert(Trim(PPCPHI), UNICODE, TCVN) & "'"
                End If
                
                .GetText .ColLetterToNumber("AE"), .Row, LN
@@ -7146,7 +7148,7 @@ Public Function InsertDTL_PL03_7() As String
                    If Trim(PPDTHU) = vbNullString Then
                       PPDTHU = "''"
                    Else
-                      PPDTHU = "'" & PPDTHU & "'"
+                      PPDTHU = "'" & TAX_Utilities_Svr_New.Convert(Trim(PPDTHU), UNICODE, TCVN) & "'"
                    End If
                    
                    .GetText .ColLetterToNumber("R"), .Row, CPHI
@@ -7168,7 +7170,7 @@ Public Function InsertDTL_PL03_7() As String
                    If Trim(PPCPHI) = vbNullString Then
                       PPCPHI = "''"
                    Else
-                      PPCPHI = "'" & PPCPHI & "'"
+                      PPCPHI = "'" & TAX_Utilities_Svr_New.Convert(Trim(PPCPHI), UNICODE, TCVN) & "'"
                    End If
                    
                    .GetText .ColLetterToNumber("AE"), .Row, LN
@@ -7226,7 +7228,7 @@ Public Function InsertDTL_PL03_7() As String
                If Trim(PPDTHU) = vbNullString Then
                   PPDTHU = "''"
                Else
-                  PPDTHU = "'" & PPDTHU & "'"
+                  PPDTHU = "'" & TAX_Utilities_Svr_New.Convert(Trim(PPDTHU), UNICODE, TCVN) & "'"
                End If
                
                .GetText .ColLetterToNumber("R"), .Row, CPHI
@@ -7248,7 +7250,7 @@ Public Function InsertDTL_PL03_7() As String
                If Trim(PPCPHI) = vbNullString Then
                   PPCPHI = "''"
                Else
-                  PPCPHI = "'" & PPCPHI & "'"
+                  PPCPHI = "'" & TAX_Utilities_Svr_New.Convert(Trim(PPCPHI), UNICODE, TCVN) & "'"
                End If
                
                .GetText .ColLetterToNumber("AE"), .Row, LN
@@ -7303,7 +7305,7 @@ Public Function InsertDTL_PL03_7() As String
                If Trim(PPDTHU) = vbNullString Then
                   PPDTHU = "''"
                Else
-                  PPDTHU = "'" & PPDTHU & "'"
+                  PPDTHU = "'" & TAX_Utilities_Svr_New.Convert(Trim(PPDTHU), UNICODE, TCVN) & "'"
                End If
                
                .GetText .ColLetterToNumber("R"), .Row, CPHI
@@ -7325,7 +7327,7 @@ Public Function InsertDTL_PL03_7() As String
                If Trim(PPCPHI) = vbNullString Then
                   PPCPHI = "''"
                Else
-                  PPCPHI = "'" & PPCPHI & "'"
+                  PPCPHI = "'" & TAX_Utilities_Svr_New.Convert(Trim(PPCPHI), UNICODE, TCVN) & "'"
                End If
                
                .GetText .ColLetterToNumber("AE"), .Row, LN
@@ -7475,7 +7477,7 @@ Public Function InsertDTL_PL03_8() As String
             If CQQL = vbNullString Then
                 CQQL = "''"
             Else
-                CQQL = "'" & CQQL & "'"
+                CQQL = "'" & TAX_Utilities_Svr_New.Convert(Trim(CQQL), UNICODE, TCVN) & "'"
             End If
             
             TENCUC = "''"
