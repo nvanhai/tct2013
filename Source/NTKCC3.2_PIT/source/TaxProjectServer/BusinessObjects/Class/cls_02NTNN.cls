@@ -1239,7 +1239,7 @@ Public Function InsertDTL_PL1() As String
             If Trim(MADTNTVN) = vbNullString Then
                 MADTNTVN = "''"
             Else
-                MADTNTVN = "'" & MADTNTVN & "'"
+                MADTNTVN = "'" & TAX_Utilities_Svr_New.Convert(Trim(MADTNTVN), UNICODE, TCVN) & "'"
             End If
 
             ' ma doi tuong nop thue nuoc ngoai
@@ -1248,7 +1248,7 @@ Public Function InsertDTL_PL1() As String
             If Trim(MADTNTNN) = vbNullString Then
                 MADTNTNN = "''"
             Else
-                MADTNTNN = "'" & MADTNTNN & "'"
+                MADTNTNN = "'" & TAX_Utilities_Svr_New.Convert(Trim(MADTNTNN), UNICODE, TCVN) & "'"
             End If
 
             ' so hop dong
@@ -1294,7 +1294,7 @@ Public Function InsertDTL_PL1() As String
             If Trim(GTHDNT) = vbNullString Then
                 GTHDNT = "''"
             Else
-                GTHDNT = "'" & GTHDNT & "'"
+                GTHDNT = "'" & TAX_Utilities_Svr_New.Convert(Trim(GTHDNT), UNICODE, TCVN) & "'"
             End If
             'gia tri hop dong viet nam
 
@@ -1312,7 +1312,7 @@ Public Function InsertDTL_PL1() As String
                 
                 Else
                 
-                    GTQTHDNT = "'" & GTQTHDNT & "'"
+                    GTQTHDNT = "'" & TAX_Utilities_Svr_New.Convert(Trim(GTQTHDNT), UNICODE, TCVN) & "'"
                 
                 End If
            
@@ -1460,7 +1460,7 @@ Public Function InsertDTL_PL2() As String
                 MADTNTNN = "''"
                 
             Else
-                MADTNTNN = "'" & MADTNTNN & "'"
+                MADTNTNN = "'" & TAX_Utilities_Svr_New.Convert(Trim(MADTNTNN), UNICODE, TCVN) & "'"
             End If
 
             ' so hop dong
@@ -1468,9 +1468,9 @@ Public Function InsertDTL_PL2() As String
 
             If Trim(SOHD) = vbNullString Then
                 SOHD = "''"
-                Else
+            Else
                     
-               SOHD = "'" & SOHD & "'"
+               SOHD = "'" & TAX_Utilities_Svr_New.Convert(Trim(SOHD), UNICODE, TCVN) & "'"
             End If
 
             'noi dung
@@ -1498,7 +1498,7 @@ Public Function InsertDTL_PL2() As String
                 THOIHAN = "''"
             Else
                 
-                THOIHAN = "'" & THOIHAN & "'"
+                THOIHAN = "'" & TAX_Utilities_Svr_New.Convert(Trim(THOIHAN), UNICODE, TCVN) & "'"
             End If
             
             ' gia tri hop dong nuoc ngoai
@@ -1508,7 +1508,7 @@ Public Function InsertDTL_PL2() As String
             If Trim(GTHDNT) = vbNullString Then
                 GTHDNT = "'0'"
              Else
-                GTHDNT = "'" & GTHDNT & "'"
+                GTHDNT = "'" & TAX_Utilities_Svr_New.Convert(Trim(GTHDNT), UNICODE, TCVN) & "'"
             End If
             
              
@@ -1525,9 +1525,9 @@ Public Function InsertDTL_PL2() As String
             .GetText .ColLetterToNumber("BL"), .Row, GTQTHDNT
 
             If Trim(GTQTHDNT) = vbNullString Then
-                GTQTHDNT = "'0'"
+                GTQTHDNT = "''"
             Else
-                GTQTHDNT = "'" & GTQTHDNT & "'"
+                GTQTHDNT = "'" & TAX_Utilities_Svr_New.Convert(Trim(GTQTHDNT), UNICODE, TCVN) & "'"
             End If
             
             
