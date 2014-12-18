@@ -82,7 +82,7 @@ Public Sub Prepare1()
             If GetAttribute(xmlNode, "Value") <> "" Then
                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                 If (blChon = True And arrDanhsach(6) = "1") Or blChon = False Then
-                    If (Val(arrDanhsach(0)) >= 404 And Left$(Trim(arrDanhsach(1)), 2) = "09") Then
+                    If (Left$(Trim(arrDanhsach(1)), 2) = "09") Then
                         strCombo = strCombo + CPab(arrDanhsach(2), 200) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(3), 10) + CPab(arrDanhsach(4), 10) + CPab(arrDanhsach(5), 1) + Chr$(9)
                         strComboHien = strComboHien + arrDanhsach(2) + Chr$(9)
                         If Trim(arrDanhsach(1)) = "0902" Then
@@ -922,7 +922,7 @@ With fps
 End With
 End Sub
 
-Private Sub filldata()
+Private Sub fillData()
     Dim varTemp         As Variant
     Dim lCol            As Long, lRow As Long
     Dim xmlCellNode     As MSXML.IXMLDOMNodeList
