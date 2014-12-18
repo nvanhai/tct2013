@@ -4634,7 +4634,7 @@ Private Sub SetKieuKy()
         End If
     End If
     
-    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "88" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" _
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "02" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "04" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "71" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "36" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "25" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "96" _
     Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "94" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "68" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "18" Then
 
         If strQuy = "TK_THANG" Then
@@ -5238,7 +5238,6 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
     Dim TinTypeAttribute As MSXML.IXMLDOMNode
 
     With fpSpread1
-
         For Each cNode In nodes.childNodes
 
             If cNode.hasChildNodes Then
@@ -5373,7 +5372,6 @@ Private Sub SetCloneNode(ByRef CloneNode As MSXML.DOMDocument, _
             End If
 
         Next
-
     End With
 
 End Sub
@@ -5956,7 +5954,7 @@ Private Sub KetXuatXML()
                 If xmlPL.hasChildNodes = True And xmlMapPL.hasChildNodes = True Then
                     cellRange = 0
                     .sheet = nodeValIndex + 1
-
+                    
                     For Each xmlSection In xmlMapPL.lastChild.childNodes
 
                         If UCase(xmlSection.nodeName) = "DYNAMIC" Then
@@ -6339,7 +6337,6 @@ Private Sub KetXuatXML()
                     
                     'Insert phu luc vao xml cua to khai
                     xmlTK.getElementsByTagName("PLuc")(0).appendChild xmlPL.lastChild
-           
                 End If
             End If
 
