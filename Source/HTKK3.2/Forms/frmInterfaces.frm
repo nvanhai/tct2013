@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19A5
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C69
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -4745,10 +4745,17 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
         If xmlTK.getElementsByTagName("ttinNhaCCapDVu").length > 0 Then
             xmlTK.getElementsByTagName("ttinNhaCCapDVu")(0).Text = ttinNhaCCapDVu
         End If
-
-        If xmlTK.getElementsByTagName("moTaBMau").length > 0 Then
-            xmlTK.getElementsByTagName("moTaBMau")(0).Text = GetAttribute(GetMessageCellById("0283"), "Msg")
-        End If
+        
+       If moTaBMauXML <> "" Then
+            If xmlTK.getElementsByTagName("moTaBMau").length > 0 Then
+            '    xmlTK.getElementsByTagName("moTaBMau")(0).Text = GetAttribute(GetMessageCellById("0283"), "Msg")
+                xmlTK.getElementsByTagName("moTaBMau")(0).Text = moTaBMauXML
+            End If
+       Else
+            If xmlTK.getElementsByTagName("moTaBMau").length > 0 Then
+                xmlTK.getElementsByTagName("moTaBMau")(0).Text = GetAttribute(GetMessageCellById("0283"), "Msg")
+            End If
+       End If
 
         ' set ma to khai ket xuat XML
         If maTKhaiXML <> "" Then
@@ -5100,6 +5107,7 @@ Private Function getFileName(MaTk As String) As String
 
         If GetAttribute(NodeTenTK, "MapID") = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") Then
             tenTKhaiXML = GetAttribute(NodeTenTK, "TenTK")
+            moTaBMauXML = GetAttribute(NodeTenTK, "MoTaBMau")
             Exit For
         End If
 

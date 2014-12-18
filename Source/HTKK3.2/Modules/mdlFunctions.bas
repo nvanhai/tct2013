@@ -149,6 +149,7 @@ Public pbanTKhaiXML_TK As String
 Public pbanTKhaiXML_TK_KHBS As String
 Public maTKhaiXML As String
 Public tenTKhaiXML As String
+Public moTaBMauXML As String
  
 ' bien xu ly luu datafile cho to khai TAIN_DK
 ' DT dau tho
