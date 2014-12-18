@@ -1320,7 +1320,8 @@ Private Sub checkSheet1()
             
             
             'check mau so hoa don
-           If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Or Trim(strKyHieuHD) <> "" Or Trim(strId) <> "" Then
+           If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Or Trim(strKyHieuHD) <> "" Or Trim(strId) <> "" Or Trim(strTuSo6) <> "" _
+           Or Trim(strDenSo7) <> "" Or Trim(strTuso8) <> "" Or Trim(strDenso9) <> "" Or Trim(strSLXoa) <> "" Or Trim(strSLMat) <> "" Or Trim(strSLhuy) <> "" Or Val(strSLSuDung) <> 0 Then
                 ' Khong phai dong trang
                 iWhiteRow = 0
             End If
@@ -2424,7 +2425,7 @@ Private Sub checkSheet2()
             strMauSoHD_01GTKT = Trim(Mid(strId, 11, 6))
             ' end
 '
-            If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Or Trim(strKyHieuHD) <> "" Or Trim(strId) <> "" Then
+            If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Or Trim(strKyHieuHD) <> "" Or Trim(strId) <> "" Or Trim(strTuSo) <> "" Or Trim(strDenso) <> "" Then
                 ' Khong phai dong trang
                 iWhiteRow = 0
             End If
@@ -3077,7 +3078,7 @@ Private Sub checkSheet3()
             strMauSoHD_01GTKT = Trim(Mid(strId, 11, 6))
             ' end
             
-            If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Or Trim(strKyHieuHD) <> "" Or Trim(strId) <> "" Then
+            If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Or Trim(strKyHieuHD) <> "" Or Trim(strId) <> "" Or Trim(strTuSo) <> "" Or Trim(strDenso) <> "" Then
                 ' Khong phai dong trang
                 iWhiteRow = 0
             End If

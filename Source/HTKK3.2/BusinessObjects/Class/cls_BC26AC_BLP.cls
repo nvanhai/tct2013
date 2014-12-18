@@ -906,7 +906,8 @@ Private Sub checkSheet1()
             
             
             'check mau so hoa don
-           If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Or Trim(strKyHieuHD) <> "" Or Trim(strId) <> "" Then
+           If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Or Trim(strKyHieuHD) <> "" Or Trim(strId) <> "" Or Trim(strTuSo6) <> "" Or Trim(strDenSo7) <> "" _
+           Or Trim(strTuso8) <> "" Or Trim(strDenso9) <> "" Or Trim(strSLXoa) <> "" Or Trim(strSLMat) <> "" Or Trim(strSLhuy) <> "" Or Val(strSLSuDung) <> 0 Then
                 ' Khong phai dong trang
                 iWhiteRow = 0
             End If
