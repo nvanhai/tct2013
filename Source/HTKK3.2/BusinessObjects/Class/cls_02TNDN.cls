@@ -197,17 +197,17 @@ Public Sub Prepare2()
         End If
 
         
-        .Sheet = 2
-        .ActiveSheet = .Sheet
-        .Row = 1
-        .Col = .ColLetterToNumber("C")
-        .CellType = CellTypeButton
-        .TypeButtonTextColor = RGB(0, 0, 255)
-        .TypeButtonColor = &H8000000F
-        .TypeButtonAlign = TypeButtonAlignRight
-        .Font = "Tahoma"
-        .FontSize = 8
-        .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
+'        .Sheet = 2
+'        .ActiveSheet = .Sheet
+'        .Row = 1
+'        .Col = .ColLetterToNumber("C")
+'        .CellType = CellTypeButton
+'        .TypeButtonTextColor = RGB(0, 0, 255)
+'        .TypeButtonColor = &H8000000F
+'        .TypeButtonAlign = TypeButtonAlignRight
+'        .Font = "Tahoma"
+'        .FontSize = 8
+'        .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
     End With
     
 End Sub
@@ -400,18 +400,18 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
         GetCellSpan fps, iCol, iRow
         fps.EventEnabled(EventAllEvents) = False
         If (KeyCode = vbKeyF5) Or (KeyCode = vbKeyF6) Then
-            If .ActiveSheet = 2 Then
-                                i = 1
-                                .Col = .ColLetterToNumber("B")
-                                .Row = 7
-                                Do
-                                     .Text = str(i)
-                                     .Col = .ColLetterToNumber("B")
-                                     .Row = i + 7
-                                     i = i + 1
-                                Loop Until .Text = "aa"
-             End If
-    End If
+'            If .ActiveSheet = 2 Then
+'                                i = 1
+'                                .Col = .ColLetterToNumber("B")
+'                                .Row = 7
+'                                Do
+'                                     .Text = str(i)
+'                                     .Col = .ColLetterToNumber("B")
+'                                     .Row = i + 7
+'                                     i = i + 1
+'                                Loop Until .Text = "aa"
+'             End If
+        End If
   
       fps.EventEnabled(EventAllEvents) = True
     End With
@@ -1302,13 +1302,13 @@ Private Sub UpdateSheets()
                     UpdateCell fps, lCol, lRow, varTemp
                End If
         Next
-        .Sheet = 2
-        mCurrentSheet = .Sheet
-        For Each xmlCellNodeData In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
-           ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-                .GetText lCol, lRow, varTemp
-                UpdateCell fps, lCol, lRow, varTemp
-        Next
+'        .Sheet = 2
+'        mCurrentSheet = .Sheet
+'        For Each xmlCellNodeData In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
+'           ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+'                .GetText lCol, lRow, varTemp
+'                UpdateCell fps, lCol, lRow, varTemp
+'        Next
 
         ' Update lai sheet KHBS
         .Sheet = .SheetCount - 1
@@ -1548,12 +1548,12 @@ Public Sub SetActiveKHBS() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
                 Case "KHBS"
                 blnNullValue = True
                 'Check value of last node in Data
-                Set xmlCellNode = TAX_Utilities_v1.Data(2).getElementsByTagName("Cell") _
-                    (TAX_Utilities_v1.Data(2).getElementsByTagName("Cell").length - 1)
+                Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell") _
+                    (TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length - 1)
                     strValue1 = GetAttribute(xmlCellNode, "Value")
-                 Set xmlCellNode = TAX_Utilities_v1.Data(2).getElementsByTagName("Cell")(1)
+                 Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")(1)
                     strValue2 = GetAttribute(xmlCellNode, "Value")
-                 Set xmlCellNode = TAX_Utilities_v1.Data(2).getElementsByTagName("Cell")(7)
+                 Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")(7)
                     strValue3 = GetAttribute(xmlCellNode, "Value")
           
                     If (Not IsNullValue(strValue1)) Or TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length > 31 Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Then
@@ -1578,7 +1578,7 @@ Public Sub inThongTinDL()
     tuRowDL = 45
     denRowDL = 53
     'TuRow_DenRow_sheet
-    strTuRowDenRowPL = "11_13_2~20_30_3"
+    strTuRowDenRowPL = "20_30_2"
     ' end
 End Sub
 
@@ -1598,23 +1598,23 @@ Dim idx As Integer
 Dim varTemp As Variant
     With fps
         fps.EventEnabled(EventAllEvents) = False
-           If .ActiveSheet = 2 Then
-                   i = 1
-                   .Col = .ColLetterToNumber("B")
-                   .Row = 7
-                   Do
-                        .Text = str(i)
-                        
-                        
-                        .Col = .ColLetterToNumber("B")
-                        .Row = i + 7
-                        i = i + 1
-                   Loop Until .Text = "aa"
-    
-                   .Row = iRow
-                   .Col = iCol
-                   .SetActiveCell iCol, iRow
-           End If
+'           If .ActiveSheet = 2 Then
+'                   i = 1
+'                   .Col = .ColLetterToNumber("B")
+'                   .Row = 7
+'                   Do
+'                        .Text = str(i)
+'
+'
+'                        .Col = .ColLetterToNumber("B")
+'                        .Row = i + 7
+'                        i = i + 1
+'                   Loop Until .Text = "aa"
+'
+'                   .Row = iRow
+'                   .Col = iCol
+'                   .SetActiveCell iCol, iRow
+'           End If
        fps.EventEnabled(EventAllEvents) = True
    End With
 End Sub
