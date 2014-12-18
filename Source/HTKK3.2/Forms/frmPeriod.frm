@@ -526,7 +526,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -6066,10 +6066,10 @@ Private Sub OptBosung_Click()
                 fpSpread1.Visible = False
                 fpsNgaykhaiBS.Visible = True
                 If varMenuId = "73" Then
-                    frmKy.Height = 2050
-                    Frame2.Top = 2100
+                    frmKy.Height = 1800
+                    Frame2.Top = 1600
                     Set fpsNgaykhaiBS.Container = frmKy
-                    fpsNgaykhaiBS.Top = 1550
+                    fpsNgaykhaiBS.Top = 1250
                     fpsNgaykhaiBS.Left = 960
                 'Cap nhat to 02/PHLP
                 ElseIf varMenuId = "03" Or varMenuId = "88" Or varMenuId = "87" Or varMenuId = "97" Or varMenuId = "93" Or varMenuId = "89" Or varMenuId = "77" Then
@@ -6571,7 +6571,7 @@ Private Sub OptChinhthuc_Click()
                 If varMenuId = "73" Then
 '                    frmKy.Height = 1550
 '                    Frame2.Top = 1700
-                    frmKy.Height = 1600
+                    frmKy.Height = 1400
                     Frame2.Top = 1920
                 'Cap nhat to 02/PHLP
                 ElseIf varMenuId = "03" Or varMenuId = "88" Or varMenuId = "93" Or varMenuId = "89" Then
@@ -7860,101 +7860,88 @@ End Sub
 Private Sub SetupLayout02TNDN()
     On Error GoTo ErrorHandle
     
+    Dim m, Y, d As Integer
+    Dim dTem, dtem1, dtem2 As Date
+    Dim varMenuId As String
+    dtem2 = Date
+    dTem = Date
+    dtem1 = DateAdd("M", -1, Date)
+    
     Me.Height = 3285
     Me.Width = 4905
     
-    Set chkTkhaiThang.Container = frmKy
-    chkTkhaiThang.Top = 200
-    chkTkhaiThang.Left = 120
-    chkTkhaiThang.value = 1
-    'chkTkhaiThang.Enabled = False
-    chkTkhaiThang.caption = TAX_Utilities_v1.Convert(GetAttribute(GetMessageCellById("0236"), "Msg"), UNICODE, TCVN)
-    chkTKLanPS.value = 0
-    
-    
-    Set chkTKLanPS.Container = frmKy
-    chkTKLanPS.Top = 200
-    chkTKLanPS.Left = 1800
-    
+
     Set lblNgay.Container = frmKy
-    lblNgay.Top = 570
+    lblNgay.Top = 250
     lblNgay.Left = 120
+    lblNgay.Visible = True
 
     Set txtDay.Container = frmKy
-    txtDay.Top = 540
+    txtDay.Top = 220
     txtDay.Left = 700
+    txtDay.Visible = True
     
-    Set lblQuy.Container = frmKy
-    lblQuy.Top = 570
-    lblQuy.Left = 1360
     
     Set lblMonth.Container = frmKy
-    lblMonth.Top = 570
+    lblMonth.Top = 250
     lblMonth.Left = 1360
 
     Set txtMonth.Container = frmKy
-    txtMonth.Top = 540
+    txtMonth.Top = 220
     txtMonth.Left = 1930
     
-    Set cmbQuy.Container = frmKy
-    cmbQuy.Top = 540
-    cmbQuy.Left = 1930
-    
-    
+       
     Set lblYear.Container = frmKy
-    lblYear.Top = 570
+    lblYear.Top = 250
     lblYear.Left = 2710
     
     Set txtYear.Container = frmKy
-    txtYear.Top = 540
+    txtYear.Top = 220
     txtYear.Left = 3130
-    
-    txtMonth.Visible = False
-    lblMonth.Visible = False
+        
     txtNgayDau.Visible = False
     txtNgayCuoi.Visible = False
     
-    If chkTkhaiThang.value = 1 Then
-        frmKy.Height = 1600
-        
-        Frame2.Top = 1920
-        
-        Set OptChinhthuc.Container = frmKy
-        OptChinhthuc.Top = 900
-        OptChinhthuc.Left = 960
-        
-        Set OptBosung.Container = frmKy
-        OptBosung.Top = 1200
-        OptBosung.Left = 960
-        
-        Set lblSolan.Container = frmKy
-        lblSolan.Top = 1200
-        lblSolan.Left = 3000
-        Set txtSolan.Container = frmKy
-        txtSolan.Top = 1200
-        txtSolan.Left = 3400
-        
-        lblSolan.Visible = False
-        txtSolan.Visible = False
-        ' Set loai TK
-'        frmKy.Height = 2400
-'        Frame2.Top = 2700
-'        Set lblNganhKD.Container = frmKy
-'        lblNganhKD.caption = TAX_Utilities_v1.Convert(GetAttribute(GetMessageCellById("0237"), "Msg"), UNICODE, TCVN)
-'        lblNganhKD.Top = 1600
-'        lblNganhKD.Left = 120
-'
-'
-'        Set cboNganhKD.Container = frmKy
-'        cboNganhKD.Top = 1900
-'        cboNganhKD.Left = 120
-'        ' set gia tri nganh nghe kinh doanh cho combo
-'        SetValueToList "73"
-
-
-    Else
-        frmKy.Height = 1700
+     strLoaiTKThang_PS = "TK_LANPS"
+     'strKieuKy = "D"
+     OptChinhthuc.value = True
+     lblSolan.Visible = False
+     txtSolan.Visible = False
+     fpsNgaykhaiBS.Visible = False
+    
+     frmKy.Height = 1400
+         
+     Set OptChinhthuc.Container = frmKy
+     OptChinhthuc.Top = 600
+     OptChinhthuc.Left = 960
+         
+     Set OptBosung.Container = frmKy
+     OptBosung.Top = 900
+     OptBosung.Left = 960
+         
+     Set lblSolan.Container = frmKy
+     lblSolan.Top = 950
+     lblSolan.Left = 3000
+     Set txtSolan.Container = frmKy
+     txtSolan.Top = 900
+     txtSolan.Left = 3400
+         
+     lblSolan.Visible = False
+     txtSolan.Visible = False
+     
+     m = month(dTem)
+    Y = Year(dTem)
+    d = Day(dTem)
+    txtDay.Text = d
+    txtMonth.Text = m
+    txtYear.Text = Y
+    If Len(txtDay.Text) = 1 Then
+    txtDay.Text = "0" & txtDay.Text
     End If
+    If Len(txtMonth.Text) = 1 Then
+    txtMonth.Text = "0" & txtMonth.Text
+    End If
+                
     strKHBS = "TKCT"
         
     Me.Top = (frmSystem.ScaleHeight - Me.ScaleHeight) / 2
@@ -8457,9 +8444,9 @@ Private Sub SetActiveValueKHBS()
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(1), "Active", 1
 '    ElseIf varMenuId = "95" Then
 '        SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(3), "Active", 1
-    ElseIf varMenuId = "88" Then
+    ElseIf varMenuId = "73" Or varMenuId = "88" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(1), "Active", 1
-    ElseIf varMenuId = "73" Or varMenuId = "71" Then
+    ElseIf varMenuId = "71" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(2), "Active", 1
     ElseIf varMenuId = "85" Or varMenuId = "90" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(1), "Active", 1

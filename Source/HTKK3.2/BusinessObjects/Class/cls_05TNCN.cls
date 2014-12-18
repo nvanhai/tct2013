@@ -4568,6 +4568,11 @@ Private Sub CheckDynamicSheet3()
     Dim vErrMsgMSTTrungNPT As Variant
     Dim CountRow1 As Long, rowDes As Long
     
+    Dim tam As Long
+    Dim flagTrungMSTAB As Integer
+    Dim vErrThuoc05_1_2 As Variant
+    Dim varTemp As Variant
+    Dim countRowCheck As Long
     
     With fps
         .Sheet = .SheetCount
@@ -4587,6 +4592,7 @@ Private Sub CheckDynamicSheet3()
         .GetText .ColLetterToNumber("E"), 87, vErrHuyen
         .GetText .ColLetterToNumber("E"), 88, vErrXa
         .GetText .ColLetterToNumber("E"), 89, vErrMsgMSTTrungNPT
+        .GetText .ColLetterToNumber("E"), 90, vErrThuoc05_1_2
         
         
         .Sheet = 4
@@ -5008,11 +5014,59 @@ Private Sub CheckDynamicSheet3()
 '                    .BackColor = mErrorColor
 '                    iFlagEmpty = 1
 '                End If
+                
+                ' kiem tra MST thuoc 05A, 05B
+                tam = .Row
+                .Sheet = 3 'Bang ke 5B
+                .Row = 22
+                flagTrungMSTAB = 0
+                Do
+                    ' Ma la null
+                        'dhdang check trung MST
+                        .GetText .ColLetterToNumber("D"), .Row, varTemp
+                        If Trim(varTemp) = Trim(vMSTNNT) Then
+                            flagTrungMSTAB = 1
+                        End If
+        
+                    .Row = .Row + 1
+                    .Col = .ColLetterToNumber("B")
+                Loop Until .Text = "aa"
+                
+                If flagTrungMSTAB = 0 Then
+                    .Sheet = 2 'Bang ke 5A
+                    .Row = 22
+                    Do
+                        ' Ma la null
+                            'dhdang check trung MST
+                            .GetText .ColLetterToNumber("E"), .Row, varTemp
+                            If Trim(varTemp) = Trim(vMSTNNT) Then
+                                flagTrungMSTAB = 1
+                            End If
+                        .Row = .Row + 1
+                        .Col = .ColLetterToNumber("B")
+                    Loop Until .Text = "aa"
+                End If
+                
+                .Sheet = 4
+                .Row = tam
+                'neu mst khong thuoc 05B, 05A thi canh bao do
+                If flagTrungMSTAB = 0 Then
+                    .Col = .ColLetterToNumber("E")
+                    .BackColor = mErrorColor
+                    .CellNote = vErrThuoc05_1_2
+                    countRowCheck = countRowCheck + 1
+                End If
+
             End If
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
         Loop Until .Text = "aa"
         
+        If countRowCheck > 0 Then
+            flagTrungMSTAB = 0
+        Else
+            flagTrungMSTAB = 1
+        End If
         
         .Sheet = .SheetCount
         .SetText .ColLetterToNumber("B"), 71, IIf(iFlagHoVaTenNNT = 1, "0", "1")
@@ -5024,6 +5078,7 @@ Private Sub CheckDynamicSheet3()
         .SetText .ColLetterToNumber("B"), 77, IIf(iFlagTuThang = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 78, IIf(iFlagDenThang = 1, "0", "1")
         .SetText .ColLetterToNumber("B"), 79, IIf(iFlagEmpty = 1, "0", "1")
+        .SetText .ColLetterToNumber("B"), 90, IIf(flagTrungMSTAB = 1, "1", "0")
     End With
 End Sub
 
