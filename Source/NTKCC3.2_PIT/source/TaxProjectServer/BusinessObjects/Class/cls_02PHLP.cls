@@ -1255,7 +1255,7 @@ Public Function InsertHDR() As String
             If Trim(MaMuc) = vbNullString Then
                 MaMuc = "''"
             Else
-                MaMuc = "'" & MaMuc & "'"
+                MaMuc = "'" & TAX_Utilities_Svr_New.Convert(Trim(MaMuc), UNICODE, TCVN) & "'"
             End If
             MaMucKHBS = MaMuc
             If Trim(vTemp) <> "" Or Trim(vTemp) <> "''" Then

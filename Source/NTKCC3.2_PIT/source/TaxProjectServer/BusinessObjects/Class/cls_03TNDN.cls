@@ -1012,7 +1012,7 @@ Public Function InsertDTL() As String
         If Trim(maTM) = vbNullString Then
             maTM = "''"
         Else
-            maTM = "'" & maTM & "'"
+            maTM = "'" & TAX_Utilities_Svr_New.Convert(Trim(maTM), UNICODE, TCVN) & "'"
         End If
         .GetText .ColLetterToNumber("F"), 14, madtnt
         If Trim(madtnt) = vbNullString Then
@@ -2193,7 +2193,7 @@ Public Function InsertHDR() As String
     
     
     '08/11/2011
-    Dim MADLT As Variant
+    Dim madlt As Variant
     Dim LanBS As Variant
     Dim SOKKQTCL As Variant
     Dim THUECT18CL As Variant
@@ -2316,11 +2316,11 @@ Public Function InsertHDR() As String
         'set daghi
         DAGHI1 = DaGhi
         'get MADLT
-        .GetText .ColLetterToNumber("F"), 24, MADLT
-        If MADLT = vbNullString Then
-            MADLT = "''"
+        .GetText .ColLetterToNumber("F"), 24, madlt
+        If madlt = vbNullString Then
+            madlt = "''"
         Else
-            MADLT = "'" & MADLT & "'"
+            madlt = "'" & madlt & "'"
         End If
         ' get LANBS
         .GetText .ColLetterToNumber("U"), 6, LanBS
@@ -2411,7 +2411,7 @@ Public Function InsertHDR() As String
         
      End With
 
-    sSQLVal = madtnt & "," & MADLT & "," & ngnop & "," & namQT & "," & kykkhai & "," & KyTTTu & "," & KyTTDen & ", " & _
+    sSQLVal = madtnt & "," & madlt & "," & ngnop & "," & namQT & "," & kykkhai & "," & KyTTTu & "," & KyTTDen & ", " & _
     SOKKQT & "," & SOTHUECT18 & "," & SOTNCN & "," & MaVach & "," & TTHTK & "," & NgNhap & "," & _
     HANNOP & "," & DATHAY & "," & KYLBO & "," & MaMuc & "," & maTM & "," & SHTEP & "," & DaGhi & "," & DAGHI1 & "," & _
     DAGHI2 & "," & AUTO_CAL & "," & LanBS & "," & SOKKQTCL & "," & THUECT18CL & "," & SOTNCNCL & "," & DANHAN & "," & _
@@ -2451,7 +2451,7 @@ Public Function InsertHDR() As String
 '    sSQLVal = sSQLVal & kykkhai & "," & SOKKQT & "," & SOTHUECT18 & "," & SOTNCN & "," & MaVach & "," & TTHTK & "," & HANNOP & "," & KYLBO & "," & MaMuc & "," & maTM & "," & SHTEP & "," & NgNhap & "," & DATHAY & "," & DaGhi & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & "," & LAN_QUET & "," & DANHAN
 '    sSQLVal = sSQLVal & "," & madlt & "," & LanBS & "," & SOKKQTCL & "," & THUECT18CL & "," & SOTNCNCL & "," & MANNKD & "," & TSUAT20 & ",'" & TENNV & "','" & CHUNGCHI & "'," & dn_nho & "," & DN_SX & "," & dn_kk & ",'" & NGANH & "'," & TYLE
 
-    sSQLVal = madtnt & "," & MADLT & "," & ngnop & "," & namQT & "," & kykkhai & "," & KyTTTu & "," & KyTTDen & ", " & _
+    sSQLVal = madtnt & "," & madlt & "," & ngnop & "," & namQT & "," & kykkhai & "," & KyTTTu & "," & KyTTDen & ", " & _
     SOKKQT & "," & SOTHUECT18 & "," & SOTNCN & "," & MaVach & "," & TTHTK & "," & NgNhap & "," & _
     HANNOP & "," & DATHAY & "," & KYLBO & "," & MaMuc & "," & maTM & "," & SHTEP & "," & DaGhi & "," & DAGHI1 & "," & _
     DAGHI2 & "," & AUTO_CAL & "," & LanBS & "," & SOKKQTCL & "," & THUECT18CL & "," & SOTNCNCL & "," & DANHAN & "," & _

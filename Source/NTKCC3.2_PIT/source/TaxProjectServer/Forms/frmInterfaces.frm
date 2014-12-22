@@ -1697,33 +1697,8 @@ End Sub
 Private Sub Command1_Click()
     Dim str1 As String, str2 As String, str3 As String, str4 As String, str5 As String, str6 As String, str7 As String, str8 As String
 
-'02_TNDN_TEST
-''Lan PS
-'str2 = "aa999730100105951   01201500100200100201/0114/06/2006<S02><S></S><S>100000000~48000000~20000000~10000000~3000000~4000000~5000000~6000000~52000000~10~5200000</S><S>~1~C«ng ty XYZ~2222222222~Duy T©n, CÇu GiÊy, Hµ Néi~20~01/01/2014~01/02/2014</S><S>~~NguyÔn Quang A~16/05/2015~1~~16/01/2015~~x</S></S02>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-'str2 = "aa999730100105951   012015001002002002<S02-1><S>C«ng ty ABC~0102030405~DÞch Väng, CÇu GiÊy~Hîp ®ång 23~C«ng ty DXZ~6868686868~Ba §×nh Hµ Néi~Hîp ®ång 87</S></S02-1>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'02_TNDN
 
-''Quy
-'str2 = "aa325733700258793   04201400100100100201/0114/06/2006<S02><S></S><S>100000000~20000000~20000000~0~0~0~0~0~80000000~0~80000000~22~176"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-'str2 = "aa325733700258793   04201400100100200200000~0~17600000~0~0~22~1~0</S><S>1~~~~~~~</S><S>~~Nguyen Lan~09/12/2014~1~~~1052~~</S></S02>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-
-''02_TNDN
-'str2 = "aa999730100105951   04201400100100100201/0114/06/2006<S02><S></S><S>12000000~10400000~200000~300000~400000~500000~6000000~3000000~1600000~15~240000</S><S>1~~Cty TNHH BaHoaToHo~6868686868~Khong Khong thay - Khong khong biet~12~12/02/2014~15/02/2014</S><S>Nguyen Van A~CCHN123456~Tran Van B~18/11/2015~1~~~~x</S></S02>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-'str2 = "aa999730100105951   042014001001002002<S02-1><S>Cty TNHH Giai phap phan mem CMC~0101650999~Duy Tan - Cau Giay - Ha Noi~HDCN1234~Cty TNHH Tinh Van~0102030405~Lang Ha - Dong Da - Ha Noi~HDCN5678</S></S02-1>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-
-''PS
-'str2 = "aa999730100105951   03201400300300100201/0116/01/2015<S02><S></S><S>15000000~7230000~2000000~1000000~500000~700000~3000000~30000~7770000~25~1942500</S><S>~1~Cty TNHH Sao Dat Viet~0102030405~Quan Hoa Cau Giay Ha Noi~10~18/11/2014~20/11/2014</S><S>Nguyen Van A~CCHN123456~Tran Van B~18/11/2015~1~~16/01/2015~~x</S></S02>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-'str2 = "aa999730100105951   032014003003002002<S02-1><S>Cty TNHH Mot thanh vien~0102030405~Duy Tan - Cau Giay - Ha Noi~HDCN123456~Cty TNHH Hai Thanh vien~2222222222~Ba Dinh - Ha Noi~HDCN56789</S></S02-1>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-
-'str2 = "aa999730100105951   03201500000000100101/0114/06/2006<S02><S></S><S>0~0~0~0~0~0~0~0~0~0~0</S><S>~1~~~~~~</S><S>~~~11/12/2016~1~~16/01/2015~~</S></S02>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 
 ''02_TAIN
@@ -2204,13 +2179,13 @@ Private Sub Command1_Click()
 'str2 = "bs999880100105951   0020150050050030034/12/2016~249~300~12000~LHT123456~10/05/2015~10700~10701~10~2000~dsfasdf~0~0~1920</S></SKHBS>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
-'02_NTNN-2015
-str2 = "aa999800100105951   00201500200200100301/0101/01/190001/01/201531/10/2015<S01><S></S><S>HD nha thau so 1~10/05/2015</S><S>3000~78000~75000~Ke tam the~5000~30000~25000~~1000~3001~2001~Nhap y ma~4000~26999~22999~~300~500~200~~100~200~100~Nhap ~200~300~100~400~35~50~15~~10~15~5~20~25~35~10~~265~450~185~Ghi chu~90~185~95~ghi chu~175~265~90~ho ho la la</S><S>Nguyen Van A~02/12/2016~CCHN123456~Tran Van B~1~~</S></S01>"
-Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-str2 = "aa999800100105951   002015002002002003<S01-1><S>CMC Software~Viet Nam~0102030405~~34/2015~Out Source~Cau Giay~12~USD~40000~VND~10000~10~CMC SI~Han Quoc~2222222222~~17/2015~ho ho ~Hoan Kiem~24~Yen~30000~VND~20000~20</S><S>70000~30000~30</S></S01-1>"
-Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-str2 = "aa999800100105951   002015002002003003<S01-2><S>FPT~6868686868~Hitachi~12/2015~Thich thi lam~Ha Noi~24~USD~3000~VND~1~Soft~2222222222~Toyota~16/2015~Lam vi thich~Ha Noi~36~USD~5000~Yen~3000</S><S>8000~3001</S></S01-2>"
-Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+''02_NTNN-2015
+'str2 = "aa999800100105951   00201500200200100301/0101/01/190001/01/201531/10/2015<S01><S></S><S>HD nha thau so 1~10/05/2015</S><S>3000~78000~75000~Ke tam the~5000~30000~25000~~1000~3001~2001~Nhap y ma~4000~26999~22999~~300~500~200~~100~200~100~Nhap ~200~300~100~400~35~50~15~~10~15~5~20~25~35~10~~265~450~185~Ghi chu~90~185~95~ghi chu~175~265~90~ho ho la la</S><S>Nguyen Van A~02/12/2016~CCHN123456~Tran Van B~1~~</S></S01>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'str2 = "aa999800100105951   002015002002002003<S01-1><S>CMC Software~Viet Nam~0102030405~~34/2015~Out Source~Cau Giay~12~USD~40000~VND~10000~10~CMC SI~Han Quoc~2222222222~~17/2015~ho ho ~Hoan Kiem~24~Yen~30000~VND~20000~20</S><S>70000~30000~30</S></S01-1>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'str2 = "aa999800100105951   002015002002003003<S01-2><S>FPT~6868686868~Hitachi~12/2015~Thich thi lam~Ha Noi~24~USD~3000~VND~1~Soft~2222222222~Toyota~16/2015~Lam vi thich~Ha Noi~36~USD~5000~Yen~3000</S><S>8000~3001</S></S01-2>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 ''BS
 'str2 = "bs999800100105951   00201500400400100301/0101/01/190001/01/201531/10/2015<S01><S></S><S>HD nha thau so 1~10/05/2015</S><S>3000~78000~75000~Ke tam the~5000~30000~25000~~1000~3001~2001~Nhap y ma~4000~26999~22999~~700~1000~300~~500~700~200~Nhap ~200~300~100~400~35~50~15~~10~15~5~20~25~35~10~~665~950~285~Ghi chu~490~685~195~ghi chu~175~265~90~ho ho la la</S><S>Nguyen Van A~02/12/2016~CCHN123456~Tran Van B~~1~1</S></S01>"
@@ -4110,23 +4085,12 @@ Private Function LoadForm(ByVal strData As String) As Boolean
     'end
     
     'nshung-edit 16/12/2014
-    'Khong nhan to khai QUY 02_TNDN  co ky ke khai > Q3/2014
-    'va to BS mau cu
-       
+    'Khong nhan to khai QUY 02_TNDN
     If Trim(LoaiTk1) = 73 Then
         If InStr(1, strData, "<S02>") > 0 Then
             If Left(Split(strData, "<S>")(3), 1) = "1" Then
-                If ((Val(Mid(strData, 21, 4)) > 2014 Or (Val(Mid(strData, 21, 4)) = 2014 And Val(Mid(strData, 19, 2)) >= 4))) Then
-                    DisplayMessage "0183", msOKOnly, miInformation
-                    Exit Function
-                End If
-
-                If LoaiTk = "TKBS" Then
-                    If (Val(Mid(strData, 21, 4)) < 2014 Or (Val(Mid(strData, 21, 4)) = 2014 And Val(Mid(strData, 19, 2)) <= 3)) Then
-                        DisplayMessage "0145", msOKOnly, miInformation
-                        Exit Function
-                    End If
-                End If
+                DisplayMessage "0185", msOKOnly, miInformation
+                Exit Function
             End If
         End If
     End If

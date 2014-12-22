@@ -182,4 +182,5 @@
 	<Infor ID="0182" Msg="Mất, cháy, hỏng hoá đơn đã BC sử dụng"/>	
 	<Infor ID="0183" Msg="Không nhận tờ khai từ kỳ kê khai quý 4/2014"/>
 	<Infor ID="0184" Msg="Bạn phải nhập ghi chú mô tả khi bấm chọn lỗi định danh"/>
+	<Infor ID="0185" Msg="Ứng dụng không nhận tờ khai Quý đối với tờ khai mã vạch này "/>
 </Message>
