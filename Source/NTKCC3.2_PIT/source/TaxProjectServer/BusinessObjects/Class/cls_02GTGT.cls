@@ -2353,7 +2353,7 @@ Public Function InsertDTL_PL2() As String
     Dim STT           As Variant
     Dim STT2          As Variant
     Dim STTIN         As Variant
-    Dim GHICHU        As Variant
+    Dim GhiChu        As Variant
     Dim MAPL          As Variant
     Dim i             As Integer, iCol As Long, iRow As Long
     Dim xmlNode       As MSXML.IXMLDOMNode
@@ -2449,10 +2449,10 @@ Public Function InsertDTL_PL2() As String
         STT = 1
         STT2 = 0
         STTIN = "'I'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2477,10 +2477,10 @@ Public Function InsertDTL_PL2() As String
         STT = 2
         STT2 = 0
         STTIN = "'II'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2505,10 +2505,10 @@ Public Function InsertDTL_PL2() As String
         STT = 3
         STT2 = 0
         STTIN = "'III'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2534,10 +2534,10 @@ Public Function InsertDTL_PL2() As String
         STT = 4
         STT2 = 0
         STTIN = "'IV'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2562,10 +2562,10 @@ Public Function InsertDTL_PL2() As String
         STT = 5
         STT2 = 0
         STTIN = "'V'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2661,17 +2661,17 @@ Public Function InsertDTL_PL2() As String
             STT2 = i
             STTIN = "'" & CStr(i) & "'"
                 
-            .GetText .ColLetterToNumber("M"), .Row, GHICHU
+            .GetText .ColLetterToNumber("M"), .Row, GhiChu
 
-            If Trim(GHICHU) = vbNullString Then
-                GHICHU = "''"
+            If Trim(GhiChu) = vbNullString Then
+                GhiChu = "''"
             Else
-                GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
+                GhiChu = "'" & TAX_Utilities_Svr_New.Convert(CStr(GhiChu), UNICODE, TCVN) & "'"
             End If
                 
             MAPL = "'PL02GTKT'"
                 
-            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
             sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -2716,7 +2716,7 @@ Public Function InsertDTL_PL2_1()
     Dim STT           As Variant
     Dim STT2          As Variant
     Dim STTIN         As Variant
-    Dim GHICHU        As Variant
+    Dim GhiChu        As Variant
     Dim MAPL          As Variant
     Dim i             As Integer, iCol As Long, iRow As Long
     Dim xmlNode       As MSXML.IXMLDOMNode
@@ -2811,10 +2811,10 @@ Public Function InsertDTL_PL2_1()
         STT = 1
         STT2 = 0
         STTIN = "'I'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_1GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2839,10 +2839,10 @@ Public Function InsertDTL_PL2_1()
         STT = 2
         STT2 = 0
         STTIN = "'II'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_1GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2867,10 +2867,10 @@ Public Function InsertDTL_PL2_1()
         STT = 3
         STT2 = 0
         STTIN = "'III'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_1GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2895,10 +2895,10 @@ Public Function InsertDTL_PL2_1()
         STT = 4
         STT2 = 0
         STTIN = "'IV'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_1GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -2923,10 +2923,10 @@ Public Function InsertDTL_PL2_1()
         STT = 5
         STT2 = 0
         STTIN = "'V'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_1GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3022,17 +3022,17 @@ Public Function InsertDTL_PL2_1()
             STT2 = i
             STTIN = "'" & CStr(i) & "'"
                 
-            .GetText .ColLetterToNumber("M"), .Row, GHICHU
+            .GetText .ColLetterToNumber("M"), .Row, GhiChu
 
-            If Trim(GHICHU) = vbNullString Then
-                GHICHU = "''"
+            If Trim(GhiChu) = vbNullString Then
+                GhiChu = "''"
             Else
-                GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
+                GhiChu = "'" & TAX_Utilities_Svr_New.Convert(CStr(GhiChu), UNICODE, TCVN) & "'"
             End If
                 
             MAPL = "'PL02_1GTKT'"
                 
-            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
             sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -3077,7 +3077,7 @@ Public Function InsertDTL_PL2_2()
     Dim STT           As Variant
     Dim STT2          As Variant
     Dim STTIN         As Variant
-    Dim GHICHU        As Variant
+    Dim GhiChu        As Variant
     Dim MAPL          As Variant
     Dim i             As Integer, iCol As Long, iRow As Long
     Dim xmlNode       As MSXML.IXMLDOMNode
@@ -3171,10 +3171,10 @@ Public Function InsertDTL_PL2_2()
         STT = 1
         STT2 = 0
         STTIN = "'I'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_2GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3199,10 +3199,10 @@ Public Function InsertDTL_PL2_2()
         STT = 2
         STT2 = 0
         STTIN = "'II'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_2GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3227,10 +3227,10 @@ Public Function InsertDTL_PL2_2()
         STT = 3
         STT2 = 0
         STTIN = "'III'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_2GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3255,10 +3255,10 @@ Public Function InsertDTL_PL2_2()
         STT = 4
         STT2 = 0
         STTIN = "'IV'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_2GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3283,10 +3283,10 @@ Public Function InsertDTL_PL2_2()
         STT = 5
         STT2 = 0
         STTIN = "'V'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_2GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3382,17 +3382,17 @@ Public Function InsertDTL_PL2_2()
             STT2 = i
             STTIN = "'" & CStr(i) & "'"
                 
-            .GetText .ColLetterToNumber("M"), .Row, GHICHU
+            .GetText .ColLetterToNumber("M"), .Row, GhiChu
 
-            If Trim(GHICHU) = vbNullString Then
-                GHICHU = "''"
+            If Trim(GhiChu) = vbNullString Then
+                GhiChu = "''"
             Else
-                GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
+                GhiChu = "'" & TAX_Utilities_Svr_New.Convert(CStr(GhiChu), UNICODE, TCVN) & "'"
             End If
                 
             MAPL = "'PL02_2GTKT'"
                 
-            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
             sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -3436,7 +3436,7 @@ Public Function InsertDTL_PL2_3()
     Dim STT           As Variant
     Dim STT2          As Variant
     Dim STTIN         As Variant
-    Dim GHICHU        As Variant
+    Dim GhiChu        As Variant
     Dim MAPL          As Variant
     Dim i             As Integer, iCol As Long, iRow As Long
     Dim xmlNode       As MSXML.IXMLDOMNode
@@ -3531,10 +3531,10 @@ Public Function InsertDTL_PL2_3()
         STT = 1
         STT2 = 0
         STTIN = "'I'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_3GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3559,10 +3559,10 @@ Public Function InsertDTL_PL2_3()
         STT = 2
         STT2 = 0
         STTIN = "'II'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_3GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3587,10 +3587,10 @@ Public Function InsertDTL_PL2_3()
         STT = 3
         STT2 = 0
         STTIN = "'III'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_3GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3615,10 +3615,10 @@ Public Function InsertDTL_PL2_3()
         STT = 4
         STT2 = 0
         STTIN = "'IV'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_3GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3643,10 +3643,10 @@ Public Function InsertDTL_PL2_3()
         STT = 5
         STT2 = 0
         STTIN = "'V'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_3GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3742,17 +3742,17 @@ Public Function InsertDTL_PL2_3()
             STT2 = i
             STTIN = "'" & CStr(i) & "'"
                 
-            .GetText .ColLetterToNumber("M"), .Row, GHICHU
+            .GetText .ColLetterToNumber("M"), .Row, GhiChu
 
-            If Trim(GHICHU) = vbNullString Then
-                GHICHU = "''"
+            If Trim(GhiChu) = vbNullString Then
+                GhiChu = "''"
             Else
-                GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
+                GhiChu = "'" & TAX_Utilities_Svr_New.Convert(CStr(GhiChu), UNICODE, TCVN) & "'"
             End If
                 
             MAPL = "'PL02_3GTKT'"
                 
-            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
             sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -3796,7 +3796,7 @@ Public Function InsertDTL_PL2_4()
     Dim STT           As Variant
     Dim STT2          As Variant
     Dim STTIN         As Variant
-    Dim GHICHU        As Variant
+    Dim GhiChu        As Variant
     Dim MAPL          As Variant
     Dim i             As Integer, iCol As Long, iRow As Long
     Dim xmlNode       As MSXML.IXMLDOMNode
@@ -3891,10 +3891,10 @@ Public Function InsertDTL_PL2_4()
         STT = 1
         STT2 = 0
         STTIN = "'I'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_4GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3919,10 +3919,10 @@ Public Function InsertDTL_PL2_4()
         STT = 2
         STT2 = 0
         STTIN = "'II'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_4GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3947,10 +3947,10 @@ Public Function InsertDTL_PL2_4()
         STT = 3
         STT2 = 0
         STTIN = "'III'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_4GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -3975,10 +3975,10 @@ Public Function InsertDTL_PL2_4()
         STT = 4
         STT2 = 0
         STTIN = "'IV'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_4GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -4003,10 +4003,10 @@ Public Function InsertDTL_PL2_4()
         STT = 5
         STT2 = 0
         STTIN = "'V'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_4GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -4102,17 +4102,17 @@ Public Function InsertDTL_PL2_4()
             STT2 = i
             STTIN = "'" & CStr(i) & "'"
                 
-            .GetText .ColLetterToNumber("M"), .Row, GHICHU
+            .GetText .ColLetterToNumber("M"), .Row, GhiChu
 
-            If Trim(GHICHU) = vbNullString Then
-                GHICHU = "''"
+            If Trim(GhiChu) = vbNullString Then
+                GhiChu = "''"
             Else
-                GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
+                GhiChu = "'" & TAX_Utilities_Svr_New.Convert(CStr(GhiChu), UNICODE, TCVN) & "'"
             End If
                 
             MAPL = "'PL02_4GTKT'"
                 
-            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
             sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -4156,7 +4156,7 @@ Public Function InsertDTL_PL2_5()
     Dim STT           As Variant
     Dim STT2          As Variant
     Dim STTIN         As Variant
-    Dim GHICHU        As Variant
+    Dim GhiChu        As Variant
     Dim MAPL          As Variant
     Dim i             As Integer, iCol As Long, iRow As Long
     Dim xmlNode       As MSXML.IXMLDOMNode
@@ -4251,10 +4251,10 @@ Public Function InsertDTL_PL2_5()
         STT = 1
         STT2 = 0
         STTIN = "'I'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_5GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -4279,10 +4279,10 @@ Public Function InsertDTL_PL2_5()
         STT = 2
         STT2 = 0
         STTIN = "'II'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_5GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -4307,10 +4307,10 @@ Public Function InsertDTL_PL2_5()
         STT = 3
         STT2 = 0
         STTIN = "'III'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_5GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -4335,10 +4335,10 @@ Public Function InsertDTL_PL2_5()
         STT = 4
         STT2 = 0
         STTIN = "'IV'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_5GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -4363,10 +4363,10 @@ Public Function InsertDTL_PL2_5()
         STT = 5
         STT2 = 0
         STTIN = "'V'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_5GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -4462,17 +4462,17 @@ Public Function InsertDTL_PL2_5()
             STT2 = i
             STTIN = "'" & CStr(i) & "'"
                 
-            .GetText .ColLetterToNumber("M"), .Row, GHICHU
+            .GetText .ColLetterToNumber("M"), .Row, GhiChu
 
-            If Trim(GHICHU) = vbNullString Then
-                GHICHU = "''"
+            If Trim(GhiChu) = vbNullString Then
+                GhiChu = "''"
             Else
-                GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
+                GhiChu = "'" & TAX_Utilities_Svr_New.Convert(CStr(GhiChu), UNICODE, TCVN) & "'"
             End If
                 
             MAPL = "'PL02_5GTKT'"
                 
-            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
             sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -4516,7 +4516,7 @@ Public Function InsertDTL_PL2_6()
     Dim STT           As Variant
     Dim STT2          As Variant
     Dim STTIN         As Variant
-    Dim GHICHU        As Variant
+    Dim GhiChu        As Variant
     Dim MAPL          As Variant
     Dim i             As Integer, iCol As Long, iRow As Long
     Dim xmlNode       As MSXML.IXMLDOMNode
@@ -4611,10 +4611,10 @@ Public Function InsertDTL_PL2_6()
         STT = 1
         STT2 = 0
         STTIN = "'I'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_6GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -4639,10 +4639,10 @@ Public Function InsertDTL_PL2_6()
         STT = 2
         STT2 = 0
         STTIN = "'II'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_6GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -4667,10 +4667,10 @@ Public Function InsertDTL_PL2_6()
         STT = 3
         STT2 = 0
         STTIN = "'III'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_6GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -4695,10 +4695,10 @@ Public Function InsertDTL_PL2_6()
         STT = 4
         STT2 = 0
         STTIN = "'IV'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_6GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -4723,10 +4723,10 @@ Public Function InsertDTL_PL2_6()
         STT = 5
         STT2 = 0
         STTIN = "'V'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_6GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -4822,17 +4822,17 @@ Public Function InsertDTL_PL2_6()
             STT2 = i
             STTIN = "'" & CStr(i) & "'"
                 
-            .GetText .ColLetterToNumber("M"), .Row, GHICHU
+            .GetText .ColLetterToNumber("M"), .Row, GhiChu
 
-            If Trim(GHICHU) = vbNullString Then
-                GHICHU = "''"
+            If Trim(GhiChu) = vbNullString Then
+                GhiChu = "''"
             Else
-                GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
+                GhiChu = "'" & TAX_Utilities_Svr_New.Convert(CStr(GhiChu), UNICODE, TCVN) & "'"
             End If
                 
             MAPL = "'PL02_6GTKT'"
                 
-            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
             sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -4875,7 +4875,7 @@ Public Function InsertDTL_PL2_7()
     Dim STT As Variant
     Dim STT2 As Variant
     Dim STTIN As Variant
-    Dim GHICHU As Variant
+    Dim GhiChu As Variant
     Dim MAPL As Variant
     Dim i As Integer, iCol As Long, iRow As Long
     Dim xmlNode As MSXML.IXMLDOMNode
@@ -4964,10 +4964,10 @@ Public Function InsertDTL_PL2_7()
         STT = 1
         STT2 = 0
         STTIN = "'I'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_7GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -4992,10 +4992,10 @@ Public Function InsertDTL_PL2_7()
         STT = 2
         STT2 = 0
         STTIN = "'II'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_7GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -5020,10 +5020,10 @@ Public Function InsertDTL_PL2_7()
         STT = 3
         STT2 = 0
         STTIN = "'III'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_7GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -5048,10 +5048,10 @@ Public Function InsertDTL_PL2_7()
         STT = 4
         STT2 = 0
         STTIN = "'IV'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_7GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -5076,10 +5076,10 @@ Public Function InsertDTL_PL2_7()
         STT = 5
         STT2 = 0
         STTIN = "'V'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_7GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -5175,17 +5175,17 @@ Public Function InsertDTL_PL2_7()
             STT2 = i
             STTIN = "'" & CStr(i) & "'"
                 
-            .GetText .ColLetterToNumber("M"), .Row, GHICHU
+            .GetText .ColLetterToNumber("M"), .Row, GhiChu
 
-            If Trim(GHICHU) = vbNullString Then
-                GHICHU = "''"
+            If Trim(GhiChu) = vbNullString Then
+                GhiChu = "''"
             Else
-                GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
+                GhiChu = "'" & TAX_Utilities_Svr_New.Convert(CStr(GhiChu), UNICODE, TCVN) & "'"
             End If
                 
             MAPL = "'PL02_7GTKT'"
                 
-            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
             sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -5230,7 +5230,7 @@ Public Function InsertDTL_PL2_8()
     Dim STT           As Variant
     Dim STT2          As Variant
     Dim STTIN         As Variant
-    Dim GHICHU        As Variant
+    Dim GhiChu        As Variant
     Dim MAPL          As Variant
     Dim i             As Integer, iCol As Long, iRow As Long
     Dim xmlNode       As MSXML.IXMLDOMNode
@@ -5325,10 +5325,10 @@ Public Function InsertDTL_PL2_8()
         STT = 1
         STT2 = 0
         STTIN = "'I'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_8GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -5353,10 +5353,10 @@ Public Function InsertDTL_PL2_8()
         STT = 2
         STT2 = 0
         STTIN = "'II'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_8GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -5381,10 +5381,10 @@ Public Function InsertDTL_PL2_8()
         STT = 3
         STT2 = 0
         STTIN = "'III'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_8GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -5409,10 +5409,10 @@ Public Function InsertDTL_PL2_8()
         STT = 4
         STT2 = 0
         STTIN = "'IV'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_8GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -5437,10 +5437,10 @@ Public Function InsertDTL_PL2_8()
         STT = 5
         STT2 = 0
         STTIN = "'V'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_8GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -5536,17 +5536,17 @@ Public Function InsertDTL_PL2_8()
             STT2 = i
             STTIN = "'" & CStr(i) & "'"
                 
-            .GetText .ColLetterToNumber("M"), .Row, GHICHU
+            .GetText .ColLetterToNumber("M"), .Row, GhiChu
 
-            If Trim(GHICHU) = vbNullString Then
-                GHICHU = "''"
+            If Trim(GhiChu) = vbNullString Then
+                GhiChu = "''"
             Else
-                GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
+                GhiChu = "'" & TAX_Utilities_Svr_New.Convert(CStr(GhiChu), UNICODE, TCVN) & "'"
             End If
                 
             MAPL = "'PL02_8GTKT'"
                 
-            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
             sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -5591,7 +5591,7 @@ Public Function InsertDTL_PL2_9()
     Dim STT           As Variant
     Dim STT2          As Variant
     Dim STTIN         As Variant
-    Dim GHICHU        As Variant
+    Dim GhiChu        As Variant
     Dim MAPL          As Variant
     Dim i             As Integer, iCol As Long, iRow As Long
     Dim xmlNode       As MSXML.IXMLDOMNode
@@ -5686,10 +5686,10 @@ Public Function InsertDTL_PL2_9()
         STT = 1
         STT2 = 0
         STTIN = "'I'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_9GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -5714,10 +5714,10 @@ Public Function InsertDTL_PL2_9()
         STT = 2
         STT2 = 0
         STTIN = "'II'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_9GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -5742,10 +5742,10 @@ Public Function InsertDTL_PL2_9()
         STT = 3
         STT2 = 0
         STTIN = "'III'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_9GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -5770,10 +5770,10 @@ Public Function InsertDTL_PL2_9()
         STT = 4
         STT2 = 0
         STTIN = "'IV'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_9GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -5798,10 +5798,10 @@ Public Function InsertDTL_PL2_9()
         STT = 5
         STT2 = 0
         STTIN = "'V'"
-        GHICHU = "''"
+        GhiChu = "''"
         MAPL = "'PL02_9GTKT'"
             
-        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+        sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
         sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -5897,17 +5897,17 @@ Public Function InsertDTL_PL2_9()
             STT2 = i
             STTIN = "'" & CStr(i) & "'"
                 
-            .GetText .ColLetterToNumber("M"), .Row, GHICHU
+            .GetText .ColLetterToNumber("M"), .Row, GhiChu
 
-            If Trim(GHICHU) = vbNullString Then
-                GHICHU = "''"
+            If Trim(GhiChu) = vbNullString Then
+                GhiChu = "''"
             Else
-                GHICHU = "'" & TAX_Utilities_Svr_New.Convert(CStr(GHICHU), UNICODE, TCVN) & "'"
+                GhiChu = "'" & TAX_Utilities_Svr_New.Convert(CStr(GhiChu), UNICODE, TCVN) & "'"
             End If
                 
             MAPL = "'PL02_9GTKT'"
                 
-            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GHICHU & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
+            sSQLVal = matkhai & "," & KYLBO & "," & kykkhai & "," & madtnt & "," & TTHTK & "," & ngnop & "," & LOAIHD & "," & KYHIEU & "," & SOHDON & "," & NGAYPH & "," & HANG & "," & NGMUA & "," & MST & "," & DSOCHUA & "," & THUESUAT & "," & THUEGTGT & "," & mact & "," & STT & "," & STT2 & "," & STTIN & "," & GhiChu & "," & MAPL & "," & LAN_QUET & "," & DANHAN & "," & MAUHD
                        
             sSQL = "INSERT INTO TMP_P2" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -5966,7 +5966,7 @@ Public Function InsertHDR() As String
     Dim DANHAN     As Variant
     Dim LoaiKyKK As Variant
     'MADLT
-    Dim MADLT      As Variant
+    Dim madlt      As Variant
     Dim LanBS      As Variant
     Dim THUECL     As Variant
     Dim DSoCL      As Variant
@@ -5985,7 +5985,17 @@ Public Function InsertHDR() As String
         .Sheet = 1
         'lay ten nhan vien dai ly thue, chung chi hanh nghe
         .GetText .ColLetterToNumber("H"), 60, TENNV
+        'nshung- bo sung
+        If (Trim(TENNV) <> vbNullString) Then
+            TENNV = TAX_Utilities_Svr_New.Convert(Trim(TENNV), UNICODE, TCVN)
+        End If
+        
         .GetText .ColLetterToNumber("H"), 62, CHUNGCHI
+        'nshung- bo sung
+        If (Trim(CHUNGCHI) <> vbNullString) Then
+            CHUNGCHI = TAX_Utilities_Svr_New.Convert(Trim(CHUNGCHI), UNICODE, TCVN)
+        End If
+        
         'set cac chi so
         DSoCL = "0"
         GTTTCL = "0"
@@ -6142,12 +6152,12 @@ Public Function InsertHDR() As String
         HANNOP2 = HANNOP
         
         '       lay MADLT
-        .GetText .ColLetterToNumber("F"), 20, MADLT
+        .GetText .ColLetterToNumber("F"), 20, madlt
 
-        If Trim(MADLT) = vbNullString Then
-            MADLT = "''"
+        If Trim(madlt) = vbNullString Then
+            madlt = "''"
         Else
-            MADLT = "'" & MADLT & "'"
+            madlt = "'" & madlt & "'"
         End If
 
         '       lay so lan bs
@@ -6171,7 +6181,7 @@ Public Function InsertHDR() As String
     sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
     sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & "," & TENDA & ","
     sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & ",'" & NGANH & "'," & DAGHI1 _
-    & "," & DAGHI2 & "," & LAN_QUET & "," & AUTO_CAL & "," & DANHAN & "," & MADLT & "," & LanBS & "," & THUECL _
+    & "," & DAGHI2 & "," & LAN_QUET & "," & AUTO_CAL & "," & DANHAN & "," & madlt & "," & LanBS & "," & THUECL _
     & "," & DSoCL & "," & GTTTCL & "," & NgayPs & "," & MANNKD & ",'" & TENNV & "','" & CHUNGCHI & "'"
 
     sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"

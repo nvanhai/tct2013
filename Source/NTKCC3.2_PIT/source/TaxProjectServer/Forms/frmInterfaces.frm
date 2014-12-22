@@ -1697,9 +1697,9 @@ End Sub
 Private Sub Command1_Click()
     Dim str1 As String, str2 As String, str3 As String, str4 As String, str5 As String, str6 As String, str7 As String, str8 As String
 
-'02_TNDN
-
-
+''02_TNDN - 16/01/2014
+'str2 = "aa999730100105951   03201400500600100101/0114/06/2006<S02><S></S><S>50000000~1130300~200000~30000~500000~400000~100~200~48869700~35~17104395</S><S>~1~Nguyen Sy Hung~0101650999~Nam Hong - Nam Sach - Hai Duong~10~10/10/2014~12/10/2014</S><S>Nguyen Van A~CCHN123456~Tran Van B~22/11/2015~1~~22/11/2014~~</S></S02>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 ''02_TAIN
 'str2 = "aa999770100105951   00201500300400100201/0114/06/2006<S01><S></S><S>010102~Kg~12~0~0~30000~360000~10~200~359790~010103~TÊn~30~0~0~555~16650~50~0~16600</S><S>010202~TÊn~20~10000~15~0"
@@ -2799,14 +2799,11 @@ Private Sub Barcode_Scaned(strBarcode As String)
             End If
         End If
     
-'        'Khong nhan to khai <=Q3/2014 khong cho phep ke khai bo sung: 02/TNDN
-'        If Val(idToKhai) = 73 And LoaiTk = "TKBS" Then
-'            If (Val(Mid(strPrefix, 21, 4)) < 2014 Or (Val(Mid(strPrefix, 21, 4)) = 2014 And Val(Mid(strPrefix, 19, 2)) <= 3)) Then
-'                DisplayMessage "0145", msOKOnly, miInformation
-'                Exit Sub
-'            End If
-'        End If
-
+        ' Chan to khai bo sung cua to 02_NTNN va 04_NTNN
+        If (Val(idToKhai) = 80 Or Val(idToKhai) = 82) And LoaiTk = "TKBS" Then
+            DisplayMessage "0145", msOKOnly, miInformation
+            Exit Sub
+        End If
         
         ' Ket thuc
         

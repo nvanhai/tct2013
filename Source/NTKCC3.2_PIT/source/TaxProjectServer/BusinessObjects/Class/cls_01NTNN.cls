@@ -537,7 +537,7 @@ Public Function InsertDTL() As String
             If (HOPDONG) = vbNullString Then
                 HOPDONG = "''"
             Else
-                HOPDONG = "'" & HOPDONG & "'"
+                HOPDONG = "'" & TAX_Utilities_Svr_New.Convert(Trim(HOPDONG), UNICODE, TCVN) & "'"
             End If
 
             ' so tien thanh toan
@@ -1194,7 +1194,7 @@ Public Function InsertHDR() As String
     Dim MG         As Variant
     Dim THUETN     As Variant
     Dim ROWNUM     As Variant
-    Dim MADLT      As Variant
+    Dim madlt      As Variant
     Dim LanBS      As Variant
     Dim solanBS    As Variant
     Dim TTHTK1     As Variant
@@ -1220,15 +1220,24 @@ Public Function InsertHDR() As String
     With fps
         .Sheet = 1
         .GetText .ColLetterToNumber("T"), .MaxRows - 4, TENNV
+        'nshung- bo sung
+        If (Trim(TENNV) <> vbNullString) Then
+            TENNV = TAX_Utilities_Svr_New.Convert(Trim(TENNV), UNICODE, TCVN)
+        End If
+        
         .GetText .ColLetterToNumber("T"), .MaxRows - 2, CHUNGCHI
+        'nshung- bo sung
+        If (Trim(CHUNGCHI) <> vbNullString) Then
+            CHUNGCHI = TAX_Utilities_Svr_New.Convert(Trim(CHUNGCHI), UNICODE, TCVN)
+        End If
 
         ' ma dai ly thue
-        .GetText .ColLetterToNumber("H"), 15, MADLT
+        .GetText .ColLetterToNumber("H"), 15, madlt
 
-        If Trim(MADLT) = vbNullString Then
-            MADLT = "''"
+        If Trim(madlt) = vbNullString Then
+            madlt = "''"
         Else
-            MADLT = "'" & MADLT & "'"
+            madlt = "'" & madlt & "'"
         End If
 
         'trang thai to khai
@@ -1381,7 +1390,7 @@ Public Function InsertHDR() As String
         sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & kykkhai & ", "
         sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
         sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
-        sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & MADLT & "," & LanBS & "," & THUECL & "," & NgayPs & "," & DANHAN & "," & DSoCL & "," & GTTTCL & "," & MANNKD & ",'" & TENNV & "','" & CHUNGCHI & "'"
+        sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & madlt & "," & LanBS & "," & THUECL & "," & NgayPs & "," & DANHAN & "," & DSoCL & "," & GTTTCL & "," & MANNKD & ",'" & TENNV & "','" & CHUNGCHI & "'"
 
         sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -1406,7 +1415,7 @@ Public Function InsertHDR() As String
         sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & kykkhai & ", "
         sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
         sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
-        sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & MADLT & "," & LanBS & "," & THUECL & "," & NgayPs & "," & DANHAN & "," & DSoCL & "," & GTTTCL & "," & MANNKD & ",'" & TENNV & "','" & CHUNGCHI & "'"
+        sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & madlt & "," & LanBS & "," & THUECL & "," & NgayPs & "," & DANHAN & "," & DSoCL & "," & GTTTCL & "," & MANNKD & ",'" & TENNV & "','" & CHUNGCHI & "'"
            
         sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
