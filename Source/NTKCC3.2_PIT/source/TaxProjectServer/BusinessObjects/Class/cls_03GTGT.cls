@@ -2228,7 +2228,7 @@ Public Function InsertDTL_KHBS() As String
         End If
                 
         MACT3 = "'2'"
-        STT = 1
+        STT = 3
         STT2 = i
         STTIN = "'" & CStr(i) & "'"
                 
@@ -2313,7 +2313,7 @@ Public Function InsertHDR() As String
     Dim DANHAN     As Variant
     
     'MADLT
-    Dim MADLT      As Variant
+    Dim madlt      As Variant
     Dim LanBS      As Variant
     Dim THUECL     As Variant
     Dim DSoCL      As Variant
@@ -2331,7 +2331,17 @@ Public Function InsertHDR() As String
         .Sheet = 1
         'lay ten nhan vien dai ly thue, chung chi hanh nghe
         .GetText .ColLetterToNumber("H"), 56, TENNV
+        'nshung- bo sung
+        If (Trim(TENNV) <> vbNullString) Then
+            TENNV = TAX_Utilities_Svr_New.Convert(Trim(TENNV), UNICODE, TCVN)
+        End If
+        
         .GetText .ColLetterToNumber("H"), 58, CHUNGCHI
+        'nshung- bo sung
+        If (Trim(CHUNGCHI) <> vbNullString) Then
+            CHUNGCHI = TAX_Utilities_Svr_New.Convert(Trim(CHUNGCHI), UNICODE, TCVN)
+        End If
+        
         'set DAGHI2 theo chk loi dinh danh
         .Col = .ColLetterToNumber("E")
         .Row = 36
@@ -2407,7 +2417,7 @@ Public Function InsertHDR() As String
         If Trim(SHTEP) = vbNullString Then
             SHTEP = "''"
         Else
-            SHTEP = "'" & SHTEP & "'"
+            SHTEP = "'" & TAX_Utilities_Svr_New.Convert(Trim(SHTEP), UNICODE, TCVN) & "'"
         End If
 
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
@@ -2475,12 +2485,12 @@ Public Function InsertHDR() As String
         TENDA = "''"
         
         '       lay MADLT
-        .GetText .ColLetterToNumber("F"), 20, MADLT
+        .GetText .ColLetterToNumber("F"), 20, madlt
 
-        If Trim(MADLT) = vbNullString Then
-            MADLT = "''"
+        If Trim(madlt) = vbNullString Then
+            madlt = "''"
         Else
-            MADLT = "'" & MADLT & "'"
+            madlt = "'" & madlt & "'"
         End If
 
         '       lay so lan bs
@@ -2503,7 +2513,7 @@ Public Function InsertHDR() As String
     sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & kykkhai & ", "
     sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
     sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ","
-    sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & ",'" & NGANH & "'," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & "," & LAN_QUET & "," & DANHAN & "," & MADLT & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & NgayPs & "," & MANNKD & ",'" & TENNV & "','" & CHUNGCHI & "'"
+    sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & ",'" & NGANH & "'," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & "," & LAN_QUET & "," & DANHAN & "," & madlt & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & NgayPs & "," & MANNKD & ",'" & TENNV & "','" & CHUNGCHI & "'"
     
     sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
