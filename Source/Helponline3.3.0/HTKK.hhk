@@ -598,9 +598,13 @@
 				<param name="Local" value="HTKK\02BVMT.htm">
 				</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="H&shy;&iacute;ng d&Eacute;n k&ordf; khai Ph&Yacute; x&die;ng d&Ccedil;u">
-				<param name="Local" value="HTKK\ThuePHXD.htm">
+				<param name="Name" value="H&shy;&iacute;ng d&Eacute;n k&ordf; khai Tê khai phÝ, lÖ phÝ (mÉu sè 01/PHLP)">
+				<param name="Local" value="HTKK\85.htm">
 				</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="H&shy;&iacute;ng d&Eacute;n k&ordf; khai Tê khai phÝ, lÖ phÝ (mÉu sè 02/PHLP)">
+				<param name="Local" value="HTKK\88.htm">
+				</OBJECT>			
 	<LI> <OBJECT type="text/sitemap">
 				<param name="Name" value="H&shy;&iacute;ng d&Eacute;n l&Euml;p h&aring; s&not; khai thu&Otilde; 01/NTNN">
 				<param name="Local" value="HTKK\70100.htm">
