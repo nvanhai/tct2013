@@ -11530,6 +11530,12 @@ Private Sub fpSpread1_KeyDown(KeyCode As Integer, Shift As Integer)
     End If
 End Sub
 
+Private Sub fpSpread1_KeyPress(KeyAscii As Integer)
+    If KeyAscii = 126 Then
+        KeyAscii = 0
+    End If
+End Sub
+
 ''' fpSpread1_KeyUp description
 ''' Event fpSpread1_KeyUp
 ''' allow user insert new row on grid
