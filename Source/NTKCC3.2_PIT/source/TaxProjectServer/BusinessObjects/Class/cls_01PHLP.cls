@@ -1217,7 +1217,7 @@ Public Function InsertHDR() As String
         If Trim(MABPQL) = vbNullString Then
             MABPQL = "''"
         Else
-            MABPQL = "'" & MABPQL & "'"
+            MABPQL = "'" & TAX_Utilities_Svr_New.Convert(Trim(MABPQL), UNICODE, TCVN) & "'"
         End If
         
         

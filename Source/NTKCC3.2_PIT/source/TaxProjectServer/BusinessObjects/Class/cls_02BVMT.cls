@@ -1242,14 +1242,14 @@ Public Function InsertHDR() As String
          If Trim(TENNV) = vbNullString Then
             TENNV = "''"
         Else
-            TENNV = "'" & TAX_Utilities_Svr_New.Convert(CStr(TENNV), UNICODE, TCVN) & "'"
+            TENNV = "'" & TAX_Utilities_Svr_New.Convert(Trim(TENNV), UNICODE, TCVN) & "'"
         End If
         
         .GetText .ColLetterToNumber("G"), .MaxRows - 2, CHUNGCHI
         If Trim(CHUNGCHI) = vbNullString Then
             CHUNGCHI = "''"
         Else
-            CHUNGCHI = "'" & TAX_Utilities_Svr_New.Convert(CStr(CHUNGCHI), UNICODE, TCVN) & "'"
+            CHUNGCHI = "'" & TAX_Utilities_Svr_New.Convert(Trim(CHUNGCHI), UNICODE, TCVN) & "'"
         End If
         
         'Doan nay tinh ThueTKy theo maTM
