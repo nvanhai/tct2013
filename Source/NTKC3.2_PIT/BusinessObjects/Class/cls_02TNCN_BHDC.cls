@@ -569,9 +569,12 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
         .GetText .ColLetterToNumber("N"), 76, sDATE_TO
     End With
     
-    strSQL = strSQL & "To_date('" & "01/" & sDATE_FROM & "','dd/mm/yyyy'),"
-    dDate = Format(CDate("01/" & sDATE_TO), "dd/mm/yyyy")
-    dDate = DateAdd("m", 1, dDate)
+    'SET KY KE KHAI
+    'tu ngay
+    dDate = DateSerial(CInt(TAX_Utilities_Srv_New.Year), 1, 1)
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    'den ngay
+    dDate = DateAdd("m", 12, dDate)
     dDate = DateAdd("d", -1, dDate)
     strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     
@@ -598,7 +601,14 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
     strSQL = strSQL & "'" & IIf(Val(vCO_GTRINH_02B) = 1, "Y", "") & "',"
     strSQL = strSQL & "'" & IIf(Val(vCO_GTRINH_02C) = 1, "Y", "") & "',"
     strSQL = strSQL & "'','','',"
-    strSQL = strSQL & "null,null,"
+    
+    'strSQL = strSQL & "null,null,"
+    '//SET KY QUYET TOAN
+    strSQL = strSQL & "To_date('" & "01/" & sDATE_FROM & "','dd/mm/yyyy'),"
+    dDate = Format(CDate("01/" & sDATE_TO), "dd/mm/yyyy")
+    dDate = DateAdd("m", 1, dDate)
+    dDate = DateAdd("d", -1, dDate)
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     
     With fps
 

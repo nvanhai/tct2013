@@ -669,16 +669,14 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("N"), 49, sDATE_TO
     End With
     
-    strSQL = strSQL & "To_date('" & "01/" & sDATE_FROM & "','dd/mm/yyyy'),"
-    dDate = Format(CDate("01/" & sDATE_TO), "dd/mm/yyyy")
-    dDate = DateAdd("m", 1, dDate)
+    'SET KY KE KHAI
+    'tu ngay
+    dDate = DateSerial(CInt(TAX_Utilities_Srv_New.Year), 1, 1)
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    'den ngay
+    dDate = DateAdd("m", 12, dDate)
     dDate = DateAdd("d", -1, dDate)
     strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-'    dDate = dNgayDauKy
-'    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
-'    dDate = DateAdd("m", 12, dDate)
-'    dDate = DateAdd("d", -1, dDate)
-'    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
     strSQL = strSQL & "'" & vNGUOI_CAP_NHAT & "',"
@@ -691,7 +689,16 @@ On Error GoTo ErrHandle
     
     'strMaPhongXuLy = larrid(fps.TypeComboBoxCurSel)
     strSQL = strSQL & "'','','','','',"
-    strSQL = strSQL & "'',null,null,"
+    'strSQL = strSQL & "'',null,null,"
+    strSQL = strSQL & "'',"
+    
+    '//SET KY QUYET TOAN
+    strSQL = strSQL & "To_date('" & "01/" & sDATE_FROM & "','dd/mm/yyyy'),"
+    dDate = Format(CDate("01/" & sDATE_TO), "dd/mm/yyyy")
+    dDate = DateAdd("m", 1, dDate)
+    dDate = DateAdd("d", -1, dDate)
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    
     With fps
         For i = 1 To lSoPhongXL
             If vPHONG_XU_LY = TAX_Utilities_Srv_New.Convert(larrPhongXuLy(i), UNICODE, TCVN) Then
