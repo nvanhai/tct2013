@@ -1082,7 +1082,15 @@ On Error GoTo ErrHandle
             End If
         Next intCtrl
     'ElseIf (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Or (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "41" And isDLT = False)) And intCurrPage = 1 Then
-    ElseIf (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59") And intCurrPage = 1 Then
+    ElseIf (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "42" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "43") And intCurrPage = 1 Then
+'   Print right align
+        For intCtrl = intNumberOfBarcode - 1 To 0 Step -1
+            If intStart + intCtrl <= UBound(arrStrValue) And IsPrintedPage(intCurrPage) Then
+                PrintNormalBarcode arrStrValue(intStart + intCtrl), lXOffset, lYOffset, lXSize, lYSize
+                lXOffset = lXOffset - lXSize - lXRange
+            End If
+        Next intCtrl
+    ElseIf (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "59" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "26") And ((isDLT = False And intCurrPage = 1) Or (isDLT = True And (intCurrPage = 1 Or intCurrPage = 2))) Then
 '   Print right align
         For intCtrl = intNumberOfBarcode - 1 To 0 Step -1
             If intStart + intCtrl <= UBound(arrStrValue) And IsPrintedPage(intCurrPage) Then
@@ -1091,7 +1099,7 @@ On Error GoTo ErrHandle
             End If
         Next intCtrl
     'ElseIf (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "17" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "41" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "42" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "43" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "59") Then
-    ElseIf (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "17" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "42" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "43" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "59") Then
+    ElseIf (GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "17" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "42" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "43" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "59" And GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "26") Then
 '   Print right align
         For intCtrl = intNumberOfBarcode - 1 To 0 Step -1
             If intStart + intCtrl <= UBound(arrStrValue) And IsPrintedPage(intCurrPage) Then
