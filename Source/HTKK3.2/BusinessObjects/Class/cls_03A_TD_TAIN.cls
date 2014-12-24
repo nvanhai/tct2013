@@ -73,7 +73,17 @@ Public Sub Prepare1()
     Dim valueDefault As String, textDefault As String, thuesuatDefault As String, temp As String
     
     blChon = False
-    strDataFileName = GetCatalogueFileName(blChon)
+    'strDataFileName = GetCatalogueFileName(blChon)
+    If TAX_Utilities_v1.Year = "2008" Then
+        strDataFileName = Replace(GetCatalogueTemplateFile, "Catalogue_052008_01", "CatalogueQTTN_2008_01")
+    ElseIf TAX_Utilities_v1.Year = "2010" Then
+        strDataFileName = Replace(GetCatalogueTemplateFile, "Catalogue_072010_01", "CatalogueQTTN_2010_01")
+    ElseIf TAX_Utilities_v1.Year = "2014" Then
+        strDataFileName = Replace(GetCatalogueTemplateFile, "Catalogue_022014_01", "CatalogueQTTN_2014_01")
+    Else
+        strDataFileName = GetCatalogueFileName(blChon)
+    End If
+    
     
     arrTaiNguyen.RemoveAll
     If xmlDomData.Load(strDataFileName) Then
