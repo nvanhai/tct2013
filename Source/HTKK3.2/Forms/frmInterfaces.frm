@@ -6155,7 +6155,6 @@ Private Sub KetXuatXML()
 
                                         Else
                                             xmlCellTKNode.Text = .Text
-                                            Debug.Print .Text & " Row " & .Row & " Col " & .Col
                                         End If
                                     End If
                                 End If
