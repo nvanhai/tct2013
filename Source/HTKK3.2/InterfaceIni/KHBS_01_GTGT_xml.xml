@@ -32,7 +32,7 @@
 		<ct6>BH_18</ct6>
 	</Static>
 	<Static GroupName="PhatChamNop">
-		<soNgayNopCham>BE_20</soNgayNopCham>
+		<soNgayNopCham FixLoi="1">BE_20</soNgayNopCham>
 		<soTienPhatNopCham>BE_21</soTienPhatNopCham>
 	</Static>
 	<Static GroupName="NOIDUNGGIAITHICH">

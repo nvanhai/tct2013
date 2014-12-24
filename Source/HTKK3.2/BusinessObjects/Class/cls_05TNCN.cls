@@ -4998,22 +4998,38 @@ Private Sub CheckDynamicSheet3()
                 End If
                 
                 
-'                ' bat buoc nhap thong so
-'                If Trim(vSo) = "" And Trim$(vSoCMNDNPT) = "" And Trim$(vMSTNPT) = "" Then
-'                    .Col = .ColLetterToNumber("N")
-'                    .CellNote = vErrEmpty
-'                    .BackColor = mErrorColor
-'                    iFlagEmpty = 1
-'                End If
+                ' bat buoc nhap thong so neu <= 15 t
+                If Trim(vSo) = "" Then
+                    If Format_ddmmyyyy1(CStr(vNgaySinhNPT)) <> "" Then
+                        If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) <= 15 Then
+                            .Col = .ColLetterToNumber("N")
+                            .CellNote = vErrEmpty
+                            .BackColor = mErrorColor
+                            iFlagEmpty = 1
+                        End If
+                     End If
+                Else
+                    .Col = .ColLetterToNumber("N")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
                 
                 
-'                ' bat buoc nhap thong quyen so
-'                If Trim(vSo) = "" And Trim$(vSoCMNDNPT) = "" And Trim$(vMSTNPT) = "" Then
-'                    .Col = .ColLetterToNumber("O")
-'                    .CellNote = vErrEmpty
-'                    .BackColor = mErrorColor
-'                    iFlagEmpty = 1
-'                End If
+                ' bat buoc nhap thong quyen so neu <= 15 t
+                If Trim(vQuyenSo) = "" Then
+                    If Format_ddmmyyyy1(CStr(vNgaySinhNPT)) <> "" Then
+                        If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) <= 15 Then
+                            .Col = .ColLetterToNumber("O")
+                            .CellNote = vErrEmpty
+                            .BackColor = mErrorColor
+                            iFlagEmpty = 1
+                        End If
+                    End If
+                Else
+                    .Col = .ColLetterToNumber("O")
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
                 
                 ' kiem tra MST thuoc 05A, 05B
                 tam = .Row

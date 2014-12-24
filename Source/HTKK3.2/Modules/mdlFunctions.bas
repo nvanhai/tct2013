@@ -3547,6 +3547,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                     .SetText .ColLetterToNumber("E"), 24, hannop
                     .SetText .ColLetterToNumber("BG"), 5, ngayKHBS
                     .SetText .ColLetterToNumber("BD"), 5, songaynopcham
+                
                     
                     'dhdang sua load tk BS da có du lieu se ko tinh lai theo cong thuc nua
                     Dim lCol_temp As Long

@@ -6123,7 +6123,11 @@ Private Sub KetXuatXML()
                                     Else
 
                                         If .CellType = CellTypeNumber Then
-                                            xmlCellTKNode.Text = .value
+                                            If GetAttribute(xmlCellNode, "FixLoi") = "1" Then
+                                                xmlCellTKNode.Text = Replace(Replace(.Text, ".", ""), ",", ".")
+                                            Else
+                                                xmlCellTKNode.Text = .value
+                                            End If
                                         ElseIf .CellType = CellTypePic Then
                                             xmlCellTKNode.Attributes.removeNamedItem "xsi:nil"
 
@@ -6151,6 +6155,7 @@ Private Sub KetXuatXML()
 
                                         Else
                                             xmlCellTKNode.Text = .Text
+                                            Debug.Print .Text & " Row " & .Row & " Col " & .Col
                                         End If
                                     End If
                                 End If
