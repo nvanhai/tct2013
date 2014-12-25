@@ -240,7 +240,7 @@
 	</Menu>
 	<Menu ID="26" PopID="101" ParentID="101_10" Caption="Tờ khai 02/KK-BHĐC" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\02_TNCN_BHDC.xls" ReportTemplate="..\ReportTemplates\excel\02_TNCN_BHDC.xls" CatalogueID="01" Class="TAX_Business_v1.cls_02BHDC_TNCN">
-			<Sheet ID="02" Caption="02KK-BH" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_TNCN_BHDC" InterfaceIni="..\InterfaceIni\02_TNCN_BHDC.xml"/>
+			<Sheet ID="02" Caption="02KK-BHĐC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_TNCN_BHDC" InterfaceIni="..\InterfaceIni\02_TNCN_BHDC.xml"/>
 			<Sheet ID="02-1" Caption="02-1BK-BH" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_1_TNCN_BHDC" InterfaceIni="..\InterfaceIni\02_1_TNCN_BHDC.xml"/>
 			<Sheet ID="02-2" Caption="02-2BK-ĐC" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_2_TNCN_BHDC" InterfaceIni="..\InterfaceIni\02_2_TNCN_BHDC.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
