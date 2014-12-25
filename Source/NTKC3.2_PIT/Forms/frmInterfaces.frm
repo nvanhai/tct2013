@@ -1989,7 +1989,8 @@ Private Sub Barcode_Scaned(strBarcode As String)
         'If isIHTKK = True Then
         idToKhai = Mid(strPrefix, 4, 2)
 
-        If Trim(idToKhai) = "59" Or Trim(idToKhai) = "43" Or Trim(idToKhai) = "42" Then
+        'If Trim(idToKhai) = "59" Or Trim(idToKhai) = "43" Or Trim(idToKhai) = "42" Then
+        If Trim(idToKhai) = "43" Or Trim(idToKhai) = "42" Then
             strBarcodeCount = Left(strBarcodeCount, Len(strBarcodeCount) - 1) & "1"
         End If
 
