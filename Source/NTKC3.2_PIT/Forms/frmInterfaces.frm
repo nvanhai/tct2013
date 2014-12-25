@@ -1468,7 +1468,7 @@ Private Sub Command1_Click()
 
 '//### CHECK KY KE KHAI,QT cho cac to QT ###
 '//03/TNDN
-'str2 = "aa999032100343639   00201400200300100301/0114/06/200601/01/201421/12/2014<S03><S></S><S>x~~~E~11.21</S><S>0~0~0~0~0~0~0~0~0~0"
+'str2 = "aa999032100343639   00201400200300100301/0114/06/200603/01/201421/12/2014<S03><S></S><S>x~~~E~11.21</S><S>0~0~0~0~0~0~0~0~0~0"
 'Barcode_Scaned str2
 'str2 = "aa999032100343639   002014002003002003~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~0"
 'Barcode_Scaned str2
@@ -1487,6 +1487,12 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 'str2 = "aa999802100343639   00201300500700100101/0101/01/190001/01/201414/02/2014<S01><S>2222222222</S><S>~</S><S>0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~</S><S>NGUYEN VAN A~22/12/2014~ICT001~~1~~</S></S01>"
+'Barcode_Scaned str2
+
+'str2 = "aa999822100343639   00201300500600100101/0101/01/190001/01/201412/12/2014<S01><S>2222222222</S><S>~</S><S>0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~</S><S>NGUYEN VAN A~~ICT001~24/12/2014~1~~</S></S01>"
+'Barcode_Scaned str2
+
+'str2 = "aa999822100343639   00201300500600100101/0101/01/190001/01/201412/11/2014<S01><S>2222222222</S><S>~</S><S>0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~~0~0~0~</S><S>NGUYEN VAN A~~ICT001~24/12/2014~1~~</S></S01>"
 'Barcode_Scaned str2
 
 '//02/TAIN
@@ -1577,10 +1583,53 @@ Private Sub Command1_Click()
 'str2 = "aa999892100343639   0020140030030020020~0~0~0~0~0</S><S>NGUYEN VAN A~ICT001~~23/12/2014~1~~2000~05/2014~02/2015</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa999892100343639   00201400300300100201/0101/01/1900<S01><S>2222222222</S><S>1~0~0~~~x</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
+'str2 = "aa999892100343639   00201400300300100201/0101/01/1900<S01><S>2222222222</S><S>1~0~0~~~x</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa999892100343639   0020140030030020020~0~0~0~0~0</S><S>NGUYEN VAN A~ICT001~~23/12/2014~1~~2000~05/2014~04/2015</S></S01>"
+'Barcode_Scaned str2
+
+'//06/TNCN
+'str2 = "aa999592100343639   00201400600600100201/0101/01/2010<S06><S>2222222222</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0</S>"
+'Barcode_Scaned str2
+'str2 = "aa999592100343639   002014006006002002<S>~24/12/2014~NGUYEN VAN A~ICT001~1~~02/2014~01/2015</S></S06>"
+'Barcode_Scaned str2
+
+str2 = "aa999592100343639   00201400100100100201/0101/01/2010<S06><S>2222222222</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0</"
 Barcode_Scaned str2
-str2 = "aa999892100343639   0020140030030020020~0~0~0~0~0</S><S>NGUYEN VAN A~ICT001~~23/12/2014~1~~2000~05/2014~04/2015</S></S01>"
+str2 = "aa999592100343639   002014001001002002S><S>~25/12/2014~NGUYEN VAN A~ICT001~1~~01/2014~12/2014</S></S06>"
 Barcode_Scaned str2
+
+'str2 = "aa999772100343639   00201400100100100201/0114/06/2006<S01><S>2222222222</S><S>0902~KWh~0~0~4~0~0~0~0~0</S><S>0902a~KWh~0"
+'Barcode_Scaned str2
+'str2 = "aa999772100343639   002014001001002002~0~2~0~0~0~0~0</S><S>~24/12/2014~NGUYEN VAN A~ICT001~1~~01/2014~12/2014</S></S01>"
+'Barcode_Scaned str2
+
+'str2 = "aa999972100343639   00201300300300100301/0114/06/2006<S03><S>2222222222</S><S>09040101~3</S><S>Son La~0102030405~150~1200~5400~1000~4400~500~3900~Song DA~2222222222~240~130"
+'Barcode_Scaned str2
+'str2 = "aa999972100343639   0020130030030020030~9360~700~8660~400~8260</S><S>14760~1700~13060~900~12160</S><S>NGUYEN VAN A~ICT001~NGUOI KY~18/09/2014~1~~~01/2013~12/2013</S></S03>"
+'Barcode_Scaned str2
+'str2 = "aa999972100343639   002013003003003003<S03-1><S>001~ctieu1~0102030405~100~100~~x~001-1~chi tieu 2~2222222222~70~70~10100~~001-2~chi tieu 3~6868686868~30~30~10300~</S><S>90</S></S03-1>"
+'Barcode_Scaned str2
+
+'str2 = "aa999962100343639   11201400200200100101/0114/06/2006<S03><S>2222222222</S><S>09030202~5</S><S>~~0~0~0~0~0</S><S>0~0~0</S><S>NGUYEN VAN A~ICT001~~24/12/2014~1~~~0</S></S03>"
+'Barcode_Scaned str2
+
+'str2 = "aa999412100343639   00201400000000100201/0101/01/2009<S09><S>2222222222</S><S>~ </S><S>0~0~0~0~0~108000000~108000000~0~0~0~0~0~0~0"
+'Barcode_Scaned str2
+'str2 = "aa999412100343639   002014000000002002~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~24/12/2014~NGUYEN VAN A~ICT001~01/2014~12/2014~1~</S></S09>"
+'Barcode_Scaned str2
+
+'str2 = "aa999412100343639   00201400000000100201/0101/01/2009<S09><S>2222222222</S><S>~ </S><S>0~0~0~0~0~108000000~108000000~0~0~0~0~0~0~0"
+'Barcode_Scaned str2
+'str2 = "aa999412100343639   002014000000002002~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~24/12/2014~NGUYEN VAN A~ICT001~01/2014~09/2014~1~</S></S09>"
+'Barcode_Scaned str2
+
+'02/KK-XS
+'str2 = "aa999432100343639   00201400100100100201/0101/01/2009<S02><S>2222222222</S><S>0~0~0~0~0</S><S>~24/12/2014~NGUYEN VAN A~ICT001~1~~01/2014~10/2014</S></S02>"
+'Barcode_Scaned str2
+
+'str2 = "aa999432100343639   00201400100100100201/0101/01/2009<S02><S>2222222222</S><S>0~0~0~0~0</S><S>~24/12/2014~NGUYEN VAN A~ICT001~1~~01/2014~11/2014</S></S02>"
+'Barcode_Scaned str2
 
 End Sub
 
@@ -2193,7 +2242,7 @@ Private Sub Barcode_Scaned(strBarcode As String)
         End If
         '#Khong nhan to bo sung 02/NTNN, 04/NTNN (Test tich hop GD3)
         If ((Trim(idToKhai) = "80" Or Trim$(idToKhai) = "82") And UCase(strLoaiToKhai) = "BS") Then
-            DisplayMessage "0142", msOKOnly, miInformation
+            DisplayMessage "0132", msOKOnly, miInformation
             Exit Sub
         End If
         'end QT 330
@@ -3262,7 +3311,7 @@ On Error GoTo ErrHandle
     
     'To khai ke khai tu ngay ... den ngay ...
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "FinanceYear") = "1" Then
-        If Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <> 17 Then
+        If Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <> 17 And Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <> 3 Then
             If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Day") = "1" Then
                 If Mid$(rsTaxInfor("ngay_tchinh"), 1, 5) <> Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 5) Then
                    'Tu ngay phai bang ngay bat dau nam tai chinh

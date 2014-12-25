@@ -486,7 +486,17 @@ Dim xmlNode As MSXML.IXMLDOMNode
         fps.Sheet = 1
         fps.Row = 36
         fps.Col = fps.ColLetterToNumber("O")
-       strDataFileName = GetCatalogueFileNameTk_03TD_TAIN(1, fps.Text)
+        
+       'strDataFileName = GetCatalogueFileNameTk_03TD_TAIN(1, fps.Text)
+       If TAX_Utilities_Srv_New.Year = "2008" Then
+            strDataFileName = Replace(GetCatalogueFileName, "Catalogue_052008_01", "CatalogueQTTN_2008_01")
+       ElseIf TAX_Utilities_Srv_New.Year = "2010" Then
+            strDataFileName = Replace(GetCatalogueFileName, "Catalogue_072010_01", "CatalogueQTTN_2010_01")
+       ElseIf TAX_Utilities_Srv_New.Year = "2014" Then
+            strDataFileName = Replace(GetCatalogueFileName, "Catalogue_022014_01", "CatalogueQTTN_2014_01")
+       Else
+            strDataFileName = GetCatalogueFileName
+       End If
     
        If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
             Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
