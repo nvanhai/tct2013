@@ -373,7 +373,7 @@ Public Sub Prepare2()
             tinhGiamTruNPT_Load .Row
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
-        Loop Until .Text = "bb"
+        Loop Until .Text = "aa"
         
         ' chekc sheet 09-4
 '        .Sheet = 5
@@ -772,7 +772,7 @@ Dim i As Integer
                          .Col = .ColLetterToNumber("B")
                          .Row = .Row + 1
                          i = i + 1
-                    Loop Until .Text = "bb"
+                    Loop Until .Text = "aa"
                     
                     .SetActiveCell iCol, iRow
                     .Row = iRow
@@ -1501,7 +1501,7 @@ Private Sub checkSheet4()
             Next
             
             
-            If UCase(vLastRow) = "BB" Then Exit For ' Check cho den het cac dong co du lieu thi thoi
+            If UCase(vLastRow) = "AA" Then Exit For ' Check cho den het cac dong co du lieu thi thoi
             
             If Trim(vHoVaTen) = vbNullString And Trim(vNgaySinh) = vbNullString And Trim(vSo) = vbNullString And Trim(vQuyenSo) = vbNullString _
             And Trim(vTinh) = vbNullString And Trim(vHuyen) = vbNullString And Trim(vXa) = vbNullString And Trim(vQuanHeNNT) = vbNullString And vTuThang = vbNullString And vDenThang = vbNullString Then
@@ -2417,7 +2417,7 @@ Public Sub finishImportXML()
             tinhGiamTruNPT_Load .Row
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
-        Loop Until .Text = "bb"
+        Loop Until .Text = "aa"
 '        .Sheet = 1
 '        mCurrentSheet = .Sheet
 '        .Row = 47
