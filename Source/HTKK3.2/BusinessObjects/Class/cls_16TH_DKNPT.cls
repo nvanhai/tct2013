@@ -1420,30 +1420,42 @@ Private Sub CheckDynamicSheet3()
                 End If
                 
                  ' kiem tra bat buoc nhap cot so neu tuoi nho hon 15t
-                If Trim(vSo) = "" Then
-                    If vNgaySinhNPT <> "" And Format_ddmmyyyy1(CStr(vNgaySinhNPT)) <> "" Then
-                        If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) <= 15 Then
-                            .Col = .ColLetterToNumber("M")
-                            .CellNote = vErrEmpty
-                            .BackColor = mErrorColor
-                            iFlagEmpty = 1
+                If Trim(vSoCMNDNPT) = "" Then
+                    If Trim(vSo) = "" Then
+                        If vNgaySinhNPT <> "" And Format_ddmmyyyy1(CStr(vNgaySinhNPT)) <> "" Then
+                            If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) <= 15 Then
+                                .Col = .ColLetterToNumber("M")
+                                .CellNote = vErrEmpty
+                                .BackColor = mErrorColor
+                                iFlagEmpty = 1
+                            End If
                         End If
+                    Else
+                        .Col = .ColLetterToNumber("M")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
                     End If
                 Else
                     .Col = .ColLetterToNumber("M")
                     .CellNote = ""
                     .BackColor = mNonErrorColor
                 End If
-
+                
                  ' kiem tra bat buoc nhap cot quyen so neu tuoi nho hon 15t
-                If Trim(vQuyenSo) = "" Then
-                    If vNgaySinhNPT <> "" And Format_ddmmyyyy1(CStr(vNgaySinhNPT)) <> "" Then
-                        If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) <= 15 Then
-                            .Col = .ColLetterToNumber("N")
-                            .CellNote = vErrEmpty
-                            .BackColor = mErrorColor
-                            iFlagEmpty = 1
+                If Trim(vSoCMNDNPT) = "" Then
+                    If Trim(vQuyenSo) = "" Then
+                        If vNgaySinhNPT <> "" And Format_ddmmyyyy1(CStr(vNgaySinhNPT)) <> "" Then
+                            If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) <= 15 Then
+                                .Col = .ColLetterToNumber("N")
+                                .CellNote = vErrEmpty
+                                .BackColor = mErrorColor
+                                iFlagEmpty = 1
+                            End If
                         End If
+                    Else
+                        .Col = .ColLetterToNumber("N")
+                        .CellNote = ""
+                        .BackColor = mNonErrorColor
                     End If
                 Else
                     .Col = .ColLetterToNumber("N")

@@ -1072,14 +1072,14 @@ Public Sub SetActiveSheet()
     'Select Case GetAttribute(xmlNodeValid, "ID")
     For Each xmlNodeValid In TAX_Utilities_v1.NodeValidity.childNodes
         Select Case GetAttribute(xmlNodeValid, "ID")
-            Case "02A"
+            Case "02-1"
                 blnNullValue = True
                 'Check the third sheet
                For Each xmlCellNode In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
                     'Check value in E column and F column
                     If lCol = fps.ColLetterToNumber("D") Or _
-                       lCol = fps.ColLetterToNumber("E") Then
+                       lCol = fps.ColLetterToNumber("E") Or lCol = fps.ColLetterToNumber("G") Then
                         strValue = GetAttribute(xmlCellNode, "Value")
                         If Not IsNullValue(strValue) Then
                             blnNullValue = False
