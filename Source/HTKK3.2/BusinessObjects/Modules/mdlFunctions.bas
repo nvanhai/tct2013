@@ -2268,11 +2268,19 @@ Public Sub checkErrorHeader(pGrid As fpSpread, chuoiTTHeader As String, viTriSet
                     .BackColor = mErrorColor
                     'lay vi tri tren sheet header de danh dau loi
                 Else
+                    .Sheet = 1
+                    ParserCellID pGrid, arrMangGTHeader(i), lCol, lRow
                     .Col = lCol
                     .Row = lRow
                     .CellNote = ""
-                    .BackColor = mFormColor
+                    If i = UBound(arrMangGTHeader) Or i = UBound(arrMangGTHeader) - 1 Then
+                        .BackColor = mNonErrorColor
+                    Else
+                        .BackColor = mFormColor
+                    End If
+                    
                     .Sheet = .SheetCount
+                    ParserCellID pGrid, arrErrMangSetErr(i), lCol, lRow
                     .SetText lCol, lRow, "1"
                 End If
             Next

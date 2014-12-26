@@ -1440,10 +1440,10 @@ incSession = 0
 
 fpSpread1.EventEnabled(EventAllEvents) = False
     ' Truong hop them du lieu va xoa du lieu da ton tai
-    If themXoaDuLieu Then
-        ResetData
-        ResetDataAndForm mCurrentSheet
-    End If
+   ' If themXoaDuLieu Then
+    ResetData
+    ResetDataAndForm mCurrentSheet
+   ' End If
     
 ' Lay ID cua Menu
 varMenuId = GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID")
@@ -1720,10 +1720,10 @@ incSession = 0
 
 fpSpread1.EventEnabled(EventAllEvents) = False
     ' Truong hop them du lieu va xoa du lieu da ton tai
-    If themXoaDuLieu Then
-        ResetData
-        ResetDataAndForm mCurrentSheet
-    End If
+   ' If themXoaDuLieu Then
+    ResetData
+    ResetDataAndForm mCurrentSheet
+    'End If
     
 ' Lay ID cua Menu
 varMenuId = GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID")
@@ -7343,7 +7343,7 @@ Private Sub cmdLoadToKhai_Click()
         Exit Sub
     End If
     ' To khai 02/KK-BHDC
-    If (varMenuId = "26" And UCase(loaiToKhai) <> "02/KK-BHDC") Then
+    If (varMenuId = "26" And UCase(loaiToKhai) <> GetAttribute(GetMessageCellById("0351"), "Msg")) Then
         DisplayMessage "0286", msOKOnly, miInformation
         Exit Sub
     End If

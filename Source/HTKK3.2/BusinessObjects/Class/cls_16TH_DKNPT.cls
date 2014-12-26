@@ -1465,31 +1465,39 @@ Private Sub CheckDynamicSheet3()
                 
                 ' kiem tra khong co cot 11 va 13 bat buoc nhap cot 18,19,20
                 If Trim(vSoCMNDNPT) = "" Then
-                    If Trim(vMaQuocGia) = "01" Then
-                        ' bat buoc nhap thong tin tinh
-                        If Trim(vTinh) = "" Then
-                            .Col = .ColLetterToNumber("R")
-                            .CellNote = vErrEmpty
-                            .BackColor = mErrorColor
-                            iFlagEmpty = 1
-                        End If
-                        
-                        ' bat buoc nhap thong tin huyen
-                        If Trim(vHuyen) = "" Then
-                            .Col = .ColLetterToNumber("T")
-                            .CellNote = vErrEmpty
-                            .BackColor = mErrorColor
-                            iFlagEmpty = 1
-                        End If
-                        
-                        ' bat buoc nhap thong tin xa
-                        If Trim(vXa) = "" Then
-                            .Col = .ColLetterToNumber("V")
-                            .CellNote = vErrEmpty
-                            .BackColor = mErrorColor
-                            iFlagEmpty = 1
-                        End If
+                    ' bat buoc nhap QG
+                    
+                    If Trim(vQuocGia) = "" Then
+                        .Col = .ColLetterToNumber("P")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
                     End If
+                    
+                    ' bat buoc nhap thong tin tinh
+                    If Trim(vTinh) = "" Then
+                        .Col = .ColLetterToNumber("R")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
+                    ' bat buoc nhap thong tin huyen
+                    If Trim(vHuyen) = "" Then
+                        .Col = .ColLetterToNumber("T")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
+                    ' bat buoc nhap thong tin xa
+                    If Trim(vXa) = "" Then
+                        .Col = .ColLetterToNumber("V")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
                     
                     ' kiem tra neu chon quoc gia Viet Nam
                     If Trim(vMaQuocGia) = "01" Then
@@ -1546,7 +1554,7 @@ Private Sub CheckDynamicSheet3()
             .GetText .ColLetterToNumber("U"), .Row, vMaXa
             
             ' reset du lieu loi
-            strColReset = "C~D~E~F~G~I~J~L~M~N~P~R~T~V~W~X"
+            strColReset = "C~D~E~G~L~W~X"
             arrColReset = Split(strColReset, "~")
             For i = 0 To UBound(arrColReset)
                 .Col = .ColLetterToNumber(arrColReset(i))
