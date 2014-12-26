@@ -1999,8 +1999,17 @@ Dim isheet As Integer
         .EventEnabled(EventAllEvents) = False
             ' set gia tri CT8 tren 09C
             isheet = mCurrentSheet
-            .Sheet = 4
-            .SetText .ColLetterToNumber("B"), 24, 1
+'            .Sheet = 4
+'            .SetText .ColLetterToNumber("B"), 24, 1
+            If .ActiveSheet = 4 Then
+                .Row = 25
+                .Col = fps.ColLetterToNumber("B")
+                .Formula = "B24 + 1"
+                
+                .Row = 33
+                .Col = fps.ColLetterToNumber("B")
+                .Formula = "B32 + 1"
+            End If
             mCurrentSheet = isheet
         .EventEnabled(EventAllEvents) = True
     End With
