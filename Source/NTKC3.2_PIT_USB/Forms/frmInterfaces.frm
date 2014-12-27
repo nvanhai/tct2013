@@ -1127,14 +1127,30 @@ Private Sub cmdSave_Click()
             End If
 
         ElseIf GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Year") = "1" Then
-            'TODO: Xu ly cho cac to khai QT nam(tu thang - toi thang) ver 330
+            'TODO: Xu ly cho cac to khai QT nam(tu thang - toi thang) ver 330 GD3
             If Val(idToKhai) = 80 Or Val(idToKhai) = 82 Then
-                strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2))), "dd/mm/yyyy") & "','dd/mm/yyyy') "
-                dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2)))
+                dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), 1, 1)
+                strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+                dDate = DateAdd("m", 12, dDate)
+                dDate = DateAdd("d", -1, dDate)
                 strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
+                strSQL = strSQL & " And TU_NGAY = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')"
+                strSQL = strSQL & " And DEN_NGAY = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')"
             ElseIf Val(idToKhai) = 77 Or Val(idToKhai) = 87 Or Val(idToKhai) = 97 Or Val(idToKhai) = 43 Or Val(idToKhai) = 17 Or Val(idToKhai) = 59 Or Val(idToKhai) = 41 Or Val(idToKhai) = 76 Or Val(idToKhai) = 88 Or Val(idToKhai) = 89 Or Val(idToKhai) = 93 Or Val(idToKhai) = 26 Then
-                strSQL = strSQL & " and KYKK_TU_NGAY=To_Date('" & TuNgay & "','DD/MM/RRRR') "
-                strSQL = strSQL & " and KYKK_DEN_NGAY=To_Date('" & DenNgay & "','DD/MM/RRRR') "
+                dDate = DateSerial(CInt(TAX_Utilities_Srv_New.Year), 1, 1)
+                strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+                dDate = DateAdd("m", 12, dDate)
+                dDate = DateAdd("d", -1, dDate)
+                strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
+                strSQL = strSQL & " and TU_NGAY=To_Date('" & TuNgay & "','DD/MM/RRRR') "
+                strSQL = strSQL & " and DEN_NGAY=To_Date('" & DenNgay & "','DD/MM/RRRR') "
+            ElseIf Val(idToKhai) = 3 Then
+                strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
+                dDate = DateAdd("m", 12, dDate)
+                dDate = DateAdd("d", -1, dDate)
+                strSQL = strSQL & " and KYKK_DEN_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy')"
+                strSQL = strSQL & " And TU_NGAY = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')"
+                strSQL = strSQL & " And DEN_NGAY = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')"
             Else
                 strSQL = strSQL & " and KYKK_TU_NGAY=To_date('" & format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy') "
                 dDate = DateAdd("m", 12, dDate)
@@ -1963,7 +1979,8 @@ Private Sub Barcode_Scaned(strBarcode As String)
         'If isIHTKK = True Then
         idToKhai = Mid(strPrefix, 4, 2)
 
-        If Trim(idToKhai) = "59" Or Trim(idToKhai) = "43" Or Trim(idToKhai) = "42" Then
+        'If Trim(idToKhai) = "59" Or Trim(idToKhai) = "43" Or Trim(idToKhai) = "42" Then
+        If Trim(idToKhai) = "43" Or Trim(idToKhai) = "42" Then
             strBarcodeCount = Left(strBarcodeCount, Len(strBarcodeCount) - 1) & "1"
         End If
 
@@ -2201,18 +2218,23 @@ Private Sub Barcode_Scaned(strBarcode As String)
         End If
 
         'Chan cac to khai Quyet toan 330 <=3.2.5; 02/TNDN (Cap nhat TT 151)
-        'todo
         If (Val(Left$(strPrefix, 3)) < 330) Then
             If Trim(idToKhai) = "03" Or Trim(idToKhai) = "77" Or Trim(idToKhai) = "43" Or Trim(idToKhai) = "17" Or Trim(idToKhai) = "59" Or Trim(idToKhai) = "76" Or Trim(idToKhai) = "41" Or Trim(idToKhai) = "26" Or Trim(idToKhai) = "87" Or Trim(idToKhai) = "80" Or Trim(idToKhai) = "82" Or Trim(idToKhai) = "85" Or Trim(idToKhai) = "88" Or Trim(idToKhai) = "73" Then
-'                If InStr(1, strBarcode, "<S01>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S02>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S03>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S05>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S06>", vbTextCompare) > 0 Or InStr(1, strBarcode, "<S09>", vbTextCompare) > 0 Then
-'                    DisplayMessage "0139", msOKOnly, miInformation
-'                    Exit Sub
-'                Else
-'                    Exit Sub
-'                End If
                 DisplayMessage "0139", msOKOnly, miInformation
                 Exit Sub
             End If
+        End If
+        
+        '#Khong nhan to khai quy: 02/TNDN
+        'TODO
+        If (Trim(idToKhai) = "73" And LoaiKyKK = True And UCase(strLoaiToKhai) = "BS") Then
+            DisplayMessage "0132", msOKOnly, miInformation
+            Exit Sub
+        End If
+        '#Khong nhan to bo sung 02/NTNN, 04/NTNN (Test tich hop GD3)
+        If ((Trim(idToKhai) = "80" Or Trim$(idToKhai) = "82") And UCase(strLoaiToKhai) = "BS") Then
+            DisplayMessage "0132", msOKOnly, miInformation
+            Exit Sub
         End If
         'end QT 330
         
@@ -3280,7 +3302,7 @@ On Error GoTo ErrHandle
     
     'To khai ke khai tu ngay ... den ngay ...
     If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "FinanceYear") = "1" Then
-        If Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <> 17 Then
+        If Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <> 17 And Val(GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "ID")) <> 3 Then
             If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Day") = "1" Then
                 If Mid$(rsTaxInfor("ngay_tchinh"), 1, 5) <> Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 5) Then
                    'Tu ngay phai bang ngay bat dau nam tai chinh
@@ -3317,13 +3339,15 @@ On Error GoTo ErrHandle
     
     On Error GoTo ErrHandle
     
-    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 68 Or Val(strIDBCTC) = 18 Or Val(strIDBCTC) = 94 Or Val(strIDBCTC) = 96 Then
+    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 68 Or Val(strIDBCTC) = 18 Or Val(strIDBCTC) = 94 Or Val(strIDBCTC) = 96 Or Val(strIDBCTC) = 73 Then
         If Val(strIDBCTC) = 36 Then
             LoaiKyKK = LoaiToKhai(strData)
         Else
             Dim tmp As String
             If Val(strIDBCTC) = 96 Then
                 tmp = Mid(strData, 1, InStr(1, strData, "</S03>", vbTextCompare) + 5)
+            ElseIf Val(strIDBCTC) = 73 Then
+                tmp = strData
             Else
                 tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
             End If
@@ -3634,7 +3658,7 @@ On Error GoTo ErrHandle
         End If
         
         'todo
-        'get Thong tin Tu thang - toi thang: 02/TAIN,02/BVMT,03A/TD-TAIN 2014 & TNCN QT Ver 3.3.0
+        'get Thong tin Tu thang - toi thang: 02/TAIN,02/BVMT,03A/TD-TAIN 2014 & TNCN QT Ver 3.3.0 GD3
         If Val(strID) = 77 Or Val(strID) = 87 Or Val(strID) = 97 Or Val(strID) = 43 Or Val(strID) = 17 Or Val(strID) = 59 Or Val(strID) = 41 Or Val(strID) = 76 Or Val(strID) = 88 Or Val(strID) = 89 Or Val(strID) = 93 Or Val(strID) = 26 Then
             str_tmp = ""
             If Val(strID) = 97 Then
@@ -5337,7 +5361,7 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
     Dim strSQL As String
     Dim strMatep As String
     Dim strSTT As Integer
-    
+    Dim dTemp As Date
     On Error GoTo ErrHandle
     
     lngIndex = UBound(arrStrHeaderData)
@@ -5401,28 +5425,52 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
                 "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
                 "And tkhai.kykk_tu_ngay = To_Date('" & format$(dNgayDauKy, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
                 "And tkhai.kykk_den_ngay = To_Date('" & format$(dNgayCuoiKy, "DD/MM/YYYY") & "','DD/MM/RRRR')"
-    ElseIf strID = "02_NTNN14" Or strID = "04_NTNN14" Or strID = "03_TNDN14" Then
-        'tu ngay - den ngay
+    ElseIf strID = "03_TNDN14" Then
+        '//Cap nhat sau test tich hop GD3 ...
+        dTemp = DateSerial(CInt(TAX_Utilities_Srv_New.Year), 1, 1)
+        dTemp = DateAdd("m", 12, dTemp)
+        dTemp = DateAdd("d", -1, dTemp)
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
                 "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
-                "And tkhai.kykk_tu_ngay = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
-                "And tkhai.kykk_den_ngay = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')"
+                "And tkhai.kykk_tu_ngay = To_Date('" & format$(DateSerial(CInt(TAX_Utilities_Srv_New.Year), 1, 1), "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                "And tkhai.kykk_den_ngay = To_Date('" & format$(dTemp, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                "And tkhai.tu_ngay = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                "And tkhai.den_ngay = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')"
+    ElseIf strID = "02_NTNN14" Or strID = "04_NTNN14" Then
+        '//Cap nhat sau test tich hop GD3 ...
+        dTemp = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), 1, 1)
+        dTemp = DateAdd("m", 12, dTemp)
+        dTemp = DateAdd("d", -1, dTemp)
+        strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
+                "And tkhai.kykk_tu_ngay = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), 1, 1), "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                "And tkhai.kykk_den_ngay = To_Date('" & format$(dTemp, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                "And tkhai.tu_ngay = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                "And tkhai.den_ngay = To_Date('" & format$(DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2))), "DD/MM/YYYY") & "','DD/MM/RRRR')"
     ElseIf strID = "02_TAIN14" Or strID = "02_BVMT14" Or strID = "03A_TD_TAIN" Or strID = "02_TNCN_XS11" Or strID = "05_TNCN11" Or strID = "06_TNCN14" Or strID = "09_TNCN14" Or strID = "08B_TNCN11" Or strID = "02_PHLP" Or strID = "02_TNCN_BHDC" Or strID = "02_TAIN_DK" Or strID = "02_TNDN_DK" Then
-    'todo to khai QT
+        '//Cap nhat sau test tich hop GD3 ...
+        dTemp = DateSerial(CInt(TAX_Utilities_Srv_New.Year), 1, 1)
+        dTemp = DateAdd("m", 12, dTemp)
+        dTemp = DateAdd("d", -1, dTemp)
         If (strID = "02_TAIN_DK" Or strID = "02_TNDN_DK") Then
             strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                     "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
                     "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
                     "And tkhai.LOAI_TK_DK = '" & Loai_TK_DK & "' " & _
-                    "And tkhai.kykk_tu_ngay = To_Date('" & TuNgay & "','DD/MM/RRRR')" & _
-                    "And tkhai.kykk_den_ngay = To_Date('" & DenNgay & "','DD/MM/RRRR')"
+                    "And tkhai.kykk_tu_ngay = To_Date('" & format$(DateSerial(CInt(TAX_Utilities_Srv_New.Year), 1, 1), "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                    "And tkhai.kykk_den_ngay = To_Date('" & format$(dTemp, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                    "And tkhai.tu_ngay = To_Date('" & TuNgay & "','DD/MM/RRRR')" & _
+                    "And tkhai.den_ngay = To_Date('" & DenNgay & "','DD/MM/RRRR')"
         Else
             strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                     "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
                     "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
-                    "And tkhai.kykk_tu_ngay = To_Date('" & TuNgay & "','DD/MM/RRRR')" & _
-                    "And tkhai.kykk_den_ngay = To_Date('" & DenNgay & "','DD/MM/RRRR')"
+                    "And tkhai.kykk_tu_ngay = To_Date('" & format$(DateSerial(CInt(TAX_Utilities_Srv_New.Year), 1, 1), "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                    "And tkhai.kykk_den_ngay = To_Date('" & format$(dTemp, "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                    "And tkhai.tu_ngay = To_Date('" & TuNgay & "','DD/MM/RRRR')" & _
+                    "And tkhai.den_ngay = To_Date('" & DenNgay & "','DD/MM/RRRR')"
         End If
     Else
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
@@ -5810,9 +5858,13 @@ Private Function LoaiToKhai(ByVal strData As String) As Boolean
 
         If UBound(Tk04_GTGT) > 0 Then
             LoaiTk = Tk04_GTGT(UBound(Tk04_GTGT) - 1)
-            
         End If
 
+    ElseIf LoaiTk = "73" Then
+        Tk04_GTGT = Split(strData, "~")
+        If UBound(Tk04_GTGT) > 0 Then
+            LoaiTk = Right(Tk04_GTGT(10), 1)
+        End If
     Else
         LoaiTk = Left$(strData, Len(strData) - 10)
         LoaiTk = Right$(LoaiTk, 1)
