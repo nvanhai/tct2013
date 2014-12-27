@@ -779,11 +779,14 @@ Public Function GenerateSQL_Header(xmlDOMdata As MSXML.DOMDocument, _
 '    dDate = DateAdd("m", 12, dDate)
 '    dDate = DateAdd("d", -1, dDate)
 '    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    
+    'SET KY KE KHAI
     'Ky ke khai tu ngay
-    dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2)))
+    dDate = DateSerial(CInt(TAX_Utilities_Srv_New.Year), 1, 1)
     strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     'Ky ke khai den ngay
-    dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2)))
+    dDate = DateAdd("m", 12, dDate)
+    dDate = DateAdd("d", -1, dDate)
     strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
@@ -937,7 +940,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
  Dim varTemp As Variant
  With fps
     If .ActiveSheet = 1 Then
-        If Col = .ColLetterToNumber("E") And Row = 30 Then
+        If Col = .ColLetterToNumber("E") And Row = 34 Then
             .Sheet = 1 ' Set lai
             .GetText Col, Row, varTemp
             If varTemp <> "" And varTemp <> "../...." Then
@@ -953,7 +956,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
             .Row = Row
            UpdateCell fps, Col, Row, .Text
         End If
-        If Col = .ColLetterToNumber("E") And Row = 32 Then
+        If Col = .ColLetterToNumber("E") And Row = 36 Then
             .Sheet = 1 ' Set lai
             .GetText Col, Row, varTemp
             If varTemp <> "" And varTemp <> "../../...." Then

@@ -548,11 +548,13 @@ On Error GoTo ErrHandle
     dDate = DateAdd("d", -1, dDate)
     strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
 
-    'KyKK - tu ngay
-    dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2)))
+    'SET KY KE KHAI
+    'Ky ke khai tu ngay
+    dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), 1, 1)
     strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     'Ky ke khai den ngay
-    dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2)))
+    dDate = DateAdd("m", 12, dDate)
+    dDate = DateAdd("d", -1, dDate)
     strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
     
     strSQL = strSQL & "To_date('" & vNGAY_CAP_NHAT & "','dd/mm/yyyy'),"
@@ -578,7 +580,14 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & IIf(Val(vCO_PLUC_GTGT_01) = 1, "Y", "") & "',"
     strSQL = strSQL & "'" & IIf(Val(vCO_PLUC_GTGT_02) = 1, "Y", "") & "',"
     strSQL = strSQL & "'" & IIf(Val(vCO_PLUC_GTGT_03) = 1, "Y", "") & "',"
-    strSQL = strSQL & "null,null,"
+    
+    '//SET KY QUYET TOAN
+    dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.FirstDay, 1, 2)))
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    'Ky ke khai den ngay
+    dDate = DateSerial(CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 7, 4)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 4, 2)), CInt(Mid$(TAX_Utilities_Srv_New.LastDay, 1, 2)))
+    strSQL = strSQL & "To_date('" & Format(dDate, "dd/mm/yyyy") & "','dd/mm/yyyy'),"
+    'strSQL = strSQL & "null,null,"
     
     With fps
         For i = 1 To lSoPhongXL

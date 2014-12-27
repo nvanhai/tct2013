@@ -113,7 +113,12 @@ Dim xmlNode As MSXML.IXMLDOMNode
         fps.Sheet = 1
         fps.Row = 36
         fps.Col = fps.ColLetterToNumber("O")
-       strDataFileName = GetCatalogueFileNameTk_03TD_TAIN(1, fps.Text)
+        
+       'strDataFileName = GetCatalogueFileNameTk_03TD_TAIN(1, fps.Text)
+       strDataFileName = GetCatalogueFileName
+       If (Val(TAX_Utilities_Srv_New.verMaVach) <= 325 And InStr(strDataFileName, "Catalogue_022014_01") > 0) Then
+            strDataFileName = Replace(strDataFileName, "Catalogue_022014_01", "Catalogue_022014_01_325")
+       End If
     
        If xmlDOMdata.Load(GetAbsolutePath(strDataFileName)) Then
             Set xmlNodeListCell = xmlDOMdata.getElementsByTagName("Cell")
@@ -176,7 +181,7 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     Dim i As Integer
     i = 0
     Dim varMaDM As Variant
-    Dim tenDM As String
+    Dim TenDM As String
     Dim varID            As Variant, varDVT As Variant, varThueSuat As Variant
     Dim iTenTN           As String, strDVT As String, strThueSuat As String
     Dim strIdQLT         As String, blnSuaThueSuat As Boolean
@@ -237,17 +242,17 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         i = 0
         Do
             .GetText .ColLetterToNumber("AE"), i + 18, varMaDM
-            DataDM varMaDM, tenDM
-            If Trim(tenDM) <> vbNullString Then
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
                 .Col = .ColLetterToNumber("Q")
                 .Row = 18 + i
-                .Text = tenDM
+                .Text = TenDM
                 UpdateCell fps, .Col, .Row, .Text
             End If
              i = i + 1
             .Col = .ColLetterToNumber("B")
             .Row = i + 18
-            tenDM = ""
+            TenDM = ""
         Loop Until .Text = "aa"
     End With
     

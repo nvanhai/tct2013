@@ -135,4 +135,5 @@
 	<Infor ID="0139" Msg="Không nhận các tờ khai theo mẫu biểu cũ"/>
 	<Infor ID="0140" Msg="Không nhận các tờ khai bổ sung của mẫu cũ"/>
 	<Infor ID="0141" Msg="Không nhận tờ khai từ kỳ kê khai quý IV/2014"/>
+	<Infor ID="0142" Msg="Không nhận tờ khai bổ sung cho mẫu này"/>
 </Message>
