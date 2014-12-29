@@ -1653,26 +1653,28 @@ Public Function ResetData() As Boolean
 Dim xmlNode As MSXML.IXMLDOMNode
 Dim lRow As Long, lCol As Long
     With fps
-        For Each xmlNode In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
-            ParserCellID fps, GetAttribute(xmlNode, "CellID"), lCol, lRow
-            .Col = lCol
-            .Row = lRow
-            .Sheet = 2
-            Select Case .CellType
-                    Case CellTypeCheckBox
-                        fps.Text = vbNullString
-                        UpdateCell fps, lCol, lRow, vbNullString
-                    Case CellTypeComboBox
-                        fps.Text = vbNullString
-                        UpdateCell fps, lCol, lRow, vbNullString
-                    Case CellTypeNumber
-                        fps.value = 0
-                        UpdateCell fps, lCol, lRow, "0"
-                    Case Else
-                        fps.value = vbNullString
-                        UpdateCell fps, lCol, lRow, vbNullString
-            End Select
-        Next
+        If .ActiveSheet = 2 Or .ActiveSheet = 3 Then
+            For Each xmlNode In TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
+                ParserCellID fps, GetAttribute(xmlNode, "CellID"), lCol, lRow
+                .Col = lCol
+                .Row = lRow
+                .Sheet = mCurrentSheet
+                Select Case .CellType
+                        Case CellTypeCheckBox
+                            fps.Text = vbNullString
+                            UpdateCell fps, lCol, lRow, vbNullString
+                        Case CellTypeComboBox
+                            fps.Text = vbNullString
+                            UpdateCell fps, lCol, lRow, vbNullString
+                        Case CellTypeNumber
+                            fps.value = 0
+                            UpdateCell fps, lCol, lRow, "0"
+                        Case Else
+                            fps.value = vbNullString
+                            UpdateCell fps, lCol, lRow, vbNullString
+                End Select
+            Next
+        End If
     End With
 End Function
 

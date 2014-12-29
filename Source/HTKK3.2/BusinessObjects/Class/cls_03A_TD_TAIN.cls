@@ -92,10 +92,10 @@ Public Sub Prepare1()
             If GetAttribute(xmlNode, "Value") <> "" Then
                 arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
                 If (blChon = True And arrDanhsach(6) = "1") Or blChon = False Then
-                    If (Left$(Trim(arrDanhsach(1)), 2) = "09") Then
+                    If (Val(arrDanhsach(0)) >= 404 And Left$(Trim(arrDanhsach(1)), 2) = "07") Or (Val(arrDanhsach(0)) = 469) Or (Val(arrDanhsach(0)) < 404 And Left$(Trim(arrDanhsach(1)), 2) = "09") Then
                         strCombo = strCombo + CPab(arrDanhsach(2), 200) + CPab(arrDanhsach(1), 10) + CPab(arrDanhsach(3), 10) + CPab(arrDanhsach(4), 10) + CPab(arrDanhsach(5), 1) + Chr$(9)
                         strComboHien = strComboHien + arrDanhsach(2) + Chr$(9)
-                        If Trim(arrDanhsach(1)) = "0902" Then
+                        If Trim(arrDanhsach(1)) = "0702" Or Trim(arrDanhsach(1)) = "0902" Then
                                valueDefault = Trim(arrDanhsach(1))
                                textDefault = Trim(arrDanhsach(2))
                                thuesuatDefault = Trim(arrDanhsach(4))

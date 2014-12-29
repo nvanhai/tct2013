@@ -1198,7 +1198,7 @@ Private Sub CheckDynamicSheet3()
             .GetText .ColLetterToNumber("U"), .Row, vMaXa
             
             ' reset du lieu loi
-            strColReset = "C~D~E~F~G~I~J~L~M~N~P~R~T~V~W~X"
+            strColReset = "C~D~E~F~I~J~L~M~N~P~R~T~V~W~X"
             arrColReset = Split(strColReset, "~")
             For i = 0 To UBound(arrColReset)
                 .Col = .ColLetterToNumber(arrColReset(i))
@@ -1306,32 +1306,32 @@ Private Sub CheckDynamicSheet3()
                     iFlagNgaySinhNPT = 1
                 End If
                 
-                ' Kiem tra MST NPT
-                If Len(vMSTNPT) > 0 Then
-                    vMSTNPT = Replace$(vMSTNPT, "-", "")
-                    If Len(Trim(vMSTNPT)) = 10 Then
-                         strCheck = CheckTaxCode(Mid(Trim(vMSTNPT), 1, 1), Mid(Trim(vMSTNPT), 2, 1), Mid(Trim(vMSTNPT), 3, 1), Mid(Trim(vMSTNPT), 4, 1), Mid(Trim(vMSTNPT), 5, 1), Mid(Trim(vMSTNPT), 6, 1), Mid(Trim(vMSTNPT), 7, 1), Mid(Trim(vMSTNPT), 8, 1), Mid(Trim(vMSTNPT), 9, 1), Mid(Trim(vMSTNPT), 10, 1), Mid(Trim(vMSTNPT), 11, 1), Mid(Trim(vMSTNPT), 12, 1), Mid(Trim(vMSTNPT), 13, 1))
-                         If Mid(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMSTNPT) Then
-                            .Col = .ColLetterToNumber("G")
-                            .CellNote = vErrMSTNPT
-                            .BackColor = mErrorColor
-                            iFlagMSTNPT = 1
-                        Else
-                            .Col = .ColLetterToNumber("G")
-                            .CellNote = ""
-                            .BackColor = mNonErrorColor
-                         End If
-                    Else
-                            .Col = .ColLetterToNumber("G")
-                            .CellNote = vErrMSTNPT
-                            .BackColor = mErrorColor
-                            iFlagMSTNPT = 1
-                    End If
-                Else
-                    .Col = .ColLetterToNumber("G")
-                    .CellNote = ""
-                    .BackColor = mNonErrorColor
-                End If
+'                ' Kiem tra MST NPT
+'                If Len(vMSTNPT) > 0 Then
+'                    vMSTNPT = Replace$(vMSTNPT, "-", "")
+'                    If Len(Trim(vMSTNPT)) = 10 Then
+'                         strCheck = CheckTaxCode(Mid(Trim(vMSTNPT), 1, 1), Mid(Trim(vMSTNPT), 2, 1), Mid(Trim(vMSTNPT), 3, 1), Mid(Trim(vMSTNPT), 4, 1), Mid(Trim(vMSTNPT), 5, 1), Mid(Trim(vMSTNPT), 6, 1), Mid(Trim(vMSTNPT), 7, 1), Mid(Trim(vMSTNPT), 8, 1), Mid(Trim(vMSTNPT), 9, 1), Mid(Trim(vMSTNPT), 10, 1), Mid(Trim(vMSTNPT), 11, 1), Mid(Trim(vMSTNPT), 12, 1), Mid(Trim(vMSTNPT), 13, 1))
+'                         If Mid(strCheck, 2, 1) <> "0" Or Not IsNumeric(vMSTNPT) Then
+'                            .Col = .ColLetterToNumber("G")
+'                            .CellNote = vErrMSTNPT
+'                            .BackColor = mErrorColor
+'                            iFlagMSTNPT = 1
+'                        Else
+'                            .Col = .ColLetterToNumber("G")
+'                            .CellNote = ""
+'                            .BackColor = mNonErrorColor
+'                         End If
+'                    Else
+'                            .Col = .ColLetterToNumber("G")
+'                            .CellNote = vErrMSTNPT
+'                            .BackColor = mErrorColor
+'                            iFlagMSTNPT = 1
+'                    End If
+'                Else
+'                    .Col = .ColLetterToNumber("G")
+'                    .CellNote = ""
+'                    .BackColor = mNonErrorColor
+'                End If
                 
                 ' check CMND
                 If Trim(vSoCMNDNPT) <> vbNullString Then

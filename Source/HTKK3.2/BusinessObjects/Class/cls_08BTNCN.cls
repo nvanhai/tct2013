@@ -34,6 +34,16 @@ Public Sub Prepare1()
         .Col = .ColLetterToNumber("M")
         .Text = Format(Date, "dd/mm/yyyy")
         .TypeHAlign = TypeHAlignLeft
+        
+        
+'        .Row = .MaxRows - 1
+'            .Col = .ColLetterToNumber("M")
+'            If .value = "" Then
+'                SetDateFormat fps, 1, .MaxRows - 1, .ColLetterToNumber("M"), DDMMYYYY
+'                .Text = Format(Date, "dd/mm/yyyy")
+'                .TypeHAlign = TypeHAlignLeft
+'                UpdateCell fps, .Col, .Row, .Text
+'            End If
       End With
 End Sub
 
@@ -87,14 +97,7 @@ Public Sub Prepare2()
             UpdateCell fps, .Col, .Row, .Text
             
             
-            .Row = .MaxRows - 1
-            .Col = .ColLetterToNumber("M")
-            If .value = "" Then
-                SetDateFormat fps, 1, .MaxRows - 1, .ColLetterToNumber("M"), DDMMYYYY
-                .Text = Format(Date, "dd/mm/yyyy")
-                .TypeHAlign = TypeHAlignLeft
-                UpdateCell fps, .Col, .Row, .Text
-            End If
+            
             
          'set thang mien giam thue cho ky ke khai nam 2011
          If TAX_Utilities_v1.Year = "2011" Then
@@ -135,10 +138,10 @@ Public Sub Prepare2()
         'check thong tin ma so thue dai ly
         'set vi tri theo thu tu MSTDL~TENNVDLT~ChungChiHN
         'lay vi tri cell ten nhan vien dai ly thue
-        Set xmlNode = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").Item(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 4)
+        Set xmlNode = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").Item(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 6)
         strTenNVDDL = GetAttribute(xmlNode, "CellID")
         'lay vi tri cell chung chi hanh nghe so
-        Set xmlNode = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").Item(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 3)
+        Set xmlNode = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").Item(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 5)
         strCCHN = GetAttribute(xmlNode, "CellID")
         
         
@@ -425,7 +428,7 @@ Private Sub CheckDynamicError()
     Dim strFormula As String
     Dim vKhoanGT, vThueTNCN, vThueTNCNgiam, vNgayKy As Variant
     Dim errEmpty As Variant, iFlagEmpty As Integer, iFlagTyLe As Integer, checkExistData As Boolean
-    Dim CountRow As Long, rowDes As Long, iFlagMSTTrung As Integer, mErrMSTTrung As Variant
+    Dim countRow As Long, rowDes As Long, iFlagMSTTrung As Integer, mErrMSTTrung As Variant
     Dim mErrMSTTonTai As Variant, vCT5MST As Variant, iFlagMSTTonTai As Integer, rowMST As Integer
     
     'chuoi vitriheader tren to khai, chuoi vi tri tren sheet header de check lai
@@ -463,10 +466,10 @@ Private Sub CheckDynamicError()
         'check thong tin header khong dc trong
         'lay vi tri header tren tk theo thu tu MSTDL, TENDLT, DIACHIDLT,QUAN/HUYEN,TP,SO HDDLT,NGAYDH,Ten NV DLT, CC Hanh Nghe
         'lay vi tri cell ten nhan vien dai ly thue
-        Set xmlNode = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").Item(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 4)
+        Set xmlNode = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").Item(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 6)
         strTenNVDDL = GetAttribute(xmlNode, "CellID")
         'lay vi tri cell chung chi hanh nghe so
-        Set xmlNode = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").Item(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 3)
+        Set xmlNode = TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").Item(TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 5)
         strCCHN = GetAttribute(xmlNode, "CellID")
         viTriHeaderTk = "D_22~D_20~D_24~D_26~M_26~D_32~M_32~" & Trim(strTenNVDDL) & "~" & Trim(strCCHN)
         viTriSheetHeader = "B_26~B_27~B_28~B_29~B_30~B_31~B_32~B_33~B_34"
@@ -538,8 +541,8 @@ Private Sub CheckDynamicError()
                         End If
                         
                         'check MST trung nhau
-                         CountRow = .SearchCol(.ColLetterToNumber("G"), -1, -1, vMST, SearchFlagsNone)
-                         rowDes = .SearchCol(.ColLetterToNumber("G"), CountRow, -1, vMST, SearchFlagsNone)
+                         countRow = .SearchCol(.ColLetterToNumber("G"), -1, -1, vMST, SearchFlagsNone)
+                         rowDes = .SearchCol(.ColLetterToNumber("G"), countRow, -1, vMST, SearchFlagsNone)
                         If rowDes > -1 Then
                             .Col = .ColLetterToNumber("G")
                             .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
@@ -729,7 +732,7 @@ End Function
 Public Function InsertEnable(KeyCode As Integer, Shift As Integer) As Boolean
     InsertEnable = True
 End Function
-Private Sub filldata(pGrid As fpSpread, xmlNodeList As MSXML.IXMLDOMNodeList)
+Private Sub fillData(pGrid As fpSpread, xmlNodeList As MSXML.IXMLDOMNodeList)
     Dim xmlNodeCell As MSXML.IXMLDOMNode
     Dim lCol As Long, lRow As Long
     Dim lRows As Long
