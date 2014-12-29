@@ -7818,18 +7818,19 @@ Private Sub convertData02BHDC()
             UpdateCell .Col, .Row, .value
             
             
-            
-           
 
+            
+            
+            .sheet = 2
+            mCurrentSheet = .sheet
+            .ActiveSheet = .sheet
+            moveDataToKhai
+            
             .sheet = 3
             mCurrentSheet = .sheet
             .ActiveSheet = .sheet
             moveDataToKhai
-            
-             .sheet = 2
-            mCurrentSheet = .sheet
-            .ActiveSheet = .sheet
-            moveDataToKhai
+             
 
             .sheet = 1
             mCurrentSheet = .sheet
@@ -8247,6 +8248,10 @@ Private Sub convertData09KK()
             mCurrentSheet = .sheet
             .ActiveSheet = .sheet
             
+            
+            ' tai du lieu dong
+            moveDataTokhai09
+            ' tai du lieu tinh
             .Row = 10
             .Col = .ColLetterToNumber("E")
             fpSpread2.GetText .Col, .Row, varTemp
@@ -8264,8 +8269,8 @@ Private Sub convertData09KK()
             fpSpread2.GetText .Col, .Row, varTemp
             .Text = varTemp
             UpdateCell .Col, .Row, .value
-            ' tai du lieu dong
-            moveDataTokhai09
+            
+            ' PL MT
             
             If TAX_Utilities_v1.Year = 2012 Then
                 .sheet = 5
