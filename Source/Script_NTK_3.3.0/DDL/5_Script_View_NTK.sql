@@ -26,14 +26,7 @@ FROM QLT_NTK.rcv_gdien_tkhai gd,
   AND (ctieu.ky_hieu = tkd.ky_hieu)
   AND (tkd.loai_dlieu = '03_TNDN14')
   ) dtl
-WHERE (gd.loai_dlieu = dtl.loai_dlieu)
-
-AND (dtl.id = gd.id)
-GROUP BY
-dtl.hdr_id,
-dtl.ctk_id,
-dtl.row_id
-order by so_tt;
+WHERE (gd.loai_dlieu = dtl.loai_dlieu) AND (dtl.id = gd.id) GROUP BY dtl.hdr_id, dtl.ctk_id, dtl.row_id order by so_tt;
 	--PL 03 - 1x/TNDN
 CREATE OR REPLACE VIEW QLT_NTK.RCV_V_PLUC_QTOAN_TNDN_01ABC_14 AS
 SELECT dtl.hdr_id
