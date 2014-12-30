@@ -7,3 +7,4 @@ Prompt 5_Script_View_NTK.sql
 @@5_Script_View_NTK.sql;
 Exit
 /
+spool off;
