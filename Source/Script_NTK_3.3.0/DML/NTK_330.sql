@@ -16,3 +16,4 @@ Prompt 5_update_cg_reg_code.sql
 /
 Exit
 /
+spool off;
