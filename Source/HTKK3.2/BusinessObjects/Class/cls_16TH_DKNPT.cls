@@ -1990,8 +1990,12 @@ Private Sub fillData()
             Else
                 For j = 0 To 21
                     ' Tu cot Ho va ten cho den cot thue da khau tru (C -> L). Dung cac thong tin theo bang ke 05-3
-                    .Col = .ColLetterToNumber(arrCol(j))
-                    .Text = arrData05_3(i, j)
+                    If arrCol(j) = "G" Then
+                        ' cot MST group 1 khong tai du lieu
+                    Else
+                        .Col = .ColLetterToNumber(arrCol(j))
+                        .Text = arrData05_3(i, j)
+                    End If
                 Next
                 .Row = .Row + 1
             End If
@@ -2004,9 +2008,14 @@ Private Sub fillData()
         For i = 0 To totalRow
             If Trim(arrData05_3(i, 4)) <> "" Then
                 For j = 0 To 21
-                    ' Tu cot Ho va ten cho den cot thue da khau tru (C -> L). Dung cac thong tin theo bang ke 05-3
-                    .Col = .ColLetterToNumber(arrCol(j))
-                    .Text = arrData05_3(i, j)
+                    If arrCol(j) = "F" Or arrCol(j) = "H" Or arrCol(j) = "I" Or arrCol(j) = "J" Or arrCol(j) = "M" Or arrCol(j) = "N" _
+                    Or arrCol(j) = "O" Or arrCol(j) = "P" Or arrCol(j) = "Q" Or arrCol(j) = "R" Or arrCol(j) = "S" Or arrCol(j) = "T" _
+                    Or arrCol(j) = "U" Or arrCol(j) = "V" Then
+                    Else
+                        ' Tu cot Ho va ten cho den cot thue da khau tru (C -> L). Dung cac thong tin theo bang ke 05-3
+                        .Col = .ColLetterToNumber(arrCol(j))
+                        .Text = arrData05_3(i, j)
+                    End If
                 Next
                 .Row = .Row + 1
             End If
