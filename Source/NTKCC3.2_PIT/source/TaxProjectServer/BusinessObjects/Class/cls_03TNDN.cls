@@ -6315,9 +6315,7 @@ Public Function InsertDTL_PL03_6() As String
                      .Col = .ColLetterToNumber("C")
                      nam = .Text
                     If Trim(nam) = vbNullString Then
-                        nam = "''"
-                    Else
-                        nam = "'" & TAX_Utilities_Svr_New.Convert(Trim(nam), UNICODE, TCVN) & "'"
+                        nam = ""
                     End If
                      
                      .Col = .ColLetterToNumber("E")
