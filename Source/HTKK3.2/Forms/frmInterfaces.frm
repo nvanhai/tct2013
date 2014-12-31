@@ -10083,7 +10083,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                 For idx = 0 To objTaxBusiness.rowGroup1 - 2
                     .EventEnabled(EventAllEvents) = False
                     .sheet = 1
-                    InsertNode .ColLetterToNumber("C"), 40
+                    InsertNode .ColLetterToNumber("C"), .Row
                     .Row = .Row + 1
                     .EventEnabled(EventAllEvents) = True
                     .Refresh
@@ -10096,7 +10096,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                 For idx = 0 To objTaxBusiness.rowGroup2 - 2
                     .EventEnabled(EventAllEvents) = False
                     .sheet = 1
-                    InsertNode .ColLetterToNumber("C"), rowstartGroup2
+                    InsertNode .ColLetterToNumber("C"), .Row
                     .Row = .Row + 1
                     .EventEnabled(EventAllEvents) = True
                     .Refresh
