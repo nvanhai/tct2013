@@ -10069,6 +10069,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
     If mOnLoad Then Exit Sub
     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" And fpSpread1.ActiveSheet = 1 And fpSpread1.Row = 1 And fpSpread1.Col = fpSpread1.ColLetterToNumber("D") Then
         Dim idx As Long
+        Dim rowstartGroup2 As Long
         
         fpSpread1.EventEnabled(EventAllEvents) = False
         ResetData
@@ -10089,12 +10090,13 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                 Next
             End If
 
-            .Row = .Row + 8
+            rowstartGroup2 = .Row + 9
+            .Row = .Row + 9
             If objTaxBusiness.rowGroup2 > 1 Then
                 For idx = 0 To objTaxBusiness.rowGroup2 - 2
                     .EventEnabled(EventAllEvents) = False
                     .sheet = 1
-                    InsertNode .ColLetterToNumber("C"), .Row
+                    InsertNode .ColLetterToNumber("C"), rowstartGroup2
                     .Row = .Row + 1
                     .EventEnabled(EventAllEvents) = True
                     .Refresh

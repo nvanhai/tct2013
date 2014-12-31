@@ -1979,15 +1979,21 @@ Private Sub fillData()
         Dim idx As Long
         Dim i As Long
         Dim j As Long
+        Dim stt As Long
 
         strCol = "C_D_E_F_G_H_I_J_K_L_M_N_O_P_Q_R_S_T_U_V_W_X"
         arrCol = Split(strCol, "_")
 
         totalRow = UBound(arrData05_3) - 1
         .Row = 40
+        stt = 1
         For i = 0 To totalRow
             If Trim(arrData05_3(i, 4)) <> "" Then
             Else
+                ' set stt
+                .Col = .ColLetterToNumber("B")
+                .Text = stt
+                
                 For j = 0 To 21
                     ' Tu cot Ho va ten cho den cot thue da khau tru (C -> L). Dung cac thong tin theo bang ke 05-3
                     If arrCol(j) = "G" Then
@@ -1997,16 +2003,21 @@ Private Sub fillData()
                         .Text = arrData05_3(i, j)
                     End If
                 Next
+                stt = stt + 1
                 .Row = .Row + 1
             End If
         Next
 
 
-
-        .Row = .Row + 8
         idx = .Row + 8
+        .Row = .Row + 8
+        stt = 1
         For i = 0 To totalRow
             If Trim(arrData05_3(i, 4)) <> "" Then
+                 ' set stt
+                .Col = .ColLetterToNumber("B")
+                .Text = stt
+                
                 For j = 0 To 21
                     If arrCol(j) = "F" Or arrCol(j) = "H" Or arrCol(j) = "I" Or arrCol(j) = "J" Or arrCol(j) = "M" Or arrCol(j) = "N" _
                     Or arrCol(j) = "O" Or arrCol(j) = "P" Or arrCol(j) = "Q" Or arrCol(j) = "R" Or arrCol(j) = "S" Or arrCol(j) = "T" _
@@ -2017,6 +2028,7 @@ Private Sub fillData()
                         .Text = arrData05_3(i, j)
                     End If
                 Next
+                stt = stt + 1
                 .Row = .Row + 1
             End If
         Next
