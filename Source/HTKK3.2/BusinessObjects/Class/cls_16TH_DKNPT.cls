@@ -1980,9 +1980,11 @@ Private Sub fillData()
         Dim i As Long
         Dim j As Long
         Dim stt As Long
+        Dim isGroup1 As Boolean
 
         strCol = "C_D_E_F_G_H_I_J_K_L_M_N_O_P_Q_R_S_T_U_V_W_X"
         arrCol = Split(strCol, "_")
+        isGroup1 = False
 
         totalRow = UBound(arrData05_3) - 1
         .Row = 40
@@ -1990,6 +1992,7 @@ Private Sub fillData()
         For i = 0 To totalRow
             If Trim(arrData05_3(i, 4)) <> "" Then
             Else
+                isGroup1 = True
                 ' set stt
                 .Col = .ColLetterToNumber("B")
                 .Text = stt
@@ -2008,9 +2011,13 @@ Private Sub fillData()
             End If
         Next
 
-
-        idx = .Row + 8
-        .Row = .Row + 8
+        If isGroup1 = True Then
+            idx = .Row + 8
+            .Row = .Row + 8
+        Else
+            idx = .Row + 9
+            .Row = .Row + 9
+        End If
         stt = 1
         For i = 0 To totalRow
             If Trim(arrData05_3(i, 4)) <> "" Then
