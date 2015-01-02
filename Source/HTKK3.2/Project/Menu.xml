@@ -220,7 +220,7 @@
 
 	
 	<Menu ID="101_10" PopID="" ParentID="101" Caption="Quyết toán Thuế Thu Nhập Cá Nhân" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\kekhai.gif"/>
-	<Menu ID="17" PopID="101" ParentID="101_10" Caption="Tờ khai 05/KK-TNCN" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
+	<Menu ID="17" PopID="101" ParentID="101_10" Caption="Tờ khai 05/KK-TNCN" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="01/01/2009" InterfaceTemplate="..\InterfaceTemplates\excel\05_TNCN.xls" ReportTemplate="..\ReportTemplates\excel\05_TNCN.xls" CatalogueID="01" Class="TAX_Business_v1.cls_05TNCN">
 			<Sheet ID="05" Caption="05KK-TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="05_TNCN" InterfaceIni="..\InterfaceIni\05_TNCN.xml"/>
 			<Sheet ID="05-1" Caption="05-1BK-TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="05_1_TNCN" InterfaceIni="..\InterfaceIni\05_1_TNCN.xml" ReportIni="..\ReportIni\05_1_TNCN.xml"/>
@@ -274,7 +274,7 @@
 	
 	<Menu ID="102_8" PopID="1" ParentID="102" Caption="Phụ lục 25/MGT-TNCN" FormName="" Year="0" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\huongdan.bmp"/>
 	
-	<Menu ID="95" PopID="101" ParentID="101_10" Caption="Bảng tổng hợp đăng ký người phụ thuộc giảm trừ gia cảnh" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
+	<Menu ID="95" PopID="101" ParentID="101_10" Caption="Bảng tổng hợp đăng ký người phụ thuộc giảm trừ gia cảnh" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
 			<Validity StartDate="01/01/1900" InterfaceTemplate="..\InterfaceTemplates\excel\16_TH_DKNPT.xls" ReportTemplate="..\ReportTemplates\excel\16_TH_DKNPT.xls" CatalogueID="01" Class="TAX_Business_v1.cls_16TH_DKNPT">
 				<Sheet ID="01" Caption="16TH" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="16_TH_DKNPT" InterfaceIni="..\InterfaceIni\16_TH_DKNPT.xml"/>
 				<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
