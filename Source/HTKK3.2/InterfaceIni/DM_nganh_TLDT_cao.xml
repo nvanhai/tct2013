@@ -1,25 +1,25 @@
 ﻿<Sections Version="330">
 	<Section Dynamic="0" MaxRows="0">
 		<Item Value ="A###Nông nghiệp, lâm nghiệp và thuỷ sản"/>		
-		<Item Value ="B###KHAI KHOÁNG"/>		
-		<Item Value ="C###CÔNG NGHIỆP CHẾ BIẾN, CHẾ TẠO"/>		
-		<Item Value ="D###SẢN XUẤT VÀ PHÂN PHỐI ĐIỆN, KHÍ ĐỐT, NƯỚC NÓNG, HƠI NƯỚC VÀ ĐIỀU HOÀ KHÔNG KHÍ"/>
-		<Item Value ="E###CUNG CẤP NƯỚC; HOẠT ĐỘNG QUẢN LÝ VÀ XỬ LÝ RÁC THẢI, NƯỚC THẢI"/>		
-		<Item Value ="F###XÂY DỰNG"/>		
-		<Item Value ="G###BÁN BUÔN VÀ BÁN LẺ; SỬA CHỮA Ô TÔ, MÔ TÔ, XE MÁY VÀ XE CÓ ĐỘNG CƠ KHÁC"/>		
-		<Item Value ="H###VẬN TẢI KHO BÃI"/>		
-		<Item Value ="I###DỊCH VỤ LƯU TRÚ VÀ ĂN UỐNG"/>		
-		<Item Value ="J###THÔNG TIN VÀ TRUYỀN THÔNG"/>		
-		<Item Value ="K###HOẠT ĐỘNG TÀI CHÍNH, NGÂN HÀNG VÀ BẢO HIỂM"/>		
-		<Item Value ="L###HOẠT ĐỘNG KINH DOANH BẤT ĐỘNG SẢN"/>		
-		<Item Value ="M###HOẠT ĐỘNG CHUYÊN MÔN, KHOA HỌC VÀ CÔNG NGHỆ"/>		
+		<Item Value ="B###Khai khoáng"/>		
+		<Item Value ="C###Công nghiệp chế biến, chế tạo"/>		
+		<Item Value ="D###Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hoà không khí"/>
+		<Item Value ="E###Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải"/>		
+		<Item Value ="F###Xây dựng"/>		
+		<Item Value ="G###Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác"/>		
+		<Item Value ="H###Vận tải kho bãi"/>		
+		<Item Value ="I###Dịch vụ lưu trú và ăn uống"/>		
+		<Item Value ="J###Thông tin và truyền thông"/>		
+		<Item Value ="K###Hoạt động tài chính, ngân hàng và bảo hiểm"/>		
+		<Item Value ="L###Hoạt động kinh doanh bất động sản"/>		
+		<Item Value ="M###Hoạt động chuyên môn, khoa học và công nghệ"/>		
 		<Item Value ="N###Hoạt động hành chính và dịch vụ hỗ trợ"/>		
-		<Item Value ="O###HĐ CỦA ĐẢNG CỘNG SẢN, TỔ CHỨC CHÍNH TRỊ - XH, QUẢN LÝ NN, AN NINH QUỐC PHÒNG;  BẢO ĐẢM XH BẮT BUỘC"/>		
-		<Item Value ="P###GIÁO DỤC VÀ ĐÀO TẠO"/>		
-		<Item Value ="Q###Y TẾ VÀ HOẠT ĐỘNG TRỢ GIÚP XÃ HỘI"/>		
-		<Item Value ="R###NGHỆ THUẬT, VUI CHƠI VÀ GIẢI TRÍ"/>		
-		<Item Value ="S###HOẠT ĐỘNG DỊCH VỤ KHÁC"/>		
-		<Item Value ="T###HOẠT ĐỘNG LÀM THUÊ CÁC CV TRONG CÁC HỘ GĐ, SX SẢN PHẨM VẬT CHẤT VÀ DV TỰ TIÊU DÙNG CỦA HỘ GIA ĐÌNH"/>		
-		<Item Value ="U###HOẠT ĐỘNG CỦA CÁC TỔ CHỨC VÀ CƠ QUAN  QUỐC TẾ"/>
+		<Item Value ="O###HĐ của đảng cộng sản, tổ chức chính trị - xh, quản lý nn, an ninh quốc phòng;  bảo đảm xh bắt buộc"/>		
+		<Item Value ="P###Giáo dục và đào tạo"/>		
+		<Item Value ="Q###Y tế và hoạt động trợ giúp xã hội"/>		
+		<Item Value ="R###Nghệ thuật, vui chơi và giải trí"/>		
+		<Item Value ="S###Hoạt động dịch vụ khác"/>		
+		<Item Value ="T###Hoạt động làm thuê các CV trong các hộ GĐ, sx sản phẩm vật chất và DV tự tiêu dùng của hộ gia đình"/>		
+		<Item Value ="U###Hoạt động của các tổ chức và cơ quan  quốc tế"/>
 	</Section>	
 </Sections>
