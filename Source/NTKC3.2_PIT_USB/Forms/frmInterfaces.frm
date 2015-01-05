@@ -1538,8 +1538,8 @@ Private Sub Command1_Click()
 'Barcode_Scaned str2
 
 '--04/GTGT
-str2 = "aa999712300100778   01201400200200100101/0101/01/1900<S01><S>0010011000</S><S>1~1~0~1~0~1~0~2~0~5~0~6~0</S><S>Kh¸nh Linh~Minh NhËt~MCT~18/03/2014~1~~~1~</S></S01>"
-Barcode_Scaned str2
+'str2 = "aa999712300100778   01201400200200100101/0101/01/1900<S01><S>0010011000</S><S>1~1~0~1~0~1~0~2~0~5~0~6~0</S><S>Kh¸nh Linh~Minh NhËt~MCT~18/03/2014~1~~~1~</S></S01>"
+'Barcode_Scaned str2
 
 '--01A_TNDN_DK bs lan xuat ban
 '--to khai chinh thuc
@@ -1573,6 +1573,10 @@ Barcode_Scaned str2
 'Barcode_Scaned str2
 'str2 = "aa999922300100778   012014004004002002<S01-1><S>4612500</S><S>0102030405~cmc 01~20~922500~ghi chu 1~6868686868~cmc 02~80~3690000~ghi chu 2</S><S>100~4612500</S></S01-1>"
 'Barcode_Scaned str2
+
+str2 = "bs330820100105951   00201400200300100301/0101/01/190001/01/201431/12/2014<S01><S></S><S>H 56~01/02/2014</S><S>50000000~69000000~19000000~Ghi ch~100000000~200000000~100000000~~80000000~100000000~20000000~~20000000~100000000~80000000~~10000000~20000000~10000000~~0~2000000~2000000~~10000000~18000000~8000000~</S><S>~Nguyn Quang A~~13/05/2015~~1~1</S></S01>"
+Barcode_Scaned str2
+
 End Sub
 Private Sub SetFocusBarcode()
     If IsPortUSBScaner Then
@@ -1605,11 +1609,11 @@ End Sub
 
 Private Sub txtBarcodeUSB_KeyPress(KeyCode As Integer)
     Static strTemp As String
-    If KeyCode = 13 Or KeyCode = 35 Then
+    If KeyCode = 13 Then
         If IsPortUSBScaner Then
             If (txtBarcodeUSB.Text <> vbNullString And txtBarcodeUSB.Text <> "") Then
                 strTemp = Replace$(txtBarcodeUSB.Text, "#", "")
-                strTemp = TAX_Utilities_Srv_New.Convert(txtBarcodeUSB.Text, TCVN, UNICODE)
+                strTemp = TAX_Utilities_Srv_New.Convert(strTemp, TCVN, UNICODE)
                 Barcode_Scaned strTemp
             End If
             
