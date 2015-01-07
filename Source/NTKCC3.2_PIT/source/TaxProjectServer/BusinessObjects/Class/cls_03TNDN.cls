@@ -2333,23 +2333,28 @@ Public Function InsertHDR() As String
         THUECT18CL = "0"
         SOTNCNCL = "0"
         
-        'get chi tieu D
-'        .GetText .ColLetterToNumber("U"), 70, vCT_D
-'        If Trim(vCT_D) = vbNullString Then
-'            vCT_D = "0"
-'        End If
+        'get chi tieu D2 ung voi maTM= 1053 insert dong 1
+        .GetText .ColLetterToNumber("U"), 85, vCT_D
+        If Trim(vCT_D) = vbNullString Then
+            vCT_D = "0"
+        End If
 
         'get chi tieu B14 - phuc vu insert dong 1 cho maTM = 1053
         .GetText .ColLetterToNumber("U"), 62, vCT_C11
         If Trim(vCT_C11) = vbNullString Then
             vCT_C11 = "0"
         End If
-        'get chi tieu E2 - phuc vu insert dong 1 cho maTM = 1053
-        .GetText .ColLetterToNumber("U"), 89, vCT_E
-        If Trim(vCT_E) = vbNullString Then
-            vCT_E = "0"
-        End If
-        SOTNCN = vCT_E
+        
+'        'get chi tieu E2 - phuc vu insert dong 1 cho maTM = 1053
+'        .GetText .ColLetterToNumber("U"), 89, vCT_E
+'            If Trim(vCT_E) = vbNullString Then
+'            vCT_E = "0"
+'        End If
+'        SOTNCN = vCT_E
+
+        SOTNCN = vCT_D
+        SOTNCNCL = SOTNCN
+
         'set SOKKQT
         SOKKQT = Val(vCT_C11)
 '        'set sothuect18
@@ -2426,7 +2431,7 @@ Public Function InsertHDR() As String
     'insert theo matm lay theo mannkd
     'Phuc vu insert dong thu 2 theo matm = 1052
     With fps
-
+        'maTM="'1052'"
         maTM = MANNKD
     
         'get chi tieu B13
@@ -2434,12 +2439,24 @@ Public Function InsertHDR() As String
         If Trim(vCT_C11) = vbNullString Then
             vCT_C11 = "0"
         End If
-        'get chi tieu E1
-        .GetText .ColLetterToNumber("U"), 88, vCT_E
-        If Trim(vCT_E) = vbNullString Then
-            vCT_E = "0"
+        
+'        'get chi tieu E1
+'        .GetText .ColLetterToNumber("U"), 88, vCT_E
+'        If Trim(vCT_E) = vbNullString Then
+'            vCT_E = "0"
+'        End If
+'       SOTNCN = vCT_E
+        
+'        'get chi tieu D1 insert dong 2 cho maTM='1052'
+        .GetText .ColLetterToNumber("U"), 84, vCT_D
+        If Trim(vCT_D) = vbNullString Then
+            vCT_D = "0"
         End If
-        SOTNCN = vCT_E
+        
+        
+        SOTNCN = vCT_D
+        SOTNCNCL = SOTNCN
+        
         'set SOKKQT
         SOKKQT = Val(vCT_C11)
 '        'set sothuect18
