@@ -1000,6 +1000,7 @@ Private Sub checkSheet4()
     Dim vCMT As Variant, vErrMsgCMT As Variant
     Dim vHoVaTen As Variant, vErrMsgHoVaTen As Variant
     Dim vNgaySinh As Variant, vErrMsgNgaySinh As Variant
+    Dim vNgaySinh_Goc As Variant
     Dim vQuanHeNNT As Variant, vErrMsgQuanHeNNT As Variant
     Dim vLastRow As Variant
     Dim vTuThang, vDenThang As Variant
@@ -1151,6 +1152,7 @@ Private Sub checkSheet4()
             
             .GetText .ColLetterToNumber("D"), .Row, vHoVaTen
             .GetText .ColLetterToNumber("E"), .Row, vNgaySinh
+            .GetText .ColLetterToNumber("E"), .Row, vNgaySinh_Goc
             .GetText .ColLetterToNumber("F"), .Row, vMST
             .GetText .ColLetterToNumber("M"), .Row, vCMT
             .GetText .ColLetterToNumber("O"), .Row, vQuanHeNNT
@@ -1218,7 +1220,7 @@ Private Sub checkSheet4()
                 Else
                     'check ngay sinh phai sau ky tinh thue
                     'If Val(Right(CStr(Trim(vNgaySinh)), 4)) > Val(TAX_Utilities_v1.Year) Then
-                    If Format_ddmmyyyy1(CStr(vNgaySinh)) <> "" Then
+                    If Format_ddmmyyyy1(CStr(vNgaySinh_Goc)) <> "" Then
                             vNgaySinh = DateSerial(CInt(Mid$(vNgaySinh, 7, 4)), CInt(Mid$(vNgaySinh, 4, 2)), CInt(Mid$(vNgaySinh, 1, 2)))
                             If vNgaySinh > Date Then
                                 .Col = .ColLetterToNumber("E")
@@ -1344,7 +1346,7 @@ Private Sub checkSheet4()
                  Else
                      ' kiem tra neu tuoi >15 bat buoc nhap CMT
                     If vNgaySinh <> "" Then
-                        If Format_ddmmyyyy1(CStr(vNgaySinh)) <> "" Then
+                        If Format_ddmmyyyy1(CStr(vNgaySinh_Goc)) <> "" Then
                             If Year(Date) - Year(Format(vNgaySinh, "dd/mm/yyyy")) > 15 And Trim(vCMT) = "" Then
                                  .Col = .ColLetterToNumber("M")
                                 .CellNote = vErrEmptyCMNDNPT
@@ -1468,6 +1470,7 @@ Private Sub checkSheet4()
             
             .GetText .ColLetterToNumber("D"), .Row, vHoVaTen
             .GetText .ColLetterToNumber("E"), .Row, vNgaySinh
+            .GetText .ColLetterToNumber("E"), .Row, vNgaySinh_Goc
             .GetText .ColLetterToNumber("F"), .Row, vSo
             .GetText .ColLetterToNumber("G"), .Row, vQuyenSo
             .GetText .ColLetterToNumber("I"), .Row, vQuocGia
@@ -1545,7 +1548,7 @@ Private Sub checkSheet4()
                 Else
                     'check ngay sinh phai sau ky tinh thue
                     'If Val(Right(CStr(Trim(vNgaySinh)), 4)) > Val(TAX_Utilities_v1.Year) Then
-                    If Format_ddmmyyyy1(CStr(vNgaySinh)) <> "" Then
+                    If Format_ddmmyyyy1(CStr(vNgaySinh_Goc)) <> "" Then
                         vNgaySinh = DateSerial(CInt(Mid$(vNgaySinh, 7, 4)), CInt(Mid$(vNgaySinh, 4, 2)), CInt(Mid$(vNgaySinh, 1, 2)))
                         If vNgaySinh > Date Then
                             .Col = .ColLetterToNumber("E")
