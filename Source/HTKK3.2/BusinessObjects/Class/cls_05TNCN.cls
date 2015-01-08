@@ -4574,6 +4574,8 @@ Private Sub CheckDynamicSheet3()
     Dim varTemp As Variant
     Dim countRowCheck As Long
     
+    Dim vNgaySinhNPT_Goc As Variant
+    
     With fps
         .Sheet = .SheetCount
         
@@ -4602,6 +4604,7 @@ Private Sub CheckDynamicSheet3()
             .GetText .ColLetterToNumber("E"), .Row, vMSTNNT
             .GetText .ColLetterToNumber("F"), .Row, vHoVaTenNPT
             .GetText .ColLetterToNumber("G"), .Row, vNgaySinhNPT
+            .GetText .ColLetterToNumber("G"), .Row, vNgaySinhNPT_Goc
             .GetText .ColLetterToNumber("H"), .Row, vMSTNPT
             .GetText .ColLetterToNumber("J"), .Row, vQuocTich
             .GetText .ColLetterToNumber("K"), .Row, vSoCMNDNPT
@@ -4697,7 +4700,7 @@ Private Sub CheckDynamicSheet3()
                 
                 ' kiem tra ngay sinh khong duoc lon hon ngay hien tai
                 If Trim(vNgaySinhNPT) <> "" Then
-                    If Format_ddmmyyyy1(CStr(vNgaySinhNPT)) <> "" Then
+                    If Format_ddmmyyyy1(CStr(vNgaySinhNPT_Goc)) <> "" Then
                         'If DateDiff("D", ToDate(CStr(vNgaySinhNPT), "dd/mm/yyyy"), Date) > 0 Then
                         vNgaySinhNPT = DateSerial(CInt(Mid$(vNgaySinhNPT, 7, 4)), CInt(Mid$(vNgaySinhNPT, 4, 2)), CInt(Mid$(vNgaySinhNPT, 1, 2)))
                         If vNgaySinhNPT > Date Then
@@ -4786,7 +4789,7 @@ Private Sub CheckDynamicSheet3()
                 Else
                      ' kiem tra neu tuoi >15 bat buoc nhap CMT
                     If vNgaySinhNPT <> "" Then
-                        If Format_ddmmyyyy1(CStr(vNgaySinhNPT)) <> "" Then
+                        If Format_ddmmyyyy1(CStr(vNgaySinhNPT_Goc)) <> "" Then
                             If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) > 15 And Trim(vSoCMNDNPT) = "" Then
                                  .Col = .ColLetterToNumber("K")
                                 .CellNote = vErrEmptyCMNDNPT
@@ -5001,7 +5004,7 @@ Private Sub CheckDynamicSheet3()
                 ' bat buoc nhap thong so neu <= 15 t
                 If Trim(vMSTNPT) = "" And Trim(vSoCMNDNPT) = "" Then
                     If Trim(vSo) = "" Then
-                        If Format_ddmmyyyy1(CStr(vNgaySinhNPT)) <> "" Then
+                        If Format_ddmmyyyy1(CStr(vNgaySinhNPT_Goc)) <> "" Then
                             If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) <= 15 Then
                                 .Col = .ColLetterToNumber("N")
                                 .CellNote = vErrEmpty
@@ -5023,7 +5026,7 @@ Private Sub CheckDynamicSheet3()
                 ' bat buoc nhap thong quyen so neu <= 15 t
                 If Trim(vMSTNPT) = "" And Trim(vSoCMNDNPT) = "" Then
                     If Trim(vQuyenSo) = "" Then
-                        If Format_ddmmyyyy1(CStr(vNgaySinhNPT)) <> "" Then
+                        If Format_ddmmyyyy1(CStr(vNgaySinhNPT_Goc)) <> "" Then
                             If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) <= 15 Then
                                 .Col = .ColLetterToNumber("O")
                                 .CellNote = vErrEmpty
