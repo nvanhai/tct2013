@@ -24,7 +24,7 @@ insert into QLT_NTK.RCV_MAP_TKHAI (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_H
 values ('02_TAIN_DK', '24', 'Tê khai quyÕt to¸n thuÕ tµi nguyªn(02/TAIN-DK)', 'QT', null, to_date('01-01-2015', 'dd-mm-yyyy'), null);
 
 insert into QLT_NTK.RCV_MAP_TKHAI (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY_HL_TU, NGAY_HL_DEN)
-values ('01_PHLP', '00', 'Tê khai PhÝ, lÖ phÝ (01/PHLP)', 'QT', null, to_date('01-01-2015', 'dd-mm-yyyy'), null);
+values ('01_PHLP', '11', 'Tê khai PhÝ, lÖ phÝ (01/PHLP)', 'TK', null, to_date('01-01-2015', 'dd-mm-yyyy'), null);
 
 insert into QLT_NTK.RCV_MAP_TKHAI (MA_TKHAI, MA_TKHAI_QLT, GHI_CHU, LOAI, NHOM_HSO, NGAY_HL_TU, NGAY_HL_DEN)
 values ('04_NTNN14', '20', 'Tê khai quyÕt to¸n thuÕ NTNN - 04/NTNN', 'QT', null, to_date('01-01-2015', 'dd-mm-yyyy'), null);
