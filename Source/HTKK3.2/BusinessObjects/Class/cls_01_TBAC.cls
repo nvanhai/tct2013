@@ -799,7 +799,14 @@ Private Sub CheckDynamicError()
                    iFlagEmty = 1
         ' kiem tra mst
                 ElseIf Trim(strMstDN) <> vbNullString Then
+                    strMstDN = Replace(strMstDN, " ", "")
+                    If Len(strMstDN) = 14 And InStr(strMstDN, "-") > 0 Then
+                        strMstDN = Left$(strMstDN, 10) & Right$(strMstDN, 3)
+                    End If
+                    strMstDN = Replace(strMstDN, "-", "")
                     strCheck = ""
+                    
+                    
                     If Len(strMstDN) = 10 Or Len(strMstDN) = 13 Then
                         If strMstDN <> Replace(strMstDN, " ", "") Then
                             strCheck = ""
