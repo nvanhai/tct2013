@@ -1072,8 +1072,9 @@ Private Sub CheckDynamicError()
                  If Val(vGTGT) <> 0 And Val(vGTGT) >= Val(vDoanhSo) Then
                         .Col = .ColLetterToNumber("M")
                         .CellNote = vErrThueGTGT
-                        .BackColor = mErrorColor
-                        iFlagvThueGTGT = 1
+                        '.BackColor = mErrorColor
+                        .BackColor = mAlertColor
+                        'iFlagvThueGTGT = 1
                  Else
                         .Col = .ColLetterToNumber("M")
                         .CellNote = ""
@@ -1183,17 +1184,17 @@ End Sub
 'some special data that we want to save to data files
 Public Sub SaveExceptionData()
     Dim i As Long, DataText As Variant
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, arrCol As Variant
     Dim arrCellTag() As String
     With fps
         .Sheet = 1
         mCurrentSheet = .Sheet
         'J10 , L10, L16, L17, L20
         arrRow = Array(10, 10, 16, 17, 20)
-        ArrCol = Array("J", "L", "L", "L", "L")
+        arrCol = Array("J", "L", "L", "L", "L")
         For i = 0 To UBound(arrRow)
             .Row = arrRow(i)
-            .Col = .ColLetterToNumber(ArrCol(i))
+            .Col = .ColLetterToNumber(arrCol(i))
             UpdateCell fps, .Col, .Row, .value
         Next
 
@@ -2313,7 +2314,7 @@ End Function
 Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer)
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, arrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant

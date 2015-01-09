@@ -1064,11 +1064,17 @@ Private Sub CheckDynamicError()
                         End If
           ' Check MST
                         If Trim(vMST) <> vbNullString Then
-                           vMST = Replace(vMST, " ", "")
-                           vMST = Replace(vMST, "-", "")
-                            'vMST = Left(vMST, 10)
+'                           vMST = Replace(vMST, " ", "")
+'                           vMST = Replace(vMST, "-", "")
+'                            'vMST = Left(vMST, 10)
     
                            strCheck = ""
+                           
+                           If Len(vMST) = 14 And InStr(vMST, "-") > 0 Then
+                               vMST = Left$(vMST, 10) & Right$(vMST, 3)
+                            End If
+                            vMST = Replace(vMST, "-", "")
+                           
                            If Len(vMST) = 10 Or Len(vMST) = 13 Then
                                 strCheck = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))
                            End If
@@ -2258,7 +2264,7 @@ End Sub
 Public Sub LockCellBySheet()
     Dim i As Integer
     Dim a As Double, b As Double, c As Double
-    Dim arrRow As Variant, ArrCol As Variant
+    Dim arrRow As Variant, arrCol As Variant
     Dim arrCellTag() As String
     Dim cCol As Long, cRow As Long
     Dim varTemp As Variant

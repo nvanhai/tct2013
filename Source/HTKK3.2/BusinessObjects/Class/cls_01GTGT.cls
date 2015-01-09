@@ -2114,8 +2114,9 @@ Private Sub CheckDynamicError()
                                 .Col = .ColLetterToNumber("M")
                                 .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                                 .CellNote = vErrThueGTGT
-                                .BackColor = mErrorColor
-                                iFlagThueGTGT = 1
+                                '.BackColor = mErrorColor
+                                .BackColor = mAlertColor
+                                'iFlagThueGTGT = 1
                             Else
                                 .Col = .ColLetterToNumber("M")
                                 .CellNote = ""
