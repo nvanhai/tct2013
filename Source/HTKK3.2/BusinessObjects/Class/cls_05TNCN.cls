@@ -2142,9 +2142,9 @@ Private Sub UpdateSheets()
                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                .GetText lCol, lRow, varTemp
                ' Update gia tri cua truong check la "x" thi khi hien thi moi dung dinh dang
-               If (lCol = .ColLetterToNumber("G") Or lCol = .ColLetterToNumber("P") Or lCol = .ColLetterToNumber("C")) And (varTemp = "1" Or varTemp = "x") Then
+               If (lCol = .ColLetterToNumber("G") Or lCol = .ColLetterToNumber("R") Or lCol = .ColLetterToNumber("C")) And (varTemp = "1" Or varTemp = "x") Then
                     UpdateCell fps, lCol, lRow, "x"
-               ElseIf (lCol = .ColLetterToNumber("G") Or lCol = .ColLetterToNumber("P") Or lCol = .ColLetterToNumber("C")) And (varTemp = "0" Or varTemp = "") Then
+               ElseIf (lCol = .ColLetterToNumber("G") Or lCol = .ColLetterToNumber("R") Or lCol = .ColLetterToNumber("C")) And (varTemp = "0" Or varTemp = "") Then
                     UpdateCell fps, lCol, lRow, ""
                Else
                     If lCol >= 8 Then
