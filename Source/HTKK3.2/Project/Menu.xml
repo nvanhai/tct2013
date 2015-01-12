@@ -86,7 +86,7 @@
 		</Validity>
 	</Menu>
 	
-	<Menu ID="73" PopID="101" ParentID="101_2" Caption="TK TNDN cho chuyển nhượng BĐS (02/TNDN)" FormName="" Year="1" Month="0" ThreeMonth="1" Day="1" FinanceYear="1" Icon="..\Pictures\tk_tndn.bmp">
+	<Menu ID="73" PopID="101" ParentID="101_2" Caption="TK TNDN cho chuyển nhượng BĐS (02/TNDN)" FormName="" Year="1" Month="0" ThreeMonth="1" Day="1" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="14/06/2006" InterfaceTemplate="..\InterfaceTemplates\excel\02_TNDN.xls" ReportTemplate="..\ReportTemplates\excel\02_TNDN.xls" Class="TAX_Business_v1.cls_02TNDN" Class2="TAX_Business_v1.clsReport002">
 			<Sheet ID="02" Caption="Tờ khai" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="02_TNDN" InterfaceIni="..\InterfaceIni\02_TNDN.xml" ReportIni="..\ReportIni\02_TNDN.xml"/>		
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS_02_TNDN" InterfaceIni="..\InterfaceIni\KHBS_02_TNDN.xml" ReportIni="..\ReportIni\KHBS_02_TNDN.xml"/>

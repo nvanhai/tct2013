@@ -526,7 +526,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":02C8
+      SpreadDesigner  =   "frmPeriod.frx":031A
       UserResize      =   1
       Appearance      =   1
    End
@@ -3248,6 +3248,8 @@ Public Sub cmdOK_Click()
         End If
     End If
     '***************************
+    ' kiem tra to khai 02/TNDN ngay phat sinh khong dc lon hon ngay hien tai
+
     
     Dim idxPL As Long
     Dim countPL As Integer
@@ -5643,7 +5645,10 @@ Private Sub LoadDefaultInfor()
             End If
 
             cmbQuy.ListIndex = q.q - 1
-            txtYear.Text = q.Y
+            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" Then
+            Else
+                txtYear.Text = q.Y
+            End If
 
             'dhdang sua them kieu ky nua nam phuc vu an chi
         Case "H_Y"
@@ -7903,6 +7908,7 @@ Private Sub SetupLayout02TNDN()
     txtNgayCuoi.Visible = False
     
      strLoaiTKThang_PS = "TK_LANPS"
+     chkTKLanPS.value = "1"
      'strKieuKy = "D"
      OptChinhthuc.value = True
      lblSolan.Visible = False

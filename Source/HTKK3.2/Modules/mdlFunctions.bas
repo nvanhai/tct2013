@@ -2368,6 +2368,7 @@ Public Function CheckPeriod(ByVal strMonth As String, ByVal strYear As String) A
                     DisplayMessage "0045", msOKOnly, miInformation
                     Exit Function
                 End If
+            ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" Then
             Else
                 If GetNgayDauQuy(CInt(strMonth), CInt(strYear), iNgayTaiChinh, iThangTaiChinh) > Date Then
                     DisplayMessage "0045", msOKOnly, miInformation
