@@ -441,7 +441,8 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
         End If
 
         If .ActiveSheet = 2 Then
-            If .Col = .ColLetterToNumber("J") And (Row = 17 Or Row = 20) Then
+            If .Col = .ColLetterToNumber("J") And (Row = 17 Or Row = 19 Or Row = 20) Then
+                ' chi tieu  [07] , [09], [10]
                 .Sheet = 1
                 .Col = .ColLetterToNumber("K")
                 .Row = 54
@@ -451,6 +452,13 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
 
         'check CT15 <0 thi khong cho nhap CT16 tren PL 09B
         If .ActiveSheet = 3 Then
+            If .Col = .ColLetterToNumber("I") And (Row = 16 Or Row = 17 Or Row = 18 Or Row = 20 Or Row = 21 Or Row = 23 Or Row = 24) Then
+                ' chi tieu   [09], [16]
+                .Sheet = 1
+                .Col = .ColLetterToNumber("K")
+                .Row = 54
+                .Formula = "ROUND(T59,0)"
+            End If
             .Sheet = 3
             fps.EventEnabled(EventAllEvents) = False
             If Col = .ColLetterToNumber("I") And Row = 26 Then
