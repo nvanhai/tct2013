@@ -16,6 +16,11 @@
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
+	
+	<Static GroupName="CTieuTKhaiChinh">
+		<tieuMucHachToan>L_14</tieuMucHachToan>
+	</Static>
+	
 	<Static GroupName="HangHoaChiuThueTTDB">
 		<tongDongIcot5>V_36</tongDongIcot5>
 		<tongDongIcot6>AA_36</tongDongIcot6>
