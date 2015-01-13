@@ -295,6 +295,9 @@ Dim kyngay As Variant
             
             
             'ma NNKD
+            If strLoaiNNKD = "0" Then
+                strLoaiNNKD = "0000"
+            End If
             .Col = .ColLetterToNumber("L")
             .Row = 14
             .Text = strLoaiNNKD
@@ -633,7 +636,7 @@ Dim kyngay As Variant
                     .SetText .ColLetterToNumber("B"), 5, GetAttribute(GetMessageCellById("0116"), "Msg") & _
                     GetAttribute(GetMessageCellById("0117"), "Msg") & Mid(TAX_Utilities_v1.DateKHBS, 1, 2) & "/" & Mid(TAX_Utilities_v1.DateKHBS, 3, 2) & "/" & Mid(TAX_Utilities_v1.DateKHBS, 5, 4)
                 End If
-                filldata
+                fillData
                 .EventEnabled(EventAllEvents) = False
                 .Sheet = 1
                 .Row = 10 + count
@@ -3634,7 +3637,7 @@ End Sub
 
 
 
-Private Sub filldata()
+Private Sub fillData()
     Dim varTemp As Variant
     Dim lCol As Long, lRow As Long
     Dim xmlCellNode As MSXML.IXMLDOMNodeList
