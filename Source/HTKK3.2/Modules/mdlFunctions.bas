@@ -858,8 +858,22 @@ Public Sub SetupData(pGrid As fpSpread)
                                 ElseIf Trim(strSolanBS) = "1" And Trim(TAX_Utilities_v1.ThreeMonths) <> "" Then
                                     strDataFileBS = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                                 Else
-                                    ' Neu bo sung tu lan thu 2 tro di thi se lay lan gan voi lan bo sung nhat
-                                    strDataFileBS = TAX_Utilities_v1.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                                    If Val(strSolanBS) > 1 And Trim(TAX_Utilities_v1.month) <> "" Then
+                                        If GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "70" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "72" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "06" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "90" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "81" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "05" Then
+                                            If strLoaiTKThang_PS = "TK_THANG" Then
+                                                strDataFileBS = TAX_Utilities_v1.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                                            ElseIf strLoaiTKThang_PS = "TK_LANPS" Then
+                                                strDataFileBS = TAX_Utilities_v1.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                                            End If
+                                        Else
+                                            strDataFileBS = TAX_Utilities_v1.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                                        End If
+                                    ElseIf Val(strSolanBS) > 1 And Trim(TAX_Utilities_v1.ThreeMonths) <> "" Then
+                                        strDataFileBS = TAX_Utilities_v1.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
+                                    Else
+                                        ' Neu bo sung tu lan thu 2 tro di thi se lay lan gan voi lan bo sung nhat
+                                        strDataFileBS = TAX_Utilities_v1.DataFolder & "bs" & Val(strSolanBS) - 1 & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                                    End If
                                 End If
                             End If
                             ' end
