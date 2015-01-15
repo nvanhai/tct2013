@@ -3549,7 +3549,7 @@ Public Sub SetActiveSheet() 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
                 Set xmlCellNode = TAX_Utilities_v1.Data(1).getElementsByTagName("Cell") _
                     (TAX_Utilities_v1.Data(1).getElementsByTagName("Cell").length - 3)
                     strValue3 = GetAttribute(xmlCellNode, "Value")
-                'Set active voi dong 5
+                'Set active voi group 1
                 fps.Sheet = 2
                 fps.GetText fps.ColLetterToNumber("P"), 1, strValue4
                     If (Not IsNullValue(strValue1)) Or (Not IsNullValue(strValue2)) Or (Not IsNullValue(strValue3)) Or Val(strValue4) <> 0 Then
