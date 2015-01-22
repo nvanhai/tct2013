@@ -198,10 +198,10 @@ Public Sub Prepare1()
         ' set danh sach quoc gia
         .Col = .ColLetterToNumber("Q")
         .TypeComboBoxList = strQuocTich
-        .typeComboboxCurSel = 0
+        '.typeComboboxCurSel = 0
         .Col = .ColLetterToNumber("P")
         .TypeComboBoxList = strMaQuocTich
-        .typeComboboxCurSel = 0
+        '.typeComboboxCurSel = 0
         
         
         .Sheet = 1
@@ -733,14 +733,25 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                         .Row = Row
                         '.Formula = "AJ" & Row
                         '.Formula = "ROUND(G" & Row & "*20/100,0)"
-                        .Formula = "ROUND(H" & Row & "*20/100*50/100,0)"
+                        '.Formula = "ROUND(H" & Row & "*20/100*50/100,0)"
                         ' lay xong gia tri set lai ct =""
-                        .Formula = ""
+                        .Formula = "IF(OR(F" & Row & "=""1"",F" & Row & "=""x"",F" & Row & "=""X""),ROUND(H" & Row & "*0.2*0.5,0),0)"
+                        
+                        ' chi tieu 14
+                        .Col = .ColLetterToNumber("J")
+                        .Row = Row
+                        '.Formula = "IF(ROUND((G" & Row & "-I" & Row & ")*20/100,0)<0,0,ROUND((G" & Row & "-I" & Row & ")*20/100,0))"
+                        .Formula = "IF(OR(F" & Row & "=""1"",F" & Row & "=""x"",F" & Row & "=""X""),IF(ROUND((G" & Row & "-I" & Row & ")*20/100,0)<0,0,ROUND((G" & Row & "-I" & Row & ")*20/100,0)),IF(ROUND((G" & Row & "-I" & Row & ")*10/100,0)<0,0,ROUND((G" & Row & "-I" & Row & ")*10/100,0)))"
                     Else
                         .Col = .ColLetterToNumber("K")
                         .Row = Row
                         .Formula = ""
                         .value = "0"
+                        
+                        ' chi tieu 14
+                        .Col = .ColLetterToNumber("J")
+                        .Row = Row
+                        .Formula = "IF(ROUND((G" & Row & "-I" & Row & ")*10/100,0)<0,0,ROUND((G" & Row & "-I" & Row & ")*10/100,0))"
                     End If
                 End If
             End If
@@ -4732,11 +4743,11 @@ Private Sub CheckDynamicSheet3()
                         .CellNote = vErrDuLieuKhongHL
                         iFlagNgaySinhNPT = 1
                     End If
-                Else
-                    .Col = .ColLetterToNumber("G")
-                    .BackColor = mErrorColor
-                    .CellNote = vErrEmpty
-                    iFlagNgaySinhNPT = 1
+'                Else
+'                    .Col = .ColLetterToNumber("G")
+'                    .BackColor = mErrorColor
+'                    .CellNote = vErrEmpty
+'                    iFlagNgaySinhNPT = 1
                 End If
                 
                 ' Kiem tra MST NPT
@@ -4786,23 +4797,23 @@ Private Sub CheckDynamicSheet3()
                         .CellNote = ""
                         .BackColor = mNonErrorColor
                     End If
-                Else
-                     ' kiem tra neu tuoi >15 bat buoc nhap CMT
-                    If vNgaySinhNPT <> "" Then
-                        If Format_ddmmyyyy1(CStr(vNgaySinhNPT_Goc)) <> "" Then
-                            If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) > 15 And Trim(vSoCMNDNPT) = "" Then
-                                 .Col = .ColLetterToNumber("K")
-                                .CellNote = vErrEmptyCMNDNPT
-                                .BackColor = mErrorColor
-                                iFlagEmpty = 1
-                            End If
-                         Else
-                            .Col = .ColLetterToNumber("G")
-                            .CellNote = vErrDuLieuKhongHL
-                            .BackColor = mErrorColor
-                            iFlagEmpty = 1
-                         End If
-                    End If
+'                Else
+'                     ' kiem tra neu tuoi >15 bat buoc nhap CMT
+'                    If vNgaySinhNPT <> "" Then
+'                        If Format_ddmmyyyy1(CStr(vNgaySinhNPT_Goc)) <> "" Then
+'                            If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) > 15 And Trim(vSoCMNDNPT) = "" Then
+'                                 .Col = .ColLetterToNumber("K")
+'                                .CellNote = vErrEmptyCMNDNPT
+'                                .BackColor = mErrorColor
+'                                iFlagEmpty = 1
+'                            End If
+'                         Else
+'                            .Col = .ColLetterToNumber("G")
+'                            .CellNote = vErrDuLieuKhongHL
+'                            .BackColor = mErrorColor
+'                            iFlagEmpty = 1
+'                         End If
+'                    End If
                 End If
                  
                  ' Kiem tra tu thang bat buoc nhap
@@ -4874,38 +4885,38 @@ Private Sub CheckDynamicSheet3()
                 End If
                 
                 ' kiem tra khong co cot 11 va 13 bat buoc nhap cot 18,19,20
-                If Trim(vMSTNPT) = "" And Trim(vSoCMNDNPT) = "" Then
-                    ' bat buoc nhap thong tin quoc gia
-                    If Trim(vQuocGia) = "" Then
-                        .Col = .ColLetterToNumber("Q")
-                        .CellNote = vErrEmpty
-                        .BackColor = mErrorColor
-                        iFlagEmpty = 1
-                    End If
-                    
-                    ' bat buoc nhap thong tin tinh
-                    If Trim(vTinh) = "" Then
-                        .Col = .ColLetterToNumber("S")
-                        .CellNote = vErrEmpty
-                        .BackColor = mErrorColor
-                        iFlagEmpty = 1
-                    End If
-                    
-                    ' bat buoc nhap thong tin huyen
-                    If Trim(vHuyen) = "" Then
-                        .Col = .ColLetterToNumber("U")
-                        .CellNote = vErrEmpty
-                        .BackColor = mErrorColor
-                        iFlagEmpty = 1
-                    End If
-                    
-                    ' bat buoc nhap thong tin xa
-                    If Trim(vXa) = "" Then
-                        .Col = .ColLetterToNumber("W")
-                        .CellNote = vErrEmpty
-                        .BackColor = mErrorColor
-                        iFlagEmpty = 1
-                    End If
+                'If Trim(vMSTNPT) = "" And Trim(vSoCMNDNPT) = "" Then
+'                    ' bat buoc nhap thong tin quoc gia
+'                    If Trim(vQuocGia) = "" Then
+'                        .Col = .ColLetterToNumber("Q")
+'                        .CellNote = vErrEmpty
+'                        .BackColor = mErrorColor
+'                        iFlagEmpty = 1
+'                    End If
+'
+'                    ' bat buoc nhap thong tin tinh
+'                    If Trim(vTinh) = "" Then
+'                        .Col = .ColLetterToNumber("S")
+'                        .CellNote = vErrEmpty
+'                        .BackColor = mErrorColor
+'                        iFlagEmpty = 1
+'                    End If
+'
+'                    ' bat buoc nhap thong tin huyen
+'                    If Trim(vHuyen) = "" Then
+'                        .Col = .ColLetterToNumber("U")
+'                        .CellNote = vErrEmpty
+'                        .BackColor = mErrorColor
+'                        iFlagEmpty = 1
+'                    End If
+'
+'                    ' bat buoc nhap thong tin xa
+'                    If Trim(vXa) = "" Then
+'                        .Col = .ColLetterToNumber("W")
+'                        .CellNote = vErrEmpty
+'                        .BackColor = mErrorColor
+'                        iFlagEmpty = 1
+'                    End If
                     
                     ' kiem tra neu chon quoc gia Viet Nam
                     If Trim(vMaQuocGia) = "01" Then
@@ -4962,7 +4973,7 @@ Private Sub CheckDynamicSheet3()
                             .BackColor = mAlertColor
                         End If
                     End If
-                End If
+                'End If
                 
                 ' Kiem tra truong hop co nhap thong tin tinh, huyen , xa thi bat buoc nhap thong tin quoc gia
                 If Trim$(vTinh) <> "" Or Trim$(vHuyen) <> "" Or Trim$(vXa) <> "" Then
@@ -5001,49 +5012,49 @@ Private Sub CheckDynamicSheet3()
                 End If
                 
                 
-                ' bat buoc nhap thong so neu <= 15 t
-                If Trim(vMSTNPT) = "" And Trim(vSoCMNDNPT) = "" Then
-                    If Trim(vSo) = "" Then
-                        If Format_ddmmyyyy1(CStr(vNgaySinhNPT_Goc)) <> "" Then
-                            If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) <= 15 Then
-                                .Col = .ColLetterToNumber("N")
-                                .CellNote = vErrEmpty
-                                .BackColor = mErrorColor
-                                iFlagEmpty = 1
-                            End If
-                         End If
-                    Else
-                        .Col = .ColLetterToNumber("N")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                    End If
-                Else
-                    .Col = .ColLetterToNumber("N")
-                    .CellNote = ""
-                    .BackColor = mNonErrorColor
-                End If
+'                ' bat buoc nhap thong so neu <= 15 t
+'                If Trim(vMSTNPT) = "" And Trim(vSoCMNDNPT) = "" Then
+'                    If Trim(vSo) = "" Then
+'                        If Format_ddmmyyyy1(CStr(vNgaySinhNPT_Goc)) <> "" Then
+'                            If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) <= 15 Then
+'                                .Col = .ColLetterToNumber("N")
+'                                .CellNote = vErrEmpty
+'                                .BackColor = mErrorColor
+'                                iFlagEmpty = 1
+'                            End If
+'                         End If
+'                    Else
+'                        .Col = .ColLetterToNumber("N")
+'                        .CellNote = ""
+'                        .BackColor = mNonErrorColor
+'                    End If
+'                Else
+'                    .Col = .ColLetterToNumber("N")
+'                    .CellNote = ""
+'                    .BackColor = mNonErrorColor
+'                End If
                 
-                ' bat buoc nhap thong quyen so neu <= 15 t
-                If Trim(vMSTNPT) = "" And Trim(vSoCMNDNPT) = "" Then
-                    If Trim(vQuyenSo) = "" Then
-                        If Format_ddmmyyyy1(CStr(vNgaySinhNPT_Goc)) <> "" Then
-                            If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) <= 15 Then
-                                .Col = .ColLetterToNumber("O")
-                                .CellNote = vErrEmpty
-                                .BackColor = mErrorColor
-                                iFlagEmpty = 1
-                            End If
-                        End If
-                    Else
-                        .Col = .ColLetterToNumber("O")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                    End If
-                Else
-                    .Col = .ColLetterToNumber("O")
-                    .CellNote = ""
-                    .BackColor = mNonErrorColor
-                End If
+'                ' bat buoc nhap thong quyen so neu <= 15 t
+'                If Trim(vMSTNPT) = "" And Trim(vSoCMNDNPT) = "" Then
+'                    If Trim(vQuyenSo) = "" Then
+'                        If Format_ddmmyyyy1(CStr(vNgaySinhNPT_Goc)) <> "" Then
+'                            If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) <= 15 Then
+'                                .Col = .ColLetterToNumber("O")
+'                                .CellNote = vErrEmpty
+'                                .BackColor = mErrorColor
+'                                iFlagEmpty = 1
+'                            End If
+'                        End If
+'                    Else
+'                        .Col = .ColLetterToNumber("O")
+'                        .CellNote = ""
+'                        .BackColor = mNonErrorColor
+'                    End If
+'                Else
+'                    .Col = .ColLetterToNumber("O")
+'                    .CellNote = ""
+'                    .BackColor = mNonErrorColor
+'                End If
                 ' kiem tra MST thuoc 05A, 05B
                 tam = .Row
                 .Sheet = 3 'Bang ke 5B
@@ -5051,7 +5062,7 @@ Private Sub CheckDynamicSheet3()
                 flagTrungMSTAB = 0
                 Do
                     ' Ma la null
-                        'dhdang check trung MST
+                        'check trung MST
                         .GetText .ColLetterToNumber("D"), .Row, varTemp
                         If Trim(varTemp) = Trim(vMSTNNT) Then
                             flagTrungMSTAB = 1
