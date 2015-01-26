@@ -3271,6 +3271,19 @@ Private Sub UpdateSheets()
             mCurrentSheet = .Sheet
             blnSheet = IIf(TAX_Utilities_v1.NodeValidity.childNodes(.Sheet - 1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
             If blnSheet = True Then
+                ' dem so dong dong cua group 1 tren PL 03-7/TNDN
+                If i = sheetPl03_7_TNDN Then
+                    Dim maxRow As Long
+                    maxRow = 0
+                    .Row = 31
+                    Do
+                         .Col = .ColLetterToNumber("B")
+                         .Row = 1 + .Row
+                         maxRow = maxRow + 1
+                    Loop Until .Text = "kk"
+                End If
+                ' end
+                
                 For Each xmlCellNodeData In TAX_Utilities_v1.Data(.Sheet - 1).getElementsByTagName("Cell")
                     ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                     If i = sheetPl03_3A_TNDN Then
@@ -3289,7 +3302,8 @@ Private Sub UpdateSheets()
                             UpdateCell fps, lCol, lRow, varTemp
                         End If
                     ElseIf i = sheetPl03_7_TNDN Then
-                        If lRow < TAX_Utilities_v1.Data(.Sheet - 1).getElementsByTagName("cell").length - 13 Then
+                        If lRow >= 31 And lRow < maxRow + 31 Then
+                        Else
                             .GetText lCol, lRow, varTemp
                             UpdateCell fps, lCol, lRow, varTemp
                         End If
