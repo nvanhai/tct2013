@@ -13,9 +13,9 @@
 			<tenHDon>E_43</tenHDon>
 			<mauHDon>O_43</mauHDon>
 			<kyHieu>S_43</kyHieu>
-			<tuSo>V_43</tuSo>
-			<denSo>Y_43</denSo>
-			<soLuong>AA_43</soLuong>
+			<tuSo TEXTNumber ="1">V_43</tuSo>
+			<denSo TEXTNumber ="1">Y_43</denSo>
+			<soLuong TEXTNumber ="1">AA_43</soLuong>
 			<lien>AB_43</lien>
 			<ghiChu>AC_43</ghiChu>
 			<ktraLoaiHDon></ktraLoaiHDon>

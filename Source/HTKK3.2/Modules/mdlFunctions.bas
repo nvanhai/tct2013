@@ -4727,3 +4727,25 @@ Public Function getMST() As String
     Set xmlDomHeader = Nothing
     getMST = Trim(mstDN)
 End Function
+
+
+' ham check theo schema to khai
+'Function ValidateFileSchema(xmlTK As MSXML.DOMDocument, strUrn As String, _
+'                        strXsdFile As String) As Boolean
+'   ' Create a schema cache and add books.xsd to it.
+'   Dim xs As New MSXML2.XMLSchemaCache60
+'   xs.Add strUrn, App.path & "\" & strXsdFile
+'
+'
+'   ' Assign the schema cache to the DOM document.
+'   ' schemas collection.
+'   Set xd.schemas = xmlTK
+'
+'   ' Return validation results in message to the user.
+'   If xd.parseError.errorCode <> 0 Then
+'        ValidateFileSchema = False
+'    Else
+'        ValidateFileSchema = True
+'    End If
+'End Function
+

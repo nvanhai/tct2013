@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1969
+         SpreadDesigner  =   "frmInterfaces.frx":19A5
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1BF1
+      SpreadDesigner  =   "frmInterfaces.frx":1C69
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -4778,9 +4778,21 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
                 xmlTK.getElementsByTagName("pbanTKhaiXML")(0).Text = pbanTKhaiXML_TK
             End If
         End If
-        'to TB03,BC21 khong co ky ke khai
-'        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") <> "10" Then
-
+        'to TB03,BC21 hoa don va bien lai phi khong co ky ke khai
+        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "66" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "67" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "09" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "10" Then
+            If xmlTK.getElementsByTagName("kieuKy").length > 0 Then
+                xmlTK.getElementsByTagName("kieuKy")(0).Text = "D"
+            End If
+            If xmlTK.getElementsByTagName("kyKKhaiTuNgay").length > 0 Then
+                xmlTK.getElementsByTagName("kyKKhaiTuNgay")(0).Text = TAX_Utilities_v1.FirstDay
+            End If
+            If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
+                xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = TAX_Utilities_v1.FirstDay
+            End If
+            If xmlTK.getElementsByTagName("kyKKhai").length > 0 Then
+                xmlTK.getElementsByTagName("kyKKhai")(0).Text = TAX_Utilities_v1.FirstDay
+            End If
+        Else
             If xmlTK.getElementsByTagName("kieuKy").length > 0 Then
                 xmlTK.getElementsByTagName("kieuKy")(0).Text = strKK
             End If
@@ -4885,6 +4897,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
                     End If
                 End If
             End If
+        End If
 
 '        Else
 '            xmlTK.getElementsByTagName("kieuKy")(0).Text = ""
@@ -5138,6 +5151,8 @@ Private Function getFileName(MaTk As String) As String
         Else
             getFileName = Left$(taxOfficeName, 3) & "-" & MstNnt & "-" & MaFile & "-" & Replace$(TAX_Utilities_v1.FirstDay, "/", "") & Replace$(TAX_Utilities_v1.LastDay, "/", "") & "-" & ctBs
         End If
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "66" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "67" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "09" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "10" Then
+        getFileName = Left$(taxOfficeName, 3) & "-" & MstNnt & "-" & MaFile & "-" & "D" & Replace$(TAX_Utilities_v1.FirstDay, "/", "") & "-" & ctBs
     Else
         getFileName = Left$(taxOfficeName, 3) & "-" & MstNnt & "-" & MaFile & "-" & strKK & Replace$(GetKyKeKhai(GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")), "/", "") & "-" & ctBs
     End If
@@ -6381,9 +6396,12 @@ Private Sub cmdImportXML_Click()
     xmlDuLieuImport.Load strImportFileName
     SetKieuKy
 
-    If Not validateTkHeader(xmlDuLieuImport) Then
-        DisplayMessage "0278", msOKOnly, miWarning
-        Exit Sub
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "66" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "67" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "09" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "10" Then
+    Else
+        If Not validateTkHeader(xmlDuLieuImport) Then
+            DisplayMessage "0278", msOKOnly, miWarning
+            Exit Sub
+        End If
     End If
     
     ' Kiem tra MST
@@ -6976,6 +6994,7 @@ Private Function validateTkHeader(ByVal xmlDuLieuImport As MSXML.DOMDocument) As
             Exit Function
         End If
     End If
+    
     
     If xmlDuLieuImport.getElementsByTagName("kyKKhai").length > 0 Then
         Dim strKykk() As String

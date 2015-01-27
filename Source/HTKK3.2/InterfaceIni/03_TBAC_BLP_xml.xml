@@ -14,9 +14,9 @@
 			<tenLoaiBienLai>E_43</tenLoaiBienLai>
 			<kyHieuMauBienLai>O_43</kyHieuMauBienLai>
 			<kyHieuBienLai>S_43</kyHieuBienLai>
-			<tuSo>V_43</tuSo>
-			<denSo>Y_43</denSo>
-			<soLuong>AA_43</soLuong>
+			<tuSo TEXTNumber ="1">V_43</tuSo>
+			<denSo TEXTNumber ="1">Y_43</denSo>
+			<soLuong TEXTNumber ="1">AA_43</soLuong>
 		</ChiTietBKeKQuaHuyBLai>
 	</Dynamic>
 	<Static GroupName="CTieuTKhaiChinh">
