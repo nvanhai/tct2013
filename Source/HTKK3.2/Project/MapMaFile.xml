@@ -10,7 +10,7 @@
 	<Map MapID="01" MaFile="01_GTGT" Version ="2.0.7" VersionKHBS ="2.0.7" MaTK="01"/>
 	<Map MapID="02" MaFile="02_GTGT" Version ="2.0.6" VersionKHBS ="2.0.4" MaTK="02"/>
 	<Map MapID="04" MaFile="03_GTGT" Version ="2.0.6" VersionKHBS ="2.0.4" MaTK="04"/>
-	<Map MapID="71" MaFile="04_GTGT" Version ="2.1.0" VersionKHBS ="2.1.0" MaTK="07"/>
+	<Map MapID="71" MaFile="04_GTGT" Version ="2.1.0" VersionKHBS ="2.0.4" MaTK="07"/>
 	<Map MapID="72" MaFile="05_GTGT" Version ="2.0.0" VersionKHBS ="2.0.4" MaTK="53"/>
 	
 	<Map MapID="102_7" MaFile="" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK=""/>

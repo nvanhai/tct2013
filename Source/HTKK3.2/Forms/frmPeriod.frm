@@ -3248,8 +3248,6 @@ Public Sub cmdOK_Click()
         End If
     End If
     '***************************
-    ' kiem tra to khai 02/TNDN ngay phat sinh khong dc lon hon ngay hien tai
-
     
     Dim idxPL As Long
     Dim countPL As Integer
