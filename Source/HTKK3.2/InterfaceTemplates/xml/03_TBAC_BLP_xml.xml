@@ -73,13 +73,13 @@
 			<ppHuyBienLai></ppHuyBienLai>
 			<ngayHuyBienLai></ngayHuyBienLai>
 			<BKeKQuaHuyBLai>
-				<ChiTietBKeKQuaHuyBLai id="">
+				<ChiTietBKeKQuaHuyBLai id="String">
 					<tenLoaiBienLai></tenLoaiBienLai>
 					<kyHieuMauBienLai></kyHieuMauBienLai>
 					<kyHieuBienLai></kyHieuBienLai>
-					<tuSo></tuSo>
-					<denSo></denSo>
-					<soLuong></soLuong>
+					<tuSo>0</tuSo>
+					<denSo>0</denSo>
+					<soLuong>0</soLuong>
 				</ChiTietBKeKQuaHuyBLai>
 			</BKeKQuaHuyBLai>
 			<nguoiLapBieu></nguoiLapBieu>

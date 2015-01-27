@@ -3707,24 +3707,28 @@ Public Sub cmdOK_Click()
     ' kiem tra trung khoang doi voi to khai QT co ky bo sung tu thang den thang
     If strKHBS = "TKCT" And strKieuKy = KIEU_KY_NAM Then
         If idToKhai = "93" Or idToKhai = "89" Then
-            If checkKyKKTrung(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk, Trim(txtNgayDau.Text), Trim(txtNgayCuoi.Text)) = True Then
+            If checkKyKKTrung(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk, Trim(txtNgayDau.Text), Trim(txtNgayCuoi.Text), txtYear.Text) = True Then
                 DisplayMessage "0340", msOKOnly, miWarning
                 Exit Sub
             End If
+        ' to khai 09/TNCN khong check
+        ElseIf idToKhai = "41" Or idToKhai = "76" Then
         Else
-            If checkKyKKTrung(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile"), Trim(txtNgayDau.Text), Trim(txtNgayCuoi.Text)) = True Then
+            If checkKyKKTrung(GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile"), Trim(txtNgayDau.Text), Trim(txtNgayCuoi.Text), txtYear.Text) = True Then
                 DisplayMessage "0340", msOKOnly, miWarning
                 Exit Sub
             End If
         End If
     ElseIf strKHBS = "TKBS" And strKieuKy = KIEU_KY_NAM Then
         If idToKhai = "93" Or idToKhai = "89" Then
-            If checkKyKKTrung("bs" & Trim$(txtSolan.Text) & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk, Trim(txtNgayDau.Text), Trim(txtNgayCuoi.Text)) = True Then
+            If checkKyKKTrung("bs" & Trim$(txtSolan.Text) & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile") & "_" & strLoaiTkDk, Trim(txtNgayDau.Text), Trim(txtNgayCuoi.Text), txtYear.Text) = True Then
                 DisplayMessage "0340", msOKOnly, miWarning
                 Exit Sub
             End If
+        ' to khai 09/TNCN khong check
+        ElseIf idToKhai = "41" Or idToKhai = "76" Then
         Else
-            If checkKyKKTrung("bs" & Trim$(txtSolan.Text) & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile"), Trim(txtNgayDau.Text), Trim(txtNgayCuoi.Text)) = True Then
+            If checkKyKKTrung("bs" & Trim$(txtSolan.Text) & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile"), Trim(txtNgayDau.Text), Trim(txtNgayCuoi.Text), txtYear.Text) = True Then
                 DisplayMessage "0340", msOKOnly, miWarning
                 Exit Sub
             End If
@@ -9236,7 +9240,7 @@ ErrHandle:
 End Sub
 
 ' tenFileTK: truyen datafile cua to khai
-Private Function checkKyKKTrung(ByVal tenFileTK As String, ByVal tuThangKK As String, ByVal denThangKK As String) As Boolean
+Private Function checkKyKKTrung(ByVal tenFileTK As String, ByVal tuThangKK As String, ByVal denThangKK As String, ByVal namKK As String) As Boolean
     Dim isTrung As Boolean
     Dim lngIndex As Integer
     Dim arrTemp() As String
@@ -9265,7 +9269,8 @@ Private Function checkKyKKTrung(ByVal tenFileTK As String, ByVal tuThangKK As St
                 If chenhLech1 = 0 And chenhLech2 = 0 Then
                     isTrung = False
                     Exit For
-                ElseIf chenhLech1 * chenhLech2 > 0 Then
+                ElseIf chenhLech1 * chenhLech2 > 0 And Left$(Right$(arrStrXMLFileNames(lngIndex), 18), 4) = namKK Then
+                    ' kiem tra them nam ke khai trung thi moi bat
                     isTrung = True
                     Exit For
                 End If
@@ -9274,14 +9279,14 @@ Private Function checkKyKKTrung(ByVal tenFileTK As String, ByVal tuThangKK As St
                 ' truong hop tu thang 1 nam trong khoang
                 chenhLech1 = DateDiff("M", format(tuThangKK, "mm/yyyy"), format(Left(tuThang1, 2) & "/" & Right(tuThang1, 4), "mm/yyyy"))
                 chenhLech2 = DateDiff("M", format(tuThangKK, "mm/yyyy"), format(Left(denThang1, 2) & "/" & Right(denThang1, 4), "mm/yyyy"))
-                If chenhLech1 * chenhLech2 <= 0 Then
+                If chenhLech1 * chenhLech2 <= 0 And Left$(Right$(arrStrXMLFileNames(lngIndex), 18), 4) = namKK Then
                     isTrung = True
                     Exit For
                 End If
                 ' truong hop den thang nam trong khoang
                 chenhLech1 = DateDiff("M", format(denThangKK, "mm/yyyy"), format(Left(tuThang1, 2) & "/" & Right(tuThang1, 4), "mm/yyyy"))
                 chenhLech2 = DateDiff("M", format(denThangKK, "mm/yyyy"), format(Left(denThang1, 2) & "/" & Right(denThang1, 4), "mm/yyyy"))
-                If chenhLech1 * chenhLech2 <= 0 Then
+                If chenhLech1 * chenhLech2 <= 0 And Left$(Right$(arrStrXMLFileNames(lngIndex), 18), 4) = namKK Then
                     isTrung = True
                     Exit For
                 End If

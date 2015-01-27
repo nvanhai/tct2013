@@ -12,7 +12,7 @@
 	</Static>
 	
 	<Dynamic GroupName="HoaDon">
-		<ChiTiet ID="ID_1">
+		<ChiTiet ID="id">
 			<tenHDon>E_43</tenHDon>
 			<mauHDon>O_43</mauHDon>
 			<kyHieu>S_43</kyHieu>

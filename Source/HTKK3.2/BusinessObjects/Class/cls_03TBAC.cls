@@ -967,6 +967,8 @@ Private Sub UpdateSheets()
     Dim lCol As Long, lRow As Long
     Dim xmlCellNode As MSXML.IXMLDOMNodeList
     Dim xmlCellNodeData As MSXML.IXMLDOMNode
+    Dim arrDate() As String
+    
     With fps
         .EventEnabled(EventAllEvents) = False
         ssSheet = mCurrentSheet
@@ -974,9 +976,14 @@ Private Sub UpdateSheets()
         mCurrentSheet = .Sheet
         If (GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "Active") <> "0") Then
             For Each xmlCellNodeData In TAX_Utilities_v1.Data(0).getElementsByTagName("Cell")
-               ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
-               .GetText lCol, lRow, varTemp
-               UpdateCell fps, lCol, lRow, varTemp
+                ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
+                .GetText lCol, lRow, varTemp
+                UpdateCell fps, lCol, lRow, varTemp
+                If lCol = .ColLetterToNumber("O") And lRow = 8 Then
+                     If varTemp <> "" Then
+                         TAX_Utilities_v1.FirstDay = varTemp
+                     End If
+                End If
              Next
         End If
       .Sheet = .ActiveSheet

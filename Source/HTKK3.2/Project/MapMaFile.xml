@@ -10,7 +10,7 @@
 	<Map MapID="01" MaFile="01_GTGT" Version ="2.0.7" VersionKHBS ="2.0.7" MaTK="01"/>
 	<Map MapID="02" MaFile="02_GTGT" Version ="2.0.6" VersionKHBS ="2.0.4" MaTK="02"/>
 	<Map MapID="04" MaFile="03_GTGT" Version ="2.0.6" VersionKHBS ="2.0.4" MaTK="04"/>
-	<Map MapID="71" MaFile="04_GTGT" Version ="2.0.6" VersionKHBS ="2.0.4" MaTK="07"/>
+	<Map MapID="71" MaFile="04_GTGT" Version ="2.1.0" VersionKHBS ="2.1.0" MaTK="07"/>
 	<Map MapID="72" MaFile="05_GTGT" Version ="2.0.0" VersionKHBS ="2.0.4" MaTK="53"/>
 	
 	<Map MapID="102_7" MaFile="" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK=""/>
@@ -75,7 +75,7 @@
 	<Map MapID="101_6" MaFile="" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK=""/>
 	
 	<Map MapID="69" MaFile="15_01_CDKT10" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="49"/>
-	<Map MapID="19" MaFile="48_01_CDKT" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="50"/> 
+	<Map MapID="19" MaFile="48_01_CDKT" Version ="2.1.0" VersionKHBS ="2.1.0" MaTK="50"/> 
 	<Map MapID="20" MaFile="16_01_CDKT" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="51"/> 
 	<Map MapID="22" MaFile="95_01_CDKT" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="285"/> 
 	
@@ -83,8 +83,8 @@
 	
 	<Map MapID="64" MaFile="01_TBAC" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="106"/> 
 	<Map MapID="65" MaFile="01_AC" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="105"/> 
-	<Map MapID="66" MaFile="BC21_AC" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="104"/> 
-	<Map MapID="67" MaFile="03_TBAC" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="107"/> 
+	<Map MapID="66" MaFile="BC21_AC" Version ="2.1.0" VersionKHBS ="2.1.0" MaTK="104"/> 
+	<Map MapID="67" MaFile="03_TBAC" Version ="2.1.0" VersionKHBS ="2.1.0" MaTK="107"/> 
 	<Map MapID="68" MaFile="BC26_AC" Version ="2.0.8" VersionKHBS ="2.0.8" MaTK="131"/> 
 	<Map MapID="91" MaFile="04_TBAC" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="129"/> 	
 	<Map MapID="18" MaFile="BC26_AC_SL" Version ="2.0.1" VersionKHBS ="2.0.1" MaTK="300"/> 
@@ -112,8 +112,8 @@
 	<Map MapID="102_10" MaFile="" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK=""/> 
 	
 	<Map MapID="07" MaFile="01_TBAC_BLP" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="260"/> 
-	<Map MapID="09" MaFile="BC21_AC_BLP" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="262"/> 
-	<Map MapID="10" MaFile="03_TBAC_BLP" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="263"/> 
+	<Map MapID="09" MaFile="BC21_AC_BLP" Version ="2.1.0" VersionKHBS ="2.1.0" MaTK="262"/> 
+	<Map MapID="10" MaFile="03_TBAC_BLP" Version ="2.1.0" VersionKHBS ="2.1.0" MaTK="263"/> 
 	<Map MapID="13" MaFile="01_AC_BLP" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="261"/> 
 	<Map MapID="92" MaFile="01_TAIN_DK" Version ="2.0.3" VersionKHBS ="2.0.4" MaTK="135"/> 
 	<Map MapID="93" MaFile="02_TNDN_DK" Version ="2.0.5" VersionKHBS ="2.0.5" MaTK="86"/> 
