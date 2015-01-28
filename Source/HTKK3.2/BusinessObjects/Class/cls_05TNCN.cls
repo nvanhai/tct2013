@@ -733,15 +733,21 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
                         .Row = Row
                         '.Formula = "AJ" & Row
                         '.Formula = "ROUND(G" & Row & "*20/100,0)"
-                        '.Formula = "ROUND(H" & Row & "*20/100*50/100,0)"
+                        .Formula = "ROUND(H" & Row & "*20/100*50/100,0)"
                         ' lay xong gia tri set lai ct =""
-                        .Formula = "IF(OR(F" & Row & "=""1"",F" & Row & "=""x"",F" & Row & "=""X""),ROUND(H" & Row & "*0.2*0.5,0),0)"
+                        .Formula = ""
+                        '.Formula = "IF(OR(F" & Row & "=""1"",F" & Row & "=""x"",F" & Row & "=""X""),ROUND(H" & Row & "*0.2*0.5,0),0)"
+                        
                         
                         ' chi tieu 14
                         .Col = .ColLetterToNumber("J")
                         .Row = Row
                         '.Formula = "IF(ROUND((G" & Row & "-I" & Row & ")*20/100,0)<0,0,ROUND((G" & Row & "-I" & Row & ")*20/100,0))"
-                        .Formula = "IF(OR(F" & Row & "=""1"",F" & Row & "=""x"",F" & Row & "=""X""),IF(ROUND((G" & Row & "-I" & Row & ")*20/100,0)<0,0,ROUND((G" & Row & "-I" & Row & ")*20/100,0)),IF(ROUND((G" & Row & "-I" & Row & ")*10/100,0)<0,0,ROUND((G" & Row & "-I" & Row & ")*10/100,0)))"
+                        '.Formula = "IF(OR(F" & Row & "=""1"",F" & Row & "=""x"",F" & Row & "=""X""),IF(ROUND((G" & Row & "-I" & Row & ")*20/100,0)<0,0,ROUND((G" & Row & "-I" & Row & ")*20/100,0)),IF(ROUND((G" & Row & "-I" & Row & ")*10/100,0)<0,0,ROUND((G" & Row & "-I" & Row & ")*10/100,0)))"
+                        .Formula = "IF(ROUND((G" & Row & "-I" & Row & ")*20/100,0)<0,0,ROUND((G" & Row & "-I" & Row & ")*20/100,0))"
+                        ' lay xong set lai gia tri cu
+                        '.Formula = "IF(ROUND((G" & Row & "-I" & Row & ")*10/100,0)<0,0,ROUND((G" & Row & "-I" & Row & ")*10/100,0))"
+                        
                     Else
                         .Col = .ColLetterToNumber("K")
                         .Row = Row
@@ -785,7 +791,7 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
             End If
         
             If .ActiveSheet = 3 Then
-                If Col = .ColLetterToNumber("G") Then
+                If Col = .ColLetterToNumber("H") Then
                     If Row >= 22 And Row <= .MaxRows - 8 Then
                         .GetText .ColLetterToNumber("F"), Row, strCheck
                         If Trim$(strCheck) = "x" Or Trim$(strCheck) = "X" Or Trim$(strCheck) = "1" Then
@@ -804,6 +810,23 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
                         End If
                     End If
                 End If
+                
+                If Col = .ColLetterToNumber("G") Or Col = .ColLetterToNumber("I") Then
+                    If Row >= 22 And Row <= .MaxRows - 8 Then
+                        .GetText .ColLetterToNumber("F"), Row, strCheck
+                        If Trim$(strCheck) = "x" Or Trim$(strCheck) = "X" Or Trim$(strCheck) = "1" Then
+                            .Col = .ColLetterToNumber("J")
+                            .Row = Row
+                            .Formula = "IF(ROUND((G" & Row & "-I" & Row & ")*20/100,0)<0,0,ROUND((G" & Row & "-I" & Row & ")*20/100,0))"
+                        Else
+                            .Col = .ColLetterToNumber("J")
+                            .Row = Row
+                            .Formula = "IF(ROUND((G" & Row & "-I" & Row & ")*10/100,0)<0,0,ROUND((G" & Row & "-I" & Row & ")*10/100,0))"
+                        End If
+                    End If
+                End If
+                    
+                
                 
                 CellChange Col, Row
              End If
