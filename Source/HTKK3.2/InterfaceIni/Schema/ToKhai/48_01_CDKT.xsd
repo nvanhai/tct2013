@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by TeaM DJiNN (TeaM DJiNN) -->
-<xs:schema targetNamespace="TKhaiThue" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="TKhaiThue" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0">
+<!-- edited with XMLSpy v2010 rel. 3 (http://www.altova.com) by MESMERiZE (MSM) -->
+<xs:schema targetNamespace="TKhaiThue" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="TKhaiThue" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.1.0">
 	<xs:redefine schemaLocation="../TKhaiThue.xsd">
 		<xs:complexType name="CTieuTKhaiChinhType">
 			<xs:annotation>
@@ -1764,7 +1764,7 @@
 					<xs:documentation>Tiền Việt Nam</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="ct1112" type="xs:long" nillable="true">
+			<xs:element name="ct1112" type="xs:decimal" nillable="true">
 				<xs:annotation>
 					<xs:documentation> Ngoại tệ</xs:documentation>
 				</xs:annotation>
@@ -1784,7 +1784,7 @@
 					<xs:documentation>Tiền Việt Nam</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="ct1122" type="xs:long" nillable="true">
+			<xs:element name="ct1122" type="xs:decimal" nillable="true">
 				<xs:annotation>
 					<xs:documentation>Ngoại tệ</xs:documentation>
 				</xs:annotation>
@@ -2399,7 +2399,7 @@
 					<xs:documentation>Nợ khó đòi đã xử lý</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="ct7" type="xs:long" nillable="true">
+			<xs:element name="ct7" type="xs:decimal" nillable="true">
 				<xs:annotation>
 					<xs:documentation>Ngoại tệ các loại</xs:documentation>
 				</xs:annotation>
