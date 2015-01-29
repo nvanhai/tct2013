@@ -1,0 +1,627 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 rel. 3 (http://www.altova.com) by MESMERiZE (MSM) -->
+<xs:schema xmlns="TKhaiThue" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="TKhaiThue" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.6">
+	<xs:redefine schemaLocation="../TKhaiThue.xsd">
+		<xs:complexType name="CTieuTKhaiChinhType">
+			<xs:complexContent>
+				<xs:extension base="CTieuTKhaiChinhType">
+					<xs:sequence>
+						<xs:element name="tieuMucHachToan" type="xs:string" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Tiểu mục hạch toán</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct21" type="xs:long" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thuế GTGT chưa được hoàn kỳ trước chuyển sang</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct21a" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thuế GTGT đầu vào của dự án đầu tư nhận bàn giao từ  chủ dự án đầu tư</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="HHDVMuaVaoTrongKy">
+							<xs:annotation>
+								<xs:documentation>Hàng hoá, dịch vụ mua vào trong kỳ</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct22" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Giá Trị của Hàng hoá, dịch vụ mua vào trong kỳ (chưa có thuế GTGT) </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct23" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Thuế GTGT của Hàng hoá, dịch vụ mua vào trong kỳ </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="DieuChinhTangGTGTCacKyTruoc">
+							<xs:annotation>
+								<xs:documentation>Điều chỉnh tăng thuế GTGT của HHDV mua vào các kỳ trước</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct24" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Giá trị HHDV mua vào kỳ trước điều chỉnh tăng</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct25" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Thuế GTGT của HHDV mua vào kỳ trước điều chỉnh tăng</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="DieuChinhGiamGTGTCacKyTruoc">
+							<xs:annotation>
+								<xs:documentation>Điều chỉnh giảm thuế GTGT của HHDV mua vào các kỳ trước</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct26" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Giá trị HHDV mua vào kỳ trước điều chỉnh giảm</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct27" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Thuế GTGT của HHDV mua vào kỳ trước điều chỉnh giảm</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ct28" type="xs:long" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Tổng số thuế GTGT đầu vào của HHDV mua vào ([28]= [23]+[25]-[27])</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct28a" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thuế GTGT mua vào của dự án đầu tư (cùng tỉnh, thành phố trực thuộc trung ương) bù trừ với thuế GTGT phải nộp của hoạt động sản xuất kinh doanh cùng kỳ tính thuế</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct29" type="xs:long" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thuế GTGT đầu vào chưa được hoàn đến kỳ tính thuế của dự án đầu tư ([29] = [21]+[21a]+[28]-[28a])</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct30a" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thuế GTGT đầu vào của hàng hoá nhập khẩu thuộc loại trong nước chưa sản xuất được để tạo tài sản cố định đã đề nghị hoàn</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct30" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thuế GTGT đầu vào còn lại của dự án đầu tư đề nghị hoàn</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct31" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thuế GTGT đầu vào của dự án đầu tư chưa được hoàn  bàn giao cho doanh nghiệp mới thành lập trong kỳ</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct32" type="xs:long" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thuế GTGT đầu vào của dự án đầu tư chưa được hoàn chuyển kỳ sau ([32] = [29]-[30a]-[30]-[31] ) </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+		<xs:complexType name="PLucType">
+			<xs:complexContent>
+				<xs:extension base="PLucType">
+					<xs:sequence>
+						<xs:element name="PL01_2_GTGT" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="HHDVDauTuKTru" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ChiTietHHDVDauTuKTru">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="HDonMVao" type="HDonMVaoType" minOccurs="0" maxOccurs="unbounded"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="tongGTriHHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng giá trị của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế
+</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="tThueGTGT_HHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng thuế GTGT của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="tongCongGTriHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng giá trị hàng hoá, dịch vụ mua vào (**)                              </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="tongCongThueGTGTHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế GTGT của hàng hoá, dịch vụ mua vào (***)          </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PL01_2_1_GTGT" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="HHDVDauTuKTru" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ChiTietHHDVDauTuKTru">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="HDonMVao" type="HDonMVaoType" minOccurs="0" maxOccurs="unbounded"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="tongGTriHHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng giá trị của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế
+</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="tThueGTGT_HHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng thuế GTGT của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="tongCongGTriHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng giá trị hàng hoá, dịch vụ mua vào (**):                                  </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="tongCongThueGTGTHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế GTGT của hàng hoá, dịch vụ mua vào (***):             </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PL01_2_2_GTGT" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="HHDVDauTuKTru" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ChiTietHHDVDauTuKTru">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="HDonMVao" type="HDonMVaoType" minOccurs="0" maxOccurs="unbounded"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="tongGTriHHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng giá trị của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế
+</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="tThueGTGT_HHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng thuế GTGT của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="tongCongGTriHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng giá trị hàng hoá, dịch vụ mua vào (**):                                  </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="tongCongThueGTGTHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế GTGT của hàng hoá, dịch vụ mua vào (***):             </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PL01_2_3_GTGT" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="HHDVDauTuKTru" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ChiTietHHDVDauTuKTru">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="HDonMVao" type="HDonMVaoType" minOccurs="0" maxOccurs="unbounded"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="tongGTriHHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng giá trị của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế
+</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="tThueGTGT_HHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng thuế GTGT của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="tongCongGTriHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng giá trị hàng hoá, dịch vụ mua vào (**):                                  </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="tongCongThueGTGTHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế GTGT của hàng hoá, dịch vụ mua vào (***):             </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PL01_2_4_GTGT" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="HHDVDauTuKTru" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ChiTietHHDVDauTuKTru">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="HDonMVao" type="HDonMVaoType" minOccurs="0" maxOccurs="unbounded"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="tongGTriHHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng giá trị của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế
+</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="tThueGTGT_HHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng thuế GTGT của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="tongCongGTriHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng giá trị hàng hoá, dịch vụ mua vào (**):                                  </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="tongCongThueGTGTHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế GTGT của hàng hoá, dịch vụ mua vào (***):             </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PL01_2_5_GTGT" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="HHDVDauTuKTru" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ChiTietHHDVDauTuKTru">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="HDonMVao" type="HDonMVaoType" minOccurs="0" maxOccurs="unbounded"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="tongGTriHHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng giá trị của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế
+</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="tThueGTGT_HHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng thuế GTGT của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="tongCongGTriHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng giá trị hàng hoá, dịch vụ mua vào (**):                                  </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="tongCongThueGTGTHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế GTGT của hàng hoá, dịch vụ mua vào (***):             </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PL01_2_6_GTGT" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="HHDVDauTuKTru" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ChiTietHHDVDauTuKTru">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="HDonMVao" type="HDonMVaoType" minOccurs="0" maxOccurs="unbounded"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="tongGTriHHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng giá trị của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế
+</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="tThueGTGT_HHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng thuế GTGT của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="tongCongGTriHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng giá trị hàng hoá, dịch vụ mua vào (**):                                  </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="tongCongThueGTGTHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế GTGT của hàng hoá, dịch vụ mua vào (***):             </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PL01_2_7_GTGT" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="HHDVDauTuKTru" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ChiTietHHDVDauTuKTru">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="HDonMVao" type="HDonMVaoType" minOccurs="0" maxOccurs="unbounded"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="tongGTriHHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng giá trị của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế
+</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="tThueGTGT_HHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng thuế GTGT của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="tongCongGTriHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng giá trị hàng hoá, dịch vụ mua vào (**):                                  </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="tongCongThueGTGTHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế GTGT của hàng hoá, dịch vụ mua vào (***):             </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PL01_2_8_GTGT" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="HHDVDauTuKTru" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ChiTietHHDVDauTuKTru">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="HDonMVao" type="HDonMVaoType" minOccurs="0" maxOccurs="unbounded"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="tongGTriHHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng giá trị của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế
+</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="tThueGTGT_HHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng thuế GTGT của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="tongCongGTriHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng giá trị hàng hoá, dịch vụ mua vào (**):                                  </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="tongCongThueGTGTHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế GTGT của hàng hoá, dịch vụ mua vào (***):             </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PL01_2_9_GTGT" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="HHDVDauTuKTru" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ChiTietHHDVDauTuKTru">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="HDonMVao" type="HDonMVaoType" minOccurs="0" maxOccurs="unbounded"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="tongGTriHHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng giá trị của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế
+</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="tThueGTGT_HHDVMuaVao" type="xs:long" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng thuế GTGT của Hàng hóa, dịch vụ dùng cho dự án đầu tư đủ điều kiện được khấu trừ thuế</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="tongCongGTriHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng giá trị hàng hoá, dịch vụ mua vào (**):                                  </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="tongCongThueGTGTHHDVMuaVao" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế GTGT của hàng hoá, dịch vụ mua vào (***):             </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:redefine>
+	<xs:complexType name="HDonMVaoType">
+		<xs:complexContent>
+			<xs:extension base="HDonCTuType">
+				<xs:sequence>
+					<xs:element name="tenNBAN" type="xs:string" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Tên người bán</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="mstNBAN" type="TINType" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Mã số thuế người bán</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="matHang" type="xs:string" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Mặt hàng</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="gtriMuaChuaThue" type="xs:long" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Giá trị HHDV mua vào chưa có thuế</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="thueSuat" type="xs:nonNegativeInteger" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Thuế suất (%)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="thueGTGT" type="xs:long" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Thuế GTGT đủ điều kiện khấu trừ thuế</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ghiChu" type="xs:string" nillable="true">
+						<xs:annotation>
+							<xs:documentation>Ghi chú</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="HDonCTuType">
+		<xs:sequence>
+			<xs:element name="kHieuMauHDon" type="xs:string" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Ký hiệu mẫu hoá đơn</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="kHieuHDon" type="xs:string" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Kí hiệu hoá đơn</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="soHDon" type="xs:string" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Số hoá đơn, chứng từ</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ngayPHanh" type="xs:date" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Ngày, tháng, năm lập hóa đơn</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:schema>
