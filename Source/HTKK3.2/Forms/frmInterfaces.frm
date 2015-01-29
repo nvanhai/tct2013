@@ -6411,6 +6411,20 @@ Private Sub KetXuatXML()
     Exit Sub
 
 End Sub
+
+Function getFileSchema() As String
+    Dim fileSchema As String
+    Dim idTkCheckSchema As String
+    
+    idTkCheckSchema = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
+    If (InStr(1, strIdKHBS_TT156, "~" & Trim$(idTkCheckSchema) & "~", vbTextCompare) > 0 Or Trim$(idTkCheckSchema) = "01") And strKHBS = "TKBS" Then
+        fileSchema = "KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile")
+    Else
+       fileSchema = GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(0), "DataFile")
+    End If
+    getFileSchema = fileSchema
+End Function
+
 Function ValidateXmlSchema(strXmlFile As String, strUrn As String, strXsdFile As String) As String
 On Error GoTo ErrorHandle
    ' Create a schema cache and add books.xsd to it.
