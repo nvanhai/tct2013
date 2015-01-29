@@ -6360,7 +6360,7 @@ Private Sub KetXuatXML()
     xmlTK.documentElement.removeAttribute "xmlns"
     xmlTK.documentElement.SetAttribute "xmlns", "TKhaiThue"
     xmlTK.save TAX_Utilities_v1.DataFolder & "tmp_tkhai.xml"
-    strMessValid = ValidateXmlSchema(TAX_Utilities_v1.DataFolder & "tmp_tkhai.xml", "TKhaiThue", GetAbsolutePath("..\InterfaceIni") & "\Schema\ToKhai\" & MaTk & ".xsd")
+    strMessValid = ValidateXmlSchema(TAX_Utilities_v1.DataFolder & "tmp_tkhai.xml", "TKhaiThue", GetAbsolutePath("..\InterfaceIni") & "\Schema\ToKhai\" & getFileSchema & ".xsd")
     If strMessValid <> "0" Then
         Dim arrMsgLoiXML() As String
         arrMsgLoiXML = Split(strMessValid, "~")
