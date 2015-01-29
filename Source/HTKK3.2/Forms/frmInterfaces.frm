@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19A5
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C69
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -5569,6 +5569,10 @@ End Sub
 Private Sub KetXuatXML()
     Dim xmlMapCT       As New MSXML.DOMDocument
     Dim xmlTK          As New MSXML.DOMDocument
+    Dim xmlTKValid          As New MSXML.DOMDocument
+    'Dim xmlTK2          As New MSXML2.DOMDocument60
+    'Dim xsValid As New MSXML2.XMLSchemaCache60
+    
     Dim xmlPL          As New MSXML.DOMDocument
     
     Dim xmlPLTemplate          As New MSXML.DOMDocument
@@ -5593,6 +5597,9 @@ Private Sub KetXuatXML()
     Dim strArrActive() As String
     Dim cFolder        As New Scripting.FileSystemObject
     Dim nFolder        As String
+    
+    Dim strMessValid   As String
+    Dim strTenFileKetXuatXML As String
     
     Dim firstDynamic As Boolean
     Dim firstRowDynamic As Long
@@ -5622,36 +5629,8 @@ Private Sub KetXuatXML()
         End If
     End If
     
-    '    Lay duong dan cua file
-    With CommonDialog1
-        .CancelError = True
-        .InitDir = nFolder
-        .Filter = "XML file (*.xml)|*.xml"
-        .FilterIndex = 1
-        .DialogTitle = "File xml export to " & .InitDir
-        .FileName = getFileName(MaTk)
-        
-        .ShowSave
-
-        If .FileName = vbNullString Or .FileName = "" Then
-            Exit Sub
-        End If
-
-        If Right$(.FileName, 4) <> ".xml" Then
-            strFileName = .FileName & ".xml"
-        Else
-            strFileName = .FileName
-        End If
-
-    End With
-    
-    Dim fso As New FileSystemObject
-
-    If fso.FileExists(strFileName) = True Then
-        If DisplayMessage("0052", msYesNo, miQuestion) = mrNo Then
-            Exit Sub
-        End If
-    End If
+    ' lay ten file
+     strTenFileKetXuatXML = getFileName(MaTk)
 
     ' Bo ky tu "A","B" trong ma to khai
     If MaTk = "01A_TNCN_BH" Or MaTk = "01B_TNCN_BH" Or MaTk = "01A_TNCN_XS" Or MaTk = "01B_TNCN_XS" Or MaTk = "02A_TNCN10" Or MaTk = "02B_TNCN10" Or MaTk = "03A_TNCN10" Or MaTk = "03B_TNCN10" Then
@@ -6373,15 +6352,111 @@ Private Sub KetXuatXML()
     
     'Xu ly doi voi cac to khai chua co xmlns:xsi, xmlns
     xmlTK.documentElement.SetAttribute "xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance"
+    ' test nvsu
 
+    'xmlTK.documentElement.SetAttribute "xmlns", "http://kekhaithue.gdt.gov.vn/TKhaiThue"
+    
+    '###TODO: VALID XML SCHEMA
+    xmlTK.documentElement.removeAttribute "xmlns"
+    xmlTK.documentElement.SetAttribute "xmlns", "TKhaiThue"
+    xmlTK.save TAX_Utilities_v1.DataFolder & "tmp_tkhai.xml"
+    strMessValid = ValidateXmlSchema(TAX_Utilities_v1.DataFolder & "tmp_tkhai.xml", "TKhaiThue", GetAbsolutePath("..\InterfaceIni") & "\Schema\ToKhai\" & MaTk & ".xsd")
+    If strMessValid <> "0" Then
+        Dim arrMsgLoiXML() As String
+        arrMsgLoiXML = Split(strMessValid, "~")
+        'MsgBox strMessValid
+        DisplayMessage "###" & GetAttribute(GetMessageCellById("0352"), "Msg") & arrMsgLoiXML(0) & vbCrLf & vbCrLf & GetAttribute(GetMessageCellById("0353"), "Msg") & arrMsgLoiXML(1), msOKOnly, miInformation
+        Exit Sub
+    End If
+    xmlTK.documentElement.removeAttribute "xmlns"
+    '###END - VALID
+    
+    'update xmlns
+    ' end test nvsu
     xmlTK.documentElement.SetAttribute "xmlns", "http://kekhaithue.gdt.gov.vn/TKhaiThue"
+    
+    '    Lay duong dan cua file
+    With CommonDialog1
+        .CancelError = True
+        .InitDir = nFolder
+        .Filter = "XML file (*.xml)|*.xml"
+        .FilterIndex = 1
+        .DialogTitle = "File xml export to " & .InitDir
+        .FileName = strTenFileKetXuatXML     'getFileName(MaTk)
+        'todo
+        .ShowSave
+
+        If .FileName = vbNullString Or .FileName = "" Then
+            Exit Sub
+        End If
+
+        If Right$(.FileName, 4) <> ".xml" Then
+            strFileName = .FileName & ".xml"
+        Else
+            strFileName = .FileName
+        End If
+
+    End With
+    
+    Dim fso As New FileSystemObject
+
+    If fso.FileExists(strFileName) = True Then
+        If DisplayMessage("0052", msYesNo, miQuestion) = mrNo Then
+            Exit Sub
+        End If
+    End If
     
     xmlTK.save strFileName
     DisplayMessage "0280", msOKOnly, miInformation
     Exit Sub
 
 End Sub
+Function ValidateXmlSchema(strXmlFile As String, strUrn As String, strXsdFile As String) As String
+On Error GoTo ErrorHandle
+   ' Create a schema cache and add books.xsd to it.
+   Dim xs As New MSXML2.XMLSchemaCache60
+   ' Create an XML DOMDocument object.
+   Dim xd As New MSXML2.DOMDocument60
+   Dim fso As New FileSystemObject
+   ' kiem tra neu schema ton tai thi valide theo schema, neu khong ton tai bo qua buoc check
+    If fso.FileExists(strXsdFile) = False Then
+        ValidateXmlSchema = "0"
+        Exit Function
+    End If
+   
+   xs.Add strUrn, strXsdFile
+   
+   ' Assign the schema cache to the DOM document.
+   ' schemas collection.
+   Set xd.schemas = xs
 
+   ' Load books.xml as the DOM document.
+   xd.async = False
+   xd.Load strXmlFile
+
+   ' Return validation results in message to the user.
+   If xd.parseError.errorCode <> 0 Then
+         ValidateXmlSchema = "Validation failed! " & _
+              "=====================" & vbCrLf & _
+              "Reason: " & xd.parseError.reason & _
+              vbCrLf & "Source: " & _
+              xd.parseError.srcText & _
+              vbCrLf & "Line: " & _
+              xd.parseError.Line & vbCrLf
+         SaveErrorLog Me.Name, "ValidateXmlSchema", Err.Number, ValidateXmlSchema & " Schema: " & strXsdFile
+         ValidateXmlSchema = xd.parseError.srcText & "~" & xd.parseError.reason
+    Else
+'        ValidateXmlSchema = "Validation succeeded for " & _
+'             strXmlFile & vbCrLf & _
+'             "======================" & _
+'             vbCrLf & xd.xml & vbCrLf
+        'return 0
+        ValidateXmlSchema = "0"
+    End If
+Exit Function
+ErrorHandle:
+    SaveErrorLog Me.Name, "ValidateXmlSchema", Err.Number, Err.Description
+End Function
 Private Sub cmdImportXML_Click()
     On Error GoTo ErrHandle
     Dim strImportFileName As String

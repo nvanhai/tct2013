@@ -352,14 +352,18 @@ Private Sub SetMessage(pMsgID As String)
     Dim xmlNode As MSXML.IXMLDOMNode
     
     lblMessage.Caption = ""
-    
-    For Each xmlNode In xmlNodeListMessage
-        If xmlNode.Attributes.getNamedItem("ID").nodeValue = pMsgID Then
-            lblMessage.Caption = xmlNode.Attributes.getNamedItem("Msg").nodeValue
-            Exit For
-        End If
-    Next
-
+    ' hien thi them message text truyen vao
+    If Len(pMsgID) > 4 And Left(pMsgID, 3) = "###" Then
+        lblMessage.Caption = Mid$(pMsgID, 4)
+    Else
+        For Each xmlNode In xmlNodeListMessage
+            If xmlNode.Attributes.getNamedItem("ID").nodeValue = pMsgID Then
+                lblMessage.Caption = xmlNode.Attributes.getNamedItem("Msg").nodeValue
+                Exit For
+            End If
+        Next
+    End If
+        
     ResizeMsgbox
     Set xmlNode = Nothing
     
