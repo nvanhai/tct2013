@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2010 rel. 3 (http://www.altova.com) by MESMERiZE (MSM) -->
-<xs:schema xmlns="TKhaiThue" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="TKhaiThue" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.6">
+<xs:schema xmlns="TKhaiThue" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="TKhaiThue" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.1.0">
 	<xs:redefine schemaLocation="../TKhaiThue.xsd">
 		<xs:complexType name="CTieuTKhaiChinhType">
 			<xs:complexContent>
 				<xs:extension base="CTieuTKhaiChinhType">
 					<xs:sequence>
-						<xs:element name="ct21" type="xs:nonNegativeInteger" nillable="true">
+						<xs:element name="ct21" type="xs:long" nillable="true">
 							<xs:annotation>
 								<xs:documentation>Doanh thu hàng hoá, dịch vụ chịu thuế suất 0% và không chịu thuế </xs:documentation>
 							</xs:annotation>
@@ -17,12 +17,12 @@
 							</xs:annotation>
 							<xs:complexType>
 								<xs:sequence>
-									<xs:element name="ct22" type="xs:nonNegativeInteger" nillable="true">
+									<xs:element name="ct22" type="xs:long" nillable="true">
 										<xs:annotation>
 											<xs:documentation>Doanh thu hàng hoá, dịch vụ chịu thuế</xs:documentation>
 										</xs:annotation>
 									</xs:element>
-									<xs:element name="ct23" type="xs:nonNegativeInteger" nillable="true">
+									<xs:element name="ct23" type="xs:long" nillable="true">
 										<xs:annotation>
 											<xs:documentation>Thuế GTGT phải nộp [23]=[22]x1%</xs:documentation>
 										</xs:annotation>
@@ -36,12 +36,12 @@
 							</xs:annotation>
 							<xs:complexType>
 								<xs:sequence>
-									<xs:element name="ct24" type="xs:nonNegativeInteger" nillable="true">
+									<xs:element name="ct24" type="xs:long" nillable="true">
 										<xs:annotation>
 											<xs:documentation>Doanh thu hàng hoá, dịch vụ chịu thuế</xs:documentation>
 										</xs:annotation>
 									</xs:element>
-									<xs:element name="ct25" type="xs:nonNegativeInteger" nillable="true">
+									<xs:element name="ct25" type="xs:long" nillable="true">
 										<xs:annotation>
 											<xs:documentation>Thuế GTGT phải nộp [25]=[24]x5%</xs:documentation>
 										</xs:annotation>
@@ -55,12 +55,12 @@
 							</xs:annotation>
 							<xs:complexType>
 								<xs:sequence>
-									<xs:element name="ct26" type="xs:nonNegativeInteger" nillable="true">
+									<xs:element name="ct26" type="xs:long" nillable="true">
 										<xs:annotation>
 											<xs:documentation>Doanh thu hàng hoá, dịch vụ chịu thuế</xs:documentation>
 										</xs:annotation>
 									</xs:element>
-									<xs:element name="ct27" type="xs:nonNegativeInteger" nillable="true">
+									<xs:element name="ct27" type="xs:long" nillable="true">
 										<xs:annotation>
 											<xs:documentation>Thuế GTGT phải nộp  [27]=[26]x3%</xs:documentation>
 										</xs:annotation>
@@ -74,12 +74,12 @@
 							</xs:annotation>
 							<xs:complexType>
 								<xs:sequence>
-									<xs:element name="ct28" type="xs:nonNegativeInteger" nillable="true">
+									<xs:element name="ct28" type="xs:long" nillable="true">
 										<xs:annotation>
 											<xs:documentation>Doanh thu hàng hoá, dịch vụ chịu thuế</xs:documentation>
 										</xs:annotation>
 									</xs:element>
-									<xs:element name="ct29" type="xs:nonNegativeInteger" nillable="true">
+									<xs:element name="ct29" type="xs:long" nillable="true">
 										<xs:annotation>
 											<xs:documentation>Thuế GTGT phải nộp [29]=[28]x2%</xs:documentation>
 										</xs:annotation>
@@ -93,12 +93,12 @@
 							</xs:annotation>
 							<xs:complexType>
 								<xs:sequence>
-									<xs:element name="ct30" type="xs:nonNegativeInteger" nillable="true">
+									<xs:element name="ct30" type="xs:long" nillable="true">
 										<xs:annotation>
 											<xs:documentation>Tổng Doanh thu hàng hoá, dịch vụ chịu thuế [30]=[22]+[24]+[26]+[28]</xs:documentation>
 										</xs:annotation>
 									</xs:element>
-									<xs:element name="ct31" type="xs:nonNegativeInteger" nillable="true">
+									<xs:element name="ct31" type="xs:long" nillable="true">
 										<xs:annotation>
 											<xs:documentation>Tổng Thuế GTGT phải nộp [31]=[23]+[25]+[27]+[29]</xs:documentation>
 										</xs:annotation>
@@ -106,12 +106,12 @@
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
-						<xs:element name="ct32" type="xs:nonNegativeInteger" nillable="true">
+						<xs:element name="ct32" type="xs:long" nillable="true">
 							<xs:annotation>
 								<xs:documentation>Tổng doanh thu [32]=[21]+[30]</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="ct33" type="xs:nonNegativeInteger" nillable="true">
+						<xs:element name="ct33" type="xs:long" nillable="true">
 							<xs:annotation>
 								<xs:documentation>Tổng số thuế giá trị gia tăng phải nộp [33]=[31]</xs:documentation>
 							</xs:annotation>
