@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 rel. 3 (http://www.altova.com) by MESMERiZE (MSM) -->
+<xs:schema targetNamespace="TKhaiThue" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="TKhaiThue" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.1">
+	<xs:redefine schemaLocation="../TKhaiThue.xsd">
+		<xs:complexType name="CTieuTKhaiChinhType">
+			<xs:complexContent>
+				<xs:extension base="CTieuTKhaiChinhType">
+					<xs:sequence>
+						<xs:element name="DuKienKDoanhTrongKyCuaNhom">
+							<xs:annotation>
+								<xs:documentation>I. DỰ KIẾN KẾT QUẢ KINH DOANH TRONG KỲ CỦA NHÓM KINH DOANH</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct21" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng doanh thu phát sinh</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct22" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng chi phí phát sinh</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct23" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng thu nhập chịu thuế</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct24" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng thu nhập làm căn cứ tính giảm thuế</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ThuNhapVaSoThuePNopCuaTungCaNhan">
+							<xs:annotation>
+								<xs:documentation>II. THU NHẬP VÀ SỐ THUẾ TẠM NỘP CỦA CÁ NHÂN TRONG NHÓM</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="BangChiTietSoThuePNopCuaTungCNhan">
+										<xs:annotation>
+											<xs:documentation>Thu nhập và số thuế tạm nộp của cá nhân trong nhóm</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ChiTietThuNhapKDoanh" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="ct26" type="xs:string">
+																<xs:annotation>
+																	<xs:documentation>Họ và tên </xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ct27" type="TINType">
+																<xs:annotation>
+																	<xs:documentation>Mã số thuế</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ct28" type="xs:decimal" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Tỷ lệ chia TNCT</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ThuNhapChiuThue">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="ct29" type="xs:nonNegativeInteger" nillable="true">
+																			<xs:annotation>
+																				<xs:documentation>Tổng số </xs:documentation>
+																			</xs:annotation>
+																		</xs:element>
+																		<xs:element name="ct30" type="xs:nonNegativeInteger" nillable="true">
+																			<xs:annotation>
+																				<xs:documentation>Trong đó: thu nhập làm căn cứ tính giảm thuế</xs:documentation>
+																			</xs:annotation>
+																		</xs:element>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+															<xs:element name="ct31" type="xs:nonNegativeInteger" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Các khoản giảm trừ</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ct32" type="xs:long" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Thu nhập tính thuế</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ct33" type="xs:nonNegativeInteger" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Thuế TNCN tạm tính</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ct34" type="xs:nonNegativeInteger" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Thuế TNCN được giảm</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ct35" type="xs:nonNegativeInteger" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Thuế TNCN tạm nộp</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="id" type="xs:string"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="ct36" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng cộng tỷ lệ chia TNCT</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct37" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thu nhập chịu thuế</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct38" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thu nhập làm căn cứ tính giảm thuế</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct39" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng các khoản giảm trừ</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct40" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng thu nhập tính thuế</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct41" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng Thuế TNCN tạm tính</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct42" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng Thuế TNCN được giảm</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct43" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng Thuế TNCN tạm nộp</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:redefine>
+</xs:schema>

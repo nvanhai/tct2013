@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by MENNT (SEATECH) -->
+<xs:schema targetNamespace="TKhaiThue" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="TKhaiThue" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0">
+	<xs:redefine schemaLocation="../TKhaiThue.xsd">
+		<xs:complexType name="CTieuTKhaiChinhType">
+			<xs:complexContent>
+				<xs:extension base="CTieuTKhaiChinhType">
+					<xs:sequence>
+						<xs:element name="TongSoNguoiLaoDong">
+							<xs:annotation>
+								<xs:documentation>1. Tổng số người lao động:</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct21" type="xs:integer" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số người lao động</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct22" type="xs:integer" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Trong đó: Cá nhân cư trú có hợp đồng lao động</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="TongSoCaNhanDaKhauTru">
+							<xs:annotation>
+								<xs:documentation>2. Tổng số cá nhân đã khấu trừ thuế </xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct23" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số cá nhân đã khấu trừ thuế [23]=[24]+[25]</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct24" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Cá nhân cư trú</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct25" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Cá nhân không cư trú</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="TongTNCTTraChoCaNhan">
+							<xs:annotation>
+								<xs:documentation>3. Tổng thu nhập chịu thuế (TNCT) trả cho cá nhân </xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct26" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng thu nhập chịu thuế (TNCT) trả cho cá nhân [26]=[27]+[28]+[29]</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct27" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Cá nhân cư trú có hợp đồng lao động</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct28" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Cá nhân cư trú không có hợp đồng lao động</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct29" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Cá nhân không cư trú</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="TongTNCTTraCNhanThuocDienKTru">
+							<xs:annotation>
+								<xs:documentation>4. Tổng TNCT trả cho cá nhân thuộc diện phải khấu trừ thuế </xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct30" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng TNCT trả cho cá nhân thuộc diện phải khấu trừ thuế [30]=[31]+[32]+[33] </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct31" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Cá nhân cư trú có hợp đồng lao động</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct32" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Cá nhân cư trú không có hợp đồng lao động</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct33" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Cá nhân không cư trú</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="TongThueTNCNDaKhauTru">
+							<xs:annotation>
+								<xs:documentation>5. Tổng số thuế TNCN đã khấu trừ </xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct34" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế TNCN đã khấu trừ [34]=[35]+[36]+[37]</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct35" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Cá nhân cư trú có hợp đồng lao động</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct36" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Cá nhân cư trú không có hợp đồng lao động</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct37" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Cá nhân không cư trú</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:redefine>
+</xs:schema>
