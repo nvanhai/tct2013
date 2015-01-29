@@ -4942,7 +4942,7 @@ Private Sub CheckDynamicSheet3()
 '                    End If
                     
                     ' kiem tra neu chon quoc gia Viet Nam
-                    If Trim(vMaQuocGia) = "01" Then
+                    If Trim(vMaQuocGia) = "01" And Trim$(vQuocGia) <> "" Then
                         If Trim$(vMaTinh) = "999" Then
                             .Col = .ColLetterToNumber("S")
                             .CellNote = vErrDuLieuKhongHL

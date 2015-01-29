@@ -668,7 +668,7 @@ With fps
         If Col = .ColLetterToNumber("N") And Row = 95 Then
             .GetText .ColLetterToNumber("J"), 95, vTuNgay
             .GetText .ColLetterToNumber("N"), 95, vDenNgay
-            If Trim(vDenNgay) <> "" And Trim(vDenNgay) <> "../../...." Then
+            If Trim(vDenNgay) <> "" And Trim(vDenNgay) <> "../../...." And IsDate(vDenNgay) = True Then
                 arrTemp = Split(vTuNgay, "/")
                 dTuNgay = DateSerial(Int(arrTemp(2)), Int(arrTemp(1)), Int(arrTemp(0)))
                 arrTemp = Split(vDenNgay, "/")
@@ -1036,6 +1036,14 @@ End Sub
 Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As Long, ByVal NewRow As Long, Cancel As Boolean)
     Dim varTemp As Variant
     Dim countRowDyn As Long
+    
+    Dim vTuNgay As Variant
+    Dim vDenNgay As Variant
+    Dim arrTemp() As String
+    Dim dTuNgay As Date
+    Dim dDenNgay As Date
+    Dim soNgay As Long
+    
     With fps
         .EventEnabled(EventAllEvents) = False
         mCurrentSheet = .Sheet
@@ -1073,6 +1081,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 .Col = Col
                 .Row = Row
                 UpdateCell fps, Col, Row, .Text
+                
             End If
             
             
@@ -1091,6 +1100,23 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 .Col = Col
                 .Row = Row
                 UpdateCell fps, Col, Row, .Text
+                
+                 soNgay = 0
+                .GetText .ColLetterToNumber("J"), 95, vTuNgay
+                .GetText .ColLetterToNumber("N"), 95, vDenNgay
+                If Trim(vDenNgay) <> "" And Trim(vDenNgay) <> "../../...." And IsDate(vDenNgay) = True Then
+                    arrTemp = Split(vTuNgay, "/")
+                    dTuNgay = DateSerial(Int(arrTemp(2)), Int(arrTemp(1)), Int(arrTemp(0)))
+                    arrTemp = Split(vDenNgay, "/")
+                    dDenNgay = DateSerial(Int(arrTemp(2)), Int(arrTemp(1)), Int(arrTemp(0)))
+                    soNgay = DateDiff("D", dTuNgay, dDenNgay) + 1
+                End If
+                If soNgay >= 0 Then
+                    .Col = .ColLetterToNumber("E")
+                    .Row = 95
+                    .Text = soNgay
+                    UpdateCell fps, .Col, .Row, .Text
+                End If
             End If
             
             'kiem tra truong ngay ky tren TK
