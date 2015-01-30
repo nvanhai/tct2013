@@ -8472,9 +8472,9 @@ Private Sub SetActiveValueKHBS()
 '        SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(3), "Active", 1
     ElseIf varMenuId = "73" Or varMenuId = "88" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(1), "Active", 1
-    ElseIf varMenuId = "71" Then
+    ElseIf varMenuId = "71" Or varMenuId = "90" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(2), "Active", 1
-    ElseIf varMenuId = "85" Or varMenuId = "90" Then
+    ElseIf varMenuId = "85" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(1), "Active", 1
     ElseIf varMenuId = "12" Or varMenuId = "11" Then
         SetAttribute TAX_Utilities_v1.NodeValidity.childNodes(3), "Active", 1
@@ -9256,7 +9256,7 @@ ErrHandle:
 End Sub
 
 ' tenFileTK: truyen datafile cua to khai
-Private Function checkKyKKTrung(ByVal tenFileTK As String, ByVal tuThangKK As String, ByVal denThangKK As String, ByVal namKK As String) As Boolean
+Private Function checkKyKKTrung(ByVal tenFileTK As String, ByVal tuThangKK As String, ByVal denThangKK As String, ByVal NamKK As String) As Boolean
     Dim isTrung As Boolean
     Dim lngIndex As Integer
     Dim arrTemp() As String
@@ -9285,7 +9285,7 @@ Private Function checkKyKKTrung(ByVal tenFileTK As String, ByVal tuThangKK As St
                 If chenhLech1 = 0 And chenhLech2 = 0 Then
                     isTrung = False
                     Exit For
-                ElseIf chenhLech1 * chenhLech2 > 0 And Left$(Right$(arrStrXMLFileNames(lngIndex), 18), 4) = namKK Then
+                ElseIf chenhLech1 * chenhLech2 > 0 And Left$(Right$(arrStrXMLFileNames(lngIndex), 18), 4) = NamKK Then
                     ' kiem tra them nam ke khai trung thi moi bat
                     isTrung = True
                     Exit For
@@ -9295,14 +9295,14 @@ Private Function checkKyKKTrung(ByVal tenFileTK As String, ByVal tuThangKK As St
                 ' truong hop tu thang 1 nam trong khoang
                 chenhLech1 = DateDiff("M", format(tuThangKK, "mm/yyyy"), format(Left(tuThang1, 2) & "/" & Right(tuThang1, 4), "mm/yyyy"))
                 chenhLech2 = DateDiff("M", format(tuThangKK, "mm/yyyy"), format(Left(denThang1, 2) & "/" & Right(denThang1, 4), "mm/yyyy"))
-                If chenhLech1 * chenhLech2 <= 0 And Left$(Right$(arrStrXMLFileNames(lngIndex), 18), 4) = namKK Then
+                If chenhLech1 * chenhLech2 <= 0 And Left$(Right$(arrStrXMLFileNames(lngIndex), 18), 4) = NamKK Then
                     isTrung = True
                     Exit For
                 End If
                 ' truong hop den thang nam trong khoang
                 chenhLech1 = DateDiff("M", format(denThangKK, "mm/yyyy"), format(Left(tuThang1, 2) & "/" & Right(tuThang1, 4), "mm/yyyy"))
                 chenhLech2 = DateDiff("M", format(denThangKK, "mm/yyyy"), format(Left(denThang1, 2) & "/" & Right(denThang1, 4), "mm/yyyy"))
-                If chenhLech1 * chenhLech2 <= 0 And Left$(Right$(arrStrXMLFileNames(lngIndex), 18), 4) = namKK Then
+                If chenhLech1 * chenhLech2 <= 0 And Left$(Right$(arrStrXMLFileNames(lngIndex), 18), 4) = NamKK Then
                     isTrung = True
                     Exit For
                 End If
@@ -9337,7 +9337,7 @@ End Sub
 
 
 ' tenFileTK: truyen datafile cua to khai
-Private Function checkKyKKTrungNgay(ByVal tenFileTK As String, ByVal tuNgayKK As String, ByVal denNgayKK As String, ByVal namKK As String) As Boolean
+Private Function checkKyKKTrungNgay(ByVal tenFileTK As String, ByVal tuNgayKK As String, ByVal denNgayKK As String, ByVal NamKK As String) As Boolean
     Dim isTrung As Boolean
     Dim lngIndex As Integer
     Dim arrTemp() As String
@@ -9366,7 +9366,7 @@ Private Function checkKyKKTrungNgay(ByVal tenFileTK As String, ByVal tuNgayKK As
                 If chenhLech1 = 0 And chenhLech2 = 0 Then
                     isTrung = False
                     Exit For
-                ElseIf chenhLech1 * chenhLech2 > 0 And Left$(Right$(arrStrXMLFileNames(lngIndex), 22), 4) = namKK Then
+                ElseIf chenhLech1 * chenhLech2 > 0 And Left$(Right$(arrStrXMLFileNames(lngIndex), 22), 4) = NamKK Then
                     isTrung = True
                     Exit For
                 End If
@@ -9375,14 +9375,14 @@ Private Function checkKyKKTrungNgay(ByVal tenFileTK As String, ByVal tuNgayKK As
                 ' truong hop tu thang 1 nam trong khoang
                 chenhLech1 = DateDiff("D", format(tuNgayKK, "dd/mm/yyyy"), format(Left(tuNgay1, 2) & "/" & Mid$(tuNgay1, 3, 2) & "/" & Right(tuNgay1, 4), "dd/mm/yyyy"))
                 chenhLech2 = DateDiff("D", format(tuNgayKK, "dd/mm/yyyy"), format(Left(denNgay1, 2) & "/" & Mid$(denNgay1, 3, 2) & "/" & Right(denNgay1, 4), "dd/mm/yyyy"))
-                If chenhLech1 * chenhLech2 <= 0 And Left$(Right$(arrStrXMLFileNames(lngIndex), 22), 4) = namKK Then
+                If chenhLech1 * chenhLech2 <= 0 And Left$(Right$(arrStrXMLFileNames(lngIndex), 22), 4) = NamKK Then
                     isTrung = True
                     Exit For
                 End If
                 ' truong hop den thang nam trong khoang
                 chenhLech1 = DateDiff("D", format(denNgayKK, "dd/mm/yyyy"), format(Left(tuNgay1, 2) & "/" & Mid$(tuNgay1, 3, 2) & "/" & Right(tuNgay1, 4), "dd/mm/yyyy"))
                 chenhLech2 = DateDiff("D", format(denNgayKK, "dd/mm/yyyy"), format(Left(denNgay1, 2) & "/" & Mid$(denNgay1, 3, 2) & "/" & Right(denNgay1, 4), "dd/mm/yyyy"))
-                If chenhLech1 * chenhLech2 <= 0 And Left$(Right$(arrStrXMLFileNames(lngIndex), 22), 4) = namKK Then
+                If chenhLech1 * chenhLech2 <= 0 And Left$(Right$(arrStrXMLFileNames(lngIndex), 22), 4) = NamKK Then
                     isTrung = True
                     Exit For
                 End If
