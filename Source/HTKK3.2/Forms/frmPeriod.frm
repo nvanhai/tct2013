@@ -3102,12 +3102,12 @@ Public Sub cmdOK_Click()
         If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "17") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "41") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "42") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "43") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "26") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "59") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "44") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue <> "45") Then
 
             If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "80") Or (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "82") Then
-                ' To khai 02/NTNN vaf 04/NTNN se khong check dk nay
-                If DateDiff("M", dNgayDau, dNgayCuoi) + 1 > 15 Then
-                    DisplayMessage "0068", msOKOnly, miInformation
-                    txtNgayCuoi.SetFocus
-                    Exit Sub
-                End If
+'                ' To khai 02/NTNN vaf 04/NTNN se khong check dk nay
+'                If DateDiff("M", dNgayDau, dNgayCuoi) + 1 > 15 Then
+'                    DisplayMessage "0068", msOKOnly, miInformation
+'                    txtNgayCuoi.SetFocus
+'                    Exit Sub
+'                End If
             Else
                 'Cap nhat to 02/PHLP
                 If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "03" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "88" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "87" _

@@ -65,7 +65,7 @@ ngày/ tháng/ năm ...</xs:documentation>
 															</xs:element>
 															<xs:element name="ct9" type="xs:long" nillable="true">
 																<xs:annotation>
-																	<xs:documentation>Thuế giá trị gia tăng phải nộp (9=6x7x8) </xs:documentation>
+																	<xs:documentation>Thuế giá trị gia tăng phải nộp (9=6x7) </xs:documentation>
 																</xs:annotation>
 															</xs:element>
 														</xs:sequence>
@@ -210,12 +210,12 @@ ngày/ tháng/ năm ...</xs:documentation>
 										</xs:annotation>
 										<xs:complexType>
 											<xs:sequence>
-												<xs:element name="soNgayNopCham" type="xs:nonNegativeInteger" nillable="true">
+												<xs:element name="soNgayNopCham" type="xs:long" nillable="true">
 													<xs:annotation>
 														<xs:documentation>Số ngày nộp chậm</xs:documentation>
 													</xs:annotation>
 												</xs:element>
-												<xs:element name="soTienPhatNopCham" type="xs:nonNegativeInteger" nillable="true">
+												<xs:element name="soTienPhatNopCham" type="xs:long" nillable="true">
 													<xs:annotation>
 														<xs:documentation>Số tiền phạt nộp chậm: </xs:documentation>
 													</xs:annotation>
@@ -229,7 +229,7 @@ ngày/ tháng/ năm ...</xs:documentation>
 										</xs:annotation>
 										<xs:complexType>
 											<xs:sequence>
-												<xs:element name="soTienTraNSNN" type="xs:nonNegativeInteger" nillable="true">
+												<xs:element name="soTienTraNSNN" type="xs:long" nillable="true">
 													<xs:annotation>
 														<xs:documentation>Người nộp thuế tự phát hiện số tiền thuế đã được hoàn phải nộp trả NSNN là ... đồng </xs:documentation>
 													</xs:annotation>
@@ -244,17 +244,22 @@ ngày/ tháng/ năm ...</xs:documentation>
 														<xs:documentation>ngày ..... </xs:documentation>
 													</xs:annotation>
 												</xs:element>
-												<xs:element name="coQuanThue" type="xs:string" nillable="true">
+												<xs:element name="maCQT" type="xs:string" nillable="true">
 													<xs:annotation>
 														<xs:documentation>Mã cơ quan thuế</xs:documentation>
 													</xs:annotation>
 												</xs:element>
-												<xs:element name="soNgayNhanDuocTienHoan" type="xs:nonNegativeInteger" nillable="true">
+												<xs:element name="tenCQT" type="xs:string" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tên cơ quan thuế</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="soNgayNhanDuocTienHoan" type="xs:long" nillable="true">
 													<xs:annotation>
 														<xs:documentation>Số ngày nhận được tiền hoàn thuế</xs:documentation>
 													</xs:annotation>
 												</xs:element>
-												<xs:element name="soTienChamNop" type="xs:nonNegativeInteger" nillable="true">
+												<xs:element name="soTienChamNop" type="xs:long" nillable="true">
 													<xs:annotation>
 														<xs:documentation>Số tiền chậm nộp (= số tiền đã được hoàn phải nộp trả NSNN x số ngày nhận được tiền hoàn thuế x mức tiền chậm nộp %)</xs:documentation>
 													</xs:annotation>
