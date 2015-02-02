@@ -9,15 +9,11 @@
 		<count>5</count>
 	</set_data>
 	<cell c1="2" c2="2" type="13" numDec="0"/>
-	<cell c1="4" c2="3" type="0" numDec="0"/>
-	<cell c1="5" c2="4" type="0" numDec="0"/>
 	<cell c1="6" c2="5" type="2" numDec="0"/>
 	<cell c1="7" c2="6" type="1" numDec="0"/>
 	<cell c1="8" c2="7" type="0" numDec="0"/>
 	<cell c1="9" c2="8" type="13" numDec="0"/>
-	<cell c1="10" c2="9" type="0" numDec="0"/>
-	<cell c1="11" c2="10" type="13" numDec="0"/>
-	<cell c1="12" c2="11" type="12" numDec="0"/>
+	<cell c1="11" c2="10" type="13" numDec="0"/>	
 	<cell c1="13" c2="12" type="13" numDec="0"/>
 	<cell c1="14" c2="13" type="0" numDec="0"/>
 </root_of_bangke>

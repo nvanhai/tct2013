@@ -6178,7 +6178,7 @@ Public Sub finishImportXML()
          .Sheet = 1
          .Row = 20
          .GetText .ColLetterToNumber("P"), .Row, maLyDoGiaHan
-         If Trim$(maLyDoGiaHan) <> "" Then
+         If Trim$(maLyDoGiaHan) <> "" And Trim$(maLyDoGiaHan) <> "00" Then
                .Row = 18
                .Col = .ColLetterToNumber("B")
                .value = 1
@@ -6186,7 +6186,7 @@ Public Sub finishImportXML()
          Else
                 .Row = 18
                .Col = .ColLetterToNumber("B")
-               .value = 1
+               .value = 0
                UpdateCell fps, .Col, .Row, ""
          End If
         

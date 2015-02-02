@@ -917,11 +917,18 @@ Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
     ' Ket thuc truong hop them tiep du lieu
 ' Dat lai vi tri row cho phu luc 01-2 cua to 02 GTGT
 If Trim(varMenuId) = "02" Then
+    Dim checkStartRow02 As Integer
     For i = 17 To fpSpread2.MaxRows
         fpSpread2.Col = 2
         fpSpread2.Row = i
-        If Left(fpSpread2.Text, 2) = "3." Then
-            fpSpread2.Row = i + 1
+        If Left(fpSpread2.Text, 1) = "T" Then
+            checkStartRow02 = checkStartRow02 + 1
+        End If
+        
+        'If Left(fpSpread2.Text, 2) = "3." Then
+        If checkStartRow02 = 3 Then
+            'fpSpread2.Row = i + 1
+            fpSpread2.Row = i + 2
             Exit For
         End If
     Next
@@ -1052,10 +1059,26 @@ ProgressBar1.value = fpSpread2.Row
 
 
                 Dim temp As Variant
-               Dim temp1 As Double
+                Dim temp1 As Double
                 fpSpread1.Row = fpSpread1.Row + 5
                 fpSpread2.Row = fpSpread2.Row + 3
-                If count = 3 And Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 3 Then
+                If (count = 1 Or count = 3 Or count = 4) And Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 3 Then
+                        Do
+                            fpSpread2.Col = fpSpread2.ColLetterToNumber("B")
+                            temp1 = temp1 + 1
+                            temp = fpSpread2.value
+                            fpSpread2.Row = fpSpread2.Row + 1
+                        Loop Until (Mid(temp, 1, 1) = "T")
+                        fpSpread1.Row = fpSpread1.Row + 5
+                        fpSpread2.Row = fpSpread2.Row + 1
+                        count = count + 1
+                        
+                        If count = count1 - 1 Then
+                            Exit Do
+                        End If
+                End If
+                
+                If count = 4 And Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 2 Then
                         Do
                             fpSpread2.Col = fpSpread2.ColLetterToNumber("B")
                             temp1 = temp1 + 1
@@ -1066,6 +1089,7 @@ ProgressBar1.value = fpSpread2.Row
                         fpSpread2.Row = fpSpread2.Row + 1
                         count = count + 1
                 End If
+                
 '            End If
             'test
               If themDuLieu Then
