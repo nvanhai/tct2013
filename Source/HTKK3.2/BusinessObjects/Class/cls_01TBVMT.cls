@@ -865,7 +865,7 @@ Dim blCheck_S2 As Boolean
 
 Dim vMsgErrorTongTyLe As Variant
 
-Dim CountRow As Integer
+Dim countRow As Integer
     With fps
       .Sheet = .SheetCount
         .GetText .ColLetterToNumber("E"), 15, Error
@@ -905,7 +905,7 @@ Dim CountRow As Integer
       .Col = .ColLetterToNumber("B")
       .Row = 44 + i
       i = i + 1
-      CountRow = CountRow + 1
+      countRow = countRow + 1
       Loop Until .Text = "aa"
       
       
@@ -1034,8 +1034,8 @@ Dim CountRow As Integer
                         
                         
                         'check MST trung nhau
-                         CountRow = .SearchCol(.ColLetterToNumber("L"), -1, -1, vMSTCheckTrung, SearchFlagsNone)
-                         rowDes = .SearchCol(.ColLetterToNumber("L"), CountRow, -1, vMSTCheckTrung, SearchFlagsNone)
+                         countRow = .SearchCol(.ColLetterToNumber("L"), -1, -1, vMSTCheckTrung, SearchFlagsNone)
+                         rowDes = .SearchCol(.ColLetterToNumber("L"), countRow, -1, vMSTCheckTrung, SearchFlagsNone)
                         If rowDes > -1 Then
                             .Col = .ColLetterToNumber("L")
                             .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
@@ -1083,23 +1083,26 @@ Dim CountRow As Integer
             End If
         End If
  
+        
      blCheck_S2 = IIf(TAX_Utilities_v1.NodeValidity.childNodes(1).Attributes.getNamedItem("Active").nodeValue <> "0", True, False)
-     .Sheet = .SheetCount
-     .SetText .ColLetterToNumber("B"), 15, IIf(iFlagEmty = 1, "0", "1")
-        If blCheck_S2 Then
+        'If blCheck_S2 Then
+        If .SheetVisible = True Then
+            .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 20, IIf(iFlagCheckMaSTDN10 = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 17, IIf(iFlagEmpty = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 18, IIf(iFlagCheckMaST = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 21, IIf(iFlagMSTTrung = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 22, IIf(flagTongTyLe = 1, "0", "1")
         Else
+            .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 20, "1"
             .SetText .ColLetterToNumber("B"), 17, "1"
             .SetText .ColLetterToNumber("B"), 18, "1"
             .SetText .ColLetterToNumber("B"), 21, "1"
             .SetText .ColLetterToNumber("B"), 22, "1"
         End If
-        
+        .Sheet = .SheetCount
+        .SetText .ColLetterToNumber("B"), 15, IIf(iFlagEmty = 1, "0", "1")
   
     End With
     
@@ -1206,6 +1209,26 @@ Public Sub SetActiveSheet()
     'Select Case GetAttribute(xmlNodeValid, "ID")
     For Each xmlNodeValid In TAX_Utilities_v1.NodeValidity.childNodes
         Select Case GetAttribute(xmlNodeValid, "ID")
+            Case "01-1"
+                blnNullValue = True
+                'Check the third sheet
+               For Each xmlCellNode In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
+                    ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
+                    'Check value in D column and E column
+                    If lCol = fps.ColLetterToNumber("F") Or _
+                       lCol = fps.ColLetterToNumber("L") Then
+                        strValue = GetAttribute(xmlCellNode, "Value")
+                        If Not IsNullValue(strValue) Then
+                            blnNullValue = False
+                            Exit For
+                        End If
+                    End If
+                Next
+            
+                If blnNullValue Then
+                    SetAttribute xmlNodeValid, "Active", "0"
+                End If
+        
              Case "KHBS"
                 blnNullValue = True
                 'Check value of last node in Data
