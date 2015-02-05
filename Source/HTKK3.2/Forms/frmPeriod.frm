@@ -3082,11 +3082,25 @@ Public Sub cmdOK_Click()
     
    ' dntai them vao ngay 08/05/2011
     ElseIf strKieuKy = "H_Y" Then
-        If Not CheckPeriod(cmbQuy.Text, txtYear.Text) Then
-            txtYear.SetFocus
-            Exit Sub
+        ' BC 26
+        If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "68" Then
+            If strQuy = "TK_THANG" Then
+                 If Not CheckPeriod(txtMonth.Text, txtYear.Text) Then
+                    txtMonth.SetFocus
+                    Exit Sub
+                End If
+            ElseIf strQuy = "TK_QUY" Then
+                If Not CheckPeriod(cmbQuy.Text, txtYear.Text) Then
+                    cmbQuy.SetFocus
+                    Exit Sub
+                End If
+            End If
+        Else
+            If Not CheckPeriod(cmbQuy.Text, txtYear.Text) Then
+                txtYear.SetFocus
+                Exit Sub
+            End If
         End If
-    
     ElseIf strKieuKy = KIEU_KY_NGAY_NAM Then
         If Not CheckPeriod("1", txtYear.Text) Then
             txtYear.SetFocus
