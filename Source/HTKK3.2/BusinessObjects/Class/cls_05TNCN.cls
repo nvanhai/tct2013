@@ -2220,6 +2220,17 @@ Private Sub UpdateSheets()
                 ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
                 .GetText lCol, lRow, varTemp
                 UpdateCell fps, lCol, lRow, varTemp
+                 If lCol = .ColLetterToNumber("Q") And Trim$(varTemp) = "" Then
+                      UpdateCell fps, .ColLetterToNumber("P"), lRow, ""
+                ElseIf lCol = .ColLetterToNumber("S") And Trim$(varTemp) = "" Then
+                      UpdateCell fps, .ColLetterToNumber("R"), lRow, ""
+                ElseIf lCol = .ColLetterToNumber("U") And Trim$(varTemp) = "" Then
+                      UpdateCell fps, .ColLetterToNumber("T"), lRow, ""
+                ElseIf lCol = .ColLetterToNumber("W") And Trim$(varTemp) = "" Then
+                      UpdateCell fps, .ColLetterToNumber("V"), lRow, ""
+                ElseIf lCol = .ColLetterToNumber("J") And Trim$(varTemp) = "" Then
+                      UpdateCell fps, .ColLetterToNumber("I"), lRow, ""
+                End If
              Next
        End If
        

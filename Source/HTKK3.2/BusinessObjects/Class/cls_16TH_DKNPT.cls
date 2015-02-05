@@ -318,6 +318,7 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
     
 End Sub
 
+
 Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
     Dim intIndexCombo As Integer
     
@@ -860,6 +861,17 @@ Private Sub UpdateSheets()
             ParserCellID fps, GetAttribute(xmlCellNodeData, "CellID"), lCol, lRow
             .GetText lCol, lRow, varTemp
             UpdateCell fps, lCol, lRow, varTemp
+            If lCol = .ColLetterToNumber("P") And Trim$(varTemp) = "" Then
+                  UpdateCell fps, .ColLetterToNumber("O"), lRow, ""
+            ElseIf lCol = .ColLetterToNumber("R") And Trim$(varTemp) = "" Then
+                  UpdateCell fps, .ColLetterToNumber("Q"), lRow, ""
+            ElseIf lCol = .ColLetterToNumber("T") And Trim$(varTemp) = "" Then
+                  UpdateCell fps, .ColLetterToNumber("S"), lRow, ""
+            ElseIf lCol = .ColLetterToNumber("V") And Trim$(varTemp) = "" Then
+                  UpdateCell fps, .ColLetterToNumber("U"), lRow, ""
+            ElseIf lCol = .ColLetterToNumber("I") And Trim$(varTemp) = "" Then
+                  UpdateCell fps, .ColLetterToNumber("H"), lRow, ""
+            End If
          Next
        
       .Sheet = .ActiveSheet
@@ -1503,7 +1515,7 @@ Private Sub CheckDynamicSheet3()
                     
                     
                     ' kiem tra neu chon quoc gia Viet Nam
-                    If Trim(vMaQuocGia) = "01" Then
+                    If Trim(vMaQuocGia) = "01" And Trim$(vQuocGia) <> "" Then
                         If Trim$(vMaTinh) = "999" Then
                             .Col = .ColLetterToNumber("R")
                             .CellNote = vErrDuLieuKhongHL
@@ -1526,6 +1538,42 @@ Private Sub CheckDynamicSheet3()
                         End If
                     End If
                  End If
+                 
+                  If Trim$(vTinh) <> "" Or Trim$(vHuyen) <> "" Or Trim$(vXa) <> "" Then
+                    ' bat buoc nhap QG
+                    
+                    If Trim(vQuocGia) = "" Then
+                        .Col = .ColLetterToNumber("P")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
+                    ' bat buoc nhap thong tin tinh
+                    If Trim(vTinh) = "" Then
+                        .Col = .ColLetterToNumber("R")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
+                    ' bat buoc nhap thong tin huyen
+                    If Trim(vHuyen) = "" Then
+                        .Col = .ColLetterToNumber("T")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
+                    ' bat buoc nhap thong tin xa
+                    If Trim(vXa) = "" Then
+                        .Col = .ColLetterToNumber("V")
+                        .CellNote = vErrEmpty
+                        .BackColor = mErrorColor
+                        iFlagEmpty = 1
+                    End If
+                    
+                End If
             End If
             .Col = .ColLetterToNumber("B")
             .Row = .Row + 1
