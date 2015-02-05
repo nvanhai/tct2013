@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   0
+      Quality         =   68
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -1634,11 +1634,34 @@ Private Sub SetupPrinter()
             
             'Set breaked page rows
             If intIndex2 > 0 Then ' Exist breaked page row
-                For intIndex2 = 0 To UBound(arrLngRowPageBreak) - 1
-                    .Row = arrLngRowPageBreak(intIndex2)
-                    .RowPageBreak = True
-                Next intIndex2
+                ' xu ly cho to khai 16TH
+                Dim rowGroupI As Double
+                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Then
+                    .sheet = 1
+                    .Row = 38
+                    .Col = .ColLetterToNumber("B")
+                    Do
+                       .Row = .Row + 1
+                       rowGroupI = .Row
+                    Loop Until .Text = "aa"
+                End If
+                ' end
                 
+                For intIndex2 = 0 To UBound(arrLngRowPageBreak) - 1
+                    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Then
+                        ' xu ly rieng cho to khai 16TH
+                        If arrLngRowPageBreak(intIndex2) < rowGroupI + 5 And arrLngRowPageBreak(intIndex2) > rowGroupI Then
+                            .Row = rowGroupI + 1
+                            .RowPageBreak = True
+                        Else
+                            .Row = arrLngRowPageBreak(intIndex2)
+                            .RowPageBreak = True
+                        End If
+                    Else
+                        .Row = arrLngRowPageBreak(intIndex2)
+                        .RowPageBreak = True
+                    End If
+                Next intIndex2
                 'Resize Last page
                 'htphuong edit breakpage
                 
@@ -1742,6 +1765,13 @@ Private Sub SetupPrinter()
                                         .Row = arrLngRowPageBreak(intIndex2) - 1
                                     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "77" And lCtrl = 1 Then
                                         .Row = GetLastDataRowTD(lCtrl) + 2
+                                    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Then
+                                        ' xu ly rieng cho to khai 16TH
+                                        If arrLngRowPageBreak(intIndex2) < rowGroupI + 5 And arrLngRowPageBreak(intIndex2) > rowGroupI Then
+                                            .Row = rowGroupI + 1
+                                        Else
+                                            .Row = GetLastDataRow(lCtrl)
+                                        End If
                                     Else
                                         .Row = GetLastDataRow(lCtrl)
                                     End If
@@ -1752,8 +1782,12 @@ Private Sub SetupPrinter()
                         If .Row < arrLngRowPageBreak(intIndex2) Then
                             .RowPageBreak = True
                         Else
-                            .Row = arrLngRowPageBreak(intIndex2) - 5
-                            .RowPageBreak = True
+                            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Then
+                                .RowPageBreak = True
+                            Else
+                                .Row = arrLngRowPageBreak(intIndex2) - 5
+                                .RowPageBreak = True
+                            End If
                         End If
                     Else
                         If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" And .MaxRows - arrLngRowPageBreak(intIndex2) <= 6 And lCtrl = 2 Then
@@ -1762,6 +1796,15 @@ Private Sub SetupPrinter()
                         ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "01" And .MaxRows - arrLngRowPageBreak(intIndex2) <= 8 And lCtrl = 3 Then
                             .Row = GetLastDataRow(lCtrl)
                             .RowPageBreak = True
+                        ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "95" Then
+                            ' xu ly rieng cho to khai 16TH
+                            If arrLngRowPageBreak(intIndex2) <= rowGroupI + 5 And arrLngRowPageBreak(intIndex2) > rowGroupI Then
+                                .Row = rowGroupI + 1
+                                .RowPageBreak = True
+                            Else
+                                .Row = arrLngRowPageBreak(intIndex2)
+                                .RowPageBreak = True
+                            End If
                         ElseIf lCtrl = .SheetCount - 1 Then
                             .Row = GetLastDataRowKHBS(lCtrl)
                             .Row = .Row - 3
