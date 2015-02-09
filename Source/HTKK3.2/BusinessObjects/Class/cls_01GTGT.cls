@@ -567,8 +567,8 @@ Public Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonD
                     fps.Row = 20
                     fps.Lock = True
                     fps.SetText fps.ColLetterToNumber("D"), 20, ""
-                    fps.SetText fps.ColLetterToNumber("P"), 20, "00"
-                    UpdateCell fps, fps.ColLetterToNumber("P"), 20, "00"
+                    fps.SetText fps.ColLetterToNumber("P"), 20, ""
+                    UpdateCell fps, fps.ColLetterToNumber("P"), 20, ""
                     UpdateCell fps, fps.ColLetterToNumber("D"), 20, ""
                     If Strloaitk = "TKBS" Then
                         TAX_Utilities_v1.CheckToKhaiGH = False
