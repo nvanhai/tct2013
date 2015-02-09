@@ -767,6 +767,23 @@ Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal Button
 End Sub
 Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
     'UpdateSheets
+    
+    Dim intIndexCombo As Integer
+    
+    Dim varIDTinh As Variant
+    Dim varIDHuyen As Variant
+    Dim xmlDomData As New MSXML.DOMDocument
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
+    Dim i As Integer
+    
+    Dim tenHuyen As String
+    Dim maHuyen As String
+    Dim tenXa As String
+    Dim maXa As String
+    Dim arrDanhsach() As String
+    
     ' Test ct
     Dim strCheck As Variant
     With fps
@@ -830,221 +847,413 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
                 
                 CellChange Col, Row
              End If
+             
+           If .ActiveSheet = 4 Then
+                ' chon quoc tich
+                If Col = .ColLetterToNumber("J") And .Text <> "" Then
+                    intIndexCombo = .typeComboboxCurSel
+                     .Row = Row
+                     .Col = .ColLetterToNumber("I")
+                     .typeComboboxCurSel = intIndexCombo
+                    UpdateCell fps, .Col, .Row, .value
+                End If
+                
+                ' chon moi quan he
+                If Col = .ColLetterToNumber("M") And .Text <> "" Then
+                    intIndexCombo = .typeComboboxCurSel
+                     .Row = Row
+                     .Col = .ColLetterToNumber("L")
+                     .typeComboboxCurSel = intIndexCombo
+                    UpdateCell fps, .Col, .Row, .value
+                End If
+                
+                ' chon quoc gia
+                If Col = .ColLetterToNumber("Q") And .Text <> "" Then
+                    intIndexCombo = .typeComboboxCurSel
+                     .Row = Row
+                     .Col = .ColLetterToNumber("P")
+                     .typeComboboxCurSel = intIndexCombo
+                    UpdateCell fps, .Col, .Row, .value
+                    
+                     If .Text = "01" Then
+                        .Col = .ColLetterToNumber("S")
+                        .Row = Row
+                        .Text = ""
+                        .Lock = False
+                        
+                        .Col = .ColLetterToNumber("U")
+                        .Row = Row
+                        .Text = ""
+                        .Lock = False
+                        
+                        .Col = .ColLetterToNumber("W")
+                        .Row = Row
+                        .Text = ""
+                        .Lock = False
+                        
+                        .Col = .ColLetterToNumber("R")
+                        .Row = Row
+                        .Text = ""
+                        
+                        .Col = .ColLetterToNumber("T")
+                        .Row = Row
+                        .Text = ""
+                        
+                        .Col = .ColLetterToNumber("V")
+                        .Row = Row
+                        .Text = ""
+                    Else
+                        .Col = .ColLetterToNumber("S")
+                        .Row = Row
+                        .typeComboboxCurSel = .TypeComboBoxCount - 1
+                        .Lock = True
+                        
+                        .Col = .ColLetterToNumber("U")
+                        .Row = Row
+                        .Text = "Khác"
+                        .Lock = True
+                        
+                        .Col = .ColLetterToNumber("W")
+                        .Row = Row
+                        .Text = "Khác"
+                        .Lock = True
+                        
+                        .Col = .ColLetterToNumber("R")
+                        .Row = Row
+                        .typeComboboxCurSel = .TypeComboBoxCount - 1
+                        
+                        .Col = .ColLetterToNumber("R")
+                        .Row = Row
+                        .Text = "999"
+                        
+                        .Col = .ColLetterToNumber("T")
+                        .Row = Row
+                        .Text = "99999"
+                        
+                        .Col = .ColLetterToNumber("V")
+                        .Row = Row
+                        .Text = "9999999"
+                    End If
+                End If
+                
+                ' chon tinh thanh
+                If Col = .ColLetterToNumber("S") And .Text <> "" Then
+                    intIndexCombo = .typeComboboxCurSel
+                     .Row = Row
+                     .Col = .ColLetterToNumber("R")
+                     .typeComboboxCurSel = intIndexCombo
+                    UpdateCell fps, .Col, .Row, .value
+                    
+                    .GetText .Col, .Row, varIDTinh
+                    If varIDTinh <> "" Or varIDTinh <> vbNullString Then
+                        
+                        If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Huyen.xml")) Then
+                            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+                            For Each xmlNode In xmlNodeListCell
+                                If GetAttribute(xmlNode, "Value") <> "" Then
+                                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                                    
+                                    If arrDanhsach(1) = varIDTinh Or arrDanhsach(1) = "999" Then
+                                        tenHuyen = tenHuyen + arrDanhsach(3) + Chr$(9)
+                                        maHuyen = maHuyen + arrDanhsach(2) + Chr$(9)
+                                    End If
+                                End If
+                            Next
+                            Set xmlDomData = Nothing
+                            Set xmlNodeListCell = Nothing
+                            Set xmlNode = Nothing
+                        End If
+                        
+                        .Row = Row
+                        .Col = .ColLetterToNumber("U")
+                        .TypeComboBoxList = tenHuyen
+                        .Text = ""
+                         UpdateCell fps, .Col, .Row, .Text
+                        
+                        .Row = Row
+                        .Col = .ColLetterToNumber("T")
+                        .TypeComboBoxList = maHuyen
+                        .Text = ""
+                         UpdateCell fps, .Col, .Row, .Text
+                       
+                        .Row = Row
+                        .Col = .ColLetterToNumber("V")
+                        .Text = ""
+                         UpdateCell fps, .Col, .Row, .Text
+                        
+                        .Row = Row
+                        .Col = .ColLetterToNumber("W")
+                        .Text = ""
+                         UpdateCell fps, .Col, .Row, .Text
+                                                       
+                    End If
+                End If
+                ' chon quan huyen
+                If Col = .ColLetterToNumber("U") And .Text <> "" Then
+                    intIndexCombo = .typeComboboxCurSel
+                     .Row = Row
+                     .Col = .ColLetterToNumber("T")
+                     .typeComboboxCurSel = intIndexCombo
+                    UpdateCell fps, .Col, .Row, .value
+                    
+                    .GetText .Col, .Row, varIDHuyen
+                    If varIDHuyen <> "" Or varIDHuyen <> vbNullString Then
+                        
+                        If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Xa.xml")) Then
+                            Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+                            For Each xmlNode In xmlNodeListCell
+                                If GetAttribute(xmlNode, "Value") <> "" Then
+                                    arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+                                    
+                                    If arrDanhsach(2) = varIDHuyen Or arrDanhsach(2) = "99999" Then
+                                        tenXa = tenXa + arrDanhsach(4) + Chr$(9)
+                                        maXa = maXa + arrDanhsach(3) + Chr$(9)
+                                    End If
+                                End If
+                            Next
+                            Set xmlDomData = Nothing
+                            Set xmlNodeListCell = Nothing
+                            Set xmlNode = Nothing
+                        End If
+                        
+                        .Row = Row
+                        .Col = .ColLetterToNumber("W")
+                        .TypeComboBoxList = tenXa
+                        .Text = ""
+                         UpdateCell fps, .Col, .Row, .Text
+                        
+                        .Row = Row
+                        .Col = .ColLetterToNumber("V")
+                        .TypeComboBoxList = maXa
+                        .Text = ""
+                         UpdateCell fps, .Col, .Row, .Text
+                    
+                    End If
+                End If
+                ' chon xa phuong
+                If Col = .ColLetterToNumber("W") And .Text <> "" Then
+                    intIndexCombo = .typeComboboxCurSel
+                     .Row = Row
+                     .Col = .ColLetterToNumber("V")
+                     .typeComboboxCurSel = intIndexCombo
+                    UpdateCell fps, .Col, .Row, .value
+                End If
+        End If
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub
 
 Private Sub fps_ComboSelChange(ByVal Col As Long, ByVal Row As Long)
-    Dim intIndexCombo As Integer
+'    Dim intIndexCombo As Integer
+'
+'    Dim varIDTinh As Variant
+'    Dim varIDHuyen As Variant
+'    Dim xmlDomData As New MSXML.DOMDocument
+'    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+'    Dim xmlNode As MSXML.IXMLDOMNode
+'    Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
+'    Dim i As Integer
+'
+'    Dim tenHuyen As String
+'    Dim maHuyen As String
+'    Dim tenXa As String
+'    Dim maXa As String
+'    Dim arrDanhsach() As String
     
-    Dim varIDTinh As Variant
-    Dim varIDHuyen As Variant
-    Dim xmlDomData As New MSXML.DOMDocument
-    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
-    Dim xmlNode As MSXML.IXMLDOMNode
-    Dim xmlCellNode As MSXML.IXMLDOMNode, xmlCellsNode As MSXML.IXMLDOMNode
-    Dim i As Integer
-    
-    Dim tenHuyen As String
-    Dim maHuyen As String
-    Dim tenXa As String
-    Dim maXa As String
-    Dim arrDanhsach() As String
-    
-    With fps
-        If .ActiveSheet = 4 Then
-            ' chon quoc tich
-            If Col = .ColLetterToNumber("J") And .Text <> "" Then
-                intIndexCombo = .typeComboboxCurSel
-                 .Row = Row
-                 .Col = .ColLetterToNumber("I")
-                 .typeComboboxCurSel = intIndexCombo
-                UpdateCell fps, .Col, .Row, .value
-            End If
-            
-            ' chon moi quan he
-            If Col = .ColLetterToNumber("M") And .Text <> "" Then
-                intIndexCombo = .typeComboboxCurSel
-                 .Row = Row
-                 .Col = .ColLetterToNumber("L")
-                 .typeComboboxCurSel = intIndexCombo
-                UpdateCell fps, .Col, .Row, .value
-            End If
-            
-            ' chon quoc gia
-            If Col = .ColLetterToNumber("Q") And .Text <> "" Then
-                intIndexCombo = .typeComboboxCurSel
-                 .Row = Row
-                 .Col = .ColLetterToNumber("P")
-                 .typeComboboxCurSel = intIndexCombo
-                UpdateCell fps, .Col, .Row, .value
-                
-                 If .Text = "01" Then
-                    .Col = .ColLetterToNumber("S")
-                    .Row = Row
-                    .Text = ""
-                    .Lock = False
-                    
-                    .Col = .ColLetterToNumber("U")
-                    .Row = Row
-                    .Text = ""
-                    .Lock = False
-                    
-                    .Col = .ColLetterToNumber("W")
-                    .Row = Row
-                    .Text = ""
-                    .Lock = False
-                    
-                    .Col = .ColLetterToNumber("R")
-                    .Row = Row
-                    .Text = ""
-                    
-                    .Col = .ColLetterToNumber("T")
-                    .Row = Row
-                    .Text = ""
-                    
-                    .Col = .ColLetterToNumber("V")
-                    .Row = Row
-                    .Text = ""
-                Else
-                    .Col = .ColLetterToNumber("S")
-                    .Row = Row
-                    .typeComboboxCurSel = .TypeComboBoxCount - 1
-                    .Lock = True
-                    
-                    .Col = .ColLetterToNumber("U")
-                    .Row = Row
-                    .Text = "Khác"
-                    .Lock = True
-                    
-                    .Col = .ColLetterToNumber("W")
-                    .Row = Row
-                    .Text = "Khác"
-                    .Lock = True
-                    
-                    .Col = .ColLetterToNumber("R")
-                    .Row = Row
-                    .typeComboboxCurSel = .TypeComboBoxCount - 1
-                    
-                    .Col = .ColLetterToNumber("R")
-                    .Row = Row
-                    .Text = "999"
-                    
-                    .Col = .ColLetterToNumber("T")
-                    .Row = Row
-                    .Text = "99999"
-                    
-                    .Col = .ColLetterToNumber("V")
-                    .Row = Row
-                    .Text = "9999999"
-                End If
-            End If
-            
-            ' chon tinh thanh
-            If Col = .ColLetterToNumber("S") And .Text <> "" Then
-                intIndexCombo = .typeComboboxCurSel
-                 .Row = Row
-                 .Col = .ColLetterToNumber("R")
-                 .typeComboboxCurSel = intIndexCombo
-                UpdateCell fps, .Col, .Row, .value
-                
-                .GetText .Col, .Row, varIDTinh
-                If varIDTinh <> "" Or varIDTinh <> vbNullString Then
-                    
-                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Huyen.xml")) Then
-                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
-                        For Each xmlNode In xmlNodeListCell
-                            If GetAttribute(xmlNode, "Value") <> "" Then
-                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
-                                
-                                If arrDanhsach(1) = varIDTinh Or arrDanhsach(1) = "999" Then
-                                    tenHuyen = tenHuyen + arrDanhsach(3) + Chr$(9)
-                                    maHuyen = maHuyen + arrDanhsach(2) + Chr$(9)
-                                End If
-                            End If
-                        Next
-                        Set xmlDomData = Nothing
-                        Set xmlNodeListCell = Nothing
-                        Set xmlNode = Nothing
-                    End If
-                    
-                    .Row = Row
-                    .Col = .ColLetterToNumber("U")
-                    .TypeComboBoxList = tenHuyen
-                    .Text = ""
-                     UpdateCell fps, .Col, .Row, .Text
-                    
-                    .Row = Row
-                    .Col = .ColLetterToNumber("T")
-                    .TypeComboBoxList = maHuyen
-                    .Text = ""
-                     UpdateCell fps, .Col, .Row, .Text
-                   
-                    .Row = Row
-                    .Col = .ColLetterToNumber("V")
-                    .Text = ""
-                     UpdateCell fps, .Col, .Row, .Text
-                    
-                    .Row = Row
-                    .Col = .ColLetterToNumber("W")
-                    .Text = ""
-                     UpdateCell fps, .Col, .Row, .Text
-                                                   
-                End If
-            End If
-            ' chon quan huyen
-            If Col = .ColLetterToNumber("U") And .Text <> "" Then
-                intIndexCombo = .typeComboboxCurSel
-                 .Row = Row
-                 .Col = .ColLetterToNumber("T")
-                 .typeComboboxCurSel = intIndexCombo
-                UpdateCell fps, .Col, .Row, .value
-                
-                .GetText .Col, .Row, varIDHuyen
-                If varIDHuyen <> "" Or varIDHuyen <> vbNullString Then
-                    
-                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Xa.xml")) Then
-                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
-                        For Each xmlNode In xmlNodeListCell
-                            If GetAttribute(xmlNode, "Value") <> "" Then
-                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
-                                
-                                If arrDanhsach(2) = varIDHuyen Or arrDanhsach(2) = "99999" Then
-                                    tenXa = tenXa + arrDanhsach(4) + Chr$(9)
-                                    maXa = maXa + arrDanhsach(3) + Chr$(9)
-                                End If
-                            End If
-                        Next
-                        Set xmlDomData = Nothing
-                        Set xmlNodeListCell = Nothing
-                        Set xmlNode = Nothing
-                    End If
-                    
-                    .Row = Row
-                    .Col = .ColLetterToNumber("W")
-                    .TypeComboBoxList = tenXa
-                    .Text = ""
-                     UpdateCell fps, .Col, .Row, .Text
-                    
-                    .Row = Row
-                    .Col = .ColLetterToNumber("V")
-                    .TypeComboBoxList = maXa
-                    .Text = ""
-                     UpdateCell fps, .Col, .Row, .Text
-                
-                End If
-            End If
-            ' chon xa phuong
-            If Col = .ColLetterToNumber("W") And .Text <> "" Then
-                intIndexCombo = .typeComboboxCurSel
-                 .Row = Row
-                 .Col = .ColLetterToNumber("V")
-                 .typeComboboxCurSel = intIndexCombo
-                UpdateCell fps, .Col, .Row, .value
-            End If
-            
-        End If
-    End With
+'    With fps
+'        If .ActiveSheet = 4 Then
+'            ' chon quoc tich
+'            If Col = .ColLetterToNumber("J") And .Text <> "" Then
+'                intIndexCombo = .typeComboboxCurSel
+'                 .Row = Row
+'                 .Col = .ColLetterToNumber("I")
+'                 .typeComboboxCurSel = intIndexCombo
+'                UpdateCell fps, .Col, .Row, .value
+'            End If
+'
+'            ' chon moi quan he
+'            If Col = .ColLetterToNumber("M") And .Text <> "" Then
+'                intIndexCombo = .typeComboboxCurSel
+'                 .Row = Row
+'                 .Col = .ColLetterToNumber("L")
+'                 .typeComboboxCurSel = intIndexCombo
+'                UpdateCell fps, .Col, .Row, .value
+'            End If
+'
+'            ' chon quoc gia
+'            If Col = .ColLetterToNumber("Q") And .Text <> "" Then
+'                intIndexCombo = .typeComboboxCurSel
+'                 .Row = Row
+'                 .Col = .ColLetterToNumber("P")
+'                 .typeComboboxCurSel = intIndexCombo
+'                UpdateCell fps, .Col, .Row, .value
+'
+'                 If .Text = "01" Then
+'                    .Col = .ColLetterToNumber("S")
+'                    .Row = Row
+'                    .Text = ""
+'                    .Lock = False
+'
+'                    .Col = .ColLetterToNumber("U")
+'                    .Row = Row
+'                    .Text = ""
+'                    .Lock = False
+'
+'                    .Col = .ColLetterToNumber("W")
+'                    .Row = Row
+'                    .Text = ""
+'                    .Lock = False
+'
+'                    .Col = .ColLetterToNumber("R")
+'                    .Row = Row
+'                    .Text = ""
+'
+'                    .Col = .ColLetterToNumber("T")
+'                    .Row = Row
+'                    .Text = ""
+'
+'                    .Col = .ColLetterToNumber("V")
+'                    .Row = Row
+'                    .Text = ""
+'                Else
+'                    .Col = .ColLetterToNumber("S")
+'                    .Row = Row
+'                    .typeComboboxCurSel = .TypeComboBoxCount - 1
+'                    .Lock = True
+'
+'                    .Col = .ColLetterToNumber("U")
+'                    .Row = Row
+'                    .Text = "Khác"
+'                    .Lock = True
+'
+'                    .Col = .ColLetterToNumber("W")
+'                    .Row = Row
+'                    .Text = "Khác"
+'                    .Lock = True
+'
+'                    .Col = .ColLetterToNumber("R")
+'                    .Row = Row
+'                    .typeComboboxCurSel = .TypeComboBoxCount - 1
+'
+'                    .Col = .ColLetterToNumber("R")
+'                    .Row = Row
+'                    .Text = "999"
+'
+'                    .Col = .ColLetterToNumber("T")
+'                    .Row = Row
+'                    .Text = "99999"
+'
+'                    .Col = .ColLetterToNumber("V")
+'                    .Row = Row
+'                    .Text = "9999999"
+'                End If
+'            End If
+'
+'            ' chon tinh thanh
+'            If Col = .ColLetterToNumber("S") And .Text <> "" Then
+'                intIndexCombo = .typeComboboxCurSel
+'                 .Row = Row
+'                 .Col = .ColLetterToNumber("R")
+'                 .typeComboboxCurSel = intIndexCombo
+'                UpdateCell fps, .Col, .Row, .value
+'
+'                .GetText .Col, .Row, varIDTinh
+'                If varIDTinh <> "" Or varIDTinh <> vbNullString Then
+'
+'                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Huyen.xml")) Then
+'                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+'                        For Each xmlNode In xmlNodeListCell
+'                            If GetAttribute(xmlNode, "Value") <> "" Then
+'                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+'
+'                                If arrDanhsach(1) = varIDTinh Or arrDanhsach(1) = "999" Then
+'                                    tenHuyen = tenHuyen + arrDanhsach(3) + Chr$(9)
+'                                    maHuyen = maHuyen + arrDanhsach(2) + Chr$(9)
+'                                End If
+'                            End If
+'                        Next
+'                        Set xmlDomData = Nothing
+'                        Set xmlNodeListCell = Nothing
+'                        Set xmlNode = Nothing
+'                    End If
+'
+'                    .Row = Row
+'                    .Col = .ColLetterToNumber("U")
+'                    .TypeComboBoxList = tenHuyen
+'                    .Text = ""
+'                     UpdateCell fps, .Col, .Row, .Text
+'
+'                    .Row = Row
+'                    .Col = .ColLetterToNumber("T")
+'                    .TypeComboBoxList = maHuyen
+'                    .Text = ""
+'                     UpdateCell fps, .Col, .Row, .Text
+'
+'                    .Row = Row
+'                    .Col = .ColLetterToNumber("V")
+'                    .Text = ""
+'                     UpdateCell fps, .Col, .Row, .Text
+'
+'                    .Row = Row
+'                    .Col = .ColLetterToNumber("W")
+'                    .Text = ""
+'                     UpdateCell fps, .Col, .Row, .Text
+'
+'                End If
+'            End If
+'            ' chon quan huyen
+'            If Col = .ColLetterToNumber("U") And .Text <> "" Then
+'                intIndexCombo = .typeComboboxCurSel
+'                 .Row = Row
+'                 .Col = .ColLetterToNumber("T")
+'                 .typeComboboxCurSel = intIndexCombo
+'                UpdateCell fps, .Col, .Row, .value
+'
+'                .GetText .Col, .Row, varIDHuyen
+'                If varIDHuyen <> "" Or varIDHuyen <> vbNullString Then
+'
+'                    If xmlDomData.Load(GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Xa.xml")) Then
+'                        Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
+'                        For Each xmlNode In xmlNodeListCell
+'                            If GetAttribute(xmlNode, "Value") <> "" Then
+'                                arrDanhsach = Split(GetAttribute(xmlNode, "Value"), "###")
+'
+'                                If arrDanhsach(2) = varIDHuyen Or arrDanhsach(2) = "99999" Then
+'                                    tenXa = tenXa + arrDanhsach(4) + Chr$(9)
+'                                    maXa = maXa + arrDanhsach(3) + Chr$(9)
+'                                End If
+'                            End If
+'                        Next
+'                        Set xmlDomData = Nothing
+'                        Set xmlNodeListCell = Nothing
+'                        Set xmlNode = Nothing
+'                    End If
+'
+'                    .Row = Row
+'                    .Col = .ColLetterToNumber("W")
+'                    .TypeComboBoxList = tenXa
+'                    .Text = ""
+'                     UpdateCell fps, .Col, .Row, .Text
+'
+'                    .Row = Row
+'                    .Col = .ColLetterToNumber("V")
+'                    .TypeComboBoxList = maXa
+'                    .Text = ""
+'                     UpdateCell fps, .Col, .Row, .Text
+'
+'                End If
+'            End If
+'            ' chon xa phuong
+'            If Col = .ColLetterToNumber("W") And .Text <> "" Then
+'                intIndexCombo = .typeComboboxCurSel
+'                 .Row = Row
+'                 .Col = .ColLetterToNumber("V")
+'                 .typeComboboxCurSel = intIndexCombo
+'                UpdateCell fps, .Col, .Row, .value
+'            End If
+'
+'        End If
+'    End With
 End Sub
 
 Private Sub fps_EditChange(ByVal Col As Long, ByVal Row As Long)
