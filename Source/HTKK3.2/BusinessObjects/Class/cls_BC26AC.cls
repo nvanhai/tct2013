@@ -1910,16 +1910,18 @@ Private Sub checkSheet1()
              If Val(strSLSuDung) > Val(strTongSo5) And Trim(strSLSuDung) <> "" Then
                     .Col = .ColLetterToNumber("P")
                     .CellNote = errSLSudung  'static
-                    .BackColor = mErrorColor
-                    iFlagSLSudung = 1
+                    '.BackColor = mErrorColor
+                    .BackColor = mAlertColor
+                    'iFlagSLSudung = 1
              End If
                 ' kiem tra so luong hd xoa
              If Trim(strSLXoa) <> "" Then
                 If Val(GetSoLuongHD(CStr(strSLXoa))) > Val(strTongSo5) Then
                        .Col = .ColLetterToNumber(Col_R)
                        .CellNote = errSLXoa  'static
-                       .BackColor = mErrorColor
-                       iFlagSLXoa = 1
+                       '.BackColor = mErrorColor
+                       'iFlagSLXoa = 1
+                       .BackColor = mAlertColor
                 End If
              End If
                 ' kiem tra so luong hd mat
@@ -1927,8 +1929,9 @@ Private Sub checkSheet1()
                 If Val(GetSoLuongHD(CStr(strSLMat))) > Val(strTongSo5) Then
                        .Col = .ColLetterToNumber(Col_T)
                        .CellNote = errSLMat  'static
-                       .BackColor = mErrorColor
-                       iFlagSLMat = 1
+                       '.BackColor = mErrorColor
+                       'iFlagSLMat = 1
+                       .BackColor = mAlertColor
                 End If
              End If
                 ' kiem tra so luong hd huy
@@ -1936,8 +1939,9 @@ Private Sub checkSheet1()
                 If Val(GetSoLuongHD(CStr(strSLhuy))) > Val(strTongSo5) Then
                        .Col = .ColLetterToNumber(Col_V)
                        .CellNote = errSLHuy  'static
-                       .BackColor = mErrorColor
-                       iFlagSLHuy = 1
+                       '.BackColor = mErrorColor
+                       'iFlagSLHuy = 1
+                       .BackColor = mAlertColor
                 End If
              End If
                 ' kiem tra so luong sd, mat, huy , xoa [12] <=[5]
@@ -1945,24 +1949,28 @@ Private Sub checkSheet1()
                     If Trim(strSLSuDung) <> "" Then
                         .Col = .ColLetterToNumber("P")
                         .CellNote = errSLSD_Xoa_Mat_Huy  'static
-                        .BackColor = mErrorColor
+                        '.BackColor = mErrorColor
+                        .BackColor = mAlertColor
                     End If
                     If Trim(strSLXoa) <> "" Then
                         .Col = .ColLetterToNumber(Col_R)
                         .CellNote = errSLSD_Xoa_Mat_Huy  'static
-                        .BackColor = mErrorColor
+                        '.BackColor = mErrorColor
+                        .BackColor = mAlertColor
                     End If
                     If Trim(strSLMat) <> "" Then
                         .Col = .ColLetterToNumber(Col_T)
                         .CellNote = errSLSD_Xoa_Mat_Huy  'static
-                        .BackColor = mErrorColor
+                        '.BackColor = mErrorColor
+                        .BackColor = mAlertColor
                     End If
                     If Trim(strSLhuy) <> "" Then
                         .Col = .ColLetterToNumber(Col_V)
                         .CellNote = errSLSD_Xoa_Mat_Huy  'static
-                        .BackColor = mErrorColor
+                        '.BackColor = mErrorColor
+                        .BackColor = mAlertColor
                     End If
-                    iFlagSD_Xoa_Mat_Huy = 1
+                    'iFlagSD_Xoa_Mat_Huy = 1
              End If
                 ' Kiem tra trung nhau tu so den so
              If Trim(strTuSo6) <> "" And Trim(strDenSo7) <> "" Then
@@ -2398,6 +2406,19 @@ Private Sub checkSheet2()
             .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
             .CellNote = ""     'static
             .BackColor = mNonErrorColor
+            ' cot tu so
+            .Col = .ColLetterToNumber(Col_V)
+            .CellNote = ""     'static
+            .BackColor = mNonErrorColor
+            ' cot den so
+            .Col = .ColLetterToNumber(Col_Y)
+            .CellNote = ""     'static
+            .BackColor = mNonErrorColor
+            ' cot ten hoa don
+            .Col = .ColLetterToNumber(Col_D)
+            .CellNote = ""
+            .BackColor = mNonErrorColor
+            
             .Row = .Row + 1
             .Col = .ColLetterToNumber("B")
         Loop Until UCase(.Text) = "AA"
@@ -2439,10 +2460,10 @@ Private Sub checkSheet2()
                 .CellNote = errEmty  'static
                 .BackColor = mErrorColor
                 iFlagEmty = 1
-            Else
-                .Col = .ColLetterToNumber(Col_D)
-                .CellNote = ""
-                .BackColor = mNonErrorColor
+'            Else
+'                .Col = .ColLetterToNumber(Col_D)
+'                .CellNote = ""
+'                .BackColor = mNonErrorColor
             End If
             ' Mau so HD
             If Trim(strMauSoHD) = "" And iWhiteRow = 0 Then
@@ -2684,26 +2705,26 @@ Private Sub checkSheet2()
             ' end test
             If iWhiteRow = 0 Then
                 If isHoaDonS1 = True Then
-                    .Col = .ColLetterToNumber(Col_V)
-                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                    .CellNote = ""     'static
-                    .BackColor = mNonErrorColor
-
-                     .Col = .ColLetterToNumber(Col_Y)
-                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                    .CellNote = ""     'static
-                    .BackColor = mNonErrorColor
+'                    .Col = .ColLetterToNumber(Col_V)
+'                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                    .CellNote = ""     'static
+'                    .BackColor = mNonErrorColor
+'
+'                     .Col = .ColLetterToNumber(Col_Y)
+'                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                    .CellNote = ""     'static
+'                    .BackColor = mNonErrorColor
                     If isNotCheckTrongKhoang = False Then
                         If isTrongKhoang = True Then
-                            .Col = .ColLetterToNumber(Col_V)
-                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                            .CellNote = ""     'static
-                            .BackColor = mNonErrorColor
-        
-                             .Col = .ColLetterToNumber(Col_Y)
-                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                            .CellNote = ""     'static
-                            .BackColor = mNonErrorColor
+'                            .Col = .ColLetterToNumber(Col_V)
+'                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                            .CellNote = ""     'static
+'                            .BackColor = mNonErrorColor
+'
+'                             .Col = .ColLetterToNumber(Col_Y)
+'                            .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                            .CellNote = ""     'static
+'                            .BackColor = mNonErrorColor
                         Else
             
                             .Col = .ColLetterToNumber(Col_V)
@@ -2731,15 +2752,15 @@ Private Sub checkSheet2()
                     iFlagTon = 1
                 End If
             Else
-                .Col = .ColLetterToNumber(Col_V)
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = ""     'static
-                .BackColor = mNonErrorColor
-
-                 .Col = .ColLetterToNumber(Col_Y)
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = ""     'static
-                .BackColor = mNonErrorColor
+'                .Col = .ColLetterToNumber(Col_V)
+'                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                .CellNote = ""     'static
+'                .BackColor = mNonErrorColor
+'
+'                 .Col = .ColLetterToNumber(Col_Y)
+'                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+'                .CellNote = ""     'static
+'                .BackColor = mNonErrorColor
             End If
             
             
