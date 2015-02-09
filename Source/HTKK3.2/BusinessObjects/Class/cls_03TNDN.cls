@@ -770,6 +770,13 @@ With fps
             End If
                
         End If
+        
+        If Col = .ColLetterToNumber("E") And (Row >= 21 And Row <= 28) Then
+            .Sheet = sheetTK03_TNDN
+            .Col = .ColLetterToNumber("O")
+            .Row = 46
+            .Formula = "P46"
+        End If
         .EventEnabled(EventAllEvents) = True
     End If
 
@@ -1527,13 +1534,13 @@ With fps
                 .Formula = "P69"
             End If
             
-'            If Row = 32 And Col = .ColLetterToNumber("E") Then
-'                ' chi tieu C3b
-'                .Sheet = 1
-'                .Col = .ColLetterToNumber("O")
-'                .Row = 52
-'                .Formula = "P52"
-'            End If
+            If (Row >= 21 And Row <= 28) And Col = .ColLetterToNumber("E") Then
+                ' chi tieu B14
+                .Sheet = 1
+                .Col = .ColLetterToNumber("O")
+                .Row = 46
+                .Formula = "P46"
+            End If
     End Select
     .EventEnabled(EventAllEvents) = True
 End With
@@ -2535,24 +2542,24 @@ Private Sub CheckDynamicError()
                         .BackColor = mNonErrorColor
                     End If
                 ' Kiem tra B14 = chi tieu 09 tren PL 03-5
-                    If Val(ct9) <> Val(ctB14) Then
-                        .Row = 29
-                        .Col = .ColLetterToNumber("E")
-                        .CellNote = vErrCt9
-                        .BackColor = mErrorColor
-                        iFlagCt9 = 1
-                    Else
-                        .Row = 29
-                        .Col = .ColLetterToNumber("E")
-                        .CellNote = ""
-                        .BackColor = mTempColor
-                    End If
+'                    If Val(ct9) <> Val(ctB14) Then
+'                        .Row = 29
+'                        .Col = .ColLetterToNumber("E")
+'                        .CellNote = vErrCt9
+'                        .BackColor = mErrorColor
+'                        iFlagCt9 = 1
+'                    Else
+'                        .Row = 29
+'                        .Col = .ColLetterToNumber("E")
+'                        .CellNote = ""
+'                        .BackColor = mTempColor
+'                    End If
             End If
             .Sheet = .SheetCount
             .SetText .ColLetterToNumber("B"), 93, IIf(iFlagCt10 = 1, "0", "1")
             .SetText .ColLetterToNumber("B"), 94, IIf(iFlagCt12 = 1, "0", "1")
             '.SetText .ColLetterToNumber("B"), 95, IIf(iFlagCt11a = 1, "0", "1")
-            .SetText .ColLetterToNumber("B"), 96, IIf(iFlagCt9 = 1, "0", "1")
+'            .SetText .ColLetterToNumber("B"), 96, IIf(iFlagCt9 = 1, "0", "1")
             
         .EventEnabled(EventAllEvents) = True
     End With
