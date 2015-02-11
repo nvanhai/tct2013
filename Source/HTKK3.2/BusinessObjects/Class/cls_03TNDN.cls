@@ -665,10 +665,10 @@ With fps
         .Sheet = sheetTK03_TNDN
         mCurrentSheet = sheetTK03_TNDN
         soNgay = 0
-        If Col = .ColLetterToNumber("N") And Row = 95 Then
+        If (Col = .ColLetterToNumber("N") Or Col = .ColLetterToNumber("J")) And Row = 95 Then
             .GetText .ColLetterToNumber("J"), 95, vTuNgay
             .GetText .ColLetterToNumber("N"), 95, vDenNgay
-            If Trim(vDenNgay) <> "" And Trim(vDenNgay) <> "../../...." And IsDate(vDenNgay) = True Then
+            If Trim(vDenNgay) <> "" And Trim(vDenNgay) <> "../../...." And IsDate(vDenNgay) = True And Trim(vTuNgay) <> "" And Trim(vTuNgay) <> "../../...." And IsDate(vTuNgay) = True Then
                 arrTemp = Split(vTuNgay, "/")
                 dTuNgay = DateSerial(Int(arrTemp(2)), Int(arrTemp(1)), Int(arrTemp(0)))
                 arrTemp = Split(vDenNgay, "/")
@@ -681,6 +681,13 @@ With fps
                 .Text = soNgay
                 UpdateCell fps, .Col, .Row, .Text
             End If
+        End If
+        
+        ' set cong thuc cho chi tieu B13
+        If Col = .ColLetterToNumber("O") And (Row = 46 Or Row = 31 Or (Row >= 34 And Row <= 39) Or (Row >= 41 And Row <= 43)) Then
+            .Col = .ColLetterToNumber("O")
+            .Row = 45
+            .Formula = "P45"
         End If
     End If
 
@@ -776,6 +783,10 @@ With fps
             .Col = .ColLetterToNumber("O")
             .Row = 46
             .Formula = "P46"
+            ' set lai cong thuc cho chi tieu B13
+            .Col = .ColLetterToNumber("O")
+            .Row = 45
+            .Formula = "P45"
         End If
         .EventEnabled(EventAllEvents) = True
     End If
@@ -1089,6 +1100,23 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 .Row = Row
                 UpdateCell fps, Col, Row, .Text
                 
+                
+                 soNgay = 0
+                .GetText .ColLetterToNumber("J"), 95, vTuNgay
+                .GetText .ColLetterToNumber("N"), 95, vDenNgay
+                If Trim(vDenNgay) <> "" And Trim(vDenNgay) <> "../../...." And IsDate(vDenNgay) = True And Trim(vTuNgay) <> "" And Trim(vTuNgay) <> "../../...." And IsDate(vTuNgay) = True Then
+                    arrTemp = Split(vTuNgay, "/")
+                    dTuNgay = DateSerial(Int(arrTemp(2)), Int(arrTemp(1)), Int(arrTemp(0)))
+                    arrTemp = Split(vDenNgay, "/")
+                    dDenNgay = DateSerial(Int(arrTemp(2)), Int(arrTemp(1)), Int(arrTemp(0)))
+                    soNgay = DateDiff("D", dTuNgay, dDenNgay) + 1
+                End If
+                If soNgay >= 0 Then
+                    .Col = .ColLetterToNumber("E")
+                    .Row = 95
+                    .Text = soNgay
+                    UpdateCell fps, .Col, .Row, .Text
+                End If
             End If
             
             
@@ -1111,7 +1139,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                  soNgay = 0
                 .GetText .ColLetterToNumber("J"), 95, vTuNgay
                 .GetText .ColLetterToNumber("N"), 95, vDenNgay
-                If Trim(vDenNgay) <> "" And Trim(vDenNgay) <> "../../...." And IsDate(vDenNgay) = True Then
+                If Trim(vDenNgay) <> "" And Trim(vDenNgay) <> "../../...." And IsDate(vDenNgay) = True And Trim(vTuNgay) <> "" And Trim(vTuNgay) <> "../../...." And IsDate(vTuNgay) = True Then
                     arrTemp = Split(vTuNgay, "/")
                     dTuNgay = DateSerial(Int(arrTemp(2)), Int(arrTemp(1)), Int(arrTemp(0)))
                     arrTemp = Split(vDenNgay, "/")
@@ -1895,7 +1923,7 @@ Private Sub CheckDynamicError()
          ' Kiem tra den ngay nop cham
         .GetText .ColLetterToNumber("N"), 95, vDenNgayNC
         .GetText .ColLetterToNumber("J"), 95, vTuNgayNC
-        If Trim(vDenNgayNC) <> "" And Trim(vDenNgayNC) <> "../../...." Then
+        If Trim(vDenNgayNC) <> "" And Trim(vDenNgayNC) <> "../../...." And Trim(vTuNgayNC) <> "" And Trim(vTuNgayNC) <> "../../...." Then
                 arrDateGH = Split(vDenNgayNC, "/")
                 arrDateHanNop = Split(vTuNgayNC, "/")
                 dThoiHanGH = DateSerial(CInt(arrDateGH(2)), CInt(arrDateGH(1)), CInt(arrDateGH(0)))
