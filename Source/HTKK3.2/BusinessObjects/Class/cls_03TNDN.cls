@@ -683,11 +683,16 @@ With fps
             End If
         End If
         
-        ' set cong thuc cho chi tieu B13
+'        ' set cong thuc cho chi tieu B13
         If Col = .ColLetterToNumber("O") And (Row = 46 Or Row = 31 Or (Row >= 34 And Row <= 39) Or (Row >= 41 And Row <= 43)) Then
+        .EventEnabled(EventAllEvents) = False
+        'If Col = .ColLetterToNumber("O") And (Row = 46 Or Row = 44) Then
             .Col = .ColLetterToNumber("O")
             .Row = 45
-            .Formula = "P45"
+            If .Formula <> "P45" Then
+                 .Formula = "P45"
+            End If
+        .EventEnabled(EventAllEvents) = True
         End If
     End If
 
