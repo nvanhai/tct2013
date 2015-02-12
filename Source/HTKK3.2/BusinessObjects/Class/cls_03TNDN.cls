@@ -1219,8 +1219,8 @@ With fps
     mCurrentSheet = .ActiveSheet
     Select Case .Sheet
         Case sheetTK03_TNDN ' To khai TNDN
-            mCurrentSheet = .Sheet
-            GetCellSpan fps, Col, Row
+'            mCurrentSheet = .Sheet
+'            GetCellSpan fps, Col, Row
         Case sheetPl03_1A_TNDN ' Phu luc 03-1A
             mCurrentSheet = .Sheet
             If Row = 41 And Col = .ColLetterToNumber("E") Then
