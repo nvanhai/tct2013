@@ -787,11 +787,15 @@ With fps
             .Sheet = sheetTK03_TNDN
             .Col = .ColLetterToNumber("O")
             .Row = 46
-            .Formula = "P46"
+            If .Formula <> "P46" Then
+                .Formula = "P46"
+            End If
             ' set lai cong thuc cho chi tieu B13
             .Col = .ColLetterToNumber("O")
             .Row = 45
-            .Formula = "P45"
+            If .Formula <> "P45" Then
+                .Formula = "P45"
+            End If
         End If
         .EventEnabled(EventAllEvents) = True
     End If
@@ -1228,7 +1232,9 @@ With fps
                 ' tong hop chi tieu 19 len chi tieu A1 cua to khai
                 .Col = .ColLetterToNumber("O")
                 .Row = 31
-                .Formula = "P31"
+                If .Formula <> "P31" Then
+                    .Formula = "P31"
+                End If
             End If
         Case sheetPl03_1B_TNDN ' Phu luc 03-1B
             mCurrentSheet = .Sheet
@@ -1237,7 +1243,9 @@ With fps
                 ' tong hop chi tieu 16 len chi tieu A1 cua to khai
                 .Col = .ColLetterToNumber("O")
                 .Row = 31
-                .Formula = "P31"
+                If .Formula <> "P31" Then
+                    .Formula = "P31"
+                End If
             End If
             
         Case sheetPl03_1C_TNDN ' Phu luc 03-1C
@@ -1246,7 +1254,9 @@ With fps
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
                 .Row = 31
-                .Formula = "P31"
+                If .Formula <> "P31" Then
+                    .Formula = "P31"
+                End If
             End If
             
         Case sheetPl03_2A_TNDN ' Phu luc 03-2A
@@ -1261,7 +1271,9 @@ With fps
                 ' tong hop lo cot (5) len chi tieu C3a
                 .Col = .ColLetterToNumber("O")
                 .Row = 51
-                .Formula = "P51"
+                If .Formula <> "P51" Then
+                    .Formula = "P51"
+                End If
                 
                 
                 
@@ -1329,7 +1341,9 @@ With fps
                             .SetText .ColLetterToNumber("P"), 61, pL_3A_U50 + pL_3B_U60
                             .Col = .ColLetterToNumber("O")
                             .Row = 61
-                            .Formula = "P61"
+                            If .Formula <> "P61" Then
+                                .Formula = "P61"
+                            End If
                             Exit For
                         End If
                     Next idx
@@ -1342,7 +1356,9 @@ With fps
                     .SetText .ColLetterToNumber("P"), 61, pL_3A_U50 + pL_3B_U60
                     .Col = .ColLetterToNumber("O")
                     .Row = 61
-                    .Formula = "P61"
+                    If .Formula <> "P61" Then
+                        .Formula = "P61"
+                    End If
                 End If
             End If
             
@@ -1363,7 +1379,9 @@ With fps
                             .SetText .ColLetterToNumber("P"), 62, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                             .Col = .ColLetterToNumber("O")
                             .Row = 62
-                            .Formula = "P62"
+                            If .Formula <> "P62" Then
+                                .Formula = "P62"
+                            End If
                             Exit For
                         End If
                     Next idx
@@ -1376,7 +1394,9 @@ With fps
                     .SetText .ColLetterToNumber("P"), 62, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                     .Col = .ColLetterToNumber("O")
                     .Row = 62
-                    .Formula = "P62"
+                    If .Formula <> "P62" Then
+                        .Formula = "P62"
+                    End If
                 End If
             End If
             
@@ -1421,7 +1441,9 @@ With fps
                             .SetText .ColLetterToNumber("P"), 61, pL_3A_U50 + pL_3B_U60
                             .Col = .ColLetterToNumber("O")
                             .Row = 61
-                            .Formula = "P61"
+                            If .Formula <> "P61" Then
+                                .Formula = "P61"
+                            End If
                             Exit For
                         End If
                     Next idx
@@ -1434,7 +1456,9 @@ With fps
                     .SetText .ColLetterToNumber("P"), 61, pL_3A_U50 + pL_3B_U60
                     .Col = .ColLetterToNumber("O")
                     .Row = 61
-                    .Formula = "P61"
+                    If .Formula <> "P61" Then
+                        .Formula = "P61"
+                    End If
                 End If
             End If
             
@@ -1455,7 +1479,9 @@ With fps
                             .SetText .ColLetterToNumber("P"), 62, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                             .Col = .ColLetterToNumber("O")
                             .Row = 62
-                            .Formula = "P62"
+                            If .Formula <> "P62" Then
+                                .Formula = "P62"
+                            End If
                             Exit For
                         End If
                     Next idx
@@ -1468,7 +1494,9 @@ With fps
                     .SetText .ColLetterToNumber("P"), 62, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                     .Col = .ColLetterToNumber("O")
                     .Row = 62
-                    .Formula = "P62"
+                    If .Formula <> "P62" Then
+                        .Formula = "P62"
+                    End If
                 End If
             End If
         
@@ -1498,7 +1526,9 @@ With fps
                             .SetText .ColLetterToNumber("P"), 62, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                             .Col = .ColLetterToNumber("O")
                             .Row = 62
-                            .Formula = "P62"
+                            If .Formula <> "P62" Then
+                                .Formula = "P62"
+                            End If
                             Exit For
                         End If
                     Next idx
@@ -1511,7 +1541,9 @@ With fps
                     .SetText .ColLetterToNumber("P"), 62, pL_3A_U56 + pL_3B_U65 + pL_3C_X43
                     .Col = .ColLetterToNumber("O")
                     .Row = 62
-                    .Formula = "P62"
+                    If .Formula <> "P62" Then
+                        .Formula = "P62"
+                    End If
                 End If
             End If
         Case sheetPl03_4_TNDN ' Phu luc 03-6
@@ -1529,7 +1561,9 @@ With fps
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
                 .Row = 65
-                .Formula = "P65"
+                If .Formula <> "P65" Then
+                    .Formula = "P65"
+                End If
             End If
             
             If Row = cRow And Col = .ColLetterToNumber("Z") Then
@@ -1537,7 +1571,9 @@ With fps
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
                 .Row = 37
-                .Formula = "P37"
+                If .Formula <> "P37" Then
+                    .Formula = "P37"
+                End If
             End If
             
         Case sheetPl03_6_TNDN ' Phu luc 03-6
@@ -1555,7 +1591,9 @@ With fps
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
                 .Row = 54
-                .Formula = "P54"
+                If .Formula <> "P54" Then
+                    .Formula = "P54"
+                End If
             End If
         Case sheetPl03_5_TNDN ' Phu luc 03-5
             mCurrentSheet = .Sheet
@@ -1564,7 +1602,9 @@ With fps
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
                 .Row = 69
-                .Formula = "P69"
+                If .Formula <> "P69" Then
+                    .Formula = "P69"
+                End If
             End If
             
             If (Row >= 21 And Row <= 28) And Col = .ColLetterToNumber("E") Then
@@ -1572,7 +1612,9 @@ With fps
                 .Sheet = 1
                 .Col = .ColLetterToNumber("O")
                 .Row = 46
-                .Formula = "P46"
+                If .Formula <> "P46" Then
+                    .Formula = "P46"
+                End If
             End If
     End Select
     .EventEnabled(EventAllEvents) = True
