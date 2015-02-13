@@ -571,7 +571,7 @@ Public Sub Prepare2()
                 .Row = 30
                 .Col = .ColLetterToNumber("E")
                 .Lock = True
-                '.Text = "0"
+                .Text = "0"
             Else
                 .Row = 30
                 .Col = .ColLetterToNumber("E")
@@ -594,7 +594,7 @@ Public Sub Prepare2()
                 .Row = 32
                 .Col = .ColLetterToNumber("E")
                 .Lock = True
-                '.Text = "0"
+                .Text = "0"
 '                ' chi tieu 12
 '                .Row = 33
 '                .Col = .ColLetterToNumber("E")
@@ -611,7 +611,7 @@ Public Sub Prepare2()
                 .Row = 33
                 .Col = .ColLetterToNumber("E")
                 .Lock = True
-               ' .Text = "0"
+                .Text = "0"
             Else
 '                ' chi tieu 11a
 '                .Row = 32
@@ -629,7 +629,7 @@ Public Sub Prepare2()
                 .Row = 34
                 .Col = .ColLetterToNumber("E")
                 .Formula = ""
-                '.Text = "0"
+                .Text = "0"
             Else
                 .Row = 34
                 .Col = .ColLetterToNumber("E")
