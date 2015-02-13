@@ -518,6 +518,10 @@ Public Sub Prepare2()
             .Lock = True
         End If
         ' End set gia han
+'        ' set ct cho chi tieu B13
+'        .Col = .ColLetterToNumber("O")
+'        .Row = 45
+'        .Formula = "P45"
         
         ' Pl 03-5/TNDN
         .Sheet = sheetPl03_5_TNDN
@@ -539,7 +543,7 @@ Public Sub Prepare2()
                 .Row = 30
                 .Col = .ColLetterToNumber("E")
                 .Lock = True
-                .Text = "0"
+                '.Text = "0"
             Else
                 .Row = 30
                 .Col = .ColLetterToNumber("E")
@@ -562,7 +566,7 @@ Public Sub Prepare2()
                 .Row = 32
                 .Col = .ColLetterToNumber("E")
                 .Lock = True
-                .Text = "0"
+                '.Text = "0"
 '                ' chi tieu 12
 '                .Row = 33
 '                .Col = .ColLetterToNumber("E")
@@ -579,7 +583,7 @@ Public Sub Prepare2()
                 .Row = 33
                 .Col = .ColLetterToNumber("E")
                 .Lock = True
-                .Text = "0"
+               ' .Text = "0"
             Else
 '                ' chi tieu 11a
 '                .Row = 32
@@ -597,7 +601,7 @@ Public Sub Prepare2()
                 .Row = 34
                 .Col = .ColLetterToNumber("E")
                 .Formula = ""
-                .Text = "0"
+                '.Text = "0"
             Else
                 .Row = 34
                 .Col = .ColLetterToNumber("E")
@@ -683,17 +687,18 @@ With fps
             End If
         End If
         
-'        ' set cong thuc cho chi tieu B13
-        If Col = .ColLetterToNumber("O") And (Row = 46 Or Row = 31 Or (Row >= 34 And Row <= 39) Or (Row >= 41 And Row <= 43)) Then
-        .EventEnabled(EventAllEvents) = False
-        'If Col = .ColLetterToNumber("O") And (Row = 46 Or Row = 44) Then
-            .Col = .ColLetterToNumber("O")
-            .Row = 45
-            If .Formula <> "P45" Then
-                 .Formula = "P45"
-            End If
-        .EventEnabled(EventAllEvents) = True
-        End If
+        ' set cong thuc cho chi tieu B13
+'        If Col = .ColLetterToNumber("O") And (Row = 46 Or Row = 31 Or (Row >= 34 And Row <= 39) Or (Row >= 41 And Row <= 43)) Then
+'        '.EventEnabled(EventAllEvents) = False
+'        'If Col = .ColLetterToNumber("O") And (Row = 46 Or Row = 44) Then
+'            .Col = .ColLetterToNumber("O")
+'            .Row = 45
+'            .Text = tinhCtB13
+''            If .Formula <> "P45" Then
+''                 .Formula = "P45"
+''            End If
+'        '.EventEnabled(EventAllEvents) = True
+'        End If
     End If
 
     If .ActiveSheet = sheetPl03_5_TNDN Then
@@ -783,20 +788,21 @@ With fps
                
         End If
         
-        If Col = .ColLetterToNumber("E") And (Row >= 21 And Row <= 28) Then
-            .Sheet = sheetTK03_TNDN
-            .Col = .ColLetterToNumber("O")
-            .Row = 46
-            If .Formula <> "P46" Then
-                .Formula = "P46"
-            End If
-            ' set lai cong thuc cho chi tieu B13
-            .Col = .ColLetterToNumber("O")
-            .Row = 45
-            If .Formula <> "P45" Then
-                .Formula = "P45"
-            End If
-        End If
+'        If Col = .ColLetterToNumber("E") And (Row >= 21 And Row <= 28) Then
+'            .Sheet = sheetTK03_TNDN
+''            .Col = .ColLetterToNumber("O")
+''            .Row = 46
+''            If .Formula <> "P46" Then
+''                .Formula = "P46"
+''            End If
+'            ' set lai cong thuc cho chi tieu B13
+'            .Col = .ColLetterToNumber("O")
+'            .Row = 45
+'            .Text = tinhCtB13
+''            If .Formula <> "P45" Then
+''                .Formula = "P45"
+''            End If
+'        End If
         .EventEnabled(EventAllEvents) = True
     End If
 
@@ -1191,6 +1197,28 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                 UpdateCell fps, Col, Row, .Text
             End If
             
+            
+            ' set cong thuc cho chi tieu B13
+            If Col = .ColLetterToNumber("O") And (Row = 46 Or Row = 31 Or (Row >= 34 And Row <= 39) Or (Row >= 41 And Row <= 43)) Then
+            'If Col = .ColLetterToNumber("O") And (Row = 46 Or Row = 44) Then
+                .Col = .ColLetterToNumber("O")
+                .Row = 45
+                .value = tinhCtB13
+'                If .Formula <> "P45" Then
+'                     .Formula = "P45"
+'                End If
+            End If
+        ElseIf .ActiveSheet = sheetPl03_5_TNDN Then
+            If Col = .ColLetterToNumber("E") And (Row >= 21 And Row <= 28) Then
+            ' set lai cong thuc cho chi tieu B13
+            .Sheet = 1
+            .Col = .ColLetterToNumber("O")
+            .Row = 45
+            .value = tinhCtB13
+'            If .Formula <> "P45" Then
+'                .Formula = "P45"
+'            End If
+            End If
         End If
     .EventEnabled(EventAllEvents) = True
     End With
@@ -4618,4 +4646,61 @@ End Sub
 '      End With
 'End Sub
 
+Function tinhCtB13() As Double
+    Dim ctA1 As Variant
+    Dim ctB2 As Variant
+    Dim ctB3 As Variant
+    Dim ctB4 As Variant
+    Dim ctB5 As Variant
+    Dim ctB6 As Variant
+    Dim ctB7 As Variant
+    
+    Dim ctB9 As Variant
+    Dim ctB10 As Variant
+    Dim ctB11 As Variant
+    
+    Dim ctB14 As Variant
+    
+    
+    With fps
+        .Sheet = 1
+        .Col = .ColLetterToNumber("O")
+        .Row = 31
+        ctA1 = .value
+        
+        .Row = 34
+        ctB2 = .value
+        
+        .Row = 35
+        ctB3 = .value
+        
+        
+        .Row = 36
+        ctB4 = .value
+        
+        .Row = 37
+        ctB5 = .value
+        
+        .Row = 38
+        ctB6 = .value
+        
+        .Row = 39
+        ctB7 = .value
+        
+        .Row = 41
+        ctB9 = .value
+        
+        .Row = 42
+        ctB10 = .value
+        
+        .Row = 43
+        ctB11 = .value
+        
+        .Row = 46
+        ctB14 = .value
+        
+        .Row = 45
+        tinhCtB13 = Val(CStr(ctA1)) + Val(CStr(ctB2)) + Val(CStr(ctB3)) + Val(CStr(ctB4)) + Val(CStr(ctB5)) + Val(CStr(ctB6)) + Val(CStr(ctB7)) - Val(CStr(ctB9)) - Val(CStr(ctB10)) - Val(CStr(ctB11)) - Val(CStr(ctB14))
+    End With
+End Function
 
