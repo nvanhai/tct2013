@@ -133,6 +133,10 @@ Public Sub Prepare1()
     Dim arrRowCom() As String
     Dim strTemp As String
     
+    Dim tuNgayPhatNC As String
+    Dim ngayTC As String
+    Dim thangTC As String
+    
 With fps
     ' TK 03
     SetDateFormat fps, sheetTK03_TNDN, 87, .ColLetterToNumber("I"), DDMMYYYY
@@ -165,6 +169,30 @@ With fps
     ' set Ma nganh nghe co ty le doanh thu cao nhat
     .Col = .ColLetterToNumber("P")
     .TypeComboBoxList = strCboLyDoAn
+        
+        
+    ' set ngay nop cham tu ngay
+    .Sheet = sheetTK03_TNDN
+    mCurrentSheet = .Sheet
+    If Len(CStr(GetNgayTaiChinh(GetNgayBatDauNamTaiChinh))) = 1 Then
+        ngayTC = "0" & GetNgayTaiChinh(GetNgayBatDauNamTaiChinh)
+    Else
+        ngayTC = GetNgayTaiChinh(GetNgayBatDauNamTaiChinh)
+    End If
+    
+    If Len(CStr(GetThangTaiChinh(GetNgayBatDauNamTaiChinh) + 1)) = 1 Then
+        thangTC = "0" & GetThangTaiChinh(GetNgayBatDauNamTaiChinh) + 1
+    Else
+        thangTC = GetThangTaiChinh(GetNgayBatDauNamTaiChinh) + 1
+    End If
+    
+    tuNgayPhatNC = ngayTC & "/" & thangTC & "/" & CInt(TAX_Utilities_v1.Year) + 1
+    .Row = 95
+    .Col = .ColLetterToNumber("J")
+    .Text = tuNgayPhatNC
+    .TypeHAlign = TypeHAlignLeft
+    'UpdateCell fps, .Col, .Row, .Text
+        
         
    ' Ky dc gia han moi set gia tri ly do gia han
    strCboLyDo = ""
@@ -318,27 +346,27 @@ Public Sub Prepare2()
     Set arrErrorCells = New Scripting.Dictionary
     
     With fps
-        ' set ngay nop cham tu ngay
-        .Sheet = sheetTK03_TNDN
-        mCurrentSheet = .Sheet
-        If Len(CStr(GetNgayTaiChinh(GetNgayBatDauNamTaiChinh))) = 1 Then
-            ngayTC = "0" & GetNgayTaiChinh(GetNgayBatDauNamTaiChinh)
-        Else
-            ngayTC = GetNgayTaiChinh(GetNgayBatDauNamTaiChinh)
-        End If
-        
-        If Len(CStr(GetThangTaiChinh(GetNgayBatDauNamTaiChinh) + 1)) = 1 Then
-            thangTC = "0" & GetThangTaiChinh(GetNgayBatDauNamTaiChinh) + 1
-        Else
-            thangTC = GetThangTaiChinh(GetNgayBatDauNamTaiChinh) + 1
-        End If
-        
-        tuNgayPhatNC = ngayTC & "/" & thangTC & "/" & CInt(TAX_Utilities_v1.Year) + 1
-        .Row = 95
-        .Col = .ColLetterToNumber("J")
-        .Text = tuNgayPhatNC
-        .TypeHAlign = TypeHAlignLeft
-        UpdateCell fps, .Col, .Row, .Text
+'        ' set ngay nop cham tu ngay
+'        .Sheet = sheetTK03_TNDN
+'        mCurrentSheet = .Sheet
+'        If Len(CStr(GetNgayTaiChinh(GetNgayBatDauNamTaiChinh))) = 1 Then
+'            ngayTC = "0" & GetNgayTaiChinh(GetNgayBatDauNamTaiChinh)
+'        Else
+'            ngayTC = GetNgayTaiChinh(GetNgayBatDauNamTaiChinh)
+'        End If
+'
+'        If Len(CStr(GetThangTaiChinh(GetNgayBatDauNamTaiChinh) + 1)) = 1 Then
+'            thangTC = "0" & GetThangTaiChinh(GetNgayBatDauNamTaiChinh) + 1
+'        Else
+'            thangTC = GetThangTaiChinh(GetNgayBatDauNamTaiChinh) + 1
+'        End If
+'
+'        tuNgayPhatNC = ngayTC & "/" & thangTC & "/" & CInt(TAX_Utilities_v1.Year) + 1
+'        .Row = 95
+'        .Col = .ColLetterToNumber("J")
+'        .Text = tuNgayPhatNC
+'        .TypeHAlign = TypeHAlignLeft
+'        UpdateCell fps, .Col, .Row, .Text
         'Phu luc 03_2A TNDN
         .Sheet = sheetPl03_2A_TNDN
             .ActiveSheet = .Sheet
