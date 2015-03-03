@@ -1,5 +1,5 @@
 <PL_BK_01AC_02>
-	<Dynamic GroupName="PL_BK_01AC_02">
+	<Dynamic GroupName="PL_BK_01AC_02" MinOccur = "1">
 		<ChiTietHoaDon id="id">
 			<maHoaDon>C_45</maHoaDon>
 			<tenHoaDon>D_45</tenHoaDon>

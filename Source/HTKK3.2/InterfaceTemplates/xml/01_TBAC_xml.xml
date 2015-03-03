@@ -74,9 +74,9 @@
 					<tenLoaiHDon></tenLoaiHDon>
 					<mauSo></mauSo>
 					<kyHieu></kyHieu>
-					<soLuong>1</soLuong>
-					<tuSo>0</tuSo>
-					<denSo>0</denSo>
+					<soLuong></soLuong>
+					<tuSo></tuSo>
+					<denSo></denSo>
 					<ngayBDauSDung></ngayBDauSDung>
 					<DoanhNghiepIn>
 						<ten></ten>

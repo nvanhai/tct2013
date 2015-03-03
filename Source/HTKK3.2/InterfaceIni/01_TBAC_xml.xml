@@ -16,14 +16,14 @@
 		<maHuyenDLyThue></maHuyenDLyThue>
 		<maTinhDLyThue></maTinhDLyThue>
 	</Static>
-	<Dynamic GroupName="HoaDon">
+	<Dynamic GroupName="HoaDon" MinOccur="1">
 		<ChiTiet ID="String">
 			<tenLoaiHDon>D_35</tenLoaiHDon>
 			<mauSo>J_35</mauSo>
 			<kyHieu>L_35</kyHieu>
-			<soLuong>N_35</soLuong>
-			<tuSo>P_35</tuSo>
-			<denSo>R_35</denSo>
+			<soLuong TEXTNumber="1">N_35</soLuong>
+			<tuSo TEXTNumber="1">P_35</tuSo>
+			<denSo TEXTNumber="1">R_35</denSo>
 			<ngayBDauSDung>T_35</ngayBDauSDung>
 			<DoanhNghiepIn>
 				<ten>W_35</ten>
