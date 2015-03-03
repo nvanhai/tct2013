@@ -9,9 +9,9 @@
 			<tenLoaiBienLai>D_35</tenLoaiBienLai>
 			<kyHieuMauBienLai>J_35</kyHieuMauBienLai>
 			<kyHieuBienLai>L_35</kyHieuBienLai>
-			<soLuong>N_35</soLuong>
-			<tuSo>P_35</tuSo>
-			<denSo>R_35</denSo>
+			<soLuong TEXTNumber="1">N_35</soLuong>
+			<tuSo TEXTNumber="1">P_35</tuSo>
+			<denSo TEXTNumber="1">R_35</denSo>
 			<ngayBDauSDung>T_35</ngayBDauSDung>
 			<soHDongInBLai>W_35</soHDongInBLai>
 			<ngayHDongInBLai>AA_35</ngayHDongInBLai>

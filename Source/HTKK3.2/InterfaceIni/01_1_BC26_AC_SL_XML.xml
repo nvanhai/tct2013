@@ -1,24 +1,24 @@
 <PL_BK_01AC_01>
-	<Dynamic GroupName="HDonHetGTriSDung">
+	<Dynamic GroupName="HDonHetGTriSDung" MinOccur = "1">
 		<ChiTietHoaDon id="id">
 			<maHoaDon>C_46</maHoaDon>
 			<tenHoaDon>D_46</tenHoaDon>
 			<kyHieuMau>O_46</kyHieuMau>
 			<kyHieuHD>S_46</kyHieuHD>
 			<soLuong>AA_46</soLuong>
-			<tuSo>V_46</tuSo>
-			<denSo>Y_46</denSo>
+			<tuSo TEXTNumber ="1">V_46</tuSo>
+			<denSo TEXTNumber ="1">Y_46</denSo>
 		</ChiTietHoaDon>
 	</Dynamic>
-	<Dynamic GroupName="HDonDKiTiepSDung">
+	<Dynamic GroupName="HDonDKiTiepSDung" MinOccur = "1">
 		<ChiTietHoaDon id="id">
 			<maHoaDon>C_50</maHoaDon>
 			<tenHoaDon>D_50</tenHoaDon>
 			<kyHieuMau>O_50</kyHieuMau>
 			<kyHieuHD>S_50</kyHieuHD>
 			<soLuong>AA_50</soLuong>
-			<tuSo>V_50</tuSo>
-			<denSo>Y_50</denSo>
+			<tuSo TEXTNumber ="1">V_50</tuSo>
+			<denSo TEXTNumber ="1">Y_50</denSo>
 		</ChiTietHoaDon>
 	</Dynamic>
 	<Static GroupName="PL_BK_01AC_01">

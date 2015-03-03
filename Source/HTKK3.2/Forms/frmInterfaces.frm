@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1969
+         SpreadDesigner  =   "frmInterfaces.frx":19A5
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1BF1
+      SpreadDesigner  =   "frmInterfaces.frx":1C69
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -5737,6 +5737,12 @@ Private Sub KetXuatXML()
                     'Truong hop ket thuc group dong thi xoa group cuoi cung di
                     .Col = .ColLetterToNumber("B")
                     .Row = sRow
+                    
+                    ' to khai TB01/AC se khong xoa group trang dau
+                    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "64" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "07") Then
+                        Blank = False
+                    End If
+                    ' end
 
                     If Blank = True Or .Text = "aa" Or .Text = "bb" Or .Text = "cc" Or .Text = "dd" Or .Text = "ee" Or .Text = "ff" Then
                         If id > 1 Then
@@ -6004,7 +6010,12 @@ Private Sub KetXuatXML()
                                 Blank = True
                                 sRow = 0
                                 SetCloneNode CloneNode, xmlSection, Blank, cellRange, sRow
-                            
+                                
+                                ' to khai BC26 se khong xoa group trang dau
+                                If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "68" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "18") Then
+                                    Blank = False
+                                End If
+                                ' end
                                 .Col = .ColLetterToNumber("B")
                                 .Row = sRow
 

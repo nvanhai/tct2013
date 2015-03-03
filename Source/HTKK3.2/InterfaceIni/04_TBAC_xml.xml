@@ -59,7 +59,7 @@
 	<Static GroupName="CTieuTKhaiChinh">
 		<ngayTBaoPHanhHDon>F_30</ngayTBaoPHanhHDon>
 	</Static>
-	<Dynamic GroupName="TTinThayDoi">
+	<Dynamic GroupName="TTinThayDoi" MinOccur = "1">
 		<ChiTietTTinThayDoi ID="id">
 			<thongTinThayDoi>C_35</thongTinThayDoi>
 			<thongTinCu>D_35</thongTinCu>

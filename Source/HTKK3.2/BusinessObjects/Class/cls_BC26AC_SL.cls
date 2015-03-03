@@ -2999,6 +2999,44 @@ Public Sub SetActiveSheet()
                 If blnNullValue Then
                     SetAttribute xmlNodeValid, "Active", "0"
                 End If
+            Case "01_1"
+                blnNullValue = True
+                'Check the third sheet
+               For Each xmlCellNode In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
+                    ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
+                    'Check value in D column and E column
+                    If lCol = fps.ColLetterToNumber(Col_O) Or _
+                       lCol = fps.ColLetterToNumber(Col_S) Then
+                        strValue = GetAttribute(xmlCellNode, "Value")
+                        If Not IsNullValue(strValue) Then
+                            blnNullValue = False
+                            Exit For
+                        End If
+                    End If
+                Next
+            
+                If blnNullValue Then
+                    SetAttribute xmlNodeValid, "Active", "0"
+                End If
+            Case "01_2"
+                blnNullValue = True
+                'Check the third sheet
+               For Each xmlCellNode In TAX_Utilities_v1.Data(2).getElementsByTagName("Cell")
+                    ParserCellID fps, GetAttribute(xmlCellNode, "CellID"), lCol, lRow
+                    'Check value in D column and E column
+                    If lCol = fps.ColLetterToNumber(Col_O) Or _
+                       lCol = fps.ColLetterToNumber(Col_S) Then
+                        strValue = GetAttribute(xmlCellNode, "Value")
+                        If Not IsNullValue(strValue) Then
+                            blnNullValue = False
+                            Exit For
+                        End If
+                    End If
+                Next
+            
+                If blnNullValue Then
+                    SetAttribute xmlNodeValid, "Active", "0"
+                End If
         End Select
     Next
     
