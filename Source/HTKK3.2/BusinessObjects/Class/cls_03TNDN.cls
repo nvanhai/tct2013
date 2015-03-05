@@ -971,11 +971,11 @@ Public Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonD
                     UpdateCell fps, fps.ColLetterToNumber("I"), 85, ""
                     
                     fps.SetText fps.ColLetterToNumber("I"), 87, ""
-                    fps.SetText fps.ColLetterToNumber("I"), 89, ""
-                    fps.SetText fps.ColLetterToNumber("I"), 91, ""
+                    fps.SetText fps.ColLetterToNumber("I"), 89, "0"
+                    fps.SetText fps.ColLetterToNumber("I"), 91, "0"
                     UpdateCell fps, fps.ColLetterToNumber("I"), 87, ""
-                    UpdateCell fps, fps.ColLetterToNumber("I"), 89, ""
-                    UpdateCell fps, fps.ColLetterToNumber("I"), 91, ""
+                    UpdateCell fps, fps.ColLetterToNumber("I"), 89, "0"
+                    UpdateCell fps, fps.ColLetterToNumber("I"), 91, "0"
                 End If
             End If
         End If
