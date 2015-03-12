@@ -79,6 +79,7 @@
 			<Cell CellID="C_79"   CellID2="C_2" Value="6###24002413###Phí xác minh giấy tờ, TL theo Y/C của tổ chức, CN nước ngoài###Phí xác minh giấy tờ, TL theo Y/C của tổ chức, CN nước ngoài###2413" StatusID=""/>
 			<Cell CellID="C_80"   CellID2="C_2" Value="6###24002414###Phí xử lý hồ sơ cấp Giấy chứng nhận miễn thị thực###Phí xử lý hồ sơ cấp Giấy chứng nhận miễn thị thực###2414" StatusID=""/>
 			<Cell CellID="C_81"   CellID2="C_2" Value="6###24002415###Phí thẩm định điều kiện về an ninh trật tự###Phí thẩm định điều kiện về an ninh trật tự###2415" StatusID=""/>
+			<Cell CellID="C_211"   CellID2="C_2" Value="6###24002417###Phí trông giữ xe đạp, xe máy, ô tô và phí trông giữ phương tiện tham gia giao thông bị tạm giữ do vi phạm###Phí trông giữ xe đạp, xe máy, ô tô và phí trông giữ phương tiện tham gia giao thông bị tạm giữ do vi phạm###2417" StatusID=""/>
 			<Cell CellID="C_82"   CellID2="C_2" Value="7###24500000###Phí thuộc lĩnh vực văn hoá, xã hội###Phí thuộc lĩnh vực văn hoá, xã hội###0000" StatusID=""/>
 			<Cell CellID="C_83"   CellID2="C_2" Value="7###24502451###Phí giám định di vật, cổ vật, bảo vật quốc gia###Phí giám định di vật, cổ vật, bảo vật quốc gia###2451" StatusID=""/>
 			<Cell CellID="C_84"   CellID2="C_2" Value="7###24502452###Phí tham quan danh lam thắng cảnh, di tích lịch sử, CT V.hóa###Phí tham quan danh lam thắng cảnh, di tích lịch sử, CT V.hóa###2452" StatusID=""/>
@@ -101,6 +102,7 @@
 			<Cell CellID="C_101"   CellID2="C_2" Value="9###25502562###Phí thẩm định đăng ký kinh doanh thuốc###Phí thẩm định đăng ký kinh doanh thuốc###2562" StatusID=""/>
 			<Cell CellID="C_102"   CellID2="C_2" Value="9###25502563###Phí thẩm định hồ sơ nhập khẩu thuốc thành phẩm chưa có số ĐK###Phí thẩm định hồ sơ nhập khẩu thuốc thành phẩm chưa có số ĐK###2563" StatusID=""/>
 			<Cell CellID="C_103"   CellID2="C_2" Value="10###26000000###Phí thuộc lĩnh vực khoa học, công nghệ và môi trường###Phí thuộc lĩnh vực khoa học, công nghệ và môi trường###0000" StatusID=""/>
+			<Cell CellID="C_212"   CellID2="C_2" Value="10###26002601###Phí bảo vệ môi trường đối với nước thải, khí thải, ...###Phí bảo vệ môi trường đối với nước thải, khí thải, ...###2601" StatusID=""/>
 			<Cell CellID="C_104"   CellID2="C_2" Value="10###26002602###Phí thẩm định báo cáo đánh giá tác động môi trường###Phí thẩm định báo cáo đánh giá tác động môi trường###2602" StatusID=""/>
 			<Cell CellID="C_105"   CellID2="C_2" Value="10###26002603###Phí vệ sinh###Phí vệ sinh###2603" StatusID=""/>
 			<Cell CellID="C_106"   CellID2="C_2" Value="10###26002604###Phí phòng, chống thiên tai###Phí phòng, chống thiên tai###2604" StatusID=""/>
@@ -120,7 +122,7 @@
 			<Cell CellID="C_120"   CellID2="C_2" Value="10###26002622###Phí bảo vệ môi trường đối với khí thải###Phí bảo vệ môi trường đối với khí thải###2622" StatusID=""/>
 			<Cell CellID="C_121"   CellID2="C_2" Value="10###26002623###Phí bảo vệ môi trường đối với chất thải rắn###Phí bảo vệ môi trường đối với chất thải rắn###2623" StatusID=""/>
 			<Cell CellID="C_122"   CellID2="C_2" Value="10###26002624###Phí bảo vệ môi trường đối với khai thác khoáng sản là dầu thô và khí thiên nhiên###Phí bảo vệ môi trường đối với khai thác khoáng sản là dầu thô và khí thiên nhiên###2624" StatusID=""/>
-			<Cell CellID="C_123"   CellID2="C_2" Value="10###26002625###Phí bảo vệ môi trường đối với khai thác khoáng sản còn lại###Phí bảo vệ môi trường đối với khai thác khoáng sản còn lại###2625" StatusID=""/>
+			<Cell CellID="C_123"   CellID2="C_2" Value="10###26002625###Phí bảo vệ môi trường đối với khai thác khoáng sản còn lại###Phí bảo vệ môi trường đối với khai thác khoáng sản còn lại###2625" StatusID=""/>			
 			<Cell CellID="C_124"   CellID2="C_2" Value="11###26500000###Phí thuộc lĩnh vực tài chính, ngân hàng, hải quan###Phí thuộc lĩnh vực tài chính, ngân hàng, hải quan###0000" StatusID=""/>
 			<Cell CellID="C_125"   CellID2="C_2" Value="11###26502651###Phí cung cấp thông tin về tài chính doanh nghiệp###Phí cung cấp thông tin về tài chính doanh nghiệp###2651" StatusID=""/>
 			<Cell CellID="C_126"   CellID2="C_2" Value="11###26502652###Phí phát hành, thanh toán tín phiếu kho bạc###Phí phát hành, thanh toán tín phiếu kho bạc###2652" StatusID=""/>
