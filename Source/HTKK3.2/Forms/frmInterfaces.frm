@@ -6006,7 +6006,7 @@ Private Sub KetXuatXML()
                             End If
 
                             Do
-                                DoEvents
+'                                DoEvents
                                 Blank = True
                                 sRow = 0
                                 SetCloneNode CloneNode, xmlSection, Blank, cellRange, sRow
@@ -6015,6 +6015,10 @@ Private Sub KetXuatXML()
                                 If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "68" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "18") Then
                                     Blank = False
                                 End If
+                                
+'                                If TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "03" And .sheet = 13 Then
+'                                    Blank = False
+'                                End If
                                 ' end
                                 .Col = .ColLetterToNumber("B")
                                 .Row = sRow
