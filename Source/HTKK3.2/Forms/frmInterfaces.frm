@@ -6006,7 +6006,7 @@ Private Sub KetXuatXML()
                             End If
 
                             Do
-'                                DoEvents
+                                DoEvents
                                 Blank = True
                                 sRow = 0
                                 SetCloneNode CloneNode, xmlSection, Blank, cellRange, sRow
