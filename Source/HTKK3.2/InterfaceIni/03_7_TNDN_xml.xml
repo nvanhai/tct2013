@@ -1,5 +1,5 @@
 <PL03_7_TNDN>
-	<Dynamic GroupName="TTinCacBenLKet">
+	<Dynamic GroupName="TTinCacBenLKet" MinOccur = "1">
 		<moiQHeVoiTungLKet id="ID_10">
 				<tenLKet>D_31</tenLKet>
 				<quocGia>I_31</quocGia>
@@ -75,7 +75,7 @@
 		<tongHHCPhiCLechCTII_1_2>Y_53</tongHHCPhiCLechCTII_1_2>
 		<tongHHLoiNhuanCTII_1_2>AE_53</tongHHLoiNhuanCTII_1_2>
 	</Static>	
-	<Dynamic GroupName="TTinHHoaKhongHThanhTSCD">
+	<Dynamic GroupName="TTinHHoaKhongHThanhTSCD" MinOccur = "1">
 		<hHoaKhongHThanhTSCD id="ID_12">
 			<tenLienKet_ctII_1_2>D_55</tenLienKet_ctII_1_2>
 			<gtriDThuSSKT_ctII_1_2>H_55</gtriDThuSSKT_ctII_1_2>
@@ -106,7 +106,7 @@
 		<tongCPhiCLechCTII_2_1>Y_58</tongCPhiCLechCTII_2_1>
 		<tongLoiNhuanCTII_2_1>AE_58</tongLoiNhuanCTII_2_1>
 	</Static>		
-	<Dynamic GroupName="TTinNghienCuuPhatTrien">
+	<Dynamic GroupName="TTinNghienCuuPhatTrien" MinOccur = "1">
 		<nghienCuuPhatTrien id="ID_13">
 			<tenLienKet_ctII_2_1>D_60</tenLienKet_ctII_2_1>
 			<gtriDThuSSKT_ctII_2_1>H_60</gtriDThuSSKT_ctII_2_1>
@@ -152,7 +152,7 @@
 		<tongCPhiCLechCTII_2_3>Y_66</tongCPhiCLechCTII_2_3>
 		<tongLoiNhuanCTII_2_3>AE_66</tongLoiNhuanCTII_2_3>
 	</Static>	
-	<Dynamic GroupName="TTinQLyKDoanhTVDT">
+	<Dynamic GroupName="TTinQLyKDoanhTVDT" MinOccur = "1">
 		<qLyKDoanhTVDT id="ID_15">
 			<tenLienKet_ctII_2_3>D_68</tenLienKet_ctII_2_3>
 			<gtriDThuSSKT_ctII_2_3>H_68</gtriDThuSSKT_ctII_2_3>
@@ -183,7 +183,7 @@
 		<tongCPhiCLechCTII_2_4_1>Y_71</tongCPhiCLechCTII_2_4_1>
 		<tongLoiNhuanCTII_2_4_1>AE_71</tongLoiNhuanCTII_2_4_1>
 	</Static>	
-	<Dynamic GroupName="TTinTienBanQuyen">
+	<Dynamic GroupName="TTinTienBanQuyen" MinOccur = "1">
 		<tienBanQuyen id="ID_16">
 			<tenLienKet_ctII_2_4_1>D_73</tenLienKet_ctII_2_4_1>
 			<gtriDThuSSKT_ctII_2_4_1>H_73</gtriDThuSSKT_ctII_2_4_1>
@@ -206,7 +206,7 @@
 		<tongCPhiCLechCTII_2_4_2>Y_75</tongCPhiCLechCTII_2_4_2>
 		<tongLoiNhuanCTII_2_4_2>AE_75</tongLoiNhuanCTII_2_4_2>
 	</Static>	
-	<Dynamic GroupName="TTinLaiVay">
+	<Dynamic GroupName="TTinLaiVay" MinOccur = "1">
 		<laiVay id="ID_17">
 			<tenLienKet_ctII_2_4_2>D_77</tenLienKet_ctII_2_4_2>
 			<gtriDThuSSKT_ctII_2_4_2>H_77</gtriDThuSSKT_ctII_2_4_2>
@@ -229,7 +229,7 @@
 		<tongCPhiCLechCTII_2_5>Y_79</tongCPhiCLechCTII_2_5>
 		<tongLoiNhuanCTII_2_5>AE_79</tongLoiNhuanCTII_2_5>
 	</Static>	
-	<Dynamic GroupName="TTinDichVuKhac">
+	<Dynamic GroupName="TTinDichVuKhac" MinOccur = "1">
 		<dichVuKhac id="ID_18">
 			<tenLienKet_ctII_2_5>D_81</tenLienKet_ctII_2_5>
 			<gtriDThuSSKT_ctII_2_5>H_81</gtriDThuSSKT_ctII_2_5>
