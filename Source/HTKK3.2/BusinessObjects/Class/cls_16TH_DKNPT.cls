@@ -1358,7 +1358,7 @@ End Sub
 Private Sub CheckDynamicSheet3()
     Dim vHoVaTenNNT, vMSTNNT, vHoVaTenNPT, vNgaySinhNPT, vMSTNPT, vQuocTich, vSoCMNDNPT, vQuanHeNPT, vSo, vQuyenSo, vQuocGia As Variant
     Dim vTinh, vHuyen, vXa, vTuThang, vDenThang As Variant
-    Dim vMaQuocGia As Variant, vMaTinh As Variant, vMaHuyen As Variant, vMaXa As Variant
+    Dim vMaQuocGia As Variant, vMaTinh As Variant, vMaHuyen As Variant, vMaXa As Variant, vMaQuocTich As Variant
     
     Dim vErrHoVaTenNNT, vErrMSTNNT, vErrHoVaTenNPT, vErrNgaySinhNPT, vErrMSTNPT, vErrSoCMNDNPT, vErrTuThang, vErrDenThang     As Variant
     Dim vErrEmpty As Variant, vErrEmptyCMNDNPT As Variant
@@ -1427,6 +1427,8 @@ Private Sub CheckDynamicSheet3()
             .GetText .ColLetterToNumber("Q"), .Row, vMaTinh
             .GetText .ColLetterToNumber("S"), .Row, vMaHuyen
             .GetText .ColLetterToNumber("U"), .Row, vMaXa
+            
+            .GetText .ColLetterToNumber("H"), .Row, vMaQuocTich
             
             ' reset du lieu loi
             strColReset = "C~D~E~F~I~J~L~M~N~P~R~T~V~W~X"
@@ -1695,7 +1697,7 @@ Private Sub CheckDynamicSheet3()
 '                End If
                 
                 ' kiem tra khong co cot 11 va 13 bat buoc nhap cot 18,19,20
-                If Trim(vSoCMNDNPT) = "" Then
+                If Trim(vSoCMNDNPT) = "" And vMaQuocTich <> "02" Then
                     ' bat buoc nhap QG
                     
                     If Trim(vQuocGia) = "" Then
@@ -1758,6 +1760,7 @@ Private Sub CheckDynamicSheet3()
                     If vNgaySinhNPT <> "" And Format_ddmmyyyy1(CStr(vNgaySinhNPT_Goc)) <> "" Then
                             If Year(Date) - Year(Format(vNgaySinhNPT, "dd/mm/yyyy")) <= 15 Then
                                    ' bat buoc nhap QG
+                               If vMaQuocTich <> "02" Then
                     
                                     If Trim(vQuocGia) = "" Then
                                         .Col = .ColLetterToNumber("P")
@@ -1789,7 +1792,7 @@ Private Sub CheckDynamicSheet3()
                                         .BackColor = mErrorColor
                                         iFlagEmpty = 1
                                     End If
-                                    
+                                 End If
                                     
                                     ' kiem tra neu chon quoc gia Viet Nam
                                     If Trim(vMaQuocGia) = "01" And Trim$(vQuocGia) <> "" Then

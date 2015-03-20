@@ -249,7 +249,7 @@
 	<Menu ID="59" PopID="101" ParentID="101_10" Caption="Tờ khai 06/KK-TNCN" FormName="" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" Icon="..\Pictures\tk_tndn.bmp">
 		<Validity StartDate="01/01/2010" InterfaceTemplate="..\InterfaceTemplates\excel\06_TNCN10.xls" ReportTemplate="..\ReportTemplates\excel\06_TNCN10.xls" CatalogueID="01" Class="TAX_Business_v1.cls_06TNCN" >
 			<Sheet ID="06" Caption="06KK-TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="06_TNCN10" InterfaceIni="..\InterfaceIni\06_TNCN10.xml" ReportIni="..\ReportIni\06_TNCN10.xml"/>
-			<Sheet ID="06B" Caption="06-1BK-TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="06B_TNCN10" InterfaceIni="..\InterfaceIni\06B_TNCN10.xml" ReportIni="..\ReportIni\06B_TNCN10.xml"/>
+			<Sheet ID="06-1" Caption="06-1BK-TNCN" Active="1" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="06B_TNCN10" InterfaceIni="..\InterfaceIni\06B_TNCN10.xml" ReportIni="..\ReportIni\06B_TNCN10.xml"/>
 			<Sheet ID="KHBS" Caption="KHBS" Active="0" TemplateFolder="..\InterfaceTemplates\xml\" Folder="..\DataFiles\" DataFile="KHBS" InterfaceIni="..\InterfaceIni\KHBS.xml" ReportIni="..\ReportIni\KHBS.xml"/>
 		</Validity>
 	</Menu>

@@ -938,7 +938,7 @@ Public Sub SetActiveSheet()
     'Select Case GetAttribute(xmlNodeValid, "ID")
     For Each xmlNodeValid In TAX_Utilities_v1.NodeValidity.childNodes
         Select Case GetAttribute(xmlNodeValid, "ID")
-            Case "06B"
+            Case "06-1"
                 blnNullValue = True
                 'Check the third sheet
                For Each xmlCellNode In TAX_Utilities_v1.Data(1).getElementsByTagName("Cell")
