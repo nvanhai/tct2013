@@ -190,10 +190,10 @@ Public Sub Prepare1()
         ' set danh sach quoc tich
         .Col = .ColLetterToNumber("J")
         .TypeComboBoxList = strQuocTich
-        .typeComboboxCurSel = 0
+        '.typeComboboxCurSel = 0
         .Col = .ColLetterToNumber("I")
         .TypeComboBoxList = strMaQuocTich
-        .typeComboboxCurSel = 0
+        '.typeComboboxCurSel = 0
         
         ' set danh sach quoc gia
         .Col = .ColLetterToNumber("Q")
@@ -4801,7 +4801,7 @@ End Sub
 Private Sub CheckDynamicSheet3()
     Dim vHoVaTenNNT, vMSTNNT, vHoVaTenNPT, vNgaySinhNPT, vMSTNPT, vQuocTich, vSoCMNDNPT, vQuanHeNPT, vSo, vQuyenSo, vQuocGia As Variant
     Dim vTinh, vHuyen, vXa, vTuThang, vDenThang As Variant
-    Dim vMaQuocGia As Variant, vMaTinh As Variant, vMaHuyen As Variant, vMaXa As Variant
+    Dim vMaQuocGia As Variant, vMaTinh As Variant, vMaHuyen As Variant, vMaXa As Variant, vMaQuocTich As Variant
     
     Dim vErrHoVaTenNNT, vErrMSTNNT, vErrHoVaTenNPT, vErrNgaySinhNPT, vErrMSTNPT, vErrSoCMNDNPT, vErrTuThang, vErrDenThang     As Variant
     Dim vErrEmpty As Variant, vErrEmptyCMNDNPT As Variant
@@ -4876,6 +4876,8 @@ Private Sub CheckDynamicSheet3()
             .GetText .ColLetterToNumber("R"), .Row, vMaTinh
             .GetText .ColLetterToNumber("T"), .Row, vMaHuyen
             .GetText .ColLetterToNumber("V"), .Row, vMaXa
+            
+            .GetText .ColLetterToNumber("I"), .Row, vMaQuocTich
             
             ' reset du lieu loi
             strColReset = "D~E~F~G~H~J~K~M~N~O~Q~S~U~W~X~Y"
