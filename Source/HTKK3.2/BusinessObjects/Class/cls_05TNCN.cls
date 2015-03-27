@@ -4890,7 +4890,7 @@ Private Sub CheckDynamicSheet3()
             If Trim(vHoVaTenNNT) = vbNullString And Trim(vMSTNNT) = vbNullString And Trim(vHoVaTenNPT) = vbNullString And Trim(vNgaySinhNPT) = vbNullString _
             And Trim(vMSTNPT) = vbNullString And Trim(vSoCMNDNPT) = vbNullString And Trim(vQuanHeNPT) = vbNullString _
             And Trim(vSo) = vbNullString And Trim(vQuyenSo) = vbNullString And Trim(vTinh) = vbNullString _
-            And Trim(vHuyen) = vbNullString And Trim(vXa) = vbNullString And Trim(vTuThang) = vbNullString And Trim(vDenThang) = vbNullString Then
+            And Trim(vHuyen) = vbNullString And Trim(vXa) = vbNullString And Trim(vTuThang) = vbNullString And Trim(vDenThang) = vbNullString And Trim$(vQuocTich) = vbNullString Then
 '                'reset color and cellnote on sheet
 '                strColReset = "D~E~F~G~H~J~K~M~N~O~Q~S~U~W~X~Y"
 '                arrColReset = Split(strColReset, "~")
