@@ -354,6 +354,12 @@ Public Sub Prepare2()
         viTriMSTDL = "F_24~F_69~F_71"
         updateMSTDL fps, viTriMSTDL
         
+        
+        
+        
+        ' set lai so TK
+        UpdateSoTK fps, "F", 20
+        
         'set active vao cell tu ngay
 '        .Sheet = 1
 '        .SetActiveCell .ColLetterToNumber("N"), 4
