@@ -75,7 +75,7 @@
 	<Map MapID="101_6" MaFile="" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK=""/>
 	
 	<Map MapID="69" MaFile="15_01_CDKT10" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="49"/>
-	<Map MapID="19" MaFile="48_01_CDKT" Version ="2.1.0" VersionKHBS ="2.1.0" MaTK="50"/> 
+	<Map MapID="19" MaFile="48_01_CDKT" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="50"/> 
 	<Map MapID="20" MaFile="16_01_CDKT" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="51"/> 
 	<Map MapID="22" MaFile="95_01_CDKT" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="285"/> 
 	
