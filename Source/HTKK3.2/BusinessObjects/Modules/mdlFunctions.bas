@@ -2738,3 +2738,19 @@ Public Sub GetMaBLP(ByVal maBLP As String, Optional ByRef tenBLP As String)
             Next
         End If
 End Sub
+
+
+'Set so TK tren phan TT chung
+Public Sub UpdateSoTK(fps As fpSpread, ByVal Col As String, ByVal Row As Long) 'ByRef xmlNodeValid As MSXML.IXMLDOMNode)
+    Dim xmlNodeValid As MSXML.IXMLDOMNode, xmlCellNode As MSXML.IXMLDOMNode
+    Dim lCtrl As Long, lCol As Long, lRow As Long
+    Dim blnNullValue As Boolean
+    Dim soTK As Variant
+    Dim xmlDomHeader As New MSXML.DOMDocument
+    xmlDomHeader.Load GetAbsolutePath(TAX_Utilities_v1.DataFolder & "Header_01.xml")
+        soTK = GetAttribute(xmlDomHeader.getElementsByTagName("Cell")(21), "Value")
+    Set xmlDomHeader = Nothing
+    fps.Sheet = 1
+    fps.SetText fps.ColLetterToNumber(Col), Row, soTK
+    UpdateCell_sheet fps, 1, fps.ColLetterToNumber(Col), Row, soTK
+End Sub
