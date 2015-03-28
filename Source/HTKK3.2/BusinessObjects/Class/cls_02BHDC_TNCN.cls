@@ -900,7 +900,7 @@ out:
                         .BackColor = mErrorColor
                 End If
                 'Check thu nhap lam can cu tinh giam thue voi thu nhap chiu thue tren banh ke 02A/TNCN
-                If Val(vThuNhapGiamThue) >= Val(vTongThuNhap) And Val(vThuNhapGiamThue) > 0 Then
+                If Val(vThuNhapGiamThue) > Val(vTongThuNhap) And Val(vThuNhapGiamThue) > 0 Then
                     .Col = .ColLetterToNumber("H")
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                     .CellNote = vErrMsgThuNhapGiamThue    'static
@@ -1319,7 +1319,7 @@ out:
                         .BackColor = mErrorColor
                 End If
                 'Check thu nhap lam can cu tinh giam thue voi thu nhap chiu thue tren banh ke 02A/TNCN
-                If Val(vThuNhapGiamThue) >= Val(vTongThuNhap) And Val(vThuNhapGiamThue) > 0 Then
+                If Val(vThuNhapGiamThue) > Val(vTongThuNhap) And Val(vThuNhapGiamThue) > 0 Then
                     .Col = .ColLetterToNumber("H")
                     .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
                     .CellNote = vErrMsgThuNhapGiamThue    'static
