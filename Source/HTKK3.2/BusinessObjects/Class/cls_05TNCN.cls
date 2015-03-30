@@ -3726,6 +3726,7 @@ Public Sub CheckDynamicSheet1()
     Dim vErrMsgMSTAB As Variant
     Dim flagTrungMSTAB As Integer
     
+    Dim vErrDuLieuKhongHL As Variant
     
     
     'dntai 22/02/2012 them bien
@@ -3786,6 +3787,8 @@ Public Sub CheckDynamicSheet1()
         .GetText .ColLetterToNumber("E"), 68, vErrMsgHuuTriKT
         
         .GetText .ColLetterToNumber("E"), 80, vErrMsg1213
+        
+        .GetText .ColLetterToNumber("E"), 84, vErrDuLieuKhongHL
         
         
         
@@ -3924,6 +3927,8 @@ Public Sub CheckDynamicSheet1()
                 End If
             End If
             
+            '
+            
             'set lai cot cmtnd
             .Col = .ColLetterToNumber("F")
             .CellNote = ""
@@ -4001,20 +4006,27 @@ Public Sub CheckDynamicSheet1()
             
             'check CT 19 < CT11
             .GetText .ColLetterToNumber("AK"), .Row, varTemp
-            If Val(varTemp) = 1 Then
-                .Col = .ColLetterToNumber("P")
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = vErrMsgSoThueKhauTru
-                '.BackColor = mErrorColor
-                .BackColor = mAlertColor
-                'iFlagCheckCT17CT11 = 1
+            If Trim$(vTNCNDaKT) = "" Then
+                    .Col = .ColLetterToNumber("P")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .BackColor = mErrorColor
+                    .CellNote = vErrDuLieuKhongHL
+                    iFlagCheckCT17CT11 = 1
             Else
-                .Col = .ColLetterToNumber("P")
-                .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
-                .CellNote = ""
-                .BackColor = mNonErrorColor
+                If Val(varTemp) = 1 Then
+                    .Col = .ColLetterToNumber("P")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = vErrMsgSoThueKhauTru
+                    '.BackColor = mErrorColor
+                    .BackColor = mAlertColor
+                    'iFlagCheckCT17CT11 = 1
+                Else
+                    .Col = .ColLetterToNumber("P")
+                    .CellNoteIndicator = CellNoteIndicatorShowAndFireEvent
+                    .CellNote = ""
+                    .BackColor = mNonErrorColor
+                End If
             End If
-            
             'check CT14 phai trong den hang tram nghin
             
             .GetText .ColLetterToNumber("BA"), .Row, varTemp
