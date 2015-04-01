@@ -46,9 +46,23 @@
 	<Map ID="731" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="1" Caption="Tờ khai thuế TNDN (02/TNDN) lần phát sinh" LoaiTK="D">
 		<Validity StartDate="14/06/2006" DataFile="02_TNDN,KHBS_02_TNDN" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
+	
 	<Map ID="03" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="1" Caption="Quyết toán TNDN năm (03/TNDN)" LoaiTK="D_Y">
 		<Validity StartDate="14/06/2006" DataFile="03_TNDN,03_1A_TNDN,03_1B_TNDN,03_1C_TNDN,03_2_TNDN,03_3A_TNDN,03_3B_TNDN,03_3C_TNDN,03_4_TNDN,03_5_TNDN,03_05_TNDN,03_6_TD_TNDN,KHBS_03_TNDN" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
+	
+	<Map ID="55" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="1" Caption="Tờ khai thuế TNDN (04/TNDN)" LoaiTK="Y">
+		<Validity StartDate="01/01/1900" DataFile="04_TNDN,KHBS_04_TNDN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="551" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="1" Caption="Tờ khai thuế TNDN (04/TNDN) lần phát sinh" LoaiTK="D">
+		<Validity StartDate="01/01/1900" DataFile="04_TNDN,KHBS_04_TNDN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="56" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="1" Caption="Tờ khai thuế TNDN (06/TNDN)" LoaiTK="D">
+		<Validity StartDate="01/01/1900" DataFile="06_TNDN,KHBS_06_TNDN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
 	<Map ID="46" FinanceYear="1" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Mẫu 01/KK-BH theo tháng" LoaiTK="M">
 		<Validity StartDate="01/01/2010" DataFile="01A_TNCN_BH,KHBS_01A_TNCN_BH" ThueKhauTru="" ThuePhaiNop=""/>
 	</Map>
@@ -281,6 +295,10 @@
 	</Map>
 	<Map ID="231" Caption="TK thuế hoạt động cho thuê tài sản (01/KK-TTS)" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" LoaiTK="M_Y">
 		<Validity StartDate="01/01/1900" DataFile="01_KK_TTS,KHBS_01_KK_TTS" ThueKhauTru="" ThuePhaiNop="">
+		</Validity>
+	</Map>
+	<Map ID="84" Caption="Tờ khai thuế môn bài – 01/MBAI" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" LoaiTK="Y">
+		<Validity StartDate="01/01/1900" DataFile="01_MBAI,KHBS_01_MBAI" ThueKhauTru="" ThuePhaiNop="">
 		</Validity>
 	</Map>
 </Root>
