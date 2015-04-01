@@ -9,7 +9,10 @@
 	<Map MapID="11" TenTK="Tờ khai thuế TNDN tạm tính (Mẫu số 01A/TNDN)" MoTaBMau=""/>
 	<Map MapID="12" TenTK="Tờ khai thuế TNDN tạm tính (Mẫu số 01B/TNDN)" MoTaBMau=""/>
 	<Map MapID="73" TenTK="TỜ KHAI THUẾ THU NHẬP DOANH NGHIỆP (Mẫu số 02/TNDN)" MoTaBMau="(Ban hành kèm theo Thông tư số 151/2014/TT-BTC  ngày 10/10/2014 của  Bộ Tài chính)"/>
-	<Map MapID="03" TenTK="TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP DOANH NGHIỆP (Mẫu số 03/TNDN)" MoTaBMau="(Ban hành kèm theo Thông tư số 151/2014/TT-BTC  ngày 10/10/2014 của  Bộ Tài chính)"/>
+	<Map MapID="03" TenTK="TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP DOANH NGHIỆP (Mẫu số 03/TNDN)" MoTaBMau="(Ban hành kèm theo Thông tư số 151/2014/TT-BTC  ngày 10/10/2014 của  Bộ Tài chính)"/>	
+	<Map MapID="55" TenTK="TỜ KHAI THUẾ THU NHẬP DOANH NGHIỆP (Mẫu số 04/TNDN)" MoTaBMau="(Ban hành kèm theo Thông tư số 151/2014/TT-BTC  ngày 10/10/2014 của  Bộ Tài chính)"/>
+	<Map MapID="56" TenTK="TỜ KHAI THUẾ THU NHẬP DOANH NGHIỆP (Mẫu số 06/TNDN)" MoTaBMau="(Ban hành kèm theo Thông tư số 151/2014/TT-BTC  ngày 10/10/2014 của  Bộ Tài chính)"/>
+	
 	
 	<Map MapID="48" TenTK="TỜ KHAI KHẤU TRỪ THUẾ THU NHẬP CÁ NHÂN - MẪU 01/KK-XS" MoTaBMau=""/>
 	<Map MapID="49" TenTK="TỜ KHAI KHẤU TRỪ THUẾ THU NHẬP CÁ NHÂN - MẪU 01/KK-XS" MoTaBMau=""/>
@@ -79,4 +82,6 @@
 	
 	<Map MapID="24" TenTK="BÁO CÁO DỰ KIẾN SẢN LƯỢNG DẦU KHÍ KHAI THÁC VÀ TỶ LỆ TẠM NỘP THUẾ (01/BCTL-DK)" MoTaBMau=""/> 
 	<Map MapID="14" TenTK="Báo cáo tình hình sử dụng biên lai thu phí, lệ phí" MoTaBMau="(Ban hành kèm theo Thông tư số153/2012/TT-BTC ngày 17/09/2012 của Bộ Tài chính)"/> 
+	
+	<Map MapID="84" TenTK="TỜ KHAI THUẾ MÔN BÀI (01/MBAI)" MoTaBMau="(Ban hành kèm theo Thông tư số156./2013/TT-BTC  ngày 06/11/2013 của  Bộ Tài chính)"/> 
 </Maps>

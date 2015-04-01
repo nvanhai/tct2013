@@ -660,6 +660,8 @@ nextPrinter:
 '        ElseIf strLoaiNNKD = "1053" Then
             fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0348"), "Msg")
         'End If
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "56" Then
+            fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0127"), "Msg") & "/n/fb0/fi0/fu0" & GetAttribute(GetMessageCellById("0355"), "Msg")
     'dntai:them tieu muc to 06_TNCN
     ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = 59 Then
         fpsReport.PrintFooter = font1 & GetAttribute(GetMessageCellById("0231"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0232"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0233"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0234"), "Msg") & "/n" & GetAttribute(GetMessageCellById("0332"), "Msg")
@@ -752,7 +754,7 @@ nextPrinter:
     End If
         
     ' Kiem tra neu khong co DLT se an cac row DLT di
-    dsTK_checkDLT = "~01~02~04~71~72~11~12~73~03~46~47~48~49~25~15~16~50~51~36~74~75~70~80~81~82~17~42~43~26~59~76~41~06~77~05~86~87~85~88~90~23~94~96~97~98~99~93~92~89~24~"
+    dsTK_checkDLT = "~01~02~04~71~72~11~12~73~03~46~47~48~49~25~15~16~50~51~36~74~75~70~80~81~82~17~42~43~26~59~76~41~06~77~05~86~87~85~88~90~23~94~96~97~98~99~93~92~89~24~55~56~84~"
 
     If InStr(1, dsTK_checkDLT, "~" & Trim$(idToKhai) & "~", vbTextCompare) > 0 Then
         If objTaxBusiness Is Nothing Then

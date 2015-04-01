@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":1969
+         SpreadDesigner  =   "frmInterfaces.frx":19A5
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1BF1
+      SpreadDesigner  =   "frmInterfaces.frx":1C69
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -427,9 +427,11 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
                         Else
                             strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                         End If
-                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "73" Then
+                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "73" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "56" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "55" Then
                         If strLoaiTKThang_PS = "TK_LANPS" Then
                             strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                        ElseIf strLoaiTKThang_PS = "TK_NAM" Then
+                            strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Year & ".xml"
                         Else
                             strDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                         End If
@@ -526,11 +528,13 @@ Private Function UpdateData(Optional blnSaveSession As Boolean = True) As Boolea
                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                         End If
 
-                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "73" Then
+                    ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "73" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "56" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "55" Then
 
                         ' To khai 02/TNDN
                         If strLoaiTKThang_PS = "TK_LANPS" Then
                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                        ElseIf strLoaiTKThang_PS = "TK_NAM" Then
+                            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Year & ".xml"
                         Else
                             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                         End If
@@ -3478,13 +3482,18 @@ Private Sub DeleteSheet(pIndex As Integer)
             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
         End If
         ' end
-    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" Then
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "56" Then
         If GetAttribute(TAX_Utilities_v1.NodeMenu, "ThreeMonth") = "1" And TAX_Utilities_v1.Day = "" Then
             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
         ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "Day") = "1" Then
             strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
         End If
-
+    ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "55" Then
+        If strLoaiTKThang_PS = "TK_LANPS" Then
+            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+        ElseIf strLoaiTKThang_PS = "TK_NAM" Then
+            strDataFileName = TAX_Utilities_v1.DataFolder & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(pIndex), "DataFile") & "_" & TAX_Utilities_v1.Year & ".xml"
+        End If
     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "74" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "75" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "23" Then
 
         If strQuy = "TK_TU_THANG" Then
@@ -4129,7 +4138,7 @@ Private Sub cmdExport_Click()
     CallFinish
     
     ' nkhoan: 02/TNDN
-    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") Then
+    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "56" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "55") Then
         If objTaxBusiness.iflag = True Then
             DisplayMessage "0240", msOKOnly, miCriticalError
             Exit Sub
@@ -4303,7 +4312,7 @@ Private Sub cmdExport_Click()
         idToKhaiKHBS = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
         If idToKhaiKHBS <> "01" And idToKhaiKHBS <> "02" And idToKhaiKHBS <> "03" And idToKhaiKHBS <> "04" And idToKhaiKHBS <> "05" _
         And idToKhaiKHBS <> "06" And idToKhaiKHBS <> "08" And idToKhaiKHBS <> "11" And idToKhaiKHBS <> "12" And idToKhaiKHBS <> "86" And idToKhaiKHBS <> "87" _
-        And idToKhaiKHBS <> "89" And idToKhaiKHBS <> "71" And idToKhaiKHBS <> "72" And idToKhaiKHBS <> "77" And idToKhaiKHBS <> "03" And idToKhaiKHBS <> "73" _
+        And idToKhaiKHBS <> "89" And idToKhaiKHBS <> "71" And idToKhaiKHBS <> "72" And idToKhaiKHBS <> "77" And idToKhaiKHBS <> "03" And idToKhaiKHBS <> "73" And idToKhaiKHBS <> "56" And idToKhaiKHBS <> "55" _
         And idToKhaiKHBS <> "80" And idToKhaiKHBS <> "81" And idToKhaiKHBS <> "70" And idToKhaiKHBS <> "82" And idToKhaiKHBS <> "83" And idToKhaiKHBS <> "85" And idToKhaiKHBS <> "90" And idToKhaiKHBS <> "88" And idToKhaiKHBS <> "98" And idToKhaiKHBS <> "96" _
         And idToKhaiKHBS <> "94" And idToKhaiKHBS <> "99" And idToKhaiKHBS <> "92" And idToKhaiKHBS <> "97" And idToKhaiKHBS <> "93" Then
                 fpSpread1.sheet = fpSpread1.SheetCount - 1
@@ -4650,9 +4659,11 @@ Private Sub SetKieuKy()
     
     
     ' To khai 02/TNDN
-    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" Then
+    If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "56" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "55" Then
         If strLoaiTKThang_PS = "TK_LANPS" Then
             strKK = "D"
+        ElseIf strLoaiTKThang_PS = "TK_NAM" Then
+            strKK = "Y"
         Else
             strKK = "Q"
         End If
@@ -5538,7 +5549,7 @@ Private Sub cmdExportXml_Click()
     CallFinish
     
     ' nkhoan: 02/TNDN
-    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") Then
+    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "56") Then
         If objTaxBusiness.iflag = True Then
             DisplayMessage "0240", msOKOnly, miCriticalError
             Exit Sub
@@ -8726,12 +8737,12 @@ Private Sub CallFinish(Optional blFinish As Boolean)
                 ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "59" Then
                     delNullRowOn06 i - 1
                 ' dntai sua phan del rownull 16022012
-                ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Then
-                    If i = 2 Or i = 3 Then
-                        delNullRowOn01 i - 1
-                    Else
-                        delNullRow i - 1
-                    End If
+'                ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "01" Then
+'                    If i = 2 Or i = 3 Then
+'                        delNullRowOn01 i - 1
+'                    Else
+'                    delNullRow i - 1
+'                    End If
                 Else
                     delNullRow i - 1
                 End If
@@ -9352,7 +9363,9 @@ Private Sub Command1_Click()
         Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01ATNDN_DK" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01BTNDN_DK" _
         Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TAIN_DK" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_03A_TD_TAIN" _
         Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02TNDN_DK" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02TAIN_DK" _
-        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01PHLP" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02PHLP" Then
+        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01PHLP" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02PHLP" _
+        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_06TNDN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_04TNDN" _
+        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01MBAI" Then
         
             If strIDTkTT156 = "99" Or strIDTkTT156 = "98" Or strIDTkTT156 = "92" Or strIDTkTT156 = "93" Or strIDTkTT156 = "89" Then
                 fpSpread1.EventEnabled(EventAllEvents) = False
@@ -9723,7 +9736,7 @@ Private Sub Form_Load()
     End If
     Dim idToKhai As Variant
     idToKhai = TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    If idToKhai = "01" Or idToKhai = "11" Or idToKhai = "12" Or idToKhai = "05" Or idToKhai = "03" Or idToKhai = "73" Then
+    If idToKhai = "01" Or idToKhai = "11" Or idToKhai = "12" Or idToKhai = "05" Or idToKhai = "03" Or idToKhai = "73" Or idToKhai = "56" Then
         objTaxBusiness.strLoaiNNKD = strLoaiNNKD
     End If
     LoadStatusFile
@@ -9743,7 +9756,7 @@ Private Sub Form_Load()
     
     ' 10062011
     ' To khai 01_TTDB va NTNN se co to khai phat sinh hoac thang
-    If idMenu = "70" Or idMenu = "06" Or idMenu = "05" Or idMenu = "81" Or idMenu = "73" Or idMenu = "90" Then
+    If idMenu = "70" Or idMenu = "06" Or idMenu = "05" Or idMenu = "81" Or idMenu = "73" Or idMenu = "56" Or idMenu = "55" Or idMenu = "90" Then
         objTaxBusiness.StrTKThang_PS = strLoaiTKThang_PS
     End If
     ' end
@@ -12890,7 +12903,7 @@ nextClear:
             End If
             countCell = countCell + 1
         Next
-    ElseIf idtkhai = "03" Or idtkhai = "80" Or idtkhai = "81" Or idtkhai = "82" Or idtkhai = "73" Or idtkhai = "85" Or idtkhai = "71" Or idtkhai = "86" Or idtkhai = "87" Or idtkhai = "89" Or idtkhai = "90" Then
+    ElseIf idtkhai = "03" Or idtkhai = "80" Or idtkhai = "81" Or idtkhai = "82" Or idtkhai = "73" Or idtkhai = "56" Or idtkhai = "55" Or idtkhai = "85" Or idtkhai = "71" Or idtkhai = "86" Or idtkhai = "87" Or idtkhai = "89" Or idtkhai = "90" Then
     Else
         For Each xmlNodeReset In TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             fpSpread1.sheet = mCurrentSheet
@@ -13837,7 +13850,7 @@ Public Function checkCauTrucData() As Boolean
                         Set xmlNodeCell = xmlNodeCells.childNodes(0)
                         Set xmlNodeCellID = xmlNodeCell.childNodes(i)
                         strKyHieuCT = GetAttribute(xmlNodeCellID, "CellID")
-                        If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" And strTkhaiId <> "90" Then
+                        If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" And strTkhaiId <> "90" And strTkhaiId <> "55" Then
                             strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
                         Else
                             ' To khai 03/TNDN
@@ -13874,7 +13887,7 @@ Public Function checkCauTrucData() As Boolean
                         End If
                     Next i
                 End If
-            ElseIf strTkhaiId = "02" Or strTkhaiId = "04" Or strTkhaiId = "71" Or strTkhaiId = "36" Or strTkhaiId = "73" Then
+            ElseIf strTkhaiId = "02" Or strTkhaiId = "04" Or strTkhaiId = "71" Or strTkhaiId = "36" Or strTkhaiId = "73" Or strTkhaiId = "56" Then
             ' To khai 02,03,04/GTGT 02/TNDN
                 soCTData = GetElementsNoData(xmlNodeCells.childNodes(0))
                 If idx = UBound(strCauTruc) - 1 Then
@@ -13929,7 +13942,7 @@ Public Function checkCauTrucData() As Boolean
                         Set xmlNodeCell = xmlNodeCells.childNodes(0)
                         Set xmlNodeCellID = xmlNodeCell.childNodes(i)
                         strKyHieuCT = GetAttribute(xmlNodeCellID, "CellID")
-                        If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" And strTkhaiId <> "90" Then
+                        If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" And strTkhaiId <> "90" And strTkhaiId <> "55" Then
                             strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
                         Else
                             ' To khai 03/TNDN
@@ -13984,7 +13997,7 @@ Public Function checkCauTrucData() As Boolean
                     Set xmlNodeCell = xmlNodeCells.childNodes(0)
                     Set xmlNodeCellID = xmlNodeCell.childNodes(i)
                     strKyHieuCT = GetAttribute(xmlNodeCellID, "CellID")
-                    If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" And strTkhaiId <> "90" And strTkhaiId <> "23" Then
+                    If strTkhaiId <> "03" And strTkhaiId <> "70" And strTkhaiId <> "81" And strTkhaiId <> "71" And strTkhaiId <> "77" And strTkhaiId <> "87" And strTkhaiId <> "76" And strTkhaiId <> "06" And strTkhaiId <> "05" And strTkhaiId <> "90" And strTkhaiId <> "23" And strTkhaiId <> "55" Then
                         strKyHieuCTTemp = Split(strChiTieu(i), "_")(0) & "_" & contDynamicRow + Val(Split(strChiTieu(i), "_")(1))
                     Else
                         ' To khai 03/TNDN
@@ -14442,7 +14455,9 @@ Private Sub TonghopKHBS()
         Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01BTNDN_DK" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01TAIN_DK" _
         Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_03A_TD_TAIN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02TAIN_DK" _
         Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02TNDN_DK" _
-        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01PHLP" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02PHLP" Then
+        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01PHLP" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_02PHLP" _
+        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_06TNDN" Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_04TNDN" _
+        Or GetAttribute(TAX_Utilities_v1.NodeValidity, "Class") = "TAX_Business_v1.cls_01MBAI" Then
             If strIdTK_TT156 = "99" Or strIdTK_TT156 = "98" Or strIdTK_TT156 = "92" Or strIdTK_TT156 = "93" Or strIdTK_TT156 = "89" Then
                 fpSpread1.EventEnabled(EventAllEvents) = False
                 tempCurrSheet = mCurrentSheet
@@ -15593,98 +15608,98 @@ ErrorHandle:
 End Function
 
 
-Public Function delNullRowOn01(sheet As Long)
-    On Error GoTo ErrorHandle
-    Dim Row, row1, celllg, hasVl As Long
-    Dim sumRowDel, countDel As Long
-    Dim strCol As String
-    Dim colArr() As String
-    Dim cellID, value As Variant
-    Dim OldSheet As Long
-    
-    'dntai para templ
-    Dim i As Long, j As Integer, varTemp As Variant, rowStart As Long, countSec As Integer
-    
-    Dim maxRow As Long
-    'set sheet current
-    OldSheet = fpSpread1.ActiveSheet
-    'get section and check dynamic
-
-    
-    If sheet = 1 Or sheet = 2 Then
-        fpSpread1.sheet = sheet + 1
-        'set countSec de dem section
-        countSec = 1
-        'get CellID cell dau tien dong dau tien
-'        cellid = GetAttribute(xmlNodeListSec.Item(0).childNodes(0).firstChild, "CellID")
-        'set location cell to array
-        If fpSpread1.sheet = 2 Then
-            strCol = "C~D~E~F~G~H~I~K~L~M~N"
-            colArr = Split(strCol, "~")
-        ElseIf fpSpread1.sheet = 3 Then
-            strCol = "C~D~E~F~G~H~I~J~K~L~M~N"
-            colArr = Split(strCol, "~")
-        End If
-        With fpSpread1
-            .EventEnabled(EventAllEvents) = False
-            .Col = .ColLetterToNumber("B")
-            'set row to start loop
-            i = 8
-            'set rowStart de dung so sanh
-            rowStart = i
-            .Row = i
-            Do
-                hasVl = 0
-                For j = 0 To UBound(colArr)
-                    .Col = .ColLetterToNumber(colArr(j))
-                    value = .Text
-                    If (Trim(value) <> vbNullString And Trim(value) <> "0") Then
-                        hasVl = hasVl + 1
-                        Exit For
-                    End If
-                Next
-                
-                If hasVl = 0 Then
-                        fpSpread1.ActiveSheet = sheet + 1
-'                        DeleteNode sheet + 1, .ColLetterToNumber(colArr(0)), .Row, True
-                        .GetText .ColLetterToNumber("B"), .Row + 1, varTemp
-                        'kiem tra neu tren sheet neu chi co 1 dong thi khong duoc xoa
-                        If (Trim(varTemp) = "aa" Or Trim(varTemp) = "bb" Or Trim(varTemp) = "cc" Or Trim(varTemp) = "dd" Or Trim(varTemp) = "ee") And i = rowStart Then
-                            If Trim(varTemp) = "ee" Then
-                                i = i + 1
-                            Else
-                                i = i + 5
-                            End If
-                            rowStart = i
-                            .Row = i
-                        Else
-                            DeleteNode sheet + 1, .ColLetterToNumber("C"), .Row, True
-                            .Row = i
-                        End If
-                        
-                Else
-                        i = i + 1
-                        .Row = i
-                End If
-                
-                .Col = .ColLetterToNumber("B")
-                varTemp = .Text
-                If (Trim(varTemp) = "aa" Or Trim(varTemp) = "bb" Or Trim(varTemp) = "cc" Or Trim(varTemp) = "dd") Then
-                        i = i + 4
-                        .Row = i
-                        rowStart = i
-                End If
-            Loop Until .Text = "ee"
-            .EventEnabled(EventAllEvents) = True
-        End With
-    End If
-    
- 
-    fpSpread1.ActiveSheet = OldSheet
-    Exit Function
-ErrorHandle:
-    SaveErrorLog Me.Name, "delNullRowOn01", Err.Number, Err.Description
-End Function
+'Public Function delNullRowOn01(sheet As Long)
+'    On Error GoTo ErrorHandle
+'    Dim Row, row1, celllg, hasVl As Long
+'    Dim sumRowDel, countDel As Long
+'    Dim strCol As String
+'    Dim colArr() As String
+'    Dim cellID, value As Variant
+'    Dim OldSheet As Long
+'
+'    'dntai para templ
+'    Dim i As Long, j As Integer, varTemp As Variant, rowStart As Long, countSec As Integer
+'
+'    Dim maxRow As Long
+'    'set sheet current
+'    OldSheet = fpSpread1.ActiveSheet
+'    'get section and check dynamic
+'
+'
+'    If sheet = 1 Or sheet = 2 Then
+'        fpSpread1.sheet = sheet + 1
+'        'set countSec de dem section
+'        countSec = 1
+'        'get CellID cell dau tien dong dau tien
+''        cellid = GetAttribute(xmlNodeListSec.Item(0).childNodes(0).firstChild, "CellID")
+'        'set location cell to array
+'        If fpSpread1.sheet = 2 Then
+'            strCol = "C~D~E~F~G~H~I~K~L~M~N"
+'            colArr = Split(strCol, "~")
+'        ElseIf fpSpread1.sheet = 3 Then
+'            strCol = "C~D~E~F~G~H~I~J~K~L~M~N"
+'            colArr = Split(strCol, "~")
+'        End If
+'        With fpSpread1
+'            .EventEnabled(EventAllEvents) = False
+'            .Col = .ColLetterToNumber("B")
+'            'set row to start loop
+'            i = 8
+'            'set rowStart de dung so sanh
+'            rowStart = i
+'            .Row = i
+'            Do
+'                hasVl = 0
+'                For j = 0 To UBound(colArr)
+'                    .Col = .ColLetterToNumber(colArr(j))
+'                    value = .Text
+'                    If (Trim(value) <> vbNullString And Trim(value) <> "0") Then
+'                        hasVl = hasVl + 1
+'                        Exit For
+'                    End If
+'                Next
+'
+'                If hasVl = 0 Then
+'                        fpSpread1.ActiveSheet = sheet + 1
+''                        DeleteNode sheet + 1, .ColLetterToNumber(colArr(0)), .Row, True
+'                        .GetText .ColLetterToNumber("B"), .Row + 1, varTemp
+'                        'kiem tra neu tren sheet neu chi co 1 dong thi khong duoc xoa
+'                        If (Trim(varTemp) = "aa" Or Trim(varTemp) = "bb" Or Trim(varTemp) = "cc" Or Trim(varTemp) = "dd" Or Trim(varTemp) = "ee") And i = rowStart Then
+'                            If Trim(varTemp) = "ee" Then
+'                                i = i + 1
+'                            Else
+'                                i = i + 5
+'                            End If
+'                            rowStart = i
+'                            .Row = i
+'                        Else
+'                            DeleteNode sheet + 1, .ColLetterToNumber("C"), .Row, True
+'                            .Row = i
+'                        End If
+'
+'                Else
+'                        i = i + 1
+'                        .Row = i
+'                End If
+'
+'                .Col = .ColLetterToNumber("B")
+'                varTemp = .Text
+'                If (Trim(varTemp) = "aa" Or Trim(varTemp) = "bb" Or Trim(varTemp) = "cc" Or Trim(varTemp) = "dd") Then
+'                        i = i + 4
+'                        .Row = i
+'                        rowStart = i
+'                End If
+'            Loop Until .Text = "ee"
+'            .EventEnabled(EventAllEvents) = True
+'        End With
+'    End If
+'
+'
+'    fpSpread1.ActiveSheet = OldSheet
+'    Exit Function
+'ErrorHandle:
+'    SaveErrorLog Me.Name, "delNullRowOn01", Err.Number, Err.Description
+'End Function
 
 
 

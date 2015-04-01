@@ -457,7 +457,7 @@ Private Sub CheckDynamicError()
     Dim errNgayInTB As Variant
     
     Dim strTenHD As Variant, strMauSoHD As Variant, strKyHieuHD As Variant, strTuSo As Variant, strDenso As Variant, strDvcq As Variant, strTenDvcq As Variant, strMST As Variant
-    Dim strSoLuong As Variant, strTenDN As Variant, strMstDN As Variant, strSoHD As Variant, strDateSD As Variant, strDateIn As Variant, DateNgayKy As Variant, strNguoiKy As Variant
+    Dim strSoLuong As Variant, strTenDN As Variant, strMstDN As Variant, strDateSD As Variant, DateNgayKy As Variant, strNguoiKy As Variant
     Dim iFlagMauSoHD As Integer, iFlagSoLienHD As Integer, iFlagEmty As Integer, iFlagDVCQ As Integer, iFlagNgayKy As Integer, iFlagNgayBatDau As Integer, iFlagNgayIn As Integer, iFlagTusoDenSo As Integer, iFlagNgayInTB As Integer
     Dim iWhiteRow As Integer
     Dim strId As Variant, strLoai As String, strTemp As String, result As String
@@ -659,9 +659,9 @@ Private Sub CheckDynamicError()
             .GetText .ColLetterToNumber("AG"), .Row, strId
             .GetText .ColLetterToNumber("W"), .Row, strTenDN
             .GetText .ColLetterToNumber("AA"), .Row, strMstDN
-            .GetText .ColLetterToNumber("AD"), .Row, strSoHD
+            '.GetText .ColLetterToNumber("AD"), .Row, strSoHD
             .GetText .ColLetterToNumber("T"), .Row, strDateSD
-            .GetText .ColLetterToNumber("AE"), .Row, strDateIn
+            '.GetText .ColLetterToNumber("AE"), .Row, strDateIn
             strLoai = Trim(Left(strId, 1))
             
             ' set gia tri cho check KH NN/XC
@@ -669,7 +669,7 @@ Private Sub CheckDynamicError()
             ' end
             
         If Trim(strTenHD) <> "" Or Trim(strMauSoHD) <> "" Or Trim(strKyHieuHD) <> "" Or Trim(strId) <> "" Or Trim(strMstDN) <> "" Or Trim(strTuSo) <> "" Or Trim(strDenso) <> "" Or _
-        Trim(strTenDN) <> "" Or Trim(strSoHD) <> "" Then
+        Trim(strTenDN) <> "" Then
             ' Khong phai dong trang
             iWhiteRow = 0
         End If
@@ -760,26 +760,26 @@ Private Sub CheckDynamicError()
        ' neu ky tu thu 6 = "P" thi hien thi phan thong tin doanh nghiep( ten, mst, so hop dong va ngay ky)
         If Mid(Trim(strKyHieuHD), 6, 1) = "P" And iWhiteRow = 0 Then
             '   ngay in phai nho hon ngay thong bao phat hanh ( ngay Ky)
-                If Trim(strDateIn) = "" Then
-                      .Col = .ColLetterToNumber("AE")
-                      .CellNote = errThongTinDN
-                      .BackColor = mErrorColor
-                      iFlagEmty = 1
-                Else
-                NgayIn = DateSerial(Mid(Trim(strDateIn), 7, 4), Mid(Trim(strDateIn), 4, 2), Mid(Trim(strDateIn), 1, 2))
-                ngayHienTai = DateSerial(Mid(Trim(DateNgayKy), 7, 4), Mid(Trim(DateNgayKy), 4, 2), Mid(Trim(DateNgayKy), 1, 2))
-                CheckNgayIn = DateDiff("d", NgayIn, ngayHienTai)
-                    If Trim(strDateIn) <> "" And CheckNgayIn < 0 Then
-                        .Col = .ColLetterToNumber("AE")
-                        .CellNote = errCheckNgayIn
-                        .BackColor = mErrorColor
-                        iFlagNgayBatDau = 1
-                    Else
-                        .Col = .ColLetterToNumber("AE")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                    End If
-                End If
+'                If Trim(strDateIn) = "" Then
+'                      .Col = .ColLetterToNumber("AE")
+'                      .CellNote = errThongTinDN
+'                      .BackColor = mErrorColor
+'                      iFlagEmty = 1
+'                Else
+'                NgayIn = DateSerial(Mid(Trim(strDateIn), 7, 4), Mid(Trim(strDateIn), 4, 2), Mid(Trim(strDateIn), 1, 2))
+'                ngayHienTai = DateSerial(Mid(Trim(DateNgayKy), 7, 4), Mid(Trim(DateNgayKy), 4, 2), Mid(Trim(DateNgayKy), 1, 2))
+'                CheckNgayIn = DateDiff("d", NgayIn, ngayHienTai)
+'                    If Trim(strDateIn) <> "" And CheckNgayIn < 0 Then
+'                        .Col = .ColLetterToNumber("AE")
+'                        .CellNote = errCheckNgayIn
+'                        .BackColor = mErrorColor
+'                        iFlagNgayBatDau = 1
+'                    Else
+'                        .Col = .ColLetterToNumber("AE")
+'                        .CellNote = ""
+'                        .BackColor = mNonErrorColor
+'                    End If
+'                End If
           '  kiem tra ten doanh nghiep
                If Trim(strTenDN) = "" Then
                    .Col = .ColLetterToNumber("W")
@@ -840,16 +840,16 @@ Private Sub CheckDynamicError()
                     .BackColor = mNonErrorColor
                 End If
         ' kiem tra so hop dong Doanh nghiep
-                If Trim(strSoHD) = "" Then
-                    .Col = .ColLetterToNumber("AD")
-                    .CellNote = errThongTinDN
-                    .BackColor = mErrorColor
-                    iFlagEmty = 1
-                Else
-                    .Col = .ColLetterToNumber("AD")
-                    .CellNote = ""
-                    .BackColor = mNonErrorColor
-                End If
+'                If Trim(strSoHD) = "" Then
+'                    .Col = .ColLetterToNumber("AD")
+'                    .CellNote = errThongTinDN
+'                    .BackColor = mErrorColor
+'                    iFlagEmty = 1
+'                Else
+'                    .Col = .ColLetterToNumber("AD")
+'                    .CellNote = ""
+'                    .BackColor = mNonErrorColor
+'                End If
          Else
             .Col = .ColLetterToNumber("W")
             .CellNote = ""
@@ -866,26 +866,26 @@ Private Sub CheckDynamicError()
         End If
         If Mid(Trim(strKyHieuHD), 6, 1) <> "P" And iWhiteRow = 0 Then
                 ' ngay ky
-                If Trim(strDateIn) = "" Then
-                    .Col = .ColLetterToNumber("AE")
-                    .CellNote = ""
-                    .BackColor = mNonErrorColor
-                Else
-                    NgayIn = DateSerial(Mid(Trim(strDateIn), 7, 4), Mid(Trim(strDateIn), 4, 2), Mid(Trim(strDateIn), 1, 2))
-                    ngayHienTai = DateSerial(Mid(Trim(DateNgayKy), 7, 4), Mid(Trim(DateNgayKy), 4, 2), Mid(Trim(DateNgayKy), 1, 2))
-                    CheckNgayIn = DateDiff("d", NgayIn, ngayHienTai)
-                    If CheckNgayIn < 0 And Trim(strDateIn) <> "" Then
-                            .Col = .ColLetterToNumber("AE")
-                            .CellNote = errCheckNgayIn
-                            .BackColor = mErrorColor
-                            'iFlagNgayBatDau = 0
-                            iFlagNgayBatDau = 1
-                    Else
-                        .Col = .ColLetterToNumber("AE")
-                        .CellNote = ""
-                        .BackColor = mNonErrorColor
-                    End If
-                End If
+'                If Trim(strDateIn) = "" Then
+'                    .Col = .ColLetterToNumber("AE")
+'                    .CellNote = ""
+'                    .BackColor = mNonErrorColor
+'                Else
+'                    NgayIn = DateSerial(Mid(Trim(strDateIn), 7, 4), Mid(Trim(strDateIn), 4, 2), Mid(Trim(strDateIn), 1, 2))
+'                    ngayHienTai = DateSerial(Mid(Trim(DateNgayKy), 7, 4), Mid(Trim(DateNgayKy), 4, 2), Mid(Trim(DateNgayKy), 1, 2))
+'                    CheckNgayIn = DateDiff("d", NgayIn, ngayHienTai)
+'                    If CheckNgayIn < 0 And Trim(strDateIn) <> "" Then
+'                            .Col = .ColLetterToNumber("AE")
+'                            .CellNote = errCheckNgayIn
+'                            .BackColor = mErrorColor
+'                            'iFlagNgayBatDau = 0
+'                            iFlagNgayBatDau = 1
+'                    Else
+'                        .Col = .ColLetterToNumber("AE")
+'                        .CellNote = ""
+'                        .BackColor = mNonErrorColor
+'                    End If
+'                End If
             ' bat cau truc MST doanh nghiep
                 If Trim(strMstDN) <> vbNullString Then
                     strMstDN = Replace(strMstDN, " ", "")

@@ -70,29 +70,29 @@
 		</TTinChung>
 		<CTieuTKhaiChinh>
 			<TTinThueTNDN>
-				<BangThueTNDN>
+				<BangThueTNDN ID="ID_1">
 					<DoiVoiDichVu>
-						<ct2>1</ct2>
-						<ct3>1</ct3>
-						<ct4>1</ct4>
+						<ct2></ct2>
+						<ct3></ct3>
+						<ct4></ct4>
 					</DoiVoiDichVu>
 					<DoiVoiHangHoa>
-						<ct5>1</ct5>
-						<ct6>1</ct6>
-						<ct7>1</ct7>
+						<ct5></ct5>
+						<ct6></ct6>
+						<ct7></ct7>
 					</DoiVoiHangHoa>
 					<DoiVoiHoatDongKhac>
-						<ct8>1</ct8>
-						<ct9>1</ct9>
-						<ct10>1</ct10>
+						<ct8></ct8>
+						<ct9></ct9>
+						<ct10></ct10>
 					</DoiVoiHoatDongKhac>
-					<ct11>1</ct11>
+					<ct11></ct11>
 				</BangThueTNDN>
 			</TTinThueTNDN>
-			<tongThueDVu>1</tongThueDVu>
-			<tongThueHHoa>1</tongThueHHoa>
-			<tongThueKhac>1</tongThueKhac>
-			<tongThueTNDNPNop>1</tongThueTNDNPNop>
+			<tongThueDVu></tongThueDVu>
+			<tongThueHHoa></tongThueHHoa>
+			<tongThueKhac></tongThueKhac>
+			<tongThueTNDNPNop></tongThueTNDNPNop>
 		</CTieuTKhaiChinh>
 		<PLuc/>
 	</HSoKhaiThue>
