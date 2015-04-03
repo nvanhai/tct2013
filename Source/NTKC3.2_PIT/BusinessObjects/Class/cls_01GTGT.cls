@@ -51,10 +51,10 @@ Const NGAY_HOP_DONG_DL_ROW = 28
 Const NGAY_HOP_DONG_DL_COL = "N"
 
 ' Thong tin nganh nghe KD va to khai PS
-Const NGANH_NGHE_KD_ROW = 77
+Const NGANH_NGHE_KD_ROW = 78
 Const NGANH_NGHE_KD_COL = "K"
 
-Const SHEET_PLUC_01_2TD_GTGT = 11
+Const SHEET_PLUC_01_2TD_GTGT = 6
 
 Public WithEvents fps As fpSpread
 Attribute fps.VB_VarHelpID = -1
@@ -182,7 +182,7 @@ End Function
 Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
     Dim i As Integer
     Dim varMaDM As Variant
-    Dim tenDM As String
+    Dim TenDM As String
     Dim LOAI_KYKK As String
     
     i = 0
@@ -244,16 +244,16 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         ' End set gia han
         
         ' Phu luc 05
-        .Sheet = 7
+        .Sheet = 2
         .Col = .ColLetterToNumber("F")
         i = 0
         Do
             .GetText .ColLetterToNumber("F"), i + 22, varMaDM
-            DataDM varMaDM, tenDM
-            If Trim(tenDM) <> vbNullString Then
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
                 .Col = .ColLetterToNumber("G")
                 .Row = 22 + i
-                .Text = tenDM
+                .Text = TenDM
             End If
             UpdateCell fps, .Col, .Row, .Text
              i = i + 1
@@ -263,16 +263,16 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
         
         ' Phu luc 06
         
-        .Sheet = 8
+        .Sheet = 3
         .Col = .ColLetterToNumber("E")
         i = 0
         Do
             .GetText .ColLetterToNumber("E"), 8 + i, varMaDM
-            DataDM varMaDM, tenDM
-            If Trim(tenDM) <> vbNullString Then
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
                 .Col = .ColLetterToNumber("F")
                 .Row = 8 + i
-                .Text = tenDM
+                .Text = TenDM
             End If
             UpdateCell fps, .Col, .Row, .Text
             
@@ -281,23 +281,43 @@ Public Function Prepared2(rsPXL As ADODB.Recordset) As Boolean
             .Row = i + 8
         Loop Until .Text = "aa" Or varMaDM = ""
         
+        ' PL 01-7
+        
+        .Sheet = 4
+        .Col = .ColLetterToNumber("E")
+        i = 0
+        Do
+            .GetText .ColLetterToNumber("E"), 7 + i, varMaDM
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
+                .Col = .ColLetterToNumber("F")
+                .Row = 7 + i
+                .Text = TenDM
+            End If
+            UpdateCell fps, .Col, .Row, .Text
+            
+             i = i + 1
+            .Col = .ColLetterToNumber("B")
+            .Row = i + 7
+        Loop Until .Text = "aa" Or varMaDM = ""
+        
         'PL 01_2TD_GTGT
         '--fill data CQT
         .Sheet = SHEET_PLUC_01_2TD_GTGT
         i = 0
         Do
             .GetText .ColLetterToNumber("AE"), i + 18, varMaDM
-            DataDM varMaDM, tenDM
-            If Trim(tenDM) <> vbNullString Then
+            DataDM varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
                 .Col = .ColLetterToNumber("Q")
                 .Row = 18 + i
-                .Text = tenDM
+                .Text = TenDM
                 UpdateCell fps, .Col, .Row, .Text
             End If
              i = i + 1
             .Col = .ColLetterToNumber("B")
             .Row = i + 18
-            tenDM = ""
+            TenDM = ""
         Loop Until .Text = "aa"
         
         ' Phu luc 6B
@@ -786,7 +806,7 @@ On Error GoTo ErrHandle
                     End If
                 Case "AB_41"
                     VMaLyDoGH = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
-                Case "K_78"
+                Case "K_79"
                     LOAI_KYKK = Trim(TAX_Utilities_Srv_New.Convert(GetAttribute(xmlNode, "Value"), UNICODE, TCVN))
             End Select
         End If
@@ -799,7 +819,7 @@ On Error GoTo ErrHandle
     strSQL = strSQL & "'" & vTEN_DTNT & "',"
     strSQL = strSQL & "'" & vDIA_CHI & "',"
     'vLOAI_TKHAI = TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue
-    vLOAI_TKHAI = "01_GTGT13"
+    vLOAI_TKHAI = "01_GTGT15"
     strSQL = strSQL & "'" & vLOAI_TKHAI & "',"
     strSQL = strSQL & "To_date('" & vNGAY_NOP & "','dd/mm/yyyy'),"
     
@@ -943,8 +963,8 @@ On Error GoTo ErrHandle
         .GetText .ColLetterToNumber("F"), 20, vTIN_DL
         .GetText .ColLetterToNumber(SO_HOP_DONG_DL_COL), SO_HOP_DONG_DL_ROW, vSO_HOP_DONG
         .GetText .ColLetterToNumber(NGAY_HOP_DONG_DL_COL), NGAY_HOP_DONG_DL_ROW, vNGAY_HOP_DONG
-        .GetText .ColLetterToNumber("I"), 77, vLAN_BS
-        .GetText .ColLetterToNumber("C"), 77, vCHINH_THUC
+        .GetText .ColLetterToNumber("I"), 78, vLAN_BS
+        .GetText .ColLetterToNumber("C"), 78, vCHINH_THUC
         
         .GetText .ColLetterToNumber(NGANH_NGHE_KD_COL), NGANH_NGHE_KD_ROW, vNGANH_NGHE_KD
         vNGANH_NGHE_KD = "'" & vNGANH_NGHE_KD & "'"
