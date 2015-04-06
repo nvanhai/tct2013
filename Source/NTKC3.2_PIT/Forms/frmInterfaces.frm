@@ -1140,7 +1140,7 @@ Private Sub cmdSave_Click()
             ' Neu la ID cua cac BCTC in bang HTKK 2.1.0
             ' begin
             'remove id 24,25,26 14/11/2013, remote 27
-            If (Val(idToKhai) = 28 Or Val(idToKhai) = 29 Or Val(idToKhai) = 30 Or Val(idToKhai) = 31 Or Val(idToKhai) = 32 Or Val(idToKhai) = 33 Or Val(idToKhai) = 34 Or Val(idToKhai) = 35 Or Val(idToKhai) = 55 Or Val(idToKhai) = 56 Or Val(idToKhai) = 57 Or Val(idToKhai) = 58) Then
+            If (Val(idToKhai) = 28 Or Val(idToKhai) = 29 Or Val(idToKhai) = 30 Or Val(idToKhai) = 31 Or Val(idToKhai) = 32 Or Val(idToKhai) = 33 Or Val(idToKhai) = 34 Or Val(idToKhai) = 35 Or Val(idToKhai) = 57 Or Val(idToKhai) = 58) Then
                 flgBCTC = True
 
                 If verToKhai = 0 Then ' Trong truong hop to khai thay the nhung ke khai ko su dung KHBS de ke khai ma su dung chuc nang ke khai goc
@@ -1468,11 +1468,80 @@ Private Sub Command1_Click()
 
 '//### CHECK KY KE KHAI,QT cho cac to QT ###
 '//03/TNDN
-str2 = "aa999032100343639   00201400200300100301/0114/06/200601/07/201401/12/2014<S03><S></S><S>x~~~E~11.21</S><S>0~0~0~0~0~0~0~0~0~0"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002014002003002003~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~0"
-Barcode_Scaned str2
-str2 = "aa999032100343639   002014002003003003~0~0~01/02/2015~~0</S><S></S><S>NGUYEN VAN A~~ICT001~22/12/2014~1~1~0~1052</S></S03>"
+'str2 = "aa999032100343639   00201400200300100301/0114/06/200601/07/201401/12/2014<S03><S></S><S>x~~~E~11.21</S><S>0~0~0~0~0~0~0~0~0~0"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002014002003002003~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~0"
+'Barcode_Scaned str2
+'str2 = "aa999032100343639   002014002003003003~0~0~01/02/2015~~0</S><S></S><S>NGUYEN VAN A~~ICT001~22/12/2014~1~1~0~1052</S></S03>"
+'Barcode_Scaned str2
+
+'check OPTION Doanh nghiep
+'str2 = "aa999734200459373   04201400100100100101/0114/06/2006<S02><S>2222222222</S><S>20000000~1130~200~300~100~230~100~200~19998870~0~0</S><S>~1~TCCN~0102030405~HQV~11~01/01/2015~01/01/2015</S><S>NGUYEN VAN A~ICT001~nguoi ky~06/01/2015~1~~06/01/2014~~x</S></S02>"
+'Barcode_Scaned str2
+
+'str2 = "aa999014200459373   12201400200200100401/0114/06/2006<S01><S>2222222222</S><S>0~0~0~0~0~0~5~0~5~0~0~0~0~5~0~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa999014200459373   1220140020020020040~0~0~0~0~0~0</S><S>NGUYEN VAN A~ICT001~~12/01/2015~1~~~1701~~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999014200459373   122014002002003004<S01_1><S>~~~~~~~0~0~</S><S>~~HD001~12/12/2014~A~0102030405~~5~0~</S><S>~~~~~~~0~0~</S><S>~~~~~~~0~0~</S><S>~~~~~~~0~0~</S><S>0~5~0</S></S01_1>"
+'Barcode_Scaned str2
+'str2 = "aa999014200459373   122014002002004004<S01_2><S>~~~~~~~0~0~0~</S><S>~~~~~~~0~0~0~</S><S>~~HD002~12/12/2014~A~0102030405~~5~0~0~</S><S>~~~~~~~0~0~0~</S><S>~~~~~~~0~0~0~</S><S>5~0</S></S01_2>"
+'Barcode_Scaned str2
+
+''01-GTGT-Q
+'str2 = "aa999014200459373   01201400500500100401/0114/06/2006<S01><S>2222222222</S><S>0~0~0~0~0~0~5~0~5~0~0~0~0~5~0~0~0~0~"
+'Barcode_Scaned str2
+'str2 = "aa999014200459373   0120140050050020040~0~0~0~0~0~0</S><S>NGUYEN VAN A~ICT001~~12/01/2015~1~~~1701~~~1</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999014200459373   012014005005003004<S01_1><S>~~~~~~~0~0~</S><S>~~HD001~12/12/2013~A~0102030405~~5~0~</S><S>~~~~~~~0~0~</S><S>~~~~~~~0~0~</S><S>~~~~~~~0~0~</S><S>0~5~0</S></S01_1>"
+'Barcode_Scaned str2
+'str2 = "aa999014200459373   012014005005004004<S01_2><S>~~~~~~~0~0~0~</S><S>~~~~~~~0~0~0~</S><S>~~HD002~12/12/2013~A~~~5~0~0~</S><S>~~~~~~~0~0~0~</S><S>~~~~~~~0~0~0~</S><S>5~0</S></S01_2>"
+'Barcode_Scaned str2
+
+''02-GTGT/T
+'str2 = "aa999024200459373   12201400200200100301/0114/06/2006<S01><S>2222222222</S><S>0~0~200~20~0~0~0~0~20~0~20~0~0~0~20</S><S>NGUYEN VAN A~~ICT001~12/01/2015~1~~~0</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999024200459373   122014002002002003<S01_2><S>~~HD001~12/12/2014~A~0102030405~~100~0~10~</S><S>100~10</S></S01_2>"
+'Barcode_Scaned str2
+'str2 = "aa999024200459373   122014002002003003<S01_2_1><S>~~HD002~12/12/2014~A~0102030405~~100~0~10~</S><S>100~10</S></S01_2_1>"
+'Barcode_Scaned str2
+
+'str2 = "aa999024200459373   01201400400400100301/0114/06/2006<S01><S>2222222222</S><S>0~0~200~40~0~0~0~0~40~0~40~0~0~0~40</S><S>NGUYEN VAN A~~ICT001~12/01/2015~1~~~1</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999024200459373   012014004004002003<S01_2><S>~~HD001~12/12/2013~A~0102030405~~100~0~20~</S><S>100~20</S></S01_2>"
+'Barcode_Scaned str2
+'str2 = "aa999024200459373   012014004004003003<S01_2_1><S>~~HD002~12/12/2013~A~0102030405~~100~0~20~</S><S>100~20</S></S01_2_1>"
+'Barcode_Scaned str2
+
+''03/T
+'str2 = "aa999044200459373   12201400000000100101/0114/06/2006<S01><S>2222222222</S><S>0~0~0~0~0~0~0</S><S>NGUYEN VAN A~~ICT001~12/01/2015~1~~~0</S></S01>"
+'Barcode_Scaned str2
+
+'03/Q
+'str2 = "aa999044200459373   01201400000000100101/0114/06/2006<S01><S>2222222222</S><S>0~0~0~0~0~0~0</S><S>NGUYEN VAN A~~ICT001~12/01/2015~1~~~1</S></S01>"
+'Barcode_Scaned str2
+
+'str2 = "aa999714200459373   12201400200200100201/0101/01/1900<S01><S>2222222222</S><S>0~10~0~0~0~0~0~0~0~10~0~10~0</S><S>NGUYEN VAN A~~ICT001~12/01/2015~1~~~0~</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999714200459373   122014002002002002<S01_1><S>~~~~~~~0~</S><S>~~HD001~12/12/2014~A~0102030405~~10~</S><S>~~~~~~~0~</S><S>~~~~~~~0~</S><S>~~~~~~~0~</S><S>10~0~10</S></S01_1>"
+'Barcode_Scaned str2
+
+'str2 = "aa999714200459373   01201400200400100201/0101/01/1900<S01><S>2222222222</S><S>0~100~1~0~0~0~0~0~0~100~1~100~1</S><S>NGUYEN VAN A~~ICT001~12/01/2015~1~~~1~</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999714200459373   012014002004002002<S01_1><S>~~~~~~~0~</S><S>~~HD001~01/01/2014~A~0102030405~~100~</S><S>~~~~~~~0~</S><S>~~~~~~~0~</S><S>~~~~~~~0~</S><S>100~0~100</S></S01_1>"
+'Barcode_Scaned str2
+
+'str2 = "aa999714200459373   01201500400400100201/0101/01/1900<S01><S>2222222222</S><S>0~100~1~0~0~0~0~0~0~100~1~100~1</S><S>NGUYEN VAN A~~ICT001~12/01/2015~1~~~2~12/01/2015</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa999714200459373   012015004004002002<S01_1><S>~~~~~~~0~</S><S>~~HD001~12/01/2015~A~0102030405~~100~</S><S>~~~~~~~0~</S><S>~~~~~~~0~</S><S>~~~~~~~0~</S><S>100~0~100</S></S01_1>"
+'Barcode_Scaned str2
+
+'VER 331
+'######################################
+'str2 = "aa331712100343639   01201500000000100101/0101/01/1900<S01><S>2222222222</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>NGUYEN VAN A~~ICT001~09/02/2015~1~~~2~09/02/2015</S></S01>"
+'Barcode_Scaned str2
+'str2 = "aa331012100343639   0220140000000020020~0~0~0~0~0~0</S><S>NGUYEN VAN A~ICT001~~09/02/2015~1~~~1701~~~1</S></S01>"
+str2 = "aa999552100343639   01201500100200100101/0101/01/1900<S01><S></S><S>10000~10~1000~100000~10~10000~20000~10~2000~13000</S><S>10000~1000~100000~10000~20000~2000~13000</S><S>nguyen anh ngoc~minh lan~13~06/04/2015~1~~~~</S></S01>"
 Barcode_Scaned str2
 
 End Sub
@@ -2526,7 +2595,7 @@ On Error GoTo ErrHandler
     ' Khong check doi voi cac BCTC
     idToKhaiCheck = Val(TAX_Utilities_Srv_New.NodeMenu.Attributes.getNamedItem("ID").nodeValue)
     'remove 24,25,26,18,27
-    If (idToKhaiCheck >= 28 And idToKhaiCheck <= 35) Or (idToKhaiCheck >= 55 And idToKhaiCheck <= 58) Or (idToKhaiCheck >= 19 And idToKhaiCheck <= 21) Or idToKhaiCheck = 69 Then
+    If (idToKhaiCheck >= 28 And idToKhaiCheck <= 35) Or (idToKhaiCheck >= 57 And idToKhaiCheck <= 58) Or (idToKhaiCheck >= 19 And idToKhaiCheck <= 21) Or idToKhaiCheck = 69 Then
         isSheetTk = False
     End If
     
@@ -3036,7 +3105,7 @@ On Error GoTo ErrHandle
     strIDBCTC = Left$(strTaxReportInfo, 2)
      If (Val(strIDBCTC) = 28 Or Val(strIDBCTC) = 29 _
             Or Val(strIDBCTC) = 30 Or Val(strIDBCTC) = 31 Or Val(strIDBCTC) = 32 Or Val(strIDBCTC) = 33 Or Val(strIDBCTC) = 34 Or Val(strIDBCTC) = 35 _
-            Or Val(strIDBCTC) = 55 Or Val(strIDBCTC) = 56 Or Val(strIDBCTC) = 57 Or Val(strIDBCTC) = 58 Or Val(strIDBCTC) = 19 _
+            Or Val(strIDBCTC) = 57 Or Val(strIDBCTC) = 58 Or Val(strIDBCTC) = 19 _
             Or Val(strIDBCTC) = 20 Or Val(strIDBCTC) = 21 Or Val(strIDBCTC) = 69) Then
         Set rsTaxInfor = GetTaxInfoBCTC(strTaxID, blnConnected)
     Else
@@ -3291,7 +3360,7 @@ On Error GoTo ErrHandle
     '*******************************
         'Get main content
         If GetAttribute(TAX_Utilities_Srv_New.NodeMenu, "Day") <> "0" Then
-            If Trim(strID) = "70" Or Trim(strID) = "81" Or Trim(strID) = "91" Then
+            If Trim(strID) = "70" Or Trim(strID) = "81" Or Trim(strID) = "91" Or Trim(strID) = "55" Or Trim(strID) = "56" Then
                 strData = Mid$(strData, 37)
             Else
                 strData = Mid$(strData, 57)
