@@ -1184,8 +1184,8 @@ Public Function changeMaToKhai(strID As String) As String
     ' nvhai
     ' Xu ly nhac cac BCTC in bang HTKK 2.1.0
     
-    If strID = "55" Then changeMaToKhai = "15_01_CDKT"
-    If strID = "56" Then changeMaToKhai = "15_02_SXKD"
+'    If strID = "55" Then changeMaToKhai = "15_01_CDKT"
+'    If strID = "56" Then changeMaToKhai = "15_02_SXKD"
     If strID = "57" Then changeMaToKhai = "15_03_LCTTTT"
     If strID = "58" Then changeMaToKhai = "15_04_LCTTGT"
     

@@ -3277,7 +3277,8 @@ On Error GoTo ErrHandle
             ' Truong hop dang bi map nham ID cua cac BCTC giua version 2.5.1 ngay 17/03/1020 voi ID cua version 2.1.0
             ' Thi ko hien thi message nay ma map lai version, id cho dung voi to khai 2.5.1 roi quet lai
             ' Begin
-            If Trim(strID) = "55" Or Trim(strID) = "56" Or Trim(strID) = "57" Or Trim(strID) = "58" Then
+            'If Trim(strID) = "55" Or Trim(strID) = "56" Or Trim(strID) = "57" Or Trim(strID) = "58" Then
+            If Trim(strID) = "57" Or Trim(strID) = "58" Then
                 Exit Function
             ' end
             ElseIf Trim(strID) = "70" Then
@@ -3742,11 +3743,12 @@ Private Function LoadForm(ByVal strData As String) As Boolean
 
         ' Truong hop bi map ID sai BCTC giua phien ban 2.5.1 ban ngay 17/03/2010 voi phien ban 2.1.0
         ' Thi conver lai cho chuan ID BCTC va Init lai cac Parameter
-        If Trim(LoaiTk) = "55" Then
-            InitParameters "25118" & Mid(strData, 6), arrStrHeaderData
-        ElseIf Trim(LoaiTk) = "56" Then
-            InitParameters "25119" & Mid(strData, 6), arrStrHeaderData
-        ElseIf Trim(LoaiTk) = "57" Then
+'        If Trim(LoaiTk) = "55" Then
+'            InitParameters "25118" & Mid(strData, 6), arrStrHeaderData
+'        ElseIf Trim(LoaiTk) = "56" Then
+'            InitParameters "25119" & Mid(strData, 6), arrStrHeaderData
+'        Else
+        If Trim(LoaiTk) = "57" Then
             InitParameters "25120" & Mid(strData, 6), arrStrHeaderData
         ElseIf Trim(LoaiTk) = "58" Then
             InitParameters "25121" & Mid(strData, 6), arrStrHeaderData
