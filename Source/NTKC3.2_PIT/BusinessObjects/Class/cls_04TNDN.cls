@@ -50,8 +50,8 @@ Const NGAY_HOP_DONG_DL_COL = "N"
 
 
 ' Ngay phat sinh
-Const NGAY_PS_ROW = 37
-Const NGAY_PS_COL = "S"
+Const NGAY_PS_ROW = 28
+Const NGAY_PS_COL = "F"
 'Lan phat sinh
 Const LAN_PS_ROW = 37
 Const LAN_PS_COL = "R"

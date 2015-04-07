@@ -1226,7 +1226,7 @@ Private Sub cmdSave_Click()
         '--QCT
     ElseIf idToKhai = 4 Or idToKhai = 86 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28_QCT").nodeValue)
-    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 70 Or idToKhai = 72 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Or idToKhai = 98 Or idToKhai = 92 Then
+    ElseIf idToKhai = 1 Or idToKhai = 11 Or idToKhai = 12 Or idToKhai = 70 Or idToKhai = 72 Or idToKhai = 80 Or idToKhai = 81 Or idToKhai = 82 Or idToKhai = 3 Or idToKhai = 73 Or idToKhai = 98 Or idToKhai = 92 Or idToKhai = 55 Or idToKhai = 56 Then
         strSQL_HDR = CStr(xmlSQL.getElementsByTagName("SQLs")(0).Attributes.getNamedItem("SqlHdrTT28_NNKD").nodeValue)
         '--QCT
     ElseIf idToKhai = 71 Or idToKhai = 90 Or idToKhai = 6 Or idToKhai = 5 Then
@@ -1541,7 +1541,7 @@ Private Sub Command1_Click()
 'str2 = "aa331712100343639   01201500000000100101/0101/01/1900<S01><S>2222222222</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>NGUYEN VAN A~~ICT001~09/02/2015~1~~~2~09/02/2015</S></S01>"
 'Barcode_Scaned str2
 'str2 = "aa331012100343639   0220140000000020020~0~0~0~0~0~0</S><S>NGUYEN VAN A~ICT001~~09/02/2015~1~~~1701~~~1</S></S01>"
-str2 = "aa999552100343639   01201500100300100101/0101/01/1900<S01><S></S><S>1000~10~100~100000~0~0~10000~10~1000~1100</S><S>1000~100~100000~0~10000~1000~1100</S><S>nguyen van linh~minh lan~15~07/04/2015~1~~~~</S></S01>"
+str2 = "aa999552100343639   01201500000800100101/0101/01/1900<S01><S></S><S>100000~10~10000~200000~20~40000~100000~10~10000~60000~20000~10~2000~100000~20~20000~10000~10~1000~23000~200000~100~200000~10~10~1~1000~10~100~200101</S><S>320000~212000~300010~60001~111000~11100~283101</S><S>nguyen anh~minh lan~134~07/04/2015~1~~~~</S></S01>"
 Barcode_Scaned str2
 
 End Sub
@@ -3486,6 +3486,19 @@ On Error GoTo ErrHandle
                 isTKLanPS = True
             End If
         End If
+        
+        ' 04/TNDN _ nguoi sua: vietnd _ ngay 07/04/2015
+        If Val(strID) = 55 Then
+            strTemp = Left$(strData, InStr(1, strData, "</S></S01>") + 9)
+            arrCT = Split(strTemp, "~")
+            If Trim(arrCT(UBound(arrCT) - 1)) <> "" Then
+               ngayPS = arrCT(UBound(arrCT) - 1)
+                isTKLanPS = True
+            Else
+                isTKLanPS = False
+            End If
+        End If
+        
         ' 01/TTDB
         If Val(strID) = 5 Then
             strTemp = Left$(strData, InStr(1, strData, "</S></S01>") + 9)
@@ -5297,11 +5310,12 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
     'Lay so TT to khai trong RCV
     'format MaToKhai for data old
     
-    If (strID = "02_TNDN11" Or strID = "02_TNDN14") And isTKLanPS = True Then
+    If (strID = "02_TNDN11" Or strID = "02_TNDN14" Or strID = "04_TNDN") And isTKLanPS = True Then
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
                 "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
                 " And tkhai.ngay_ps = to_date('" & ngayPS & "','dd/mm/yyyy')"
+            
     ElseIf (strID = "01_NTNN" Or strID = "01_TTDB11" Or strID = "03_NTNN11" Or strID = "04_GTGT11" Or strID = "05_GTGT11" Or strID = "01_TBVMT13") And isTKLanPS = True Then
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
@@ -5393,6 +5407,15 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
                     "And tkhai.tu_ngay = To_Date('" & TuNgay & "','DD/MM/RRRR')" & _
                     "And tkhai.den_ngay = To_Date('" & DenNgay & "','DD/MM/RRRR')"
         End If
+    ElseIf strID = "04_TNDN" And isTKLanPS = False Then
+        dTemp = DateSerial(CInt(TAX_Utilities_Srv_New.Year), 1, 1)
+        dTemp = DateAdd("m", 12, dTemp)
+        dTemp = DateAdd("d", -1, dTemp)
+        strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
+                "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
+                "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
+                "And tkhai.kykk_tu_ngay = To_Date('" & format$(DateSerial(CInt(TAX_Utilities_Srv_New.Year), 1, 1), "DD/MM/YYYY") & "','DD/MM/RRRR')" & _
+                "And tkhai.kykk_den_ngay = To_Date('" & format$(dTemp, "DD/MM/YYYY") & "','DD/MM/RRRR')"
     Else
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
