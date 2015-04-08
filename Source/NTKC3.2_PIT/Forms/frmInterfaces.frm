@@ -3494,7 +3494,9 @@ On Error GoTo ErrHandle
             If Trim(arrCT(UBound(arrCT))) <> "" Then
                 'ngayPS = arrCT(32)
                 strTemp = Left$(arrCT(UBound(arrCT)), InStr(1, arrCT(UBound(arrCT)), "</S></S02>") - 1)
-                ngayPS = strTemp
+                If Trim(strTemp) <> "" Then
+                    ngayPS = strTemp
+                End If
                 isTKLanPS = True
             End If
         End If
