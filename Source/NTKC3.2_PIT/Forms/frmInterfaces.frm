@@ -3487,17 +3487,17 @@ On Error GoTo ErrHandle
             End If
         End If
         
-'        If Val(strID) = 56 Then
-'            strTemp = Left$(strData, InStr(1, strData, "</S></S02>") + 9)
-'            arrCT = Split(strTemp, "~")
-'            'If Trim(arrCT(32)) <> "" Then
-'            If Trim(arrCT(UBound(arrCT))) <> "" Then
-'                'ngayPS = arrCT(32)
-'                strTemp = Left$(arrCT(UBound(arrCT)), InStr(1, arrCT(UBound(arrCT)), "</S></S02>"))
-'                ngayPS = arrCT(UBound(arrCT))
-'                isTKLanPS = True
-'            End If
-'        End If
+        If Val(strID) = 56 Then
+            strTemp = Left$(strData, InStr(1, strData, "</S></S02>") + 9)
+            arrCT = Split(strTemp, "~")
+            'If Trim(arrCT(32)) <> "" Then
+            If Trim(arrCT(UBound(arrCT))) <> "" Then
+                'ngayPS = arrCT(32)
+                strTemp = Left$(arrCT(UBound(arrCT)), InStr(1, arrCT(UBound(arrCT)), "</S></S02>") - 1)
+                ngayPS = strTemp
+                isTKLanPS = True
+            End If
+        End If
         
         ' 04/TNDN _ nguoi sua: vietnd _ ngay 07/04/2015
         If Val(strID) = 55 Then
