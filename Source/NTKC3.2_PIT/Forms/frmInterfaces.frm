@@ -1541,7 +1541,7 @@ Private Sub Command1_Click()
 'str2 = "aa331712100343639   01201500000000100101/0101/01/1900<S01><S>2222222222</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>NGUYEN VAN A~~ICT001~09/02/2015~1~~~2~09/02/2015</S></S01>"
 'Barcode_Scaned str2
 'str2 = "aa331012100343639   0220140000000020020~0~0~0~0~0~0</S><S>NGUYEN VAN A~ICT001~~09/02/2015~1~~~1701~~~1</S></S01>"
-str2 = "aa999552100343639   01201500000800100101/0101/01/1900<S01><S></S><S>100000~10~10000~200000~20~40000~100000~10~10000~60000~20000~10~2000~100000~20~20000~10000~10~1000~23000~200000~100~200000~10~10~1~1000~10~100~200101</S><S>320000~212000~300010~60001~111000~11100~283101</S><S>nguyen anh~minh lan~134~07/04/2015~1~~~~</S></S01>"
+str2 = "aa999562100343639   01201500200400100101/0101/01/1900<S02><S></S><S>nguyen van long~12345677~ha noi~1~01/01/2015~02/02/2015</S><S>1000000~840000~200000~100000~100000~100000~200000~140000~160000~20000~140000~100~140000</S><S>nguyen thanh long~123~minh lan~07/04/2015~1~~~07/04/2015</S></S02>"
 Barcode_Scaned str2
 
 End Sub
@@ -3262,14 +3262,14 @@ On Error GoTo ErrHandle
     
     On Error GoTo ErrHandle
     
-    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 68 Or Val(strIDBCTC) = 18 Or Val(strIDBCTC) = 94 Or Val(strIDBCTC) = 96 Or Val(strIDBCTC) = 73 Then
+    If Val(strIDBCTC) = 1 Or Val(strIDBCTC) = 2 Or Val(strIDBCTC) = 25 Or Val(strIDBCTC) = 4 Or Val(strIDBCTC) = 71 Or Val(strIDBCTC) = 36 Or Val(strIDBCTC) = 68 Or Val(strIDBCTC) = 18 Or Val(strIDBCTC) = 94 Or Val(strIDBCTC) = 96 Or Val(strIDBCTC) = 73 Or Val(strIDBCTC) = 56 Then
         If Val(strIDBCTC) = 36 Then
             LoaiKyKK = LoaiToKhai(strData)
         Else
             Dim tmp As String
             If Val(strIDBCTC) = 96 Then
                 tmp = Mid(strData, 1, InStr(1, strData, "</S03>", vbTextCompare) + 5)
-            ElseIf Val(strIDBCTC) = 73 Then
+            ElseIf Val(strIDBCTC) = 73 Or Val(strIDBCTC) = 56 Then
                 tmp = strData
             Else
                 tmp = Mid(strData, 1, InStr(1, strData, "</S01>", vbTextCompare) + 5)
@@ -3486,6 +3486,18 @@ On Error GoTo ErrHandle
                 isTKLanPS = True
             End If
         End If
+        
+'        If Val(strID) = 56 Then
+'            strTemp = Left$(strData, InStr(1, strData, "</S></S02>") + 9)
+'            arrCT = Split(strTemp, "~")
+'            'If Trim(arrCT(32)) <> "" Then
+'            If Trim(arrCT(UBound(arrCT))) <> "" Then
+'                'ngayPS = arrCT(32)
+'                strTemp = Left$(arrCT(UBound(arrCT)), InStr(1, arrCT(UBound(arrCT)), "</S></S02>"))
+'                ngayPS = arrCT(UBound(arrCT))
+'                isTKLanPS = True
+'            End If
+'        End If
         
         ' 04/TNDN _ nguoi sua: vietnd _ ngay 07/04/2015
         If Val(strID) = 55 Then
@@ -5310,7 +5322,7 @@ Private Function getSoTTTK(ByVal strID As String, arrStrHeaderData() As String) 
     'Lay so TT to khai trong RCV
     'format MaToKhai for data old
     
-    If (strID = "02_TNDN11" Or strID = "02_TNDN14" Or strID = "04_TNDN") And isTKLanPS = True Then
+    If (strID = "02_TNDN11" Or strID = "02_TNDN14" Or strID = "04_TNDN" Or strID = "06_TNDN") And isTKLanPS = True Then
         strSQL = "select max(so_tt_tk) from rcv_tkhai_hdr tkhai " & _
                 "Where tkhai.tin = '" & arrStrHeaderData(0) & "'" & _
                 "And tkhai.loai_tkhai IN" & formatMaToKhai(strID) & " " & _
