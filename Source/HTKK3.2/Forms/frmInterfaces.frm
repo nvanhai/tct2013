@@ -4862,6 +4862,7 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
                         If xmlTK.getElementsByTagName("kyKKhaiDenNgay").length > 0 Then
                             xmlTK.getElementsByTagName("kyKKhaiDenNgay")(0).Text = TAX_Utilities_v1.LastDay
                         End If
+                     ElseIf GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "55" Then
                      Else
                         If xmlTK.getElementsByTagName("kyKKhaiTuThang").length > 0 Then
                             xmlTK.getElementsByTagName("kyKKhaiTuThang")(0).Text = TAX_Utilities_v1.FirstDay
@@ -5257,6 +5258,12 @@ Private Function GetKyKeKhai(ByVal ID_TK As String) As String
                         KYKKHAI = Right$(TAX_Utilities_v1.ThreeMonths, 1) & "/" & TAX_Utilities_v1.Year
                     Else
                         KYKKHAI = TAX_Utilities_v1.FirstDay & "_" & TAX_Utilities_v1.LastDay
+                    End If
+                ElseIf ID_TK = "55" Then
+                    If strLoaiTKThang_PS = "TK_NAM" Then
+                        KYKKHAI = TAX_Utilities_v1.Year
+                    Else
+                        KYKKHAI = TAX_Utilities_v1.Day & "/" & TAX_Utilities_v1.month & "/" & TAX_Utilities_v1.Year
                     End If
                 Else
                     KYKKHAI = Right$(TAX_Utilities_v1.ThreeMonths, 1) & "/" & TAX_Utilities_v1.Year

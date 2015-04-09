@@ -4881,8 +4881,8 @@ Sub CellLock(ByVal Col As Long, ByVal Row As Long)
                mCurrentSheet = .Sheet
                GetCellSpan fps, Col, Row
                If Row = S1ChkRow And Col = .ColLetterToNumber(S1ChkCol) Then
-                   arrRow = Array(27, 27, 28, 30, 31, 31, 32, 33, 33, 34, 34, 35, 35)
-                   arrCol = Array("J", "L", "L", "J", "J", "L", "J", "J", "L", "J", "L", "J", "L")
+                   arrRow = Array(27, 27, 28, 30, 32, 33, 33, 34, 34, 35)
+                   arrCol = Array("J", "L", "L", "J", "J", "J", "L", "J", "L", "J")
                    .Col = .ColLetterToNumber("I")
                    .Row = 23
                    If .Text = "1" Then
@@ -4897,7 +4897,7 @@ Sub CellLock(ByVal Col As Long, ByVal Row As Long)
                        For i = 0 To UBound(arrRow)
                            .Row = arrRow(i)
                            .Col = .ColLetterToNumber(arrCol(i))
-                           If (arrCol(i) = "J" Or arrCol(i) = "L") And (arrRow(i) = 31 Or arrRow(i) = 35) Then
+                           If (arrCol(i) = "J" Or arrCol(i) = "L") And (arrRow(i) = 31 Or arrRow(i) = 36) Then
                                .Lock = True
                            Else
                                .Lock = False

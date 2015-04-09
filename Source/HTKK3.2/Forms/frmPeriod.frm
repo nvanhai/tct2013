@@ -5732,21 +5732,37 @@ Private Sub LoadDefaultInfor()
             End If
 
         Case KIEU_KY_QUY
-            q = GetQuyHienTai(iNgayTaiChinh, iThangTaiChinh)
-
-            If q.q = 1 Then
-                q.q = 4
-                q.Y = q.Y - 1
+            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "55" Then
+                q = GetQuyHienTai(iNgayTaiChinh, iThangTaiChinh)
+    
+                If q.q = 1 Then
+                    q.q = 4
+                    q.Y = q.Y - 1
+                Else
+                    q.q = q.q - 1
+                End If
+    
+                cmbQuy.ListIndex = q.q - 1
+                
+                Y = GetNamHienTai(iNgayTaiChinh, iThangTaiChinh)
+                Y = Y - 1
+                txtYear.Text = Y
             Else
-                q.q = q.q - 1
+                q = GetQuyHienTai(iNgayTaiChinh, iThangTaiChinh)
+    
+                If q.q = 1 Then
+                    q.q = 4
+                    q.Y = q.Y - 1
+                Else
+                    q.q = q.q - 1
+                End If
+    
+                cmbQuy.ListIndex = q.q - 1
+                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "56" Then
+                Else
+                    txtYear.Text = q.Y
+                End If
             End If
-
-            cmbQuy.ListIndex = q.q - 1
-            If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "73" Or GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "56" Then
-            Else
-                txtYear.Text = q.Y
-            End If
-
             'dhdang sua them kieu ky nua nam phuc vu an chi
         Case "H_Y"
 

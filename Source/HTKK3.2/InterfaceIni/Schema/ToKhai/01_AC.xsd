@@ -58,7 +58,7 @@
 					<xs:documentation>Tên tổ chức, cá nhân đặt in/sử dụng phần mềm tự in hoá đơn</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="diaChi" type="xs:string">
+			<xs:element name="diaChi" type="xs:string" nillable="true">
 				<xs:annotation>
 					<xs:documentation>Địa chỉ tổ chức, cá nhân đặt in/sử dụng phần mềm tự in hoá đơn</xs:documentation>
 				</xs:annotation>

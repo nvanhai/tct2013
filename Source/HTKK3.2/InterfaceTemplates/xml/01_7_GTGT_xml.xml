@@ -1,30 +1,13 @@
 <PL01_7_GTGT>
-	<XeOTo>
-		<ChiTietSoLuongXeOTo>
-			<SoLuongXeOTo id="ID_12">
-				<loaiXe></loaiXe>
-				<dviTinh></dviTinh>
-				<xeBanRa>1</xeBanRa>
-				<giaBan>1</giaBan>
-				<ghiChu></ghiChu>
-			</SoLuongXeOTo>
-		</ChiTietSoLuongXeOTo>
-		<congXeOToBRa>1</congXeOToBRa>
-		<congGiaBanOTo>1</congGiaBanOTo>
-	</XeOTo>
-	<XeHaiBanh>
-		<ChiTietSoLuongXeHaiBanh>
-			<SoLuongXeHaiBanh id="ID_13">
-				<loaiXe></loaiXe>
-				<dviTinh></dviTinh>
-				<xeBanRa>1</xeBanRa>
-				<giaBan>1</giaBan>
-				<ghiChu></ghiChu>
-			</SoLuongXeHaiBanh>
-		</ChiTietSoLuongXeHaiBanh>
-		<congXeHaiBanhBRa>1</congXeHaiBanhBRa>
-		<congGiaBanHaiBanh>1</congGiaBanHaiBanh>
-	</XeHaiBanh>
-	<congXeBRa>1</congXeBRa>
-	<congGiaBan>1</congGiaBan>
+	<PBoChoDiaPhuongLienTinh>
+		<tenCongTrinh></tenCongTrinh>
+		<doanhThu></doanhThu>
+		<maCQTQLy_CCT></maCQTQLy_CCT>
+		<cqtQLy_CCT></cqtQLy_CCT>
+		<maCQTQLy_CT></maCQTQLy_CT>
+		<cqtQLy_CT></cqtQLy_CT>
+		<tyLePhanBo>0.0</tyLePhanBo>
+		<soThueGTGTPNop></soThueGTGTPNop>
+	</PBoChoDiaPhuongLienTinh>
+	<tongCong></tongCong>
 </PL01_7_GTGT>
