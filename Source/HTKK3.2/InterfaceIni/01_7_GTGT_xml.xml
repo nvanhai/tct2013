@@ -1,32 +1,19 @@
 <PL01_7_GTGT>
-	<Dynamic GroupName="ChiTietSoLuongXeOTo">
-		<SoLuongXeOTo id="ID_12">
-			<loaiXe>C_8</loaiXe>
-			<dviTinh>D_8</dviTinh>
-			<xeBanRa>F_8</xeBanRa>
-			<giaBan>G_8</giaBan>
-			<ghiChu>H_8</ghiChu>
-		</SoLuongXeOTo>
+	<Dynamic GroupName="PL01_7_GTGT">
+		<PBoChoDiaPhuongLienTinh ID="ID_12">
+			<tenCongTrinh>C_7</tenCongTrinh>
+			<doanhThu>D_7</doanhThu>
+			<maCQTQLy_CCT>I_7</maCQTQLy_CCT>
+			<cqtQLy_CCT>F_7</cqtQLy_CCT>
+			<maCQTQLy_CT>J_7</maCQTQLy_CT>
+			<cqtQLy_CT>E_7</cqtQLy_CT>
+			<tyLePhanBo>G_7</tyLePhanBo>
+			<soThueGTGTPNop>H_7</soThueGTGTPNop>
+		</PBoChoDiaPhuongLienTinh>
 	</Dynamic>
-	<Static GroupName="XeOTo">
-		<congXeOToBRa>F_10</congXeOToBRa>
-		<congGiaBanOTo>G_10</congGiaBanOTo>
-	</Static>
-	<Dynamic GroupName="ChiTietSoLuongXeHaiBanh">
-		<SoLuongXeHaiBanh id="ID_13">
-			<loaiXe>C_13</loaiXe>
-			<dviTinh>D_13</dviTinh>
-			<xeBanRa>F_13</xeBanRa>
-			<giaBan>G_13</giaBan>
-			<ghiChu>H_13</ghiChu>
-		</SoLuongXeHaiBanh>
-	</Dynamic>
-	<Static GroupName="XeHaiBanh">
-		<congXeHaiBanhBRa>F_15</congXeHaiBanhBRa>
-		<congGiaBanHaiBanh>G_15</congGiaBanHaiBanh>
-	</Static>
 	<Static GroupName="PL01_7_GTGT">
-		<congXeBRa>F_17</congXeBRa>
-		<congGiaBan>G_17</congGiaBan>
+		<tongCong>H_9</tongCong>
+		
 	</Static>
+	
 </PL01_7_GTGT>

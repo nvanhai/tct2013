@@ -47,28 +47,31 @@
 		<ct32>J_34</ct32>
 		<ct33>L_34</ct33>
 	</Static>
+	<Static GroupName="HHDVBRaKhongTinhThue">
+		<ct32a>J_35</ct32a>
+	</Static>
 	<Static GroupName="TongDThuVaThueGTGTHHDVBRa">
-		<ct34>J_35</ct34>
-		<ct35>L_35</ct35>
+		<ct34>J_36</ct34>
+		<ct35>L_36</ct35>
 	</Static>
 	<Static GroupName="CTieuTKhaiChinh">
-		<ct36>L_36</ct36>
-		<ct37>L_38</ct37>
-		<ct38>L_39</ct38>
-		<ct39>L_40</ct39>
-		<ct40a>L_42</ct40a>
-		<ct40b>L_43</ct40b>
-		<ct40>L_44</ct40>
-		<ct41>L_45</ct41>
-		<ct42>L_46</ct42>
-		<ct43>L_47</ct43>
+		<ct36>L_37</ct36>
+		<ct37>L_39</ct37>
+		<ct38>L_40</ct38>
+		<ct39>L_41</ct39>
+		<ct40a>L_43</ct40a>
+		<ct40b>L_44</ct40b>
+		<ct40>L_45</ct40>
+		<ct41>L_46</ct41>
+		<ct42>L_47</ct42>
+		<ct43>L_48</ct43>
 	</Static>
 	<Static GroupName="TKhaiThue">
-		<nguoiKy>K_49</nguoiKy>
-		<ngayKy>K_50</ngayKy>
+		<nguoiKy>K_50</nguoiKy>
+		<ngayKy>K_51</ngayKy>
 	</Static>
 	<Static GroupName="NVienDLy">
-		<tenNVienDLyThue>D_49</tenNVienDLyThue>
-		<cchiHNghe>D_50</cchiHNghe>
+		<tenNVienDLyThue>D_50</tenNVienDLyThue>
+		<cchiHNghe>D_51</cchiHNghe>
 	</Static>
 </HSoKhaiThue>
