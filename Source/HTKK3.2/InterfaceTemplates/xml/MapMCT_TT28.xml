@@ -6,16 +6,16 @@
 		<Item CellID="L_28" MCT="25" Caption="Tổng số thuế GTGT  được khấu trừ kỳ này"/>
 		<Item CellID="L_33" MCT="31" Caption="Hàng hoá, dịch vụ bán ra chịu thuế suất 5%"/>
 		<Item CellID="L_34" MCT="33" Caption="Hàng hoá, dịch vụ bán ra chịu thuế suất 10%"/>
-		<Item CellID="L_48" MCT="42" Caption="Thuế GTGT đề nghị hoàn"/>
+		<Item CellID="L_47" MCT="42" Caption="Thuế GTGT đề nghị hoàn"/>
 		<Item CellID="L_45" MCT="40" Caption="Thuế GTGT còn phải nộp trong kỳ"/>
-		<Item CellID="L_50" MCT="43" Caption="Thuế GTGT còn được khấu trừ chuyển kỳ sau"/>
+		<Item CellID="L_48" MCT="43" Caption="Thuế GTGT còn được khấu trừ chuyển kỳ sau"/>
 	</Map>
 	<Map ID ="02_GTGT">		
 		<Item CellID="CT_40" MCT="21" Caption="Thuế GTGT chưa được hoàn kỳ trước chuyển sang"/>	
 		<Item CellID="CT_41" MCT="21a" Caption="Thuế GTGT nhận bàn giao từ đơn vị khác"/>	
 		<Item CellID="CT_42" MCT="23" Caption="Hàng hoá, dịch vụ mua vào trong kỳ"/>
 		<Item CellID="CT_48" MCT="28a" Caption="Thuế GTGT mua vào dự án đầu tư (cùng tỉnh, thành phố trực thuộc trung ương) bù trừ với thuế GTGT phải nộp của hoạt động sản xuất kinh doanh cùng kỳ tính thuế"/>
-		<Item CellID="52" MCT="30" Caption="Thuế GTGT đề nghị hoàn"/>
+		<Item CellID="CT_52" MCT="30" Caption="Thuế GTGT đề nghị hoàn"/>
 		<Item CellID="CT_51" MCT="30a" Caption="Trong đó thuế GTGT đầu vào của hàng hoá nhập khẩu thuộc loại trong nước chưa sản xuất được để tạo tài sản cố định đã đề nghị hoàn"/>
 		<Item CellID="CT_53" MCT="31" Caption="Thuế GTGT chưa được hoàn  bàn giao cho doanh nghiệp mới thành lập trong kỳ"/>
 	</Map>

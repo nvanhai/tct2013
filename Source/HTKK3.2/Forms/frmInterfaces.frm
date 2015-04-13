@@ -144,7 +144,7 @@ Begin VB.Form frmInterfaces
          EndProperty
          NoBeep          =   -1  'True
          ScrollBars      =   2
-         SpreadDesigner  =   "frmInterfaces.frx":19A5
+         SpreadDesigner  =   "frmInterfaces.frx":1969
       End
    End
    Begin VB.Frame Frame2 
@@ -291,7 +291,7 @@ Begin VB.Form frmInterfaces
          Strikethrough   =   0   'False
       EndProperty
       MaxRows         =   10
-      SpreadDesigner  =   "frmInterfaces.frx":1C69
+      SpreadDesigner  =   "frmInterfaces.frx":1BF1
    End
    Begin VB.Label lblCaption 
       BackStyle       =   0  'Transparent
@@ -4138,7 +4138,7 @@ Private Sub cmdExport_Click()
     CallFinish
     
     ' nkhoan: 02/TNDN
-    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "56" Or TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "55") Then
+    If (TAX_Utilities_v1.NodeMenu.Attributes.getNamedItem("ID").nodeValue = "73") Then
         If objTaxBusiness.iflag = True Then
             DisplayMessage "0240", msOKOnly, miCriticalError
             Exit Sub
@@ -6788,6 +6788,10 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
     Dim RowLength        As Integer
     Dim RowCount         As Integer
     Dim valXml           As New MSXML.DOMDocument
+    
+    Dim parentGroupNode As MSXML.IXMLDOMNode
+    Dim nodePLImport As MSXML.IXMLDOMNode
+    
     Dim Level            As Variant
     Dim RowNumber        As Integer
     Dim IDstr            As String
@@ -6877,20 +6881,45 @@ Private Sub ImportFromXmlToToKhai(xmlDuLieuImport As MSXML.DOMDocument, _
                                 
             ElseIf nodeMapCT.nodeName = "Static" Then
                 GroupName = GetAttribute(nodeMapCT, "GroupName")
-                If xmlDuLieuImport.getElementsByTagName(GroupName).length > 0 Then
-               
-                    valXml.loadXML xmlDuLieuImport.getElementsByTagName(GroupName)(0).xml
-                    
-                    If GroupName = "TKhaiThue" And nodeMapCT.lastChild.nodeName = "soLan" Then
-                        If strKHBS = "TKCT" Then
-                            nodeMapCT.lastChild.Text = ""
+                
+                ' xu ly cho to khai 04_BCTC BK CDTK
+                Dim parentGroupImport As String
+                parentGroupImport = GetAttribute(nodeMapCT, "parentGroup")
+                If parentGroupImport = vbNullString Or parentGroupImport = "" Then
+                
+                    If xmlDuLieuImport.getElementsByTagName(GroupName).length > 0 Then
+                   
+                        valXml.loadXML xmlDuLieuImport.getElementsByTagName(GroupName)(0).xml
+                        
+                        If GroupName = "TKhaiThue" And nodeMapCT.lastChild.nodeName = "soLan" Then
+                            If strKHBS = "TKCT" Then
+                                nodeMapCT.lastChild.Text = ""
+                            End If
                         End If
+                        
+                        SetValueFromXml nodeMapCT, valXml, cellRange, .sheet
+    
+                    End If
+                 Else
+                    ' xu ly cho to khai 48_BCTC BK CDTK
+                    If xmlDuLieuImport.getElementsByTagName(GroupName).length > 0 And xmlDuLieuImport.getElementsByTagName(parentGroupImport).length > 0 Then
+                   
+                        Set parentGroupNode = xmlDuLieuImport.getElementsByTagName(parentGroupImport)(0)
+                        Set nodePLImport = parentGroupNode.selectNodes(GroupName)(0)
+                        valXml.loadXML nodePLImport.xml
+                        
+                        
+                        If GroupName = "TKhaiThue" And nodeMapCT.lastChild.nodeName = "soLan" Then
+                            If strKHBS = "TKCT" Then
+                                nodeMapCT.lastChild.Text = ""
+                            End If
+                        End If
+                        
+                        SetValueFromXml nodeMapCT, valXml, cellRange, .sheet
+    
                     End If
                     
-                    SetValueFromXml nodeMapCT, valXml, cellRange, .sheet
-
-                End If
-
+                 End If
             ElseIf nodeMapCT.nodeName = "P_Dynamic" Then
                 Dim P_dynamicID As Integer
                 Dim ChildGroup  As String
@@ -12832,7 +12861,7 @@ Private Sub ResetData()
     'vttoan: them ID (86,87,88) cua cac to (01_BVMT,02BVMT,01_PHXD)
     'dntai : them ID 77 to 02_TAIN
     idtkhai = GetAttribute(TAX_Utilities_v1.NodeMenu, "ID")
-    If (idtkhai = "01" Or idtkhai = "02" Or idtkhai = "04" Or idtkhai = "11" Or idtkhai = "12" Or idtkhai = "06" Or idtkhai = "05" Or idtkhai = "70" Or idtkhai = "90" Or idtkhai = "72" Or idtkhai = "77" Or idtkhai = "75" Or idtkhai = "74" Or idtkhai = "23" Or idtkhai = "88" Or idtkhai = "26" Or idtkhai = "96" Or idtkhai = "94" Or idtkhai = "98" Or idtkhai = "99" Or idtkhai = "92" Or idtkhai = "89") Then
+    If (idtkhai = "01" Or idtkhai = "02" Or idtkhai = "04" Or idtkhai = "11" Or idtkhai = "12" Or idtkhai = "06" Or idtkhai = "05" Or idtkhai = "70" Or idtkhai = "90" Or idtkhai = "72" Or idtkhai = "77" Or idtkhai = "75" Or idtkhai = "74" Or idtkhai = "23" Or idtkhai = "88" Or idtkhai = "26" Or idtkhai = "96" Or idtkhai = "94" Or idtkhai = "98" Or idtkhai = "99" Or idtkhai = "92" Or idtkhai = "89" Or idtkhai = "55") Then
         For Each xmlNodeReset In TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             fpSpread1.sheet = mCurrentSheet
             ParserCellID fpSpread1, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
@@ -12840,7 +12869,7 @@ Private Sub ResetData()
             fpSpread1.Row = lRow
 
             If ((idtkhai = "01" And (lRow < 22 Or lRow > 48)) Or (idtkhai = "02" And (lRow < 38 Or lRow > 54)) Or (idtkhai = "04" And (lRow < 34 Or lRow > 41)) Or (idtkhai = "11" And (lRow < 20 Or lRow > 35)) Or (idtkhai = "12" And (lRow < 34 Or lRow > 49)) Or (idtkhai = "06" And (lRow < 34 Or lRow > 48 + (TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 11) / 13)) Or (idtkhai = "05" And (lRow < 31 Or lRow > fpSpread1.MaxRows - 15)) Or (idtkhai = "70" And (lRow < 51 Or lRow > 58 + (TAX_Utilities_v1.Data(0).getElementsByTagName("Cell").length - 19) / 14)) Or (idtkhai = "77" And (lRow < 18 Or lRow > fpSpread1.MaxRows - 11)) _
-            Or (idtkhai = "75" And (lRow < 38 Or lRow > fpSpread1.MaxRows - 5)) Or (idtkhai = "74" And (lRow < 19 Or lRow > 61)) Or (idtkhai = "72" And (lRow < 43 Or lRow > 48)) Or (idtkhai = "88" And (lRow < 39 Or lRow > 59)) Or (idtkhai = "26" And (lRow < 37 Or lRow > 60))) And mCurrentSheet = 1 Then
+            Or (idtkhai = "55" And (lRow < 37 Or lRow > fpSpread1.MaxRows - 11)) Or (idtkhai = "75" And (lRow < 38 Or lRow > fpSpread1.MaxRows - 5)) Or (idtkhai = "74" And (lRow < 19 Or lRow > 61)) Or (idtkhai = "72" And (lRow < 43 Or lRow > 48)) Or (idtkhai = "88" And (lRow < 39 Or lRow > 59)) Or (idtkhai = "26" And (lRow < 37 Or lRow > 60))) And mCurrentSheet = 1 Then
 
                 GoTo nextClear1
             ElseIf (idtkhai = "11" Or idtkhai = "12") And mCurrentSheet = 2 And lRow < 35 Then
@@ -12910,7 +12939,7 @@ nextClear:
             End If
             countCell = countCell + 1
         Next
-    ElseIf idtkhai = "03" Or idtkhai = "80" Or idtkhai = "81" Or idtkhai = "82" Or idtkhai = "73" Or idtkhai = "56" Or idtkhai = "55" Or idtkhai = "85" Or idtkhai = "71" Or idtkhai = "86" Or idtkhai = "87" Or idtkhai = "89" Or idtkhai = "90" Then
+    ElseIf idtkhai = "03" Or idtkhai = "80" Or idtkhai = "81" Or idtkhai = "82" Or idtkhai = "73" Or idtkhai = "85" Or idtkhai = "71" Or idtkhai = "86" Or idtkhai = "87" Or idtkhai = "89" Or idtkhai = "90" Then
     Else
         For Each xmlNodeReset In TAX_Utilities_v1.Data(mCurrentSheet - 1).getElementsByTagName("Cell")
             fpSpread1.sheet = mCurrentSheet
@@ -13688,8 +13717,14 @@ Public Function delNullRow(sheet As Long)
                     For Each xmlNodeCell In xmlNodeListCell
                         value = GetAttribute(xmlNodeCell, "Value")
                         'If GetAttribute(xmlNodeCell, "FirstCell") = "" And value <> "" And value <> "0" And value <> "cbo" And value <> "0%" And value <> "5%" And value <> "10%" Then
-                        If (GetAttribute(xmlNodeCell, "FirstCell") <> "" And value <> "") Or (GetAttribute(xmlNodeCell, "FirstCell") = "" And value <> "" And value <> "0" And value <> "cbo" And value <> "0%" And value <> "5%" And value <> "10%") Then
-                            hasVl = hasVl + 1
+                        If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "55" Then
+                            If (GetAttribute(xmlNodeCell, "FirstCell") <> "" And value <> "0") Or (GetAttribute(xmlNodeCell, "FirstCell") = "" And value <> "" And value <> "0" And value <> "cbo" And value <> "0%" And value <> "5%" And value <> "10%") Then
+                                hasVl = hasVl + 1
+                            End If
+                        Else
+                            If (GetAttribute(xmlNodeCell, "FirstCell") <> "" And value <> "") Or (GetAttribute(xmlNodeCell, "FirstCell") = "" And value <> "" And value <> "0" And value <> "cbo" And value <> "0%" And value <> "5%" And value <> "10%") Then
+                                hasVl = hasVl + 1
+                            End If
                         End If
                         cellID = GetAttribute(xmlNodeCell, "CellID")
                     Next
