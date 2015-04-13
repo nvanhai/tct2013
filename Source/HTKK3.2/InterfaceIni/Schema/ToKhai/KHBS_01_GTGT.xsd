@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by mennt (ST) -->
 <!-- edited with XMLSpy v2010 rel. 3 (http://www.altova.com) by MESMERiZE (MSM) -->
-<xs:schema xmlns="TKhaiThue" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="TKhaiThue" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.7">
+<xs:schema xmlns="TKhaiThue" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="TKhaiThue" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.1.2">
 	<xs:redefine schemaLocation="../TKhaiThue.xsd">
 		<xs:complexType name="CTieuTKhaiChinhType">
 			<xs:complexContent>
@@ -113,6 +113,20 @@
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
+						<xs:element name="HHDVBRaKhongTinhThue">
+							<xs:annotation>
+								<xs:documentation>Hàng hoá, dịch vụ bán ra không tính thuế</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct32a" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Giá Trị của Hàng hoá, dịch vụ bán ra không tính thuế</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
 						<xs:element name="TongDThuVaThueGTGTHHDVBRa">
 							<xs:annotation>
 								<xs:documentation>Tổng doanh thu và thuế GTGT của HHDV bán ra</xs:documentation>
@@ -147,7 +161,7 @@
 								<xs:documentation>Điều chỉnh tăng thuế GTGT còn được khấu trừ của các kỳ trước</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="ct39" type="xs:long" nillable="true">
+						<xs:element name="ct39" type="xs:nonNegativeInteger" nillable="true">
 							<xs:annotation>
 								<xs:documentation>Thuế GTGT đã nộp ở địa phương khác của hoạt động kinh doanh xây dựng, lắp đặt, bán hàng, bất động sản ngoại tỉnh</xs:documentation>
 							</xs:annotation>
@@ -159,7 +173,7 @@
 						</xs:element>
 						<xs:element name="ct40b" type="xs:nonNegativeInteger" nillable="true">
 							<xs:annotation>
-								<xs:documentation>Thuế GTGT mua vào của dự án đầu tư (cùng tỉnh, thành phố trực thuộc trung ương) được bù trừ với thuế GTGT còn phải nộp của hoạt động sản xuất kinh doanh cùng kỳ tính thuế</xs:documentation>
+								<xs:documentation>Thuế GTGT mua vào của dự án đầu tư được bù trừ với thuế GTGT còn phải nộp của hoạt động sản xuất kinh doanh cùng kỳ tính thuế</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="ct40" type="xs:nonNegativeInteger" nillable="true">

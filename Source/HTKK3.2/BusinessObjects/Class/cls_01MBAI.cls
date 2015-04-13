@@ -162,7 +162,10 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
                      
                      .Col = .ColLetterToNumber("U")
                      .Text = "4"
-                     UpdateCell fps, .Col, .Row, .Text
+                     
+                     .Col = .ColLetterToNumber("Y")
+                     .value = "1000000"
+                     
                      
                      .Col = .ColLetterToNumber("B")
                      .Row = .Row + 1
@@ -241,6 +244,7 @@ Private Sub CheckDynamicError()
 Dim iFlagEmty As Variant
 Dim iFlagMucThue As Integer
 Dim vErrMucThue As Variant
+Dim vErrEmpty As Variant
 Dim vonDK As Variant
 Dim vMucThue As Variant
 Dim arrValue() As String
@@ -249,6 +253,7 @@ Dim ct2 As Variant
     With fps
      .Sheet = .SheetCount
      .GetText .ColLetterToNumber("E"), 17, vErrMucThue
+     .GetText .ColLetterToNumber("E"), 15, vErrEmpty
      
      .Sheet = 1
      ' kiem tra cot 2 bat buoc nhap
@@ -283,7 +288,7 @@ Dim ct2 As Variant
         .GetText .ColLetterToNumber("C"), .Row, ct2
         
         iWhiteRow = 0
-        If Trim$(ct2) <> "" Or Val(vonDK) <> 0 Or Val(vMucThue) <> 0 Then iWhiteRow = 1
+        If Trim$(ct2) <> "" Or Val(vonDK) <> 0 Then iWhiteRow = 1
         
         If Val(vMucThue) = 1000000 Or Val(vMucThue) = 500000 Or iWhiteRow = 0 Then
            .Col = .ColLetterToNumber("Y")
@@ -295,6 +300,19 @@ Dim ct2 As Variant
            .BackColor = mErrorColor
            iFlagMucThue = 1
         End If
+        
+        ' kiem tra cot ten
+        If Trim$(ct2) = "" Then
+           .Col = .ColLetterToNumber("C")
+           .CellNote = vErrEmpty
+           .BackColor = mErrorColor
+           iFlagEmty = 1
+        Else
+            .Col = .ColLetterToNumber("C")
+           .CellNote = ""
+           .BackColor = mNonErrorColor
+        End If
+        
         .Row = .Row + 1
         .Col = .ColLetterToNumber("B")
      Loop Until .Text = "aa"

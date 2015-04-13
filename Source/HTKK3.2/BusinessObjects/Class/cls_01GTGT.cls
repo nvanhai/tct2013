@@ -796,39 +796,21 @@ Dim NguoiKyCol As Long, NguoiKyRow As Long
 '            End If
             
             
-'            If .ActiveSheet = sheetPl01_7_GTGT Then
-'                    i = 1
-'                    .Col = .ColLetterToNumber("B")
-'                    .Row = 8
-'                    Do
-'                         .Text = str(i)
-'                         .GetText .ColLetterToNumber("D"), .Row, varTemp
-'                         If varTemp = vbNullString Or Trim(varTemp) = "" Then
-'                            .SetText .ColLetterToNumber("D"), .Row, TAX_Utilities_v1.Convert("Chi’c", TCVN, UNICODE)
-'                         End If
-'                         .Col = .ColLetterToNumber("B")
-'                         .Row = i + 8
-'                         i = i + 1
-'                    Loop Until .Text = "aa"
-'                    i = 1
-'                   .Row = .Row + 4
-'                     Do
-'                          .Text = str(i)
-'                                 .GetText .ColLetterToNumber("D"), .Row, varTemp
-'                                 If varTemp = vbNullString Or Trim(varTemp) = "" Then
-'                                    .SetText .ColLetterToNumber("D"), .Row, TAX_Utilities_v1.Convert("Chi’c", TCVN, UNICODE)
-'                                 End If
-'                          .Col = .ColLetterToNumber("B")
-'                          .Row = 1 + .Row
-'                          i = i + 1
-'                     Loop Until .Text = "bb"
-'                     i = 1
-'                    .Row = .Row + 4
-'                    .SetActiveCell iCol, iRow
-'                    .Row = iRow
-'                    .Col = iCol
-'                    .SetActiveCell iCol, iRow
-'            End If
+            If .ActiveSheet = sheetPl01_7_GTGT Then
+                    i = 1
+                    .Col = .ColLetterToNumber("B")
+                    .Row = 7
+                    Do
+                         .Text = str(i)
+                         .Col = .ColLetterToNumber("B")
+                         .Row = i + 7
+                         i = i + 1
+                    Loop Until .Text = "aa"
+                   
+                    .Row = iRow
+                    .Col = iCol
+                    .SetActiveCell iCol, iRow
+            End If
             If .ActiveSheet = sheetPl01_5_GTGT Then
                     i = 1
                     .Col = .ColLetterToNumber("B")
@@ -862,6 +844,23 @@ Dim NguoiKyCol As Long, NguoiKyRow As Long
                     .SetActiveCell iCol, iRow
             End If
             
+             If .ActiveSheet = sheetPl01_1TD_GTGT Then
+                    i = 1
+                    .Col = .ColLetterToNumber("B")
+                    .Row = 7
+                    Do
+                         .Text = str(i)
+                         .Col = .ColLetterToNumber("B")
+                         .Row = i + 7
+                         i = i + 1
+                    Loop Until .Text = "aa"
+                    .SetActiveCell iCol, iRow
+
+                    .Row = iRow
+                    .Col = iCol
+                    .SetActiveCell iCol, iRow
+             
+             End If
             
             ' set lock CQT phan bo
             If .ActiveSheet = sheetPl01_2TD_GTGT Then
@@ -4407,11 +4406,11 @@ Public Function getDieuChinhGiam(strOldValue As String) As String
                 strCurrentValue = strCurrentValue & "~CT33_" & Trim(varTemp)
 '                .GetText .ColLetterToNumber("L"), 43, varTemp
 '                strCurrentValue = strCurrentValue & "~CT40b_" & Trim(varTemp)
-                .GetText .ColLetterToNumber("L"), 46, varTemp
-                strCurrentValue = strCurrentValue & "~CT42_" & Trim(varTemp)
-                .GetText .ColLetterToNumber("L"), 44, varTemp
-                strCurrentValue = strCurrentValue & "~CT40_" & Trim(varTemp)
                 .GetText .ColLetterToNumber("L"), 47, varTemp
+                strCurrentValue = strCurrentValue & "~CT42_" & Trim(varTemp)
+                .GetText .ColLetterToNumber("L"), 45, varTemp
+                strCurrentValue = strCurrentValue & "~CT40_" & Trim(varTemp)
+                .GetText .ColLetterToNumber("L"), 48, varTemp
                 strCurrentValue = strCurrentValue & "~CT43_" & Trim(varTemp)
                 ' tinh chenh lech giua 2 lan dieu chinh
                 tempArrOld = Split(strOldValue, "~")
@@ -4589,7 +4588,7 @@ Public Function getValueTK(strFileLoadData As String) As String
     Exit Function
     
 ErrorHandle:
-    SaveErrorLog "cls_02GTGT", "getValueTK", Err.number, Err.Description
+    SaveErrorLog "cls_01GTGT", "getValueTK", Err.number, Err.Description
 End Function
 
 
@@ -5121,7 +5120,7 @@ Sub CellChange1(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Intege
                             ' chi tieu 39
                             .Sheet = 1
                             .Col = .ColLetterToNumber("L")
-                            .Row = 40
+                            .Row = 41
                             '.Formula = "D54"
                             .Formula = colD & rowHidden54
                             .Sheet = .ActiveSheet
@@ -5400,13 +5399,13 @@ With fps
                 .Sheet = 1
                 ' Chi tieu 39
                 .Col = .ColLetterToNumber("L")
-                .Row = 40
+                .Row = 41
                 .Lock = True
             Else
                 .Sheet = 1
                 ' Chi tieu 39
                 .Col = .ColLetterToNumber("L")
-                .Row = 40
+                .Row = 41
                 .Lock = False
             End If
     .EventEnabled(EventAllEvents) = True
