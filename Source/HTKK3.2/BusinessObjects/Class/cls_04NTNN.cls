@@ -523,8 +523,11 @@ Public Sub CheckErrorMST2(iRow As Integer, _
             '----- check ma so thue  -------
             .GetText .ColLetterToNumber(iCol), .Row, vMST
             If Trim(vMST) <> vbNullString Then
-                vMST = Replace(vMST, " ", "")
-                vMST = Replace(vMST, "-", "")
+'                vMST = Replace(vMST, " ", "")
+'                vMST = Replace(vMST, "-", "")
+                If Len(vMST) = 14 And InStr(vMST, "-") > 0 Then
+                   vMST = Left$(vMST, 10) & Right$(vMST, 3)
+                End If
                 strCheck = ""
                 If Len(vMST) = 10 Or Len(vMST) = 13 Then
                     strCheck = CheckTaxCode(Mid(vMST, 1, 1), Mid(vMST, 2, 1), Mid(vMST, 3, 1), Mid(vMST, 4, 1), Mid(vMST, 5, 1), Mid(vMST, 6, 1), Mid(vMST, 7, 1), Mid(vMST, 8, 1), Mid(vMST, 9, 1), Mid(vMST, 10, 1), Mid(vMST, 11, 1), Mid(vMST, 12, 1), Mid(vMST, 13, 1))

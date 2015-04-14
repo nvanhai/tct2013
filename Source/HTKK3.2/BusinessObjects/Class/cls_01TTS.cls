@@ -83,8 +83,8 @@ Public Sub Prepare2()
           'set thong tin header neu la to khai quy
           If strQuy = "TK_QUY" Then
             .SetText .ColLetterToNumber("G"), 29, 1
-            .SetText .ColLetterToNumber("O"), 29, ""
-            .SetText .ColLetterToNumber("R"), 29, ""
+            .SetText .ColLetterToNumber("O"), 29, "0"
+            .SetText .ColLetterToNumber("R"), 29, "0"
           Else
             .SetText .ColLetterToNumber("G"), 29, 0
             'lay tu thang den thang
@@ -98,7 +98,7 @@ Public Sub Prepare2()
                .Row = 29
                .Text = 1
                .Col = .ColLetterToNumber("R")
-               .Text = ""
+               .Text = "0"
                .SetText .ColLetterToNumber("P"), 3, TAX_Utilities_v1.FirstDay
                .SetText .ColLetterToNumber("T"), 3, TAX_Utilities_v1.LastDay
             ElseIf strLoaiTKQT = "QT_NAM_DAU" Then
@@ -106,7 +106,7 @@ Public Sub Prepare2()
                .Row = 29
                .Text = 1
                .Col = .ColLetterToNumber("O")
-               .Text = ""
+               .Text = "0"
                .SetText .ColLetterToNumber("P"), 3, TAX_Utilities_v1.FirstDay
                .SetText .ColLetterToNumber("T"), 3, TAX_Utilities_v1.LastDay
              End If
@@ -370,7 +370,7 @@ Dim MST1 As Variant, MST2 As Variant, MST3 As Variant, MST4 As Variant
     Dim mErrEmty As Variant, iFlagEmty As Integer, iFlagCheckData As Boolean
     Dim vCT27, vCT28, vNgayKy, iFlagNgayKy As Variant
     Dim mErrMSTTonTai, vMSTCT5 As Variant, iFlagMSTTonTai, rowMST As Integer
-    Dim CountRow As Long, rowDes As Long, iFlagMSTTrung As Integer, mErrMSTTrung As Variant
+    Dim countRow As Long, rowDes As Long, iFlagMSTTrung As Integer, mErrMSTTrung As Variant
         
     Dim vNgayVB As Variant
     Dim vErrorNgayVB As Variant
@@ -726,7 +726,7 @@ End Function
 Public Function InsertEnable(KeyCode As Integer, Shift As Integer) As Boolean
     InsertEnable = True
 End Function
-Private Sub filldata(pGrid As fpSpread, xmlNodeList As MSXML.IXMLDOMNodeList)
+Private Sub fillData(pGrid As fpSpread, xmlNodeList As MSXML.IXMLDOMNodeList)
     Dim xmlNodeCell As MSXML.IXMLDOMNode
     Dim lCol As Long, lRow As Long
     Dim lRows As Long
