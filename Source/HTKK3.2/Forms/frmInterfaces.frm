@@ -3689,7 +3689,14 @@ Private Sub DeleteKHBS()
                         strKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                         strSheetKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                     End If
-
+                ElseIf GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "55" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "56" Or GetAttribute(TAX_Utilities_v1.NodeValidity.parentNode, "ID") = "73" Then
+                    If strLoaiTKThang_PS = "TK_LANPS" Then
+                        strKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                        strSheetKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Day & TAX_Utilities_v1.month & TAX_Utilities_v1.Year & ".xml"
+                    ElseIf strLoaiTKThang_PS = "TK_NAM" Then
+                        strKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Year & ".xml"
+                        strSheetKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_" & TAX_Utilities_v1.Year & ".xml"
+                    End If
                 Else
                     strKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
                     strSheetKHBSDataFileName = TAX_Utilities_v1.DataFolder & "bs" & strSolanBS & "_KHBS_" & GetAttribute(TAX_Utilities_v1.NodeValidity.childNodes(lSheet), "DataFile") & "_0" & TAX_Utilities_v1.ThreeMonths & TAX_Utilities_v1.Year & ".xml"
@@ -4833,7 +4840,11 @@ Private Sub SetValueToKhaiHeader(ByVal xmlTK As MSXML.DOMDocument)
             End If
 
             If xmlTK.getElementsByTagName("kyKKhai").length > 0 Then
-                xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_v1.NodeMenu, "ID"))
+                If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "23" Then
+                    xmlTK.getElementsByTagName("kyKKhai")(0).Text = Right$(TAX_Utilities_v1.FirstDay, 4)
+                Else
+                    xmlTK.getElementsByTagName("kyKKhai")(0).Text = GetKyKeKhai(GetAttribute(TAX_Utilities_v1.NodeMenu, "ID"))
+                End If
             End If
 
             If TAX_Utilities_v1.FirstDay <> vbNullString And TAX_Utilities_v1.LastDay <> vbNullString Then
@@ -5916,12 +5927,18 @@ Private Sub KetXuatXML()
                         End If
                     End If
                     
-                    'Truong hop Minoccur = 1 thi xoa the rong
-                    If MinOccur = "1" And (xmlCellTKNode.Text = "0" Or xmlCellTKNode.Text = "") Then
-                        xmlCellTKNode.parentNode.removeChild xmlCellTKNode
-                                                
+                     If GetAttribute(TAX_Utilities_v1.NodeMenu, "ID") = "23" And strQuy = "TK_QUY" Then
+                        ' xu ly rieng to khai 01/TTS
+                        If MinOccur = "1" And (xmlCellTKNode.Text = "0" Or xmlCellTKNode.Text = "") And xmlCellTKNode.nodeName <> "quyetToanRiengTungNam" Then
+                            xmlCellTKNode.parentNode.removeChild xmlCellTKNode
+                        End If
+                    Else
+                        'Truong hop Minoccur = 1 thi xoa the rong
+                        If MinOccur = "1" And (xmlCellTKNode.Text = "0" Or xmlCellTKNode.Text = "") Then
+                            xmlCellTKNode.parentNode.removeChild xmlCellTKNode
+                                                    
+                        End If
                     End If
-
                 Next
 
             End If
@@ -5959,7 +5976,7 @@ Private Sub KetXuatXML()
                     Else
 
                         'If MaTk = "02_GTGT" Or MaTk = "03_GTGT" Or MaTk = "04_GTGT" Or MaTk = "05_GTGT" Or MaTk = "01A_TNDN" Or MaTk = "01B_TNDN" Or MaTk = "02_TNDN" Or MaTk = "01_NTNN" Or MaTk = "03_NTNN" Or MaTk = "01_TAIN" Or MaTk = "01_TTDB" Or MaTk = "01_BVMT" Or MaTk = "01_TBVMT" Or MaTk = "01_TD_GTGT" Or MaTk = "01A_TNDN_DK" Or MaTk = "01B_TNDN_DK" Or MaTk = "01_TAIN_DK" Or MaTk = "03_TD_TAIN" Or MaTk = "01_BCTL_DK" Or MaTk = "01_PHLP" Then
-                        If MaTk = "02_GTGT" Or MaTk = "03_GTGT" Or MaTk = "04_GTGT" Or MaTk = "05_GTGT" Or MaTk = "01A_TNDN" Or MaTk = "01B_TNDN" Or MaTk = "03_NTNN" Or MaTk = "01_TAIN" Or MaTk = "01_TTDB" Or MaTk = "01_BVMT" Or MaTk = "01_TBVMT" Or MaTk = "01_TD_GTGT" Or MaTk = "01A_TNDN_DK" Or MaTk = "01B_TNDN_DK" Or MaTk = "01_TAIN_DK" Or MaTk = "03_TD_TAIN" Or MaTk = "01_BCTL_DK" Or MaTk = "01_PHLP" Then
+                        If MaTk = "02_GTGT" Or MaTk = "03_GTGT" Or MaTk = "04_GTGT" Or MaTk = "05_GTGT" Or MaTk = "01A_TNDN" Or MaTk = "01B_TNDN" Or MaTk = "03_NTNN" Or MaTk = "01_TAIN" Or MaTk = "01_TTDB" Or MaTk = "01_BVMT" Or MaTk = "01_TBVMT" Or MaTk = "01_TD_GTGT" Or MaTk = "01A_TNDN_DK" Or MaTk = "01B_TNDN_DK" Or MaTk = "01_TAIN_DK" Or MaTk = "03_TD_TAIN" Or MaTk = "01_BCTL_DK" Or MaTk = "01_PHLP" Or MaTk = "04_TNDN" Or MaTk = "06_TNDN" Then
                             xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_TT156_xml.xml")
 
                             xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
@@ -6210,7 +6227,7 @@ Private Sub KetXuatXML()
                                         End If
                                     End If
                                 End If
-                                
+                                                                
                                 If MinOccur = "1" And (xmlCellTKNode.Text = "0" Or xmlCellTKNode.Text = "") Then
                                     xmlCellTKNode.parentNode.removeChild xmlCellTKNode
                                 
@@ -6748,7 +6765,7 @@ Private Function GetAllMapPhuLuc() As MSXML.DOMDocument
     
                     'If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01A_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Then
                     'If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01B_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Or MaPL = "01_TD_GTGT" Or MaPL = "01A_TNDN_DK" Or MaPL = "01B_TNDN_DK" Or MaPL = "01_TAIN_DK" Or MaPL = "03_TD_TAIN" Or MaPL = "01_BCTL_DK" Or MaPL = "01_PHLP" Then
-                    If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01B_TNDN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Or MaPL = "01_TD_GTGT" Or MaPL = "01A_TNDN_DK" Or MaPL = "01B_TNDN_DK" Or MaPL = "01_TAIN_DK" Or MaPL = "03_TD_TAIN" Or MaPL = "01_BCTL_DK" Or MaPL = "01_PHLP" Then
+                    If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01B_TNDN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Or MaPL = "01_TD_GTGT" Or MaPL = "01A_TNDN_DK" Or MaPL = "01B_TNDN_DK" Or MaPL = "01_TAIN_DK" Or MaPL = "03_TD_TAIN" Or MaPL = "01_BCTL_DK" Or MaPL = "01_PHLP" Or MaPL = "04_TNDN" Or MaPL = "06_TNDN" Then
                         MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
                     Else
                         MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_QT_TT156_xml.xml")

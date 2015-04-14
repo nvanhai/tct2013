@@ -5,7 +5,8 @@
 		<moTaBMau/>
 	</Static>
 	<Static GroupName="HinhThucKeKhai">
-		<quyetToanRiengTungNam MinOccur="1">O_29</quyetToanRiengTungNam>		
+		<quyetToanRiengTungNam MinOccur="1">O_29</quyetToanRiengTungNam>
+		<quyetToanHetVaoNamDau MinOccur="1">R_29</quyetToanHetVaoNamDau>		
 	</Static>
 	<Static GroupName="CT21">
 		<soVBUQ>H_13</soVBUQ>
