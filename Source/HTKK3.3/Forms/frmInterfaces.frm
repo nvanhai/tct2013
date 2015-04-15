@@ -5976,7 +5976,7 @@ Private Sub KetXuatXML()
                     Else
 
                         'If MaTk = "02_GTGT" Or MaTk = "03_GTGT" Or MaTk = "04_GTGT" Or MaTk = "05_GTGT" Or MaTk = "01A_TNDN" Or MaTk = "01B_TNDN" Or MaTk = "02_TNDN" Or MaTk = "01_NTNN" Or MaTk = "03_NTNN" Or MaTk = "01_TAIN" Or MaTk = "01_TTDB" Or MaTk = "01_BVMT" Or MaTk = "01_TBVMT" Or MaTk = "01_TD_GTGT" Or MaTk = "01A_TNDN_DK" Or MaTk = "01B_TNDN_DK" Or MaTk = "01_TAIN_DK" Or MaTk = "03_TD_TAIN" Or MaTk = "01_BCTL_DK" Or MaTk = "01_PHLP" Then
-                        If MaTk = "02_GTGT" Or MaTk = "03_GTGT" Or MaTk = "04_GTGT" Or MaTk = "05_GTGT" Or MaTk = "01A_TNDN" Or MaTk = "01B_TNDN" Or MaTk = "03_NTNN" Or MaTk = "01_TAIN" Or MaTk = "01_TTDB" Or MaTk = "01_BVMT" Or MaTk = "01_TBVMT" Or MaTk = "01_TD_GTGT" Or MaTk = "01A_TNDN_DK" Or MaTk = "01B_TNDN_DK" Or MaTk = "01_TAIN_DK" Or MaTk = "03_TD_TAIN" Or MaTk = "01_BCTL_DK" Or MaTk = "01_PHLP" Or MaTk = "04_TNDN" Or MaTk = "06_TNDN" Then
+                        If MaTk = "02_GTGT" Or MaTk = "03_GTGT" Or MaTk = "04_GTGT" Or MaTk = "05_GTGT" Or MaTk = "01A_TNDN" Or MaTk = "01B_TNDN" Or MaTk = "03_NTNN" Or MaTk = "01_TAIN" Or MaTk = "01_TTDB" Or MaTk = "01_BVMT" Or MaTk = "01_TBVMT" Or MaTk = "01_TD_GTGT" Or MaTk = "01A_TNDN_DK" Or MaTk = "01B_TNDN_DK" Or MaTk = "01_TAIN_DK" Or MaTk = "03_TD_TAIN" Or MaTk = "01_BCTL_DK" Or MaTk = "01_PHLP" Or MaTk = "04_TNDN" Or MaTk = "01_MBAI" Then
                             xmlPL.Load GetAbsolutePath("..\InterfaceTemplates\xml\KHBS_TT156_xml.xml")
 
                             xmlMapPL.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
@@ -6765,7 +6765,7 @@ Private Function GetAllMapPhuLuc() As MSXML.DOMDocument
     
                     'If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01A_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Then
                     'If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01B_TNDN" Or MaPL = "02_TNDN" Or MaPL = "01_NTNN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Or MaPL = "01_TD_GTGT" Or MaPL = "01A_TNDN_DK" Or MaPL = "01B_TNDN_DK" Or MaPL = "01_TAIN_DK" Or MaPL = "03_TD_TAIN" Or MaPL = "01_BCTL_DK" Or MaPL = "01_PHLP" Then
-                    If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01B_TNDN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Or MaPL = "01_TD_GTGT" Or MaPL = "01A_TNDN_DK" Or MaPL = "01B_TNDN_DK" Or MaPL = "01_TAIN_DK" Or MaPL = "03_TD_TAIN" Or MaPL = "01_BCTL_DK" Or MaPL = "01_PHLP" Or MaPL = "04_TNDN" Or MaPL = "06_TNDN" Then
+                    If MaPL = "02_GTGT" Or MaPL = "03_GTGT" Or MaPL = "04_GTGT" Or MaPL = "05_GTGT" Or MaPL = "01A_TNDN" Or MaPL = "01B_TNDN" Or MaPL = "03_NTNN" Or MaPL = "01_TAIN" Or MaPL = "01_TTDB" Or MaPL = "01_BVMT" Or MaPL = "01_TBVMT" Or MaPL = "01_TD_GTGT" Or MaPL = "01A_TNDN_DK" Or MaPL = "01B_TNDN_DK" Or MaPL = "01_TAIN_DK" Or MaPL = "03_TD_TAIN" Or MaPL = "01_BCTL_DK" Or MaPL = "01_PHLP" Or MaPL = "04_TNDN" Or MaPL = "01_MBAI" Then
                         MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_TT156_xml.xml")
                     Else
                         MapPl.Load GetAbsolutePath("..\InterfaceIni\KHBS_QT_TT156_xml.xml")
@@ -9351,7 +9351,7 @@ Private Sub Command1_Click()
             numRowI = UBound(arrDieuChinhTang)
             flagTang = True
         End If
-        If GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01GTGT" Then
+        If GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01GTGT" Then
                 If strDieuChinhTangGiam(2) <> "" Then
                     arrDieuChinh4043 = Split(strDieuChinhTangGiam(2), "~")
                     numRowIII = UBound(arrDieuChinh4043)
@@ -9392,7 +9392,7 @@ Private Sub Command1_Click()
                 End If
         End If
         ' set gia tri tong 32 cho to khai 02_GTGT
-        If GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_02GTGT" Then
+        If GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_02GTGT" Then
             fpSpread1.EventEnabled(EventAllEvents) = False
             tempCurrSheet = mCurrentSheet
             mCurrentSheet = fpSpread1.SheetCount - 1
@@ -9403,22 +9403,22 @@ Private Sub Command1_Click()
             fpSpread1.EventEnabled(EventAllEvents) = True
         End If
         ' Set gia tri tong 34 cho to khai 03_GTGT
-        If GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_03GTGT" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01ATNDN" Or _
-        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01BTNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01TTDB" Or _
-        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01TAIN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_02TAIN" Or _
-        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_03TNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_05GTGT" Or _
-        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_02BVMT" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01PHXD" Or _
-        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_02TNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01BVMT" Or _
-        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_02NTNN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_03NTNN" Or _
-        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_04NTNN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01_TD_GTGT" Or _
-        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_03_TD_TAIN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_04GTGT" Or _
-        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01NTNN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01TBVMT" _
-        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01ATNDN_DK" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01BTNDN_DK" _
-        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01TAIN_DK" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_03A_TD_TAIN" _
-        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_02TNDN_DK" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_02TAIN_DK" _
-        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01PHLP" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_02PHLP" _
-        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_06TNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_04TNDN" _
-        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01MBAI" Then
+        If GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_03GTGT" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01ATNDN" Or _
+        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01BTNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01TTDB" Or _
+        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01TAIN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_02TAIN" Or _
+        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_03TNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_05GTGT" Or _
+        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_02BVMT" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01PHXD" Or _
+        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_02TNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01BVMT" Or _
+        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_02NTNN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_03NTNN" Or _
+        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_04NTNN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01_TD_GTGT" Or _
+        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_03_TD_TAIN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_04GTGT" Or _
+        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01NTNN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01TBVMT" _
+        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01ATNDN_DK" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01BTNDN_DK" _
+        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01TAIN_DK" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_03A_TD_TAIN" _
+        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_02TNDN_DK" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_02TAIN_DK" _
+        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01PHLP" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_02PHLP" _
+        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_06TNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_04TNDN" _
+        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01MBAI" Then
         
             If strIDTkTT156 = "99" Or strIDTkTT156 = "98" Or strIDTkTT156 = "92" Or strIDTkTT156 = "93" Or strIDTkTT156 = "89" Then
                 fpSpread1.EventEnabled(EventAllEvents) = False
@@ -9614,7 +9614,7 @@ Private Sub Command1_Click()
         DisplayMessage "0222", msOKOnly, miInformation
         
         ' Bat lai event cho to khai 01A/TNDN, 01B/TNDN
-        If GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01BTNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01ATNDN" Then
+        If GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01BTNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01ATNDN" Then
             fpSpread1.EventEnabled(EventAllEvents) = True
         End If
     End If
@@ -14449,7 +14449,7 @@ Private Sub TonghopKHBS()
             numRowI = UBound(arrDieuChinhTang)
             flagTang = True
         End If
-        If GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01GTGT" Then
+        If GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01GTGT" Then
                 If strDieuChinhTangGiam(2) <> "" Then
                     arrDieuChinh4043 = Split(strDieuChinhTangGiam(2), "~")
                     numRowIII = UBound(arrDieuChinh4043)
@@ -14490,7 +14490,7 @@ Private Sub TonghopKHBS()
                 End If
         End If
         ' set gia tri tong 32 cho to khai 02_GTGT
-        If GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_02GTGT" Then
+        If GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_02GTGT" Then
             fpSpread1.EventEnabled(EventAllEvents) = False
             tempCurrSheet = mCurrentSheet
             mCurrentSheet = fpSpread1.SheetCount - 1
@@ -14501,22 +14501,22 @@ Private Sub TonghopKHBS()
             fpSpread1.EventEnabled(EventAllEvents) = True
         End If
         ' Set gia tri tong 34 cho to khai 03_GTGT
-        If GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_03GTGT" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01ATNDN" Or _
-        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01BTNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01TTDB" Or _
-        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01TAIN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_02TAIN" Or _
-        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_03TNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_05GTGT" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01BVMT" Or _
-        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_02BVMT" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01PHXD" Or _
-        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_02TNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_02NTNN" Or _
-        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_04NTNN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_03NTNN" _
-        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01_TD_GTGT" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_03_TD_TAIN" _
-        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_04GTGT" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01NTNN" _
-        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01TBVMT" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01ATNDN_DK" _
-        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01BTNDN_DK" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01TAIN_DK" _
-        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_03A_TD_TAIN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_02TAIN_DK" _
-        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_02TNDN_DK" _
-        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01PHLP" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_02PHLP" _
-        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_06TNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_04TNDN" _
-        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v1.cls_01MBAI" Then
+        If GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_03GTGT" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01ATNDN" Or _
+        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01BTNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01TTDB" Or _
+        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01TAIN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_02TAIN" Or _
+        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_03TNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_05GTGT" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01BVMT" Or _
+        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_02BVMT" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01PHXD" Or _
+        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_02TNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_02NTNN" Or _
+        GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_04NTNN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_03NTNN" _
+        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01_TD_GTGT" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_03_TD_TAIN" _
+        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_04GTGT" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01NTNN" _
+        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01TBVMT" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01ATNDN_DK" _
+        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01BTNDN_DK" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01TAIN_DK" _
+        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_03A_TD_TAIN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_02TAIN_DK" _
+        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_02TNDN_DK" _
+        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01PHLP" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_02PHLP" _
+        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_06TNDN" Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_04TNDN" _
+        Or GetAttribute(TAX_Utilities_v2.NodeValidity, "Class") = "TAX_Business_v2.cls_01MBAI" Then
             If strIdTK_TT156 = "99" Or strIdTK_TT156 = "98" Or strIdTK_TT156 = "92" Or strIdTK_TT156 = "93" Or strIdTK_TT156 = "89" Then
                 fpSpread1.EventEnabled(EventAllEvents) = False
                 tempCurrSheet = mCurrentSheet
