@@ -1,0 +1,171 @@
+1/4/2013 4:39:38 PM frmInterfaces cmdExport_Click
+ 438 : Object doesn't support this property or method
+------------------------------------------------------------
+1/8/2013 1:48:01 PM frmInterfaces DeleteNode
+ 380 : 
+------------------------------------------------------------
+1/8/2013 1:48:01 PM frmInterfaces DeleteNode
+ 380 : 
+------------------------------------------------------------
+1/8/2013 1:48:01 PM frmInterfaces DeleteNode
+ 380 : 
+------------------------------------------------------------
+1/8/2013 1:48:01 PM frmInterfaces DeleteNode
+ 380 : 
+------------------------------------------------------------
+2/3/2013 10:48:15 PM frmInterfaces ResizeButton
+ 380 : Invalid property value
+------------------------------------------------------------
+2/28/2013 11:24:41 AM frmInterfaces ResizeButton
+ 380 : Invalid property value
+------------------------------------------------------------
+3/1/2013 9:55:00 AM frmInterfaces SetCellNote
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+3/1/2013 9:55:24 AM frmInterfaces SetCellNote
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+3/1/2013 9:55:48 AM frmInterfaces SetCellNote
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+3/1/2013 9:56:10 AM frmInterfaces SetCellNote
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+3/1/2013 9:56:12 AM frmInterfaces SetCellNote
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+3/1/2013 9:56:20 AM frmInterfaces SetCellNote
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+3/1/2013 9:56:32 AM frmInterfaces SetCellNote
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+3/1/2013 9:56:45 AM frmInterfaces SetCellNote
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+3/1/2013 9:56:47 AM frmInterfaces SetCellNote
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+3/1/2013 9:56:57 AM frmInterfaces SetCellNote
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+3/1/2013 9:57:52 AM frmInterfaces SetCellNote
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+3/1/2013 10:02:36 AM frmInterfaces SetCellNote
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+3/1/2013 1:50:44 PM frmInterfaces ResizeButton
+ 380 : Invalid property value
+------------------------------------------------------------
+3/18/2013 10:07:26 AM frmInterfaces moveDataNKH
+ 9 : Subscript out of range
+------------------------------------------------------------
+3/18/2013 10:17:53 AM frmInterfaces moveDataNKH
+ 9 : Subscript out of range
+------------------------------------------------------------
+3/20/2013 8:35:42 AM frmInterfaces fpSpread1_ButtonClicked
+ 380 : Invalid property value
+------------------------------------------------------------
+4/3/2013 11:36:01 AM frmPeriod LoadGrid
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+4/3/2013 11:40:16 AM frmPeriod LoadGrid
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+4/12/2013 1:50:49 PM frmInterfaces moveDataNKH
+ 6 : Overflow
+------------------------------------------------------------
+4/12/2013 11:41:40 PM frmPeriod LoadGrid
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+4/13/2013 4:48:22 PM frmInterfaces ResizeButton
+ 380 : Invalid property value
+------------------------------------------------------------
+4/19/2013 8:56:40 AM frmInterfaces ResizeButton
+ 380 : Invalid property value
+------------------------------------------------------------
+4/19/2013 9:22:50 AM frmInterfaces ResizeButton
+ 380 : Invalid property value
+------------------------------------------------------------
+4/19/2013 9:26:21 AM frmInterfaces ResizeButton
+ 380 : Invalid property value
+------------------------------------------------------------
+4/19/2013 12:38:03 PM frmInterfaces ResizeButton
+ 380 : Invalid property value
+------------------------------------------------------------
+4/19/2013 1:42:00 PM frmInterfaces ResizeButton
+ 380 : Invalid property value
+------------------------------------------------------------
+5/13/2013 9:41:33 AM frmPeriod LoadGrid
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+5/13/2013 9:42:00 AM frmPeriod LoadGrid
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+5/13/2013 3:41:30 PM frmInterfaces ResizeButton
+ 380 : Invalid property value
+------------------------------------------------------------
+5/14/2013 12:59:46 PM frmPeriod LoadGrid
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+5/14/2013 1:00:05 PM frmPeriod LoadGrid
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+5/14/2013 1:08:47 PM frmPeriod LoadGrid
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+5/14/2013 3:50:54 PM frmInterfaces ResizeButton
+ 380 : Invalid property value
+------------------------------------------------------------
+5/14/2013 3:54:19 PM frmInterfaces ResizeButton
+ 380 : Invalid property value
+------------------------------------------------------------
+5/15/2013 9:40:06 AM frmInterfaces SetCellNote
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+5/15/2013 10:18:30 AM frmInterfaces SetCellNote
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+5/15/2013 10:43:09 AM frmInterfaces SetCellNote
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+5/15/2013 11:49:44 AM frmInterfaces SetCellNote
+ 5 : Invalid procedure call or argument
+------------------------------------------------------------
+5/23/2013 10:59:20 AM frmInterfaces ResizeButton
+ 380 : Invalid property value
+------------------------------------------------------------
+24/05/2013 5:01:33 CH frmPeriod LoadGrid
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+6/17/2013 5:32:20 PM mdlFunctions GetValidityNode
+ 13 : Type mismatch
+------------------------------------------------------------
+6/17/2013 5:32:20 PM frmPeriod LoadGrid
+ 91 : Object variable or With block variable not set
+------------------------------------------------------------
+7/8/2014 10:11:37 AM frmTreeviewMenu AddSubNode
+ 9 : Subscript out of range
+------------------------------------------------------------
+7/8/2014 10:11:37 AM frmTreeviewMenu AddSubNode
+ 9 : Subscript out of range
+------------------------------------------------------------
+7/8/2014 10:11:37 AM frmTreeviewMenu AddSubNode
+ 9 : Subscript out of range
+------------------------------------------------------------
+7/8/2014 10:11:37 AM frmTreeviewMenu AddSubNode
+ 9 : Subscript out of range
+------------------------------------------------------------
+7/8/2014 10:18:51 AM frmTreeviewMenu AddSubNode
+ 9 : Subscript out of range
+------------------------------------------------------------
+7/8/2014 10:18:51 AM frmTreeviewMenu AddSubNode
+ 9 : Subscript out of range
+------------------------------------------------------------
+7/8/2014 10:18:51 AM frmTreeviewMenu AddSubNode
+ 9 : Subscript out of range
+------------------------------------------------------------
+7/8/2014 10:18:51 AM frmTreeviewMenu AddSubNode
+ 9 : Subscript out of range
+------------------------------------------------------------

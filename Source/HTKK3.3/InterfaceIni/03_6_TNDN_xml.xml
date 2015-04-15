@@ -1,0 +1,22 @@
+<PL03_6_TNDN>
+	<Static GroupName="PL03_6_TNDN">
+		<mucTrichLap>N_10</mucTrichLap>
+		<soTienTrichLap>N_12</soTienTrichLap>
+	</Static>
+	<Dynamic GroupName="TTinNoiDung_PL036TNDN">
+		<NoiDungPL036TNDN id="ID_3">
+			<namTrLap>D_26</namTrLap>
+			<mucTrLapKyNay>E_26</mucTrLapKyNay>
+			<soTienTrLapKyNay>O_26</soTienTrLapKyNay>
+			<soTienSDungKyNay>Q_26</soTienSDungKyNay>
+			<soTienTrLapKyTruoc>R_26</soTienTrLapKyTruoc>
+			<soTienTrLapKySau>U_26</soTienTrLapKySau>
+		</NoiDungPL036TNDN>
+	</Dynamic>
+	<Static GroupName="PL03_6_TNDN">
+		<tongTienTrLapKyNay>O_28</tongTienTrLapKyNay>
+		<tongTienSDungKyNay>Q_28</tongTienSDungKyNay>
+		<tongTienTrLapKyTruoc>R_28</tongTienTrLapKyTruoc>
+		<tongTienTrLapKySau>U_28</tongTienTrLapKySau>
+	</Static>
+</PL03_6_TNDN>

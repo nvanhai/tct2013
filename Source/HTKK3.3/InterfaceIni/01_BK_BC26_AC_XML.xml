@@ -1,0 +1,42 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>106</maTKhai>
+		<tenTKhai></tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Dynamic GroupName="PLuc_3.10">
+		<ChiTietHoaDon id="id">
+			<maHoaDon>C_45</maHoaDon>
+			<tenHoaDon>D_45</tenHoaDon>
+			<kyHieuMau>O_45</kyHieuMau>
+			<kyHieuHD>S_45</kyHieuHD>
+			<soLuong>AA_45</soLuong>
+			<tuSo>V_45</tuSo>
+			<denSo>Y_45</denSo>
+		</ChiTietHoaDon>
+	</Dynamic>
+	<Static GroupName="PLuc_3.10">
+		<nguoiDaiDien>R_49</nguoiDaiDien>
+		<ngayBCao>R_51</ngayBCao>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_49</nguoiKy>
+		<ngayKy>R_51</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue></tenNVienDLyThue>
+		<cchiHNghe></cchiHNghe>
+	</Static>
+</HSoKhaiThue>

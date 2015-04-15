@@ -1,0 +1,31 @@
+<PL01_KHBS>
+	<Dynamic GroupName="NDUNGKHAIBOSUNGDIEUCHINH" MinOccur="1">
+		<KHBSDieuChinhTang id="ID_1">
+			<ct2>BD_9</ct2>
+			<ct3>BE_9</ct3>
+			<ct4>BF_9</ct4>
+			<ct5>BG_9</ct5>
+			<ct6>BH_9</ct6>
+		</KHBSDieuChinhTang>
+	</Dynamic>
+	<Dynamic GroupName="NDUNGKHAIBOSUNGDIEUCHINH" MinOccur="1">
+		<KHBSDieuChinhGiam id="ID_2">
+			<ct2>BD_13</ct2>
+			<ct3>BE_13</ct3>
+			<ct4>BF_13</ct4>
+			<ct5>BG_13</ct5>
+			<ct6>BH_13</ct6>
+		</KHBSDieuChinhGiam>
+	</Dynamic>
+	<Static GroupName="TongHopDCTangGiamPNop">
+			<ct2>BD_15</ct2>
+			<ct3>BE_15</ct3>
+			<ct4>BF_15</ct4>
+			<ct5>BG_15</ct5>
+			<ct6>BH_15</ct6>
+	</Static>
+	<Static GroupName="PhatChamNop">
+		<soNgayNopCham>BE_17</soNgayNopCham>
+		<soTienPhatNopCham>BE_18</soTienPhatNopCham>
+	</Static>
+</PL01_KHBS>

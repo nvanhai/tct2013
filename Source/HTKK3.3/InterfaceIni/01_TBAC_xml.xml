@@ -1,0 +1,55 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>106</maTKhai>
+		<tenTKhai>Thông báo phát hành hóa đơn</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Dynamic GroupName="HoaDon" MinOccur="1">
+		<ChiTiet ID="String">
+			<tenLoaiHDon>D_35</tenLoaiHDon>
+			<mauSo>J_35</mauSo>
+			<kyHieu>L_35</kyHieu>
+			<soLuong TEXTNumber="1">N_35</soLuong>
+			<tuSo TEXTNumber="1">P_35</tuSo>
+			<denSo TEXTNumber="1">R_35</denSo>
+			<ngayBDauSDung>T_35</ngayBDauSDung>
+			<DoanhNghiepIn>
+				<ten>W_35</ten>
+				<mst TINType="1">AA_35</mst>
+			</DoanhNghiepIn>
+			<HopDongDatIn>
+				<so>AD_35</so>
+				<ngay>AE_35</ngay>
+			</HopDongDatIn>
+		</ChiTiet>
+	</Dynamic>
+	<Static GroupName="DonViChuQuan">
+		<ten>F_40</ten>
+		<mst TINType="1">F_42</mst>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tenCQTTiepNhan>K_44</tenCQTTiepNhan>
+		<nguoiDaiDien>AA_48</nguoiDaiDien>
+		<ngayBCao>AA_46</ngayBCao>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>AA_48</nguoiKy>
+		<ngayKy>AA_46</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue></tenNVienDLyThue>
+		<cchiHNghe></cchiHNghe>
+	</Static>
+</HSoKhaiThue>

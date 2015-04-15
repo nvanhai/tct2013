@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 rel. 3 (http://www.altova.com) by MESMERiZE (MSM) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="TKhaiThue" targetNamespace="TKhaiThue" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.5">
+	<xs:redefine schemaLocation="../TKhaiThue.xsd">
+		<xs:complexType name="CTieuTKhaiChinhType">
+			<xs:annotation>
+				<xs:documentation>Tờ khai quyết toán thuế thu nhập cá nhân – Mẫu 06/KK-TNCN</xs:documentation>
+			</xs:annotation>
+			<xs:complexContent>
+				<xs:extension base="CTieuTKhaiChinhType">
+					<xs:sequence>
+						<xs:element name="ThuNhapTuDauVon">
+							<xs:annotation>
+								<xs:documentation>I. Thu nhập từ đầu tư vốn:</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct21" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng thu nhập tính thuế</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct22" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế thu nhập cá nhân (TNCN) đã khấu trừ</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ThuNhapTuChuyenNhuongCKhoan">
+							<xs:annotation>
+								<xs:documentation>II. Thu nhập từ chuyển nhượng chứng khoán:</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct23" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng giá trị chứng khoán chuyển nhượng </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct24" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế TNCN đã khấu trừ </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ThuNhapTuNhuongQuyenTMai">
+							<xs:annotation>
+								<xs:documentation>III	Thu nhập từ bản quyền, nhượng quyền thương mại:</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct25" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng thu nhập tính thuế</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct26" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế TNCN đã khấu trừ </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ThuNhapTuTrungThuong">
+							<xs:annotation>
+								<xs:documentation>IV. Thu nhập từ trúng thưởng</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct27" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng thu nhập tính thuế</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct28" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế TNCN đã khấu trừ </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="TNhapTuKDoanhCaNhanKhongCTru">
+							<xs:annotation>
+								<xs:documentation>V. Thu nhập từ kinh doanh trả cho cá nhân không cư trú:</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct29" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số cá nhân nhận thu nhập chịu thuế</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct30" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng thu nhập chịu thuế trả cho cá nhân</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct31" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế TNCN đã khấu trừ  </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="TNhapTuCNhungVonCNhanKhongCuTru">
+							<xs:annotation>
+								<xs:documentation>VI. Thu nhập từ chuyển nhượng vốn của cá nhân không cư trú</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct32" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng giá chuyển nhượng vốn</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct33" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế TNCN đã khấu trừ </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+		<xs:complexType name="PLucType">
+			<xs:complexContent>
+				<xs:extension base="PLucType">
+					<xs:sequence>
+						<xs:element name="PLuc_06_1_BK" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="BKeThuTNCNTuCNCKhoan">
+										<xs:annotation>
+											<xs:documentation>BẢNG KÊ CHI TIẾT GIÁ TRỊ CHUYỂN NHƯỢNG VÀ THUẾ 
+THU NHẬP CÁ NHÂN ĐÃ KHẤU TRỪ ĐỐI VỚI THU NHẬP 
+TỪ CHUYỂN NHƯỢNG CHỨNG KHOÁN </xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ChiTietBKe" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="coDieuChinhSoLieu" type="xs:boolean" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation>Có điều chỉnh số liệu (cập nhật cho ứng dụng HTKK, Tool QTT)</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ct07" type="xs:string" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Họ và tên</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ct08" type="TINType" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Mã số thuế</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ct09" type="xs:string" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Số CMND/Hộ chiếu</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ct10" type="xs:long" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Tổng giá trị chuyển nhượng trong kỳ</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ct11" type="xs:long" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Thuế TNCN đã khấu trừ</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="id" type="xs:string" use="required"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="ct12" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng cộng giá trị chuyển nhượng trong kỳ</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct13" type="xs:long" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng cộng Thuế TNCN đã 
+khấu trừ
+</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:redefine>
+</xs:schema>

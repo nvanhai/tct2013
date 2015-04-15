@@ -1,0 +1,47 @@
+<HSoThueDTu>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>86</maTKhai>
+		<tenTKhai>TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP DOANH NGHIỆP ĐỐI VỚI DẦU KHÍ (02/TNDN-DK)</tenTKhai>
+		<moTaBMau/>
+	</Static>
+
+	<Static GroupName="LoaiDauKhi">
+		<ct01 MinOccur="1">O_30</ct01>
+		<ct02 MinOccur="1">P_30</ct02>
+		<ct03 MinOccur="1">Q_30</ct03>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct15>P_47</ct15>		
+	</Static>
+	<Static GroupName="LoaiHinhUyQuyen">
+		<donViUyQuyen MinOccur="1">P_49</donViUyQuyen>
+		<daiLyThue MinOccur="1">Z_49</daiLyThue>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tenDonViUyQuyen>AB_49</tenDonViUyQuyen>
+		<ct25>AV_55</ct25>
+		<ct26>AV_56</ct26>
+		<ct27>AV_57</ct27>
+		<ct27a>AV_58</ct27a>
+		<ct27b>AV_59</ct27b>
+		<ct28>AV_60</ct28>
+		<ct29>AV_61</ct29>
+		<ct30>AV_62</ct30>
+		<ct31>AV_63</ct31>
+		<ct32>AV_64</ct32>
+		<ct33>AV_65</ct33>
+		<ct34>AV_66</ct34>
+		<ct35>AV_67</ct35>
+		<ct36>AV_68</ct36>
+		<ct37>AV_69</ct37>
+		<ct38>AV_70</ct38>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>AR_86</nguoiKy>
+		<ngayKy>AR_88</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>U_86</tenNVienDLyThue>
+		<cchiHNghe>U_88</cchiHNghe>
+	</Static>
+</HSoThueDTu>

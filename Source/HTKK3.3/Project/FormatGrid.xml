@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Format>
+	<TKhai ID="17" Sheet="2" FirstCol="B" FirstRow="22" LastCol="S" FormatCol="D,E,F,G,H,I,J,K,L,N,O" CopyRowRange="B,M,Q,R,S"/>
+	<TKhai ID="17" Sheet="3" FirstCol="B" FirstRow="22" LastCol="J" FormatCol="C,D,E,F,G,H,I,J" CopyRowRange="B"/>
+	<TKhai ID="17" Sheet="4" FirstCol="B" FirstRow="22" LastCol="J" FormatCol="C,D,E,F,G,H,I,J" CopyRowRange="B"/>
+</Format>

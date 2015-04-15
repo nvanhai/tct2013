@@ -1,0 +1,4 @@
+VBGROUP 5.0
+StartupProject=HTKK.vbp
+Project=..\TaxUtilities\TAX_Utilities_New.vbp
+Project=..\BusinessObjects\TAX_Business.vbp

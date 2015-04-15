@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft -->
+<Root>
+	<frmReports Caption="">
+		<Item Name="lblCaption" Index="" Caption="In tê khai"/>
+	</frmReports>
+	<frmPreview Caption="">
+		<Item Name="lblCaption" Index="" Caption="Xem tr­íc b¶n in"/>
+		<Item Name="cmdNext" Index="" Caption=" Trang tiếp"/>
+		<Item Name="cmdPrevious" Index="" Caption=" Trang trước"/>
+		<Item Name="cmdZoom" Index="" Caption=" Phóng to / Thu nhỏ"/>
+		<Item Name="cmdPrint" Index="" Caption=" In"/>
+		<Item Name="cmdClose" Index="" Caption=" Thoát"/>
+	</frmPreview>
+	<frmBackup Caption="">
+		<Item Name="lblCaption" Index="" Caption="Sao l­u d÷ liÖu"/>
+		<Item Name="lblMsg" Index="" Caption="Chän ®­êng dÉn tíi th­ môc ®Ó sao l­u d÷ liÖu"/>
+		<Item Name="cmdOK" Index="" Caption="Sao l­u"/>
+	</frmBackup>
+	<frmRestore Caption="">
+		<Item Name="lblCaption" Index="" Caption="Phôc håi d÷ liÖu"/>
+		<Item Name="lblMsg" Index="" Caption="Chän ®­êng dÉn tíi th­ môc ®· sao l­u d÷ liÖu"/>
+		<Item Name="cmdOK" Index="" Caption="Kh«i phôc"/>
+	</frmRestore>
+	<frmPeriod Caption="">
+		<Item Name="lblCaption" Index="" Caption="Chän kú tÝnh thuÕ"/>
+	</frmPeriod>
+	<frmPeriodQuy Caption="">
+		<Item Name="lblCaption" Index="" Caption="Chän kú tÝnh thuÕ"/>
+	</frmPeriodQuy>
+	<frmPeriodHY Caption="">
+		<Item Name="lblCaption" Index="" Caption="Chän kú b¸o c¸o"/>
+	</frmPeriodHY>
+	<frmPeriodBCTC Caption="">
+		<Item Name="lblCaption" Index="" Caption="Niªn ®é tµi chÝnh"/>
+	</frmPeriodBCTC>
+	<frmBrowser Caption="">
+		<Item Name="lblCaption" Index="" Caption="Chän ®­êng dÉn ..."/>
+	</frmBrowser>
+	<frmInterfaces Caption="Hç trî kª khai - Phiªn b¶n 3.3.2">
+		<Item Name="lblCaption" Index="" Caption="NhËp tê khai"/>
+	</frmInterfaces>
+	<frmCommonInterfaces Caption="">
+		<Item Name="lblCaption" Index="" Caption="Th«ng tin chung vÒ ng­êi nép thuÕ"/>
+	</frmCommonInterfaces>
+	<frmRegistrationCatalogues Caption="">
+		<Item Name="lblCaption" Index="" Caption="§¨ng ký biÓu thuÕ"/>
+	</frmRegistrationCatalogues>
+	<frmAbortRetryIgnore Caption="">
+		<Item Name="lblCaption" Index="" Caption="Th«ng b¸o"/>
+		<Item Name="cmdButton1" Index="" Caption="Bá qua"/>
+		<Item Name="cmdButton2" Index="" Caption="Lµm l¹i"/>
+		<Item Name="cmdButton3" Index="" Caption="TiÕp tôc"/>
+	</frmAbortRetryIgnore>
+	<frmOKCancel Caption="">
+		<Item Name="lblCaption" Index="" Caption="Th«ng b¸o"/>
+		<Item Name="cmdButton2" Index="" Caption="§ång ý"/>
+		<Item Name="cmdButton3" Index="" Caption="Huû bá"/>
+	</frmOKCancel>
+	<frmOKOnly Caption="">
+		<Item Name="lblCaption" Index="" Caption="Th«ng b¸o"/>
+		<Item Name="cmdButton3" Index="" Caption="§ãng"/>
+	</frmOKOnly>
+	<frmOKCancelRetry Caption="">
+		<Item Name="lblCaption" Index="" Caption="Th«ng b¸o"/>
+		<Item Name="cmdButton1" Index="" Caption="§ång ý"/>
+		<Item Name="cmdButton2" Index="" Caption="Huû bá"/>
+		<Item Name="cmdButton3" Index="" Caption="Lµm l¹i"/>
+	</frmOKCancelRetry>
+	<frmYesNo Caption="">
+		<Item Name="lblCaption" Index="" Caption="Th«ng b¸o"/>
+		<Item Name="cmdButton2" Index="" Caption="Cã"/>
+		<Item Name="cmdButton3" Index="" Caption="Kh«ng"/>
+	</frmYesNo>
+	<frmYesNoCancel Caption="">
+		<Item Name="lblCaption" Index="" Caption="Th«ng b¸o"/>
+		<Item Name="cmdButton1" Index="" Caption="Cã"/>
+		<Item Name="cmdButton2" Index="" Caption="Kh«ng"/>
+		<Item Name="cmdButton3" Index="" Caption="Huû bá"/>
+	</frmYesNoCancel>
+	<frmAbout Caption="">
+		<Item Name="lblCaption" Index="" Caption="Giới thiệu chương trình"/>
+		<Item Name="cmdExit" Index="" Caption="Thoát"/>
+	</frmAbout>
+	<frmLogin Caption="">
+		<Item Name="lblCaption" Index="" Caption="§¨ng nhËp hÖ thèng"/>
+	</frmLogin>
+	<frmSystem Caption="Hç trî kª khai - Phiªn b¶n 3.3.2">
+		<Item Name="lblUserInfo" Index="" Caption=""/>
+	</frmSystem>
+	<frmAddSheet Caption="">
+		<Item Name="lblCaption" Index="" Caption="Chän phô lôc kª khai"/>
+	</frmAddSheet>
+	<frmTraCuu Caption="">
+		<Item Name="lblCaption" Index="" Caption="Tra cøu th«ng tin tê khai"/>
+	</frmTraCuu>
+</Root>

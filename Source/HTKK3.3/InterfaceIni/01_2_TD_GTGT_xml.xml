@@ -1,0 +1,23 @@
+<PL_01_2_TD_GTGT>
+	<P_Dynamic GroupName="BangPBoThueGTGTChoDPhuong" CellID="G_43">
+		<ChiTietPBoThueGTGTChoDPhuong ID="id">
+			<tenNhaMay>C_42</tenNhaMay>
+			<mstNhaMay TINType="1">H_42</mstNhaMay>
+			<tyLePhanBoNhaMay>R_42</tyLePhanBoNhaMay>
+			<thuePNopNhaMay>U_42</thuePNopNhaMay>
+			<Dynamic GroupName="PhanBoChoCQTDiaPhuong">
+				<tyLePBoThueChoTungCQT id="id">
+					<tenCoSo>C_43</tenCoSo>
+					<mstCoSo TINType="1">H_43</mstCoSo>
+					<maCQTPBo>AH_43</maCQTPBo>
+					<tenCQTPBo>P_43</tenCQTPBo>
+					<tyLePBo>R_43</tyLePBo>
+					<thuePNopPBo>U_43</thuePNopPBo>
+				</tyLePBoThueChoTungCQT>
+			</Dynamic>
+		</ChiTietPBoThueGTGTChoDPhuong>
+	</P_Dynamic>
+	<Static GroupName="PL_01_2_TD_GTGT">
+		<tongCong>U_44</tongCong>
+	</Static>
+</PL_01_2_TD_GTGT>

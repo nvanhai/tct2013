@@ -1,0 +1,24 @@
+<HSoThueDTu>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>132</maTKhai>
+		<tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG (01/TĐ-GTGT)</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct21>S_41</ct21>
+		<ct22>S_42</ct22>
+		<ct23>S_43</ct23>
+		<ct24>S_44</ct24>
+		<ct25>S_45</ct25>
+		<ct26>S_46</ct26>
+		<ct27>S_47</ct27>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_62</nguoiKy>
+		<ngayKy>R_64</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>H_62</tenNVienDLyThue>
+		<cchiHNghe>H_64</cchiHNghe>
+	</Static>
+</HSoThueDTu>

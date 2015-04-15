@@ -1,0 +1,54 @@
+<HSoThueDTu>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>84</maTKhai>
+		<tenTKhai>Tờ khai quyết toán thuế tài nguyên(03A/TĐ-TAIN)</tenTKhai>
+		<moTaBMau></moTaBMau>
+	</Static>
+	
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct21_ma>AA_24</ct21_ma>
+		<ct21_ten>H_24</ct21_ten>
+		<ct22>E_25</ct22>
+	</Static>
+	<Dynamic GroupName="BKeThueTAIN">
+		<chiTietThueTAIN id="ID_1">
+			<ct23>C_44</ct23>
+			<ct24 TINType="1">F_44</ct24>
+			<ct25>I_44</ct25>
+			<ct26>K_44</ct26>
+			<ct27>O_44</ct27>
+			<ct28>R_44</ct28>
+			<ct29>V_44</ct29>
+			<ct30>W_44</ct30>
+			<ct31>X_44</ct31>
+		</chiTietThueTAIN>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tong_ct27>O_46</tong_ct27>
+		<tong_ct28>R_46</tong_ct28>
+		<tong_ct29>V_46</tong_ct29>
+		<tong_ct30>W_46</tong_ct30>
+		<tong_ct31>X_46</tong_ct31>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>P_61</nguoiKy>
+		<ngayKy>P_63</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>G_61</tenNVienDLyThue>
+		<cchiHNghe>G_63</cchiHNghe>
+	</Static>
+</HSoThueDTu>

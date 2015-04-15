@@ -1,0 +1,53 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai></maTKhai>
+		<tenTKhai></tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Dynamic GroupName="TTinThueTNDN">
+		<BangThueTNDN ID="ID_1">
+			<DoiVoiDichVu>
+				<ct2>I_37</ct2>
+				<ct3>U_37</ct3>
+				<ct4>Y_37</ct4>
+			</DoiVoiDichVu>
+			<DoiVoiHangHoa>
+				<ct5>AH_37</ct5>
+				<ct6>AT_37</ct6>
+				<ct7>AX_37</ct7>
+			</DoiVoiHangHoa>
+			<DoiVoiHoatDongKhac>
+				<ct8>BG_37</ct8>
+				<ct9>BS_37</ct9>
+				<ct10>BW_37</ct10>
+			</DoiVoiHoatDongKhac>
+			<ct11>CF_37</ct11>
+		</BangThueTNDN>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tongThueDVu>Y_39</tongThueDVu>
+		<tongThueHHoa>AX_39</tongThueHHoa>
+		<tongThueKhac>BW_39</tongThueKhac>
+		<tongThueTNDNPNop>CF_39</tongThueTNDNPNop>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>BG_51</nguoiKy>
+		<ngayKy>BG_53</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>Q_51</tenNVienDLyThue>
+		<cchiHNghe>Q_53</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

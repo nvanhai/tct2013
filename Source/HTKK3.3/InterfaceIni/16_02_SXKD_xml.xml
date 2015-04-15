@@ -1,0 +1,58 @@
+<PL_KQHDXSKD>
+	<Static GroupName="SoNamNay">
+		<ct1_nNay>I_9</ct1_nNay>
+		<ct2_nNay>I_10</ct2_nNay>
+		<ctI_nNay>I_11</ctI_nNay>
+		<ct3_nNay>I_12</ct3_nNay>
+		<ct4_nNay>I_13</ct4_nNay>
+		<ctII_nNay>I_14</ctII_nNay>
+		<ctIII_nNay>I_15</ctIII_nNay>
+		<ctIV_nNay>I_16</ctIV_nNay>
+		<ctV_nNay>I_17</ctV_nNay>
+		<ct5_nNay>I_18</ct5_nNay>
+		<ct6_nNay>I_19</ct6_nNay>
+		<ctVI_nNay>I_20</ctVI_nNay>
+		<ctVII_nNay>I_21</ctVII_nNay>
+		<ctVIII_nNay>I_22</ctVIII_nNay>
+		<ctIX_nNay>I_23</ctIX_nNay>
+		<ctX_nNay>I_24</ctX_nNay>
+		<ctXI_nNay>I_25</ctXI_nNay>
+		<ct7_nNay>I_26</ct7_nNay>
+		<ct8_nNay>I_27</ct8_nNay>
+		<ctXII_nNay>I_28</ctXII_nNay>
+		<ctXIII_nNay>I_29</ctXIII_nNay>
+		<ctXIV_nNay>I_30</ctXIV_nNay>
+		<ctXV_nNay>I_31</ctXV_nNay>
+	</Static>
+	<Static GroupName="SoNamNgoai">
+		<ct1_nNgoai>J_9</ct1_nNgoai>
+		<ct2_nNgoai>J_10</ct2_nNgoai>
+		<ctI_nNgoai>J_11</ctI_nNgoai>
+		<ct3_nNgoai>J_12</ct3_nNgoai>
+		<ct4_nNgoai>J_13</ct4_nNgoai>
+		<ctII_nNgoai>J_14</ctII_nNgoai>
+		<ctIII_nNgoai>J_15</ctIII_nNgoai>
+		<ctIV_nNgoai>J_16</ctIV_nNgoai>
+		<ctV_nNgoai>J_17</ctV_nNgoai>
+		<ct5_nNgoai>J_18</ct5_nNgoai>
+		<ct6_nNgoai>J_19</ct6_nNgoai>
+		<ctVI_nNgoai>J_20</ctVI_nNgoai>
+		<ctVII_nNgoai>J_21</ctVII_nNgoai>
+		<ctVIII_nNgoai>J_22</ctVIII_nNgoai>
+		<ctIX_nNgoai>J_23</ctIX_nNgoai>
+		<ctX_nNgoai>J_24</ctX_nNgoai>
+		<ctXI_nNgoai>J_25</ctXI_nNgoai>
+		<ct7_nNgoai>J_26</ct7_nNgoai>
+		<ct8_nNgoai>J_27</ct8_nNgoai>
+		<ctXII_nNgoai>J_28</ctXII_nNgoai>
+		<ctXIII_nNgoai>J_29</ctXIII_nNgoai>
+		<ctXIV_nNgoai>J_30</ctXIV_nNgoai>
+		<ctXV_nNgoai>J_31</ctXV_nNgoai>
+	</Static>
+	<Static GroupName="PhanKy">
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap DateType="1">I_36</ngayLap>
+		<giamDoc>I_33</giamDoc>
+	</Static>
+</PL_KQHDXSKD>

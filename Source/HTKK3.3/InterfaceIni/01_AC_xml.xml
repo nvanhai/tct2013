@@ -1,0 +1,51 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>105</maTKhai>
+		<tenTKhai>Báo cáo tình hình nhận in hóa đơn</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ngayDauKyBaoCao>D_17</ngayDauKyBaoCao>
+		<ngayCuoiKyBaoCao>E_17</ngayCuoiKyBaoCao>
+		<kyBaoCaoCuoiCung>B_15</kyBaoCaoCuoiCung>
+	</Static>
+	<Dynamic GroupName="HoaDon">
+		<ChiTietHoaDon id="id">
+				<mst TINType="1">C_22</mst>
+				<ten>D_22</ten>
+				<diaChi>E_22</diaChi>
+				<so>F_22</so>
+				<ngay>G_22</ngay>
+			<tenHDon>I_22</tenHDon>
+			<mauHDon>J_22</mauHDon>
+			<kyHieu>K_22</kyHieu>
+			<tuSo>L_22</tuSo>
+			<denSo>M_22</denSo>
+			<soLuong>Q_22</soLuong>
+		</ChiTietHoaDon>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<nguoiDaiDien>J_30</nguoiDaiDien>
+		<ngayLapBCao>J_32</ngayLapBCao>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>J_30</nguoiKy>
+		<ngayKy>J_32</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue></tenNVienDLyThue>
+		<cchiHNghe></cchiHNghe>
+	</Static>
+</HSoKhaiThue>

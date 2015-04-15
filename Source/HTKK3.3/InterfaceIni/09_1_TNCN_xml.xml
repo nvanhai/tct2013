@@ -1,0 +1,18 @@
+<PL09-1_TNCN>
+		<Static GroupName="TNhapCThueTrongKy">
+			<ct06>J_16</ct06>
+			<ct07>J_17</ct07>
+			<ct08>J_18</ct08>
+			<ct09>J_19</ct09>
+			<ct10>J_20</ct10>
+		</Static>
+		<Static GroupName="SoKTruTrongKy">
+			<ct11>J_21</ct11>
+			<ct12>J_22</ct12>
+			<ct13>J_23</ct13>
+		</Static>
+		<Static GroupName="PL09-1_TNCN">
+			<ct14>J_24</ct14>
+			<ct15>J_25</ct15>
+		</Static>		
+</PL09-1_TNCN>

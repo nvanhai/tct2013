@@ -1,0 +1,33 @@
+<PL03_3A_TNDN>
+	<L_Dynamic GroupName="PL03_3A_TNDN" CellRange="35">
+		<NoiDungPL03_3A id="ID_1">
+			<dieuKienUuDai1>C_25</dieuKienUuDai1>
+			<dieuKienUuDai2>C_26</dieuKienUuDai2>
+			<dieuKienUuDai3>C_27</dieuKienUuDai3>
+			<dieuKienUuDai4>C_28</dieuKienUuDai4>
+			<dieuKienUuDai5>C_29</dieuKienUuDai5>
+			<dieuKienUuDai6>C_30</dieuKienUuDai6>
+			<dieuKienUuDai7>C_31</dieuKienUuDai7>
+			<dieuKienUuDai8>C_32</dieuKienUuDai8>
+			<dieuKienUuDai9>C_33</dieuKienUuDai9>
+			<dieuKienUuDai10>C_34</dieuKienUuDai10>
+			<dieuKienUuDai11>C_35</dieuKienUuDai11>
+			<mucDoUuDai>Q_37</mucDoUuDai>
+			<thoiHanUuDai TEXTNumber ="1">N_38</thoiHanUuDai>
+			<namBatDauUuDai TEXTNumber ="1">U_38</namBatDauUuDai>
+			<namMienThueBD TEXTNumber ="1">J_39</namMienThueBD>
+			<namMienThueKT TEXTNumber ="1">Q_39</namMienThueKT>
+			<namPNop50Thue TEXTNumber ="1">N_40</namPNop50Thue>
+			<namKTNop50Thue TEXTNumber ="1">U_40</namKTNop50Thue>
+			<ct1>U_47</ct1>
+			<ct2>U_48</ct2>
+			<ct3>U_49</ct3>
+			<ct4>U_50</ct4>
+			<ct5>U_52</ct5>
+			<ct6>U_53</ct6>
+			<ct7>U_54</ct7>
+			<ct8>U_55</ct8>
+			<ct9>U_56</ct9>
+		 </NoiDungPL03_3A>	
+	</L_Dynamic>
+</PL03_3A_TNDN>

@@ -1,0 +1,29 @@
+﻿<Sections Version="322">
+	<Section Dynamic="0" MaxRows="0">
+		<Item Value ="01_GTGT###1701###Ngành hàng sản xuất, kinh doanh thông thường"/>
+		<Item Value ="01_GTGT###1704###Từ hoạt động thăm dò, phát triển mỏ và khai thác dầu, khí thiên nhiên"/>
+		<Item Value ="01_GTGT###1705###Từ hoạt động xổ số kiến thiết của các công ty xổ số kiến thiết"/>
+		<Item Value ="01A_TNDN###1052###Ngành hàng sản xuất, kinh doanh thông thường"/>
+		<Item Value ="01A_TNDN###1056###Từ hoạt động thăm dò, phát triển mỏ và khai thác dầu, khí thiên nhiên"/>
+		<Item Value ="01A_TNDN###1057###Từ hoạt động xổ số kiến thiết của các công ty xổ số kiến thiết"/>
+		<Item Value ="01B_TNDN###1052###Ngành hàng sản xuất, kinh doanh thông thường"/>
+		<Item Value ="01B_TNDN###1056###Từ hoạt động thăm dò, phát triển mỏ và khai thác dầu, khí thiên nhiên"/>
+		<Item Value ="01B_TNDN###1057###Từ hoạt động xổ số kiến thiết của các công ty xổ số kiến thiết"/>		
+		<Item Value ="01_TTDB###0000###Ngành hàng sản xuất, kinh doanh thông thường"/>
+		<Item Value ="01_TTDB###1761###Từ hoạt động xổ số kiến thiết của các công ty xổ số kiến thiết"/>
+		<Item Value ="03_TNDN###1052###Ngành hàng sản xuất, kinh doanh thông thường"/>
+		<Item Value ="03_TNDN###1056###Từ hoạt động thăm dò, phát triển mỏ và khai thác dầu, khí thiên nhiên"/>
+		<Item Value ="03_TNDN###1057###Từ hoạt động xổ số kiến thiết của các công ty xổ số kiến thiết"/>
+		<Item Value ="02_TNDN###1053###Chuyển quyền thuê đất"/>
+		<Item Value ="02_TNDN###1053###Chuyển quyền sử dụng đất"/>		
+		<Item Value ="01A_TNDN_DK###1###Dầu thô"/>
+		<Item Value ="01A_TNDN_DK###2###Khí thiên nhiên"/>
+		<Item Value ="01A_TNDN_DK###3###Condensate"/>
+		<Item Value ="02_TNDN_DK###1###Dầu thô"/>
+		<Item Value ="02_TNDN_DK###2###Khí thiên nhiên"/>
+		<Item Value ="02_TNDN_DK###3###Condensate"/>
+		<Item Value ="02_TAIN_DK###1###Dầu thô"/>
+		<Item Value ="02_TAIN_DK###2###Khí thiên nhiên"/>
+		<Item Value ="02_TAIN_DK###3###Condensate"/>				
+	</Section>	
+</Sections>

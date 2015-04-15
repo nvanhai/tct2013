@@ -1,0 +1,66 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>15</maTKhai>
+		<tenTKhai>Tờ khai quyết toán thuế TNCN (08B/KK-TNCN)</tenTKhai>
+		
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	<Static GroupName="BKeNhom">
+		<ct21>I_40</ct21>
+		<ct22>I_41</ct22>
+		<ct23>I_42</ct23>
+		<ct24>I_43</ct24>
+		<ct25>I_44</ct25>
+		<ct26>I_45</ct26>
+		<ct27>I_46</ct27>
+		<ct28>I_47</ct28>
+		<ct29>I_48</ct29>
+		<ct30>I_49</ct30>
+		<ct31>I_50</ct31>
+		<ct32>I_51</ct32>
+	</Static>
+	<Dynamic GroupName="BKeTungCNhan">
+		<CTietBKeTungCNhan id="String">
+			<ct34>C_57</ct34>
+			<ct35 TINType="1">G_57</ct35>
+			<ct36>K_57</ct36>
+			<ct37>L_57</ct37>
+			<ct38>N_57</ct38>
+			<ct39>P_57</ct39>
+			<ct40>R_57</ct40>
+			<ct41>T_57</ct41>
+			<ct42>W_57</ct42>
+			<ct43>Z_57</ct43>
+		</CTietBKeTungCNhan>
+	</Dynamic>
+	<Static GroupName="BKeTungCNhan">
+		<ct44>K_59</ct44>
+		<ct45>L_59</ct45>
+		<ct46>N_59</ct46>
+		<ct47>P_59</ct47>
+		<ct48>R_59</ct48>
+		<ct49>T_59</ct49>
+		<ct50>W_59</ct50>
+		<ct51>Z_59</ct51>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>M_61</nguoiKy>
+		<ngayKy>M_63</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>D_61</tenNVienDLyThue>
+		<cchiHNghe>D_63</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

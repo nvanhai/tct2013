@@ -1,0 +1,24 @@
+<Pluc_01_1_TTDB>
+	<PLucBRaChiuThueTTDB>
+		<ChiTietPLucBRaChiuThueTTDB>
+			<PLucBRaChiuThue>
+				<ct2></ct2>
+				<ct3></ct3>
+				<ct4></ct4>
+				<ct5>1</ct5>
+				<maHHDV></maHHDV>
+				<ct6>1</ct6>
+				<ct7>0.0</ct7>
+				<ct8>1</ct8>
+				<ct9>1</ct9>
+			</PLucBRaChiuThue>
+		</ChiTietPLucBRaChiuThueTTDB>
+		<TongCong>
+			<CTietTongCong id="">
+				<tenHHoaDVu></tenHHoaDVu>
+				<tongSoLuong>0.0</tongSoLuong>
+				<tongDoanhSoBan>1</tongDoanhSoBan>
+			</CTietTongCong>
+		</TongCong>
+	</PLucBRaChiuThueTTDB>
+</Pluc_01_1_TTDB>

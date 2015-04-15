@@ -1,0 +1,23 @@
+<PL01_2_2_GTGT>
+	<HHDVDauTuKTru>
+		<ChiTietHHDVDauTuKTru>
+			<HDonMVao id="ID_3">
+				<kHieuMauHDon></kHieuMauHDon>
+				<kHieuHDon></kHieuHDon>
+				<soHDon></soHDon>
+				<ngayPHanh></ngayPHanh>
+				<tenNBAN></tenNBAN>
+				<mstNBAN></mstNBAN>
+				<matHang></matHang>
+				<gtriMuaChuaThue>2147483647</gtriMuaChuaThue>
+				<thueSuat>1</thueSuat>
+				<thueGTGT>2147483647</thueGTGT>
+				<ghiChu></ghiChu>
+			</HDonMVao>
+		</ChiTietHHDVDauTuKTru>
+		<tongGTriHHDVMuaVao>1</tongGTriHHDVMuaVao>
+		<tThueGTGT_HHDVMuaVao>1</tThueGTGT_HHDVMuaVao>
+	</HHDVDauTuKTru>
+	<tongCongGTriHHDVMuaVao>1</tongCongGTriHHDVMuaVao>
+	<tongCongThueGTGTHHDVMuaVao>1</tongCongThueGTGTHHDVMuaVao>
+</PL01_2_2_GTGT>

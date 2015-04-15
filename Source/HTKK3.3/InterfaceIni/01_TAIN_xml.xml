@@ -1,0 +1,74 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>06</maTKhai>
+		<tenTKhai>Tờ khai thuế tài nguyên(01/TAIN)</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	<Dynamic GroupName="TaiNguyenKhaiThac">
+		<ThueTaiNguyenKhaiThac id="ID_1">
+			<ct1>E_42</ct1>
+			<ct2>G_42</ct2>
+				<ct3>P_42</ct3>
+				<ct4>S_42</ct4>
+			<ct5>V_42</ct5>
+			<ct6>AA_42</ct6>
+			<ct7>AD_42</ct7>
+			<ct8>AG_42</ct8>
+			<ct9>AJ_42</ct9>
+			<ct10>AN_42</ct10>
+		</ThueTaiNguyenKhaiThac>
+	</Dynamic>
+	<Dynamic GroupName="TaiNguyenThuMuaGom">
+		<ThueTaiNguyenThuMuaGom id="ID_2">
+			<ct1>E_46</ct1>
+			<ct2>G_46</ct2>
+			<ct3>P_46</ct3>
+			<ct4>S_46</ct4>
+			<ct5>V_46</ct5>
+			<ct6>AA_46</ct6>
+			<ct7>AD_46</ct7>
+			<ct8>AG_46</ct8>
+			<ct9>AJ_46</ct9>
+			<ct10>AN_46</ct10>
+		</ThueTaiNguyenThuMuaGom>
+	</Dynamic>
+	<Dynamic GroupName="TaiNguyenTichThuGiaoBan">
+		<ThueTaiNguyenTichThuGiaoBan id="ID_3">
+			<ct1>E_50</ct1>
+			<ct2>G_50</ct2>
+			<ct3>P_50</ct3>
+			<ct4>S_50</ct4>
+			<ct5>V_50</ct5>
+			<ct6>AA_50</ct6>
+			<ct7>AD_50</ct7>
+			<ct8>AG_50</ct8>
+			<ct9>AJ_50</ct9>
+			<ct10>AN_50</ct10>
+		</ThueTaiNguyenTichThuGiaoBan>
+	</Dynamic>
+	<Static GroupName="BangChiTietTNguyen">
+		<tongThueTNPSinh>AG_52</tongThueTNPSinh>
+		<tongThueMienGiam>AJ_52</tongThueMienGiam>
+		<tongThuePNop>AN_52</tongThuePNop>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>AJ_54</nguoiKy>
+		<ngayKy>AJ_56</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>W_54</tenNVienDLyThue>
+		<cchiHNghe>W_56</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

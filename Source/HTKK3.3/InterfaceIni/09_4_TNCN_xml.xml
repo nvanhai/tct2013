@@ -1,0 +1,18 @@
+<PL09-4_TNCN>
+	<Static GroupName="PL09-4_TNCN">
+		<ct06>I_16</ct06>
+		<ct07>I_17</ct07>
+		<ct08>I_18</ct08>
+		<ct09>I_19</ct09>
+	</Static>		
+	<Static GroupName="SoKTruTrongKy">
+		<ct10>I_20</ct10>
+		<ct11>I_21</ct11>
+		<ct12>I_22</ct12>
+		<ct13>I_23</ct13>
+	</Static>
+	<Static GroupName="PL09-4_TNCN">
+		<ct14>I_24</ct14>
+		<ct15>I_25</ct15>
+	</Static>
+</PL09-4_TNCN>

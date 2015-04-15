@@ -1,0 +1,20 @@
+<PL03_3C_TNDN>
+	<L_Dynamic GroupName="PL03_3C_TNDN" CellRange="24">
+		<NoiDungPL03_3C id="ID_1">
+			<dieuKienUuDai1>D_24</dieuKienUuDai1>
+			<tongSoLD1 TEXTNumber ="1">S_25</tongSoLD1>
+			<soXacNhanCQT1>J_27</soXacNhanCQT1>
+			<ngayXacNhanCQT1>V_27</ngayXacNhanCQT1>
+			<dieuKienUuDai2>D_28</dieuKienUuDai2>
+			<tongSoLD2 TEXTNumber ="1">S_29</tongSoLD2>
+			<soXacNhanCQT2>O_31</soXacNhanCQT2>
+			<ngayXacNhanCQT2>Y_31</ngayXacNhanCQT2>
+			<mucDoUuDai1>D_33</mucDoUuDai1>
+			<mucDoUuDai2>D_34</mucDoUuDai2>
+			<ct01>X_40</ct01>
+			<ct02>X_41</ct02>
+			<ct03>X_42</ct03>
+			<ct04>X_43</ct04>
+		</NoiDungPL03_3C>
+	</L_Dynamic>
+</PL03_3C_TNDN>

@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by mennt (ST) -->
+<!-- edited with XMLSpy v2010 rel. 3 (http://www.altova.com) by MESMERiZE (MSM) -->
+<xs:schema xmlns="TKhaiThue" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="TKhaiThue" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.7">
+	<xs:redefine schemaLocation="../TKhaiThue.xsd">
+		<xs:complexType name="CTieuTKhaiChinhType">
+			<xs:complexContent>
+				<xs:extension base="CTieuTKhaiChinhType">
+					<xs:sequence>
+						<xs:element name="tieuMucHachToan" type="tieuMucHT_empty">
+							<xs:annotation>
+								<xs:documentation>Tiểu mục hạch toán</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="dnQuiMoVuaVaNho" type="xs:boolean" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Doanh nghiệp có quy mô nhỏ và vừa</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="dnCoCSoHToanPThuoc" type="xs:boolean" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Doanh nghiệp có cơ sở sản xuất hạch toán phụ thuộc</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct21" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Doanh thu phát sinh trong kỳ</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct22" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Chi phí phát sinh trong kỳ</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct23" type="xs:long" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Lợi nhuận phát sinh trong kỳ ([23]=[21]-[22])</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct24" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Điều chỉnh tăng lợi nhuận theo pháp luật thuế</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct25" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Điều chỉnh giảm lợi nhuận theo pháp luật thuế</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct26" type="xs:long" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thu nhập chịu thuế ([26]=[23]+[24]-[25])</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct27" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thu nhập miễn thuế</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct28" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Số lỗ chuyển kỳ này</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct29" type="xs:long" nillable="true">
+							<xs:annotation>
+								<xs:documentation>TN tính thuế ([29]=[26]-[27]-[28])</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct30" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Trong đó:  Thu nhập tính thuế áp dụng thuế suất 20%</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct31" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thu nhập  tính thuế áp dụng thuế suất 22%</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct32" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thu nhập tính thuế áp dụng thuế suất ưu đãi</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct32a" type="xs:decimal" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thuế suất ưu đãi (%)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct33" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thu nhập tính thuế áp dụng thuế suất khác </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct33a" type="xs:decimal" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thuế suất khác (%)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct34" type="xs:long" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thuế TNDN phát sinh [34] = ([30] x 20%) + ([31]x22%) + ([32] x [32a]) + ([33] x [33a])</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct35" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thuế TNDN dự kiến miễn, giảm </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct35a" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Trong đó: + số thuế TNDN được miễn, giảm theo Hiệp định (nếu có)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct35b" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Miễn, giảm khác ngoài Luật Thuế TNDN (nếu có)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct36" type="xs:long" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thuế TNDN phải nộp trong kỳ ([36]= [34]-[35])</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct37" type="xs:boolean" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Đối tượng được gia hạn    </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct37a" type="xs:string" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Mã lý do gia hạn</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct37b" type="xs:date" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Thời hạn được gia hạn</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct37c" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Số thuế TNDN được gia hạn </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct37d" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Số thuế TNDN không được gia hạn</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+		<xs:complexType name="PLucType">
+			<xs:complexContent>
+				<xs:extension base="PLucType">
+					<xs:sequence>
+						<xs:element name="PL01_1_TNDN" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct6" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Tổng số thuế phải nộp trên tờ khai: </xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="BangThueTNDNTamTinh">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="chiTietBangThueTNDNTamTinh" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="ct8" type="xs:string" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Tên doanh nghiệp, Cơ sở sản xuất</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ct9" type="TINType" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Mã số thuế</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ct10_ct" type="xs:string" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Cục thuế quản lý </xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ct10_cct" type="xs:string" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Chi cục thuế quản lý</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ct11" type="xs:decimal" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Tỷ lệ
+ phân bổ (%)</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="ct12" type="xs:nonNegativeInteger" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Số thuế phân bổ</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="id" type="xs:string"/>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="tongCot11" type="xs:decimal" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng tỷ lệ phân bổ</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="tongCot12" type="xs:nonNegativeInteger" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Tổng số thuế phân bổ</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PL_02_1_TD_TNDN" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="BangPBoThueTNDN">
+										<xs:annotation>
+											<xs:documentation>Bảng phân bổ số thuế TNDN phải nộp của cơ sở sản xuất thủy điện cho các địa phương</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ChiTietBangPBoThueTNDN" maxOccurs="unbounded">
+													<xs:annotation>
+														<xs:documentation>Chi tiết Bảng phân bổ số thuế TNDN phải nộp của cơ sở sản xuất thủy điện cho các địa phương</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="tenDonViTDPhuThuoc" type="xs:string" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Tên Đơn vị thủy điện phụ thuộc </xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="soThueTNDNPNop" type="xs:nonNegativeInteger" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Số thuế TNDN phải nộp</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="NhaMayThuyDien" nillable="true">
+																<xs:annotation>
+																	<xs:documentation>Số thuế phân bổ nhà máy thủy điện</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="ChiTietNhaMayThuyDien" maxOccurs="unbounded">
+																			<xs:annotation>
+																				<xs:documentation>Chi tiết số thuế phân bổ nhà máy thủy điện</xs:documentation>
+																			</xs:annotation>
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="tenNMayTDien" type="xs:string" nillable="true">
+																						<xs:annotation>
+																							<xs:documentation>Tên nhà máy thủy điện </xs:documentation>
+																						</xs:annotation>
+																					</xs:element>
+																					<xs:element name="mstNMayTDien" type="TINType" nillable="true">
+																						<xs:annotation>
+																							<xs:documentation>MST nhà máy thủy điện</xs:documentation>
+																						</xs:annotation>
+																					</xs:element>
+																					<xs:element name="tyLePBoNMayTDien" type="xs:decimal" nillable="true">
+																						<xs:annotation>
+																							<xs:documentation>Tỷ lệ 
+phân bổ (%)
+</xs:documentation>
+																						</xs:annotation>
+																					</xs:element>
+																					<xs:element name="soThuePNopNMayTDien" type="xs:nonNegativeInteger" nillable="true">
+																						<xs:annotation>
+																							<xs:documentation>Số thuế TNDN phải nộp</xs:documentation>
+																						</xs:annotation>
+																					</xs:element>
+																					<xs:element name="CQTDiaPhuong">
+																						<xs:annotation>
+																							<xs:documentation>CQT địa phương nơi phát sinh hoạt động sản xuất thủy điện</xs:documentation>
+																						</xs:annotation>
+																						<xs:complexType>
+																							<xs:sequence>
+																								<xs:element name="ChiTietCQTDiaPhuong" minOccurs="0" maxOccurs="unbounded">
+																									<xs:annotation>
+																										<xs:documentation>Chi tiết số thuế phân bổ CQT địa phương</xs:documentation>
+																									</xs:annotation>
+																									<xs:complexType>
+																										<xs:sequence>
+																											<xs:element name="tenCoSo" type="xs:string" nillable="true">
+																												<xs:annotation>
+																													<xs:documentation>Tên cơ sở</xs:documentation>
+																												</xs:annotation>
+																											</xs:element>
+																											<xs:element name="mstCoSo" type="TINType" nillable="true">
+																												<xs:annotation>
+																													<xs:documentation>Mã số thuế cơ sở</xs:documentation>
+																												</xs:annotation>
+																											</xs:element>
+																											<xs:element name="maCQTDPhuong" type="xs:nonNegativeInteger" nillable="true">
+																												<xs:annotation>
+																													<xs:documentation>mã CQT địa phương nơi phát sinh hoạt động sản xuất thủy điện</xs:documentation>
+																												</xs:annotation>
+																											</xs:element>
+																											<xs:element name="tenCQTDPhuong" type="xs:string" nillable="true">
+																												<xs:annotation>
+																													<xs:documentation>tên CQT địa phương nơi phát sinh hoạt động sản xuất thủy điện</xs:documentation>
+																												</xs:annotation>
+																											</xs:element>
+																											<xs:element name="tyLePBoCQTDPhuong" type="xs:decimal" nillable="true">
+																												<xs:annotation>
+																													<xs:documentation>Tỷ lê phân bổ (%)</xs:documentation>
+																												</xs:annotation>
+																											</xs:element>
+																											<xs:element name="thuePNopCQTDPhuong" type="xs:nonNegativeInteger" nillable="true">
+																												<xs:annotation>
+																													<xs:documentation>Số thuế TNDN phải nộp</xs:documentation>
+																												</xs:annotation>
+																											</xs:element>
+																										</xs:sequence>
+																										<xs:attribute name="id" type="xs:string"/>
+																									</xs:complexType>
+																								</xs:element>
+																							</xs:sequence>
+																						</xs:complexType>
+																					</xs:element>
+																				</xs:sequence>
+																				<xs:attribute name="id" type="xs:string"/>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="id" type="xs:string"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:redefine>
+</xs:schema>

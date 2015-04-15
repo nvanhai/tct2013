@@ -1,0 +1,31 @@
+<HSoThueDTu>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>263</maTKhai>
+		<tenTKhai>Thông báo kết quả hủy biên lai thu tiền phí, lệ phí</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<kinhGui>J_2</kinhGui>
+		<ppHuyBienLai>K_6</ppHuyBienLai>
+		<ngayHuyBienLai>O_9</ngayHuyBienLai>
+	</Static>
+	<Dynamic GroupName="BKeKQuaHuyBLai" MinOccur="1">
+		<ChiTietBKeKQuaHuyBLai id="id">
+			<tenLoaiBienLai>E_43</tenLoaiBienLai>
+			<kyHieuMauBienLai>O_43</kyHieuMauBienLai>
+			<kyHieuBienLai>S_43</kyHieuBienLai>
+			<tuSo TEXTNumber ="1">V_43</tuSo>
+			<denSo TEXTNumber ="1">Y_43</denSo>
+			<soLuong TEXTNumber ="1">AA_43</soLuong>
+		</ChiTietBKeKQuaHuyBLai>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ngayKy>R_49</ngayKy>
+		<nguoiLapBieu>D_47</nguoiLapBieu>
+		<thuTruongDonVi>R_47</thuTruongDonVi>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_47</nguoiKy>
+		<ngayKy>R_49</ngayKy>
+	</Static>
+</HSoThueDTu>

@@ -1,0 +1,49 @@
+<HSoThueDTu>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>133</maTKhai>
+		<tenTKhai>Tờ khai thuế tài nguyên dành cho cơ sở sản xuất thuỷ điện</tenTKhai>
+		<moTaBMau></moTaBMau>
+	</Static>
+	
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct21>AA_24</ct21>
+		<ct22>F_25</ct22>
+	</Static>
+	<Dynamic GroupName="BKeThueTN">
+		<ChiTietBKeThueTN id="String">
+			<ct23>C_44</ct23>
+			<ct24 TINType="1">F_44</ct24>
+			<ct25>I_44</ct25>
+			<ct26>K_44</ct26>
+			<ct27>O_44</ct27>
+			<ct28>R_44</ct28>
+			<ct29>V_44</ct29>
+		</ChiTietBKeThueTN>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tong_ct27>O_46</tong_ct27>
+		<tong_ct28>R_46</tong_ct28>
+		<tong_ct29>V_46</tong_ct29>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_61</nguoiKy>
+		<ngayKy>R_63</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>F_61</tenNVienDLyThue>
+		<cchiHNghe>F_63</cchiHNghe>
+	</Static>
+</HSoThueDTu>

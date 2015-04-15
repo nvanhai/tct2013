@@ -1,0 +1,48 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>136</maTKhai>
+		<tenTKhai>TỜ KHAI TẠM NỘP THUẾ THU NHẬP CÁ NHÂN - MẪU SỐ 08/KK-TNCN</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="NNT">
+		<phuongXa/>
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct21>R_48</ct21>
+		<ct22>R_49</ct22>
+		<ct23>R_50</ct23>
+	</Static>
+	<Static GroupName="CacKhoanGiamTru">
+		<ct24>R_51</ct24>
+		<ct25>R_52</ct25>
+		<ct26>R_53</ct26>
+		<ct27>R_54</ct27>
+		<ct28>R_55</ct28>
+		<ct29>R_56</ct29>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct30>R_57</ct30>
+		<ct31>R_58</ct31>
+		<ct32>R_59</ct32>
+		<ct33>R_60</ct33>
+		<ct34>R_61</ct34>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_64</nguoiKy>
+		<ngayKy>R_66</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>H_64</tenNVienDLyThue>
+		<cchiHNghe>H_66</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

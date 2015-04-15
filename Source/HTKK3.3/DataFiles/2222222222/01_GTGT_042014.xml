@@ -1,0 +1,54 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSoft-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="320">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_7" CellID2="R_63" Encode="1" Value="" MCT=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="I_23" CellID2="BS_36" Encode="1" Value="0" MCT=""/>
+			<Cell CellID="L_24" CellID2="CT_37" Encode="1" Value="0" MCT="11"/>
+			<Cell CellID="J_27" CellID2="BW_40" Encode="1" Value="0" MCT="11"/>
+			<Cell CellID="L_27" CellID2="CT_40" Encode="1" Receive="0" Value="0" MCT=""/>
+			<Cell CellID="L_28" CellID2="CT_41" Encode="1" Value="0" MCT=""/>
+			<Cell CellID="J_30" CellID2="BW_43" Encode="1" Value="0" MCT=""/>
+			<Cell CellID="J_31" CellID2="BW_44" Encode="1" Value="0" MCT=""/>
+			<Cell CellID="L_31" CellID2="CT_44" Encode="1" Value="0" MCT=""/>
+			<Cell CellID="J_32" CellID2="BW_45" Encode="1" Value="0" MCT=""/>
+			<Cell CellID="J_33" CellID2="BW_46" Encode="1" Value="0" MCT=""/>
+			<Cell CellID="L_33" CellID2="CT_46" Encode="1" Value="0" MCT=""/>
+			<Cell CellID="J_34" CellID2="BW_47" Encode="1" Value="0" MCT=""/>
+			<Cell CellID="L_34" CellID2="CT_47" Encode="1" Receive="0" Value="0" MCT=""/>
+			<Cell CellID="J_35" CellID2="BW_48" Encode="1" Value="0" MCT=""/>
+			<Cell CellID="L_35" CellID2="CT_48" Encode="1" Receive="0" Value="0" MCT=""/>
+			<Cell CellID="L_36" CellID2="CT_49" Encode="1" Receive="0" Value="0" MCT=""/>
+			<Cell CellID="L_38" CellID2="CT_51" Encode="1" Value="0" MCT=""/>
+			<Cell CellID="L_39" CellID2="CT_52" Encode="1" Receive="0" Value="0" MCT=""/>
+			<Cell CellID="L_40" CellID2="CT_53" Encode="1" Receive="0" Value="0" MCT=""/>
+			<Cell CellID="L_42" CellID2="CT_55" Encode="1" Value="0" MCT=""/>
+			<Cell CellID="L_43" CellID2="CT_56" Encode="1" Value="0" MCT=""/>
+			<Cell CellID="L_44" CellID2="CT_57" Encode="1" Value="0" MCT=""/>
+			<Cell CellID="L_45" CellID2="CT_58" Encode="1" Value="0" MCT=""/>
+			<Cell CellID="L_46" CellID2="CT_59" Encode="1" Value="0" MCT=""/>
+			<Cell CellID="L_47" CellID2="CT_60" Encode="1" Value="0" MCT=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="D_49" CellID2="U_65" Encode="1" Value="" MCT=""/>
+			<Cell CellID="D_50" CellID2="U_66" Encode="1" Receive="0" Value="" MCT=""/>
+			<Cell CellID="K_49" CellID2="BV_67" Encode="1" Value="" MCT=""/>
+			<Cell CellID="K_50" CellID2="C_63" Encode="1" Value="30/05/2014" MCT=""/>
+			<Cell CellID="K_52" CellID2="Y_63" Encode="1" Value="1" MCT=""/>
+			<Cell CellID="L_52" CellID2="AG_63" Encode="1" Value="" MCT=""/>
+			<Cell CellID="O_52" CellID2="AH_63" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="L_14" CellID2="" Encode="1" Receive="1" Value="1701"/>
+			<Cell CellID="B_18" CellID2="C_33" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="D_20" CellID2="O_34" Encode="0" Receive="1" Value=""/>
+			<Cell CellID="P_20" CellID2="W_63" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="N_52" CellID2="AM_63" Encode="1" Receive="1" Value="0"/>
+		</Cells>
+	</Section>
+</Sections>

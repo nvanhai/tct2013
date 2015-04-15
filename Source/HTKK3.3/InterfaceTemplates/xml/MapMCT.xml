@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by htphuong CMCSoft -->
+<Root>
+	<Map ID ="01_GTGT">
+		<Item CellID="L_7" MCT="11" Caption="Thuế GTGT còn được khấu trừ kỳ trước chuyển sang"/>
+		<Item CellID="L_17" MCT="23" Caption="Tổng số thuế GTGT được khấu trừ kỳ này"/>
+		<Item CellID="L_23" MCT="31" Caption="Thuế GTGT HHDV bán ra chịu thuế 5%"/>
+		<Item CellID="L_24" MCT="33" Caption="Thuế GTGT HHDV bán ra chịu thuế 10%"/>
+		<Item CellID="L_32" MCT="42" Caption="Thuế GTGT đề nghị hoàn kỳ này"/>
+	</Map>
+	<Map ID ="02_GTGT">		
+		<Item CellID="L_11" MCT="14" Caption="Thuế GTGT HHDV mua vào trong nước"/>		
+		<Item CellID="L_12" MCT="16" Caption="Thuế GTGT HHDV nhập khẩu"/>
+		<Item CellID="L_18" MCT="23" Caption="Thuế GTGT đề nghị hoàn"/>
+		<Item CellID="L_19" MCT="24" Caption="Thuế GTGT chưa được hoàn bàn giao cho doanh nghiệp mới thành lập"/>
+	</Map>
+	<Map ID ="03_GTGT">
+		<Item CellID="M_39" MCT="30" Caption="Thuế GTGT phải nộp (thuế suất 0%)"/>	
+		<Item CellID="P_39" MCT="31" Caption="Thuế GTGT phải nộp (thuế suất 5%)"/>
+		<Item CellID="S_39" MCT="32" Caption="Thuế GTGT phải nộp (thuế suất 10%)"/>
+	</Map>
+	<Map ID ="04_GTGT">		
+		<Item CellID="M_15" MCT="22" Caption="Chênh lệch số thuế GTGT phải nộp so với số thuế GTGT đã khai (thuế suất 5%)"/>
+		<Item CellID="P_15" MCT="23" Caption="Chênh lệch số thuế GTGT phải nộp so với số thuế GTGT đã khai (thuế suất 10%)"/>
+	</Map>
+	<Map ID ="01A_TNDN">
+		<Item CellID="J_18" MCT="18" Caption="Thuế TNDN dự kiến miễn, giảm"/>
+		<Item CellID="J_19" MCT="19" Caption="Thuế TNDN phải nộp trong kỳ"/>
+	</Map>
+	<Map ID ="01B_TNDN">
+		<Item CellID="J_18" MCT="17" Caption="Thuế thu nhập doanh nghiệp tính theo thuế suất chung"/>
+		<Item CellID="J_19" MCT="18" Caption="Thuế thu nhập doanh nghiệp tính theo thuế suất ưu đãi"/>
+		<Item CellID="J_20" MCT="19" Caption="Thuế TNDN dự kiến miễn, giảm"/>
+	</Map>
+	<Map ID ="03_TNDN">
+		<Item CellID="G_42" MCT="C2" Caption="Thuế TNDN từ hoạt động SXKD tính theo thuế suất phổ thông (C2=B30*28%)"/>
+		<Item CellID="G_43" MCT="C3" Caption="Thuế TNDN chênh lệch do áp dụng thuế suất khác mức thuế suất 28%"/>
+		<Item CellID="G_44" MCT="C4" Caption="Thuế thu nhập doanh nghiệp được miễn, giảm trong kỳ tính thuế"/>
+		<Item CellID="G_45" MCT="C5" Caption="Số thuế thu nhập đã nộp ở nước ngoài được trừ trong kỳ tính thuế"/>
+		<Item CellID="G_47" MCT="C7" Caption="Thuế TNDN đối với thu nhập từ chuyển quyền sử dụng đất, chuyển quyền thuê đất"/>
+		<Item CellID="G_48" MCT="C8" Caption="Thuế thu nhập bổ sung từ thu nhập chuyển quyền sử dụng đất ..."/>
+		<Item CellID="G_49" MCT="C9" Caption="Thuế TNDN từ hoạt động chuyển quyền sử dụng đất ..."/>
+	</Map>
+	<Map ID ="04_TNDN">
+		<Item CellID="J_10" MCT="10" Caption="Hàng hoá tồn kho đầu kỳ"/>
+		<Item CellID="J_11" MCT="11" Caption="Hàng hoá, dịch vụ mua trong kỳ"/>
+		<Item CellID="J_12" MCT="12" Caption="Doanh thu tính thuế"/>
+		<Item CellID="J_13" MCT="13" Caption="Tỷ lệ % thu nhập chịu thuế tính trên doanh thu"/>
+		<Item CellID="J_15" MCT="15" Caption="Thuế suất thuế TNDN (%)"/>
+	</Map>
+	<Map ID="01_TAIN">
+		<Item CellID="M_9" MCT="10" Caption="ABC"/>
+	</Map>
+	<Map ID="02_TAIN">
+		<Item CellID="M_9" MCT="10" Caption="ABC"/>
+	</Map>
+	<Map ID="03_TAIN">
+		<Item CellID="M_9" MCT="10" Caption="ABC"/>
+	</Map>		
+</Root>

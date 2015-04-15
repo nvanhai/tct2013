@@ -1,0 +1,24 @@
+<PL02_1_NTNN>
+	<Dynamic GroupName="BKCacNTNN">
+		<CTietBKCacNTNN id="ID_1">
+			<ct2>E_23</ct2>
+			<ct3>J_23</ct3>
+			<ct4 TINType="1">O_23</ct4>
+			<ct5>W_23</ct5>
+			<ct6>AE_23</ct6>
+			<ct7>AJ_23</ct7>
+			<ct8>AO_23</ct8>
+			<ct9>AS_23</ct9>
+			<ct10a>AY_23</ct10a>
+			<ct10b>BG_23</ct10b>
+			<ct11a>BQ_23</ct11a>
+			<ct11b>BY_23</ct11b>
+			<ct12>CJ_23</ct12>
+		</CTietBKCacNTNN>
+	</Dynamic>
+	<Static GroupName="PL02_1_NTNN">
+		<tong_ct10b>BG_25</tong_ct10b>
+		<tong_ct11b>BY_25</tong_ct11b>
+		<tong_ct12>CJ_25</tong_ct12>
+	</Static>
+</PL02_1_NTNN>

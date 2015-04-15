@@ -1,0 +1,10 @@
+<Pluc_02_1_TNDN>
+	<Dynamic GroupName="Pluc_02_1_TNDN">
+		<ChiTietCacBenNhanCNBDS id="id">
+			<tenBenNhanCNhuong>C_7</tenBenNhanCNhuong>
+			<mstBenNhanCN>D_7</mstBenNhanCN>
+			<diaChi>E_7</diaChi>
+			<hopDongCNhuongBDS>F_7</hopDongCNhuongBDS>
+		</ChiTietCacBenNhanCNBDS>
+	</Dynamic>
+</Pluc_02_1_TNDN>

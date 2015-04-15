@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by htphuong CMCSoft -->
+<Root>
+	<Map ID ="01_GTGT">
+		<Item CellID="L_24" MCT="22" Caption="Thuế GTGT còn được khấu trừ kỳ trước chuyển sang"/>
+		<Item CellID="L_28" MCT="25" Caption="Tổng số thuế GTGT  được khấu trừ kỳ này"/>
+		<Item CellID="L_33" MCT="31" Caption="Hàng hoá, dịch vụ bán ra chịu thuế suất 5%"/>
+		<Item CellID="L_34" MCT="33" Caption="Hàng hoá, dịch vụ bán ra chịu thuế suất 10%"/>
+		<Item CellID="L_47" MCT="42" Caption="Thuế GTGT đề nghị hoàn"/>
+		<Item CellID="L_45" MCT="40" Caption="Thuế GTGT còn phải nộp trong kỳ"/>
+		<Item CellID="L_48" MCT="43" Caption="Thuế GTGT còn được khấu trừ chuyển kỳ sau"/>
+	</Map>
+	<Map ID ="02_GTGT">		
+		<Item CellID="CT_40" MCT="21" Caption="Thuế GTGT chưa được hoàn kỳ trước chuyển sang"/>	
+		<Item CellID="CT_41" MCT="21a" Caption="Thuế GTGT nhận bàn giao từ đơn vị khác"/>	
+		<Item CellID="CT_42" MCT="23" Caption="Hàng hoá, dịch vụ mua vào trong kỳ"/>
+		<Item CellID="CT_48" MCT="28a" Caption="Thuế GTGT mua vào dự án đầu tư (cùng tỉnh, thành phố trực thuộc trung ương) bù trừ với thuế GTGT phải nộp của hoạt động sản xuất kinh doanh cùng kỳ tính thuế"/>
+		<Item CellID="CT_52" MCT="30" Caption="Thuế GTGT đề nghị hoàn"/>
+		<Item CellID="CT_51" MCT="30a" Caption="Trong đó thuế GTGT đầu vào của hàng hoá nhập khẩu thuộc loại trong nước chưa sản xuất được để tạo tài sản cố định đã đề nghị hoàn"/>
+		<Item CellID="CT_53" MCT="31" Caption="Thuế GTGT chưa được hoàn  bàn giao cho doanh nghiệp mới thành lập trong kỳ"/>
+	</Map>
+	<Map ID ="03_GTGT">
+		<Item CellID="Q_42" MCT="27" Caption="Thuế GTGT phải nộp"/>	
+	</Map>
+	<Map ID ="04_GTGT">
+		<Item CellID="Z_43" MCT="23" Caption="Phân phối, cung cấp hàng hoá"/>	
+		<Item CellID="Z_44" MCT="25" Caption="Dịch vụ, xây dựng không bao thầu nguyên vật liệu"/>
+		<Item CellID="Z_45" MCT="27" Caption="Sản xuất, vận tải, dịch vụ có gắn với hàng hoá, xây dựng có bao thầu nguyên vật liệu"/>
+		<Item CellID="Z_46" MCT="29" Caption="Hoạt động kinh doanh khác"/>
+	</Map>	
+	<Map ID ="05_GTGT">
+		<Item CellID="K_45" MCT="25" Caption="Số thuế tạm tính phải nộp kỳ này của Hàng hóa, dịch vụ chịu thuế 5%"/>	
+		<Item CellID="R_45" MCT="26" Caption="Số thuế tạm tính phải nộp kỳ này của Hàng hóa, dịch vụ chịu thuế 10%"/>
+	</Map>
+	<Map ID ="01A_TNDN">
+		<Item CellID="K_37" MCT="34" Caption="Thuế TNDN phát sinh"/>
+		<Item CellID="K_38" MCT="35" Caption="Thuế TNDN dự kiến miễn, giảm"/>
+	</Map>
+	<Map ID ="01B_TNDN">
+		<Item CellID="K_49" MCT="28" Caption="Thuế TNDN của hoạt động không ưu đãi"/>
+		<Item CellID="K_50" MCT="29" Caption="Thuế TNDN của hoạt động được ưu đãi về thuế suất"/>
+		<Item CellID="K_51" MCT="30" Caption="Thuế thu nhập doanh nghiệp dự kiến miễn, giảm"/>
+	</Map>
+	<Map ID ="02_TNDN">
+		<Item CellID="AW_73" MCT="35" Caption="Thuế TNDN phải nộp"/>
+	</Map>	
+		
+	<Map ID ="03_TNDN">
+		<Item CellID="O_60" MCT="C10" Caption="Thuế TNDN từ hoạt động SXKD tính theo thuế suất không ưu đãi (C10 =(C7 x 22%) + (C8 x 20%) + (C9 x C9a))"/>
+		<Item CellID="O_61" MCT="C11" Caption="Thuế TNDN chênh lệch do áp dụng mức thuế suất ưu đãi"/>
+		<Item CellID="O_62" MCT="C12" Caption="Thuế TNDN được miễn, giảm trong kỳ"/>
+		<Item CellID="O_65" MCT="C15" Caption="Số thuế thu nhập đã nộp ở nước ngoài được trừ trong kỳ tính thuế"/>
+		<Item CellID="O_66" MCT="C16" Caption="Thuế TNDN của hoạt động sản xuất kinh doanh (C16=C10-C11-C12-C15)"/>		
+	</Map>
+	
+	<Map ID ="04_TNDN">
+		<Item CellID="Y_28" MCT="4" Caption="Số thuế phải nộp Đối với dịch vụ"/>
+		<Item CellID="AX_28" MCT="7" Caption="Số thuế phải nộp Đối với kinh doanh hàng hoá"/>
+		<Item CellID="BW_28" MCT="10" Caption="Số thuế phải nộp Đối với hoạt động khác"/>
+	</Map>
+	
+	<Map ID ="06_TNDN">
+		<Item CellID="AW_74" MCT="37" Caption="Thuế TNDN phải nộp"/>
+	</Map>
+	
+	<Map ID="01_TAIN">
+		<Item CellID="AG_15" MCT="08" Caption="Thuế tài nguyên phát sinh trong kỳ"/>		
+		<Item CellID="AJ_15" MCT="09" Caption="Thuế tài nguyên dự kiến được miễn giảm trong kỳ"/>		
+	</Map>
+	<Map ID="01_TTDB">
+		<Item CellID="AN_15" MCT="8" Caption="Thuế TTĐB được khấu trừ"/>
+	</Map>
+	<Map ID="02_TAIN">	
+		<Item CellID="AH_17" MCT="8" Caption="Thuế tài nguyên phát sinh trong kỳ"/>
+		<Item CellID="AK_17" MCT="9" Caption="Thuế tài nguyên dự kiến được miễn giảm trong kỳ"/>
+	</Map>	
+	<Map ID="01_BVMT">
+		<Item CellID="T_37" MCT="6" Caption="Số phí phải nộp trong kỳ"/>	
+	</Map>	
+	<Map ID="01_TBVMT">
+		<Item CellID="T_37" MCT="6" Caption="Thuế BVMT phải nộp trong kỳ"/>	
+	</Map>	
+	<Map ID="02_BVMT">
+		<Item CellID="Q_37" MCT="6" Caption="Số phí phải nộp trong kỳ"/>	
+	</Map>	
+	<Map ID="01_PHXD">
+		<Item CellID="T_50" MCT="28" Caption="Số tiền phí xăng các loại"/>
+		<Item CellID="T_51" MCT="29" Caption="Số tiền phí dầu Diezen"/>
+		<Item CellID="T_52" MCT="30" Caption="Số tiền phí dầu mỡ nhờn"/>
+	</Map>	
+	<Map ID="01_NTNN">
+		<Item CellID="AU_48" MCT="9" Caption="Thuế GTGT phải nộp"/>
+		<Item CellID="BM_48" MCT="13" Caption="Thuế TNDN phải nộp"/>
+	</Map>
+    <Map ID="02_NTNN">
+		<Item CellID="AF_41" MCT="7a" Caption="a. Thuế giá trị gia tăng (7a=5a-6a)"/>
+		<Item CellID="AF_42" MCT="7b" Caption="b. Thuế thu nhập doanh nghiệp (7b=5b-6b)"/>
+	</Map>
+	<Map ID="03_NTNN">
+		<Item CellID="CG_26" MCT="9" Caption="Thuế TNDN phải nộp"/>
+	</Map>
+	<Map ID="04_NTNN">
+		<Item CellID="AB_34" MCT="5" Caption="Số thuế thu nhập doanh nghiệp phải nộp"/>
+		<Item CellID="AB_35" MCT="6" Caption="Số thuế đã nộp"/>
+	</Map>
+	<Map ID="01_TD_GTGT">
+		<Item CellID="S_47" MCT="27" Caption="Số thuế GTGT phải nộp [27]= [25]-[26]"/>
+	</Map>
+	<Map ID="03_TD_TAIN">
+		<Item CellID="R_37" MCT="28" Caption="Thuế tài nguyên dự kiến được miễn giảm trong kỳ"/>
+	</Map>
+	
+	<Map ID="03A_TD_TAIN">
+		<Item CellID="O_37" MCT="27" Caption="Thuế tài nguyên phát sinh trong kỳ tính thuế"/>
+		<Item CellID="R_37" MCT="28" Caption="Thuế tài nguyên dự kiến được miễn giảm trong kỳ tính thuế"/>
+	</Map>
+	
+	<Map ID="01A_TNDN_DK">
+		<Item CellID="AV_60" MCT="34" Caption="Số thuế TNDN được miễn hoặc giảm (nếu có)"/>
+	</Map>
+	<Map ID="01B_TNDN_DK">
+		<Item CellID="AV_62" MCT="29" Caption="Số thuế TNDN tạm tính được miễn hoặc giảm (nếu có)"/>
+	</Map>
+	
+	<Map ID="02_TNDN_DK">
+		<Item CellID="AV_66" MCT="34" Caption="Số thuế thu nhập doanh nghiệp phải nộp [34]=[32]x[33]"/>
+		<Item CellID="AV_67" MCT="35" Caption="Số thuế thu nhập doanh nghiệp được miễn hoặc giảm"/>
+	</Map>
+	
+	<Map ID="01_TAIN_DK">
+		<Item CellID="AV_61" MCT="34" Caption="Số tiền thuế tài nguyên tạm tính phải nộp [34]=[32]x[33]"/>
+	</Map>
+	
+	<Map ID="02_TAIN_DK">
+		<Item CellID="AV_73" MCT="39" Caption="Số tiền thuế tài nguyên kỳ trước chuyển sang [39]=[33]x[37]"/>
+		<Item CellID="AV_74" MCT="40" Caption="Số tiền thuế tài nguyên phát sinh trong kỳ tính thuế [40]=([28]-[26])x[32]x[37]"/>
+	</Map>
+	
+	<Map ID="01_PHLP">
+		<Item CellID="L_37" MCT="4" Caption="Số tiền phí, lệ phí  thu được "/>
+		<Item CellID="R_37" MCT="6" Caption="Số tiền phí, lệ phí trích sử dụng theo chế độ"/>
+	</Map>
+	
+	<Map ID="02_PHLP">
+		<Item CellID="H_37" MCT="4" Caption="Số tiền phí, lệ phí  thu được "/>
+		<Item CellID="N_37" MCT="6" Caption="Số tiền phí, lệ phí trích sử dụng theo chế độ"/>
+	</Map>
+	
+	
+	<Map ID="01_MBAI">
+		<Item CellID="Y_44" MCT="24" Caption="Tổng số thuế môn bài phải nộp"/>
+	</Map>
+</Root>

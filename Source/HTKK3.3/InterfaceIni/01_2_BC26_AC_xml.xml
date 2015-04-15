@@ -1,0 +1,13 @@
+<PL_BK_01AC_02>
+	<Dynamic GroupName="PL_BK_01AC_02" MinOccur = "1">
+		<ChiTietHoaDon id="id">
+			<maHoaDon>C_45</maHoaDon>
+			<tenHoaDon>D_45</tenHoaDon>
+			<kyHieuMau>O_45</kyHieuMau>
+			<kyHieuHD>S_45</kyHieuHD>
+			<soLuong>AA_45</soLuong>
+			<tuSo>V_45</tuSo>
+			<denSo>Y_45</denSo>
+		</ChiTietHoaDon>
+	</Dynamic>
+</PL_BK_01AC_02>

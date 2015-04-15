@@ -1,0 +1,51 @@
+﻿<HSoThueDTu>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>88</maTKhai>
+		<tenTKhai>TK quyết toán thuế TN đối với dầu khí(02/TAIN-DK)</tenTKhai>
+		<moTaBMau/>
+	</Static>
+
+	<Static GroupName="LoaiDauKhi">
+		<dauTho MinOccur="1">O_30</dauTho>
+		<condensate MinOccur="1">P_30</condensate>
+		<khiThienNhien MinOccur="1">Q_30</khiThienNhien>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct15>P_47</ct15>	
+	</Static>
+	<Static GroupName="LoaiHinhUyQuyen">
+		<donViUyQuyen MinOccur="1">P_49</donViUyQuyen>
+		<daiLyThue MinOccur="1">AA_49</daiLyThue>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tenDonViUyQuyen>AK_49</tenDonViUyQuyen>
+		<ct25>AV_55</ct25>
+		<ct26>AV_57</ct26>
+		<ct27>AV_58</ct27>
+		<ct28>AV_59</ct28>
+		<ct28a>AV_60</ct28a>
+		<ct28b>AV_61</ct28b>
+		<ct29>AV_62</ct29>
+		<ct30>AV_63</ct30>
+		<ct31>AV_64</ct31>
+		<ct32>AV_65</ct32>
+		<ct33>AV_67</ct33>
+		<ct34>AV_68</ct34>
+		<ct35>AV_69</ct35>
+		<ct36>AV_70</ct36>
+		<ct37>AV_71</ct37>
+		<ct38>AV_72</ct38>
+		<ct39>AV_73</ct39>
+		<ct40>AV_74</ct40>
+		<ct41>AV_75</ct41>
+		<ct42>AV_76</ct42>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>AR_92</nguoiKy>
+		<ngayKy>AR_94</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>U_92</tenNVienDLyThue>
+		<cchiHNghe>U_94</cchiHNghe>
+	</Static>
+</HSoThueDTu>

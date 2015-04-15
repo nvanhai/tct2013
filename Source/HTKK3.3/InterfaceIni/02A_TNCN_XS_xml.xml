@@ -1,0 +1,20 @@
+<PLuc_02_BK_XS>
+	<Dynamic GroupName="BangThuNhapDLyXoSo">
+		<ChiTietTNhapDLyXSo id="ID_1">
+			<coDieuChinhSoLieu>C_22</coDieuChinhSoLieu>			
+			<ct06>D_22</ct06>
+			<ct07 TINType="1">E_22</ct07>
+			<ct08>F_22</ct08>
+			<ct9>G_22</ct9>
+			<ct10>H_22</ct10>
+			<ct11>I_22</ct11>
+			<ct12>J_22</ct12>
+		</ChiTietTNhapDLyXSo>
+	</Dynamic>
+	<Static GroupName="PLuc_02_BK_XS">
+		<ct13>G_24</ct13>
+		<ct14>H_24</ct14>
+		<ct15>I_24</ct15>
+		<ct16>J_24</ct16>
+	</Static>
+</PLuc_02_BK_XS>

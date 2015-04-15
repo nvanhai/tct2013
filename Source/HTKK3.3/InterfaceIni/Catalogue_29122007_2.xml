@@ -1,0 +1,11 @@
+﻿<Sections Version="130">
+	<Section Dynamic="0" MaxRows="0">
+		<Items>
+			<Item value="Kg"/>
+			<Item value="Tấn"/>
+			<Item value="KWh"/>
+			<Item value="M3"/>
+			<Item value="Lít"/>
+		</Items>
+	</Section>	
+</Sections>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 (http://www.altova.com) by TeaM DJiNN (TeaM DJiNN) -->
+<xs:schema targetNamespace="TKhaiThue" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="TKhaiThue" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0">
+	<xs:redefine schemaLocation="../TKhaiThue.xsd">
+		<xs:complexType name="CTieuTKhaiChinhType">
+			<xs:complexContent>
+				<xs:extension base="CTieuTKhaiChinhType">
+					<xs:sequence>
+						<xs:element name="ct21" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Tổng thu nhập trả cho đại lý xổ số trong kỳ</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct22" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Tổng thu nhập trả cho đại lý xổ số thuộc diện khấu trừ </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ct23" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Tổng số thuế thu nhập cá nhân đã khấu trừ</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:redefine>
+</xs:schema>

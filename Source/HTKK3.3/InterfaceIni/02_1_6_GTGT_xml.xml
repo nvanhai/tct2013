@@ -1,0 +1,25 @@
+<PL01_2_6_GTGT>
+	<Dynamic GroupName="ChiTietHHDVDauTuKTru">
+		<HDonMVao id="ID_1">
+			<kHieuMauHDon>D_8</kHieuMauHDon>
+			<kHieuHDon>E_8</kHieuHDon>
+			<soHDon>F_8</soHDon>
+			<ngayPHanh>G_8</ngayPHanh>
+			<tenNBAN>H_8</tenNBAN>
+			<mstNBAN TINType="1">I_8</mstNBAN>
+			<matHang>J_8</matHang>
+			<gtriMuaChuaThue>K_8</gtriMuaChuaThue>
+			<thueSuat>L_8</thueSuat>
+			<thueGTGT>M_8</thueGTGT>
+			<ghiChu>N_8</ghiChu>
+		</HDonMVao>
+	</Dynamic>
+	<Static GroupName="HHDVDauTuKTru">
+		<tongGTriHHDVMuaVao>K_12</tongGTriHHDVMuaVao>
+		<tThueGTGT_HHDVMuaVao>K_13</tThueGTGT_HHDVMuaVao>
+	</Static>
+	<Static GroupName="PL01_2_6_GTGT">
+		<tongCongGTriHHDVMuaVao>K_12</tongCongGTriHHDVMuaVao>
+		<tongCongThueGTGTHHDVMuaVao>K_13</tongCongThueGTGTHHDVMuaVao>
+	</Static>
+</PL01_2_6_GTGT>

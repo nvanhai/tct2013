@@ -1,0 +1,61 @@
+﻿<HSoThueDTu>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>87</maTKhai>
+		<tenTKhai>TỜ KHAI THUẾ HOẠT ĐỘNG CHO THUÊ TÀI SẢN</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="HinhThucKeKhai">
+		<quyetToanRiengTungNam MinOccur="1">O_29</quyetToanRiengTungNam>
+		<quyetToanHetVaoNamDau MinOccur="1">R_29</quyetToanHetVaoNamDau>		
+	</Static>
+	<Static GroupName="CT21">
+		<soVBUQ>H_13</soVBUQ>
+		<ngayVBUQ>R_13</ngayVBUQ>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct22>J_16</ct22>
+		<ct23>F_17</ct23>
+		<ct23a>L_18</ct23a>
+		<ct23b>L_19</ct23b>
+		<ct24>F_20</ct24>
+		<ct25>F_21</ct25>
+		<ct26>H_22</ct26>
+		<ct27>I_23</ct27>
+		<ct28>I_24</ct28>
+		<ct29>I_25</ct29>
+	</Static>
+	<Dynamic GroupName="BKeSoThuePhaiNop">
+		<SoThuePhaiNop id="id">
+			<ct32>C_40</ct32>
+			<ct33>E_40</ct33>
+			<ct34>I_40</ct34>
+			<ct35>L_40</ct35>
+			<ct36>N_40</ct36>
+			<ct37>O_40</ct37>
+			<ct38>P_40</ct38>
+			<ct39>R_40</ct39>
+			<ct40>T_40</ct40>
+			<ct41>U_40</ct41>
+			<ct42>V_40</ct42>
+		</SoThuePhaiNop>
+	</Dynamic>
+	<Static GroupName="ChiTietSoThuePhaiNop">
+		<ct43>I_42</ct43>
+		<ct44>L_42</ct44>
+		<ct45>N_42</ct45>
+		<ct46>O_42</ct46>
+		<ct47>P_42</ct47>
+		<ct48>R_42</ct48>
+		<ct49>T_42</ct49>
+		<ct50>U_42</ct50>
+		<ct51>V_42</ct51>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>O_59</nguoiKy>
+		<ngayKy>O_61</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>E_59</tenNVienDLyThue>
+		<cchiHNghe>E_61</cchiHNghe>
+	</Static>
+</HSoThueDTu>

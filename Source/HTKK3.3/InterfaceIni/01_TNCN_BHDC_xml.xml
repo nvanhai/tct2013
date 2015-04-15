@@ -1,0 +1,50 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>139</maTKhai>
+		<tenTKhai>TỜ KHAI KHẤU TRỪ THUẾ THU NHẬP CÁ NHÂN - MẪU 01/KK-BHĐC</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_58</nguoiKy>
+		<ngayKy>R_60</ngayKy>
+		<nganhNgheKD></nganhNgheKD>
+	</Static>
+	<Static GroupName="NNT">
+		<phuongXa></phuongXa>
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>H_58</tenNVienDLyThue>
+		<cchiHNghe>H_60</cchiHNghe>
+	</Static>
+	<Static GroupName="TNCuaDLyBHiem">
+		<ct21>U_40</ct21>
+		<ct22>U_41</ct22>
+		<ct23>U_42</ct23>
+	</Static>
+	<Static GroupName="TNTuTienPhiTichLuyBHNT">
+		<ct24>U_44</ct24>
+		<ct25>U_45</ct25>
+	</Static>
+	<Static GroupName="TNTuTienTichLuyQuyHTTN">
+		<ct26>U_47</ct26>
+		<ct27>U_48</ct27>
+	</Static>
+	<Static GroupName="TNTuThamGiaMangLuoiBHDC">
+		<ct28>U_50</ct28>
+		<ct29>U_51</ct29>
+		<ct30>U_52</ct30>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct31>U_53</ct31>
+	</Static>
+</HSoKhaiThue>

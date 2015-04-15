@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited by Htphuong (CMC_Soft) -->
+<Root Version="130">
+	<Map ID="01" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai GTGT khấu trừ (01/GTGT)" LoaiTK="M" TkThangQuy="1">
+		<Validity StartDate="14/06/2006" DataFile="01_GTGT,01_1_GTGT,01_2_GTGT,01_3_GTGT,01_4A_GTGT,01_4B_GTGT,01_5_GTGT,01_6_GTGT,01_7_GTGT,01_1TD_GTGT,01_2TD_GTGT,KHBS_01_GTGT" ThueKhauTru="L_47" ThuePhaiNop="L_44"/>
+	</Map>
+	<Map ID="011" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Tờ khai GTGT khấu trừ (01/GTGT) quý" LoaiTK="Q" TkThangQuy="1">
+		<Validity StartDate="14/06/2006" DataFile="01_GTGT,01_1_GTGT,01_2_GTGT,01_3_GTGT,01_4A_GTGT,01_4B_GTGT,01_5_GTGT,01_6_GTGT,01_7_GTGT,01_1TD_GTGT,01_2TD_GTGT,KHBS_01_GTGT" ThueKhauTru="L_47" ThuePhaiNop="L_44"/>
+	</Map>
+	<Map ID="02" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai GTGT cho Dự án đầu tư (02/GTGT)" LoaiTK="M" TkThangQuy="1">
+		<Validity StartDate="14/06/2006" DataFile="02_GTGT,02_1_GTGT,02_1_1_GTGT,02_1_2_GTGT,02_1_3_GTGT,02_1_4_GTGT,02_1_5_GTGT,02_1_6_GTGT,02_1_7_GTGT,02_1_8_GTGT,02_1_9_GTGT,KHBS_02_GTGT" ThueKhauTru="CT_51" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="021" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Tờ khai GTGT cho Dự án đầu tư (02/GTGT) quý" LoaiTK="Q" TkThangQuy="1">
+		<Validity StartDate="14/06/2006" DataFile="02_GTGT,02_1_GTGT,02_1_1_GTGT,02_1_2_GTGT,02_1_3_GTGT,02_1_4_GTGT,02_1_5_GTGT,02_1_6_GTGT,02_1_7_GTGT,02_1_8_GTGT,02_1_9_GTGT,KHBS_02_GTGT" ThueKhauTru="CT_51" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="04" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai GTGT trực tiếp (03/GTGT)" LoaiTK="M" TkThangQuy="1">
+		<Validity StartDate="14/06/2006" DataFile="03_GTGT,KHBS_03_GTGT" ThueKhauTru="" ThuePhaiNop="O_44"/>
+	</Map>
+	<Map ID="041" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Tờ khai GTGT trực tiếp (03/GTGT) quý" LoaiTK="Q" TkThangQuy="1">
+		<Validity StartDate="14/06/2006" DataFile="03_GTGT,KHBS_03_GTGT" ThueKhauTru="" ThuePhaiNop="O_44"/>
+	</Map>
+	<Map ID="71" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai GTGT trực tiếp (04/GTGT)" LoaiTK="M" TkThangQuy="1">
+		<Validity StartDate="01/01/1900" DataFile="04_GTGT,KHBS_04_GTGT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="711" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Tờ khai GTGT trực tiếp (04/GTGT) quý" LoaiTK="Q" TkThangQuy="1">
+		<Validity StartDate="01/01/1900" DataFile="04_GTGT,KHBS_04_GTGT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="712" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Tờ khai GTGT trực tiếp (04/GTGT) lần phát sinh" LoaiTK="D">
+		<Validity StartDate="01/01/1900" DataFile="04_GTGT,KHBS_04_GTGT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="72" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai GTGT (05/GTGT)" LoaiTK="M">
+		<Validity StartDate="14/06/2006" DataFile="05_GTGT,KHBS_05_GTGT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="721" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai GTGT (05/GTGT) lần phát sinh" LoaiTK="D">
+		<Validity StartDate="14/06/2006" DataFile="05_GTGT,KHBS_05_GTGT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="11" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Tờ khai thuế TNDN tạm tính (01A/TNDN)" LoaiTK="Q">
+		<Validity StartDate="14/06/2006" DataFile="01A_TNDN,01A_1_TNDN,01A_2_TD_TNDN,KHBS_01A_TNDN,KHBS_01A_TNDN" ThueKhauTru="" ThuePhaiNop="K_33"/>
+	</Map>
+	<Map ID="12" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Tờ khai thuế TNDN tạm tính (01B/TNDN)" LoaiTK="Q">
+		<Validity StartDate="14/06/2006" DataFile="01B_TNDN,01B_1_TNDN,KHBS_01B_TNDN" ThueKhauTru="" ThuePhaiNop="J_47"/>
+	</Map>
+	<Map ID="73" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="1" Caption="Tờ khai thuế TNDN (02/TNDN)" LoaiTK="Q">
+		<Validity StartDate="14/06/2006" DataFile="02_TNDN,KHBS_02_TNDN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="731" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="1" Caption="Tờ khai thuế TNDN (02/TNDN) lần phát sinh" LoaiTK="D">
+		<Validity StartDate="14/06/2006" DataFile="02_TNDN,KHBS_02_TNDN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="03" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="1" Caption="Quyết toán TNDN năm (03/TNDN)" LoaiTK="D_Y">
+		<Validity StartDate="14/06/2006" DataFile="03_TNDN,03_1A_TNDN,03_1B_TNDN,03_1C_TNDN,03_2_TNDN,03_3A_TNDN,03_3B_TNDN,03_3C_TNDN,03_4_TNDN,03_5_TNDN,03_05_TNDN,03_6_TD_TNDN,KHBS_03_TNDN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="55" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="1" Caption="Tờ khai thuế TNDN (04/TNDN)" LoaiTK="Y">
+		<Validity StartDate="01/01/1900" DataFile="04_TNDN,KHBS_04_TNDN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="551" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="1" Caption="Tờ khai thuế TNDN (04/TNDN) lần phát sinh" LoaiTK="D">
+		<Validity StartDate="01/01/1900" DataFile="04_TNDN,KHBS_04_TNDN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="56" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="1" Caption="Tờ khai thuế TNDN (06/TNDN)" LoaiTK="D">
+		<Validity StartDate="01/01/1900" DataFile="06_TNDN,KHBS_06_TNDN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="46" FinanceYear="1" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Mẫu 01/KK-BH theo tháng" LoaiTK="M">
+		<Validity StartDate="01/01/2010" DataFile="01A_TNCN_BH,KHBS_01A_TNCN_BH" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="47" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Mẫu 01/KK-BH theo quý" LoaiTK="Q">
+		<Validity StartDate="01/01/2010" DataFile="01B_TNCN_BH,KHBS_01B_TNCN_BH" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="48" FinanceYear="1" Year="1" Month="1" ThreeMonth="0" Day="0" Caption=" Mẫu 01/KK-XS theo tháng" LoaiTK="M">
+		<Validity StartDate="01/01/2010" DataFile="01A_TNCN_XS,KHBS_01A_TNCN_XS" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="49" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Mẫu 01/KK-XS theo quý" LoaiTK="Q">
+		<Validity StartDate="01/01/2010" DataFile="01B_TNCN_XS,KHBS_01B_TNCN_XS" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="15" FinanceYear="1" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Mẫu 02/KK-TNCN theo tháng" LoaiTK="M">
+		<Validity StartDate="01/01/2010" DataFile="02A_TNCN10,KHBS_02A_TNCN10" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="16" FinanceYear="1" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Mẫu 02/KK-TNCN theo quý" LoaiTK="Q">
+		<Validity StartDate="01/01/2010" DataFile="02B_TNCN10,KHBS_02B_TNCN10" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="50" FinanceYear="1" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Mẫu 03/KK-TNCN theo tháng" LoaiTK="M">
+		<Validity StartDate="01/01/2010" DataFile="03A_TNCN10,KHBS_03A_TNCN10" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="51" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Mẫu 03/KK-TNCN theo quý" LoaiTK="Q">
+		<Validity StartDate="01/01/2010" DataFile="03B_TNCN10,KHBS_03B_TNCN10" ThueKhauTru="" ThuePhaiNop="R_50"/>
+	</Map>
+	<Map ID="36" FinanceYear="1" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Mẫu 07/KK-TNCN" LoaiTK="M" TkThangQuy="1">
+		<Validity StartDate="01/01/2010" DataFile="07_TNCN,KHBS_07_TNCN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="361" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Mẫu 07/KK-TNCN theo quý" LoaiTK="Q" TkThangQuy="1">
+		<Validity StartDate="01/01/2010" DataFile="07_TNCN,KHBS_07_TNCN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="17" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai 05/KK-TNCN" LoaiTK="Y">
+		<Validity StartDate="01/01/2010" DataFile="05_TNCN,05A_TNCN,05B_TNCN,KHBS_05_TNCN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="42" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai 02/KK-BH" LoaiTK="Y">
+		<Validity StartDate="01/01/2010" DataFile="02_TNCN_BH,02A_TNCN_BH,KHBS_02_TNCN_BH" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="26" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai 02/KK-BHĐC" LoaiTK="Y">
+		<Validity StartDate="01/01/1900" DataFile="02_TNCN_BHDC,02_1_TNCN_BHDC,02_2_TNCN_BHDC,KHBS" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="43" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai 02/KK-XS" LoaiTK="Y">
+		<Validity StartDate="01/01/2010" DataFile="02_TNCN_XS,02A_TNCN_XS,KHBS_02_TNCN_XS" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="59" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai 06/KK-TNCN" LoaiTK="Y">
+		<Validity StartDate="01/01/2010" DataFile="06_TNCN10,06B_TNCN10,KHBS_06_TNCN10" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="74" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="TK tạm nộp thuế TNCN (08/KK-TNCN)" LoaiTK="Q">
+		<Validity StartDate="01/01/1900" DataFile="08_TNCN,KHBS_08_TNCN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="75" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="TK tạm nộp thuế TNCN (08A/KK-TNCN)" LoaiTK="Q">
+		<Validity StartDate="01/01/1900" DataFile="08A_TNCN,KHBS_08A_TNCN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="76" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai 08B/KK-TNCN" LoaiTK="Y">
+		<Validity StartDate="01/01/1900" DataFile="08B_TNCN,KHBS_08B_TNCN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="41" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai 09/KK-TNCN" LoaiTK="Y">
+		<Validity StartDate="01/01/2010" DataFile="09_TNCN,09A_TNCN,09B_TNCN,09C_TNCN,KHBS_09_TNCN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="05" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai thuế tiêu thụ đặc biệt (01/TTDB)" LoaiTK="M">
+		<Validity StartDate="14/06/2006" DataFile="01_TTDB,01_1_TTDB,01_2_TTDB,KHBS_01_TTDB" ThueKhauTru="AG_6" ThuePhaiNop="AN_6"/>
+	</Map>
+	<Map ID="051" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai thuế tiêu thụ đặc biệt (01/TTDB) lần phát sinh" LoaiTK="D">
+		<Validity StartDate="14/06/2006" DataFile="01_TTDB,01_1_TTDB,01_2_TTDB,KHBS_01_TTDB" ThueKhauTru="AG_6" ThuePhaiNop="AN_6"/>
+	</Map>
+	<Map ID="06" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai thuế tài nguyên (01/TAIN)" LoaiTK="M">
+		<Validity StartDate="14/06/2006" DataFile="01_TAIN,KHBS_01_TAIN" ThueKhauTru="" ThuePhaiNop="AN_8"/>
+	</Map>
+	<Map ID="061" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai thuế tài nguyên (01/TAIN) lần phát sinh" LoaiTK="D">
+		<Validity StartDate="14/06/2006" DataFile="01_TAIN,KHBS_01_TAIN" ThueKhauTru="" ThuePhaiNop="AN_8"/>
+	</Map>
+	<Map ID="77" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai quyết toán thuế tài nguyên(02/TAIN)" LoaiTK="Y">
+		<Validity StartDate="14/06/2006" DataFile="02_TAIN,02_1_TD_TAIN,KHBS_02_TAIN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="70" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="1" Caption="Tờ khai thuế nhà thầu nước ngoài(01/NTNN)" LoaiTK="M">
+		<Validity StartDate="01/01/2010" DataFile="01_NTNN,KHBS_01_NTNN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="701" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="1" Caption="Tờ khai thuế nhà thầu nước ngoài(01/NTNN) lần phát sinh" LoaiTK="D">
+		<Validity StartDate="01/01/2010" DataFile="01_NTNN,KHBS_01_NTNN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="80" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="1" Caption="Tờ khai quyết toán thuế NTNN (02/NTNN)" LoaiTK="D_D">
+		<Validity StartDate="01/01/1900" DataFile="02_NTNN,02_1_NTNN,02_2_NTNN,KHBS_02_NTNN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="81" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="1" Caption="Tờ khai thuế nhà thầu nước ngoài - 03/NTNN" LoaiTK="M">
+		<Validity StartDate="01/01/1900" DataFile="03_NTNN,KHBS_03_NTNN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="811" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="1" Caption="Tờ khai thuế nhà thầu nước ngoài - 03/NTNN lần phát sinh" LoaiTK="D">
+		<Validity StartDate="01/01/1900" DataFile="03_NTNN,KHBS_03_NTNN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="82" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="1" Caption="Tờ khai quyết toán thuế NTNN (04/NTNN)" LoaiTK="D_D">
+		<Validity StartDate="01/01/1900" DataFile="04_NTNN,04_1_NTNN,KHBS_04_NTNN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>	
+	
+	<Map ID="86" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai phí bảo vệ môi trường (01/BVMT)" LoaiTK="M">
+		<Validity StartDate="01/01/1900" DataFile="01_BVMT,KHBS_01_BVMT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="87" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai quyết toán phí bảo vệ môi trường (02/BVMT)" LoaiTK="Y">
+		<Validity StartDate="01/01/1900" DataFile="02_BVMT,KHBS_02_BVMT" ThueKhauTru="" ThuePhaiNop="Q_37"/>
+	</Map>
+	
+	<Map ID="85" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai Phí, lệ phí (01/PHLP)" LoaiTK="M">
+		<Validity StartDate="01/01/1900" DataFile="01_PHLP,KHBS_01_PHLP" ThueKhauTru="" ThuePhaiNop="V_37"/>
+	</Map>
+	
+	<Map ID="88" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai QT Phí, lệ phí (02/PHLP)" LoaiTK="Y">
+		<Validity StartDate="01/01/1900" DataFile="02_PHLP,KHBS_02_PHLP" ThueKhauTru="" ThuePhaiNop="Q_37"/>
+	</Map>
+	
+	<Map ID="64" FinanceYear="1" Year="0" Month="0" ThreeMonth="0" Day="1" Caption="Thông báo phát hành hóa đơn(01_TBAC)" LoaiTK="D">
+		<Validity StartDate="23/06/2006" DataFile="01_TBAC,KHBS_01_TBAC" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="65" FinanceYear="1" Year="1/2" Month="0" ThreeMonth="1" Day="0" Caption="Báo cáo tình hình nhận in hóa đơn(01_AC)" LoaiTK="K">
+		<Validity StartDate="23/06/2006" DataFile="01_AC,KHBS_01_AC" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="66" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Báo cáo mất,cháy,hỏng hóa đơn(BC21_AC)" LoaiTK="N">
+		<Validity StartDate="23/06/2006" DataFile="BC21_AC,KHBS_BC21_AC" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="67" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Thông báo kết quả hủy hóa đơn(03_TBAC)" LoaiTK="N">
+		<Validity StartDate="23/06/2006" DataFile="03_TBAC,KHBS_03_TBAC" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="68" FinanceYear="1" Year="1/2" Month="0" ThreeMonth="1" Day="0" Caption="Báo cáo tình hình sử dụng hóa đơn (BC26_AC)" LoaiTK="Q">
+		<Validity StartDate="23/06/2006" DataFile="BC26_AC,01_1_BC26_AC,01_2_BC26_AC,KHBS_BC26_AC" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="69" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Báo cáo KQ-HĐ-SXKD cho DN (Bộ 15-BTC/DN)" LoaiTK="Y">
+		<Validity StartDate="23/06/2006" DataFile="15_01_CDKT10,15_02_SXKD10,15_03_LCTTTT10,15_04_LCTTGT10,KHBS_15_01_CDKT10" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="19" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Báo cáo KQ-HĐ-SXKD cho DN (Bộ 48-BTC/DN)" LoaiTK="Y">
+		<Validity StartDate="14/09/2006" DataFile="48_01_CDKT,48_02_SXKD,48_03_LCTTTT,48_04_LCTTGT,KHBS_48_01_CDKT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="20" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Báo cáo KQ-HĐ-SXKD cho NH (Bộ 16-BTC/NHNN)" LoaiTK="Y">
+		<Validity StartDate="18/04/2007" DataFile="16_01_CDKT,16_02_SXKD,16_03_LCTTTT,16_04_LCTTGT,KHBS_16_01_CDKT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="21" FinanceYear="1" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Báo cáo KQ-HĐ-SXKD cho CTCK (Bộ 99-BTC/CTCK)" LoaiTK="Y">
+		<Validity StartDate="13/06/2000" DataFile="99_01_CDKT,99_02_1_SXKD,99_02_2_SXKD,99_02_3_SXKD,99_03_LCTTTT,99_04_LCTTGT,KHBS_99_01_CDKT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="98" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="TK TNDN tạm tính đối với khí thiên nhiên(01A/TNDN-DK)" LoaiTK="KTN">
+		<Validity StartDate="01/01/1900" DataFile="01A_TNDN_DK_KTN,01A_1_TNDN_DK_KTN,KHBS_01A_TNDN_DK_KTN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="981" FinanceYear="0" Year="0" Month="0" ThreeMonth="0" Day="1" Caption="TK TNDN tạm tính đối với Condensate(01A/TNDN-DK)" LoaiTK="CD">
+		<Validity StartDate="01/01/1900" DataFile="01A_TNDN_DK_CD,01A_1_TNDN_DK_CD,KHBS_01A_TNDN_DK_CD" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="982" FinanceYear="0" Year="0" Month="0" ThreeMonth="0" Day="1" Caption="TK TNDN tạm tính đối với Dầu thô(01A/TNDN-DK)" LoaiTK="DT">
+		<Validity StartDate="01/01/1900" DataFile="01A_TNDN_DK_DT,01A_1_TNDN_DK_DT,KHBS_01A_TNDN_DK_DT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="99" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="TK TNDN TT đối với khí t/nhiên(01B/TNDN-DK)" LoaiTK="Q">
+		<Validity StartDate="01/01/1900" DataFile="01B_TNDN_DK,01B_TNDN_DK,KHBS_01B_TNDN_DK" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="93" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="TK Quyết toán TNDN đối với khí thiên nhiên(02/TNDN-DK)" LoaiTK="KTN_Y">
+		<Validity StartDate="01/01/1900" DataFile="02_TNDN_DK_KTN,02_1_TNDN_DK_KTN,KHBS_02_TNDN_DK_KTN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="931" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="TK Quyết toán TNDN đối với Condensate(02/TNDN-DK)" LoaiTK="CD_Y">
+		<Validity StartDate="01/01/1900" DataFile="02_TNDN_DK_CD,02_1_TNDN_DK_CD,KHBS_02_TNDN_DK_CD" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="932" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="TK Quyết toán TNDN đối với dầu thô(02/TNDN-DK)" LoaiTK="DT_Y">
+		<Validity StartDate="01/01/1900" DataFile="02_TNDN_DK_DT,02_1_TNDN_DK_DT,KHBS_02_TNDN_DK_DT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="92" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="TK thuế TN tạm tính với khí thiên nhiên(01/TAIN-DK)" LoaiTK="KTN">
+		<Validity StartDate="01/01/1900" DataFile="01_TAIN_DK_KTN,01_1_TAIN_DK_KTN,KHBS_01_TAIN_DK_KTN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="921" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="1" Caption="TK thuế TN tạm tính với Condensate(01/TAIN-DK)" LoaiTK="CD">
+		<Validity StartDate="01/01/1900" DataFile="01_TAIN_DK_CD,01_1_TAIN_DK_CD,KHBS_01_TAIN_DK_CD" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="922" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="1" Caption="TK thuế TN tạm tính với dầu thô(01/TAIN-DK)" LoaiTK="DT">
+		<Validity StartDate="01/01/1900" DataFile="01_TAIN_DK_DT,01_1_TAIN_DK_DT,KHBS_01_TAIN_DK_DT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="89" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="TK quyết toán thuế TN đối với khí thiên nhiên(02/TAIN-DK)" LoaiTK="KTN_Y">
+		<Validity StartDate="01/01/1900" DataFile="02_TAIN_DK_KTN,02_1_TAIN_DK_KTN,02_2_TAIN_DK_KTN,KHBS_02_TAIN_DK_KTN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="891" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="1" Caption="TK quyết toán thuế TN đối với Condensate(02/TAIN-DK)" LoaiTK="CD_Y">
+		<Validity StartDate="01/01/1900" DataFile="02_TAIN_DK_CD,02_1_TAIN_DK_CD,02_2_TAIN_DK_CD,KHBS_02_TAIN_DK_CD" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="892" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="1" Caption="TK quyết toán thuế TN đối với dầu thô(02/TAIN-DK)" LoaiTK="DT_Y">
+		<Validity StartDate="01/01/1900" DataFile="02_TAIN_DK_DT,02_1_TAIN_DK_DT,02_2_TAIN_DK_DT,KHBS_02_TAIN_DK_DT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="24" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="BC DKSL dầu khí khai thác(01/BCTL-DK)" LoaiTK="Y">
+		<Validity StartDate="01/01/1900" DataFile="01_BCTL_DK,KHBS_01_BCTL_DK" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="94" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai thuế GTGT – 01/TĐ-GTGT (tháng)" LoaiTK="M" TkThangQuy="1">
+		<Validity StartDate="01/01/1900" DataFile="01_TD_GTGT,01_2_TD_GTGT,KHBS_01_TD_GTGT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="941" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Tờ khai thuế GTGT – 01/TĐ-GTGT (quý)" LoaiTK="Q" TkThangQuy="1">
+		<Validity StartDate="01/01/1900" DataFile="01_TD_GTGT,01_2_TD_GTGT,KHBS_01_TD_GTGT" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="96" FinanceYear="0" Year="1" Month="1" ThreeMonth="0" Day="0" Caption="Tờ khai thuế tài nguyên(03/TĐ-TAIN) (tháng)" LoaiTK="M" TkThangQuy="1">
+		<Validity StartDate="01/01/1900" DataFile="03_TD_TAIN,03_1_TD_TAIN,KHBS_03_TD_TAIN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="961" FinanceYear="0" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="Tờ khai thuế tài nguyên(03/TĐ-TAIN) (quý)" LoaiTK="Q" TkThangQuy="1">
+		<Validity StartDate="01/01/1900" DataFile="03_TD_TAIN,03_1_TD_TAIN,KHBS_03_TD_TAIN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	
+	<Map ID="97" FinanceYear="0" Year="1" Month="0" ThreeMonth="0" Day="0" Caption="Tờ khai quyết toán thuế tài nguyên(03A/TĐ-TAIN)" LoaiTK="Y">
+		<Validity StartDate="01/01/1900" DataFile="03A_TD_TAIN,03A_1_TD_TAIN,KHBS_03A_TD_TAIN" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="07" FinanceYear="1" Year="0" Month="0" ThreeMonth="0" Day="1" Caption="BC phát hành biên lai thu phí, lệ phí" LoaiTK="D">
+		<Validity StartDate="01/01/2009" DataFile="01_TBAC_BLP,KHBS_01_TBAC_BLP" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="13" FinanceYear="1" Year="1/2" Month="0" ThreeMonth="1" Day="0" Caption="BC tình hình nhận in biên lai thu phí, lệ phí" LoaiTK="K">
+		<Validity StartDate="01/01/2009" DataFile="01_AC_BLP,KHBS_01_AC_BLP" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="09" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="BC mất, cháy biên lai thu phí, lệ phí" LoaiTK="N">
+		<Validity StartDate="01/01/2010" DataFile="BC21_AC_BLP,KHBS_BC21_AC_BLP" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="10" FinanceYear="1" Year="1" Month="0" ThreeMonth="1" Day="0" Caption="TB kết quả hủy biên lai thu phí, lệ phí" LoaiTK="N">
+		<Validity StartDate="23/06/2006" DataFile="03_TBAC_BLP,KHBS_03_TBAC_BLP" ThueKhauTru="" ThuePhaiNop=""/>
+	</Map>
+	<Map ID="14" Caption="Báo cáo tình hình sử dụng biên lai thu phí, lệ phí" Year="1/2" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" LoaiTK="Q">
+		<Validity StartDate="01/01/2009" DataFile="BC26_AC_BLP,KHBS_BC26_AC_BLP" ThueKhauTru="" ThuePhaiNop="">
+		</Validity>
+	</Map>
+	<Map ID="25" Caption="TK-TNCN Mẫu 01/KK-BHĐC" Year="1" Month="1" ThreeMonth="0" Day="0" FinanceYear="0" LoaiTK="M" TkThangQuy="1">
+		<Validity StartDate="01/01/1900" DataFile="01_TNCN_BHDC,KHBS_01_TNCN_BHDC" ThueKhauTru="" ThuePhaiNop="">
+		</Validity>
+	</Map>
+	<Map ID="251" Caption="TK-TNCN Mẫu 01/KK-BHĐC Quý" Year="1" Month="" ThreeMonth="1" Day="0" FinanceYear="0" LoaiTK="Q" TkThangQuy="1">
+		<Validity StartDate="01/01/1900" DataFile="01_TNCN_BHDC,KHBS_01_TNCN_BHDC" ThueKhauTru="" ThuePhaiNop="">
+		</Validity>
+	</Map>
+	<Map ID="23" Caption="TK thuế hoạt động cho thuê tài sản (01/KK-TTS) Quý" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" LoaiTK="Q">
+		<Validity StartDate="01/01/1900" DataFile="01_KK_TTS,KHBS_01_KK_TTS" ThueKhauTru="" ThuePhaiNop="">
+		</Validity>
+	</Map>
+	<Map ID="231" Caption="TK thuế hoạt động cho thuê tài sản (01/KK-TTS)" Year="1" Month="0" ThreeMonth="1" Day="0" FinanceYear="0" LoaiTK="M_Y">
+		<Validity StartDate="01/01/1900" DataFile="01_KK_TTS,KHBS_01_KK_TTS" ThueKhauTru="" ThuePhaiNop="">
+		</Validity>
+	</Map>
+	<Map ID="84" Caption="Tờ khai thuế môn bài – 01/MBAI" Year="1" Month="0" ThreeMonth="0" Day="0" FinanceYear="0" LoaiTK="Y">
+		<Validity StartDate="01/01/1900" DataFile="01_MBAI,KHBS_01_MBAI" ThueKhauTru="" ThuePhaiNop="">
+		</Validity>
+	</Map>
+</Root>

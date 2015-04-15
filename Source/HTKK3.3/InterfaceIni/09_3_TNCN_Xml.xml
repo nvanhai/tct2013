@@ -1,0 +1,51 @@
+<PL09-3_TNCN>
+	<Static GroupName="PL09-3_TNCN">	
+		<ct04>E_10</ct04>
+		<ct05 TINType="1">E_12</ct05>
+		<ct06>E_14</ct06>
+	</Static>	
+	<Dynamic GroupName="NPTCoMST">
+		<CTietNPTCoMST id="ID_1">
+			<ct10>D_25</ct10>
+			<ct11>E_25</ct11>
+			<ct12 TINType="1">F_25</ct12>
+			<ct13_ma>J_25</ct13_ma>
+			<ct13>K_25</ct13>
+			<ct14>M_25</ct14>
+			<ct15_ma>N_25</ct15_ma>
+			<ct15>O_25</ct15>
+			<ThoiGianGiamTru>
+				<ct16>Q_25</ct16>
+				<ct17>S_25</ct17>
+			</ThoiGianGiamTru>
+		</CTietNPTCoMST>
+	</Dynamic>
+	<Dynamic GroupName="NPTChuaCoMST">
+		<CTietNPTChuaCoMST id="ID_2">
+			<ct19>D_33</ct19>
+			<ThongTinGKS>
+				<ct20>E_33</ct20>
+				<ct21>F_33</ct21>
+				<ct22>G_33</ct22>
+				<NoiDangKy>
+					<ct23_ma>H_33</ct23_ma>
+					<ct23>I_33</ct23>
+					<ct24_ma>J_33</ct24_ma>
+					<ct24>K_33</ct24>
+					<ct25_ma>L_33</ct25_ma>
+					<ct25>M_33</ct25>
+					<ct26_ma>N_33</ct26_ma>
+					<ct26>O_33</ct26>
+				</NoiDangKy>
+			</ThongTinGKS>
+			<ct27_ma>P_33</ct27_ma>
+			<ct27>Q_33</ct27>
+			<ct28_ma>R_33</ct28_ma>
+			<ct28>S_33</ct28>
+			<ThoiGianGiamTru>
+				<ct29>T_33</ct29>
+				<ct30>U_33</ct30>
+			</ThoiGianGiamTru>
+		</CTietNPTChuaCoMST>
+	</Dynamic>
+</PL09-3_TNCN>

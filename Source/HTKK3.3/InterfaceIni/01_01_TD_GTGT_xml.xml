@@ -1,0 +1,16 @@
+<PL_01_1_TD_GTGT>
+	<Dynamic GroupName="BANGTHUEGTGTCUASXTHUYDIEN">
+		<chiTietThueGTGTCuaSXThuyDien id="id">
+			<tenNhaMay>C_6</tenNhaMay>
+			<mstNhaMay></mstNhaMay>
+			<thueDauRaNhaMay>E_6</thueDauRaNhaMay>
+			<thueDauVaoNhaMay>G_6</thueDauVaoNhaMay>
+			<thuePNopNhaMay>H_6</thuePNopNhaMay>
+		</chiTietThueGTGTCuaSXThuyDien>
+	</Dynamic>
+	<Static GroupName="PL_01_1_TD_GTGT">
+		<tongThueDauRa>E_8</tongThueDauRa>
+		<tongThueDauVao>G_8</tongThueDauVao>
+		<tongThuePhaiNop>H_8</tongThuePhaiNop>
+	</Static>
+</PL_01_1_TD_GTGT>

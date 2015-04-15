@@ -1,0 +1,60 @@
+<PL_KQHDXSKD>
+	<Static GroupName="SoNamNay">
+		<ct01>I_9</ct01>
+		<ct01_1>I_10</ct01_1>
+		<ct01_2>I_11</ct01_2>
+		<ct01_3>I_12</ct01_3>
+		<ct01_4>I_13</ct01_4>
+		<ct01_5>I_14</ct01_5>
+		<ct01_6>I_15</ct01_6>
+		<ct01_7>I_16</ct01_7>
+		<ct01_8>I_17</ct01_8>
+		<ct01_9>I_18</ct01_9>
+		<ct02>I_19</ct02>
+		<ct10>I_20</ct10>
+		<ct11>I_21</ct11>
+		<ct20>I_22</ct20>
+		<ct25>I_27</ct25>
+		<ct30>I_28</ct30>
+		<ct31>I_29</ct31>
+		<ct32>I_30</ct32>
+		<ct40>I_31</ct40>
+		<ct50>I_32</ct50>
+		<ct51>I_33</ct51>
+		<ct52>I_34</ct52>
+		<ct60>I_35</ct60>
+		<ct70>I_36</ct70>
+	</Static>
+	<Static GroupName="SoNamTruoc">
+		<ct01>J_9</ct01>
+		<ct01_1>J_10</ct01_1>
+		<ct01_2>J_11</ct01_2>
+		<ct01_3>J_12</ct01_3>
+		<ct01_4>J_13</ct01_4>
+		<ct01_5>J_14</ct01_5>
+		<ct01_6>J_15</ct01_6>
+		<ct01_7>J_16</ct01_7>
+		<ct01_8>J_17</ct01_8>
+		<ct01_9>J_18</ct01_9>
+		<ct02>J_19</ct02>
+		<ct10>J_20</ct10>
+		<ct11>J_21</ct11>
+		<ct20>J_22</ct20>
+		<ct25>J_27</ct25>
+		<ct30>J_28</ct30>
+		<ct31>J_29</ct31>
+		<ct32>J_30</ct32>
+		<ct40>J_31</ct40>
+		<ct50>J_32</ct50>
+		<ct51>J_33</ct51>
+		<ct52>J_34</ct52>
+		<ct60>J_35</ct60>
+		<ct70>J_36</ct70>
+	</Static>
+	<Static GroupName="PL_KQHDXSKD">
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap DateType="1">I_41</ngayLap>
+		<giamDoc>I_39</giamDoc>
+	</Static>
+</PL_KQHDXSKD>

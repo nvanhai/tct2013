@@ -1,0 +1,54 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>103</maTKhai>
+		<tenTKhai>Tờ khai 06/KK-TNCN</tenTKhai>
+		<soLan></soLan>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="ThuNhapTuDauVon">
+		<ct21>I_41</ct21>
+		<ct22>I_42</ct22>
+	</Static>
+	<Static GroupName="ThuNhapTuChuyenNhuongCKhoan">
+		<ct23>I_44</ct23>
+		<ct24>I_45</ct24>
+	</Static>
+	<Static GroupName="ThuNhapTuNhuongQuyenTMai">
+		<ct25>I_47</ct25>
+		<ct26>I_48</ct26>
+	</Static>
+	<Static GroupName="ThuNhapTuTrungThuong">
+		<ct27>I_50</ct27>
+		<ct28>I_51</ct28>
+	</Static>
+	<Static GroupName="TNhapTuKDoanhCaNhanKhongCTru">
+		<ct29>I_53</ct29>
+		<ct30>I_54</ct30>
+		<ct31>I_55</ct31>
+	</Static>
+	<Static GroupName="TNhapTuCNhungVonCNhanKhongCuTru">
+		<ct32>I_57</ct32>
+		<ct33>I_58</ct33>
+	</Static>
+	
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>M_60</nguoiKy>
+		<ngayKy>M_62</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>D_60</tenNVienDLyThue>
+		<cchiHNghe>D_62</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

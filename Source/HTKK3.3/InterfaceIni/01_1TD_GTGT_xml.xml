@@ -1,0 +1,16 @@
+<PL_01_1_TD_GTGT>
+	<Dynamic GroupName="BANGTHUEGTGTCUASXTHUYDIEN">
+		<chiTietThueGTGTCuaSXThuyDien id="id">
+			<tenNhaMay>C_7</tenNhaMay>
+			<mstNhaMay TINType="1">E_7</mstNhaMay>
+			<thueDauRaNhaMay>F_7</thueDauRaNhaMay>
+			<thueDauVaoNhaMay>H_7</thueDauVaoNhaMay>
+			<thuePNopNhaMay>I_7</thuePNopNhaMay>
+		</chiTietThueGTGTCuaSXThuyDien>
+	</Dynamic>
+	<Static GroupName="PL_01_1_TD_GTGT">
+		<tongThueDauRa>F_9</tongThueDauRa>
+		<tongThueDauVao>H_9</tongThueDauVao>
+		<tongThuePhaiNop>I_9</tongThuePhaiNop>
+	</Static>
+</PL_01_1_TD_GTGT>

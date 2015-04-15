@@ -1,0 +1,37 @@
+<PL05_TNDN>
+	<TinhNopThueTNDNCoSoHTPT>
+		<ToanBoDoanhNghiep>
+			<ct03>0.0</ct03>
+			<ct04>1</ct04>
+			<ct05>1</ct05>
+			<ct06>1</ct06>
+			<ct07>1</ct07>
+			<ct08>1</ct08>
+			<ct09>1</ct09>
+			<ct10>1</ct10>
+		</ToanBoDoanhNghiep>
+		<TaitruSoChinh>
+			<ct03>0.0</ct03>
+			<ct04>1</ct04>
+			<ct05>1</ct05>
+			<ct06>1</ct06>
+			<ct07>1</ct07>
+			<ct08>1</ct08>
+			<ct09>1</ct09>
+			<ct10>1</ct10>
+		</TaitruSoChinh>
+		<taiCoSoPhuThuoc>
+			<DiaPhuong></DiaPhuong>
+			<TenCoSo></TenCoSo>
+			<MST></MST>
+			<ct03>1</ct03>
+			<ct04>1</ct04>
+			<ct05>1</ct05>
+			<ct06>1</ct06>
+			<ct07>1</ct07>
+			<ct08>1</ct08>
+			<ct09>1</ct09>
+			<ct10>1</ct10>
+		</taiCoSoPhuThuoc>
+	</TinhNopThueTNDNCoSoHTPT>
+</PL05_TNDN>

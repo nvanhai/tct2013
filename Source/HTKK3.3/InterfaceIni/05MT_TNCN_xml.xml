@@ -1,0 +1,19 @@
+<PL27MGT-TNCN>
+	<Static GroupName="chiTietChiTieuMGiamThueTNCN">
+			<ct07>C_22</ct07>
+			<ct08 TINType="1">D_22</ct08>
+			<ct09>E_22</ct09>
+			<ct10>F_22</ct10>
+			<ct11>G_22</ct11>
+			<ct12>H_22</ct12>
+			<ct13>I_22</ct13>
+			<ct14>J_22</ct14>
+	</Static>
+	<Static GroupName="PL27MGT-TNCN">
+		<ct15>F_16</ct15>
+		<ct16>G_16</ct16>
+		<ct17>H_16</ct17>
+		<ct18>I_16</ct18>
+		<ct19>J_16</ct19>
+	</Static>
+</PL27MGT-TNCN>

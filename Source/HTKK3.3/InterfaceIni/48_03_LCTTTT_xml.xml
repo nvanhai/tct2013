@@ -1,0 +1,67 @@
+<PL_LCTTTT>
+
+	<Static GroupName="SoNamNay">
+		<ct01_nNay>R_40</ct01_nNay>
+		<ct02_nNay>R_41</ct02_nNay>
+		<ct03_nNay>R_42</ct03_nNay>
+		<ct04_nNay>R_43</ct04_nNay>
+		<ct05_nNay>R_44</ct05_nNay>
+		<ct06_nNay>R_45</ct06_nNay>
+		<ct07_nNay>R_46</ct07_nNay>
+		<ct20_nNay>R_47</ct20_nNay>
+		<ct21_nNay>R_49</ct21_nNay>
+		<ct22_nNay>R_50</ct22_nNay>
+		<ct23_nNay>R_51</ct23_nNay>
+		<ct24_nNay>R_52</ct24_nNay>
+		<ct25_nNay>R_53</ct25_nNay>
+		<ct26_nNay>R_54</ct26_nNay>
+		<ct27_nNay>R_55</ct27_nNay>
+		<ct30_nNay>R_56</ct30_nNay>
+		<ct31_nNay>R_58</ct31_nNay>
+		<ct32_nNay>R_59</ct32_nNay>
+		<ct33_nNay>R_60</ct33_nNay>
+		<ct34_nNay>R_61</ct34_nNay>
+		<ct35_nNay>R_62</ct35_nNay>
+		<ct36_nNay>R_63</ct36_nNay>
+		<ct40_nNay>R_64</ct40_nNay>
+		<ct50_nNay>R_65</ct50_nNay>
+		<ct60_nNay>R_66</ct60_nNay>
+		<ct61_nNay>R_67</ct61_nNay>
+		<ct70_nNay>R_68</ct70_nNay>
+	</Static>
+	<Static GroupName="SoNamNgoai">
+		<ct01_nNgoai>W_40</ct01_nNgoai>
+		<ct02_nNgoai>W_41</ct02_nNgoai>
+		<ct03_nNgoai>W_42</ct03_nNgoai>
+		<ct04_nNgoai>W_43</ct04_nNgoai>
+		<ct05_nNgoai>W_44</ct05_nNgoai>
+		<ct06_nNgoai>W_45</ct06_nNgoai>
+		<ct07_nNgoai>W_46</ct07_nNgoai>
+		<ct20_nNgoai>W_47</ct20_nNgoai>
+		<ct21_nNgoai>W_49</ct21_nNgoai>
+		<ct22_nNgoai>W_50</ct22_nNgoai>
+		<ct23_nNgoai>W_51</ct23_nNgoai>
+		<ct24_nNgoai>W_52</ct24_nNgoai>
+		<ct25_nNgoai>W_53</ct25_nNgoai>
+		<ct26_nNgoai>W_54</ct26_nNgoai>
+		<ct27_nNgoai>W_55</ct27_nNgoai>
+		<ct30_nNgoai>W_56</ct30_nNgoai>
+		<ct31_nNgoai>W_58</ct31_nNgoai>
+		<ct32_nNgoai>W_59</ct32_nNgoai>
+		<ct33_nNgoai>W_60</ct33_nNgoai>
+		<ct34_nNgoai>W_61</ct34_nNgoai>
+		<ct35_nNgoai>W_62</ct35_nNgoai>
+		<ct36_nNgoai>W_63</ct36_nNgoai>
+		<ct40_nNgoai>W_64</ct40_nNgoai>
+		<ct50_nNgoai>W_65</ct50_nNgoai>
+		<ct60_nNgoai>W_66</ct60_nNgoai>
+		<ct61_nNgoai>W_67</ct61_nNgoai>
+		<ct70_nNgoai>W_68</ct70_nNgoai>
+	</Static>
+	<Static GroupName="PL_LCTTTT">
+		<nguoiLapBieu></nguoiLapBieu>
+		<keToanTruong></keToanTruong>
+		<ngayLap DateType="1">R_72</ngayLap>
+		<giamDoc>R_70</giamDoc>
+	</Static>
+</PL_LCTTTT>

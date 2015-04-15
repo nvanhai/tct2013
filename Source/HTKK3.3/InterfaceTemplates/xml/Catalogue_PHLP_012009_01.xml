@@ -1,0 +1,215 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by CMCSOFT -->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="330">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_6"   CellID2="C_2" Value="1###21500000###Phí thuộc lĩnh vực nông nghiệp, lâm nghiệp, thủy sản###Phí thuộc lĩnh vực nông nghiệp, lâm nghiệp, thủy sản###0000" StatusID=""/>
+			<Cell CellID="C_7"   CellID2="C_2" Value="1###21502151###Phí kiểm dịch động vật, sản phẩm động vật và thực vật###Phí kiểm dịch động vật, sản phẩm động vật và thực vật###2151" StatusID=""/>
+			<Cell CellID="C_8"   CellID2="C_2" Value="1###21502152###Phí giám sát khử trùng vật thể thuộc diện kiểm dịch thực vật###Phí giám sát khử trùng vật thể thuộc diện kiểm dịch thực vật###2152" StatusID=""/>
+			<Cell CellID="C_9"   CellID2="C_2" Value="1###21502153###Phí kiểm soát giết mổ động vật###Phí kiểm soát giết mổ động vật###2153" StatusID=""/>
+			<Cell CellID="C_10"   CellID2="C_2" Value="1###21502154###Phí kiểm nghiệm dư lượng thuốc bảo vệ thực vậtvà sp thực vật###Phí kiểm nghiệm dư lượng thuốc bảo vệ thực vậtvà sp thực vật###2154" StatusID=""/>
+			<Cell CellID="C_11"   CellID2="C_2" Value="1###21502155###Phí kiểm nghiệm chất lượng thức ăn chăn nuôi###Phí kiểm nghiệm chất lượng thức ăn chăn nuôi###2155" StatusID=""/>
+			<Cell CellID="C_12"   CellID2="C_2" Value="1###21502156###Phí kiểm tra vệ sinh thú y###Phí kiểm tra vệ sinh thú y###2156" StatusID=""/>
+			<Cell CellID="C_13"   CellID2="C_2" Value="1###21502157###Phí bảo vệ nguồn lợi thủy sản###Phí bảo vệ nguồn lợi thủy sản###2157" StatusID=""/>
+			<Cell CellID="C_14"   CellID2="C_2" Value="1###21502158###Phí kiểm nghiệm thuốc thú y###Phí kiểm nghiệm thuốc thú y###2158" StatusID=""/>
+			<Cell CellID="C_15"   CellID2="C_2" Value="1###21502161###Phí kiểm định, khảo nghiệm thuốc bảo vệ thực vật###Phí kiểm định, khảo nghiệm thuốc bảo vệ thực vật###2161" StatusID=""/>
+			<Cell CellID="C_16"   CellID2="C_2" Value="1###21502162###Phí bình tuyển công nhận cây mẹ, cây đầu dòng,vườn giống cây###Phí bình tuyển công nhận cây mẹ, cây đầu dòng,vườn giống cây###2162" StatusID=""/>
+			<Cell CellID="C_17"   CellID2="C_2" Value="1###24002416###Phí sát hạch cấp chứng chỉ nghiệp vụ bảo vệ###Phí sát hạch cấp chứng chỉ nghiệp vụ bảo vệ###2416" StatusID=""/>
+			<Cell CellID="C_18"   CellID2="C_2" Value="1###25502564###Phí cấp, đổi thẻ bảo hiểm y tế###Phí cấp, đổi thẻ bảo hiểm y tế###2564" StatusID=""/>
+			<Cell CellID="C_19"   CellID2="C_2" Value="1###30003009###Thu tiền cấp quyền khai thác khoáng sản###Thu tiền cấp quyền khai thác khoáng sản###3009" StatusID=""/>
+			<Cell CellID="C_20"   CellID2="C_2" Value="1###30503062###Lệ phí cấp GP quản lý vũ khí, vật liệu nổ, công cụ hỗ trợ###Lệ phí cấp GP quản lý vũ khí, vật liệu nổ, công cụ hỗ trợ###3062" StatusID=""/>
+			<Cell CellID="C_21"   CellID2="C_2" Value="1###30503063###Lệ phí cấp giấy phép quy hoạch###Lệ phí cấp giấy phép quy hoạch###3063" StatusID=""/>
+			<Cell CellID="C_22"   CellID2="C_2" Value="2###22000000###Phí thuộc lĩnh vực công nghiệp, xây dựng###Phí thuộc lĩnh vực công nghiệp, xây dựng###0000" StatusID=""/>
+			<Cell CellID="C_23"   CellID2="C_2" Value="2###22002201###Phí kiểm tra nhà nước về chất lượng hàng hoá###Phí kiểm tra nhà nước về chất lượng hàng hoá###2201" StatusID=""/>
+			<Cell CellID="C_24"   CellID2="C_2" Value="2###22002202###Phí thử nghiệm chất lượng sản phẩm, vật tư, nguyên vật liệu###Phí thử nghiệm chất lượng sản phẩm, vật tư, nguyên vật liệu###2202" StatusID=""/>
+			<Cell CellID="C_25"   CellID2="C_2" Value="2###22002203###Phí xây dựng###Phí xây dựng###2203" StatusID=""/>
+			<Cell CellID="C_26"   CellID2="C_2" Value="2###22002204###Phí đo đạc, lập bản đồ địa chính###Phí đo đạc, lập bản đồ địa chính###2204" StatusID=""/>
+			<Cell CellID="C_27"   CellID2="C_2" Value="2###22002205###Phí thẩm định cấp quyền sử dụng đất###Phí thẩm định cấp quyền sử dụng đất###2205" StatusID=""/>
+			<Cell CellID="C_28"   CellID2="C_2" Value="3###22500000###Phí thuộc lĩnh vực thương mại, đầu tư###Phí thuộc lĩnh vực thương mại, đầu tư###0000" StatusID=""/>
+			<Cell CellID="C_29"   CellID2="C_2" Value="3###22502251###Phí chứng nhận xuất xứ hàng hoá (C/O)###Phí chứng nhận xuất xứ hàng hoá (C/O)###2251" StatusID=""/>
+			<Cell CellID="C_30"   CellID2="C_2" Value="3###22502252###Phí chợ###Phí chợ###2252" StatusID=""/>
+			<Cell CellID="C_31"   CellID2="C_2" Value="3###22502253###Phí thẩm định KD thương mại có ĐK thuộc các L.vực, các ngành###Phí thẩm định KD thương mại có ĐK thuộc các L.vực, các ngành###2253" StatusID=""/>
+			<Cell CellID="C_32"   CellID2="C_2" Value="3###22502254###Phí thẩm định hồ sơ mua bán tàu, thuyền, tàu bay###Phí thẩm định hồ sơ mua bán tàu, thuyền, tàu bay###2254" StatusID=""/>
+			<Cell CellID="C_33"   CellID2="C_2" Value="3###22502255###Phí thẩm định DA đầu tư xây dựng (thẩm định và thiết kế...)###Phí thẩm định DA đầu tư xây dựng (thẩm định và thiết kế...)###2255" StatusID=""/>
+			<Cell CellID="C_34"   CellID2="C_2" Value="3###22502256###Phí thẩm định đánh giá trữ lượng khoáng sản###Phí thẩm định đánh giá trữ lượng khoáng sản###2256" StatusID=""/>
+			<Cell CellID="C_35"   CellID2="C_2" Value="3###22502257###Phí thẩm định, phân hạng cơ sở lưu trú du lịch###Phí thẩm định, phân hạng cơ sở lưu trú du lịch###2257" StatusID=""/>
+			<Cell CellID="C_36"   CellID2="C_2" Value="3###22502258###Phí đấu thầu, đấu giá và thẩm định kết quả đấu thầu###Phí đấu thầu, đấu giá và thẩm định kết quả đấu thầu###2258" StatusID=""/>
+			<Cell CellID="C_37"   CellID2="C_2" Value="3###22502261###Phí giám định hàng hoá xuất nhập khẩu###Phí giám định hàng hoá xuất nhập khẩu###2261" StatusID=""/>
+			<Cell CellID="C_38"   CellID2="C_2" Value="4###23000000###Phí thuộc lĩnh vực giao thông vận tải###Phí thuộc lĩnh vực giao thông vận tải###0000" StatusID=""/>
+			<Cell CellID="C_39"   CellID2="C_2" Value="4###23002301###Phí sử dụng đường bộ###Phí sử dụng đường bộ###2301" StatusID=""/>
+			<Cell CellID="C_40"   CellID2="C_2" Value="4###23002302###Phí sử dụng đường thủy nội địa (phí bảo đảm hàng giang)###Phí sử dụng đường thủy nội địa (phí bảo đảm hàng giang)###2302" StatusID=""/>
+			<Cell CellID="C_41"   CellID2="C_2" Value="4###23002303###Phí sử dụng đường biển###Phí sử dụng đường biển###2303" StatusID=""/>
+			<Cell CellID="C_42"   CellID2="C_2" Value="4###23002304###Phí qua cầu###Phí qua cầu###2304" StatusID=""/>
+			<Cell CellID="C_43"   CellID2="C_2" Value="4###23002305###Phí qua đò###Phí qua đò###2305" StatusID=""/>
+			<Cell CellID="C_44"   CellID2="C_2" Value="4###23002306###Phí qua phà###Phí qua phà###2306" StatusID=""/>
+			<Cell CellID="C_45"   CellID2="C_2" Value="4###23002307###Phí sử dụng cầu, bến, phao neo thuộc khu vực cảng biển###Phí sử dụng cầu, bến, phao neo thuộc khu vực cảng biển###2307" StatusID=""/>
+			<Cell CellID="C_46"   CellID2="C_2" Value="4###23002308###Phí sử dụng cầu, bến, phao neo thuộc cảng, bến thủy nội địa###Phí sử dụng cầu, bến, phao neo thuộc cảng, bến thủy nội địa###2308" StatusID=""/>
+			<Cell CellID="C_47"   CellID2="C_2" Value="4###23002311###Phí sử dụng cảng cá###Phí sử dụng cảng cá###2311" StatusID=""/>
+			<Cell CellID="C_48"   CellID2="C_2" Value="4###23002312###Phí sử dụng vị trí neo, đậu ngoài phạm vi cảng###Phí sử dụng vị trí neo, đậu ngoài phạm vi cảng###2312" StatusID=""/>
+			<Cell CellID="C_49"   CellID2="C_2" Value="4###23002313###Phí bảo đảm hàng hải###Phí bảo đảm hàng hải###2313" StatusID=""/>
+			<Cell CellID="C_50"   CellID2="C_2" Value="4###23002314###Phí hoa tiêu, dẫn đường trong lĩnh vực đường biển###Phí hoa tiêu, dẫn đường trong lĩnh vực đường biển###2314" StatusID=""/>
+			<Cell CellID="C_51"   CellID2="C_2" Value="4###23002315###Phí hoa tiêu, dẫn đường trong lĩnh vực đường thủy nội địa###Phí hoa tiêu, dẫn đường trong lĩnh vực đường thủy nội địa###2315" StatusID=""/>
+			<Cell CellID="C_52"   CellID2="C_2" Value="4###23002316###Phí hoa tiêu, dẫn đường trong lĩnh vực hàng không###Phí hoa tiêu, dẫn đường trong lĩnh vực hàng không###2316" StatusID=""/>
+			<Cell CellID="C_53"   CellID2="C_2" Value="4###23002317###Phí trọng tải tàu, thuyền###Phí trọng tải tàu, thuyền###2317" StatusID=""/>
+			<Cell CellID="C_54"   CellID2="C_2" Value="4###23002318###Phí luồng, lạch đường thủy nội địa###Phí luồng, lạch đường thủy nội địa###2318" StatusID=""/>
+			<Cell CellID="C_55"   CellID2="C_2" Value="4###23002321###Phí sử dụng lề đường, bến, bãi, mặt nước###Phí sử dụng lề đường, bến, bãi, mặt nước###2321" StatusID=""/>
+			<Cell CellID="C_56"   CellID2="C_2" Value="4###23002322###Phí kiểm định an toàn kỹ thuật và chất lượng thiết bị,vật tư###Phí kiểm định an toàn kỹ thuật và chất lượng thiết bị,vật tư###2322" StatusID=""/>
+			<Cell CellID="C_57"   CellID2="C_2" Value="4###23002323###Phí sử dụng kết cấu hạ tầng đường sắt quốc gia###Phí sử dụng kết cấu hạ tầng đường sắt quốc gia###2323" StatusID=""/>
+			<Cell CellID="C_58"   CellID2="C_2" Value="4###23002324###Phí lưu giữ, bảo quản tang vật, phương tiện###Phí lưu giữ, bảo quản tang vật, phương tiện###2324" StatusID=""/>
+			<Cell CellID="C_59"   CellID2="C_2" Value="5###23500000###Phí thuộc lĩnh vực thông tin, liên lạc###Phí thuộc lĩnh vực thông tin, liên lạc###0000" StatusID=""/>
+			<Cell CellID="C_60"   CellID2="C_2" Value="5###23502351###Phí sử dụng, bảo vệ tần số vô tuyến điện###Phí sử dụng, bảo vệ tần số vô tuyến điện###2351" StatusID=""/>
+			<Cell CellID="C_61"   CellID2="C_2" Value="5###23502352###Phí cấp tên miền, địa chỉ Internet###Phí cấp tên miền, địa chỉ Internet###2352" StatusID=""/>
+			<Cell CellID="C_62"   CellID2="C_2" Value="5###23502353###Phí sử dụng kho số viễn thông###Phí sử dụng kho số viễn thông###2353" StatusID=""/>
+			<Cell CellID="C_63"   CellID2="C_2" Value="5###23502354###Phí khai thác và sử dụng tài liệu dầu khí###Phí khai thác và sử dụng tài liệu dầu khí###2354" StatusID=""/>
+			<Cell CellID="C_64"   CellID2="C_2" Value="5###23502355###Phí K.thác và sd tài liệu đất đai, thăm dò địa chất và KT mỏ###Phí K.thác và sd tài liệu đất đai, thăm dò địa chất và KT mỏ###2355" StatusID=""/>
+			<Cell CellID="C_65"   CellID2="C_2" Value="5###23502356###Phí K.thác và SD tài liệu khí tượng thủy văn, MT nước và KK###Phí K.thác và SD tài liệu khí tượng thủy văn, MT nước và KK###2356" StatusID=""/>
+			<Cell CellID="C_66"   CellID2="C_2" Value="5###23502357###Phí K.thác, SD tư liệu tại thư viện, bảo tàng, khu di tích..###Phí K.thác, SD tư liệu tại thư viện, bảo tàng, khu di tích..###2357" StatusID=""/>
+			<Cell CellID="C_67"   CellID2="C_2" Value="5###23502358###Phí thẩm định điều kiện hoạt động bưu chính, viễn thông###Phí thẩm định điều kiện hoạt động bưu chính, viễn thông###2358" StatusID=""/>
+			<Cell CellID="C_68"   CellID2="C_2" Value="6###24000000###Phí thuộc lĩnh vực an ninh, trật tự, an toàn xã hội###Phí thuộc lĩnh vực an ninh, trật tự, an toàn xã hội###0000" StatusID=""/>
+			<Cell CellID="C_69"   CellID2="C_2" Value="6###24002401###Phí K.định KT máy móc, TB, vật tư, các chất có Y/C về ATLĐ###Phí K.định KT máy móc, TB, vật tư, các chất có Y/C về ATLĐ###2401" StatusID=""/>
+			<Cell CellID="C_70"   CellID2="C_2" Value="6###24002402###Phí K.định KT máy móc, TB có Y/C về AT đặc thù ngành CN###Phí K.định KT máy móc, TB có Y/C về AT đặc thù ngành CN###2402" StatusID=""/>
+			<Cell CellID="C_71"   CellID2="C_2" Value="6###24002403###Phí an ninh, trật tự###Phí an ninh, trật tự###2403" StatusID=""/>
+			<Cell CellID="C_72"   CellID2="C_2" Value="6###24002404###Phí phòng cháy, chữa cháy###Phí phòng cháy, chữa cháy###2404" StatusID=""/>
+			<Cell CellID="C_73"   CellID2="C_2" Value="6###24002405###Phí thẩm định cấp phép sử dụng vật liệu nổ công nghiệp###Phí thẩm định cấp phép sử dụng vật liệu nổ công nghiệp###2405" StatusID=""/>
+			<Cell CellID="C_74"   CellID2="C_2" Value="6###24002406###Phí k.tra, đánh giá, cấp giấy CN quốc tế về an ninh tàu biển###Phí k.tra, đánh giá, cấp giấy CN quốc tế về an ninh tàu biển###2406" StatusID=""/>
+			<Cell CellID="C_75"   CellID2="C_2" Value="6###24002407###Phí T.định, phê duyệt an ninh cảng biển, sổ lý lịch tàu biển###Phí T.định, phê duyệt an ninh cảng biển, sổ lý lịch tàu biển###2407" StatusID=""/>
+			<Cell CellID="C_76"   CellID2="C_2" Value="6###24002408###Phí thẩm định cấp phép hoạt động cai nghiện ma tuý###Phí thẩm định cấp phép hoạt động cai nghiện ma tuý###2408" StatusID=""/>
+			<Cell CellID="C_77"   CellID2="C_2" Value="6###24002411###Phí T.định cấp phép HĐ hoá chất nguy hiểm,đánh giá rủi ro HC###Phí T.định cấp phép HĐ hoá chất nguy hiểm,đánh giá rủi ro HC###2411" StatusID=""/>
+			<Cell CellID="C_78"   CellID2="C_2" Value="6###24002412###Phí xác minh giấy tờ, TL theo Y/C của tổ chức, CN trong nước###Phí xác minh giấy tờ, TL theo Y/C của tổ chức, CN trong nước###2412" StatusID=""/>
+			<Cell CellID="C_79"   CellID2="C_2" Value="6###24002413###Phí xác minh giấy tờ, TL theo Y/C của tổ chức, CN nước ngoài###Phí xác minh giấy tờ, TL theo Y/C của tổ chức, CN nước ngoài###2413" StatusID=""/>
+			<Cell CellID="C_80"   CellID2="C_2" Value="6###24002414###Phí xử lý hồ sơ cấp Giấy chứng nhận miễn thị thực###Phí xử lý hồ sơ cấp Giấy chứng nhận miễn thị thực###2414" StatusID=""/>
+			<Cell CellID="C_81"   CellID2="C_2" Value="6###24002415###Phí thẩm định điều kiện về an ninh trật tự###Phí thẩm định điều kiện về an ninh trật tự###2415" StatusID=""/>
+			<Cell CellID="C_211"   CellID2="C_2" Value="6###24002417###Phí trông giữ xe đạp, xe máy, ô tô và phí trông giữ phương tiện tham gia giao thông bị tạm giữ do vi phạm###Phí trông giữ xe đạp, xe máy, ô tô và phí trông giữ phương tiện tham gia giao thông bị tạm giữ do vi phạm###2417" StatusID=""/>
+			<Cell CellID="C_82"   CellID2="C_2" Value="7###24500000###Phí thuộc lĩnh vực văn hoá, xã hội###Phí thuộc lĩnh vực văn hoá, xã hội###0000" StatusID=""/>
+			<Cell CellID="C_83"   CellID2="C_2" Value="7###24502451###Phí giám định di vật, cổ vật, bảo vật quốc gia###Phí giám định di vật, cổ vật, bảo vật quốc gia###2451" StatusID=""/>
+			<Cell CellID="C_84"   CellID2="C_2" Value="7###24502452###Phí tham quan danh lam thắng cảnh, di tích lịch sử, CT V.hóa###Phí tham quan danh lam thắng cảnh, di tích lịch sử, CT V.hóa###2452" StatusID=""/>
+			<Cell CellID="C_85"   CellID2="C_2" Value="7###24502453###Phí T.định N.dung văn hoá phẩm X.khẩu, N.khẩu,kịch bản phim.###Phí T.định N.dung văn hoá phẩm X.khẩu, N.khẩu,kịch bản phim.###2453" StatusID=""/>
+			<Cell CellID="C_86"   CellID2="C_2" Value="7###24502454###Phí giới thiệu việc làm###Phí giới thiệu việc làm###2454" StatusID=""/>
+			<Cell CellID="C_87"   CellID2="C_2" Value="8###25000000###Phí thuộc lĩnh vực giáo dục và đào tạo###Phí thuộc lĩnh vực giáo dục và đào tạo###0000" StatusID=""/>
+			<Cell CellID="C_88"   CellID2="C_2" Value="8###25002501###Học phí (không bao gồm học phí giáo dục không chính qui)###Học phí (không bao gồm học phí giáo dục không chính qui)###2501" StatusID=""/>
+			<Cell CellID="C_89"   CellID2="C_2" Value="8###25002502###Phí sát hạch đủ ĐK cấp văn bằng, chứng chỉ, G.phép hành nghề###Phí sát hạch đủ ĐK cấp văn bằng, chứng chỉ, G.phép hành nghề###2502" StatusID=""/>
+			<Cell CellID="C_90"   CellID2="C_2" Value="8###25002503###Phí dự thi, dự tuyển###Phí dự thi, dự tuyển###2503" StatusID=""/>
+			<Cell CellID="C_91"   CellID2="C_2" Value="9###25500000###Phí thuộc lĩnh vực y tế###Phí thuộc lĩnh vực y tế###0000" StatusID=""/>
+			<Cell CellID="C_92"   CellID2="C_2" Value="9###25502551###Viện phí và các loại phí khám chữa bệnh###Viện phí và các loại phí khám chữa bệnh###2551" StatusID=""/>
+			<Cell CellID="C_93"   CellID2="C_2" Value="9###25502552###Phí phòng, chống dịch bệnh cho động vật; chẩn đoán thú y###Phí phòng, chống dịch bệnh cho động vật; chẩn đoán thú y###2552" StatusID=""/>
+			<Cell CellID="C_94"   CellID2="C_2" Value="9###25502553###Phí y tế dự phòng###Phí y tế dự phòng###2553" StatusID=""/>
+			<Cell CellID="C_95"   CellID2="C_2" Value="9###25502554###Phí giám định y khoa###Phí giám định y khoa###2554" StatusID=""/>
+			<Cell CellID="C_96"   CellID2="C_2" Value="9###25502555###Phí kiểm nghiệm mẫu thuốc, N.liệu làm thuốc, thuốc, mỹ phẩm###Phí kiểm nghiệm mẫu thuốc, N.liệu làm thuốc, thuốc, mỹ phẩm###2555" StatusID=""/>
+			<Cell CellID="C_97"   CellID2="C_2" Value="9###25502556###Phí kiểm dịch y tế###Phí kiểm dịch y tế###2556" StatusID=""/>
+			<Cell CellID="C_98"   CellID2="C_2" Value="9###25502557###Phí kiểm nghiệm trang thiết bị y tế###Phí kiểm nghiệm trang thiết bị y tế###2557" StatusID=""/>
+			<Cell CellID="C_99"   CellID2="C_2" Value="9###25502558###Phí kiểm tra, kiểm nghiệm vệ sinh an toàn thực phẩm###Phí kiểm tra, kiểm nghiệm vệ sinh an toàn thực phẩm###2558" StatusID=""/>
+			<Cell CellID="C_100"   CellID2="C_2" Value="9###25502561###Phí thẩm định tiêu chuẩn và điều kiện hành nghề y###Phí thẩm định tiêu chuẩn và điều kiện hành nghề y###2561" StatusID=""/>
+			<Cell CellID="C_101"   CellID2="C_2" Value="9###25502562###Phí thẩm định đăng ký kinh doanh thuốc###Phí thẩm định đăng ký kinh doanh thuốc###2562" StatusID=""/>
+			<Cell CellID="C_102"   CellID2="C_2" Value="9###25502563###Phí thẩm định hồ sơ nhập khẩu thuốc thành phẩm chưa có số ĐK###Phí thẩm định hồ sơ nhập khẩu thuốc thành phẩm chưa có số ĐK###2563" StatusID=""/>
+			<Cell CellID="C_103"   CellID2="C_2" Value="10###26000000###Phí thuộc lĩnh vực khoa học, công nghệ và môi trường###Phí thuộc lĩnh vực khoa học, công nghệ và môi trường###0000" StatusID=""/>
+			<Cell CellID="C_212"   CellID2="C_2" Value="10###26002601###Phí bảo vệ môi trường đối với nước thải, khí thải, ...###Phí bảo vệ môi trường đối với nước thải, khí thải, ...###2601" StatusID=""/>
+			<Cell CellID="C_104"   CellID2="C_2" Value="10###26002602###Phí thẩm định báo cáo đánh giá tác động môi trường###Phí thẩm định báo cáo đánh giá tác động môi trường###2602" StatusID=""/>
+			<Cell CellID="C_105"   CellID2="C_2" Value="10###26002603###Phí vệ sinh###Phí vệ sinh###2603" StatusID=""/>
+			<Cell CellID="C_106"   CellID2="C_2" Value="10###26002604###Phí phòng, chống thiên tai###Phí phòng, chống thiên tai###2604" StatusID=""/>
+			<Cell CellID="C_107"   CellID2="C_2" Value="10###26002605###Phí xét nghiệm, thẩm định, giám định; tra cứu, cung cấp TT..###Phí xét nghiệm, thẩm định, giám định; tra cứu, cung cấp TT..###2605" StatusID=""/>
+			<Cell CellID="C_108"   CellID2="C_2" Value="10###26002606###Phí lập và gửi đơn đăng ký quốc tế về sở hữu công nghiệp###Phí lập và gửi đơn đăng ký quốc tế về sở hữu công nghiệp###2606" StatusID=""/>
+			<Cell CellID="C_109"   CellID2="C_2" Value="10###26002607###Phí cung cấp DV để giải quyết khiếu nại sở hữu công nghiệp###Phí cung cấp DV để giải quyết khiếu nại sở hữu công nghiệp###2607" StatusID=""/>
+			<Cell CellID="C_110"   CellID2="C_2" Value="10###26002608###Phí T.định, CC thông tin về văn bằng bảo hộ giống cây trồng###Phí T.định, CC thông tin về văn bằng bảo hộ giống cây trồng###2608" StatusID=""/>
+			<Cell CellID="C_111"   CellID2="C_2" Value="10###26002611###Phí cấp, hướng dẫn và duy trì sử dụng mã số, mã vạch###Phí cấp, hướng dẫn và duy trì sử dụng mã số, mã vạch###2611" StatusID=""/>
+			<Cell CellID="C_112"   CellID2="C_2" Value="10###26002612###Phí thẩm định an toàn và sử dụng dịch vụ an toàn bức xạ###Phí thẩm định an toàn và sử dụng dịch vụ an toàn bức xạ###2612" StatusID=""/>
+			<Cell CellID="C_113"   CellID2="C_2" Value="10###26002613###Phí thẩm định ĐK hoạt động về khoa học công nghệ, môi trường###Phí thẩm định ĐK hoạt động về khoa học công nghệ, môi trường###2613" StatusID=""/>
+			<Cell CellID="C_114"   CellID2="C_2" Value="10###26002614###Phí T.định đề án, báo cáo thăm dò, K.thác,đánh giá trữ lượng###Phí T.định đề án, báo cáo thăm dò, K.thác,đánh giá trữ lượng###2614" StatusID=""/>
+			<Cell CellID="C_115"   CellID2="C_2" Value="10###26002615###Phí thẩm định hồ sơ, điều kiện hành nghề khoan nước dưới đất###Phí thẩm định hồ sơ, điều kiện hành nghề khoan nước dưới đất###2615" StatusID=""/>
+			<Cell CellID="C_116"   CellID2="C_2" Value="10###26002616###Phí thẩm định hợp đồng chuyển giao công nghệ###Phí thẩm định hợp đồng chuyển giao công nghệ###2616" StatusID=""/>
+			<Cell CellID="C_117"   CellID2="C_2" Value="10###26002617###Phí kiểm định phương tiện đo lường###Phí kiểm định phương tiện đo lường###2617" StatusID=""/>
+			<Cell CellID="C_118"   CellID2="C_2" Value="10###26002618###Phí bảo vệ môi trường đối với nước thải sinh hoạt###Phí bảo vệ môi trường đối với nước thải sinh hoạt###2618" StatusID=""/>
+			<Cell CellID="C_119"   CellID2="C_2" Value="10###26002621###Phí bảo vệ môi trường đối với nước thải công nghiệp###Phí bảo vệ môi trường đối với nước thải công nghiệp###2621" StatusID=""/>
+			<Cell CellID="C_120"   CellID2="C_2" Value="10###26002622###Phí bảo vệ môi trường đối với khí thải###Phí bảo vệ môi trường đối với khí thải###2622" StatusID=""/>
+			<Cell CellID="C_121"   CellID2="C_2" Value="10###26002623###Phí bảo vệ môi trường đối với chất thải rắn###Phí bảo vệ môi trường đối với chất thải rắn###2623" StatusID=""/>
+			<Cell CellID="C_122"   CellID2="C_2" Value="10###26002624###Phí bảo vệ môi trường đối với khai thác khoáng sản là dầu thô và khí thiên nhiên###Phí bảo vệ môi trường đối với khai thác khoáng sản là dầu thô và khí thiên nhiên###2624" StatusID=""/>
+			<Cell CellID="C_123"   CellID2="C_2" Value="10###26002625###Phí bảo vệ môi trường đối với khai thác khoáng sản còn lại###Phí bảo vệ môi trường đối với khai thác khoáng sản còn lại###2625" StatusID=""/>			
+			<Cell CellID="C_124"   CellID2="C_2" Value="11###26500000###Phí thuộc lĩnh vực tài chính, ngân hàng, hải quan###Phí thuộc lĩnh vực tài chính, ngân hàng, hải quan###0000" StatusID=""/>
+			<Cell CellID="C_125"   CellID2="C_2" Value="11###26502651###Phí cung cấp thông tin về tài chính doanh nghiệp###Phí cung cấp thông tin về tài chính doanh nghiệp###2651" StatusID=""/>
+			<Cell CellID="C_126"   CellID2="C_2" Value="11###26502652###Phí phát hành, thanh toán tín phiếu kho bạc###Phí phát hành, thanh toán tín phiếu kho bạc###2652" StatusID=""/>
+			<Cell CellID="C_127"   CellID2="C_2" Value="11###26502653###Phí phát hành, thanh toán trái phiếu kho bạc###Phí phát hành, thanh toán trái phiếu kho bạc###2653" StatusID=""/>
+			<Cell CellID="C_128"   CellID2="C_2" Value="11###26502654###Phí T/c phát hành, TT trái phiếu đ.tư cho công trình do NSNN###Phí T/c phát hành, TT trái phiếu đ.tư cho công trình do NSNN###2654" StatusID=""/>
+			<Cell CellID="C_129"   CellID2="C_2" Value="11###26502655###Phí P.hành, TT trái phiếu để huy động vốn cho NH P.triển VN###Phí P.hành, TT trái phiếu để huy động vốn cho NH P.triển VN###2655" StatusID=""/>
+			<Cell CellID="C_130"   CellID2="C_2" Value="11###26502656###Phí bảo quản, cất giữ tài sản quý hiếm, chứng chỉ tại KBNN###Phí bảo quản, cất giữ tài sản quý hiếm, chứng chỉ tại KBNN###2656" StatusID=""/>
+			<Cell CellID="C_131"   CellID2="C_2" Value="11###26502657###Phí cấp bảo lãnh của Chính phủ (do BTC hoặc NHNN VN cấp)###Phí cấp bảo lãnh của Chính phủ (do BTC hoặc NHNN VN cấp)###2657" StatusID=""/>
+			<Cell CellID="C_132"   CellID2="C_2" Value="11###26502658###Phí quản lý cho vay của Ngân hàng Phát triển Việt Nam###Phí quản lý cho vay của Ngân hàng Phát triển Việt Nam###2658" StatusID=""/>
+			<Cell CellID="C_133"   CellID2="C_2" Value="11###26502661###Phí sử dụng thiết bị, cơ sở hạ tầng chứng khoán###Phí sử dụng thiết bị, cơ sở hạ tầng chứng khoán###2661" StatusID=""/>
+			<Cell CellID="C_134"   CellID2="C_2" Value="11###26502662###Phí hoạt động chứng khoán###Phí hoạt động chứng khoán###2662" StatusID=""/>
+			<Cell CellID="C_135"   CellID2="C_2" Value="11###26502663###Phí niêm phong, kẹp chì, lưu kho hải quan###Phí niêm phong, kẹp chì, lưu kho hải quan###2663" StatusID=""/>
+			<Cell CellID="C_136"   CellID2="C_2" Value="12###27000000###Phí thuộc lĩnh vực tư pháp###Phí thuộc lĩnh vực tư pháp###0000" StatusID=""/>
+			<Cell CellID="C_137"   CellID2="C_2" Value="12###27002701###án phí (hình sự, dân sự, kinh tế, lao động, hành chính)###án phí (hình sự, dân sự, kinh tế, lao động, hành chính)###2701" StatusID=""/>
+			<Cell CellID="C_138"   CellID2="C_2" Value="12###27002702###Phí giám định tư pháp###Phí giám định tư pháp###2702" StatusID=""/>
+			<Cell CellID="C_139"   CellID2="C_2" Value="12###27002703###Phí cung cấp TT về cầm cố, T.chấp, B.lãnh T.sản ĐKGD bảo đảm###Phí cung cấp TT về cầm cố, T.chấp, B.lãnh T.sản ĐKGD bảo đảm###2703" StatusID=""/>
+			<Cell CellID="C_140"   CellID2="C_2" Value="12###27002704###Phí cung cấp thông tin về tài sản cho thuê tài chính###Phí cung cấp thông tin về tài sản cho thuê tài chính###2704" StatusID=""/>
+			<Cell CellID="C_141"   CellID2="C_2" Value="12###27002705###Phí cấp bản sao, bản trích lục bản án, QĐ và giấy CN xoá án###Phí cấp bản sao, bản trích lục bản án, QĐ và giấy CN xoá án###2705" StatusID=""/>
+			<Cell CellID="C_142"   CellID2="C_2" Value="12###27002706###Phí thi hành án###Phí thi hành án###2706" StatusID=""/>
+			<Cell CellID="C_143"   CellID2="C_2" Value="12###27002707###Phí tống đạt, UT tư pháp theo Y/C của CQ có thẩm quyền củaNN###Phí tống đạt, UT tư pháp theo Y/C của CQ có thẩm quyền củaNN###2707" StatusID=""/>
+			<Cell CellID="C_144"   CellID2="C_2" Value="12###27002708###Phí xuất khẩu lao động###Phí xuất khẩu lao động###2708" StatusID=""/>
+			<Cell CellID="C_145"   CellID2="C_2" Value="12###27002711###Phí phá sản###Phí phá sản###2711" StatusID=""/>
+			<Cell CellID="C_146"   CellID2="C_2" Value="12###27002712###Phí T.định HS ĐN hưởng miễn trừ T.thuận H.chế C.tranh bị cấm###Phí T.định HS ĐN hưởng miễn trừ T.thuận H.chế C.tranh bị cấm###2712" StatusID=""/>
+			<Cell CellID="C_147"   CellID2="C_2" Value="12###27002713###Phí giải quyết việc nuôi con nuôi đối với người nước ngoài###Phí giải quyết việc nuôi con nuôi đối với người nước ngoài###2713" StatusID=""/>
+			<Cell CellID="C_148"   CellID2="C_2" Value="12###27002714###Phí xử lý vụ việc cạnh tranh###Phí xử lý vụ việc cạnh tranh###2714" StatusID=""/>
+			<Cell CellID="C_149"   CellID2="C_2" Value="51###27500000###Lệ phí quản lý nhà nước liên quan đến quyền và nghĩa vụ của công dân###Lệ phí quản lý nhà nước liên quan đến quyền và nghĩa vụ của công dân###0000" StatusID=""/>
+			<Cell CellID="C_150"   CellID2="C_2" Value="51###27502751###Lệ phí quốc tịch, hộ tịch, hộ khẩu, chứng minh nhân dân###Lệ phí quốc tịch, hộ tịch, hộ khẩu, chứng minh nhân dân###2751" StatusID=""/>
+			<Cell CellID="C_151"   CellID2="C_2" Value="51###27502752###Lệ phí cấp hộ chiếu, thị thực xuất cảnh, nhập cảnh###Lệ phí cấp hộ chiếu, thị thực xuất cảnh, nhập cảnh###2752" StatusID=""/>
+			<Cell CellID="C_152"   CellID2="C_2" Value="51###27502753###Lệ phí qua lại cửa khẩu biên giới###Lệ phí qua lại cửa khẩu biên giới###2753" StatusID=""/>
+			<Cell CellID="C_153"   CellID2="C_2" Value="51###27502754###Lệ phí AD tại CQ đại diện ngoại giao, cơ quan lãnh sự ở NN###Lệ phí AD tại CQ đại diện ngoại giao, cơ quan lãnh sự ở NN###2754" StatusID=""/>
+			<Cell CellID="C_154"   CellID2="C_2" Value="51###27502755###Lệ phí nộp đơn YC Toà án VN C.nhận,thi hành tại VN bản án NN###Lệ phí nộp đơn YC Toà án VN C.nhận,thi hành tại VN bản án NN###2755" StatusID=""/>
+			<Cell CellID="C_155"   CellID2="C_2" Value="51###27502756###LP nộp đơn YC TA VN không CN bản án, Q.Định dân sự của TA NN###LP nộp đơn YC TA VN không CN bản án, Q.Định dân sự của TA NN###2756" StatusID=""/>
+			<Cell CellID="C_156"   CellID2="C_2" Value="51###27502757###LP nộp đơn YC T.án VN CN và cho thi hành tại VN QĐ của TT NN###LP nộp đơn YC T.án VN CN và cho thi hành tại VN QĐ của TT NN###2757" StatusID=""/>
+			<Cell CellID="C_157"   CellID2="C_2" Value="51###27502758###LP nộp đơn YC T.án K.luận cuộc đình công hợp pháp hoặc bấtHP###LP nộp đơn YC T.án K.luận cuộc đình công hợp pháp hoặc bấtHP###2758" StatusID=""/>
+			<Cell CellID="C_158"   CellID2="C_2" Value="51###27502761###Lệ phí kháng cáo###Lệ phí kháng cáo###2761" StatusID=""/>
+			<Cell CellID="C_159"   CellID2="C_2" Value="51###27502762###Lệ phí toà án liên quan đến trọng tài###Lệ phí toà án liên quan đến trọng tài###2762" StatusID=""/>
+			<Cell CellID="C_160"   CellID2="C_2" Value="51###27502763###Lệ phí cấp giấy phép lao động cho người NN làm việc tại VN###Lệ phí cấp giấy phép lao động cho người NN làm việc tại VN###2763" StatusID=""/>
+			<Cell CellID="C_161"   CellID2="C_2" Value="51###27502764###Lệ phí cấp phiếu lý lịch tư pháp###Lệ phí cấp phiếu lý lịch tư pháp###2764" StatusID=""/>
+			<Cell CellID="C_162"   CellID2="C_2" Value="51###27502765###Lệ phí cấp thẻ đi lại của doanh nhân APEC###Lệ phí cấp thẻ đi lại của doanh nhân APEC###2765" StatusID=""/>
+			<Cell CellID="C_163"   CellID2="C_2" Value="52###28000000###Lệ phí quản lý nhà nước liên quan đến quyền sở hữu, quyền sử dụng tài sản###Lệ phí quản lý nhà nước liên quan đến quyền sở hữu, quyền sử dụng tài sản###0000" StatusID=""/>
+			<Cell CellID="C_164"   CellID2="C_2" Value="52###28002801###Lệ phí trước bạ nhà đất###Lệ phí trước bạ nhà đất###2801" StatusID=""/>
+			<Cell CellID="C_165"   CellID2="C_2" Value="52###28002802###Lệ phí trước bạ ô tô, xe máy###Lệ phí trước bạ ô tô, xe máy###2802" StatusID=""/>
+			<Cell CellID="C_166"   CellID2="C_2" Value="52###28002803###Lệ phí trước bạ tàu thuyền###Lệ phí trước bạ tàu thuyền###2803" StatusID=""/>
+			<Cell CellID="C_167"   CellID2="C_2" Value="52###28002804###Lệ phí trước bạ tài sản khác###Lệ phí trước bạ tài sản khác###2804" StatusID=""/>
+			<Cell CellID="C_168"   CellID2="C_2" Value="52###28002805###Lệ phí địa chính###Lệ phí địa chính###2805" StatusID=""/>
+			<Cell CellID="C_169"   CellID2="C_2" Value="52###28002806###Lệ phí đăng ký giao dịch bảo đảm###Lệ phí đăng ký giao dịch bảo đảm###2806" StatusID=""/>
+			<Cell CellID="C_170"   CellID2="C_2" Value="52###28002807###Lệ phí cấp giấy chứng nhận quyền tác giả###Lệ phí cấp giấy chứng nhận quyền tác giả###2807" StatusID=""/>
+			<Cell CellID="C_171"   CellID2="C_2" Value="52###28002808###LP nộp đơn và cấp văn bằng bảo hộ, ĐK chuyển giao quyền SHCN###LP nộp đơn và cấp văn bằng bảo hộ, ĐK chuyển giao quyền SHCN###2808" StatusID=""/>
+			<Cell CellID="C_172"   CellID2="C_2" Value="52###28002811###LP duy trì, gia hạn, chấm dứt, k.phục H.lực văn bằng bảo hộ###LP duy trì, gia hạn, chấm dứt, k.phục H.lực văn bằng bảo hộ###2811" StatusID=""/>
+			<Cell CellID="C_173"   CellID2="C_2" Value="52###28002812###Lệ phí đăng bạ, công bố thông tin sở hữu công nghiệp###Lệ phí đăng bạ, công bố thông tin sở hữu công nghiệp###2812" StatusID=""/>
+			<Cell CellID="C_174"   CellID2="C_2" Value="52###28002813###Lệ phí cấp chứng chỉ hành nghề, đăng bạ đại diện sở hữu CN###Lệ phí cấp chứng chỉ hành nghề, đăng bạ đại diện sở hữu CN###2813" StatusID=""/>
+			<Cell CellID="C_175"   CellID2="C_2" Value="52###28002814###LP ĐK, cấp, C.bố,duy trì văn bằng bảo hộ giống cây trồng mới###LP ĐK, cấp, C.bố,duy trì văn bằng bảo hộ giống cây trồng mới###2814" StatusID=""/>
+			<Cell CellID="C_176"   CellID2="C_2" Value="52###28002815###Lệ phí cấp giấy phép xây dựng###Lệ phí cấp giấy phép xây dựng###2815" StatusID=""/>
+			<Cell CellID="C_177"   CellID2="C_2" Value="52###28002816###LP Đ.ký, cấp biển PT giao thông (không kể PTGT đường thuỷ)###LP Đ.ký, cấp biển PT giao thông (không kể PTGT đường thuỷ)###2816" StatusID=""/>
+			<Cell CellID="C_178"   CellID2="C_2" Value="52###28002817###Lệ phí đăng ký, cấp biển phương tiện giao thông đường thuỷ###Lệ phí đăng ký, cấp biển phương tiện giao thông đường thuỷ###2817" StatusID=""/>
+			<Cell CellID="C_179"   CellID2="C_2" Value="52###28002818###Lệ phí đăng ký, cấp biển xe máy chuyên dùng###Lệ phí đăng ký, cấp biển xe máy chuyên dùng###2818" StatusID=""/>
+			<Cell CellID="C_180"   CellID2="C_2" Value="52###28002821###Lệ phí cấp chứng chỉ cho tàu bay###Lệ phí cấp chứng chỉ cho tàu bay###2821" StatusID=""/>
+			<Cell CellID="C_181"   CellID2="C_2" Value="52###28002822###Lệ phí cấp biển số nhà###Lệ phí cấp biển số nhà###2822" StatusID=""/>
+			<Cell CellID="C_182"   CellID2="C_2" Value="52###28002823###LP cấp giấy CN quyền sở hữu nhà ở, quyền SH công trình XD###LP cấp giấy CN quyền sở hữu nhà ở, quyền SH công trình XD###2823" StatusID=""/>
+			<Cell CellID="C_183"   CellID2="C_2" Value="53###28500000###Lệ phí quản lý nhà nước liên quan đến sản xuất, kinh doanh###Lệ phí quản lý nhà nước liên quan đến sản xuất, kinh doanh###0000" StatusID=""/>
+			<Cell CellID="C_184"   CellID2="C_2" Value="53###28502851###LP cấp giấy CN ĐKKD, cung cấp TT đ.với các L.hình KT, hộ KD###LP cấp giấy CN ĐKKD, cung cấp TT đ.với các L.hình KT, hộ KD###2851" StatusID=""/>
+			<Cell CellID="C_185"   CellID2="C_2" Value="53###28502852###LP ĐK khai báo hoá chất nguy hiểm, hoá chất độc hại, máy, TB###LP ĐK khai báo hoá chất nguy hiểm, hoá chất độc hại, máy, TB###2852" StatusID=""/>
+			<Cell CellID="C_186"   CellID2="C_2" Value="53###28502853###LP về cấp CN, cấp CC, c.phép, cấp thẻ, ĐK, KT đ.với các HĐ..###LP về cấp CN, cấp CC, c.phép, cấp thẻ, ĐK, KT đ.với các HĐ..###2853" StatusID=""/>
+			<Cell CellID="C_187"   CellID2="C_2" Value="53###28502854###LP đặt chi nhánh, vp đại diện của các t/c kinh tế NN tại VN###LP đặt chi nhánh, vp đại diện của các t/c kinh tế NN tại VN###2854" StatusID=""/>
+			<Cell CellID="C_188"   CellID2="C_2" Value="53###28502855###Lệ phí cấp hạn ngạch xuất khẩu, nhập khẩu###Lệ phí cấp hạn ngạch xuất khẩu, nhập khẩu###2855" StatusID=""/>
+			<Cell CellID="C_189"   CellID2="C_2" Value="53###28502856###Lệ phí cấp và dán tem kiểm soát băng, đĩa có chương trình###Lệ phí cấp và dán tem kiểm soát băng, đĩa có chương trình###2856" StatusID=""/>
+			<Cell CellID="C_190"   CellID2="C_2" Value="53###28502857###Lệ phí độc quyền hoạt động trong ngành dầu khí###Lệ phí độc quyền hoạt động trong ngành dầu khí###2857" StatusID=""/>
+			<Cell CellID="C_191"   CellID2="C_2" Value="53###28502858###LP độc quyền HĐ trong một số ngành, nghề TNguyên khoáng sản###LP độc quyền HĐ trong một số ngành, nghề TNguyên khoáng sản###2858" StatusID=""/>
+			<Cell CellID="C_192"   CellID2="C_2" Value="54###30000000###Lệ phí quản lý nhà nước đặc biệt về chủ quyền quốc gia###Lệ phí quản lý nhà nước đặc biệt về chủ quyền quốc gia###0000" StatusID=""/>
+			<Cell CellID="C_193"   CellID2="C_2" Value="54###30003001###Lệ phí ra, vào cảng biển###Lệ phí ra, vào cảng biển###3001" StatusID=""/>
+			<Cell CellID="C_194"   CellID2="C_2" Value="54###30003002###Lệ phí ra, vào cảng, bến thủy nội địa###Lệ phí ra, vào cảng, bến thủy nội địa###3002" StatusID=""/>
+			<Cell CellID="C_195"   CellID2="C_2" Value="54###30003003###Lệ phí ra, vào cảng hàng không, sân bay###Lệ phí ra, vào cảng hàng không, sân bay###3003" StatusID=""/>
+			<Cell CellID="C_196"   CellID2="C_2" Value="54###30003004###Lệ phí cấp phép bay###Lệ phí cấp phép bay###3004" StatusID=""/>
+			<Cell CellID="C_197"   CellID2="C_2" Value="54###30003005###Lệ phí hàng hoá, hành lý, phương tiện vận tải quá cảnh###Lệ phí hàng hoá, hành lý, phương tiện vận tải quá cảnh###3005" StatusID=""/>
+			<Cell CellID="C_198"   CellID2="C_2" Value="54###30003006###LP cấp phép HĐ ksát, Tkế, lắp đặt, sc, bảo dưỡng các c.trình###LP cấp phép HĐ ksát, Tkế, lắp đặt, sc, bảo dưỡng các c.trình###3006" StatusID=""/>
+			<Cell CellID="C_199"   CellID2="C_2" Value="54###30003007###Lệ phí hoa hồng chữ ký###Lệ phí hoa hồng chữ ký###3007" StatusID=""/>
+			<Cell CellID="C_200"   CellID2="C_2" Value="54###30003008###Lệ phí hoa hồng sản xuất###Lệ phí hoa hồng sản xuất###3008" StatusID=""/>
+			<Cell CellID="C_201"   CellID2="C_2" Value="54###30500000###Lệ phí quản lý nhà nước trong các lĩnh vực khác###Lệ phí quản lý nhà nước trong các lĩnh vực khác###0000" StatusID=""/>
+			<Cell CellID="C_202"   CellID2="C_2" Value="55###30503051###Lệ phí cấp phép sử dụng con dấu###Lệ phí cấp phép sử dụng con dấu###3051" StatusID=""/>
+			<Cell CellID="C_203"   CellID2="C_2" Value="55###30503052###Lệ phí làm thủ tục hải quan###Lệ phí làm thủ tục hải quan###3052" StatusID=""/>
+			<Cell CellID="C_204"   CellID2="C_2" Value="55###30503053###Lệ phí áp tải hải quan###Lệ phí áp tải hải quan###3053" StatusID=""/>
+			<Cell CellID="C_205"   CellID2="C_2" Value="55###30503054###Lệ phí cấp giấy đăng ký nguồn phóng xạ, máy phát bức xạ###Lệ phí cấp giấy đăng ký nguồn phóng xạ, máy phát bức xạ###3054" StatusID=""/>
+			<Cell CellID="C_206"   CellID2="C_2" Value="55###30503055###Lệ phí cấp giấy đăng ký địa điểm cất giữ chất thải phóng xạ###Lệ phí cấp giấy đăng ký địa điểm cất giữ chất thải phóng xạ###3055" StatusID=""/>
+			<Cell CellID="C_207"   CellID2="C_2" Value="55###30503056###Lệ phí cấp văn bằng, chứng chỉ###Lệ phí cấp văn bằng, chứng chỉ###3056" StatusID=""/>
+			<Cell CellID="C_208"   CellID2="C_2" Value="55###30503057###LP chứng thực theo yêu cầu hoặc theo quy định của pháp luật###LP chứng thực theo yêu cầu hoặc theo quy định của pháp luật###3057" StatusID=""/>
+			<Cell CellID="C_209"   CellID2="C_2" Value="55###30503058###Lệ phí hợp pháp hoá và chứng nhận lãnh sự###Lệ phí hợp pháp hoá và chứng nhận lãnh sự###3058" StatusID=""/>
+			<Cell CellID="C_210"   CellID2="C_2" Value="55###30503061###Lệ phí công chứng###Lệ phí công chứng###3061" StatusID=""/>
+		</Cells>
+	</Section>
+</Sections>

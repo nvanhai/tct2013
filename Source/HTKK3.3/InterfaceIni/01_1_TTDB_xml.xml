@@ -1,0 +1,22 @@
+<Pluc_01_1_TTDB>
+	<Dynamic GroupName="ChiTietPLucBRaChiuThueTTDB">
+		<PLucBRaChiuThue id="id">
+			<ct2>C_37</ct2>
+			<ct3>D_37</ct3>
+			<ct4>E_37</ct4>
+			<ct5>F_37</ct5>
+			<maHHDV>I_37</maHHDV>
+			<ct6>J_37</ct6>
+			<ct7>N_37</ct7>
+			<ct8>O_37</ct8>
+			<ct9>P_37</ct9>
+		</PLucBRaChiuThue>
+	</Dynamic>
+	<Dynamic GroupName="TongCong">
+		<CTietTongCong id="id">
+			<tenHHoaDVu>L_41</tenHHoaDVu>
+			<tongSoLuong>N_41</tongSoLuong>
+			<tongDoanhSoBan>P_41</tongDoanhSoBan>
+		</CTietTongCong>	
+	</Dynamic>
+</Pluc_01_1_TTDB>
