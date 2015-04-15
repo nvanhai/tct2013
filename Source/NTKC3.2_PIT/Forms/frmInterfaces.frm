@@ -2036,6 +2036,27 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 End If
             End If
             
+            '04/TNDN
+            to do
+            If Val(Mid$(strBarcode, 4, 2)) = 55 And UCase(strLoaiToKhai) = "BS" Then
+                tmp_str = Left$(strBarcode, InStr(1, strBarcode, "</S></S01>") + 9)
+                tkps_spl = Split(strTemp, "~")
+                If Trim(tkps_spl(UBound(tkps_spl) - 1)) <> "" Then
+                    DisplayMessage "0132", msOKOnly, miCriticalError
+                    Exit Sub
+                   ngayPS = arrCT(UBound(arrCT) - 1)
+                    isTKLanPS = True
+                End If
+'                tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
+'                tkps_spl = Split(tmp_str, "~")
+'
+'                If tkps_spl(UBound(tkps_spl) - 1) = "1" Then
+'                    DisplayMessage "0132", msOKOnly, miCriticalError
+'                    Exit Sub
+'                End If
+            End If
+            
+            
             '01A/TNDN-DK, 01/TAIN-DK
             If ((Val(Mid$(strBarcode, 4, 2)) = 92 Or Val(Mid$(strBarcode, 4, 2)) = 98) And UCase(strLoaiToKhai) = "BS") Then
                 tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
