@@ -1,0 +1,79 @@
+<HSoThueDTu>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>87</maTKhai>
+		<tenTKhai>BÁO CÁO DỰ KIẾN SẢN LƯỢNG DẦU KHÍ KHAI THÁC VÀ TỶ LỆ TẠM NỘP THUẾ (01/BCTL-DK)</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct12>H_15</ct12>
+	</Static>
+	<Static GroupName="LoaiHinhUyQuyen">
+		<donViUyQuyen MinOccur="1">I_17</donViUyQuyen>
+		<daiLyThue MinOccur="1">O_17</daiLyThue>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tenDonViUyQuyen>I_8</tenDonViUyQuyen>
+	</Static>
+	<Static GroupName="TinhTheoThung">
+		<dauTho_11>L_46</dauTho_11>
+		<condensate_11>Q_46</condensate_11>
+		<khiThienNhien_11>U_46</khiThienNhien_11>
+		<ghiChu_11>AA_46</ghiChu_11>
+	</Static>
+	<Static GroupName="TinhTheom3">
+		<dauTho_12>L_47</dauTho_12>
+		<condensate_12>Q_47</condensate_12>
+		<khiThienNhien_12>U_47</khiThienNhien_12>
+		<ghiChu_12>AA_47</ghiChu_12>
+	</Static>
+	<Static GroupName="CT2">
+		<dauTho_2>L_48</dauTho_2>
+		<condensate_2>Q_48</condensate_2>
+		<khiThienNhien_2>U_48</khiThienNhien_2>
+		<ghiChu_2>AA_48</ghiChu_2>
+	</Static>
+	<Static GroupName="TinhTheoThung">
+		<dauTho_31>L_50</dauTho_31>
+		<condensate_31>Q_50</condensate_31>
+		<khiThienNhien_31>U_50</khiThienNhien_31>
+		<ghiChu_31>AA_50</ghiChu_31>
+	</Static>
+	<Static GroupName="TinhTheom3">
+		<dauTho_32>L_51</dauTho_32>
+		<condensate_32>Q_51</condensate_32>
+		<khiThienNhien_32>U_51</khiThienNhien_32>
+		<ghiChu_32>AA_51</ghiChu_32>
+	</Static>
+	<Static GroupName="CT4">
+		<dauTho_4>L_52</dauTho_4>
+		<condensate_4>Q_52</condensate_4>
+		<khiThienNhien_4>U_52</khiThienNhien_4>
+		<ghiChu_4>AA_52</ghiChu_4>
+	</Static>
+	<Static GroupName="CT5">
+		<dauTho_5>L_53</dauTho_5>
+		<condensate_5>Q_53</condensate_5>
+		<khiThienNhien_5>U_53</khiThienNhien_5>
+		<ghiChu_5>AA_53</ghiChu_5>
+	</Static>
+	<Static GroupName="CT6">
+		<dauTho_6>L_54</dauTho_6>
+		<condensate_6>Q_54</condensate_6>
+		<khiThienNhien_6>U_54</khiThienNhien_6>
+		<ghiChu_6>AA_54</ghiChu_6>
+	</Static>
+	<Static GroupName="CT7">
+		<dauTho_7>L_55</dauTho_7>
+		<condensate_7>Q_55</condensate_7>
+		<khiThienNhien_7>U_55</khiThienNhien_7>
+		<ghiChu_7>AA_55</ghiChu_7>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_66</nguoiKy>
+		<ngayKy>R_68</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>H_66</tenNVienDLyThue>
+		<cchiHNghe>H_68</cchiHNghe>
+	</Static>
+</HSoThueDTu>

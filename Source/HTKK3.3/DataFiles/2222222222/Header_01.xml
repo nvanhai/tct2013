@@ -1,0 +1,53 @@
+<!-- edited with XML Spy v4.1 U (http://www.xmlspy.com) by longvh (fpt) -->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="130">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_2" CellID2="C_2" Value="2" StatusID="0002"/>
+			<Cell CellID="D_2" CellID2="D_2" Value="2" StatusID="0002"/>
+			<Cell CellID="E_2" CellID2="E_2" Value="2" StatusID="0002"/>
+			<Cell CellID="F_2" CellID2="F_2" Value="2" StatusID="0002"/>
+			<Cell CellID="G_2" CellID2="G_2" Value="2" StatusID="0002"/>
+			<Cell CellID="H_2" CellID2="H_2" Value="2" StatusID="0002"/>
+			<Cell CellID="I_2" CellID2="I_2" Value="2" StatusID="0002"/>
+			<Cell CellID="J_2" CellID2="J_2" Value="2" StatusID="0002"/>
+			<Cell CellID="K_2" CellID2="K_2" Value="2" StatusID="0002"/>
+			<Cell CellID="L_2" CellID2="L_2" Value="2" StatusID="0002"/>
+			<Cell CellID="N_2" CellID2="N_2" Value="" StatusID="0002"/>
+			<Cell CellID="O_2" CellID2="O_2" Value="" StatusID="0002"/>
+			<Cell CellID="P_2" CellID2="P_2" Value="" StatusID="0002"/>
+			<Cell CellID="C_4" CellID2="C_3" Value="abc" StatusID="0002"/>
+			<Cell CellID="C_6" CellID2="C_4" Value="dfsdf" StatusID="0002"/>
+			<Cell CellID="C_8" CellID2="C_5" Value="sdfsd" StatusID="0002"/>
+			<Cell CellID="C_10" CellID2="C_6" Value="sdfsdf" StatusID="0002"/>
+			<Cell CellID="C_12" CellID2="C_7" Value="" StatusID="0002"/>
+			<Cell CellID="C_14" CellID2="C_8" Value="" StatusID="0002"/>
+			<Cell CellID="C_16" CellID2="C_9" Value="" StatusID="0002"/>
+			<Cell CellID="C_18" CellID2="T_9" Value="" StatusID="0002"/>
+			<Cell CellID="C_20" CellID2="V_2" Value="" StatusID="0002"/>
+			<Cell CellID="C_22" CellID2=" " Value="" StatusID="0002"/>
+			<Cell CellID="C_24" CellID2="T_10" Value="01/01" StatusID="0002"/>
+			<Cell CellID="C_26" CellID2="T_5" Value="" StatusID="0002"/>
+			<Cell CellID="C_28" CellID2="R_8" Value="HAN - Cục Thuế Thành phố Hà Nội" StatusID="0002"/>
+			<Cell CellID="C_30" CellID2="R_9" Value="Cục Thuế Thành phố Hà Nội" StatusID="0002"/>
+			<Cell CellID="Q_28" CellID2="R_6" Value="10100" StatusID="0002"/>
+			<Cell CellID="Q_30" CellID2="R_7" Value="10100" StatusID="0002"/>
+			<Cell CellID="C_32" CellID2="R_10" Value="" StatusID="0002"/>
+			<Cell CellID="C_34" CellID2="R_11" Value="" StatusID="0002"/>
+			<Cell CellID="C_37" CellID2="R_12" Value="" StatusID="0002"/>
+			<Cell CellID="C_39" CellID2="V_5" Value="" StatusID="0002"/>
+			<Cell CellID="C_41" CellID2="V_6" Value="" StatusID="0002"/>
+			<Cell CellID="C_43" CellID2="V_7" Value="" StatusID="0002"/>
+			<Cell CellID="C_45" CellID2="V_8" Value="" StatusID="0002"/>
+			<Cell CellID="C_47" CellID2="V_9" Value="" StatusID="0002"/>
+			<Cell CellID="C_49" CellID2="V_10" Value="" StatusID="0002"/>
+			<Cell CellID="C_51" CellID2="V_11" Value="" StatusID="0002"/>
+			<Cell CellID="C_53" CellID2="V_12" Value="" StatusID="0002"/>
+			<Cell CellID="C_55" CellID2="V_13" Value="" StatusID="0002"/>
+			<Cell CellID="C_57" CellID2="V_14" Value="" StatusID="0002"/>
+			<Cell CellID="C_59" CellID2="V_15" Value="" StatusID="0002"/>
+			<Cell CellID="C_61" CellID2="V_16" Value="" StatusID="0002"/>
+			<Cell CellID="P_32" CellID2="AI_3" Value="" StatusID="0002"/>
+		</Cells>
+	</Section>
+</Sections>

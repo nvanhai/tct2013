@@ -1,0 +1,53 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>02</maTKhai>
+		<tenTKhai>TỜ KHAI THUẾ GTGT DÀNH CHO DỰ ÁN ĐẦU TƯ</tenTKhai>
+		<moTaBMau></moTaBMau>
+		<soLan>S_6</soLan>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct21>CT_40</ct21>
+		<ct21a>CT_41</ct21a>
+	</Static>
+	<Static GroupName="HHDVMuaVaoTrongKy">
+		<ct22>BW_43</ct22>
+		<ct23>CT_43</ct23>
+	</Static>
+	<Static GroupName="DieuChinhTangGTGTCacKyTruoc">
+		<ct24>BW_45</ct24>
+		<ct25>CT_45</ct25>
+	</Static>
+	<Static GroupName="DieuChinhGiamGTGTCacKyTruoc">
+		<ct26>BW_46</ct26>
+		<ct27>CT_46</ct27>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct28>CT_47</ct28>
+		<ct28a>CT_48</ct28a>
+		<ct29>CT_49</ct29>
+		<ct30a>CT_51</ct30a>
+		<ct30>CT_52</ct30>
+		<ct31>CT_53</ct31>
+		<ct32>CT_54</ct32>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>CB_57</nguoiKy>
+		<ngayKy>CB_59</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>V_57</tenNVienDLyThue>
+		<cchiHNghe>V_59</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

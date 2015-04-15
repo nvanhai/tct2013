@@ -1,0 +1,43 @@
+<PL03_2A_TNDN>
+	<Static GroupName="noiDungNamThu1">
+		<namPSinhLo>C_26</namPSinhLo>
+		<soLoPSinh>D_26</soLoPSinh>
+		<soLoDaChuyen>H_26</soLoDaChuyen>
+		<soLoKyNay>M_26</soLoKyNay>
+		<soLoChuyenSau>R_26</soLoChuyenSau>
+	</Static>
+	<Static GroupName="noiDungNamThu2">
+		<namPSinhLo>C_27</namPSinhLo>
+		<soLoPSinh>D_27</soLoPSinh>
+		<soLoDaChuyen>H_27</soLoDaChuyen>
+		<soLoKyNay>M_27</soLoKyNay>
+		<soLoChuyenSau>R_27</soLoChuyenSau>
+	</Static>
+	<Static GroupName="noiDungNamThu3">
+		<namPSinhLo>C_28</namPSinhLo>
+		<soLoPSinh>D_28</soLoPSinh>
+		<soLoDaChuyen>H_28</soLoDaChuyen>
+		<soLoKyNay>M_28</soLoKyNay>
+		<soLoChuyenSau>R_28</soLoChuyenSau>
+	</Static>
+	<Static GroupName="noiDungNamThu4">
+		<namPSinhLo>C_29</namPSinhLo>
+		<soLoPSinh>D_29</soLoPSinh>
+		<soLoDaChuyen>H_29</soLoDaChuyen>
+		<soLoKyNay>M_29</soLoKyNay>
+		<soLoChuyenSau>R_29</soLoChuyenSau>
+	</Static>
+	<Static GroupName="noiDungNamThu5">
+		<namPSinhLo>C_30</namPSinhLo>
+		<soLoPSinh>D_30</soLoPSinh>
+		<soLoDaChuyen>H_30</soLoDaChuyen>
+		<soLoKyNay>M_30</soLoKyNay>
+		<soLoChuyenSau>R_30</soLoChuyenSau>
+	</Static>
+	<Static GroupName="PL03_2A_TNDN">
+		<tongSoLoPSinh>D_32</tongSoLoPSinh>
+		<tongSoLoDaChuyen>H_32</tongSoLoDaChuyen>
+		<tongSoLoKyNay>M_32</tongSoLoKyNay>
+		<tongSoLoChuyenSau>R_32</tongSoLoChuyenSau>
+	</Static>
+</PL03_2A_TNDN>

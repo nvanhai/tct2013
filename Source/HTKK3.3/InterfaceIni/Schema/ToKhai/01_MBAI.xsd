@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 rel. 3 (http://www.altova.com) by MESMERiZE (MSM) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="TKhaiThue" targetNamespace="TKhaiThue" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.1.2">
+	<xs:redefine schemaLocation="../TKhaiThue.xsd">
+		<xs:complexType name="CTieuTKhaiChinhType">
+			<xs:complexContent>
+				<xs:extension base="CTieuTKhaiChinhType">
+					<xs:sequence>
+						<xs:element name="ct21" type="xs:boolean" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Khai bổ sung cho cơ sở mới thành lập trong năm (đánh dấu “X” nếu có)</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="CT22">
+							<xs:annotation>
+								<xs:documentation>Người nộp thuế môn bài</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ct2" type="xs:string" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Họ tên người nộp thuế môn bài</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct4" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Vốn đăng ký, mức thu nhập bình quân tháng</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct5" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Bậc môn bài</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="ct6" type="xs:nonNegativeInteger" nillable="true">
+										<xs:annotation>
+											<xs:documentation>Mức thuế môn bài</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="CT23">
+							<xs:annotation>
+								<xs:documentation>BK Mức thuế môn bài</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="DonViTrucThuocHToanDiaPhuong" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ct2" type="xs:string" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Đơn vị trực thuộc hạch toán phụ thuộc cùng địa phương
+ (ghi rõ tên, địa chỉ)</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="ct4" type="xs:nonNegativeInteger" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Vốn đăng ký, mức thu nhập bình quân tháng</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="ct5" type="xs:nonNegativeInteger" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Bậc môn bài</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="ct6" type="xs:nonNegativeInteger" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Mức thuế môn bài</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+											<xs:attribute name="id" type="xs:string"/>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ct24" type="xs:nonNegativeInteger" nillable="true">
+							<xs:annotation>
+								<xs:documentation>Tổng số thuế môn bài phải nộp</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:redefine>
+</xs:schema>

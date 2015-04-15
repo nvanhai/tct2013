@@ -1,0 +1,29 @@
+<PL01_6_GTGT>
+	<Dynamic GroupName="PBoThueGTGTChoDiaPhuong">
+		<PhanBoGTGT id="ID_13">
+			<ct09>C_8</ct09>
+			<ct10 TINType="1">D_8</ct10>
+			<ct11_maCT>M_8</ct11_maCT>
+			<ct11_ct>E_8</ct11_ct>
+			<ct11_maCCT>L_8</ct11_maCCT>
+			<ct11_cct>F_8</ct11_cct>
+			<DThuSPSXCuaCSSXPhuThuoc>
+				<ct12>G_8</ct12>
+				<ct13>H_8</ct13>
+				<ct14>I_8</ct14>
+			</DThuSPSXCuaCSSXPhuThuoc>
+			<ct15>J_8</ct15>
+			<ct17>K_8</ct17>
+		</PhanBoGTGT>
+	</Dynamic>
+	<Static GroupName="PBoGTGTKhongHTKT">
+		<ct16>J_10</ct16>
+		<ct18>K_10</ct18>
+		<ct19>I_17</ct19>
+		<ct20>I_19</ct20>
+	</Static>
+	<Static GroupName="PL01_6_GTGT">
+		<ct06>G_12</ct06>
+		<ct07>G_14</ct07>
+	</Static>
+</PL01_6_GTGT>

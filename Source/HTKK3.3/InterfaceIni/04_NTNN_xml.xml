@@ -1,0 +1,73 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>72</maTKhai>
+		<tenTKhai>Tờ khai thuế nhà thầu nước ngoài - 04/NTNN</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="CT21">
+		<soHopDong>N_21</soHopDong>
+		<ngayHopDong>AH_21</ngayHopDong>
+	</Static>
+	<Static GroupName="GiaTriHDong">
+		<keKhai>T_30</keKhai>
+		<quyetToan>AB_30</quyetToan>
+		<chenhLech>AJ_30</chenhLech>
+		<ghiChu>AT_30</ghiChu>
+	</Static>
+	<Static GroupName="DThuChuaGomGTGT">
+		<keKhai>T_31</keKhai>
+		<quyetToan>AB_31</quyetToan>
+		<chenhLech>AJ_31</chenhLech>
+		<ghiChu>AT_31</ghiChu>
+	</Static>
+	<Static GroupName="DThuNTPhu">
+		<keKhai>T_32</keKhai>
+		<quyetToan>AB_32</quyetToan>
+		<chenhLech>AJ_32</chenhLech>
+		<ghiChu>AT_32</ghiChu>
+	</Static>
+	<Static GroupName="DThuTinhThue">
+		<keKhai>T_33</keKhai>
+		<quyetToan>AB_33</quyetToan>
+		<chenhLech>AJ_33</chenhLech>
+		<ghiChu>AT_33</ghiChu>
+	</Static>
+	<Static GroupName="SoThueTNDNPNop">
+		<keKhai>T_34</keKhai>
+		<quyetToan>AB_34</quyetToan>
+		<chenhLech>AJ_34</chenhLech>
+		<ghiChu>AT_34</ghiChu>
+	</Static>
+	<Static GroupName="SoThueDaNop">
+		<keKhai>T_35</keKhai>
+		<quyetToan>AB_35</quyetToan>
+		<chenhLech>AJ_35</chenhLech>
+		<ghiChu>AT_35</ghiChu>
+	</Static>
+	<Static GroupName="SoThueConPNop">
+		<keKhai>T_36</keKhai>
+		<quyetToan>AB_36</quyetToan>
+		<chenhLech>AJ_36</chenhLech>
+		<ghiChu>AT_36</ghiChu>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>AL_44</nguoiKy>
+		<ngayKy>AL_46</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>M_44</tenNVienDLyThue>
+		<cchiHNghe>M_46</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

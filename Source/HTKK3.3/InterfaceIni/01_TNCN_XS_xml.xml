@@ -1,0 +1,33 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>46</maTKhai>
+		<tenTKhai>TỜ KHAI KHẤU TRỪ THUẾ THU NHẬP CÁ NHÂN - MẪU 01/KK-XS</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<phuongXa></phuongXa>
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct21>U_40</ct21>
+		<ct22>U_41</ct22>
+		<ct23>U_42</ct23>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_44</nguoiKy>
+		<ngayKy>R_46</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>G_44</tenNVienDLyThue>
+		<cchiHNghe>G_46</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

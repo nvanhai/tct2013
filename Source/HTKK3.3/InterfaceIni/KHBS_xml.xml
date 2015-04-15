@@ -1,0 +1,58 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>KHBS</maTKhai>
+		<tenTKhai></tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Dynamic GroupName="NDUNGKHAIBOSUNGDIEUCHINH" MinOccur="1">
+		<KHBSDieuChinhTang id="ID_1">
+			<ct2>BD_9</ct2>
+			<ct3>BE_9</ct3>
+			<ct4>BF_9</ct4>
+			<ct5>BG_9</ct5>
+			<ct6>BH_9</ct6>
+		</KHBSDieuChinhTang>
+	</Dynamic>
+	<Dynamic GroupName="NDUNGKHAIBOSUNGDIEUCHINH" MinOccur="1">
+		<KHBSDieuChinhGiam id="ID_2">
+			<ct2>BD_13</ct2>
+			<ct3>BE_13</ct3>
+			<ct4>BF_13</ct4>
+			<ct5>BG_13</ct5>
+			<ct6>BH_13</ct6>
+		</KHBSDieuChinhGiam>
+	</Dynamic>
+	<Static GroupName="SOTIENCHAMNOP">
+		<soNgayNopCham>BE_17</soNgayNopCham>
+		<soTienPhatNopCham>BE_18</soTienPhatNopCham>
+	</Static>
+	<Static GroupName="NOIDUNGGIAITHICH">
+		<tenTKhaiThue></tenTKhaiThue>
+		<mauSo></mauSo>
+		<kyTinhThue></kyTinhThue>
+		<soTienTraNSNN></soTienTraNSNN>
+		<quyetDinhHoanThueSo></quyetDinhHoanThueSo>
+		<ngay></ngay>
+		<coQuanThue></coQuanThue>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy></nguoiKy>
+		<ngayKy></ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue></tenNVienDLyThue>
+		<cchiHNghe></cchiHNghe>
+	</Static>
+</HSoKhaiThue>

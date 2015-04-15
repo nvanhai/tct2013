@@ -1,0 +1,19 @@
+<PL01_1_TNDN>
+	<Static GroupName="PL01_1_TNDN">
+		<ct6>F_7</ct6>
+	</Static>
+	<Dynamic GroupName="BangThueTNDNTamTinh">
+		<chiTietBangThueTNDNTamTinh id="ID_1">
+			<ct8>D_35</ct8>
+			<ct9 TINType="1">F_35</ct9>
+			<ct10_ct>S_35</ct10_ct>
+			<ct10_cct>R_35</ct10_cct>
+			<ct11>M_35</ct11>
+			<ct12>P_35</ct12>
+		</chiTietBangThueTNDNTamTinh>
+	</Dynamic>
+	<Static GroupName="BangThueTNDNTamTinh">
+		<tongCot11>M_37</tongCot11>
+		<tongCot12>P_37</tongCot12>
+	</Static>
+</PL01_1_TNDN>

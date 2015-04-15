@@ -1,0 +1,47 @@
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections >
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="T_30" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="82122"/>		
+			<Cell CellID="T_31" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="82126"/>
+			<Cell CellID="T_32" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="82130"/>			
+			<Cell CellID="T_33" MaxLen="" MinValue="-999999999999999" MaxValue="999999999999999" HelpContextID="82134"/>
+			<Cell CellID="T_34" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="82138"/>
+			<Cell CellID="T_35" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="82142"/>
+			<Cell CellID="T_36" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="82146"/>
+			
+			<Cell CellID="AB_30" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="82123"/>		
+			<Cell CellID="AB_31" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="82127"/>
+			<Cell CellID="AB_32" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="82131"/>			
+			<Cell CellID="AB_33" MaxLen="" MinValue="-999999999999999" MaxValue="999999999999999" HelpContextID="82135"/>
+			<Cell CellID="AB_34" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="82139"/>
+			<Cell CellID="AB_35" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="82143"/>
+			<Cell CellID="AB_36" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="82147"/>
+			
+			<Cell CellID="AJ_30" MaxLen="" MinValue="-999999999999999" MaxValue="999999999999999" HelpContextID="82124"/>		
+			<Cell CellID="AJ_31" MaxLen="" MinValue="-999999999999999" MaxValue="999999999999999" HelpContextID="82128"/>
+			<Cell CellID="AJ_32" MaxLen="" MinValue="-999999999999999" MaxValue="999999999999999" HelpContextID="82132"/>			
+			<Cell CellID="AJ_33" MaxLen="" MinValue="-999999999999999" MaxValue="999999999999999" HelpContextID="82136"/>
+			<Cell CellID="AJ_34" MaxLen="" MinValue="-999999999999999" MaxValue="999999999999999" HelpContextID="82140"/>
+			<Cell CellID="AJ_35" MaxLen="" MinValue="-999999999999999" MaxValue="999999999999999" HelpContextID="82144"/>
+			<Cell CellID="AJ_36" MaxLen="" MinValue="-999999999999999" MaxValue="999999999999999" HelpContextID="82148"/>
+			
+			
+			<Cell CellID="AT_30" MaxLen="300" MinValue="" MaxValue="" HelpContextID="82125"/>		
+			<Cell CellID="AT_31" MaxLen="300" MinValue="" MaxValue="" HelpContextID="82129"/>
+			<Cell CellID="AT_32" MaxLen="300" MinValue="" MaxValue="" HelpContextID="82133"/>			
+			<Cell CellID="AT_33" MaxLen="300" MinValue="" MaxValue="" HelpContextID="82137"/>
+			<Cell CellID="AT_34" MaxLen="300" MinValue="" MaxValue="" HelpContextID="82141"/>
+			<Cell CellID="AT_35" MaxLen="300" MinValue="" MaxValue="" HelpContextID="82145"/>
+			<Cell CellID="AT_36" MaxLen="300" MinValue="" MaxValue="" HelpContextID="82149"/>
+		</Cells>
+	</Section>
+		<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="M_44" MaxLen="50" MinValue="" MaxValue="" HelpContextID="82100"/>
+			<Cell CellID="M_46" MaxLen="50" MinValue="" MaxValue="" HelpContextID="82100"/>
+			<Cell CellID="AL_44" MaxLen="50" MinValue="" MaxValue="" HelpContextID="82100"/>
+			<Cell CellID="AL_46" MaxLen="10" MinValue="" MaxValue="" HelpContextID="82100"/>			
+		</Cells>
+	</Section>
+</Sections>

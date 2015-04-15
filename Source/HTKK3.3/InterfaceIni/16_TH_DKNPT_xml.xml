@@ -1,0 +1,80 @@
+
+	<HSoKhaiThue>
+		<Static GroupName="TKhaiThue">
+		<maTKhai>42</maTKhai>
+		<tenTKhai></tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<phuongXa></phuongXa>
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>Z_16</nguoiKy>
+		<ngayKy>Z_18</ngayKy>
+	</Static>
+	<Dynamic GroupName="CapMSTChoNPT">
+			<BKeCapMSTChoNPT id="ID_1">
+				<ct07>C_40</ct07>
+				<ct08 TINType="1">D_40</ct08>
+				<ct09>E_40</ct09>
+				<ct10>F_40</ct10>
+				<ct11>G_40</ct11>
+				<ct12_ma>H_40</ct12_ma>
+				<ct12>I_40</ct12>
+				<ct13>J_40</ct13>
+				<ct14_ma>K_40</ct14_ma>
+				<ct14>L_40</ct14>
+				<ct15>M_40</ct15>
+				<ct16>N_40</ct16>
+				<ct17_ma>O_40</ct17_ma>
+				<ct17>P_40</ct17>
+				<ct18_ma>Q_40</ct18_ma>
+				<ct18>R_40</ct18>
+				<ct19_ma>S_40</ct19_ma>
+				<ct19>T_40</ct19>
+				<ct20_ma>U_40</ct20_ma>
+				<ct20>V_40</ct20>
+				<ct21>W_40</ct21>
+				<ct22>X_40</ct22>
+				<ct23>Y_40</ct23>
+			</BKeCapMSTChoNPT>
+		</Dynamic>
+		<Dynamic GroupName="ThayDoiTTinNPT">
+			<BKeThayDoiTTinNPT id="ID_2">
+				<ct07>C_49</ct07>
+				<ct08 TINType="1">D_49</ct08>
+				<ct09>E_49</ct09>
+				<ct10>F_49</ct10>
+				<ct11>G_49</ct11>
+				<ct12_ma>H_49</ct12_ma>
+				<ct12>I_49</ct12>
+				<ct13>J_49</ct13>
+				<ct14_ma>K_49</ct14_ma>
+				<ct14>L_49</ct14>
+				<ct15>M_49</ct15>
+				<ct16>N_49</ct16>
+				<ct17_ma>O_49</ct17_ma>
+				<ct17>P_49</ct17>
+				<ct18_ma>Q_49</ct18_ma>
+				<ct18>R_49</ct18>
+				<ct19_ma>S_49</ct19_ma>
+				<ct19>T_49</ct19>
+				<ct20_ma>U_49</ct20_ma>
+				<ct20>V_49</ct20>
+				<ct21>W_49</ct21>
+				<ct22>X_49</ct22>
+				<ct23>Y_49</ct23>
+			</BKeThayDoiTTinNPT>
+		</Dynamic>
+	</HSoKhaiThue>
+

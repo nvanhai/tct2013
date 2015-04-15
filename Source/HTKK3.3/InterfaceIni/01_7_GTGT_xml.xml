@@ -1,0 +1,19 @@
+<PL01_7_GTGT>
+	<Dynamic GroupName="PL01_7_GTGT">
+		<PBoChoDiaPhuongLienTinh ID="ID_12">
+			<tenCongTrinh>C_7</tenCongTrinh>
+			<doanhThu>D_7</doanhThu>
+			<maCQTQLy_CCT>I_7</maCQTQLy_CCT>
+			<cqtQLy_CCT>F_7</cqtQLy_CCT>
+			<maCQTQLy_CT>J_7</maCQTQLy_CT>
+			<cqtQLy_CT>E_7</cqtQLy_CT>
+			<tyLePhanBo>G_7</tyLePhanBo>
+			<soThueGTGTPNop>H_7</soThueGTGTPNop>
+		</PBoChoDiaPhuongLienTinh>
+	</Dynamic>
+	<Static GroupName="PL01_7_GTGT">
+		<tongCong>H_9</tongCong>
+		
+	</Static>
+	
+</PL01_7_GTGT>

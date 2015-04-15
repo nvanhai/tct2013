@@ -1,0 +1,49 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>73</maTKhai>
+		<tenTKhai>Tờ khai thuế nhà thầu nước ngoài - 03/NTNN</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Dynamic GroupName="BKThueNTNN">
+		<ThueNTNN id="ID_1">
+			<ct1>C_34</ct1>
+			<ct2 TINType="1">AD_34</ct2>
+			<ct3>AL_34</ct3>
+			<ct4>AU_34</ct4>
+			<ct5>BE_34</ct5>
+			<ThueTNDN>
+				<ct6>BK_34</ct6>
+				<ct7>BU_34</ct7>
+				<ct8>BX_34</ct8>
+				<ct9>CG_34</ct9>
+			</ThueTNDN>
+		</ThueNTNN>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tongct4>AU_36</tongct4>
+		<tongct6>BK_36</tongct6>
+		<tongct8>BX_36</tongct8>
+		<tongct9>CG_36</tongct9>
+		<tongThueVietBangChu>AD_38</tongThueVietBangChu>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>BG_48</nguoiKy>
+		<ngayKy>BG_50</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>Q_48</tenNVienDLyThue>
+		<cchiHNghe>Q_50</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

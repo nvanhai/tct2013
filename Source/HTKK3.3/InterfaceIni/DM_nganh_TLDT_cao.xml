@@ -1,0 +1,25 @@
+﻿<Sections Version="330">
+	<Section Dynamic="0" MaxRows="0">
+		<Item Value ="A###Nông nghiệp, lâm nghiệp và thuỷ sản"/>		
+		<Item Value ="B###Khai khoáng"/>		
+		<Item Value ="C###Công nghiệp chế biến, chế tạo"/>		
+		<Item Value ="D###Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hoà không khí"/>
+		<Item Value ="E###Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải"/>		
+		<Item Value ="F###Xây dựng"/>		
+		<Item Value ="G###Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác"/>		
+		<Item Value ="H###Vận tải kho bãi"/>		
+		<Item Value ="I###Dịch vụ lưu trú và ăn uống"/>		
+		<Item Value ="J###Thông tin và truyền thông"/>		
+		<Item Value ="K###Hoạt động tài chính, ngân hàng và bảo hiểm"/>		
+		<Item Value ="L###Hoạt động kinh doanh bất động sản"/>		
+		<Item Value ="M###Hoạt động chuyên môn, khoa học và công nghệ"/>		
+		<Item Value ="N###Hoạt động hành chính và dịch vụ hỗ trợ"/>		
+		<Item Value ="O###HĐ của đảng cộng sản, tổ chức chính trị - XH, quản lý nn, an ninh quốc phòng;  bảo đảm xh bắt buộc"/>		
+		<Item Value ="P###Giáo dục và đào tạo"/>		
+		<Item Value ="Q###Y tế và hoạt động trợ giúp xã hội"/>		
+		<Item Value ="R###Nghệ thuật, vui chơi và giải trí"/>		
+		<Item Value ="S###Hoạt động dịch vụ khác"/>		
+		<Item Value ="T###Hoạt động làm thuê các CV trong các hộ GĐ, sx sản phẩm vật chất và DV tự tiêu dùng của hộ gia đình"/>		
+		<Item Value ="U###Hoạt động của các tổ chức và cơ quan  quốc tế"/>
+	</Section>	
+</Sections>

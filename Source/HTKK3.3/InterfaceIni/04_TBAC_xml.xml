@@ -1,0 +1,82 @@
+<HSoKhaiThue>
+	<Static GroupName="TTinDVu">
+		<maDVu/>
+		<tenDVu/>
+		<pbanDVu/>
+		<ttinNhaCCapDVu/>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>04_TBAC</maTKhai>
+		<tenTKhai>Thông báo điều chỉnh thông tin (TB04/AC)</tenTKhai>
+		<moTaBMau/>
+		<pbanTKhaiXML/>
+	</Static>
+	<Static GroupName="KyKKhaiThue">
+		<kyKKhai/>
+		<kyKKhaiTuNgay/>
+		<kyKKhaiDenNgay/>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<maCQTNoiNop/>
+		<tenCQTNoiNop/>
+		<ngayLapTKhai/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>	
+	<Static GroupName="NNT">
+		<mst/>
+		<tenNNT/>
+		<dchiNNT/>
+		<phuongXa/>
+		<maHuyenNNT/>
+		<tenHuyenNNT/>
+		<maTinhNNT/>
+		<tenTinhNNT/>
+		<dthoaiNNT/>
+		<faxNNT/>
+		<emailNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<mstDLyThue/>
+		<tenDLyThue/>
+		<dchiDLyThue/>
+		<maHuyenDLyThue/>
+		<tenHuyenDLyThue/>
+		<maTinhDLyThue/>
+		<tenTinhDLyThue/>
+		<dthoaiDLyThue/>
+		<faxDLyThue/>
+		<emailDLyThue/>
+		<soHDongDLyThue/>
+		<ngayKyHDDLyThue/>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue/>
+		<cchiHNghe/>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ngayTBaoPHanhHDon>F_30</ngayTBaoPHanhHDon>
+	</Static>
+	<Dynamic GroupName="TTinThayDoi" MinOccur = "1">
+		<ChiTietTTinThayDoi ID="id">
+			<thongTinThayDoi>AA_35</thongTinThayDoi>
+			<thongTinCu>D_35</thongTinCu>
+			<thongTinMoi>M_35</thongTinMoi>
+		</ChiTietTTinThayDoi>
+	</Dynamic>
+	<Static GroupName="TTinDonViChuQuan">
+		<tenDViChuQuan>F_40</tenDViChuQuan>
+		<mstDViChuQuan TINType="1">F_42</mstDViChuQuan>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tenCQTTiepNhanTBao>K_44</tenCQTTiepNhanTBao>
+		<ngayThongBao>Q_47</ngayThongBao>
+		<nguoiDaiDien>Q_49</nguoiDaiDien>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>Q_49</nguoiKy>
+		<ngayKy>Q_47</ngayKy>
+	</Static>
+</HSoKhaiThue>

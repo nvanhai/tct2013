@@ -1,0 +1,45 @@
+<PLuc_05_1_BK>
+	<Dynamic GroupName="BKeThueTNCNCTruCoHDong">
+		<ChiTietBangKe id="ID_1">
+			<coDieuChinhSoLieu>C_22</coDieuChinhSoLieu>
+			<ct07>D_22</ct07>
+			<ct08 TINType="1">E_22</ct08>
+			<ct09>F_22</ct09>
+			<ct10>G_22</ct10>
+			<ThuNhapChiuThue>
+				<ct11>H_22</ct11>
+				<ct12>I_22</ct12>
+				<ct13>J_22</ct13>
+			</ThuNhapChiuThue>
+			<CacKhoanGiamTru>
+				<ct14>K_22</ct14>
+				<ct15>L_22</ct15>
+				<ct16>M_22</ct16>
+				<ct17>N_22</ct17>
+			</CacKhoanGiamTru>
+			<ct18>O_22</ct18>
+			<ct19>P_22</ct19>
+			<ct20>Q_22</ct20>
+			<ChiTietKQQuyetToanThay>
+				<ct21>S_22</ct21>
+				<ct22>T_22</ct22>
+				<ct23>U_22</ct23>
+			</ChiTietKQQuyetToanThay>
+		</ChiTietBangKe>
+	</Dynamic>
+	<Static GroupName="PLuc_05_1_BK">
+		<ct24>H_24</ct24>
+		<ct25>I_24</ct25>
+		<ct26>J_24</ct26>
+		<ct27>K_24</ct27>
+		<ct28>L_24</ct28>
+		<ct29>M_24</ct29>
+		<ct30>N_24</ct30>
+		<ct31>O_24</ct31>
+		<ct32>P_24</ct32>
+		<ct33>Q_24</ct33>
+		<ct34>S_24</ct34>
+		<ct35>T_24</ct35>
+		<ct36>U_24</ct36>	
+	</Static>
+</PLuc_05_1_BK>

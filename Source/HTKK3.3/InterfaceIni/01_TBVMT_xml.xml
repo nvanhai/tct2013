@@ -1,0 +1,39 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>128</maTKhai>
+		<tenTKhai>Tờ khai thuế bảo vệ môi trường (01/TBVMT)</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT>F_11</maHuyenNNT>
+		<maTinhNNT>P_11</maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue>F_19</maHuyenDLyThue>
+		<maTinhDLyThue>P_19</maTinhDLyThue>
+	</Static>
+	<Dynamic GroupName="ChiTietThueBVMT">
+		<ThueBVMT ID="id">
+			<ct2>AC_44</ct2>
+			<ct3>J_44</ct3>
+			<ct4>L_44</ct4>
+			<ct5>Q_44</ct5>
+			<ct6>U_44</ct6>
+		</ThueBVMT>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tong_ct6>U_46</tong_ct6>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_55</nguoiKy>
+		<ngayKy>R_57</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>H_55</tenNVienDLyThue>
+		<cchiHNghe>H_57</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

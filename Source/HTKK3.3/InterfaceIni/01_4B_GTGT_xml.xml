@@ -1,0 +1,20 @@
+<PL01_4B_GTGT>
+	<Static GroupName="PL01_4B_GTGT">
+		<namKTru>F_2</namKTru>
+	</Static>
+	<Static GroupName="ThueGTGTCuaHHDVMVaoTKy">
+		<thueGTGTMVao>E_5</thueGTGTMVao>
+		<thueGTGTCThueDuDKKT>E_7</thueGTGTCThueDuDKKT>
+		<thueGTGTKhongDuDKKT>E_9</thueGTGTKhongDuDKKT>
+		<thueGTGTDungChungDuDKKT>E_11</thueGTGTDungChungDuDKKT>
+	</Static>
+	<Static GroupName="DChinhThueGTGTDVaoKTruTheoTyLe">
+		<tongDThuBRa>E_16</tongDThuBRa>
+		<dThuBRaChiuThue>E_17</dThuBRaChiuThue>
+		<tyLeDThu>E_18</tyLeDThu>
+		<thueGTGTMVaoPBo>E_19</thueGTGTMVaoPBo>
+		<thueGTGTMVaoKTru>E_20</thueGTGTMVaoKTru>
+		<thueGTGTDVaoDaKKKT>E_21</thueGTGTDVaoDaKKKT>
+		<dieuChinhThueGTGT>E_22</dieuChinhThueGTGT>
+	</Static>
+</PL01_4B_GTGT>

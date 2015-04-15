@@ -1,0 +1,25 @@
+<PL09C-TNCN>
+	<Static GroupName="ThongTinPLuc">
+		<kemTKChinhNam>B_4</kemTKChinhNam>
+	</Static>
+	<Static GroupName="BangDSachNPTCoMST">
+		<ct03>E_9</ct03>
+		<ct04 TINType="1">E_11</ct04>
+		<ct05>E_13</ct05>
+	</Static>
+	<Dynamic GroupName="BangDSachNPTCoMST">
+		<chiTietNguoiPhuThuocCoMST id="id">
+			<ct09>D_22</ct09>
+			<ct10>E_22</ct10>
+			<ct11 TINType="1">F_22</ct11>
+			<ct12>G_22</ct12>
+			<ct13>I_22</ct13>
+			<ct14>J_22</ct14>
+			<ct15>K_22</ct15>
+		</chiTietNguoiPhuThuocCoMST>
+	</Dynamic>
+	<Static GroupName="BangDSachNPTCoMST">
+		<ct16>J_24</ct16>
+		<ct17>K_24</ct17>
+	</Static>
+</PL09C-TNCN>

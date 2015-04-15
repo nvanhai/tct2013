@@ -1,0 +1,34 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>263</maTKhai>
+		<tenTKhai>Thông báo kết quả hủy hóa đơn</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	
+	<Static GroupName="CTieuTKhaiChinh">
+		<kinhGui>J_2</kinhGui>
+		<phuongPhapHuy>I_6</phuongPhapHuy>
+		<thoiGian>O_9</thoiGian>
+	</Static>
+	
+	<Dynamic GroupName="HoaDon">
+		<ChiTiet ID="id">
+			<tenHDon>E_43</tenHDon>
+			<mauHDon>O_43</mauHDon>
+			<kyHieu>S_43</kyHieu>
+			<tuSo>V_43</tuSo>
+			<denSo>Y_43</denSo>
+			<soLuong>AA_43</soLuong>
+		</ChiTiet>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<nguoiLapBieu>D_47</nguoiLapBieu>
+		<nguoiDaiDien>R_47</nguoiDaiDien>
+		<ngayBCao>R_49</ngayBCao>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_47</nguoiKy>
+		<ngayKy>R_49</ngayKy>
+	</Static>
+
+</HSoKhaiThue>

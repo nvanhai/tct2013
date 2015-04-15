@@ -1,0 +1,54 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>47</maTKhai>
+		<tenTKhai>TỜ KHAI KHẤU TRỪ THUẾ THU NHẬP CÁ NHÂN - MẪU 02/KK-TNCN</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<phuongXa></phuongXa>
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="TongSoNguoiLaoDong">
+		<ct21>U_38</ct21>
+		<ct22>U_39</ct22>
+	</Static>
+	<Static GroupName="TongSoCaNhanDaKhauTru">
+		<ct23>U_40</ct23>
+		<ct24>U_41</ct24>
+		<ct25>U_42</ct25>
+	</Static>
+	<Static GroupName="TongTNCTTraChoCaNhan">
+		<ct26>U_43</ct26>
+		<ct27>U_44</ct27>
+		<ct28>U_45</ct28>
+		<ct29>U_46</ct29>	</Static>
+	<Static GroupName="TongTNCTTraCNhanThuocDienKTru">
+		<ct30>U_47</ct30>
+		<ct31>U_48</ct31>
+		<ct32>U_49</ct32>
+		<ct33>U_50</ct33>
+	</Static>
+	<Static GroupName="TongThueTNCNDaKhauTru">
+		<ct34>U_51</ct34>
+		<ct35>U_52</ct35>
+		<ct36>U_53</ct36>
+		<ct37>U_54</ct37>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_58</nguoiKy>
+		<ngayKy>R_60</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>H_58</tenNVienDLyThue>
+		<cchiHNghe>H_60</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

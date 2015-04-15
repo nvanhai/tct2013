@@ -1,0 +1,58 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>41</maTKhai>
+		<tenTKhai>Tờ khai thuế nhà thầu nước ngoài - 01/NTNN</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Dynamic GroupName="BKThueNTNN">
+		<ThueNTNN id="ID_1">
+			<ct1>C_55</ct1>
+			<ct2 TINType="1">L_55</ct2>
+			<ct3>R_55</ct3>
+			<ct4>X_55</ct4>
+			<ct5>AD_55</ct5>
+			<ThueGTGT>
+				<ct6>AI_55</ct6>
+				<ct7>AM_55</ct7>
+				<ct8>AQ_55</ct8>
+				<ct9>AU_55</ct9>
+			</ThueGTGT>
+			<ThueTNDN>
+				<ct10>AY_55</ct10>
+				<ct11>BC_55</ct11>
+				<ct12>BG_55</ct12>
+				<ct13>BM_55</ct13>
+			</ThueTNDN>
+			<ct14>BQ_55</ct14>
+		</ThueNTNN>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tong_ct6>AI_57</tong_ct6>
+		<tong_ct9>AU_57</tong_ct9>
+		<tong_ct10>AY_57</tong_ct10>
+		<tong_ct12>BG_57</tong_ct12>
+		<tong_ct13>BM_57</tong_ct13>
+		<tong_ct14>BQ_57</tong_ct14>
+		<tongThueVietBangChu>AB_58</tongThueVietBangChu>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>AX_67</nguoiKy>
+		<ngayKy>AX_69</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>O_67</tenNVienDLyThue>
+		<cchiHNghe>O_69</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

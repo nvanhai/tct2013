@@ -1,0 +1,49 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>265</maTKhai>
+		<tenTKhai>Báo cáo tình hình sử dụng biên lai thu phí, lệ phí</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ngayDauKyBC>E_13</ngayDauKyBC>
+		<ngayCuoiKyBC>F_13</ngayCuoiKyBC>
+	</Static>
+	<Dynamic GroupName="BKeBienLai">
+		<CTietBKeBienLai id="ID_1">
+			<maBienLai>C_22</maBienLai>
+			<tenBienLai>D_22</tenBienLai>
+			<kyHieuMauBienLai>E_22</kyHieuMauBienLai>
+			<kyHieuBienLai>F_22</kyHieuBienLai>
+			<soTonMuaTrKy_tongSo>G_22</soTonMuaTrKy_tongSo>
+			<soTonDauKy_tuSo TEXTNumber="1">H_22</soTonDauKy_tuSo>
+			<soTonDauKy_denSo TEXTNumber="1">I_22</soTonDauKy_denSo>
+			<muaTrongKy_tuSo TEXTNumber="1">J_22</muaTrongKy_tuSo>
+			<muaTrongKy_denSo TEXTNumber="1">K_22</muaTrongKy_denSo>
+			<tongSoSuDung_tuSo TEXTNumber="1">L_22</tongSoSuDung_tuSo>
+			<tongSoSuDung_denSo TEXTNumber="1">M_22</tongSoSuDung_denSo>
+			<tongSoSuDung_cong>N_22</tongSoSuDung_cong>
+			<soDaSDung>P_22</soDaSDung>
+			<xoaBo_soLuong>Q_22</xoaBo_soLuong>
+			<xoaBo_so>R_22</xoaBo_so>
+			<mat_soLuong>S_22</mat_soLuong>
+			<mat_so>T_22</mat_so>
+			<huy_soLuong>U_22</huy_soLuong>
+			<huy_so>V_22</huy_so>
+			<tonCuoiKy_tuSo TEXTNumber="1">X_22</tonCuoiKy_tuSo>
+			<tonCuoiKy_denSo TEXTNumber="1">Y_22</tonCuoiKy_denSo>
+			<tonCuoiKy_soLuong>Z_22</tonCuoiKy_soLuong>
+		</CTietBKeBienLai>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tongCongSoTonDKy>G_24</tongCongSoTonDKy>
+		<tongCongSDung>N_24</tongCongSDung>
+		<tongCongSoTonCKy>Z_24</tongCongSoTonCKy>
+		<nguoiLapBieu>D_30</nguoiLapBieu>
+		<nguoiDaiDien>N_30</nguoiDaiDien>
+		<ngayBCao>N_32</ngayBCao>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>N_30</nguoiKy>
+		<ngayKy>N_32</ngayKy>
+	</Static>
+</HSoKhaiThue>

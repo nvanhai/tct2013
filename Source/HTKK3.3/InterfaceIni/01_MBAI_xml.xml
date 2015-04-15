@@ -1,0 +1,47 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>55</maTKhai>
+		<tenTKhai>Tờ khai thuế môn bài(01/MBAI)</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>	
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct21>P_20</ct21>
+	</Static>
+	<Static GroupName="CT22">
+		<ct2>C_45</ct2>
+		<ct4>P_45</ct4>
+		<ct5>U_45</ct5>
+		<ct6>Y_45</ct6>
+	</Static>
+	<Dynamic GroupName="CT23">
+		<DonViTrucThuocHToanDiaPhuong id="ID_1">
+			<ct2>C_49</ct2>
+			<ct4>P_49</ct4>
+			<ct5>U_49</ct5>
+			<ct6>Y_49</ct6>
+		</DonViTrucThuocHToanDiaPhuong>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct24>Y_51</ct24>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_60</nguoiKy>
+		<ngayKy>R_62</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>H_60</tenNVienDLyThue>
+		<cchiHNghe>H_62</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

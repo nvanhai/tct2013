@@ -1,0 +1,49 @@
+<PL09-3_TNCN>
+	<ct04></ct04>
+	<ct05></ct05>
+	<ct06></ct06>
+	<NPTCoMST>
+		<CTietNPTCoMST id="ID_1">
+			<ct10></ct10>
+			<ct11></ct11>
+			<ct12></ct12>
+			<ct13_ma>String</ct13_ma>
+			<ct13></ct13>
+			<ct14></ct14>
+			<ct15_ma>String</ct15_ma>
+			<ct15></ct15>
+			<ThoiGianGiamTru>
+				<ct16></ct16>
+				<ct17></ct17>
+			</ThoiGianGiamTru>
+		</CTietNPTCoMST>
+	</NPTCoMST>
+	<NPTChuaCoMST>
+		<CTietNPTChuaCoMST id="ID_2">
+			<ct19></ct19>
+			<ThongTinGKS>
+				<ct20></ct20>
+				<ct21></ct21>
+				<ct22></ct22>
+				<NoiDangKy>
+					<ct23_ma></ct23_ma>
+					<ct23></ct23>
+					<ct24_ma></ct24_ma>
+					<ct24></ct24>
+					<ct25_ma></ct25_ma>
+					<ct25></ct25>
+					<ct26_ma></ct26_ma>
+					<ct26></ct26>
+				</NoiDangKy>
+			</ThongTinGKS>
+			<ct27_ma></ct27_ma>
+			<ct27></ct27>
+			<ct28_ma></ct28_ma>
+			<ct28></ct28>
+			<ThoiGianGiamTru>
+				<ct29></ct29>
+				<ct30></ct30>
+			</ThoiGianGiamTru>
+		</CTietNPTChuaCoMST>
+	</NPTChuaCoMST>
+</PL09-3_TNCN>

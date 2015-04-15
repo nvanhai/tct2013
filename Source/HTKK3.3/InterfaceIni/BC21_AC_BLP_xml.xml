@@ -1,0 +1,33 @@
+<HSoThueDTu>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>262</maTKhai>
+		<tenTKhai>Báo cáo mất, cháy biên lai thu phí, lệ phí</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<noiBCao>N_4</noiBCao>
+		<ngayMatChayBLai>O_8</ngayMatChayBLai>
+	</Static>
+	<Dynamic GroupName="BKeBLaiMatChay">
+		<ChiTietBKeBLaiMatChay id="id">
+			<kyHieuMauBienLai>O_43</kyHieuMauBienLai>
+			<tenLoaiBienLai>E_43</tenLoaiBienLai>
+			<kyHieuBienLai>S_43</kyHieuBienLai>
+			<tuSo TEXTNumber ="1">V_43</tuSo>
+			<denSo TEXTNumber ="1">Y_43</denSo>
+			<soLuong TEXTNumber ="1">AA_43</soLuong>
+			<lienBLai>AB_43</lienBLai>
+			<ghiChu>AC_43</ghiChu>
+		</ChiTietBKeBLaiMatChay>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<lyDoMatChayBLai>I_46</lyDoMatChayBLai>
+		<donViNhanBCao>I_48</donViNhanBCao>
+		<nguoiDaiDien>AB_49</nguoiDaiDien>
+		<ngayBCao>AB_51</ngayBCao>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>AB_49</nguoiKy>
+		<ngayKy>AB_51</ngayKy>
+	</Static>
+</HSoThueDTu>

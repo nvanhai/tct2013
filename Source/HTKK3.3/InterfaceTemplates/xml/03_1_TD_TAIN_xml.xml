@@ -1,0 +1,21 @@
+<PL_03_1_TD_TAIN>
+	<BKePBoThueTNChoDPhuong>
+		<CTietBKePBoThueTNChoDPhuong id="">
+			<tenNhaMay></tenNhaMay>
+			<mstNhaMay>0000000000</mstNhaMay>
+			<tyLePhanBo>0.0</tyLePhanBo>
+			<soThueTNguyenPNop>1</soThueTNguyenPNop>
+			<CQTDiaPhuong>
+				<ChiTietCQTDiaPhuong ID="">
+					<tenCoSo></tenCoSo>
+					<mstCoSo></mstCoSo>
+					<maCQTDPhuong>1</maCQTDPhuong>
+					<tenCQTDPhuong></tenCQTDPhuong>
+					<tyLePBoCQTDPhuong>0.0</tyLePBoCQTDPhuong>
+					<thuePNopCQTDPhuong>1</thuePNopCQTDPhuong>
+				</ChiTietCQTDiaPhuong>
+			</CQTDiaPhuong>
+		</CTietBKePBoThueTNChoDPhuong>
+	</BKePBoThueTNChoDPhuong>
+	<tongCong>1</tongCong>
+</PL_03_1_TD_TAIN>

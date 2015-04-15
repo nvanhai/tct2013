@@ -1,0 +1,30 @@
+<!-- Edited by FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "Schema.dtd">
+<Sections Version="330">
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_34" MaxLen="250" MinValue="" MaxValue="" HelpContextID="81101"/>
+			<Cell CellID="AD_34" MaxLen="14" MinValue="" MaxValue="" HelpContextID="81102"/>
+			<Cell CellID="AL_34" MaxLen="100" MinValue="" MaxValue="" HelpContextID="81103"/>
+			<Cell CellID="AU_34" MaxLen="15" MinValue="0" MaxValue="999999999999999" HelpContextID="81104"/>
+			<Cell CellID="BE_34" MaxLen="10" MinValue="" MaxValue="" HelpContextID="81105"/>
+			<Cell CellID="BK_34" MaxLen="15" MinValue="-999999999999999" MaxValue="999999999999999" HelpContextID="81106"/>
+			<Cell CellID="BU_34" MaxLen="3" MinValue="0" MaxValue="100" HelpContextID="81107"/>
+			<Cell CellID="BX_34" MaxLen="15" MinValue="0" MaxValue="999999999999999" HelpContextID="81108"/>
+			<Cell CellID="CG_34" MaxLen="15" MinValue="0" MaxValue="999999999999999" HelpContextID="81109"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>	
+			<Cell CellID="AU_36" MaxLen="15" MinValue="0" MaxValue="999999999999999" HelpContextID="81100"/>
+			<Cell CellID="BK_36" MaxLen="15" MinValue="0" MaxValue="999999999999999" HelpContextID="81100"/>
+			<Cell CellID="BX_36" MaxLen="15" MinValue="0" MaxValue="999999999999999" HelpContextID="81100"/>
+			<Cell CellID="CG_36" MaxLen="15" MinValue="0" MaxValue="999999999999999" HelpContextID="81100"/>
+			<Cell CellID="AC_46" MaxLen="" MinValue="" MaxValue="" HelpContextID="81100"/>
+			<Cell CellID="Q_48" MaxLen="" MinValue="" MaxValue="" HelpContextID="81100"/>
+			<Cell CellID="Q_50" MaxLen="" MinValue="" MaxValue="" HelpContextID="81100"/>
+			<Cell CellID="BG_48" MaxLen="" MinValue="" MaxValue="" HelpContextID="81100"/>
+			<Cell CellID="BG_50" MaxLen="" MinValue="" MaxValue="" HelpContextID="81100"/>
+		</Cells>
+	</Section>
+</Sections>

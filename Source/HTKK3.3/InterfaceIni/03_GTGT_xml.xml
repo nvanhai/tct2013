@@ -1,0 +1,37 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>04</maTKhai>
+		<tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG (Mẫu số 03/GTGT)</tenTKhai>
+		<moTaBMau></moTaBMau>
+		<soLan>O_3</soLan>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct21>Q_36</ct21>
+		<ct22>Q_37</ct22>
+		<ct23>Q_38</ct23>
+		<ct24>Q_39</ct24>
+		<ct25>Q_40</ct25>
+		<ct26>Q_41</ct26>
+		<ct27>Q_42</ct27>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>O_59</nguoiKy>
+		<ngayKy>O_61</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>E_59</tenNVienDLyThue>
+		<cchiHNghe>E_61</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

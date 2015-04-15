@@ -1,0 +1,98 @@
+<PL_KQHDSXKD02>
+	<Static GroupName="Thue">
+		<thuePNopDauKy>H_10</thuePNopDauKy>
+		<thuePSinhPNop>I_10</thuePSinhPNop>
+		<thuePSinhDaNop>J_10</thuePSinhDaNop>
+		<thueLuyKePNop>K_10</thueLuyKePNop>
+		<thueLuyKeDaNop>L_10</thueLuyKeDaNop>
+		<thuePNopCuoiKy>M_10</thuePNopCuoiKy>
+	</Static>
+	<Static GroupName="ThueGTGT">
+		<thuePNopDauKy>H_11</thuePNopDauKy>
+		<thuePSinhPNop>I_11</thuePSinhPNop>
+		<thuePSinhDaNop>J_11</thuePSinhDaNop>
+		<thueLuyKePNop>K_11</thueLuyKePNop>
+		<thueLuyKeDaNop>L_11</thueLuyKeDaNop>
+		<thuePNopCuoiKy>M_11</thuePNopCuoiKy>
+	</Static>
+	<Static GroupName="ThueGTGThangNkhau">
+		<thuePNopDauKy>H_12</thuePNopDauKy>
+		<thuePSinhPNop>I_12</thuePSinhPNop>
+		<thuePSinhDaNop>J_12</thuePSinhDaNop>
+		<thueLuyKePNop>K_12</thueLuyKePNop>
+		<thueLuyKeDaNop>L_12</thueLuyKeDaNop>
+		<thuePNopCuoiKy>M_12</thuePNopCuoiKy>
+	</Static>
+	<Static GroupName="ThueTTDB">
+		<thuePNopDauKy>H_13</thuePNopDauKy>
+		<thuePSinhPNop>I_13</thuePSinhPNop>
+		<thuePSinhDaNop>J_13</thuePSinhDaNop>
+		<thueLuyKePNop>K_13</thueLuyKePNop>
+		<thueLuyKeDaNop>L_13</thueLuyKeDaNop>
+		<thuePNopCuoiKy>M_13</thuePNopCuoiKy>
+	</Static>
+	<Static GroupName="ThueXNhapKhau">
+		<thuePNopDauKy>H_14</thuePNopDauKy>
+		<thuePSinhPNop>I_14</thuePSinhPNop>
+		<thuePSinhDaNop>J_14</thuePSinhDaNop>
+		<thueLuyKePNop>K_14</thueLuyKePNop>
+		<thueLuyKeDaNop>L_14</thueLuyKeDaNop>
+		<thuePNopCuoiKy>M_14</thuePNopCuoiKy>
+	</Static>
+	<Static GroupName="ThueNhaDat">
+		<thuePNopDauKy>H_15</thuePNopDauKy>
+		<thuePSinhPNop>I_15</thuePSinhPNop>
+		<thuePSinhDaNop>J_15</thuePSinhDaNop>
+		<thueLuyKePNop>K_15</thueLuyKePNop>
+		<thueLuyKeDaNop>L_15</thueLuyKeDaNop>
+		<thuePNopCuoiKy>M_15</thuePNopCuoiKy>
+	</Static>
+	<Static GroupName="TienThueDat">
+		<thuePNopDauKy>H_16</thuePNopDauKy>
+		<thuePSinhPNop>I_16</thuePSinhPNop>
+		<thuePSinhDaNop>J_16</thuePSinhDaNop>
+		<thueLuyKePNop>K_16</thueLuyKePNop>
+		<thueLuyKeDaNop>L_16</thueLuyKeDaNop>
+		<thuePNopCuoiKy>M_16</thuePNopCuoiKy>
+	</Static>
+	<Static GroupName="CLoaiThueKhac">
+		<thuePNopDauKy>H_17</thuePNopDauKy>
+		<thuePSinhPNop>I_17</thuePSinhPNop>
+		<thuePSinhDaNop>J_17</thuePSinhDaNop>
+		<thueLuyKePNop>K_17</thueLuyKePNop>
+		<thueLuyKeDaNop>L_17</thueLuyKeDaNop>
+		<thuePNopCuoiKy>M_17</thuePNopCuoiKy>
+	</Static>
+	<Static GroupName="CKhoanPNopKhac">
+		<thuePNopDauKy>H_18</thuePNopDauKy>
+		<thuePSinhPNop>I_18</thuePSinhPNop>
+		<thuePSinhDaNop>J_18</thuePSinhDaNop>
+		<thueLuyKePNop>K_18</thueLuyKePNop>
+		<thueLuyKeDaNop>L_18</thueLuyKeDaNop>
+		<thuePNopCuoiKy>M_18</thuePNopCuoiKy>
+	</Static>
+	<Static GroupName="CKhoanPhiLePhi">
+		<thuePNopDauKy>H_19</thuePNopDauKy>
+		<thuePSinhPNop>I_19</thuePSinhPNop>
+		<thuePSinhDaNop>J_19</thuePSinhDaNop>
+		<thueLuyKePNop>K_19</thueLuyKePNop>
+		<thueLuyKeDaNop>L_19</thueLuyKeDaNop>
+		<thuePNopCuoiKy>M_19</thuePNopCuoiKy>
+	</Static>
+	<Static GroupName="CKhoanPNopKhac">
+		<thuePNopDauKy>H_20</thuePNopDauKy>
+		<thuePSinhPNop>I_20</thuePSinhPNop>
+		<thuePSinhDaNop>J_20</thuePSinhDaNop>
+		<thueLuyKePNop>K_20</thueLuyKePNop>
+		<thueLuyKeDaNop>L_20</thueLuyKeDaNop>
+		<thuePNopCuoiKy>M_20</thuePNopCuoiKy>
+	</Static>
+	<Static GroupName="TongCong">
+		<thuePNopDauKy>H_21</thuePNopDauKy>
+		<thuePSinhPNop>I_21</thuePSinhPNop>
+		<thuePSinhDaNop>J_21</thuePSinhDaNop>
+		<thueLuyKePNop>K_21</thueLuyKePNop>
+		<thueLuyKeDaNop>L_21</thueLuyKeDaNop>
+		<thuePNopCuoiKy>M_21</thuePNopCuoiKy>
+	</Static>
+</PL_KQHDSXKD02>

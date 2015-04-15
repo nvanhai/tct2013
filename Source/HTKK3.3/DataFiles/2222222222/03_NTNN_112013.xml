@@ -1,0 +1,51 @@
+<!-- Edited by nkhoan FIS_CMC-->
+<!DOCTYPE Sections SYSTEM "..\..\InterfaceTemplates\Schema.dtd">
+<Sections Version="310">
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="K_22" CellID2="BU_42" Encode="1" Receive="1" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="1" MaxRows="0">
+		<Cells>
+			<Cell CellID="C_34" CellID2="B_42" FirstCell="1" Encode="0" Value="" StatusID="0001"/>
+			<Cell CellID="CQ_34" CellID2="CA_42" Encode="0" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="AD_34" CellID2="N_42" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="AL_34" CellID2="V_42" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="AU_34" CellID2="AE_42" Encode="1" Receive="1" Value="0" StatusID="0001"/>
+			<Cell CellID="BE_34" CellID2="AO_42" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BK_34" CellID2="AU_42" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BU_34" CellID2="BE_42" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="BX_34" CellID2="BH_42" Encode="1" Receive="1" Value="" StatusID="0001"/>
+			<Cell CellID="CG_34" CellID2="BQ_42" Encode="1" Receive="1" Value="" StatusID="0001"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="AU_36" CellID2="AE_44" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="BK_36" CellID2="AU_44" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="BX_36" CellID2="BH_44" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="CG_36" CellID2="BQ_44" Encode="1" Receive="1" Value=""/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="P_26" CellID2="P_34" Encode="1" Receive="1" Value="1"/>
+			<Cell CellID="Q_26" CellID2="Q_34" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="AD_38" CellID2="AC_46" Encode="0" Receive="1" Value="  đồng "/>
+			<Cell CellID="CG_26" CellID2="" Encode="0" Receive="1" Value="0"/>
+		</Cells>
+	</Section>
+	<Section Dynamic="0" MaxRows="0">
+		<Cells>
+			<Cell CellID="Q_48" CellID2="P_56" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="BG_48" CellID2="BC_60" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="Q_50" CellID2="P_58" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="BG_50" CellID2="BA_51" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="M_26" CellID2="M_34" Encode="1" Receive="1" Value="1"/>
+			<Cell CellID="N_26" CellID2="N_34" Encode="1" Receive="1" Value="1"/>
+			<Cell CellID="O_26" CellID2="O_34" Encode="1" Receive="1" Value=""/>
+			<Cell CellID="S_26" CellID2="S_34" Encode="1" Receive="1" Value=""/>
+		</Cells>
+	</Section>
+</Sections>

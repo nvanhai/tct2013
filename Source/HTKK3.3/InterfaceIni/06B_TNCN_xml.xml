@@ -1,0 +1,16 @@
+<PLuc_06_1_BK>
+	<Dynamic GroupName="BKeThuTNCNTuCNCKhoan">
+		<ChiTietBKe id="ID_1">
+			<coDieuChinhSoLieu>C_22</coDieuChinhSoLieu>
+			<ct07>D_22</ct07>
+			<ct08 TINType="1">E_22</ct08>
+			<ct09>F_22</ct09>
+			<ct10>G_22</ct10>
+			<ct11>H_22</ct11>
+		</ChiTietBKe>
+	</Dynamic>
+	<Static GroupName="PLuc_06_1_BK">
+		<ct12>G_24</ct12>
+		<ct13>H_24</ct13>
+	</Static>
+</PLuc_06_1_BK>

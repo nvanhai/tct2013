@@ -1,0 +1,60 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>151</maTKhai>
+		<tenTKhai>TỜ KHAI TẠM NỘP THUẾ THU NHẬP CÁ NHÂN - MẪU SỐ 08A/KK-TNCN</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan/>
+		<lyDoGiaHan/>
+	</Static>
+	<Static GroupName="NNT">
+		<phuongXa/>
+		<maHuyenNNT/>
+		<maTinhNNT/>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue/>
+		<maTinhDLyThue/>
+	</Static>
+	<Static GroupName="DuKienKDoanhTrongKyCuaNhom">
+		<ct21>R_41</ct21>
+		<ct22>R_42</ct22>
+		<ct23>R_43</ct23>
+		<ct24>R_44</ct24>
+	</Static>
+	<Dynamic GroupName="BangChiTietSoThuePNopCuaTungCNhan">
+		<ChiTietThuNhapKDoanh id="id">
+			<ct26>C_51</ct26>
+			<ct27>H_51</ct27>
+			<ct28>L_51</ct28>
+			<ThuNhapChiuThue>
+				<ct29>N_51</ct29>
+				<ct30>P_51</ct30>
+			</ThuNhapChiuThue>
+			<ct31>R_51</ct31>
+			<ct32>T_51</ct32>
+			<ct33>V_51</ct33>
+			<ct34>X_51</ct34>
+			<ct35>Z_51</ct35>
+		</ChiTietThuNhapKDoanh>
+	</Dynamic>
+	<Static GroupName="ThuNhapVaSoThuePNopCuaTungCaNhan">
+		<ct36>L_53</ct36>
+		<ct37>N_53</ct37>
+		<ct38>P_53</ct38>
+		<ct39>R_53</ct39>
+		<ct40>T_53</ct40>
+		<ct41>V_53</ct41>
+		<ct42>X_53</ct42>
+		<ct43>Z_53</ct43>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>R_55</nguoiKy>
+		<ngayKy>R_57</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>G_55</tenNVienDLyThue>
+		<cchiHNghe>G_57</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

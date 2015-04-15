@@ -1,0 +1,71 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>102</maTKhai>
+		<tenTKhai>Báo cáo tình hình sử dụng hóa đơn</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nganhNgheKD></nganhNgheKD>
+	</Static>
+	<Static GroupName="NNT">
+		<phuongXa></phuongXa>
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<kyBCaoCuoi>B_14</kyBCaoCuoi>
+		<chuyenDiaDiem>G_14</chuyenDiaDiem>
+		<ngayDauKyBC>E_13</ngayDauKyBC>
+		<ngayCuoiKyBC>F_13</ngayCuoiKyBC>
+	</Static>
+	<Dynamic GroupName="HoaDon">
+		<ChiTiet id="ID_1">
+		<maHoaDon>C_22</maHoaDon>
+			<tenHDon>D_22</tenHDon>
+			<kHieuMauHDon>E_22</kHieuMauHDon>
+			<kHieuHDon>F_22</kHieuHDon>
+		<soTonMuaTrKy_tongSo>G_22</soTonMuaTrKy_tongSo>
+		<soTonDauKy_tuSo>H_22</soTonDauKy_tuSo>
+		<soTonDauKy_denSo>I_22</soTonDauKy_denSo>
+		<muaTrongKy_tuSo>J_22</muaTrongKy_tuSo>
+		<muaTrongKy_denSo>K_22</muaTrongKy_denSo>
+		<tongSoSuDung_tuSo>L_22</tongSoSuDung_tuSo>
+		<tongSoSuDung_denSo>M_22</tongSoSuDung_denSo>
+		<tongSoSuDung_cong>N_22</tongSoSuDung_cong>
+		<soDaSDung>P_22</soDaSDung>
+		<xoaBo_soLuong>Q_22</xoaBo_soLuong>
+		<xoaBo_so>R_22</xoaBo_so>
+		<mat_soLuong>S_22</mat_soLuong>
+		<mat_so>T_22</mat_so>
+		<huy_soLuong>U_22</huy_soLuong>
+		<huy_so>V_22</huy_so>
+		<tonCuoiKy_tuSo>X_22</tonCuoiKy_tuSo>
+		<tonCuoiKy_denSo>Y_22</tonCuoiKy_denSo>
+		<tonCuoiKy_soLuong>Z_22</tonCuoiKy_soLuong>
+		</ChiTiet>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tongCongSoTonDKy>G_24</tongCongSoTonDKy>
+		<tongCongSDung>N_24</tongCongSDung>
+		<tongCongSoTonCKy>Z_24</tongCongSoTonCKy>
+		<nguoiLapBieu>D_30</nguoiLapBieu>
+		<nguoiDaiDien>N_30</nguoiDaiDien>
+		<ngayBCao>N_32</ngayBCao>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>N_30</nguoiKy>
+		<ngayKy>N_32</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue></tenNVienDLyThue>
+		<cchiHNghe></cchiHNghe>
+	</Static>
+</HSoKhaiThue>

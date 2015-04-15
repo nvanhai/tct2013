@@ -1,0 +1,246 @@
+<PL03_7_TNDN>
+	<Dynamic GroupName="TTinCacBenLKet" MinOccur = "1">
+		<moiQHeVoiTungLKet id="ID_10">
+				<tenLKet>D_31</tenLKet>
+				<quocGia>I_31</quocGia>
+				<mstLKet>O_31</mstLKet>
+				<ctA_GCN>U_31</ctA_GCN>
+				<ctB_GCN>V_31</ctB_GCN>
+				<ctC_GCN>W_31</ctC_GCN>
+				<ctD_GCN>X_31</ctD_GCN>
+				<ctE_GCN>Y_31</ctE_GCN>
+				<ctF_GCN>Z_31</ctF_GCN>
+				<ctG_GCN>AA_31</ctG_GCN>
+				<ctH_GCN>AB_31</ctH_GCN>
+				<ctI_GCN>AC_31</ctI_GCN>
+				<ctJ_GCN>AD_31</ctJ_GCN>
+				<ctK_GCN>AE_31</ctK_GCN>
+				<ctL_GCN>AF_31</ctL_GCN>
+				<ctM_GCN>AG_31</ctM_GCN>
+		</moiQHeVoiTungLKet>
+	</Dynamic>
+	<Static GroupName="PL03_7_TNDN">
+		<tongDThuSSKTCTI>H_46</tongDThuSSKTCTI>
+		<tongDThuGiaTTCTI>J_46</tongDThuGiaTTCTI>
+		<tongDThuCLechCTI>M_46</tongDThuCLechCTI>
+		<tongCPhiSSKTCTI>R_46</tongCPhiSSKTCTI>
+		<tongCPhiGiaTTCTI>V_46</tongCPhiGiaTTCTI>
+		<tongCPhiCLechCTI>Y_46</tongCPhiCLechCTI>
+		<tongLoiNhuanCTI>AE_46</tongLoiNhuanCTI>
+		
+		<tongDThuSSKTCTII>H_47</tongDThuSSKTCTII>
+		<tongDThuGiaTTCTII>J_47</tongDThuGiaTTCTII>
+		<tongDThuCLechCTII>M_47</tongDThuCLechCTII>
+		<tongCPhiSSKTCTII>R_47</tongCPhiSSKTCTII>
+		<tongCPhiGiaTTCTII>V_47</tongCPhiGiaTTCTII>
+		<tongCPhiCLechCTII>Y_47</tongCPhiCLechCTII>
+		<tongLoiNhuanCTII>AE_47</tongLoiNhuanCTII>
+		
+		<tongHHSSKTCTII_1>H_48</tongHHSSKTCTII_1>
+		<tongHHGiaTTCTII_1>J_48</tongHHGiaTTCTII_1>
+		<tongHHCLechCTII_1>M_48</tongHHCLechCTII_1>
+		<tongHHCPhiSSKTCTII_1>R_48</tongHHCPhiSSKTCTII_1>
+		<tongHHCPhiGiaTTCTII_1>V_48</tongHHCPhiGiaTTCTII_1>
+		<tongHHCPhiCLechCTII_1>Y_48</tongHHCPhiCLechCTII_1>
+		<tongHHLoiNhuanCTII_1>AE_48</tongHHLoiNhuanCTII_1>
+		
+		<tongHHSSKTCTII_1_1>H_49</tongHHSSKTCTII_1_1>
+		<tongHHGiaTTCTII_1_1>J_49</tongHHGiaTTCTII_1_1>
+		<tongHHCLechCTII_1_1>M_49</tongHHCLechCTII_1_1>
+		<tongHHCPhiSSKTCTII_1_1>R_49</tongHHCPhiSSKTCTII_1_1>
+		<tongHHCPhiGiaTTCTII_1_1>V_49</tongHHCPhiGiaTTCTII_1_1>
+		<tongHHCPhiCLechCTII_1_1>Y_49</tongHHCPhiCLechCTII_1_1>
+		<tongHHLoiNhuanCTII_1_1>AE_49</tongHHLoiNhuanCTII_1_1>
+	</Static>				
+	<Dynamic GroupName="TTinHHoaHThanhTSCD">
+		<hHoaHThanhTSCD id="ID_11">
+			<tenLienKet_ctII_1_1>D_51</tenLienKet_ctII_1_1>
+			<gtriDThuSSKT_ctII_1_1>H_51</gtriDThuSSKT_ctII_1_1>
+			<gtriDThuGiaTT_ctII_1_1>J_51</gtriDThuGiaTT_ctII_1_1>
+			<gtriDThuCLech_ctII_1_1>M_51</gtriDThuCLech_ctII_1_1>
+			<pphapDThu_ctII_1_1>N_51</pphapDThu_ctII_1_1>
+			<gtriCPhiSSKT_ctII_1_1>R_51</gtriCPhiSSKT_ctII_1_1>
+			<gtriCPhiGiaTT_ctII_1_1>V_51</gtriCPhiGiaTT_ctII_1_1>
+			<gtriCPhiCLech_ctII_1_1>Y_51</gtriCPhiCLech_ctII_1_1>
+			<pphapCPhi_ctII_1_1>AB_51</pphapCPhi_ctII_1_1>
+			<gtriLoiNhuan_ctII_1_1>AE_51</gtriLoiNhuan_ctII_1_1>
+		</hHoaHThanhTSCD>
+	</Dynamic>
+	<Static GroupName="PL03_7_TNDN">
+		<tongHHSSKTCTII_1_2>H_53</tongHHSSKTCTII_1_2>
+		<tongHHGiaTTCTII_1_2>J_53</tongHHGiaTTCTII_1_2>
+		<tongHHCLechCTII_1_2>M_53</tongHHCLechCTII_1_2>
+		<tongHHCPhiSSKTCTII_1_2>R_53</tongHHCPhiSSKTCTII_1_2>
+		<tongHHCPhiGiaTTCTII_1_2>V_53</tongHHCPhiGiaTTCTII_1_2>
+		<tongHHCPhiCLechCTII_1_2>Y_53</tongHHCPhiCLechCTII_1_2>
+		<tongHHLoiNhuanCTII_1_2>AE_53</tongHHLoiNhuanCTII_1_2>
+	</Static>	
+	<Dynamic GroupName="TTinHHoaKhongHThanhTSCD" MinOccur = "1">
+		<hHoaKhongHThanhTSCD id="ID_12">
+			<tenLienKet_ctII_1_2>D_55</tenLienKet_ctII_1_2>
+			<gtriDThuSSKT_ctII_1_2>H_55</gtriDThuSSKT_ctII_1_2>
+			<gtriDThuGiaTT_ctII_1_2>J_55</gtriDThuGiaTT_ctII_1_2>
+			<gtriDThuCLech_ctII_1_2>M_55</gtriDThuCLech_ctII_1_2>
+			<pphapDThu_ctII_1_2>N_55</pphapDThu_ctII_1_2>
+			<gtriCPhiSSKT_ctII_1_2>R_55</gtriCPhiSSKT_ctII_1_2>
+			<gtriCPhiGiaTT_ctII_1_2>V_55</gtriCPhiGiaTT_ctII_1_2>
+			<gtriCPhiCLech_ctII_1_2>Y_55</gtriCPhiCLech_ctII_1_2>
+			<pphapCPhi_ctII_1_2>AB_55</pphapCPhi_ctII_1_2>
+			<gtriLoiNhuan_ctII_1_2>AE_55</gtriLoiNhuan_ctII_1_2>
+		</hHoaKhongHThanhTSCD>
+	</Dynamic>
+	<Static GroupName="PL03_7_TNDN">
+		<tongDVuSSKTCTII_2>H_57</tongDVuSSKTCTII_2>
+		<tongDVuGiaTTCTII_2>J_57</tongDVuGiaTTCTII_2>
+		<tongDVuCLechCTII_2>M_57</tongDVuCLechCTII_2>
+		<tongDVuCPhiSSKTCTII_2>R_57</tongDVuCPhiSSKTCTII_2>
+		<tongDVuCPhiGiaTTCTII_2>V_57</tongDVuCPhiGiaTTCTII_2>
+		<tongDVuCPhiCLechCTII_2>Y_57</tongDVuCPhiCLechCTII_2>
+		<tongDVuLoiNhuanCTII_2>AE_57</tongDVuLoiNhuanCTII_2>
+		
+		<tongDThuSSKTCTII_2_1>H_58</tongDThuSSKTCTII_2_1>
+		<tongDThuGiaTTCTII_2_1>J_58</tongDThuGiaTTCTII_2_1>
+		<tongDThuCLechCTII_2_1>M_58</tongDThuCLechCTII_2_1>
+		<tongCPhiSSKTCTII_2_1>R_58</tongCPhiSSKTCTII_2_1>
+		<tongCPhiGiaTTCTII_2_1>V_58</tongCPhiGiaTTCTII_2_1>
+		<tongCPhiCLechCTII_2_1>Y_58</tongCPhiCLechCTII_2_1>
+		<tongLoiNhuanCTII_2_1>AE_58</tongLoiNhuanCTII_2_1>
+	</Static>		
+	<Dynamic GroupName="TTinNghienCuuPhatTrien" MinOccur = "1">
+		<nghienCuuPhatTrien id="ID_13">
+			<tenLienKet_ctII_2_1>D_60</tenLienKet_ctII_2_1>
+			<gtriDThuSSKT_ctII_2_1>H_60</gtriDThuSSKT_ctII_2_1>
+			<gtriDThuGiaTT_ctII_2_1>J_60</gtriDThuGiaTT_ctII_2_1>
+			<gtriDThuCLech_ctII_2_1>M_60</gtriDThuCLech_ctII_2_1>
+			<pphapDThu_ctII_2_1>N_60</pphapDThu_ctII_2_1>
+			<gtriCPhiSSKT_ctII_2_1>R_60</gtriCPhiSSKT_ctII_2_1>
+			<gtriCPhiGiaTT_ctII_2_1>V_60</gtriCPhiGiaTT_ctII_2_1>
+			<gtriCPhiCLech_ctII_2_1>Y_60</gtriCPhiCLech_ctII_2_1>
+			<pphapCPhi_ctII_2_1>AB_60</pphapCPhi_ctII_2_1>
+			<gtriLoiNhuan_ctII_2_1>AE_60</gtriLoiNhuan_ctII_2_1>
+		</nghienCuuPhatTrien>
+	</Dynamic>
+	<Static GroupName="PL03_7_TNDN">
+		<tongDThuSSKTCTII_2_2>H_62</tongDThuSSKTCTII_2_2>
+		<tongDThuGiaTTCTII_2_2>J_62</tongDThuGiaTTCTII_2_2>
+		<tongDThuCLechCTII_2_2>M_62</tongDThuCLechCTII_2_2>
+		<tongCPhiSSKTCTII_2_2>R_62</tongCPhiSSKTCTII_2_2>
+		<tongCPhiGiaTTCTII_2_2>V_62</tongCPhiGiaTTCTII_2_2>
+		<tongCPhiCLechCTII_2_2>Y_62</tongCPhiCLechCTII_2_2>
+		<tongLoiNhuanCTII_2_2>AE_62</tongLoiNhuanCTII_2_2>
+	</Static>	
+	<Dynamic GroupName="TTinQuangCaoTiepThi">
+		<quangCaoTiepThi id="ID_14">
+			<tenLienKet_ctII_2_2>D_64</tenLienKet_ctII_2_2>
+			<gtriDThuSSKT_ctII_2_2>H_64</gtriDThuSSKT_ctII_2_2>
+			<gtriDThuGiaTT_ctII_2_2>J_64</gtriDThuGiaTT_ctII_2_2>
+			<gtriDThuCLech_ctII_2_2>M_64</gtriDThuCLech_ctII_2_2>
+			<pphapDThu_ctII_2_2>N_64</pphapDThu_ctII_2_2>
+			<gtriCPhiSSKT_ctII_2_2>R_64</gtriCPhiSSKT_ctII_2_2>
+			<gtriCPhiGiaTT_ctII_2_2>V_64</gtriCPhiGiaTT_ctII_2_2>
+			<gtriCPhiCLech_ctII_2_2>Y_64</gtriCPhiCLech_ctII_2_2>
+			<pphapCPhi_ctII_2_2>AB_64</pphapCPhi_ctII_2_2>
+			<gtriLoiNhuan_ctII_2_2>AE_64</gtriLoiNhuan_ctII_2_2>
+		</quangCaoTiepThi>
+	</Dynamic>
+	<Static GroupName="PL03_7_TNDN">
+		<tongDThuSSKTCTII_2_3>H_66</tongDThuSSKTCTII_2_3>
+		<tongDThuGiaTTCTII_2_3>J_66</tongDThuGiaTTCTII_2_3>
+		<tongDThuCLechCTII_2_3>M_66</tongDThuCLechCTII_2_3>
+		<tongCPhiSSKTCTII_2_3>R_66</tongCPhiSSKTCTII_2_3>
+		<tongCPhiGiaTTCTII_2_3>V_66</tongCPhiGiaTTCTII_2_3>
+		<tongCPhiCLechCTII_2_3>Y_66</tongCPhiCLechCTII_2_3>
+		<tongLoiNhuanCTII_2_3>AE_66</tongLoiNhuanCTII_2_3>
+	</Static>	
+	<Dynamic GroupName="TTinQLyKDoanhTVDT" MinOccur = "1">
+		<qLyKDoanhTVDT id="ID_15">
+			<tenLienKet_ctII_2_3>D_68</tenLienKet_ctII_2_3>
+			<gtriDThuSSKT_ctII_2_3>H_68</gtriDThuSSKT_ctII_2_3>
+			<gtriDThuGiaTT_ctII_2_3>J_68</gtriDThuGiaTT_ctII_2_3>
+			<gtriDThuCLech_ctII_2_3>M_68</gtriDThuCLech_ctII_2_3>
+			<pphapDThu_ctII_2_3>N_68</pphapDThu_ctII_2_3>
+			<gtriCPhiSSKT_ctII_2_3>R_68</gtriCPhiSSKT_ctII_2_3>
+			<gtriCPhiGiaTT_ctII_2_3>V_68</gtriCPhiGiaTT_ctII_2_3>
+			<gtriCPhiCLech_ctII_2_3>Y_68</gtriCPhiCLech_ctII_2_3>
+			<pphapCPhi_ctII_2_3>AB_68</pphapCPhi_ctII_2_3>
+			<gtriLoiNhuan_ctII_2_3>AE_68</gtriLoiNhuan_ctII_2_3>
+		</qLyKDoanhTVDT>
+	</Dynamic>
+	<Static GroupName="PL03_7_TNDN">
+		<tongDThuSSKTCTII_2_4>H_70</tongDThuSSKTCTII_2_4>
+		<tongDThuGiaTTCTII_2_4>J_70</tongDThuGiaTTCTII_2_4>
+		<tongDThuCLechCTII_2_4>M_70</tongDThuCLechCTII_2_4>
+		<tongCPhiSSKTCTII_2_4>R_70</tongCPhiSSKTCTII_2_4>
+		<tongCPhiGiaTTCTII_2_4>V_70</tongCPhiGiaTTCTII_2_4>
+		<tongCPhiCLechCTII_2_4>Y_70</tongCPhiCLechCTII_2_4>
+		<tongLoiNhuanCTII_2_4>AE_70</tongLoiNhuanCTII_2_4>
+		
+		<tongDThuSSKTCTII_2_4_1>H_71</tongDThuSSKTCTII_2_4_1>
+		<tongDThuGiaTTCTII_2_4_1>J_71</tongDThuGiaTTCTII_2_4_1>
+		<tongDThuCLechCTII_2_4_1>M_71</tongDThuCLechCTII_2_4_1>
+		<tongCPhiSSKTCTII_2_4_1>R_71</tongCPhiSSKTCTII_2_4_1>
+		<tongCPhiGiaTTCTII_2_4_1>V_71</tongCPhiGiaTTCTII_2_4_1>
+		<tongCPhiCLechCTII_2_4_1>Y_71</tongCPhiCLechCTII_2_4_1>
+		<tongLoiNhuanCTII_2_4_1>AE_71</tongLoiNhuanCTII_2_4_1>
+	</Static>	
+	<Dynamic GroupName="TTinTienBanQuyen" MinOccur = "1">
+		<tienBanQuyen id="ID_16">
+			<tenLienKet_ctII_2_4_1>D_73</tenLienKet_ctII_2_4_1>
+			<gtriDThuSSKT_ctII_2_4_1>H_73</gtriDThuSSKT_ctII_2_4_1>
+			<gtriDThuGiaTT_ctII_2_4_1>J_73</gtriDThuGiaTT_ctII_2_4_1>
+			<gtriDThuCLech_ctII_2_4_1>M_73</gtriDThuCLech_ctII_2_4_1>
+			<pphapDThu_ctII_2_4_1>N_73</pphapDThu_ctII_2_4_1>
+			<gtriCPhiSSKT_ctII_2_4_1>R_73</gtriCPhiSSKT_ctII_2_4_1>
+			<gtriCPhiGiaTT_ctII_2_4_1>V_73</gtriCPhiGiaTT_ctII_2_4_1>
+			<gtriCPhiCLech_ctII_2_4_1>Y_73</gtriCPhiCLech_ctII_2_4_1>
+			<pphapCPhi_ctII_2_4_1>AB_73</pphapCPhi_ctII_2_4_1>
+			<gtriLoiNhuan_ctII_2_4_1>AE_73</gtriLoiNhuan_ctII_2_4_1>
+		</tienBanQuyen>
+	</Dynamic>
+	<Static GroupName="PL03_7_TNDN">
+		<tongDThuSSKTCTII_2_4_2>H_75</tongDThuSSKTCTII_2_4_2>
+		<tongDThuGiaTTCTII_2_4_2>J_75</tongDThuGiaTTCTII_2_4_2>
+		<tongDThuCLechCTII_2_4_2>M_75</tongDThuCLechCTII_2_4_2>
+		<tongCPhiSSKTCTII_2_4_2>R_75</tongCPhiSSKTCTII_2_4_2>
+		<tongCPhiGiaTTCTII_2_4_2>V_75</tongCPhiGiaTTCTII_2_4_2>
+		<tongCPhiCLechCTII_2_4_2>Y_75</tongCPhiCLechCTII_2_4_2>
+		<tongLoiNhuanCTII_2_4_2>AE_75</tongLoiNhuanCTII_2_4_2>
+	</Static>	
+	<Dynamic GroupName="TTinLaiVay" MinOccur = "1">
+		<laiVay id="ID_17">
+			<tenLienKet_ctII_2_4_2>D_77</tenLienKet_ctII_2_4_2>
+			<gtriDThuSSKT_ctII_2_4_2>H_77</gtriDThuSSKT_ctII_2_4_2>
+			<gtriDThuGiaTT_ctII_2_4_2>J_77</gtriDThuGiaTT_ctII_2_4_2>
+			<gtriDThuCLech_ctII_2_4_2>M_77</gtriDThuCLech_ctII_2_4_2>
+			<pphapDThu_ctII_2_4_2>N_77</pphapDThu_ctII_2_4_2>
+			<gtriCPhiSSKT_ctII_2_4_2>R_77</gtriCPhiSSKT_ctII_2_4_2>
+			<gtriCPhiGiaTT_ctII_2_4_2>V_77</gtriCPhiGiaTT_ctII_2_4_2>
+			<gtriCPhiCLech_ctII_2_4_2>Y_77</gtriCPhiCLech_ctII_2_4_2>
+			<pphapCPhi_ctII_2_4_2>AB_77</pphapCPhi_ctII_2_4_2>
+			<gtriLoiNhuan_ctII_2_4_2>AE_77</gtriLoiNhuan_ctII_2_4_2>
+		</laiVay>
+	</Dynamic>
+	<Static GroupName="PL03_7_TNDN">
+		<tongDThuSSKTCTII_2_5>H_79</tongDThuSSKTCTII_2_5>
+		<tongDThuGiaTTCTII_2_5>J_79</tongDThuGiaTTCTII_2_5>
+		<tongDThuCLechCTII_2_5>M_79</tongDThuCLechCTII_2_5>
+		<tongCPhiSSKTCTII_2_5>R_79</tongCPhiSSKTCTII_2_5>
+		<tongCPhiGiaTTCTII_2_5>V_79</tongCPhiGiaTTCTII_2_5>
+		<tongCPhiCLechCTII_2_5>Y_79</tongCPhiCLechCTII_2_5>
+		<tongLoiNhuanCTII_2_5>AE_79</tongLoiNhuanCTII_2_5>
+	</Static>	
+	<Dynamic GroupName="TTinDichVuKhac" MinOccur = "1">
+		<dichVuKhac id="ID_18">
+			<tenLienKet_ctII_2_5>D_81</tenLienKet_ctII_2_5>
+			<gtriDThuSSKT_ctII_2_5>H_81</gtriDThuSSKT_ctII_2_5>
+			<gtriDThuGiaTT_ctII_2_5>J_81</gtriDThuGiaTT_ctII_2_5>
+			<gtriDThuCLech_ctII_2_5>M_81</gtriDThuCLech_ctII_2_5>
+			<pphapDThu_ctII_2_5>N_81</pphapDThu_ctII_2_5>
+			<gtriCPhiSSKT_ctII_2_5>R_81</gtriCPhiSSKT_ctII_2_5>
+			<gtriCPhiGiaTT_ctII_2_5>V_81</gtriCPhiGiaTT_ctII_2_5>
+			<gtriCPhiCLech_ctII_2_5>Y_81</gtriCPhiCLech_ctII_2_5>
+			<pphapCPhi_ctII_2_5>AB_81</pphapCPhi_ctII_2_5>
+			<gtriLoiNhuan_ctII_2_5>AE_81</gtriLoiNhuan_ctII_2_5>
+		</dichVuKhac>
+	</Dynamic>
+</PL03_7_TNDN>

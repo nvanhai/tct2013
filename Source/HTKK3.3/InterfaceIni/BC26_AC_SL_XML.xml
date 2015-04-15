@@ -1,0 +1,67 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>102</maTKhai>
+		<tenTKhai>Báo cáo tình hình sử dụng hóa đơn theo số lượng</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan></maLyDoGiaHan>
+		<lyDoGiaHan></lyDoGiaHan>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nganhNgheKD></nganhNgheKD>
+	</Static>
+	<Static GroupName="NNT">
+		<phuongXa></phuongXa>
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<kyBCaoCuoi>B_14</kyBCaoCuoi>
+		<chuyenDiaDiem>G_14</chuyenDiaDiem>
+		<ngayDauKyBC>E_13</ngayDauKyBC>
+		<ngayCuoiKyBC>F_13</ngayCuoiKyBC>
+	</Static>
+	<Dynamic GroupName="HoaDon">
+		<ChiTiet id="ID_1">
+			<maHoaDon>C_22</maHoaDon>
+			<tenHDon>D_22</tenHDon>
+			<kHieuMauHDon>E_22</kHieuMauHDon>
+			<hinhThucHDon>F_22</hinhThucHDon>
+			<soLuongTonDauKy>G_22</soLuongTonDauKy>
+			<soLuongMuaPHanhTKy>H_22</soLuongMuaPHanhTKy>
+			<soLuongSuDung>I_22</soLuongSuDung>
+			<soLuongXoaBo>J_22</soLuongXoaBo>
+			<soLuongMat>K_22</soLuongMat>
+			<soLuongHuy>L_22</soLuongHuy>
+			<cong_SuDungTKy>M_22</cong_SuDungTKy>
+			<tonCuoiKy>N_22</tonCuoiKy>
+			<ghiChu>P_22</ghiChu>
+		</ChiTiet>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+			<tongCongSoTonDKy>G_24</tongCongSoTonDKy>
+			<tongCongSoMuaPHanhTKy>H_24</tongCongSoMuaPHanhTKy>
+			<tongCongSoSuDung>I_24</tongCongSoSuDung>
+			<tongCongSoXoaBo>J_24</tongCongSoXoaBo>
+			<tongCongSoMat>K_24</tongCongSoMat>
+			<tongCongSoHuy>L_24</tongCongSoHuy>
+			<tongCong_Cong>M_24</tongCong_Cong>
+			<tongCongTonCuoiKy>N_24</tongCongTonCuoiKy>
+		<nguoiLapBieu>D_30</nguoiLapBieu>
+		<nguoiDaiDien>N_30</nguoiDaiDien>
+		<ngayBCao>N_32</ngayBCao>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>N_30</nguoiKy>
+		<ngayKy>N_32</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue></tenNVienDLyThue>
+		<cchiHNghe></cchiHNghe>
+	</Static>
+</HSoKhaiThue>

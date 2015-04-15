@@ -1,0 +1,40 @@
+<PL01_KHBS>
+	<Dynamic GroupName="DieuChinhTang" MinOccur="1">
+		<KHBSDieuChinhTang id="ID_1">
+			<ct2>BD_9</ct2>
+			<ct3>BE_9</ct3>
+			<ct4>BF_9</ct4>
+			<ct5>BG_9</ct5>
+			<ct6>BH_9</ct6>
+		</KHBSDieuChinhTang>
+	</Dynamic>
+	<Dynamic GroupName="DieuChinhGiam" MinOccur="1">
+		<KHBSDieuChinhGiam id="ID_2">
+			<ct2>BD_13</ct2>
+			<ct3>BE_13</ct3>
+			<ct4>BF_13</ct4>
+			<ct5>BG_13</ct5>
+			<ct6>BH_13</ct6>
+		</KHBSDieuChinhGiam>
+	</Dynamic>
+	<Static GroupName="TongHopDCTangGiamPNop">
+			<ct2>BD_17</ct2>
+			<ct3>BE_17</ct3>
+			<ct4>BF_17</ct4>
+			<ct5>BG_17</ct5>
+			<ct6>BH_17</ct6>
+	</Static>
+	<Static GroupName="PhatChamNop">
+		<soNgayNopCham>BE_20</soNgayNopCham>
+		<soTienPhatNopCham>BE_21</soTienPhatNopCham>
+	</Static>
+	<Static GroupName="NOIDUNGGIAITHICH">
+		<soTienTraNSNN>BE_27</soTienTraNSNN>
+		<quyetDinhHoanThueSo>BE_29</quyetDinhHoanThueSo>
+		<ngay>BE_31</ngay>
+		<coQuanThue>BI_35</coQuanThue>
+		<soNgayNhanDuocTienHoan>BE_37</soNgayNhanDuocTienHoan>
+		<soTienChamNop>BE_39</soTienChamNop>
+		<lyDoKhac>BD_43</lyDoKhac>
+	</Static>
+</PL01_KHBS>

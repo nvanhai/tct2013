@@ -1,0 +1,45 @@
+<HSoThueDTu>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>135</maTKhai>
+		<tenTKhai>TỜ KHAI THUẾ TÀI NGUYÊN TẠM TÍNH ĐỐI VỚI DẦU KHÍ</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="LoaiDauKhi">
+		<ct01 MinOccur="1">O_30</ct01>
+		<ct02 MinOccur="1">P_30</ct02>
+		<ct03 MinOccur="1">Q_30</ct03>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct05>AF_23</ct05>
+	</Static>
+	<Static GroupName="LoaiXuatBan">
+		<ct08 MinOccur="1">Y_28</ct08>
+		<ct09 MinOccur="1">AS_28</ct09>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct10>AM_29</ct10>
+		<ct19>P_47</ct19>
+	</Static>
+	<Static GroupName="CT20">
+		<donViUyQuyen MinOccur="1">Q_49</donViUyQuyen>
+		<daiLyThue MinOccur="1">Y_49</daiLyThue>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tenDonViUyQuyen>P_36</tenDonViUyQuyen>
+		<ct30>AV_56</ct30>
+		<ct30a>AV_57</ct30a>
+		<ct31>AV_58</ct31>
+		<ct32>AV_59</ct32>
+		<ct33>AV_60</ct33>
+		<ct34>AV_61</ct34>
+		<ct35>AV_62</ct35>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>AR_66</nguoiKy>
+		<ngayKy>AR_68</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>U_66</tenNVienDLyThue>
+		<cchiHNghe>U_68</cchiHNghe>
+	</Static>
+</HSoThueDTu>

@@ -1,0 +1,36 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>85</maTKhai>
+		<tenTKhai>TỜ KHAI THUẾ THU NHẬP DOANH NGHIỆP TẠM TÍNH ĐỐI VỚI KHÍ THIÊN NHIÊN (01B/TNDN-DK)</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<ct12>P_47</ct12>
+	</Static>
+	<Static GroupName="CT13">
+		<donViUyQuyen MinOccur="1">S_49</donViUyQuyen>
+		<daiLyThue MinOccur="1">AF_49</daiLyThue>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tenDonViUyQuyen>AI_49</tenDonViUyQuyen>
+		<ct22>AV_55</ct22>
+		<ct23>AV_56</ct23>
+		<ct24>AV_57</ct24>
+		<ct25>AV_58</ct25>
+		<ct26>AV_59</ct26>
+		<ct27>AV_60</ct27>
+		<ct28>AV_61</ct28>
+		<ct29>AV_62</ct29>
+		<ct30>AV_63</ct30>
+		<ct31>AV_64</ct31>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>AR_76</nguoiKy>
+		<ngayKy>AR_78</ngayKy>
+		<nganhNgheKD/>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>U_76</tenNVienDLyThue>
+		<cchiHNghe>U_78</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

@@ -1,0 +1,57 @@
+<HSoKhaiThue>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>11</maTKhai>
+		<tenTKhai>Tờ khai thuế TNDN tạm tính (01A/TNDN)</tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="GiaHan">
+		<maLyDoGiaHan>P_38</maLyDoGiaHan>
+		<lyDoGiaHan>D_38</lyDoGiaHan>
+	</Static>
+	<Static GroupName="NNT">
+		<maHuyenNNT></maHuyenNNT>
+		<maTinhNNT></maTinhNNT>
+	</Static>
+	<Static GroupName="DLyThue">
+		<maHuyenDLyThue></maHuyenDLyThue>
+		<maTinhDLyThue></maTinhDLyThue>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tieuMucHachToan>L_15</tieuMucHachToan>
+		<dnQuiMoVuaVaNho>D_11</dnQuiMoVuaVaNho>
+		<dnCoCSoHToanPThuoc>D_12</dnCoCSoHToanPThuoc>
+		<ct21>K_22</ct21>
+		<ct22>K_23</ct22>
+		<ct23>K_24</ct23>
+		<ct24>K_25</ct24>
+		<ct25>K_26</ct25>
+		<ct26>K_27</ct26>
+		<ct27>K_28</ct27>
+		<ct28>K_29</ct28>
+		<ct29>K_30</ct29>
+		<ct30>K_31</ct30>
+		<ct31>K_32</ct31>
+		<ct32>K_33</ct32>
+		<ct32a>K_34</ct32a>
+		<ct33>K_35</ct33>
+		<ct33a>K_36</ct33a>
+		<ct34>K_37</ct34>
+		<ct35>K_38</ct35>
+		<ct35a>K_39</ct35a>
+		<ct35b>K_40</ct35b>
+		<ct36>K_41</ct36>
+		<ct37>F_43</ct37>
+		<ct37a>P_45</ct37a>
+		<ct37b>H_47</ct37b>
+		<ct37c>H_49</ct37c>
+		<ct37d>H_51</ct37d>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>J_54</nguoiKy>
+		<ngayKy>J_56</ngayKy>
+	</Static>
+	<Static GroupName="NVienDLy">
+		<tenNVienDLyThue>E_54</tenNVienDLyThue>
+		<cchiHNghe>E_56</cchiHNghe>
+	</Static>
+</HSoKhaiThue>

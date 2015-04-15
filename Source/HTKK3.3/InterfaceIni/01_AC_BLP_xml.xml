@@ -1,0 +1,35 @@
+<HSoThueDTu>
+	<Static GroupName="TKhaiThue">
+		<maTKhai>261</maTKhai>
+		<tenTKhai>Báo cáo nhận in biên lai thu phí, lệ phí </tenTKhai>
+		<moTaBMau/>
+	</Static>
+	<Static GroupName="CTieuTKhaiChinh">
+		<tuNgay>D_17</tuNgay>
+		<denNgay>E_17</denNgay>
+	</Static>
+	<Dynamic GroupName="BKeNhanInBienLai">
+		<CTietBKeNhanInBienLai id="id">
+			<mst TINType="1">C_22</mst>
+			<ten>D_22</ten>
+			<diaChi>E_22</diaChi>
+			<soHopDong>F_22</soHopDong>
+			<ngayHopDong>G_22</ngayHopDong>
+			<tenLoaiBienLai>J_22</tenLoaiBienLai>
+			<kyHieuMauBienLai>I_22</kyHieuMauBienLai>
+			<kyHieuBienLai>K_22</kyHieuBienLai>
+			<tuSo>L_22</tuSo>
+			<denSo>M_22</denSo>
+			<soLuong>Q_22</soLuong>
+		</CTietBKeNhanInBienLai>
+	</Dynamic>
+	<Static GroupName="CTieuTKhaiChinh">
+		<noiBCao></noiBCao>
+		<ngayLapBCao>J_32</ngayLapBCao>
+		<nguoiDaiDien>J_30</nguoiDaiDien>
+	</Static>
+	<Static GroupName="TKhaiThue">
+		<nguoiKy>J_30</nguoiKy>
+		<ngayKy>J_32</ngayKy>
+	</Static>
+</HSoThueDTu>
