@@ -939,8 +939,8 @@ On Error GoTo ErrHandle
     vCO_PLUC_GTGT_03 = TAX_Utilities_Srv_New.NodeValidity.childNodes(3).Attributes.getNamedItem("Active").nodeValue
     vCO_GTRINH_02A = TAX_Utilities_Srv_New.NodeValidity.childNodes(4).Attributes.getNamedItem("Active").nodeValue
     vCO_GTRINH_02B = TAX_Utilities_Srv_New.NodeValidity.childNodes(5).Attributes.getNamedItem("Active").nodeValue
-    vCO_GTRINH_02C = TAX_Utilities_Srv_New.NodeValidity.childNodes(6).Attributes.getNamedItem("Active").nodeValue
-    vCO_PHU_LUC6 = TAX_Utilities_Srv_New.NodeValidity.childNodes(7).Attributes.getNamedItem("Active").nodeValue
+'    vCO_GTRINH_02C = TAX_Utilities_Srv_New.NodeValidity.childNodes(6).Attributes.getNamedItem("Active").nodeValue
+'    vCO_PHU_LUC6 = TAX_Utilities_Srv_New.NodeValidity.childNodes(7).Attributes.getNamedItem("Active").nodeValue
     
     strSQL = strSQL & "'" & IIf(Val(vCO_GTRINH_02A) = 1, "Y", "") & "',"
     strSQL = strSQL & "'" & IIf(Val(vCO_GTRINH_02B) = 1, "Y", "") & "',"
