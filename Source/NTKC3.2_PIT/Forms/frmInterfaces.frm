@@ -1544,9 +1544,10 @@ Private Sub Command1_Click()
 'str2 = "bs999552100343639   01201400500900100301/0101/01/1900<S01><S></S><S>10000000~10~1000000~100000~10~10000~10~100~10~1010010~10000~10~1000~1000~10~100~10000~10~1000~2100~100000~10~10000~100000~10~10000~10000~100~10000~30000~100000~10~10000~200000~20~40000~100000~10~10000~60000~200000~20~40000~200000~20~40000~100000~20~20000~100000</S><S>10410000~1061000~601000~100100~220010~41010~1202110</S><S>Nguyen thu thuy~minh lan~1234~09/04/2015~~1~1~~</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "aa331012100343639   03201501702300100201/0114/06/2006<S01><S></S><S>0~10~10~10~10~10~30~0~10~10~0~0~0~10~40~0~-10~10~10~10~0~0~0~30~10~20</S><S>~~minh lan~16/04/2015~1~~~1701~~~</S></S01>"
+str2 = "bs999562100343639   01201502403000100201/0101/01/1900<S02><S></S><S>fdsafdsafds~fsafdsafds~dsafdsafds~1~01/01/2015~03/03/2015</S><S>40000000~21600000~2000000~3000000~4000000~5000000~600000~7000000~18400000~0~18400000~20~3680000</S><S>~~minh lan~17/04/2015~~1~1~01/04/2015</S></S02>"
 Barcode_Scaned str2
-str2 = "aa331012100343639   032015017023002002<S01_7><S>xay dung~10000000~10305~50~100000~thuy dien~200000000~20100~30~1200000</S></S01_7>"
+
+str2 = "bs999562100343639   012015024030002002<SKHBS><S>ThuÕ TNDN ph¶i nép~37~0~3680000~3680000</S><S>~~0~0~0</S><S>17/04/2015~4~7360~20000~200202020200~01/02/2015~10300~10301~100~2000000~fdsfdsafsf~0~0~3680000</S></SKHBS>"
 Barcode_Scaned str2
 
 ' kiem tra bo sung
@@ -2051,7 +2052,22 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 End If
             End If
             
-            '04/TNDN
+            '06/TNDN - kiem tra ko duoc nhap to khai bo sung khi chua co to khai chinh thuc
+            
+            If Val(Mid$(strBarcode, 4, 2)) = 56 And UCase(strLoaiToKhai) = "BS" Then
+                tmp_str = Left$(strBarcode, InStr(1, strBarcode, "</S></S02>") + 9)
+                tkps_spl = Split(tmp_str, "~")
+                If Trim(tkps_spl(UBound(tkps_spl))) <> "" Then
+                    tmp_str = Left$(tkps_spl(UBound(tkps_spl)), InStr(1, tkps_spl(UBound(tkps_spl)), "</S></S02>") - 1)
+                    If Trim(tmp_str) <> "" Then
+                        DisplayMessage "0132", msOKOnly, miCriticalError
+                        Exit Sub
+                    End If
+                End If
+                
+            End If
+            
+            '04/TNDN - kiem tra ko duoc nhap to khai bo sung khi chua co to khai chinh thuc
             
             If Val(Mid$(strBarcode, 4, 2)) = 55 And UCase(strLoaiToKhai) = "BS" Then
                 tmp_str = Left$(strBarcode, InStr(1, strBarcode, "</S></S01>") + 9)
