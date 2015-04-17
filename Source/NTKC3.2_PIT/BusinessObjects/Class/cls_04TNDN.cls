@@ -383,21 +383,21 @@ Dim blnValid As Boolean
             End If
             
             
-            ' Kiem tra xem ky ke khai trong cung ky hay khac ky
-            If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
-                blnValid = True
-            Else
-                blnValid = False
-            End If
-            
-            .Col = .ColLetterToNumber("B")
-            .Row = 17
-            
-            If Not blnValid Then
-                .Formula = "0"
-            Else
-                .Formula = "1"
-            End If
+'            ' Kiem tra xem ky ke khai trong cung ky hay khac ky
+'            If (DateAdd("M", 1, dNgayDauKy) = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Or (dNgayDauKy = DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1)) Then
+'                blnValid = True
+'            Else
+'                blnValid = False
+'            End If
+'
+'            .Col = .ColLetterToNumber("B")
+'            .Row = 17
+'
+'            If Not blnValid Then
+'                .Formula = "0"
+'            Else
+'                .Formula = "1"
+'            End If
             ' kiem tra ky lap bo khong duoc lon hon ky hien tai
             If DateSerial(CInt(Right$(strKyLapBo, 4)), CInt(Left$(strKyLapBo, 2)), 1) > Date Then
                 blnValid = False
