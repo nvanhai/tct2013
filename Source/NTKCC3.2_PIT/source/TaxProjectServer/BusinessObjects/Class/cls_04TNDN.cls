@@ -90,7 +90,7 @@ Public strNgayHD_DLT As String
 Public PHONG_XU_LY_Y1 As String
 Public PHONG_XU_LY_X1 As String
 Public isExistFile As Boolean
-Public lan_quet As Variant
+Public Lan_quet As Variant
 Const STT_X = "M"
 Const STT_Y = 30
 'Public strMaSoTep As String
@@ -128,8 +128,8 @@ Public spathVat As String
 Public sSaiCT11 As String
 Public sKyKeKhai As String
 Public dNgayNopDB As Variant
-Public hannop As String
-Public tthtk As String
+Public HANNOP As String
+Public TTHTK As String
 
 
 Public strTenBpql As String
@@ -569,7 +569,7 @@ Public Function Prepared3() As Boolean
             TAX_Utilities_Svr_New.Month = Mid$(NgayPs, 4, 2)
             TAX_Utilities_Svr_New.Year = Right$(NgayPs, 4)
         Else
-            LOAI_TO_KHAI = "03/NTNN"
+            LOAI_TO_KHAI = "04/TNDN"
             TKTHANG = True
         End If
         
@@ -846,15 +846,15 @@ Public Function InsertDTL() As String
    Dim KYKK As Variant
    Dim IDHDR As Variant
    Dim LOAITK As Variant
-   Dim MACT As Variant
-   Dim GIATRI As Variant
+   Dim mact As Variant
+   Dim giatri As Variant
    
    Dim madtnt   As Variant
    Dim ngnop    As Variant
    Dim namqt    As Variant
-   Dim tthtk    As Variant
-   Dim mamuc    As Variant
-   Dim matm     As Variant
+   Dim TTHTK    As Variant
+   Dim MaMuc    As Variant
+   Dim maTM     As Variant
    Dim matkhai  As Variant
    Dim kykkhai  As Variant
    Dim STT      As Variant
@@ -900,9 +900,9 @@ Public Function InsertDTL() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
         
-        tthtk = "''"
-        mamuc = "''"
-        matm = "''"
+        TTHTK = "''"
+        MaMuc = "''"
+        maTM = "''"
         namqt = "2014"
         
         kykkhai = "'" & TAX_Utilities_Svr_New.Year & "'"
@@ -988,7 +988,7 @@ Public Function InsertDTL() As String
             tong = thue1 + thue2 + thue3
             
             
-                sSQLVal = madtnt & "," & ngnop & "," & namqt & "," & tthtk & "," & mamuc & "," & matm & ","
+                sSQLVal = madtnt & "," & ngnop & "," & namqt & "," & TTHTK & "," & MaMuc & "," & maTM & ","
                 sSQLVal = sSQLVal & matkhai & "," & kykkhai & "," & STT & "," & dthu1 & "," & tyle1 & "," & thue1 & ","
                 sSQLVal = dthu2 & "," & tyle2 & "," & thue2 & "," & dthu3 & "," & tyle3 & "," & thue3 & "," & tong
    
@@ -1019,35 +1019,35 @@ Public Function InsertHDR() As String
     Dim kytttu  As Variant
     Dim kyttden As Variant
     Dim tien    As Variant
-    Dim mavach  As Variant
-    Dim tthtk   As Variant
+    Dim MaVach  As Variant
+    Dim TTHTK   As Variant
     Dim ngnhap  As Variant
-    Dim hannop  As Variant
+    Dim HANNOP  As Variant
     Dim dathay  As Variant
-    Dim kylbo   As Variant
-    Dim mamuc   As Variant
-    Dim matm    As Variant
-    Dim shtep   As Variant
-    Dim daghi   As Variant
+    Dim KYLBO   As Variant
+    Dim MaMuc   As Variant
+    Dim maTM    As Variant
+    Dim SHTEP   As Variant
+    Dim DaGhi   As Variant
     Dim daghi1  As Variant
-    Dim daghi2  As Variant
-    Dim auto_cal    As Variant
+    Dim DAGHI2  As Variant
+    Dim AUTO_CAL    As Variant
     Dim lanbs   As Variant
     Dim tiencl   As Variant
-    Dim tennv   As Variant
-    Dim chungchi    As Variant
+    Dim TENNV   As Variant
+    Dim CHUNGCHI    As Variant
     Dim nganh   As Variant
     Dim hthuc_nop   As Variant
-    Dim lan_quet As Variant
+    Dim Lan_quet As Variant
     Dim ITKHAI_ID As Variant
     
     Dim bln  As Boolean
     
     sSQLCol = "madtnt,madlt,ngnop,namqt,kykhai,kytttu,kyttden,tien,mavach,tthtk,ngnhap,hannop,dathay,kylbo,mamuc,matm,shtep,daghi,daghi1,daghi2,auto_cal,lanbs,tiencl,tennv,chungchi,nganh,hthuc_nop,lan_quet,itkhai_id"
            
-    If clsConn.Connected = False Then
-        clsConn.CreateConnectionString spathVat & "\TK_NEW\" 'GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
-        clsConn.Connect
+    If clsDAO.Connected = False Then
+        clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
+        clsDAO.Connect
     End If
    
     With fps
@@ -1105,8 +1105,8 @@ Public Function InsertHDR() As String
         kytttu = "''"
         kyttden = "''"
         tien = "0"
-        tthtk = "''"
-        mavach = ".T."
+        TTHTK = "''"
+        MaVach = ".T."
         
         .GetText .ColLetterToNumber("M"), 32, ngnhap
         'NGNOP = Date
@@ -1117,32 +1117,32 @@ Public Function InsertHDR() As String
             ngnhap = "CTOD('" & Format(ngnhap, "mm/dd/yyyy") & "')"
         End If
         
-        hannop = "CTOD('')"
+        HANNOP = "CTOD('')"
         
         dathay = ".T."
         
-        .GetText .ColLetterToNumber("E"), 30, kylbo
+        .GetText .ColLetterToNumber("E"), 30, KYLBO
         
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
-            kylbo = "'" & kylbo & "'"
+            KYLBO = "'" & KYLBO & "'"
         End If
         
-        mamuc = "'1050'"
-        matm = "'1052'"
+        MaMuc = "'1050'"
+        maTM = "'1052'"
         
-        shtep = "''"
-        daghi = ".T."
+        SHTEP = "''"
+        DaGhi = ".T."
         daghi1 = ".F."
-        .GetText .ColLetterToNumber("E"), 36, daghi2
-        If daghi2 = vbNullString Or daghi2 = "" Or daghi2 = "0" Then
-            daghi2 = ".F."
+        .GetText .ColLetterToNumber("E"), 36, DAGHI2
+        If DAGHI2 = vbNullString Or DAGHI2 = "" Or DAGHI2 = "0" Then
+            DAGHI2 = ".F."
         Else
-            daghi2 = ".T."
+            DAGHI2 = ".T."
         End If
         
-        auto_cal = ".F."
+        AUTO_CAL = ".F."
              
         '  LanBS
         .GetText .ColLetterToNumber("S"), 6, lanbs
@@ -1152,18 +1152,18 @@ Public Function InsertHDR() As String
         
         tiencl = "0"
         'TENNV
-        .GetText .ColLetterToNumber("F"), .MaxRows - 10, tennv
-        If Trim(tennv) = vbNullString Then
-            tennv = "''"
+        .GetText .ColLetterToNumber("F"), .MaxRows - 10, TENNV
+        If Trim(TENNV) = vbNullString Then
+            TENNV = "''"
         Else
-            tennv = "'" & tennv & "'"
+            TENNV = "'" & TENNV & "'"
         End If
         'CHUNGCHI
-        .GetText .ColLetterToNumber("F"), .MaxRows - 8, chungchi
-        If Trim(chungchi) = vbNullString Then
-            chungchi = "''"
+        .GetText .ColLetterToNumber("F"), .MaxRows - 8, CHUNGCHI
+        If Trim(CHUNGCHI) = vbNullString Then
+            CHUNGCHI = "''"
         Else
-            chungchi = "'" & chungchi & "'"
+            CHUNGCHI = "'" & CHUNGCHI & "'"
         End If
         
         'Lay truong Nganh trong DTNT2 thuoc folder DTNT
@@ -1177,8 +1177,8 @@ Public Function InsertHDR() As String
         End If
         
         hthuc_nop = "''"
-        If Trim(lan_quet) = vbNullString Then
-            lan_quet = "1"
+        If Trim(Lan_quet) = vbNullString Then
+            Lan_quet = "1"
         End If
         ITKHAI_ID = "0"
         
@@ -1196,17 +1196,17 @@ Public Function InsertHDR() As String
     End With
     
     sSQLVal = madtnt & "," & madlt & "," & ngnop & "," & namqt & "," & kykkhai & "," & kytttu & ","
-    sSQLVal = sSQLVal & kyttden & "," & tien & "," & mavach & "," & tthtk & "," & ngnhap & "," & hannop & ","
-    sSQLVal = sSQLVal & dathay & "," & kylbo & "," & mamuc & "," & matm & "," & shtep & "," & daghi & "," & daghi1 & "," & daghi2 & ","
-    sSQLVal = sSQLVal & auto_cal & "," & lanbs & "," & tiencl & "," & tennv & "," & chungchi & ","
-    sSQLVal = sSQLVal & nganh & "," & hthuc_nop & "," & lan_quet & "," & ITKHAI_ID
+    sSQLVal = sSQLVal & kyttden & "," & tien & "," & MaVach & "," & TTHTK & "," & ngnhap & "," & HANNOP & ","
+    sSQLVal = sSQLVal & dathay & "," & KYLBO & "," & MaMuc & "," & maTM & "," & SHTEP & "," & DaGhi & "," & daghi1 & "," & DAGHI2 & ","
+    sSQLVal = sSQLVal & AUTO_CAL & "," & lanbs & "," & tiencl & "," & TENNV & "," & CHUNGCHI & ","
+    sSQLVal = sSQLVal & nganh & "," & hthuc_nop & "," & Lan_quet & "," & ITKHAI_ID
     
     sSQL = "INSERT INTO TMP_QT4 " & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
      
-    bln = clsConn.ExecuteDLL(sSQL)
+    bln = clsDAO.ExecuteDLL(sSQL)
     
-    clsConn.Disconnect
+    clsDAO.Disconnect
     InsertHDR = vbNullString
 End Function
 ' Tra ve gia tri "Nganh--macap--machuong"
@@ -1275,14 +1275,20 @@ Public Function TKTT() As Boolean
 '    If clsConn.Connected = False Then
 ''        Me.MousePointer = vbHourglass
 ''        frmSystem.MousePointer = vbHourglass
-'        clsConn.CreateConnectionString spathVat & "\TK_NEW\" 'GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
+'        clsConn.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
 '        clsConn.Connect
 ''        frmSystem.MousePointer = vbDefault
 ''        Me.MousePointer = vbDefault
 '   End If
-        
-'   sSQL = "SELECT MST, NGAYNOP FROM TKHDR WHERE LOAITK = '04TNDN' AND ID = '" & strMST & sKyKeKhai & "'"
-   Set rs = clsDAO.Execute(sSQL)
+    If TKTHANG = True Then
+        sSQL = "SELECT MADTNT, NGNOP FROM TMP_QT4" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "'" & " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='" & LOAI_TO_KHAI & "'  "
+    
+    Else
+        sSQL = "SELECT MADTNT, NGNOP FROM TMP_QT4" & sKyKeKhai & " WHERE MADTNT = " & "'" & strMST & "' AND MATKHAI='" & LOAI_TO_KHAI & "'"
+    End If
+
+    Set rs = clsDAO.Execute(sSQL)
+
    
    If Not rs Is Nothing Then
         dNgayNopDB = rs.Fields("NGAYNOP")
@@ -1295,54 +1301,55 @@ Public Function TKTT() As Boolean
    Else
         TKTT = False
    End If
-   clsConn.Disconnect
+   Lan_quet = TinhSoLanQuet + 1
+    clsDAO.Disconnect
 
 End Function
 
 Public Function XoaTKTT() As Boolean
 
     Dim sSQL As String
-    Dim kylbo As Variant
+    Dim KYLBO As Variant
     Dim rs As ADODB.Recordset
     Dim idTKHDR As String 'Tam thoi ID cua to khai nay la MST & KYKK
-    If clsConn.Connected = False Then
+    If clsDAO.Connected = False Then
 '        Me.MousePointer = vbHourglass
 '        frmSystem.MousePointer = vbHourglass
-        clsConn.CreateConnectionString spathVat & "\TK_NEW\" 'GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
-        clsConn.Connect
+        clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
+        clsDAO.Connect
 '        frmSystem.MousePointer = vbDefault
 '        Me.MousePointer = vbDefault
    End If
    idTKHDR = strMST & sKyKeKhai
-   sSQL = "DELETE FROM TKHDR WHERE LOAITK = '04TNDN' AND ID = '" & idTKHDR & "'"
+   sSQL = "DELETE FROM TMP_QT4" & sKyKeKhai & _
+        " WHERE MADTNT = " & "'" & strMST & "'" & _
+        " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='04/TNDN'"
     
-   clsConn.ExecuteDLL sSQL
+   clsDAO.ExecuteDLL sSQL
+   
    With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("E"), 10, kylbo
-        If Trim(kylbo) = vbNullString Then
-            kylbo = "''"
+        .GetText .ColLetterToNumber("E"), 10, KYLBO
+        If Trim(KYLBO) = vbNullString Then
+            KYLBO = "''"
         Else
-            If Len(Trim(kylbo)) = 6 Then
-                kylbo = "'0" & kylbo & "'"
+            If Len(Trim(KYLBO)) = 6 Then
+                KYLBO = "'0" & KYLBO & "'"
             Else
-                kylbo = "'" & kylbo & "'"
+                KYLBO = "'" & KYLBO & "'"
             End If
         End If
    End With
-   sSQL = vbNullString
-   sSQL = "DELETE FROM TKDTL WHERE LOAITK = '04TNDN' IDHDR = '" & idTKHDR & "'"
-   
-   clsConn.ExecuteDLL sSQL
-   
-   sSQL = vbNullString
-   sSQL = "DELETE FROM PLDTL WHERE LOAITK = '04TNDN' IDHDR = '" & idTKHDR & "'"
-   
-   clsConn.ExecuteDLL sSQL
+   sSQL = "DELETE FROM TMP_QT4" & sKyKeKhai & _
+        " WHERE AND MADTNT = " & "'" & strMST & "' AND KYLBO = " & KYLBO & _
+        " AND MATKHAI='04/TNDN' AND KYKKHAI ='" & TAX_Utilities_Svr_New.Year & "'"
+    
+   clsDAO.ExecuteDLL sSQL
    
    XoaTKTT = True
    
-   clsConn.Disconnect
+   clsDAO.Disconnect
+
 
 End Function
 
@@ -1408,7 +1415,7 @@ Public Function TKTTNGNOP() As Boolean
             rs.MoveNext
         Next
    Else
-        clsConn.Disconnect
+        clsDAO.Disconnect
         TKTTNGNOP = True
    End If
 
