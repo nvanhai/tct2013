@@ -882,6 +882,15 @@ ElseIf Trim(varMenuId) = "71" And fpSpread1.ActiveSheet = 2 Then
 ElseIf Trim(varMenuId) = "73" And fpSpread1.ActiveSheet = 2 Then
     xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_02_1_TNDN.xml"))
     colStart = 3
+ElseIf Trim(varMenuId) = "68" And fpSpread1.ActiveSheet = 1 Then
+    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\TK_BC26_AC.xml"))
+    colStart = 3
+ElseIf Trim(varMenuId) = "68" And fpSpread1.ActiveSheet = 2 Then
+    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_BC26_AC_3_12.xml"))
+    colStart = 3
+ElseIf Trim(varMenuId) = "68" And fpSpread1.ActiveSheet = 3 Then
+    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\PL_BC26_AC_3_10.xml"))
+    colStart = 3
 End If
 
 Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
@@ -955,17 +964,33 @@ ProgressBar1.value = fpSpread2.Row
     fpSpread1.sheet = mCurrentSheet
     fpSpread2.Row = fpSpread2.Row + 1
     value = fpSpread2.value
-    If ((Mid(value, 1, 1) = "T" Or Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "01" Or Trim(varMenuId) = "02" Or Trim(varMenuId) = "71" Or Trim(varMenuId) = "14" Or Trim(varMenuId) = "05" Or Trim(varMenuId) = "59")) Or ((Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "17" Or Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "26" Or Trim(varMenuId) = "44" Or Trim(varMenuId) = "73")) Then
-        count = count + 1
-        inc = True
-        ProgressBar1.value = fpSpread2.MaxRows
-    ElseIf count = count1 And value = "" Then
-        count = count + 1
+    
+    If Trim(varMenuId) = "68" Then
+        If (Mid(Trim(value), 1, 1) = "H" Or Trim(value) = "" Or Trim(value) = vbNullString) Then
+            count = count + 1
+            inc = True
+            ProgressBar1.value = fpSpread2.MaxRows
+        ElseIf count = count1 And value = "" Then
+            count = count + 1
+        Else
+            InsertNode colStart, fpSpread1.Row
+            inc = False
+            count2 = count2 + 1
+        End If
     Else
-        InsertNode colStart, fpSpread1.Row
-        inc = False
-        count2 = count2 + 1
+        If ((Mid(value, 1, 1) = "T" Or Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "01" Or Trim(varMenuId) = "02" Or Trim(varMenuId) = "71" Or Trim(varMenuId) = "14" Or Trim(varMenuId) = "05" Or Trim(varMenuId) = "59")) Or ((Trim(value) = "" Or Trim(value) = vbNullString) And (Trim(varMenuId) = "17" Or Trim(varMenuId) = "42" Or Trim(varMenuId) = "43" Or Trim(varMenuId) = "26" Or Trim(varMenuId) = "44" Or Trim(varMenuId) = "73")) Then
+            count = count + 1
+            inc = True
+            ProgressBar1.value = fpSpread2.MaxRows
+        ElseIf count = count1 And value = "" Then
+            count = count + 1
+        Else
+            InsertNode colStart, fpSpread1.Row
+            inc = False
+            count2 = count2 + 1
+        End If
     End If
+    
         fpSpread2.Row = fpSpread2.Row - 1
     'insert cell
         For Each xmlNode In xmlNodeListMap
@@ -1064,34 +1089,39 @@ ProgressBar1.value = fpSpread2.Row
 
                 Dim temp As Variant
                 Dim temp1 As Double
-                fpSpread1.Row = fpSpread1.Row + 5
-                fpSpread2.Row = fpSpread2.Row + 3
-                If (count = 1 Or count = 3 Or count = 4) And Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 3 Then
-                        Do
-                            fpSpread2.Col = fpSpread2.ColLetterToNumber("B")
-                            temp1 = temp1 + 1
-                            temp = fpSpread2.value
+                If Trim(varMenuId) = "68" And fpSpread1.ActiveSheet = 2 Then
+                    fpSpread1.Row = fpSpread1.Row + 4
+                    fpSpread2.Row = fpSpread2.Row + 2
+                Else
+                    fpSpread1.Row = fpSpread1.Row + 5
+                    fpSpread2.Row = fpSpread2.Row + 3
+                    If (count = 1 Or count = 3 Or count = 4) And Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 3 Then
+                            Do
+                                fpSpread2.Col = fpSpread2.ColLetterToNumber("B")
+                                temp1 = temp1 + 1
+                                temp = fpSpread2.value
+                                fpSpread2.Row = fpSpread2.Row + 1
+                            Loop Until (Mid(temp, 1, 1) = "T")
+                            fpSpread1.Row = fpSpread1.Row + 5
                             fpSpread2.Row = fpSpread2.Row + 1
-                        Loop Until (Mid(temp, 1, 1) = "T")
-                        fpSpread1.Row = fpSpread1.Row + 5
-                        fpSpread2.Row = fpSpread2.Row + 1
-                        count = count + 1
-                        
-                        If count = count1 - 1 Then
-                            Exit Do
-                        End If
-                End If
-                
-                If count = 4 And Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 2 Then
-                        Do
-                            fpSpread2.Col = fpSpread2.ColLetterToNumber("B")
-                            temp1 = temp1 + 1
-                            temp = fpSpread2.value
+                            count = count + 1
+                            
+                            If count = count1 - 1 Then
+                                Exit Do
+                            End If
+                    End If
+                    
+                    If count = 4 And Trim(varMenuId) = "01" And fpSpread1.ActiveSheet = 2 Then
+                            Do
+                                fpSpread2.Col = fpSpread2.ColLetterToNumber("B")
+                                temp1 = temp1 + 1
+                                temp = fpSpread2.value
+                                fpSpread2.Row = fpSpread2.Row + 1
+                            Loop Until (Mid(temp, 1, 1) = "T")
+                            fpSpread1.Row = fpSpread1.Row + 5
                             fpSpread2.Row = fpSpread2.Row + 1
-                        Loop Until (Mid(temp, 1, 1) = "T")
-                        fpSpread1.Row = fpSpread1.Row + 5
-                        fpSpread2.Row = fpSpread2.Row + 1
-                        count = count + 1
+                            count = count + 1
+                    End If
                 End If
                 
 '            End If

@@ -53,7 +53,10 @@ Dim xmlNode As MSXML.IXMLDOMNode
      With fps
         .Sheet = 1
         SetDateFormat fps, 1, 8, .ColLetterToNumber("O"), DDMMYYYY
-        .SetText .ColLetterToNumber("O"), 8, Now
+        .Col = .ColLetterToNumber("O")
+        .Row = 8
+        .Text = Format(Date, "dd/mm/yyyy")
+        '.SetText .ColLetterToNumber("O"), 8, Now
 '        .SetText .ColLetterToNumber("K"), 8, Hour(Time)
 '        .SetText .ColLetterToNumber("M"), 8, Minute(Time)
         ' set ngay mat, chay, hong hoa don
@@ -68,6 +71,7 @@ Dim xmlNode As MSXML.IXMLDOMNode
         .Col = .ColLetterToNumber("AI")
         .TypeComboBoxList = strCombo
         
+        SetDateFormat fps, 1, 51, .ColLetterToNumber("AB"), DDMMYYYY
         .Row = 51
         ' Set format ngay ky
         .Col = .ColLetterToNumber("AB")
@@ -303,7 +307,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
                         .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
                     Else
-                        .SetFocus
+                        '.SetFocus
                         .SetActiveCell Col, Row
                     End If
                 Else
@@ -331,7 +335,7 @@ Private Sub fps_LeaveCell(ByVal Col As Long, ByVal Row As Long, ByVal NewCol As 
                     If Format_ddmmyyyy(CStr(varTemp)) <> "" Then
                         .SetText Col, Row, Format_ddmmyyyy(CStr(varTemp))
                     Else
-                        .SetFocus
+                        '.SetFocus
                         .SetActiveCell Col, Row
                     End If
                 Else
@@ -791,6 +795,13 @@ Private Sub CheckDynamicError()
                 .BackColor = mErrorColor
                 'blCheck_S3 = False
                 iFlagEmty = 1
+        ElseIf Format_ddmmyyyy1(CStr(ngayky)) = "" Then
+                .Col = .ColLetterToNumber("AB")
+                .Row = totalRowD + 50
+                .CellNote = GetAttribute(GetMessageCellById("0081"), "Msg")
+                .BackColor = mErrorColor
+                'blCheck_S3 = False
+                iFlagEmty = 1
         Else
                 ngayky = DateSerial(CInt(Mid$(ngayky, 7, 4)), CInt(Mid$(ngayky, 4, 2)), CInt(Mid$(ngayky, 1, 2)))
                 If ngayky > Now Then
@@ -819,6 +830,13 @@ Private Sub CheckDynamicError()
                 .Col = .ColLetterToNumber("O")
                 .Row = 8
                 .CellNote = errEmty  'static
+                .BackColor = mErrorColor
+                'blCheck_S3 = False
+                iFlagEmty = 1
+        ElseIf Format_ddmmyyyy1(CStr(ngayphathien)) = "" Then
+                .Col = .ColLetterToNumber("O")
+                .Row = 8
+                .CellNote = GetAttribute(GetMessageCellById("0081"), "Msg")
                 .BackColor = mErrorColor
                 'blCheck_S3 = False
                 iFlagEmty = 1
