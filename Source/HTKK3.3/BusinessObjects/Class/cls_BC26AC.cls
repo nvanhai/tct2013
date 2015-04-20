@@ -361,6 +361,49 @@ Public Sub Prepare2()
             UpdateCell fps, .Col, .Row, .Text
         End If
             'end
+            
+            
+            
+        .Sheet = 1
+        .ActiveSheet = .Sheet
+        .Row = 4
+        .Col = .ColLetterToNumber("D")
+        .CellType = CellTypeButton
+        .TypeButtonTextColor = RGB(0, 0, 255)
+        .TypeButtonColor = &H8000000F
+        .TypeButtonAlign = TypeButtonAlignRight
+        .Font = "Tahoma"
+        .FontSize = 8
+        .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
+            
+            
+            
+        .Sheet = 2
+        .ActiveSheet = .Sheet
+        .Row = 2
+        .Col = .ColLetterToNumber("B")
+        .CellType = CellTypeButton
+        .TypeButtonTextColor = RGB(0, 0, 255)
+        .TypeButtonColor = &H8000000F
+        .TypeButtonAlign = TypeButtonAlignRight
+        .Font = "Tahoma"
+        .FontSize = 8
+        .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
+        
+        
+        .Sheet = 3
+        .ActiveSheet = .Sheet
+        .Row = 2
+        .Col = .ColLetterToNumber("B")
+        .CellType = CellTypeButton
+        .TypeButtonTextColor = RGB(0, 0, 255)
+        .TypeButtonColor = &H8000000F
+        .TypeButtonAlign = TypeButtonAlignRight
+        .Font = "Tahoma"
+        .FontSize = 8
+        .TypeButtonText = GetAttribute(GetMessageCellById("0104"), "Msg")
+            
+            
         mCurrentSheet = tmpSheet
         .EventEnabled(EventAllEvents) = True
     End With
@@ -3995,7 +4038,556 @@ Private Sub UpdateSheets()
 End Sub
 
 Public Sub FinishImport()
+    Dim maHD    As Variant
+    Dim kyHieuHD As Variant
+    Dim tuSo As Variant
+    Dim denso As Variant
+    
+    Dim strTemp As String
+    
+    Dim strId As Variant
+    Dim strLoai As Variant
+    
+    Dim tenHD  As String
+    Dim varTemp As Variant
+    Dim arrTemp() As String
+    
+    Dim vSoSD, vSoXoa, vSoMat, vSoHuy As Variant
 
+    Dim TongSo As Variant
+    Dim strSoLuong As String
+    Dim strTuso1 As Variant, strDenso1 As Variant, strTuso2 As Variant, strDenso2 As Variant, strCt10 As Variant, strCt11 As Variant, strCt12 As Variant, strCt5 As Variant, strCt20 As Variant, strCt21 As Variant
+    Dim str() As String
+    Dim soluongTonCK As Double
+With fps
+fps.EventEnabled(EventAllEvents) = False
+           ' set TK
+            If .ActiveSheet = 1 Then
+                   .Row = 22
+                    Do
+                        .GetText .ColLetterToNumber("E"), .Row, maHD
+                         GetMaHoaDon maHD, tenHD
+                         If tenHD <> "" Then
+                            arrTemp = Split(tenHD, "###")
+                            If UBound(arrTemp) > 0 Then
+                                .Col = .ColLetterToNumber("C")
+                                .Text = arrTemp(0)
+                                UpdateCell fps, .Col, .Row, .Text
+                                .Col = .ColLetterToNumber("AA")
+                                .Text = CStr(arrTemp(1))
+                                UpdateCell fps, .Col, .Row, .Text
+                                
+                                .Col = .ColLetterToNumber("AC")
+                                .SetText .Col, .Row, "0"
+                                UpdateCell fps, .Col, .Row, .Text
+                            End If
+                            
+                            '
+                             'dhdang sua fomat ky hieu hoa don
+                             .GetText .ColLetterToNumber(Col_F), .Row, varTemp
+                             .SetText .ColLetterToNumber(Col_F), .Row, FormatKyHieu(CStr(varTemp))
+                             .Col = .ColLetterToNumber(Col_F)
+                            UpdateCell_sheet fps, 1, .Col, .Row, .Text
+                           
+                           ' Format dinh dang tu so den so co 7 ky tu
+                            ' cot H
+                            .GetText .ColLetterToNumber(Col_H), .Row, varTemp
+                            .SetText .ColLetterToNumber(Col_H), .Row, FormatSoHD(CStr(varTemp))
+                            .Col = .ColLetterToNumber(Col_H)
+                            UpdateCell_sheet fps, 1, .Col, .Row, .Text
+                            ' cot I
+                            .GetText .ColLetterToNumber(Col_I), .Row, varTemp
+                            .SetText .ColLetterToNumber(Col_I), .Row, FormatSoHD(CStr(varTemp))
+                            .Col = .ColLetterToNumber(Col_I)
+                            UpdateCell_sheet fps, 1, .Col, .Row, .Text
+                            ' cot J
+                            .GetText .ColLetterToNumber(Col_J), .Row, varTemp
+                            .SetText .ColLetterToNumber(Col_J), .Row, FormatSoHD(CStr(varTemp))
+                            .Col = .ColLetterToNumber(Col_J)
+                            UpdateCell_sheet fps, 1, .Col, .Row, .Text
+                            ' cot K
+                            .GetText .ColLetterToNumber(Col_K), .Row, varTemp
+                            .SetText .ColLetterToNumber(Col_K), .Row, FormatSoHD(CStr(varTemp))
+                            .Col = .ColLetterToNumber(Col_K)
+                            UpdateCell_sheet fps, 1, .Col, .Row, .Text
+                            
+                            ' Kiem tra neu so SD, xoa, mat, huy deu bang 0 thi set [10],[11] =trang
+                            .GetText .ColLetterToNumber("P"), .Row, vSoSD
+                            .GetText .ColLetterToNumber("Q"), .Row, vSoXoa
+                            .GetText .ColLetterToNumber("S"), .Row, vSoMat
+                            .GetText .ColLetterToNumber("U"), .Row, vSoHuy
+                            
+                            'Ho tro set tu so [10]
+                            .GetText .ColLetterToNumber(Col_H), .Row, strTuso1
+                            .GetText .ColLetterToNumber(Col_I), .Row, strDenso1
+                            .GetText .ColLetterToNumber(Col_J), .Row, strTuso2
+                            .GetText .ColLetterToNumber(Col_K), .Row, strDenso2
+                            str = getTusoDenso(CStr(strTuso1), CStr(strDenso1), CStr(strTuso2), CStr(strDenso2))
+                            If str(0) <> "-1" Then
+                                ' Neu tong so xoa, sd, mat, huy =0 thi khong ho tro tinh [10][11]
+                                If Val(vSoHuy) + Val(vSoMat) + Val(vSoXoa) + Val(vSoSD) > 0 Then
+                                    .SetText .ColLetterToNumber(Col_L), .Row, FormatSoHD(str(0))
+                                    .Col = .ColLetterToNumber(Col_L)
+                                    UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_L), .Row, .Text
+                                Else
+                                    .SetText .ColLetterToNumber(Col_L), .Row, ""
+                                    .Col = .ColLetterToNumber(Col_L)
+                                    UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_L), .Row, .Text
+                                End If
+                                .SetText .ColLetterToNumber(Col_G), .Row, FormatSoHD(str(2))
+                                .Col = .ColLetterToNumber(Col_G)
+                                 UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_G), .Row, .Text
+                            End If
+                            ' Ho tro tinh chi tieu [11]
+                            .GetText .ColLetterToNumber(Col_M), .Row, strCt11
+                            .GetText .ColLetterToNumber(Col_N), .Row, strCt12
+                            .GetText .ColLetterToNumber(Col_G), .Row, strCt5
+                            If Val(strCt5) = Val(strCt12) And (Val(vSoHuy) + Val(vSoMat) + Val(vSoXoa) + Val(vSoSD) > 0) Then
+                                ' [5] =[12] ,  [13] + [14] + [16] + [18] <> 0
+                                soluongTonCK = Val(strCt5) - Val(strCt12)
+                                .SetText .ColLetterToNumber("X"), .Row, ""  'FormatSoHD(Val(0))
+                                .Col = .ColLetterToNumber("X")
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber("X"), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Y), .Row, ""   'FormatSoHD(Val(0) + soluongTonCK)
+                                .Col = .ColLetterToNumber(Col_Y)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Y), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Z), .Row, soluongTonCK
+                                .Col = .ColLetterToNumber(Col_Z)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Z), .Row, .Text
+                            ElseIf Val(strCt5) > Val(strCt12) And (Val(vSoHuy) + Val(vSoMat) + Val(vSoXoa) + Val(vSoSD) > 0) Then
+                                soluongTonCK = Val(strCt5) - Val(strCt12)
+                                .SetText .ColLetterToNumber("X"), .Row, FormatSoHD(Val(strCt11) + 1)
+                                .Col = .ColLetterToNumber("X")
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber("X"), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Y), .Row, FormatSoHD(Val(strCt11) + soluongTonCK)
+                                .Col = .ColLetterToNumber(Col_Y)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Y), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Z), .Row, soluongTonCK
+                                .Col = .ColLetterToNumber(Col_Z)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Z), .Row, .Text
+                            ElseIf Val(strCt5) > Val(strCt12) And (Val(vSoHuy) + Val(vSoMat) + Val(vSoXoa) + Val(vSoSD) = 0) And (Trim(strTuso1) = "" And Trim(strDenso1) = "") Then
+                                 soluongTonCK = Val(strCt5)
+                                .SetText .ColLetterToNumber("X"), .Row, FormatSoHD(Val(strTuso2))
+                                .Col = .ColLetterToNumber("X")
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber("X"), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Y), .Row, FormatSoHD(Val(strDenso2))
+                                .Col = .ColLetterToNumber(Col_Y)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Y), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Z), .Row, soluongTonCK
+                                .Col = .ColLetterToNumber(Col_Z)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Z), .Row, .Text
+                            ElseIf Val(strCt5) > Val(strCt12) And (Val(vSoHuy) + Val(vSoMat) + Val(vSoXoa) + Val(vSoSD) = 0) And (Trim(strTuso2) = "" And Trim(strDenso2) = "") Then
+                                 soluongTonCK = Val(strCt5)
+                                .SetText .ColLetterToNumber("X"), .Row, FormatSoHD(Val(strTuso1))
+                                .Col = .ColLetterToNumber("X")
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber("X"), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Y), .Row, FormatSoHD(Val(strDenso1))
+                                .Col = .ColLetterToNumber(Col_Y)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Y), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Z), .Row, soluongTonCK
+                                .Col = .ColLetterToNumber(Col_Z)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Z), .Row, .Text
+                            Else
+                                 soluongTonCK = Val(strCt5)
+                                .SetText .ColLetterToNumber("X"), .Row, FormatSoHD(Val(strTuso1))
+                                .Col = .ColLetterToNumber("X")
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber("X"), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Y), .Row, FormatSoHD(Val(strDenso2))
+                                .Col = .ColLetterToNumber(Col_Y)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Y), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Z), .Row, soluongTonCK
+                                .Col = .ColLetterToNumber(Col_Z)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Z), .Row, .Text
+                            End If
+                            
+                        'Tinh so hoa don mat, xoa, huy
+                            ' Tinh so xoa
+                            .GetText .ColLetterToNumber(Col_R), .Row, varTemp
+                            TongSo = GetSoLuongHD(CStr(varTemp))
+                            .SetText .ColLetterToNumber(Col_Q), .Row, TongSo
+                            .Col = .ColLetterToNumber(Col_Q)
+                            UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Q), .Row, .Text
+                            
+                            ' Tinh so mat
+                            .GetText .ColLetterToNumber(Col_T), .Row, varTemp
+                            TongSo = GetSoLuongHD(CStr(varTemp))
+                            .SetText .ColLetterToNumber(Col_S), .Row, TongSo
+                            .Col = .ColLetterToNumber(Col_S)
+                            UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_S), .Row, .Text
+                            
+                            ' Tinh so huy
+                            .GetText .ColLetterToNumber(Col_V), .Row, varTemp
+                            TongSo = GetSoLuongHD(CStr(varTemp))
+                            .SetText .ColLetterToNumber(Col_U), .Row, TongSo
+                            .Col = .ColLetterToNumber(Col_U)
+                            UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_U), .Row, .Text
+                            
+                            
+                            
+                            ' Ho tro tinh den so [11]
+                            .GetText .ColLetterToNumber(Col_L), .Row, strCt10
+                            .GetText .ColLetterToNumber(Col_N), .Row, strCt12
+                            strCt11 = Val(strCt10) + Val(strCt12) - 1
+                            
+                            ' Neu tong so xoa, sd, mat, huy =0 thi khong ho tro tinh [10][11]
+                            If Val(vSoHuy) + Val(vSoMat) + Val(vSoXoa) + Val(vSoSD) > 0 Then
+                                .SetText .ColLetterToNumber(Col_M), .Row, FormatSoHD(CStr(strCt11))
+                                .Col = .ColLetterToNumber(Col_M)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_M), .Row, .Text
+                                If str(0) <> "-1" Then
+                                    .SetText .ColLetterToNumber(Col_L), .Row, FormatSoHD(str(0))
+                                    .Col = .ColLetterToNumber(Col_L)
+                                    UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_L), .Row, .Text
+                                End If
+                            Else
+                                .SetText .ColLetterToNumber(Col_L), .Row, ""
+                                .Col = .ColLetterToNumber(Col_L)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_L), .Row, .Text
+                                
+                                .SetText .ColLetterToNumber(Col_M), .Row, ""
+                                .Col = .ColLetterToNumber(Col_M)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_M), .Row, .Text
+                            End If
+                                                            
+                            .GetText .ColLetterToNumber(Col_G), .Row, strCt5
+                            If Val(strCt5) > Val(strCt12) And (Val(vSoHuy) + Val(vSoMat) + Val(vSoXoa) + Val(vSoSD) > 0) Then
+                                soluongTonCK = Val(strCt5) - Val(strCt12)
+                                .SetText .ColLetterToNumber("X"), .Row, FormatSoHD(Val(strCt11) + 1)
+                                .Col = .ColLetterToNumber("X")
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber("X"), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Y), .Row, FormatSoHD(Val(strCt11) + soluongTonCK)
+                                .Col = .ColLetterToNumber(Col_Y)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Y), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Z), .Row, soluongTonCK
+                                .Col = .ColLetterToNumber(Col_Z)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Z), .Row, .Text
+                            End If
+                            
+                                        
+                            ' Ho tro tinh den so [11]
+                            .GetText .ColLetterToNumber(Col_L), .Row, strCt10
+                            .GetText .ColLetterToNumber(Col_N), .Row, strCt12
+                            .GetText .ColLetterToNumber(Col_G), .Row, strCt5
+                            strCt11 = Val(strCt10) + Val(strCt12) - 1
+                            
+                            ' Neu tong so xoa, sd, mat, huy =0 thi khong ho tro tinh [10][11]
+                            If Val(vSoHuy) + Val(vSoMat) + Val(vSoXoa) + Val(vSoSD) > 0 Then
+                                .SetText .ColLetterToNumber(Col_M), .Row, FormatSoHD(CStr(strCt11))
+                                .Col = .ColLetterToNumber(Col_M)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_M), .Row, .Text
+                                If str(0) <> "-1" Then
+                                    .SetText .ColLetterToNumber(Col_L), .Row, FormatSoHD(str(0))
+                                    .Col = .ColLetterToNumber(Col_L)
+                                    UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_L), .Row, .Text
+                                End If
+                            Else
+                                .SetText .ColLetterToNumber(Col_L), .Row, ""
+                                .Col = .ColLetterToNumber(Col_L)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_L), .Row, .Text
+                                
+                                .SetText .ColLetterToNumber(Col_M), .Row, ""
+                                .Col = .ColLetterToNumber(Col_M)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_M), .Row, .Text
+                            End If
+                            
+                            If Val(strCt5) > Val(strCt12) And (Val(vSoHuy) + Val(vSoMat) + Val(vSoXoa) + Val(vSoSD) > 0) Then
+                                soluongTonCK = Val(strCt5) - Val(strCt12)
+                                .SetText .ColLetterToNumber("X"), .Row, FormatSoHD(Val(strCt11) + 1)
+                                .Col = .ColLetterToNumber("X")
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber("X"), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Y), .Row, FormatSoHD(Val(strCt11) + soluongTonCK)
+                                .Col = .ColLetterToNumber(Col_Y)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Y), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Z), .Row, soluongTonCK
+                                .Col = .ColLetterToNumber(Col_Z)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Z), .Row, .Text
+                            End If
+                            
+                          ' Tinh toan lai cac gia tri
+                            .GetText .ColLetterToNumber("G"), .Row, strCt5
+                            .GetText .ColLetterToNumber("N"), .Row, strCt12
+                            .GetText .ColLetterToNumber("P"), .Row, vSoSD
+                            .GetText .ColLetterToNumber("Q"), .Row, vSoXoa
+                            .GetText .ColLetterToNumber("S"), .Row, vSoMat
+                            .GetText .ColLetterToNumber("U"), .Row, vSoHuy
+                            If Val(strCt5) + Val(strCt12) + Val(vSoSD) + Val(vSoXoa) + Val(vSoHuy) + Val(vSoMat) = 0 Then
+                                soluongTonCK = 0
+                                 .SetText .ColLetterToNumber("X"), .Row, ""
+                                 .Col = .ColLetterToNumber("X")
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber("X"), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Y), .Row, ""
+                                .Col = .ColLetterToNumber(Col_Y)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Y), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Z), .Row, soluongTonCK
+                                .Col = .ColLetterToNumber(Col_Z)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Z), .Row, .Text
+                            ElseIf Val(strCt5) = Val(strCt12) And (Val(vSoHuy) + Val(vSoMat) + Val(vSoXoa) + Val(vSoSD) > 0) Then
+                                ' [5] =[12] ,  [13] + [14] + [16] + [18] <> 0
+                                soluongTonCK = Val(strCt5) - Val(strCt12)
+                                .SetText .ColLetterToNumber("X"), .Row, ""  'FormatSoHD(Val(0))
+                                .Col = .ColLetterToNumber("X")
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber("X"), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Y), .Row, ""   'FormatSoHD(Val(0) + soluongTonCK)
+                                .Col = .ColLetterToNumber(Col_Y)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Y), .Row, .Text
+                                .SetText .ColLetterToNumber(Col_Z), .Row, soluongTonCK
+                                .Col = .ColLetterToNumber(Col_Z)
+                                UpdateCell_sheet fps, 1, .ColLetterToNumber(Col_Z), .Row, .Text
+                            End If
+                           ' end
+                           
+                          ' Chuyen cac ky hieu mau so HD thanh chu in hoa
+                            .GetText .ColLetterToNumber("AA"), .Row, strId
+                            strLoai = Trim(Left(strId, 1))
+                            
+                            .GetText .ColLetterToNumber(Col_E), .Row, varTemp
+                            .SetText .ColLetterToNumber(Col_E), .Row, IIf(strLoai = "3", varTemp, UCase(varTemp))
+                            .Col = .ColLetterToNumber(Col_E)
+                            UpdateCell_sheet fps, 1, .Col, .Row, .Text
+                          
+                         End If
+                         
+                         
+                         .Col = .ColLetterToNumber("B")
+                         .Row = .Row + 1
+                    Loop Until .Text = "aa"
+
+            End If
+            ' set PL 3.12
+            If .ActiveSheet = 2 Then
+                    maHD = ""
+                    tenHD = ""
+                    mCurrentSheet = .Sheet
+                    .Row = 46
+                    Do
+                        .GetText .ColLetterToNumber("O"), .Row, maHD
+                         GetMaHoaDon maHD, tenHD
+                         If tenHD <> "" Then
+                            arrTemp = Split(tenHD, "###")
+                            If UBound(arrTemp) > 0 Then
+                                .Col = .ColLetterToNumber("C")
+                                .Text = arrTemp(0)
+                                UpdateCell fps, .Col, .Row, .Text
+                                .Col = .ColLetterToNumber("AI")
+                                .Text = CStr(arrTemp(1))
+                                UpdateCell fps, .Col, .Row, .Text
+                                
+'                                .Col = .ColLetterToNumber("AJ")
+'                                .Text = CheckMauSoHD(CStr(maHD), Left$(CStr(arrTemp(1)), 1), arrTemp(0))
+'                                 UpdateCell fps, .Col, .Row, .Text
+                            End If
+                            .GetText .ColLetterToNumber("AI"), .Row, strId
+                            strLoai = Trim(Left(strId, 1))
+                            'Ho tro dinh dang 7 ky tu
+                             ' tu so
+                             .GetText .ColLetterToNumber(Col_V), .Row, varTemp
+                             .SetText .ColLetterToNumber(Col_V), .Row, FormatSoHD(CStr(varTemp))
+                             .Col = .ColLetterToNumber(Col_V)
+                             UpdateCell_sheet fps, 2, .Col, .Row, .Text
+                             ' den so
+                             .GetText .ColLetterToNumber(Col_Y), .Row, varTemp
+                             .SetText .ColLetterToNumber(Col_Y), .Row, FormatSoHD(CStr(varTemp))
+                             .Col = .ColLetterToNumber(Col_Y)
+                             UpdateCell_sheet fps, 2, .Col, .Row, .Text
+                             
+                              ' Ho tro tinh so luong
+                            .GetText .ColLetterToNumber(Col_V), .Row, tuSo
+                            .GetText .ColLetterToNumber(Col_Y), .Row, denso
+                            If Trim(tuSo) <> "" Or Trim(denso) <> "" Then
+                                .SetText .ColLetterToNumber(Col_AA), .Row, Val(denso) - Val(tuSo) + 1
+                                .Col = .ColLetterToNumber(Col_AA)
+                                UpdateCell_sheet fps, 2, .Col, .Row, .Text
+                            End If
+                             
+                         End If
+                         
+                         ' chuyen hoa don thanh ky tu in hoa
+                         .GetText .ColLetterToNumber(Col_S), .Row, varTemp
+                         .SetText .ColLetterToNumber(Col_S), .Row, FormatKyHieu(CStr(varTemp))
+                         .Col = .ColLetterToNumber(Col_S)
+                         UpdateCell_sheet fps, 2, .Col, .Row, .Text
+                         
+                          'Kiem tra cau truc cua ky hieu neu sai set cot an =1 dung =0
+                         .GetText .ColLetterToNumber(Col_S), .Row, varTemp
+                         .SetText .ColLetterToNumber("AH"), .Row, CheckSoHD(CStr(varTemp), strLoai)
+                         .Col = .ColLetterToNumber("AH")
+                         UpdateCell_sheet fps, 2, .Col, .Row, .Text
+                
+                          'Kiem tra cau truc cua Mau so
+                        .GetText .ColLetterToNumber("AI"), .Row, strId
+                        strLoai = Trim(Left(strId, 1))
+                        If strLoai = "0" Then
+                            strTemp = Trim(Mid(strId, 11, 6))
+                        ElseIf strLoai = "4" Then
+                            strTemp = Trim(Mid(strId, 11, 6))
+                        Else
+                            strTemp = Trim(Mid(strId, 11, 3))
+                        End If
+                        .GetText .ColLetterToNumber(Col_O), .Row, varTemp
+                        .SetText .ColLetterToNumber(Col_O), .Row, IIf(strLoai = "3", varTemp, UCase(varTemp))
+                         .SetText .ColLetterToNumber("AJ"), .Row, CheckMauSoHD(CStr(varTemp), CStr(strLoai), CStr(strTemp))
+                         .Col = .ColLetterToNumber("AJ")
+                        UpdateCell_sheet fps, 2, .Col, .Row, .Text
+                    
+                    
+                         .Col = .ColLetterToNumber("B")
+                         .Row = .Row + 1
+                    Loop Until .Text = "aa"
+                    
+                    maHD = ""
+                    tenHD = ""
+                    .Row = .Row + 3
+                    Do
+                        .GetText .ColLetterToNumber("O"), .Row, maHD
+                         GetMaHoaDon maHD, tenHD
+                         If tenHD <> "" Then
+                            arrTemp = Split(tenHD, "###")
+                            If UBound(arrTemp) > 0 Then
+                                .Col = .ColLetterToNumber("C")
+                                .Text = arrTemp(0)
+                                UpdateCell fps, .Col, .Row, .Text
+                                .Col = .ColLetterToNumber("AI")
+                                .Text = CStr(arrTemp(1))
+                                UpdateCell fps, .Col, .Row, .Text
+                                
+        '                        .Col = .ColLetterToNumber("AJ")
+        '                        .Text = Left$(CStr(arrTemp(1)), 1)
+        '                         UpdateCell fps, .Col, .Row, .Text
+                            End If
+                            
+                            .GetText .ColLetterToNumber("AI"), .Row, strId
+                            strLoai = Trim(Left(strId, 1))
+                            
+                            'Ho tro dinh dang 7 ky tu
+                             ' tu so
+                             .GetText .ColLetterToNumber(Col_V), .Row, varTemp
+                             .SetText .ColLetterToNumber(Col_V), .Row, FormatSoHD(CStr(varTemp))
+                             .Col = .ColLetterToNumber(Col_V)
+                             UpdateCell_sheet fps, 2, .Col, .Row, .Text
+                             ' den so
+                             .GetText .ColLetterToNumber(Col_Y), .Row, varTemp
+                             .SetText .ColLetterToNumber(Col_Y), .Row, FormatSoHD(CStr(varTemp))
+                             .Col = .ColLetterToNumber(Col_Y)
+                             UpdateCell_sheet fps, 2, .Col, .Row, .Text
+                             
+                              ' Ho tro tinh so luong
+                            .GetText .ColLetterToNumber(Col_V), .Row, tuSo
+                            .GetText .ColLetterToNumber(Col_Y), .Row, denso
+                            If Trim(tuSo) <> "" Or Trim(denso) <> "" Then
+                                .SetText .ColLetterToNumber(Col_AA), .Row, Val(denso) - Val(tuSo) + 1
+                                .Col = .ColLetterToNumber(Col_AA)
+                                UpdateCell_sheet fps, 2, .Col, .Row, .Text
+                            End If
+                            
+                            ' chuyen hoa don thanh ky tu in hoa
+                           .GetText .ColLetterToNumber(Col_S), .Row, varTemp
+                           .SetText .ColLetterToNumber(Col_S), .Row, FormatKyHieu(CStr(varTemp))
+                           .Col = .ColLetterToNumber(Col_S)
+                            UpdateCell_sheet fps, 2, .Col, .Row, .Text
+                         
+                            'Kiem tra cau truc cua ky hieu neu sai set cot an =1 dung =0
+                            .GetText .ColLetterToNumber(Col_S), .Row, varTemp
+                            .SetText .ColLetterToNumber("AH"), .Row, CheckSoHD(CStr(varTemp), strLoai)
+                            .Col = .ColLetterToNumber("AH")
+                            UpdateCell_sheet fps, 2, .Col, .Row, .Text
+                            
+                            'Kiem tra cau truc cua Mau so
+                            .GetText .ColLetterToNumber("AI"), .Row, strId
+                            strLoai = Trim(Left(strId, 1))
+                            If strLoai = "0" Then
+                                strTemp = Trim(Mid(strId, 11, 6))
+                            ElseIf strLoai = "4" Then
+                                strTemp = Trim(Mid(strId, 11, 6))
+                            Else
+                                strTemp = Trim(Mid(strId, 11, 3))
+                            End If
+                            .GetText .ColLetterToNumber(Col_O), .Row, varTemp
+                            .SetText .ColLetterToNumber(Col_O), .Row, IIf(strLoai = "3", varTemp, UCase(varTemp))
+                             .SetText .ColLetterToNumber("AJ"), .Row, CheckMauSoHD(CStr(varTemp), CStr(strLoai), CStr(strTemp))
+                             .Col = .ColLetterToNumber("AJ")
+                            UpdateCell_sheet fps, 2, .Col, .Row, .Text
+                             
+                         End If
+                         
+                         
+                         .Col = .ColLetterToNumber("B")
+                         .Row = .Row + 1
+                    Loop Until .Text = "bb"
+
+            End If
+            
+            ' set PL 3.10
+            If .ActiveSheet = 3 Then
+              maHD = ""
+              tenHD = ""
+              mCurrentSheet = .Sheet
+                .Row = 45
+                Do
+                    .GetText .ColLetterToNumber("O"), .Row, maHD
+                     GetMaHoaDon maHD, tenHD
+                     If tenHD <> "" Then
+                        arrTemp = Split(tenHD, "###")
+                        If UBound(arrTemp) > 0 Then
+                            .Col = .ColLetterToNumber("AI")
+                            .Text = CStr(arrTemp(1))
+                            UpdateCell fps, .Col, .Row, .Text
+                        End If
+                        
+                        'Ho tro format dinh dang tu so
+                        .GetText .ColLetterToNumber(Col_V), .Row, varTemp
+                        .SetText .ColLetterToNumber(Col_V), .Row, FormatSoHD(CStr(varTemp))
+                        .Col = .ColLetterToNumber(Col_V)
+                        UpdateCell_sheet fps, 3, .ColLetterToNumber(Col_V), .Row, .Text
+                        ' den so
+                        .GetText .ColLetterToNumber(Col_Y), .Row, varTemp
+                        .SetText .ColLetterToNumber(Col_Y), .Row, FormatSoHD(CStr(varTemp))
+                        .Col = .ColLetterToNumber(Col_Y)
+                        UpdateCell_sheet fps, 3, .ColLetterToNumber(Col_Y), .Row, .Text
+                        
+                        ' Ho tro tinh so luong
+                        .GetText .ColLetterToNumber(Col_V), .Row, tuSo
+                        .GetText .ColLetterToNumber(Col_Y), .Row, denso
+                          If Trim(tuSo) <> "" Or Trim(denso) <> "" Then
+                              .SetText .ColLetterToNumber(Col_AA), .Row, Val(denso) - Val(tuSo) + 1
+                              .Col = .ColLetterToNumber(Col_AA)
+                              UpdateCell_sheet fps, 3, .Col, .Row, .Text
+                          End If
+                          
+                          ' Ho tro format ky hieu
+                          ' Chuyen ky hieu HD thanh chu cai in hoa
+                             .GetText .ColLetterToNumber(Col_S), .Row, varTemp
+                             .SetText .ColLetterToNumber(Col_S), .Row, FormatKyHieu(CStr(varTemp))
+                             .Col = .ColLetterToNumber(Col_S)
+                            UpdateCell_sheet fps, 3, .Col, .Row, .Text
+                             
+                            'Kiem tra cau truc cua ky hieu neu sai set cot an =1 dung =0
+                             .GetText .ColLetterToNumber(Col_S), .Row, varTemp
+                             .SetText .ColLetterToNumber("AH"), .Row, CheckSoHD(CStr(varTemp), strLoai)
+                             .Col = .ColLetterToNumber("AH")
+                            UpdateCell_sheet fps, 3, .Col, .Row, .Text
+                            'Kiem tra cau truc cua Mau so
+                            .GetText .ColLetterToNumber("AI"), .Row, strId
+                            strLoai = Trim(Left(strId, 1))
+                            If strLoai = "0" Then
+                                strTemp = Trim(Mid(strId, 11, 6))
+                            ElseIf strLoai = "4" Then
+                                strTemp = Trim(Mid(strId, 11, 6))
+                            Else
+                                strTemp = Trim(Mid(strId, 11, 3))
+                            End If
+                            .GetText .ColLetterToNumber(Col_O), .Row, varTemp
+                            .SetText .ColLetterToNumber(Col_O), .Row, IIf(strLoai = "3", varTemp, UCase(varTemp))
+                             .SetText .ColLetterToNumber("AJ"), .Row, CheckMauSoHD(CStr(varTemp), CStr(strLoai), CStr(strTemp))
+                             .Col = .ColLetterToNumber("AJ")
+                            UpdateCell_sheet fps, 3, .Col, .Row, .Text
+                     End If
+                     .Col = .ColLetterToNumber("B")
+                     .Row = .Row + 1
+                Loop Until .Text = "aa"
+
+            End If
+        fps.EventEnabled(EventAllEvents) = True
+        End With
 End Sub
 
 Private Sub fps_SheetChanged(ByVal OldSheet As Integer, ByVal NewSheet As Integer)
