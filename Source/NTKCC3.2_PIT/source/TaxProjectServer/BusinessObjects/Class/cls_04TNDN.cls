@@ -595,7 +595,7 @@ Public Function InsertDTL() As String
         
         kykkhai = "'" & TAX_Utilities_Svr_New.Year & "'"
 
-        matkhai = "'04TNDN'"
+        matkhai = "'04/TNDN'"
     
         'Do
             'Noi dung
