@@ -1,6 +1,6 @@
 VERSION 5.00
+Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "mscomm32.ocx"
 Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
-Object = "{648A5603-2C6E-101B-82B6-000000000014}#1.1#0"; "MSCOMM32.OCX"
 Begin VB.Form frmTreeviewMenu 
    Appearance      =   0  'Flat
    BackColor       =   &H00E0E0E0&
@@ -497,7 +497,7 @@ End Sub
 
 Private Sub EndfpTreeView(Col As Long)
 On Error GoTo ErrorHandle
-    Dim I As Long, j As Long, z As Long, ret As Long
+    Dim i As Long, j As Long, z As Long, ret As Long
     Dim ctarray(10) As Integer
     Dim lastcol As Integer
     'Finish the tree
@@ -513,13 +513,13 @@ On Error GoTo ErrorHandle
     'If a header row, store the number of child rows that belong to it using the SetRowItemData function
     
     'Init the array
-    For I = 0 To UBound(ctarray) - 1
-        ctarray(I) = 0
-    Next I
+    For i = 0 To UBound(ctarray) - 1
+        ctarray(i) = 0
+    Next i
     
-    For I = 1 To sstv.DataRowCnt
+    For i = 1 To sstv.DataRowCnt
         For j = 1 To sstv.MaxCols
-            sstv.Row = I
+            sstv.Row = i
             sstv.Col = j
             If sstv.CellType = CellTypePicture And IsNumeric(sstv.TypePictPicture) Then
                 If sstv.TypePictPicture = minuspict1 Or sstv.TypePictPicture = minuspict2 Or sstv.TypePictPicture = minuspict3 Or _
@@ -528,18 +528,18 @@ On Error GoTo ErrorHandle
 '                If sstv.TypePictPicture = minuspict Or sstv.TypePictPicture = pluspict Then
                     If ctarray(j) = 0 Then
                         'First time in. Save row number
-                        ctarray(j) = I
+                        ctarray(j) = i
                         lastcol = j
                     Else
                         'Set the data
-                        sstv.SetRowItemData ctarray(j), I - ctarray(j)
-                        ctarray(j) = I
+                        sstv.SetRowItemData ctarray(j), i - ctarray(j)
+                        ctarray(j) = i
                         lastcol = j
                         'Update any columns after this one
                         For z = j To UBound(ctarray)
                             If ctarray(z) <> 0 Then
-                                sstv.SetRowItemData ctarray(z), I - ctarray(z)
-                                ctarray(z) = I
+                                sstv.SetRowItemData ctarray(z), i - ctarray(z)
+                                ctarray(z) = i
                             End If
                         Next z
                         
@@ -547,20 +547,20 @@ On Error GoTo ErrorHandle
                 End If
             End If
         Next j
-    Next I
+    Next i
     
     'Save the last item
    sstv.SetRowItemData ctarray(lastcol), sstv.DataRowCnt - ctarray(lastcol) + 1
    
     'Show/hide rows
-    For I = 1 To sstv.DataRowCnt
-        ret = sstv.GetRowItemData(I)
+    For i = 1 To sstv.DataRowCnt
+        ret = sstv.GetRowItemData(i)
         If ret <> 0 Then
             'Is a header row
             'Show or hide the child rows
-            ShowHideRows I, ret
+            ShowHideRows i, ret
         End If
-    Next I
+    Next i
     
     'Change col width of last column
     'sstv.ColWidth(sstv.MaxCols) = 17.025 '19.875
@@ -760,7 +760,7 @@ End Sub
 Private Sub ShowHideRows(startrow As Long, rownum As Long)
 On Error GoTo ErrorHandle
     Dim rowcnt As Long, Col As Long
-    Dim I As Long, showtype As Integer
+    Dim i As Long, showtype As Integer
     'Show or hide the child rows
 
     Col = GetPlusMinusCell(startrow)
@@ -804,8 +804,8 @@ On Error GoTo ErrorHandle
     startrow = startrow + 1
      
     'Show or hide the rows
-    For I = startrow To rowcnt
-        sstv.Row = I
+    For i = startrow To rowcnt
+        sstv.Row = i
         If showtype = 0 Then
             'Hide Rows
             sstv.RowHidden = True
@@ -813,7 +813,7 @@ On Error GoTo ErrorHandle
             'Show Rows
             sstv.RowHidden = False
         End If
-    Next I
+    Next i
     
     'Turn on redraw
     sstv.ReDraw = True
@@ -1036,20 +1036,20 @@ On Error GoTo ErrorHandle
     'Return the column number that contains the text
     'AllowCellOverflow = true. The cell may display the data
     '  but not necessarily contain the data.  Get the cell that contains the text
-    Dim I As Integer
+    Dim i As Integer
     
     GetColWithText = 0
     
     sstv.Row = Row
     'Loop through all columns
-    For I = Col To 1 Step -1
-        sstv.Col = I
+    For i = Col To 1 Step -1
+        sstv.Col = i
         If sstv.Text <> "" Then
             'Contains the text.
-            GetColWithText = I
+            GetColWithText = i
             Exit For
         End If
-    Next I
+    Next i
     
     Exit Function
 ErrorHandle:
@@ -1068,25 +1068,25 @@ End Function
 '****************************************************
 Private Function GetPlusMinusCell(Row As Long) As Long
 On Error GoTo ErrorHandle
-Dim I As Long
+Dim i As Long
     'Returns the column number that contains the plus,minus picture
 
     GetPlusMinusCell = -1
     
     sstv.Row = Row
     'Loop through all columns
-    For I = 1 To sstv.MaxCols
-        sstv.Col = I
+    For i = 1 To sstv.MaxCols
+        sstv.Col = i
         If sstv.CellType = CellTypePicture And IsNumeric(sstv.TypePictPicture) Then
             If sstv.TypePictPicture = minuspict1 Or sstv.TypePictPicture = minuspict2 Or sstv.TypePictPicture = minuspict3 Or _
              sstv.TypePictPicture = pluspict1 Or sstv.TypePictPicture = pluspict2 Or sstv.TypePictPicture = pluspict3 Then
 '            If sstv.TypePictPicture = pluspict Or sstv.TypePictPicture = minuspict Then
                 'Found the header cell picture
-                GetPlusMinusCell = I
+                GetPlusMinusCell = i
                 Exit For
             End If
         End If
-    Next I
+    Next i
     
     Exit Function
 ErrorHandle:
@@ -1275,18 +1275,18 @@ Private Sub InitActiveForm()
     Dim lInterface As String
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim lnode As MSXML.IXMLDOMNode
-    Dim I As Integer
+    Dim i As Integer
     
-    I = 0
+    i = 0
     For Each xmlNode In xmlNodeListMenu
         lID = xmlNode.Attributes.getNamedItem("ID").nodeValue
 '        Set lnode = xmlNode.selectSingleNode("Validity")
         
 '        If Not lnode Is Nothing Then
-            I = I + 1
-            ReDim Preserve arrActiveForm(I) As activeForm
-            arrActiveForm(I).id = lID
-            arrActiveForm(I).showed = False
+            i = i + 1
+            ReDim Preserve arrActiveForm(i) As activeForm
+            arrActiveForm(i).id = lID
+            arrActiveForm(i).showed = False
 '        End If
     Next
     Set xmlNode = Nothing
@@ -1573,11 +1573,11 @@ Public Function getFormIndex(pID As String) As Integer
 
     On Error GoTo ErrorHandle
     
-    Dim I As Long
+    Dim i As Long
     
-    For I = 1 To UBound(arrActiveForm)
-        If arrActiveForm(I).id = pID Then
-            getFormIndex = I
+    For i = 1 To UBound(arrActiveForm)
+        If arrActiveForm(i).id = pID Then
+            getFormIndex = i
             Exit For
         End If
     Next
@@ -1622,21 +1622,19 @@ ErrorHandle:
     SaveErrorLog Me.Name, "CloseApplication", Err.Number, Err.Description
 End Sub
 
-
-
 Private Sub SetBackColorForMenu()
     On Error GoTo ErrorHandle
-    Dim I As Integer
+    Dim i As Integer
     Dim j As Integer
     
-    For I = 1 To sstv.MaxRows ' sstv.DataRowCnt
-        sstv.Row = I
+    For i = 1 To sstv.MaxRows ' sstv.DataRowCnt
+        sstv.Row = i
         For j = 1 To 5
             sstv.Col = j
             sstv.BackColor = RGB(74, 121, 198)
-            If (I = 1) Or (I = sstv.MaxRows) Or (j = 5) Then sstv.Lock = True
+            If (i = 1) Or (i = sstv.MaxRows) Or (j = 5) Then sstv.Lock = True
         Next j
-    Next I
+    Next i
     
     Exit Sub
 ErrorHandle:

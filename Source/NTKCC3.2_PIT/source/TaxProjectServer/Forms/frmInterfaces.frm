@@ -850,7 +850,6 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("E"), 22, vKYLBO
         ElseIf menuId = 72 Or menuId = 86 Or menuId = 87 Then
             .GetText .ColLetterToNumber("E"), 22, vKYLBO
-        
         ElseIf menuId = 5 Then
             .GetText .ColLetterToNumber("E"), 23, vKYLBO
         ElseIf menuId = 36 Then
@@ -865,7 +864,7 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("E"), 30, vKYLBO
         ElseIf menuId = 73 Then
             .GetText .ColLetterToNumber("E"), 42, vKYLBO
-        ElseIf menuId = 1 Or menuId = 74 Or menuId = 75 Or menuId = 71 Or menuId = 95 Then
+        ElseIf menuId = 1 Or menuId = 74 Or menuId = 75 Or menuId = 71 Or menuId = 95 Or menuId = 55 Then
             .GetText .ColLetterToNumber("E"), 30, vKYLBO
         ElseIf menuId = 3 Then
             .GetText .ColLetterToNumber("E"), 34, vKYLBO
@@ -912,7 +911,7 @@ Private Sub cmdSave_Click()
         ElseIf menuId = 70 Then
             .GetText .ColLetterToNumber("E"), 25, vNgayNop
                 
-        ElseIf menuId = 1 Or menuId = 74 Or menuId = 75 Or menuId = 71 Or menuId = 95 Then
+        ElseIf menuId = 1 Or menuId = 74 Or menuId = 75 Or menuId = 71 Or menuId = 95 Or menuId = 55 Then
             .GetText .ColLetterToNumber("E"), 32, vNgayNop
         ElseIf menuId = 3 Then
             .GetText .ColLetterToNumber("E"), 36, vNgayNop
@@ -1267,7 +1266,7 @@ Private Sub cmdSave_Click()
             
         ElseIf menuId = 11 Then
             .GetText .ColLetterToNumber("M"), 32, vNGAYQUET
-        ElseIf menuId = 1 Or menuId = 74 Or menuId = 75 Or menuId = 71 Or menuId = 95 Then
+        ElseIf menuId = 1 Or menuId = 74 Or menuId = 75 Or menuId = 71 Or menuId = 95 Or menuId = 55 Then
             .GetText .ColLetterToNumber("M"), 32, vNGAYQUET
         ElseIf menuId = 3 Then
             .GetText .ColLetterToNumber("M"), 36, vNGAYQUET
@@ -1697,23 +1696,33 @@ End Sub
 Private Sub Command1_Click()
     Dim str1 As String, str2 As String, str3 As String, str4 As String, str5 As String, str6 As String, str7 As String, str8 As String
 
-''04_TNDN 15/04/2015
-'str2 = "aa999556100124497   01201400100200100101/0101/01/1900<S01><S>0123456789</S><S>1000000~5~50000~1000000~5~50000~1000000~5~50000~150000</S><S>1000000~50000~1000000~50000~1000000~50000~150000</S><S>eeeeee~ggg~0123456789~15/04/2015~1~~~~</S></S01>"
+'str2 = "aa999816100124497   03201500100100100101/0101/01/1900<S01><S></S><S>dfdfdfsdfdsfsdf~~~23232323~~32323213~3~1212~968484</S><S>23232323~32323213~1212~968484</S><S>1~</S><S>fsfesfefesf~weffwefefef~~20/04/2015~1~1~~</S></S01>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
-'01_MBAI 14/04/2015
-str2 = "aa999846100124497   00201400100100100101/0101/01/1900<S01><S>0123456789</S><S></S><S>Tmtuan~120000~4~1000000</S><S>ddddddd~120000~4~1000000</S><S>2000000</S><S>eeeeee~ggg~0123456789~14/04/2015~1~~</S></S01>"
+
+'str2 = "aa999776100124497   00201400100100100201/0114/06/2006<S01><S></S><S>010102a~Kg~5~0~0~6~30~6~5~19~010102~Kg~6~0~0~6~36~5~5~26~010103~Kg~3~0~0~4~12~3~5~4</S><S>010"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'str2 = "aa999776100124497   002014001001002002101~Kg~4~0~0~8~32~5~8~19~010103a~Kg~8~0~0~5~40~6~3~31</S><S>gfhth~17/04/2015~gdgdg~245252242~1~~01/2014~12/2014</S></S01>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+''06_TNDN 17/04/2015
+'str2 = "aa999566100124497   01201500100100100101/0101/01/1900<S02><S>6100138764</S><S>~~~~~</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>abab~456321789~ntttt~17/04/2015~1~~~17/04/2015</S></S02>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+
+'04_TNDN 15/04/2015
+str2 = "aa999556100124497   01201400100100100101/0101/01/1900<S01><S></S><S>1000000~5~50000~10000000~5~500000~10000000~5~500000~1050000</S><S>1000000~50000~10000000~500000~10000000~500000~1050000</S><S>tetrte~gggggg~01215~16/04/2015~1~~~~</S></S01>"
 Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+
+''01_MBAI 14/04/2015
+'str2 = "aa999846100124497   00201400100100100101/0101/01/1900<S01><S>0123456789</S><S></S><S>Tmtuan~120000~4~1000000</S><S>ddddddd~120000~4~1000000</S><S>2000000</S><S>eeeeee~ggg~0123456789~14/04/2015~1~~</S></S01>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 
 ''01_GTGT 13/04/2015
-'str2 = "aa999016100124497   03201500100100100301/0114/06/2006<S01><S>0123456789</S><S>x~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0"
+'str2 = "aa999016100124497   03201500200200100201/0114/06/2006<S01><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~16/04/2015~1~~~1701~~~</S></S01>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-'str2 = "aa999016100124497   032015001001002003~0~0~0~0~0~0~0</S><S>eeeeee~0123456789~ggg~14/04/2015~1~~~1701~~~</S></S01>"
+'str2 = "aa999016100124497   032015002002002002<S01_7><S>aaaa~10000~10701~100~200</S></S01_7>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-'str2 = "aa999016100124497   032015001001003003<S01_7><S>~0~~0~0~</S></S01_7>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
- 
+
 ''02_TNDN - 16/01/2014
 'str2 = "aa999730100105951   03201400500600100101/0114/06/2006<S02><S></S><S>50000000~1130300~200000~30000~500000~400000~100~200~48869700~35~17104395</S><S>~1~Nguyen Sy Hung~0101650999~Nam Hong - Nam Sach - Hai Duong~10~10/10/2014~12/10/2014</S><S>Nguyen Van A~CCHN123456~Tran Van B~22/11/2015~1~~22/11/2014~~</S></S02>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
@@ -3806,7 +3815,11 @@ On Error GoTo ErrHandle
         '*******************************
         'Get main content
         If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Day") <> "0" Then
-            strData = Mid$(strData, 57)
+            If Val(strID) = 55 Then
+                strData = Mid$(strData, 37)
+            Else
+                strData = Mid$(strData, 57)
+            End If
         Else
             strData = Mid$(strData, 37)
         End If
@@ -6410,6 +6423,10 @@ Private Function changeToLoaiToKhaiQHS(strMaToKhai) As String
             .GetText .ColLetterToNumber("Q"), 37, tkPhatSinh
         End If
         
+        If menuId = 55 Then
+            .GetText .ColLetterToNumber("Q"), 37, tkPhatSinh
+        End If
+        
         If menuId = 73 Then
             .GetText .ColLetterToNumber("Q"), 49, tkPhatSinh
         End If
@@ -6419,6 +6436,18 @@ Private Function changeToLoaiToKhaiQHS(strMaToKhai) As String
     On Error Resume Next
     
     Select Case strMaToKhai
+        Case "56" '06TNDN
+            DHS_MA = "200209"
+        
+        Case "55" '04TNDN
+            If tkPhatSinh = vbNullString Then
+                DHS_MA = "200210"
+            Else
+                DHS_MA = "200216"
+            End If
+        
+        Case "84" '01MBAI
+            DHS_MA = "200601"
 
         Case "37"
             DHS_MA = "200514"
