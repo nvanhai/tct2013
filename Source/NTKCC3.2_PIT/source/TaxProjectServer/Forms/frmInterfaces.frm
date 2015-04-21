@@ -1704,19 +1704,19 @@ Private Sub Command1_Click()
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 'str2 = "aa999776100124497   002014001001002002101~Kg~4~0~0~8~32~5~8~19~010103a~Kg~8~0~0~5~40~6~3~31</S><S>gfhth~17/04/2015~gdgdg~245252242~1~~01/2014~12/2014</S></S01>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-''06_TNDN 17/04/2015
-'str2 = "aa999566100124497   01201500100100100101/0101/01/1900<S02><S>6100138764</S><S>~~~~~</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>abab~456321789~ntttt~17/04/2015~1~~~17/04/2015</S></S02>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-
-'04_TNDN 15/04/2015
-str2 = "aa999556100124497   01201400100100100101/0101/01/1900<S01><S></S><S>1000000~5~50000~10000000~5~500000~10000000~5~500000~1050000</S><S>1000000~50000~10000000~500000~10000000~500000~1050000</S><S>tetrte~gggggg~01215~16/04/2015~1~~~~</S></S01>"
+'06_TNDN 17/04/2015
+str2 = "aa999566100124497   01201500100100100101/0101/01/1900<S02><S>6100138764</S><S>~~~~~</S><S>0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>abab~456321789~ntttt~17/04/2015~1~~~17/04/2015</S></S02>"
 Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+
+''04_TNDN 15/04/2015
+'str2 = "aa999556100124497   01201400100100100101/0101/01/1900<S01><S></S><S>1000000~5~50000~10000000~5~500000~10000000~5~500000~1050000</S><S>1000000~50000~10000000~500000~10000000~500000~1050000</S><S>tetrte~gggggg~01215~16/04/2015~1~~~~</S></S01>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 ''01_MBAI 14/04/2015
 'str2 = "aa999846100124497   00201400100100100101/0101/01/1900<S01><S>0123456789</S><S></S><S>Tmtuan~120000~4~1000000</S><S>ddddddd~120000~4~1000000</S><S>2000000</S><S>eeeeee~ggg~0123456789~14/04/2015~1~~</S></S01>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
-
+'
 ''01_GTGT 13/04/2015
 'str2 = "aa999016100124497   03201500200200100201/0114/06/2006<S01><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~16/04/2015~1~~~1701~~~</S></S01>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
@@ -3815,7 +3815,7 @@ On Error GoTo ErrHandle
         '*******************************
         'Get main content
         If GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "Day") <> "0" Then
-            If Val(strID) = 55 Then
+            If Val(strID) = 55 Or Val(strID) = 56 Then
                 strData = Mid$(strData, 37)
             Else
                 strData = Mid$(strData, 57)
