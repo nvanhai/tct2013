@@ -1149,8 +1149,8 @@ Public Function InsertHDR() As String
 '            GHICHU = "'& GHICHU &'"
 '        End If
 
-        kytttu = "''"
-        kyttden = "''"
+        kytttu = "'01/" & TAX_Utilities_Svr_New.Year & "'"
+        kyttden = "'12/" & TAX_Utilities_Svr_New.Year & "'"
         tien = "0"
         TTHTK = "''"
         MaVach = ".T."
