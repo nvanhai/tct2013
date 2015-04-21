@@ -1544,11 +1544,20 @@ Private Sub Command1_Click()
 'str2 = "bs999552100343639   01201400500900100301/0101/01/1900<S01><S></S><S>10000000~10~1000000~100000~10~10000~10~100~10~1010010~10000~10~1000~1000~10~100~10000~10~1000~2100~100000~10~10000~100000~10~10000~10000~100~10000~30000~100000~10~10000~200000~20~40000~100000~10~10000~60000~200000~20~40000~200000~20~40000~100000~20~20000~100000</S><S>10410000~1061000~601000~100100~220010~41010~1202110</S><S>Nguyen thu thuy~minh lan~1234~09/04/2015~~1~1~~</S></S01>"
 'Barcode_Scaned str2
 
-str2 = "bs999562100343639   01201502403000100201/0101/01/1900<S02><S></S><S>fdsafdsafds~fsafdsafds~dsafdsafds~1~01/01/2015~03/03/2015</S><S>40000000~21600000~2000000~3000000~4000000~5000000~600000~7000000~18400000~0~18400000~20~3680000</S><S>~~minh lan~17/04/2015~~1~1~01/04/2015</S></S02>"
+'str2 = "aa999012100343639   03201501702300100201/0114/06/2006<S01><S></S><S>0~0~0~0~0~0~100000000~1000000000~0~0~1000000000~0~0~100000000~100000000~1000000000~1000000000~0~0~0~1000000000~0~1000000000~0~0~0</S><S>~~~17/04/2015~1~~~1701~~~</S></S01>"
+'Barcode_Scaned str2
+'
+'str2 = "aa999012100343639   032015017023002002<S01_7><S>abc~100000000~10100~20~400000~cde~200000000~10303~40~1600000</S></S01_7>"
+'Barcode_Scaned str2
+'
+'str2 = "bs999702100343639   04201500400400100101/0101/01/1900<S01><S></S><S>nop~2222222222~112/01/2015~30000000~10/10/2014~15000000~20~0~2000000000000~2000000~100~10000000~20000000~2000020000000~long~2222222222~112/01/2015~2000000~01/01/2015~20000000~20~0~20000000000000~2000000~30~300000000~200000~20000000200000</S><S>200000~10000000~2000000~20~2000000~12000000</S><S>~X</S><S>~~minh lan~21/04/2015~~1~1~01/04/2015</S></S01>"
+'Barcode_Scaned str2
+'
+str2 = "bs999562100343639   01201502803800100201/0101/01/1900<S02><S></S><S>long~123~123~19~01/01/2015~01/01/2015</S><S>200000000000~5822300000000~20000000000~2000000000~300000000~400000000000~5000000000000~400000000000~-5622300000000~0~-5622300000000~0~0</S><S>~~minh lan~21/04/2015~~1~1~01/04/2015</S></S02>"
+Barcode_Scaned str2
+str2 = "bs999562100343639   012015028038002002<SKHBS><S>~~0~0~0</S><S>ThuÕ TNDN ph¶i nép~37~37623080000000~0~-37623080000000</S><S>21/04/2015~8~0~30000000~200000~01/01/2015~10700~10701~10~20000000~dskafjlaksfjsf~0~0~-37623080000000</S></SKHBS>"
 Barcode_Scaned str2
 
-str2 = "bs999562100343639   012015024030002002<SKHBS><S>ThuÕ TNDN ph¶i nép~37~0~3680000~3680000</S><S>~~0~0~0</S><S>17/04/2015~4~7360~20000~200202020200~01/02/2015~10300~10301~100~2000000~fdsfdsafsf~0~0~3680000</S></SKHBS>"
-Barcode_Scaned str2
 
 ' kiem tra bo sung
 'str2 = "bs999552100343639   01201401502000100301/0101/01/1900<S01><S></S><S>100000000~20~20000000~2000000000~20~400000000~500000000~30~150000000~570000000~1000000~20~200000~3000000000~31~930000000~30000000~100~30000000~960200000~2500000~35~875000~20000000~43~8600000~10000000~30~3000000~12475000~2000000~20~400000~300000000~30~90000000~30000000~30~9000000~99400000</S><S>105500000~21475000~5320000000~1428600000~570000000~192000000~1642075000</S><S>Tan minh lan~minh lan~18778~15/04/2015~~1~1~~</S></S01>"
@@ -2007,7 +2016,23 @@ Private Sub Barcode_Scaned(strBarcode As String)
                     Exit Sub
                 End If
             End If
-        
+            
+            '06/TNDN - kiem tra ko duoc nhap to khai bo sung khi chua co to khai chinh thuc
+            
+            If Val(Mid$(strBarcode, 4, 2)) = 56 And UCase(strLoaiToKhai) = "BS" Then
+                tmp_str = Left$(strBarcode, InStr(1, strBarcode, "</S></S02>") + 9)
+                tkps_spl = Split(tmp_str, "~")
+                If Trim(tkps_spl(UBound(tkps_spl))) <> "" Then
+                    tmp_str = Left$(tkps_spl(UBound(tkps_spl)), InStr(1, tkps_spl(UBound(tkps_spl)), "</S></S02>") - 1)
+                    If Trim(tmp_str) <> "" Then
+                        DisplayMessage "0132", msOKOnly, miCriticalError
+                        Exit Sub
+                    End If
+                End If
+                
+            End If
+            
+            
             '03/NTNN
             If Val(Mid$(strBarcode, 4, 2)) = 81 And UCase(strLoaiToKhai) = "BS" Then
                 tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
@@ -2052,20 +2077,6 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 End If
             End If
             
-            '06/TNDN - kiem tra ko duoc nhap to khai bo sung khi chua co to khai chinh thuc
-            
-            If Val(Mid$(strBarcode, 4, 2)) = 56 And UCase(strLoaiToKhai) = "BS" Then
-                tmp_str = Left$(strBarcode, InStr(1, strBarcode, "</S></S02>") + 9)
-                tkps_spl = Split(tmp_str, "~")
-                If Trim(tkps_spl(UBound(tkps_spl))) <> "" Then
-                    tmp_str = Left$(tkps_spl(UBound(tkps_spl)), InStr(1, tkps_spl(UBound(tkps_spl)), "</S></S02>") - 1)
-                    If Trim(tmp_str) <> "" Then
-                        DisplayMessage "0132", msOKOnly, miCriticalError
-                        Exit Sub
-                    End If
-                End If
-                
-            End If
             
             '04/TNDN - kiem tra ko duoc nhap to khai bo sung khi chua co to khai chinh thuc
             
@@ -2175,6 +2186,23 @@ Private Sub Barcode_Scaned(strBarcode As String)
         '07072011 TT28
         ' Khong nhan cac to khai theo mau cua
         idToKhai = Mid(strPrefix, 4, 2)
+        
+        
+        '06/TNDN - kiem tra ko duoc nhap to khai bo sung khi chua co to khai chinh thuc
+            'ndviet_ 21_04_2015
+            If Val(Mid$(strBarcode, 4, 2)) = 56 And UCase(strLoaiToKhai) = "BS" Then
+                tmp_str = Left$(strBarcode, InStr(1, strBarcode, "</S></S02>") + 9)
+                tkps_spl = Split(tmp_str, "~")
+                If Trim(tkps_spl(UBound(tkps_spl))) <> "" Then
+                    tmp_str = Left$(tkps_spl(UBound(tkps_spl)), InStr(1, tkps_spl(UBound(tkps_spl)), "</S></S02>") - 1)
+                    If Trim(tmp_str) <> "" Then
+                        DisplayMessage "0132", msOKOnly, miCriticalError
+                        Exit Sub
+                    End If
+                End If
+                
+            End If
+            
 
         If (Val(Left$(strPrefix, 3)) < 300) Then
             If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" Or Trim(idToKhai) = "46" Or Trim(idToKhai) = "47" Or Trim(idToKhai) = "48" Or Trim(idToKhai) = "49" Or Trim(idToKhai) = "15" Or Trim(idToKhai) = "16" Or Trim(idToKhai) = "50" Or Trim(idToKhai) = "51" Or Trim(idToKhai) = "36" Or Trim(idToKhai) = "70" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05" Then
