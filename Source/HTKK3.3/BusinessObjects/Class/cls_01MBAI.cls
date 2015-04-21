@@ -124,6 +124,8 @@ End Sub
 Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
     Dim arrValue() As String
     Dim vonDK As Variant
+    
+    Dim tempValue1, tempValue2 As Variant
     With fps
         .EventEnabled(EventAllEvents) = False
         .Sheet = 1
@@ -141,6 +143,38 @@ Private Sub fps_Change(ByVal Col As Long, ByVal Row As Long)
             .Text = arrValue(1)
             UpdateCell fps, .Col, .Row, .value
         End If
+        
+        ' group du lieu dong
+        If (Col = .ColLetterToNumber("P") Or Col = .ColLetterToNumber("C")) And Row >= 49 Then
+            If (.Text <> "" And Col = .ColLetterToNumber("C")) Or (.Text <> "0" And Col = .ColLetterToNumber("P")) Then
+                ' set bac MB
+                .Col = .ColLetterToNumber("U")
+                .Row = Row
+                .Text = "4"
+                UpdateCell fps, .Col, .Row, .value
+                ' set muc thu MB
+                .Col = .ColLetterToNumber("Y")
+                .Row = Row
+                .Text = "1000000"
+                UpdateCell fps, .Col, .Row, .value
+            Else
+                .GetText .ColLetterToNumber("C"), Row, tempValue1
+                .GetText .ColLetterToNumber("P"), Row, tempValue2
+                If (Trim$(tempValue1) = "") And Trim$(tempValue2) = "0" Then
+                    ' set bac MB
+                    .Col = .ColLetterToNumber("U")
+                    .Row = Row
+                    .Text = "0"
+                    UpdateCell fps, .Col, .Row, .value
+                    ' set muc thu MB
+                    .Col = .ColLetterToNumber("Y")
+                    .Row = Row
+                    .Text = "0"
+                    UpdateCell fps, .Col, .Row, .value
+                End If
+            End If
+        End If
+        
         .EventEnabled(EventAllEvents) = True
     End With
 End Sub
@@ -160,12 +194,12 @@ Private Sub fps_KeyUp(KeyCode As Integer, Shift As Integer)
                  Do
                      .Text = str(i)
                      
-                     .Col = .ColLetterToNumber("U")
-                     .Text = "4"
-                     
-                     .Col = .ColLetterToNumber("Y")
-                     .value = "1000000"
-                     
+'                     .Col = .ColLetterToNumber("U")
+'                     .Text = "4"
+'
+'                     .Col = .ColLetterToNumber("Y")
+'                     .value = "1000000"
+'
                      
                      .Col = .ColLetterToNumber("B")
                      .Row = .Row + 1
@@ -302,7 +336,7 @@ Dim ct2 As Variant
         End If
         
         ' kiem tra cot ten
-        If Trim$(ct2) = "" Then
+        If Trim$(ct2) = "" And iWhiteRow = 1 Then
            .Col = .ColLetterToNumber("C")
            .CellNote = vErrEmpty
            .BackColor = mErrorColor
