@@ -126,7 +126,7 @@ Begin VB.Form frmReportData
       DisplayText     =   ""
       BarWidthReduction=   -1
       TextAlignment   =   0
-      Quality         =   0
+      Quality         =   1702057308
    End
 End
 Attribute VB_Name = "frmReportData"
@@ -1774,6 +1774,8 @@ Private Sub SetupPrinter()
                                         Else
                                             .Row = GetLastDataRow(lCtrl)
                                         End If
+                                    ElseIf GetAttribute(TAX_Utilities_v2.NodeMenu, "ID") = "55" Then
+                                        .Row = GetLastDataRowDyn(lCtrl, 14)
                                     Else
                                         .Row = GetLastDataRow(lCtrl)
                                     End If
@@ -1811,6 +1813,9 @@ Private Sub SetupPrinter()
                             .Row = GetLastDataRowKHBS(lCtrl)
                             .Row = .Row - 3
                             .RowPageBreak = True
+                        ElseIf GetAttribute(TAX_Utilities_v2.NodeMenu, "ID") = "55" Then
+                             .Row = GetLastDataRowDyn(lCtrl, 14)
+                             .RowPageBreak = True
                         Else
                             .Row = arrLngRowPageBreak(intIndex2)
                             .RowPageBreak = True
@@ -1924,6 +1929,19 @@ Private Function GetLastDataRow(ByVal lngSheet As Long) As Long
     ParserCellID fpsReport, GetAttribute(xmlNode, "CellID2"), lCol, lRow
     
     GetLastDataRow = lRow
+End Function
+
+Private Function GetLastDataRowDyn(ByVal lngSheet As Long, byvanumRumRow As Long) As Long
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim xmlNodeList As MSXML.IXMLDOMNodeList
+    Dim lCol As Long, lRow As Long
+    
+    Set xmlNodeList = TAX_Utilities_v2.Data(lngSheet - 1).getElementsByTagName("Cell")
+    Set xmlNode = xmlNodeList(xmlNodeList.length - byvanumRumRow)
+    
+    ParserCellID fpsReport, GetAttribute(xmlNode, "CellID2"), lCol, lRow
+    
+    GetLastDataRowDyn = lRow
 End Function
 
 Private Function GetLastDataRow3(ByVal lngSheet As Long) As Long
