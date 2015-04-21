@@ -555,12 +555,13 @@ Public Function InsertDTL() As String
    Dim tyle3    As Variant
    Dim thue3    As Variant
    Dim tong     As Variant
+   Dim Lan_quet As Variant
    
    Dim bln  As Boolean
    
    Dim rowLast   As Integer
    
-   sSQLCol = "madtnt, ngnop,namqt, tthtk, mamuc, matm, matkhai,kykkhai, STT, dthu1, tyle1, thue1, dthu2, tyle2, thue2, dthu3, tyle3, thue3, tong"
+   sSQLCol = "madtnt, ngnop,namqt, tthtk, mamuc, matm, matkhai,kykkhai, STT, dthu1, tyle1, thue1, dthu2, tyle2, thue2, dthu3, tyle3, thue3, tong, Lan_quet"
     
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -588,8 +589,8 @@ Public Function InsertDTL() As String
         End If
         
         TTHTK = "''"
-        MaMuc = "''"
-        maTM = "''"
+        MaMuc = "'1050'"
+        maTM = "'1052'"
         namqt = "2014"
         
         kykkhai = "'" & TAX_Utilities_Svr_New.Year & "'"
@@ -674,10 +675,11 @@ Public Function InsertDTL() As String
             
             tong = thue1 + thue2 + thue3
             
+            Lan_quet = TinhSoLanQuet + 1
             
                 sSQLVal = madtnt & "," & ngnop & "," & namqt & "," & TTHTK & "," & MaMuc & "," & maTM & ","
                 sSQLVal = sSQLVal & matkhai & "," & kykkhai & "," & STT & "," & dthu1 & "," & tyle1 & "," & thue1 & ","
-                sSQLVal = sSQLVal & dthu2 & "," & tyle2 & "," & thue2 & "," & dthu3 & "," & tyle3 & "," & thue3 & "," & tong
+                sSQLVal = sSQLVal & dthu2 & "," & tyle2 & "," & thue2 & "," & dthu3 & "," & tyle3 & "," & thue3 & "," & tong & "," & Lan_quet
    
                 sSQL = "INSERT INTO TMP_QT4D" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
                 bln = clsDAO.ExecuteDLL(sSQL)
