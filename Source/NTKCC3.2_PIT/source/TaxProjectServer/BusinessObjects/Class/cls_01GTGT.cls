@@ -2443,7 +2443,7 @@ Public Function InsertDTL_PL017() As String
         DANHAN = "''"
 
         
-        Lan_quet = TinhSoLanQuet + 1
+        'Lan_quet = TinhSoLanQuet + 1
 '        DVTinh = "''"
 '        TONGBANRA = "0"
 '        BANNTDDL = "0"
