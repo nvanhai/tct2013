@@ -793,7 +793,7 @@ Private Sub cmdSave_Click()
 
     ' chi kiem tra validate cho cac mau an chi
     ' Kiem tra ngay nop khong duoc lon hon ngay quet
-    If (Val(menuId) >= 64 And Val(menuId) <= 68) Or Val(menuId) = 91 Or Val(menuId) = 7 Or Val(menuId) = 9 Or Val(menuId) = 10 Or Val(menuId) = 13 Or Val(menuId) = 14 Or Val(menuId) = 18 Or Val(menuId) = 27 Then
+    If (Val(menuId) >= 64 And Val(menuId) <= 68) Or Val(menuId) = 91 Or Val(menuId) = 7 Or Val(menuId) = 9 Or Val(menuId) = 10 Or Val(menuId) = 13 Or Val(menuId) = 14 Or Val(menuId) = 18 Or Val(menuId) = 27 Or Val(menuId) = 1 Then
         If CheckValidData = False Then
             MessageBox "0144", msOKOnly, miWarning
             Exit Sub
@@ -1704,17 +1704,17 @@ Private Sub Command1_Click()
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 'str2 = "aa999776100124497   002014001001002002101~Kg~4~0~0~8~32~5~8~19~010103a~Kg~8~0~0~5~40~6~3~31</S><S>gfhth~17/04/2015~gdgdg~245252242~1~~01/2014~12/2014</S></S01>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-'06_TNDN 17/04/2015
-str2 = "aa999566100189769   01201500100100100101/0101/01/1900<S02><S>6100138965   </S><S>dsdsd~6100189751    ~hd~05~14/03/2015~14/03/2015</S><S>1000000~8000000~2000000~600000~3000000~400000~300000~1700000~-7000000~0~-7000000~0~0</S><S>rrrrr~98594546455~ayyyy~21/04/2015~1~~~21/04/2015</S></S02>"
-Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+''06_TNDN 17/04/2015
+'str2 = "aa999566100189769   01201500100100100101/0101/01/1900<S02><S>6100138965   </S><S>dsdsd~6100189751    ~hd~05~14/03/2015~14/03/2015</S><S>1000000~8000000~2000000~600000~3000000~400000~300000~1700000~-7000000~0~-7000000~0~0</S><S>rrrrr~98594546455~ayyyy~21/04/2015~1~~~21/04/2015</S></S02>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 ''04_TNDN 15/04/2015
 'str2 = "aa999556100124497   01201400100100100101/0101/01/1900<S01><S></S><S>1000000~5~50000~10000000~5~500000~10000000~5~500000~1050000</S><S>1000000~50000~10000000~500000~10000000~500000~1050000</S><S>tetrte~gggggg~01215~16/04/2015~1~~~~</S></S01>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
-''01_MBAI 14/04/2015
-'str2 = "aa999846100124497   00201400100100100101/0101/01/1900<S01><S>0123456789</S><S></S><S>Tmtuan~120000~4~1000000</S><S>ddddddd~120000~4~1000000</S><S>2000000</S><S>eeeeee~ggg~0123456789~14/04/2015~1~~</S></S01>"
-'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'01_MBAI 14/04/2015
+str2 = "aa999846100124497   00201400100100100101/0101/01/1900<S01><S>0123456789</S><S></S><S>Tmtuan~120000~4~1000000</S><S>ddddddd~120000~4~1000000</S><S>2000000</S><S>eeeeee~ggg~0123456789~14/04/2015~1~~</S></S01>"
+Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 
 ''01_GTGT 13/04/2015
