@@ -16631,12 +16631,12 @@ Public Sub moveDataNKH()
         xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_05A_TNCN.xml"))
        
         rowStartSpread1 = 22
-        rowStartSpread2 = 5
+        rowStartSpread2 = 6
     ElseIf Trim(varMenuId) = "17" And fpSpread1.ActiveSheet = 3 Then
         xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_05B_TNCN.xml"))
  
         rowStartSpread1 = 22
-        rowStartSpread2 = 5
+        rowStartSpread2 = 6
     ElseIf Trim(varMenuId) = "17" And fpSpread1.ActiveSheet = 4 Then
         xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_05_3_TNCN.xml"))
  
@@ -16748,11 +16748,11 @@ Public Sub moveDataNKH()
             If Trim(varMenuId) = "17" Then
                 If fpSpread1.ActiveSheet = 4 Then
                     If (Trim(varTemp) <> vbNullString Or Trim(varTemp) <> "") Then
-                        ' Tru tiep 4 dong header dau tien thi se duoc tong so dong can import vao
+                        ' Tru tiep 5 dong header dau tien thi se duoc tong so dong can import vao
                         If mCurrentSheet = 2 Then
-                            lrowCount = lrowCount - 4
+                            lrowCount = lrowCount - 5
                         ElseIf mCurrentSheet = 3 Then
-                            lrowCount = lrowCount - 4
+                            lrowCount = lrowCount - 5
                         ElseIf mCurrentSheet = 4 Then
                             lrowCount = lrowCount - 39
                         End If
@@ -16760,11 +16760,11 @@ Public Sub moveDataNKH()
                     End If
                 Else
                     If (Trim(varTemp) <> vbNullString Or Trim(varTemp) <> "") And (Trim(varTemp1) <> vbNullString Or Trim(varTemp1) <> "") Then
-                        ' Tru tiep 4 dong header dau tien thi se duoc tong so dong can import vao
+                        ' Tru tiep 5 dong header dau tien thi se duoc tong so dong can import vao
                         If mCurrentSheet = 2 Then
-                            lrowCount = lrowCount - 4
+                            lrowCount = lrowCount - 5
                         ElseIf mCurrentSheet = 3 Then
-                            lrowCount = lrowCount - 4
+                            lrowCount = lrowCount - 5
                         ElseIf mCurrentSheet = 4 Then
                             lrowCount = lrowCount - 39
                         End If
@@ -16868,11 +16868,17 @@ Public Sub moveDataNKH()
 
     If Trim(varMenuId) = "17" Then
         If fpSpread1.ActiveSheet = 2 Then
-            gridData05A rowStartSpread1, rowStartSpread2, lrowCount, 2, isFirstRown
+            If lrowCount > 0 Then
+                gridData05A rowStartSpread1, rowStartSpread2, lrowCount, 2, isFirstRown
+            End If
         ElseIf fpSpread1.ActiveSheet = 3 Then
-            gridData05B rowStartSpread1, rowStartSpread2, lrowCount, 3, isFirstRown
+            If lrowCount > 0 Then
+                gridData05B rowStartSpread1, rowStartSpread2, lrowCount, 3, isFirstRown
+            End If
         ElseIf fpSpread1.ActiveSheet = 4 Then
-            gridData05_3 rowStartSpread1, rowStartSpread2, lrowCount, 4, isFirstRown
+            If lrowCount > 0 Then
+                gridData05_3 rowStartSpread1, rowStartSpread2, lrowCount, 4, isFirstRown
+            End If
         End If
     ElseIf Trim(varMenuId) = "59" Then
         gridData06TNCN rowStartSpread1, rowStartSpread2, lrowCount, 2
@@ -18533,7 +18539,7 @@ Private Sub gridData05B(rowStartSpread1 As Long, _
             rowStartSpread1 = rowStartSpread1 + 1
         End If
         
-        Do While fpSpread2.Row < lrowCount + 4
+        Do While fpSpread2.Row < lrowCount + 5
             DoEvents
             ProgressBar1.value = a
             
@@ -18846,7 +18852,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
                         rowStartSpread2 As Long, _
                         lrowCount As Long, _
                         numSheet As Integer, isFirstRow As Boolean)
-    ReDim fparray(lrowCount - 1, 13) As Variant
+    ReDim fparray(lrowCount - 1, 15) As Variant
     fpSpread2.GetArray fpSpread2.ColLetterToNumber("B"), rowStartSpread2, fparray
     Dim a                As Long
     Dim rowStartSpread11 As Long
@@ -18885,7 +18891,7 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
             rowStartSpread1 = rowStartSpread1 + 1
         End If
 
-        Do While fpSpread2.Row < lrowCount + 4
+        Do While fpSpread2.Row < lrowCount + 5
             DoEvents
             ProgressBar1.value = a
             fpSpread2.Row = rowStartSpread2
@@ -19017,6 +19023,17 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
             If IsNumeric(fparray(a, 13)) Then
                 If Val(fparray(a, 13)) > 0 Then
                     .Text = Round(fparray(a, 13))
+                Else
+                    .Text = 0
+                End If
+            Else
+                .Text = 0
+            End If
+            
+            .Col = .ColLetterToNumber("S")
+            If IsNumeric(fparray(a, 15)) Then
+                If Val(fparray(a, 15)) > 0 Then
+                    .Text = Round(fparray(a, 15))
                 Else
                     .Text = 0
                 End If
@@ -19166,6 +19183,18 @@ Private Sub gridData05A(rowStartSpread1 As Long, _
             If IsNumeric(fparray(a, 13)) Then
                 If Val(fparray(a, 13)) > 0 Then
                     .Text = Round(fparray(a, 13))
+                Else
+                    .Text = 0
+                End If
+            Else
+                .Text = 0
+            End If
+            
+            .Col = .ColLetterToNumber("S")
+            
+            If IsNumeric(fparray(a, 15)) Then
+                If Val(fparray(a, 15)) > 0 Then
+                    .Text = Round(fparray(a, 15))
                 Else
                     .Text = 0
                 End If

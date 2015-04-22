@@ -4059,11 +4059,13 @@ Public Sub FinishImport()
     Dim strTuso1 As Variant, strDenso1 As Variant, strTuso2 As Variant, strDenso2 As Variant, strCt10 As Variant, strCt11 As Variant, strCt12 As Variant, strCt5 As Variant, strCt20 As Variant, strCt21 As Variant
     Dim str() As String
     Dim soluongTonCK As Double
+    Dim i As Long
 With fps
 fps.EventEnabled(EventAllEvents) = False
            ' set TK
             If .ActiveSheet = 1 Then
                    .Row = 22
+                    i = 1
                     Do
                         .GetText .ColLetterToNumber("E"), .Row, maHD
                          GetMaHoaDon maHD, tenHD
@@ -4348,7 +4350,11 @@ fps.EventEnabled(EventAllEvents) = False
                          End If
                          
                          
+                         
+                         
                          .Col = .ColLetterToNumber("B")
+                         .Text = i
+                          i = i + 1
                          .Row = .Row + 1
                     Loop Until .Text = "aa"
 

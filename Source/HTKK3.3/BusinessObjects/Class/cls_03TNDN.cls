@@ -2161,6 +2161,9 @@ Private Sub CheckDynamicError()
                 .SetText .ColLetterToNumber("B"), 25, "1"
             End If
          End If
+         
+         
+         
             
             ' Check validate sheet 03-7
             .Sheet = .SheetCount
