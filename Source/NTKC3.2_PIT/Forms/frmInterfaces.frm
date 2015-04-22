@@ -2011,7 +2011,51 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
                 tkps_spl = Split(tmp_str, "~")
 
-                If Left$(tkps_spl(UBound(tkps_spl) - 7), 1) = "X" Then
+            If Left$(tkps_spl(UBound(tkps_spl) - 7), 1) = "X" Then
+                DisplayMessage "0132", msOKOnly, miCriticalError
+                Exit Sub
+            End If
+        End If
+        
+        '03/NTNN
+        If Val(Mid$(strBarcode, 4, 2)) = 81 And UCase(strLoaiToKhai) = "BS" Then
+            tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
+            tkps_spl = Split(tmp_str, "~")
+
+            If Left$(tkps_spl(UBound(tkps_spl) - 7), 1) = "1" Then
+                DisplayMessage "0132", msOKOnly, miCriticalError
+                Exit Sub
+            End If
+        End If
+        
+        '01/TAIN
+        If Val(Mid$(strBarcode, 4, 2)) = 6 And UCase(strLoaiToKhai) = "BS" Then
+            tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
+            tkps_spl = Split(tmp_str, "~")
+
+            If tkps_spl(UBound(tkps_spl) - 1) = "1" Then
+                DisplayMessage "0132", msOKOnly, miCriticalError
+                Exit Sub
+            End If
+        End If
+        
+        '01/TTDB
+        If Val(Mid$(strBarcode, 4, 2)) = 5 And UCase(strLoaiToKhai) = "BS" Then
+            tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
+            tkps_spl = Split(tmp_str, "~")
+
+            If Len(tkps_spl(UBound(tkps_spl) - 1)) > 0 Then
+                DisplayMessage "0132", msOKOnly, miCriticalError
+                Exit Sub
+            End If
+        End If
+        
+        '01/TBVMT
+        If Val(Mid$(strBarcode, 4, 2)) = 90 And UCase(strLoaiToKhai) = "BS" Then
+            tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
+            tkps_spl = Split(tmp_str, "~")
+
+                If tkps_spl(UBound(tkps_spl) - 1) = "1" Then
                     DisplayMessage "0132", msOKOnly, miCriticalError
                     Exit Sub
                 End If
@@ -2031,52 +2075,6 @@ Private Sub Barcode_Scaned(strBarcode As String)
                 End If
                 
             End If
-            
-            
-            '03/NTNN
-            If Val(Mid$(strBarcode, 4, 2)) = 81 And UCase(strLoaiToKhai) = "BS" Then
-                tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
-                tkps_spl = Split(tmp_str, "~")
-
-                If Left$(tkps_spl(UBound(tkps_spl) - 7), 1) = "1" Then
-                    DisplayMessage "0132", msOKOnly, miCriticalError
-                    Exit Sub
-                End If
-            End If
-        
-            '01/TAIN
-            If Val(Mid$(strBarcode, 4, 2)) = 6 And UCase(strLoaiToKhai) = "BS" Then
-                tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
-                tkps_spl = Split(tmp_str, "~")
-
-                If tkps_spl(UBound(tkps_spl) - 1) = "1" Then
-                    DisplayMessage "0132", msOKOnly, miCriticalError
-                    Exit Sub
-                End If
-            End If
-        
-            '01/TTDB
-            If Val(Mid$(strBarcode, 4, 2)) = 5 And UCase(strLoaiToKhai) = "BS" Then
-                tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
-                tkps_spl = Split(tmp_str, "~")
-
-                If Len(tkps_spl(UBound(tkps_spl) - 1)) > 0 Then
-                    DisplayMessage "0132", msOKOnly, miCriticalError
-                    Exit Sub
-                End If
-            End If
-        
-            '01/TBVMT
-            If Val(Mid$(strBarcode, 4, 2)) = 90 And UCase(strLoaiToKhai) = "BS" Then
-                tmp_str = Mid(strBarcode, 1, InStr(1, strBarcode, "</S01>", vbTextCompare) + 5)
-                tkps_spl = Split(tmp_str, "~")
-
-                If tkps_spl(UBound(tkps_spl) - 1) = "1" Then
-                    DisplayMessage "0132", msOKOnly, miCriticalError
-                    Exit Sub
-                End If
-            End If
-            
             
             '04/TNDN - kiem tra ko duoc nhap to khai bo sung khi chua co to khai chinh thuc
             
@@ -2186,23 +2184,6 @@ Private Sub Barcode_Scaned(strBarcode As String)
         '07072011 TT28
         ' Khong nhan cac to khai theo mau cua
         idToKhai = Mid(strPrefix, 4, 2)
-        
-        
-        '06/TNDN - kiem tra ko duoc nhap to khai bo sung khi chua co to khai chinh thuc
-            'ndviet_ 21_04_2015
-            If Val(Mid$(strBarcode, 4, 2)) = 56 And UCase(strLoaiToKhai) = "BS" Then
-                tmp_str = Left$(strBarcode, InStr(1, strBarcode, "</S></S02>") + 9)
-                tkps_spl = Split(tmp_str, "~")
-                If Trim(tkps_spl(UBound(tkps_spl))) <> "" Then
-                    tmp_str = Left$(tkps_spl(UBound(tkps_spl)), InStr(1, tkps_spl(UBound(tkps_spl)), "</S></S02>") - 1)
-                    If Trim(tmp_str) <> "" Then
-                        DisplayMessage "0132", msOKOnly, miCriticalError
-                        Exit Sub
-                    End If
-                End If
-                
-            End If
-            
 
         If (Val(Left$(strPrefix, 3)) < 300) Then
             If Trim(idToKhai) = "01" Or Trim(idToKhai) = "02" Or Trim(idToKhai) = "04" Or Trim(idToKhai) = "11" Or Trim(idToKhai) = "12" Or Trim(idToKhai) = "46" Or Trim(idToKhai) = "47" Or Trim(idToKhai) = "48" Or Trim(idToKhai) = "49" Or Trim(idToKhai) = "15" Or Trim(idToKhai) = "16" Or Trim(idToKhai) = "50" Or Trim(idToKhai) = "51" Or Trim(idToKhai) = "36" Or Trim(idToKhai) = "70" Or Trim(idToKhai) = "06" Or Trim(idToKhai) = "05" Then
