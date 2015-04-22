@@ -907,7 +907,11 @@ Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
     Dim currentRow As Long
     Dim varData1, varData2 As Variant
     If themDuLieu Then
-        Set xmlSecionNode = TAX_Utilities_v2.Data(mCurrentSheet - 1).getElementsByTagName("Section")(0)
+        If Trim(varMenuId) = "68" And mCurrentSheet = 1 Then
+            Set xmlSecionNode = TAX_Utilities_v2.Data(mCurrentSheet - 1).getElementsByTagName("Section")(1)
+        Else
+            Set xmlSecionNode = TAX_Utilities_v2.Data(mCurrentSheet - 1).getElementsByTagName("Section")(0)
+        End If
         'fpSpread1.Visible = False
         If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
             currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row

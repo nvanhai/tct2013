@@ -4365,6 +4365,7 @@ fps.EventEnabled(EventAllEvents) = False
                     tenHD = ""
                     mCurrentSheet = .Sheet
                     .Row = 46
+                    i = 1
                     Do
                         .GetText .ColLetterToNumber("O"), .Row, maHD
                          GetMaHoaDon maHD, tenHD
@@ -4437,12 +4438,15 @@ fps.EventEnabled(EventAllEvents) = False
                     
                     
                          .Col = .ColLetterToNumber("B")
+                         .Text = i
+                          i = i + 1
                          .Row = .Row + 1
                     Loop Until .Text = "aa"
                     
                     maHD = ""
                     tenHD = ""
                     .Row = .Row + 3
+                    i = 1
                     Do
                         .GetText .ColLetterToNumber("O"), .Row, maHD
                          GetMaHoaDon maHD, tenHD
@@ -4517,6 +4521,8 @@ fps.EventEnabled(EventAllEvents) = False
                          
                          
                          .Col = .ColLetterToNumber("B")
+                         .Text = i
+                          i = i + 1
                          .Row = .Row + 1
                     Loop Until .Text = "bb"
 
@@ -4528,6 +4534,7 @@ fps.EventEnabled(EventAllEvents) = False
               tenHD = ""
               mCurrentSheet = .Sheet
                 .Row = 45
+                i = 1
                 Do
                     .GetText .ColLetterToNumber("O"), .Row, maHD
                      GetMaHoaDon maHD, tenHD
@@ -4588,6 +4595,8 @@ fps.EventEnabled(EventAllEvents) = False
                             UpdateCell_sheet fps, 3, .Col, .Row, .Text
                      End If
                      .Col = .ColLetterToNumber("B")
+                     .Text = i
+                     i = i + 1
                      .Row = .Row + 1
                 Loop Until .Text = "aa"
 
