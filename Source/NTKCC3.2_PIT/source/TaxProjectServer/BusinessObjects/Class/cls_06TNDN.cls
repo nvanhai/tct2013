@@ -1446,9 +1446,9 @@ Public Function InsertHDR() As String
         ThueTKy = V66 * V67
         ThueTKy2 = ThueTKy
         THUECL = "0"
-        GTTinhThue = "0"
-        GTTTCL = V64 - V65
-        DSoCL = "0"
+        GTTinhThue = V64 - V65
+        GTTTCL = GTTinhThue
+        DSoCL = DoanhSo
         DANHAN = "''"
         
         'Bo sung theo TT151
