@@ -660,20 +660,19 @@ End Sub
 'End Sub
 
 Public Function CheckValidData() As Boolean
-    Dim varCheckValue As Variant, varNoteValue As Variant
+    Dim NGAYNOP As Variant, ngayHienTai As Variant
     
     CheckValidData = True
     With fps
         .Sheet = 1
-        .GetText .ColLetterToNumber("E"), 36, varCheckValue
-        .GetText .ColLetterToNumber("M"), 36, varNoteValue
-        If CStr(varCheckValue) = "1" And Trim(CStr(varNoteValue)) = "" Then
-            .Sheet = .SheetCount
-            .SetText 2, 14, "0"
+        
+        ' check ngay nop khong dc lon hon ngay hien tai
+        .GetText .ColLetterToNumber("E"), 32, NGAYNOP
+        ngayHienTai = IIf(Len(Day(Now())) = 1, "0" & Day(Now()), Day(Now())) & "/" & IIf(Len(Month(Now())) = 1, "0" & Month(Now()), Month(Now())) & "/" & Year(Now())
+        ngayHienTai = DateSerial(Int(Mid$(ngayHienTai, 7, 4)), Int(Mid$(ngayHienTai, 4, 2)), Int(Mid$(ngayHienTai, 1, 2)))
+        NGAYNOP = DateSerial(Int(Mid$(NGAYNOP, 7, 4)), Int(Mid$(NGAYNOP, 4, 2)), Int(Mid$(NGAYNOP, 1, 2)))
+        If NGAYNOP > ngayHienTai Then
             CheckValidData = False
-        Else
-            .Sheet = .SheetCount
-            .SetText 2, 14, "1"
         End If
 
     End With
@@ -2379,6 +2378,8 @@ Public Function InsertDTL_PL017() As String
     Dim strFileName As String
     Dim fso         As New FileSystemObject
     
+    Dim rowLast   As Integer
+    
     'kiem tra ton tai tep *.dbf chua
     '    strFileName = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "P3" & sKyKeKhai & ".DBF"
     '    If fso.FileExists(strFileName) = False Then
@@ -2436,7 +2437,7 @@ Public Function InsertDTL_PL017() As String
         
         matkhai = "'01/GTGT'"
        ' mact = "'1001'"
-        STT = 1
+        'STT = 1
 '        STT2 = 0
 '        STTIN = "'A'"
         MAPL = "'01-7/GTGT'"
@@ -2460,6 +2461,13 @@ Public Function InsertDTL_PL017() As String
         
        
         .Sheet = 4
+        .Col = .ColLetterToNumber("B")
+        .Row = 7
+        
+        Do
+        STT = STT + 1
+        
+        
         .GetText .ColLetterToNumber("C"), 7, TENCT
 
         If TENCT = vbNullString Then
@@ -2507,6 +2515,11 @@ Public Function InsertDTL_PL017() As String
         sSQLVal = sSQLVal & STT & "," & TENCT & "," & DOANHTHU & "," & cqt & "," & TYLE & "," & THUEGTGT & "," & danhan & "," & Lan_quet
         
         sSQL = "INSERT INTO TMP_P7GT" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        
+            .Col = .ColLetterToNumber("B")
+            .Row = .Row + 1
+            rowLast = .Row
+        Loop Until .Text = "aa"
         
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")

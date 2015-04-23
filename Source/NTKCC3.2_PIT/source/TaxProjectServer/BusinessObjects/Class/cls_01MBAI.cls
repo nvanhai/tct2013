@@ -712,6 +712,7 @@ Public Function InsertDTL() As String
     Dim danhan As Variant
     Dim Lan_quet    As Variant
     
+    Dim rowLast   As Integer
       
     sSQLCol = "kylbo,madtnt,ngnop,MATHUE,MAPP,TENCT,mamuc,matm,MACT,STT,STT2,STTIN,TTHTK,MATKHAI,kykkhai" & _
               ",BacMB,SoThe,VONDK,ThuePN,tt,BACMB2,SOTHE2,VONDK2,THUEPN2,DANHAN,lan_quet"
@@ -920,7 +921,7 @@ Public Function InsertDTL() As String
             'so thu tu:
 '            If .Row = 44 Then
                 STT2 = "0"
-                STTIN = "'I'"
+                STTIN = "'1'"
 
 '            Else
 '                .GetText .ColLetterToNumber("B"), .Row, STT2
@@ -978,6 +979,11 @@ Public Function InsertDTL() As String
                 ThuePN = ThuePN
             End If
             
+            .Col = .ColLetterToNumber("B")
+            .Row = 49
+            
+        Do
+            
             .GetText .ColLetterToNumber("V"), 49, BACMB2
             
             If Trim(BACMB2) = vbNullString Then
@@ -1001,7 +1007,12 @@ Public Function InsertDTL() As String
             Else
                 THUEPN2 = THUEPN2
             End If
-          
+            
+            .Col = .ColLetterToNumber("B")
+            .Row = .Row + 1
+            rowLast = .Row
+        Loop Until .Text = "aa"
+
             tt = "''"
             
             'Lan quet
