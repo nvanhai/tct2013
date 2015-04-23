@@ -2343,7 +2343,7 @@ Public Function InsertDTL_PL017() As String
     Dim sSQLVal     As String
     Dim bln         As Boolean
    
-   
+    Dim LoaiKyKK   As Variant
     Dim kykkhai     As Variant
     Dim madtnt      As Variant
     Dim ngnop       As Variant
@@ -2435,7 +2435,7 @@ Public Function InsertDTL_PL017() As String
             kykkhai = TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year
         End If
         
-        matkhai = "'01/GTGT'"
+        matkhai = "'" & LOAI_TO_KHAI & "'"
        ' mact = "'1001'"
         'STT = 1
 '        STT2 = 0
@@ -2449,6 +2449,14 @@ Public Function InsertDTL_PL017() As String
             Lan_quet = "1"
         End If
         
+        ' Lay loai ky ke khai(thang/quy)
+        .GetText .ColLetterToNumber("AB"), 42, LoaiKyKK
+
+        If LoaiKyKK = "0" Then
+            LoaiKyKK = ".T."
+        Else
+            LoaiKyKK = ".F."
+        End If
         
 '        DVTinh = "''"
 '        TONGBANRA = "0"
