@@ -806,7 +806,7 @@ Public Function InsertDTL() As String
             If Trim(TENCT) = vbNullString Then
                 TENCT = "''"
             Else
-                TENCT = "'" & TENCT & "'"
+                TENCT = "'" & TAX_Utilities_Svr_New.Convert(CStr(TENCT), UNICODE, TCVN) & "'"
             End If
             
             mact = "'1000'"
@@ -1122,7 +1122,7 @@ Public Function InsertDTL() As String
             If Trim(TENCT) = vbNullString Then
                 TENCT = "''"
             Else
-                TENCT = "'" & TENCT & "'"
+                TENCT = "'" & TAX_Utilities_Svr_New.Convert(CStr(TENCT), UNICODE, TCVN) & "'"
             End If
             
             mact = "'3000'"
