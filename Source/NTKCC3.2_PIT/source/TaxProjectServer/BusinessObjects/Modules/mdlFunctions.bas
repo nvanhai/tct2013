@@ -507,7 +507,7 @@ Public Function InsertDTL_TGTC(ByRef dtl As TNCN_DTL) As String
     sSQLCol = sSQLCol + " values ("
 
     sSQLVal = dtl.Id & "," & dtl.Hdr_id & "," & dtl.matkhai & "," & dtl.madtnt & "," & dtl.KYLBO & "," & dtl.kykkhai & "," & dtl.TTHTK & "," & dtl.ngnop & "," & _
-    dtl.CTTN & "," & dtl.giatri & "," & dtl.DANHAN & "," & dtl.LAN_QUET & "," & dtl.ky_hieu & "," & dtl.MA_CQT
+    dtl.CTTN & "," & dtl.giatri & "," & dtl.danhan & "," & dtl.Lan_quet & "," & dtl.ky_hieu & "," & dtl.MA_CQT
     
     sSQL = sSQLCol & sSQLVal & " )"
     
@@ -781,7 +781,7 @@ Public Function InsertDTL_TGTC08(ByRef dtl As TNCN_DTL, rowID As Integer) As Str
         sSQLCol = sSQLCol + " values ("
     
         sSQLVal = dtl.Id & "," & dtl.Hdr_id & "," & dtl.matkhai & "," & dtl.madtnt & "," & dtl.KYLBO & "," & dtl.kykkhai & "," & dtl.TTHTK & "," & dtl.ngnop & "," & _
-        dtl.CTTN & "," & dtl.giatri & "," & dtl.DANHAN & "," & dtl.LAN_QUET & "," & dtl.ky_hieu & "," & dtl.MA_CQT
+        dtl.CTTN & "," & dtl.giatri & "," & dtl.danhan & "," & dtl.Lan_quet & "," & dtl.ky_hieu & "," & dtl.MA_CQT
         
         sSQL = sSQLCol & sSQLVal & " )"
     Else
@@ -789,7 +789,7 @@ Public Function InsertDTL_TGTC08(ByRef dtl As TNCN_DTL, rowID As Integer) As Str
         sSQLCol = sSQLCol + " values ("
     
         sSQLVal = dtl.Id & "," & dtl.Hdr_id & "," & dtl.matkhai & "," & dtl.madtnt & "," & dtl.KYLBO & "," & dtl.kykkhai & "," & dtl.TTHTK & "," & dtl.ngnop & "," & _
-        dtl.CTTN & "," & dtl.giatri & "," & dtl.DANHAN & "," & dtl.LAN_QUET & "," & dtl.ky_hieu & "," & dtl.MA_CQT & "," & rowID
+        dtl.CTTN & "," & dtl.giatri & "," & dtl.danhan & "," & dtl.Lan_quet & "," & dtl.ky_hieu & "," & dtl.MA_CQT & "," & rowID
         
         sSQL = sSQLCol & sSQLVal & " )"
 
@@ -870,7 +870,7 @@ ByVal ngnop As Variant, _
 ByVal KYLBO As Variant, _
 ByVal spathVat As Variant, _
 ByVal TTHTK As Variant, _
-ByVal LAN_QUET As Variant, _
+ByVal Lan_quet As Variant, _
 ByVal IsTKMonth As Boolean, _
 ByVal prefixTable As String, _
 ByVal MaMucTKC As String _
@@ -897,7 +897,7 @@ ByVal MaMucTKC As String _
     Dim SOCL        As Variant
     Dim SONGAYNC    As Variant
     Dim SOTIENNC    As Variant
-    Dim DANHAN      As Variant
+    Dim danhan      As Variant
     
     
     
@@ -940,7 +940,7 @@ ByVal MaMucTKC As String _
         matkhai = "'" & matkhai & "'"
         
         maTM = "''"   ' khong the lay duoc
-        DANHAN = "''"
+        danhan = "''"
         
         ' Insert so dieu chinh tang
         mact = "'1000'"
@@ -979,6 +979,18 @@ ByVal MaMucTKC As String _
                 MATHUE = "'04'"
                 MAPP = "'1'"
                 MaMuc = "'1550'"
+            Case "'01/MBAI'"
+                MATHUE = "'10'"
+                MAPP = "'1'"
+                MaMuc = "'1800'"
+            Case "'04/TNDN'"
+                MATHUE = "'23'"
+                MAPP = "'2'"
+                MaMuc = "'1050'"
+            Case "'06/TNDN'"
+                MATHUE = "''"
+                MAPP = "'2'"
+                MaMuc = "'1050'"
         End Select
 
         
@@ -992,7 +1004,7 @@ ByVal MaMucTKC As String _
         SOTIENNC = "0"
         SONGAYNC = "0"
         
-        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & Lan_quet & "," & danhan
                        
         sSQL = "INSERT INTO TMP_BS" & prefixTable & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -1062,7 +1074,7 @@ ByVal MaMucTKC As String _
                 SOCL = SOCL
             End If
             
-            sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & Lan_quet & "," & danhan
                            
             sSQL = "INSERT INTO TMP_BS" & prefixTable & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
                 
@@ -1088,7 +1100,7 @@ ByVal MaMucTKC As String _
         SODC = "0"
         SOCL = "0"
         
-        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & Lan_quet & "," & danhan
                        
         sSQL = "INSERT INTO TMP_BS" & prefixTable & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -1175,7 +1187,7 @@ ByVal MaMucTKC As String _
                 SOCL = SOCL
             End If
             
-            sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+            sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & Lan_quet & "," & danhan
                            
             sSQL = "INSERT INTO TMP_BS" & prefixTable & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -1201,7 +1213,7 @@ ByVal MaMucTKC As String _
         SODC = "0"
         SOCL = "0"
         
-        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & Lan_quet & "," & danhan
                        
         sSQL = "INSERT INTO TMP_BS" & prefixTable & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
         bln = clsDAO.ExecuteDLL(sSQL)
@@ -1281,7 +1293,7 @@ ByVal MaMucTKC As String _
             SOCL = SOCL
         End If
             
-        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & LAN_QUET & "," & DANHAN
+        sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & mact & "," & MACT2 & "," & MACT3 & "," & STT & "," & STT2 & "," & STTIN & "," & SOKK & "," & SODC & "," & SOCL & "," & SOTIENNC & "," & SONGAYNC & "," & Lan_quet & "," & danhan
                            
         sSQL = "INSERT INTO TMP_BS" & prefixTable & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -1296,11 +1308,11 @@ ByVal MaMucTKC As String _
 End Function
 'MaCT2 tren tmp_bs duoc tinh = mact tren KHBS neu to khai chinh co dong` dong
 'MaCT2 tren tmp_bs duoc tinh = chi tieu tuong ung(tren tep chi tieu) cua to khai chinh neu to khai chinh khong co' dong` dong
-Private Function GetMaCT2KHBS(ByVal toKhai As String, ByVal CTKHBS As String) As String
+Private Function GetMaCT2KHBS(ByVal tokhai As String, ByVal CTKHBS As String) As String
     Dim ctToKhai As String ' Luu cac chi tieu cua to khai KHBS
     GetMaCT2KHBS = CTKHBS
     If Trim(CTKHBS) <> vbNullString Then
-        If toKhai = "'03/TNDN'" Then
+        If tokhai = "'03/TNDN'" Then
             If CTKHBS = "C10" Then
                 GetMaCT2KHBS = "031"
             ElseIf CTKHBS = "C11" Then
@@ -1315,7 +1327,7 @@ Private Function GetMaCT2KHBS(ByVal toKhai As String, ByVal CTKHBS As String) As
                 GetMaCT2KHBS = "038"
             End If
         End If
-        If toKhai = "'02/NTNN'" Then
+        If tokhai = "'02/NTNN'" Then
             If CTKHBS = "7a" Then
                 GetMaCT2KHBS = "012"
             ElseIf CTKHBS = "7b" Then
@@ -1324,7 +1336,7 @@ Private Function GetMaCT2KHBS(ByVal toKhai As String, ByVal CTKHBS As String) As
                 GetMaCT2KHBS = "011"
             End If
         End If
-        If toKhai = "'04/NTNN'" Then
+        If tokhai = "'04/NTNN'" Then
             If CTKHBS = "5" Then
                 GetMaCT2KHBS = "005"
             ElseIf CTKHBS = "6" Then

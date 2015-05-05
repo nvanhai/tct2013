@@ -629,7 +629,26 @@ Private Sub fps_Click(ByVal Col As Long, ByVal Row As Long)
         End If
     End With
 End Sub
+Private Function checkNgayNop(ByVal vNgayNop As Variant, ByVal vNgayQuet As Variant)
+    Dim varNgayNop As Variant
+    Dim varNgayQuet As Variant
+    On Error GoTo e
+    
+    varNgayNop = DateSerial(Int(Right(CStr(vNgayNop), 4)), Int(Mid(CStr(vNgayNop), 4, 2)), Int(Left(CStr(vNgayNop), 2)))
+    varNgayQuet = DateSerial(Int(Right(CStr(vNgayQuet), 4)), Int(Mid(CStr(vNgayQuet), 4, 2)), Int(Left(CStr(vNgayQuet), 2)))
 
+    If Year(vNgayNop) > Year(vNgayQuet) Then
+        GoTo e
+    ElseIf Month(vNgayNop) > Month(vNgayQuet) Then
+        GoTo e
+    ElseIf Day(vNgayNop) > Day(vNgayQuet) Then
+        GoTo e
+    End If
+    Exit Function
+e:
+    DisplayMessage "0144", msOKOnly, miCriticalError
+
+End Function
 
 Public Function CheckValidData() As Boolean
     
@@ -1229,7 +1248,7 @@ Public Function InsertDTL_KHBS() As String
 
     End With
 
-    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "01/MBAI", ngnop, KYLBO, spathVat, TTHTK, Lan_quet, True, sKyKeKhai, MaMucKHBS)
+    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "01/MBAI", ngnop, KYLBO, spathVat, TTHTK, Lan_quet, True, Right(sKyKeKhai, 4), MaMucKHBS)
     
     InsertHDR_KHBS
     
@@ -1763,8 +1782,8 @@ Public Function TKTT() As Boolean
     
     strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_TKMB" & Right(sKyKeKhai, 4) & ".DBF"
     strFileNameDTL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_MBCT" & Right(sKyKeKhai, 4) & ".DBF"
-    strFileNameBS = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_BS" & sKyKeKhai & ".DBF"
-    strFileNameBSHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_ND" & sKyKeKhai & ".DBF"
+    strFileNameBS = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_BS" & Right(sKyKeKhai, 4) & ".DBF"
+    strFileNameBSHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_ND" & Right(sKyKeKhai, 4) & ".DBF"
     
     'file HDR
     If fso.FileExists(strFileNameHDR) = False Then
@@ -1847,62 +1866,56 @@ Public Function UpdateTHUETKY2() As Boolean
 End Function
 
 Public Function isToKhaiChinhThuc() As Boolean
-    Dim sSQL            As String
-    Dim rs              As ADODB.Recordset
-    Dim vKeKhai         As Variant
-    Dim vKeKhai_temp    As Variant
-    Dim vKyLB           As Variant
+    Dim sSQL As String
+    Dim rs As ADODB.Recordset
+    Dim vKeKhai As Variant
+    Dim vKeKhai_temp As Variant
+    Dim vKyLB As Variant
+    'them bien de kiem tra su ton tai cua bang dl
     Dim strTestFileName As String
-    Dim fso             As New FileSystemObject
-    Dim matkhai         As Variant
-     
-    Dim flag            As Boolean
+    Dim fso As New FileSystemObject
+    
+    Dim flag As Boolean
     'kiem tra da co to khai chinh thuc chua
     flag = True
     vKyLB = DateSerial(Int(Year(Now())), Int(Month(Now())), 1)
     vKeKhai = DateSerial(Int(Val(TAX_Utilities_Svr_New.Year)), Int(Val(TAX_Utilities_Svr_New.Month)), 1)
     vKeKhai_temp = sKyKeKhai
-
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
         clsDAO.Connect
-    End If
-
-    Do While flag
-   
-        strTestFileName = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_TKMB" & vKeKhai_temp & ".DBF"
-
-        'kiem tra neu co db thi moi thuc hien truy van
+   End If
+   Do While flag
+        strTestFileName = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_TKMB" & Right(vKeKhai_temp, 4) & ".DBF"
+        'kiem tra neu ton tai bang thi moi thuc hien truy van
         If fso.FileExists(strTestFileName) Then
-                   sSQL = "SELECT MADTNT, NGNOP FROM TMP_TKMB" & vKeKhai_temp & " WHERE MADTNT = " & "'" & strMST & "'" & " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='01/MBAI' "
-            Set rs = clsDAO.Execute(sSQL)
-        End If
+             sSQL = "SELECT * FROM TMP_TKMB" & Right(vKeKhai_temp, 4) & _
+             " WHERE  MADTNT = " & "'" & strMST & "'" & _
+             " AND (TTHTK = '1' or TTHTK = '3' or TTHTK = '4')"
         
+             Set rs = clsDAO.Execute(sSQL)
+        End If
         If rs Is Nothing Then
-            isToKhaiChinhThuc = False
+             isToKhaiChinhThuc = False
         Else
-            isToKhaiChinhThuc = True
-            Exit Do
+             isToKhaiChinhThuc = True
+             Exit Do
         End If
         
         If vKeKhai < vKyLB Then
             vKyLB = DateAdd("M", -1, vKyLB)
-
             ' ghep ten bang de kiem tra du lieu
             If Len(Month(vKyLB)) = 1 Then
                 vKeKhai_temp = "0" & Month(vKyLB) & Year(vKyLB)
             Else
                 vKeKhai_temp = Month(vKyLB) & Year(vKyLB)
             End If
-
             flag = True
         Else
             flag = False
         End If
-
-    Loop
- 
-    clsDAO.Disconnect
+   Loop
+   clsDAO.Disconnect
 End Function
 
 Public Function XoaTKTT() As Boolean
