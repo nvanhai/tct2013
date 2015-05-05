@@ -2413,19 +2413,19 @@ Public Function InsertDTL_PL017() As String
             ngnop = "CTOD('" & Format(ngnop, "mm/dd/yyyy") & "')"
         End If
 
-        .GetText .ColLetterToNumber("E"), 30, KYLBO
-
-        If Trim(KYLBO) = vbNullString Then
-            KYLBO = "CTOD('')"
-        Else
-
-            If Len(Trim(KYLBO)) = 6 Then
-                KYLBO = "'0" & KYLBO & "'"
-            Else
-                KYLBO = "'" & KYLBO & "'"
-            End If
-
-        End If
+'        .GetText .ColLetterToNumber("E"), 30, KYLBO
+'
+'        If Trim() = vbNullString Then
+'            KYLBO = "CTOD('')"
+'        Else
+'
+'            If Len(Trim(KYLBO)) = 6 Then
+'                KYLBO = "'0" & KYLBO & "'"
+'            Else
+'                KYLBO = "'" & KYLBO & "'"
+'            End If
+'
+'        End If
 
         'kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
         ' xet ky ke khai
@@ -2453,9 +2453,26 @@ Public Function InsertDTL_PL017() As String
         .GetText .ColLetterToNumber("AB"), 42, LoaiKyKK
 
         If LoaiKyKK = "0" Then
-            LoaiKyKK = ".T."
-        Else
             LoaiKyKK = ".F."
+            
+            .GetText .ColLetterToNumber("E"), 30, KYLBO
+
+            If Trim(KYLBO) = vbNullString Then
+                KYLBO = "CTOD('')"
+            Else
+                KYLBO = "'" & KYLBO & "'"
+            End If
+        Else
+            
+            LoaiKyKK = ".T."
+            
+            .GetText .ColLetterToNumber("E"), 30, KYLBO
+
+            If Trim(KYLBO) = vbNullString Then
+                KYLBO = "CTOD('')"
+            Else
+                KYLBO = "'" & Right(KYLBO, 6) & "'"
+            End If
         End If
         
 '        DVTinh = "''"
@@ -7821,9 +7838,9 @@ Public Function InsertHDR() As String
         .GetText .ColLetterToNumber("AB"), 42, LoaiKyKK
 
         If LoaiKyKK = "0" Then
-            LoaiKyKK = ".T."
-        Else
             LoaiKyKK = ".F."
+        Else
+            LoaiKyKK = ".T."
         End If
 
         ' Lay so lan quet
