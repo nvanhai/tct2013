@@ -7785,7 +7785,7 @@ Public Function InsertHDR() As String
             ct34 = 0
         End If
 
-        '       .GetText .ColLetterToNumber("Q"), 59, CT36
+        .GetText .ColLetterToNumber("W"), 59, CT36
         If Trim(CT36) = vbNullString Then
             CT36 = 0
         End If
