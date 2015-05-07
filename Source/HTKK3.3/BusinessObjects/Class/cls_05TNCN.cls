@@ -1493,10 +1493,6 @@ Public Sub finish()
         SSheet = .Sheet
 
         SetData
-        
-        If TAX_Utilities_v2.Year = "2012" Then
-            fillDataPL27
-        End If
         ' Lay cac mang MST trong cac bang ke va phu luc 05A, 05B
 '        prepareMSTCMT
 '
@@ -1518,7 +1514,10 @@ Public Sub finish()
 
 ''        If flgErr5A = True And flgErr5B = True Then kiemTraKhac
 
-
+        If TAX_Utilities_v2.Year = "2012" Then
+            fillDataPL27
+        End If
+        
         .ActiveSheet = ASheet
         .Sheet = SSheet
         .EventEnabled(EventAllEvents) = True
