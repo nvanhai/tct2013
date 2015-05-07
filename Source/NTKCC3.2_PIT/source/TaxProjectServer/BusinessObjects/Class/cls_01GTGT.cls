@@ -2533,8 +2533,14 @@ Public Function InsertDTL_PL017() As String
             THUEGTGT = Replace(THUEGTGT, ".", "")
         End If
         
-        If Len(kykkhai) < 7 Then kykkhai = "0" & kykkhai
-        kykkhai = "'" & kykkhai & "'"
+'        If Len(kykkhai) < 7 Then kykkhai = "0" & kykkhai
+'        kykkhai = "'" & kykkhai & "'"
+
+        If isTkQuy = True Then
+            kykkhai = "'" & Val(TAX_Utilities_Svr_New.Month) & "/" & TAX_Utilities_Svr_New.Year & "'"
+        Else
+            kykkhai = "'" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "'"
+        End If
         
         sSQLVal = kykkhai & "," & madtnt & "," & ngnop & "," & KYLBO & "," & matkhai & "," & TTHTK & "," & MAPL & ","
         sSQLVal = sSQLVal & STT & "," & TENCT & "," & DOANHTHU & "," & cqt & "," & TYLE & "," & THUEGTGT & "," & danhan & "," & Lan_quet
