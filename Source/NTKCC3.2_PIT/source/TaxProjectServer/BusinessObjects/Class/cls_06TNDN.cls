@@ -1424,21 +1424,23 @@ Public Function TKTT() As Boolean
 End Function
 
 Public Function UpdateTHUETKY2() As Boolean
-'    Dim sSQL As String
-'   If clsDAO.Connected = False Then
-'        clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
-'        clsDAO.Connect
-'   End If
-'
-'   sSQL = "UPDATE TMP_QT6" & sKyKeKhai & _
-'        " SET DATHAY=.T." & _
-'        " WHERE MADTNT = " & "'" & strMST & "' AND NAMQT = " & TAX_Utilities_Svr_New.Year
-'
-'   clsDAO.ExecuteDLL sSQL
-'
+    Dim sSQL As String
+   
+    If clsDAO.Connected = False Then
+        clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
+        clsDAO.Connect
+   End If
+   
+   sSQL = "UPDATE TMP_SMD" & Right(sKyKeKhai, 4) & _
+        " SET THUETKY2=1" & _
+        " WHERE AND MADTNT = " & "'" & strMST & "'" & _
+        " AND LOAITK='06/TNDN'"
+    
+   clsDAO.ExecuteDLL sSQL
+   
    UpdateTHUETKY2 = True
-'
-'   clsDAO.Disconnect
+   
+   clsDAO.Disconnect
 
 End Function
 

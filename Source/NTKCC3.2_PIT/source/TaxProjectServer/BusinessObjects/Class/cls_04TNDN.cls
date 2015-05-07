@@ -133,27 +133,21 @@ Private TKTHANG As Variant
 Private NgayPs As Variant
 Private MaMucKHBS As String
 
+Private isTkQuy As Boolean
+
 
 Public Function UpdateTHUETKY2() As Boolean
     Dim sSQL As String
-    
+   
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
         clsDAO.Connect
    End If
    
-   Dim vKyKK As String
-   If isTkQuy = True Then
-        vKyKK = Val(TAX_Utilities_Svr_New.Month) & "/" & TAX_Utilities_Svr_New.Year
-   Else
-        vKyKK = TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year
-   End If
-   
-   sSQL = "UPDATE TMP_TK" & sKyKeKhai & _
+   sSQL = "UPDATE TMP_QT4" & Right(sKyKeKhai, 4) & _
         " SET THUETKY2=1" & _
-        " WHERE MATHUE = '23' AND MAPP = '1' AND MADTNT = " & "'" & strMST & "'" & _
-        " AND KYKKHAI = '" & vKyKK & "'" & _
-        " AND MATKHAI = '" & LOAI_TO_KHAI & "'"
+        " WHERE AND MADTNT = " & "'" & strMST & "'" & _
+        " AND LOAITK='04/TNDN'"
     
    clsDAO.ExecuteDLL sSQL
    

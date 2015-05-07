@@ -1847,22 +1847,23 @@ End Function
 
 Public Function UpdateTHUETKY2() As Boolean
     Dim sSQL As String
-
+   
     If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
         clsDAO.Connect
    End If
    
-   sSQL = "UPDATE TMP_TZ" & sKyKeKhai & _
-        " SET THUETKY2 = 1 " & _
-        " WHERE MATHUE = '09' and MAPP = '02' AND MADTNT = " & "'" & strMST & "'" & _
-        " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='02T/KK-TNCN'"
-
+   sSQL = "UPDATE TMP_TKMB" & Right(sKyKeKhai, 4) & _
+        " SET THUETKY2=1" & _
+        " WHERE AND MADTNT = " & "'" & strMST & "'" & _
+        " AND LOAITK='01/MBAI'"
+    
    clsDAO.ExecuteDLL sSQL
-
+   
    UpdateTHUETKY2 = True
-
+   
    clsDAO.Disconnect
+
 End Function
 
 Public Function isToKhaiChinhThuc() As Boolean
