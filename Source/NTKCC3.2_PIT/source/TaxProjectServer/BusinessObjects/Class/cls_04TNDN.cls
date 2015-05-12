@@ -78,7 +78,7 @@ Attribute fps.VB_VarHelpID = -1
 Public PHONG_XU_LY_Y1 As String
 Public PHONG_XU_LY_X1 As String
 Public isExistFile As Boolean
-Public Lan_quet As Variant
+Public LAN_QUET As Variant
 Const STT_X = "M"
 Const STT_Y = 30
 'Public strMaSoTep As String
@@ -137,23 +137,23 @@ Private isTkQuy As Boolean
 
 
 Public Function UpdateTHUETKY2() As Boolean
-    Dim sSQL As String
-   
-    If clsDAO.Connected = False Then
-        clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
-        clsDAO.Connect
-   End If
-   
-   sSQL = "UPDATE TMP_QT4" & Right(sKyKeKhai, 4) & _
-        " SET THUETKY2=1" & _
-        " WHERE AND MADTNT = " & "'" & strMST & "'" & _
-        " AND LOAITK='04/TNDN'"
-    
-   clsDAO.ExecuteDLL sSQL
-   
+'    Dim sSQL As String
+'
+'    If clsDAO.Connected = False Then
+'        clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
+'        clsDAO.Connect
+'   End If
+'
+'   sSQL = "UPDATE TMP_QT4" & Right(sKyKeKhai, 4) & _
+'        " SET THUETKY2=1" & _
+'        " WHERE AND MADTNT = " & "'" & strMST & "'" & _
+'        " AND LOAITK='04/TNDN'"
+'
+'   clsDAO.ExecuteDLL sSQL
+
    UpdateTHUETKY2 = True
-   
-   clsDAO.Disconnect
+
+   'clsDAO.Disconnect
 
 End Function
 
@@ -581,8 +581,8 @@ Public Function InsertDTL() As String
    Dim tyle3    As Variant
    Dim thue3    As Variant
    Dim tong     As Variant
-   Dim Lan_quet As Variant
-   Dim danhan   As Variant
+   Dim LAN_QUET As Variant
+   Dim DANHAN   As Variant
    
    Dim bln  As Boolean
    
@@ -619,7 +619,7 @@ Public Function InsertDTL() As String
         MaMuc = "'1050'"
         maTM = "'1052'"
         namqt = "2014"
-        danhan = "''"
+        DANHAN = "''"
         kykkhai = "'" & TAX_Utilities_Svr_New.Year & "'"
 
         matkhai = "'" & LOAI_TO_KHAI & "'"
@@ -707,13 +707,13 @@ Public Function InsertDTL() As String
             tong = thue1 + thue2 + thue3
             
              'Lan quet
-            If Trim(Lan_quet) = vbNullString Then
-                Lan_quet = "1"
+            If Trim(LAN_QUET) = vbNullString Then
+                LAN_QUET = "1"
             End If
             
                 sSQLVal = madtnt & "," & ngnop & "," & namqt & "," & TTHTK & "," & MaMuc & "," & maTM & ","
                 sSQLVal = sSQLVal & matkhai & "," & kykkhai & "," & STT & "," & dthu1 & "," & tyle1 & "," & thue1 & ","
-                sSQLVal = sSQLVal & dthu2 & "," & tyle2 & "," & thue2 & "," & dthu3 & "," & tyle3 & "," & thue3 & "," & tong & "," & Lan_quet & "," & danhan
+                sSQLVal = sSQLVal & dthu2 & "," & tyle2 & "," & thue2 & "," & dthu3 & "," & tyle3 & "," & thue3 & "," & tong & "," & LAN_QUET & "," & DANHAN
    
                 sSQL = "INSERT INTO TMP_QT4D" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
                 bln = clsDAO.ExecuteDLL(sSQL)
@@ -764,7 +764,7 @@ Dim madtnt As Variant
 
     End With
 
-    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "04/TNDN", ngnop, KYLBO, spathVat, TTHTK, Lan_quet, False, Right(sKyKeKhai, 4), MaMucKHBS)
+    InsertDTL_KHBS = InsertDTL_KHBS156(fps, madtnt, "04/TNDN", ngnop, KYLBO, spathVat, TTHTK, LAN_QUET, False, Right(sKyKeKhai, 4), MaMucKHBS)
     
     InsertHDR_KHBS
     
@@ -798,7 +798,7 @@ Public Function InsertHDR_KHBS() As String
     Dim songay As Variant
     Dim SOTIEN As Variant
     Dim lydokhac As Variant
-    Dim danhan As Variant
+    Dim DANHAN As Variant
     
     With fps
         .Sheet = 1
@@ -900,7 +900,7 @@ Public Function InsertHDR_KHBS() As String
             lydokhac = "'" & TAX_Utilities_Svr_New.Convert(CStr(lydokhac), UNICODE, TCVN) & "'"
         End If
     
-        danhan = "''"
+        DANHAN = "''"
         
         If clsDAO.Connected = False Then
             clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
@@ -911,7 +911,7 @@ Public Function InsertHDR_KHBS() As String
             "lenhhoan,ngayhoan,HANNOP,cqt,songay,SOTIEN,lydokhac,DANHAN,LAN_QUET"
             
         sSQLVal = madtnt & "," & kykkhai & "," & matkhai & "," & MATHUE & "," & MaMuc & "," & maTM & "," & MAPP & "," & ngnop & "," & TTHTK & "," & KYLBO & "," & songaycn & "," & sotiencn & "," & tienhoan & "," & _
-            lenhhoan & "," & ngayhoan & "," & HANNOP & "," & cqt & "," & songay & "," & SOTIEN & "," & lydokhac & "," & danhan & "," & Lan_quet
+            lenhhoan & "," & ngayhoan & "," & HANNOP & "," & cqt & "," & songay & "," & SOTIEN & "," & lydokhac & "," & DANHAN & "," & LAN_QUET
         
         sSQL = "INSERT INTO TMP_ND" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
@@ -958,7 +958,7 @@ Public Function InsertHDR() As String
     Dim CHUNGCHI    As Variant
     Dim nganh   As Variant
     Dim hthuc_nop   As Variant
-    Dim Lan_quet As Variant
+    Dim LAN_QUET As Variant
     Dim ITKHAI_ID As Variant
     
     Dim bln  As Boolean
@@ -1098,8 +1098,8 @@ Public Function InsertHDR() As String
         
         hthuc_nop = "''"
         'Lan quet
-        If Trim(Lan_quet) = vbNullString Then
-            Lan_quet = "1"
+        If Trim(LAN_QUET) = vbNullString Then
+            LAN_QUET = "1"
         End If
         ITKHAI_ID = "0"
         
@@ -1120,7 +1120,7 @@ Public Function InsertHDR() As String
     sSQLVal = sSQLVal & kyttden & "," & tien & "," & MaVach & "," & TTHTK & "," & ngnhap & "," & HANNOP & ","
     sSQLVal = sSQLVal & dathay & "," & KYLBO & "," & MaMuc & "," & maTM & "," & SHTEP & "," & DaGhi & "," & daghi1 & "," & DAGHI2 & ","
     sSQLVal = sSQLVal & AUTO_CAL & "," & lanbs & "," & tiencl & "," & TENNV & "," & CHUNGCHI & ","
-    sSQLVal = sSQLVal & nganh & "," & hthuc_nop & "," & Lan_quet & "," & ITKHAI_ID
+    sSQLVal = sSQLVal & nganh & "," & hthuc_nop & "," & LAN_QUET & "," & ITKHAI_ID
     
     sSQL = "INSERT INTO TMP_QT4" & Right(sKyKeKhai, 4) & _
      "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
@@ -1235,7 +1235,7 @@ Public Function TKTT() As Boolean
         TKTT = False
     End If
 
-    Lan_quet = TinhSoLanQuet + 1
+    LAN_QUET = TinhSoLanQuet + 1
     clsDAO.Disconnect
 
 End Function
@@ -1466,15 +1466,15 @@ Public Function TinhSoLanQuet() As Integer
     Dim strFileNameDTL As String
     Dim LAN_QUET1 As Variant
    
-    strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_TK" & sKyKeKhai & ".DBF"
+    strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_QT4" & Right(sKyKeKhai, 4) & ".DBF"
     If fso.FileExists(strFileNameHDR) = True Then
         If clsDAO.Connected = False Then
         clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
         clsDAO.Connect
         End If
-            sSQL = "SELECT max(LAN_QUET) as LAN_QUET  FROM TMP_TK" & sKyKeKhai & _
+            sSQL = "SELECT max(LAN_QUET) as LAN_QUET  FROM TMP_QT4" & Right(sKyKeKhai, 4) & _
                 " WHERE MADTNT = " & "'" & strMST & "'" & _
-                " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Month & "/" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='" & LOAI_TO_KHAI & "'"
+                " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Year & "'"
             Set rs = clsDAO.Execute(sSQL)
             If Not rs Is Nothing Then
                  LAN_QUET1 = rs.Fields("LAN_QUET")
