@@ -1846,24 +1846,26 @@ Public Function TKTT() As Boolean
 End Function
 
 Public Function UpdateTHUETKY2() As Boolean
-    Dim sSQL As String
-   
-    If clsDAO.Connected = False Then
-        clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
-        clsDAO.Connect
-   End If
-   
-   sSQL = "UPDATE TMP_TKMB" & Right(sKyKeKhai, 4) & _
-        " SET THUETKY2=1" & _
-        " WHERE AND MADTNT = " & "'" & strMST & "'" & _
-        " AND LOAITK='01/MBAI'"
-    
-   clsDAO.ExecuteDLL sSQL
-   
+'    Dim sSQL As String
+'
+'    If clsDAO.Connected = False Then
+'        clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
+'        clsDAO.Connect
+'   End If
+'
+'   sSQL = "UPDATE TMP_TKMB" & Right(sKyKeKhai, 4) & _
+'        " SET THUETKY2=1" & _
+'        " WHERE AND MADTNT = " & "'" & strMST & "'" & _
+'        " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Year & "'" & _
+'        " AND LAN_QUET = ''" & _
+'        " AND LOAITK='01/MBAI'"
+'
+'   clsDAO.ExecuteDLL sSQL
+'
    UpdateTHUETKY2 = True
-   
-   clsDAO.Disconnect
-
+'
+'   clsDAO.Disconnect
+'
 End Function
 
 Public Function isToKhaiChinhThuc() As Boolean
@@ -2168,20 +2170,19 @@ Public Function TinhSoLanQuet() As Integer
     Dim LAN_QUET1 As Variant
     
    
-        strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_TKMB" & sKyKeKhai & ".DBF"
+        strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_TKMB" & Right(sKyKeKhai, 4) & ".DBF"
         If fso.FileExists(strFileNameHDR) = True Then
             If clsDAO.Connected = False Then
             clsDAO.CreateConnectionString spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile")
             clsDAO.Connect
             End If
-             sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM TMP_TKMB" & sKyKeKhai & _
+             sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM TMP_TKMB" & Right(sKyKeKhai, 4) & _
                     " WHERE MADTNT = " & "'" & strMST & "'" & _
                     " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Year & "' AND MATKHAI='01/MBAI'" & " AND (TTHTK = '1' or TTHTK = '3' )"
     
                 Set rs = clsDAO.Execute(sSQL)
                 If Not rs Is Nothing Then
                      TinhSoLanQuet = rs.Fields("LAN_QUET")
-
                 Else
                      TinhSoLanQuet = 0
                 End If
