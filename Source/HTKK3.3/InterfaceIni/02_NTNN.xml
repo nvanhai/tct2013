@@ -2,8 +2,8 @@
 <Sections >
 	<Section Dynamic="0" MaxRows="0">
 		<Cells>			
-			<Cell CellID="N_22" MaxLen="300" MinValue="" MaxValue="" HelpContextID=""/>		
-			<Cell CellID="AH_22" MaxLen="10" MinValue="" MaxValue="" HelpContextID=""/>
+			<Cell CellID="N_22" MaxLen="300" MinValue="" MaxValue="" HelpContextID="80121"/>		
+			<Cell CellID="AH_22" MaxLen="10" MinValue="" MaxValue="" HelpContextID="80121"/>
 			
 			<Cell CellID="W_30" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="80126"/>		
 			<Cell CellID="AF_30" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="80127"/>

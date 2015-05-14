@@ -305,6 +305,10 @@ Public Sub Prepare2()
             .Row = 4
             .Col = .ColLetterToNumber("D")
             .Lock = False
+            
+            .Row = 6
+            .Col = .ColLetterToNumber("D")
+            .Lock = False
         Else
 '            For i = 0 To UBound(arrRow)
 '                .Row = arrRow(i)
@@ -329,6 +333,10 @@ Public Sub Prepare2()
 '            .Lock = True
             
             .Row = 4
+            .Col = .ColLetterToNumber("D")
+            .Lock = True
+            
+            .Row = 6
             .Col = .ColLetterToNumber("D")
             .Lock = True
         End If
