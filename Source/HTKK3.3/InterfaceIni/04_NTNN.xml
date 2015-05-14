@@ -2,6 +2,9 @@
 <Sections >
 	<Section Dynamic="0" MaxRows="0">
 		<Cells>
+			<Cell CellID="N_21" MaxLen="300" MinValue="" MaxValue="" HelpContextID="80121"/>		
+			<Cell CellID="AH_21" MaxLen="10" MinValue="" MaxValue="" HelpContextID="80121"/>
+			
 			<Cell CellID="T_30" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="82122"/>		
 			<Cell CellID="T_31" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="82126"/>
 			<Cell CellID="T_32" MaxLen="" MinValue="0" MaxValue="999999999999999" HelpContextID="82130"/>			
