@@ -1343,7 +1343,7 @@ Public Function InsertHDR_KHBS() As String
             lenhhoan = "'" & TAX_Utilities_Svr_New.Convert(CStr(lenhhoan), UNICODE, TCVN) & "'"
         End If
         
-        .GetText .ColLetterToNumber("E"), .MaxRows - 17, ngayhoan
+        .GetText .ColLetterToNumber("BE"), .MaxRows - 17, ngayhoan
 
         If Trim(ngayhoan) = vbNullString Then
             ngayhoan = "CTOD('')"
@@ -1354,7 +1354,7 @@ Public Function InsertHDR_KHBS() As String
         
         HANNOP = "CTOD('')"
         
-        .GetText .ColLetterToNumber("BI"), .MaxRows - 13, cqt
+        .GetText .ColLetterToNumber("BE"), .MaxRows - 13, cqt
         If Trim(cqt) = vbNullString Then
             cqt = "''"
         Else
