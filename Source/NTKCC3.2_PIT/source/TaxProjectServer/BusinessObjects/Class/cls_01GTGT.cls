@@ -5532,7 +5532,7 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'001'"
         DSO = "0"
-        .GetText .ColLetterToNumber("W"), 46, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 45, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
@@ -5761,13 +5761,13 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'004'"
         
-        .GetText .ColLetterToNumber("Q"), 49, DSO
+        .GetText .ColLetterToNumber("Q"), 48, DSO
 
         If Trim(DSO) = vbNullString Then
             DSO = "0"
         End If
 
-        .GetText .ColLetterToNumber("W"), 49, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 48, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
@@ -5845,7 +5845,7 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'005'"
         DSO = "0"
-        .GetText .ColLetterToNumber("W"), 50, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 49, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
@@ -5997,7 +5997,7 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'007'"
         THUEGTGT = "0"
-        .GetText .ColLetterToNumber("Q"), 52, DSO
+        .GetText .ColLetterToNumber("Q"), 51, DSO
 
         If Trim(DSO) = vbNullString Then
             DSO = "0"
@@ -6075,13 +6075,13 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'008'"
         
-        .GetText .ColLetterToNumber("Q"), 53, DSO
+        .GetText .ColLetterToNumber("Q"), 52, DSO
 
         If Trim(DSO) = vbNullString Then
             DSO = "0"
         End If
 
-        .GetText .ColLetterToNumber("W"), 53, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 52, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
@@ -6159,7 +6159,7 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'009'"
         THUEGTGT = "0"
-        .GetText .ColLetterToNumber("Q"), 54, DSO
+        .GetText .ColLetterToNumber("Q"), 53, DSO
 
         If Trim(DSO) = vbNullString Then
             DSO = "0"
@@ -6237,13 +6237,13 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'010'"
         
-        .GetText .ColLetterToNumber("Q"), 55, DSO
+        .GetText .ColLetterToNumber("Q"), 54, DSO
 
         If Trim(DSO) = vbNullString Then
             DSO = "0"
         End If
 
-        .GetText .ColLetterToNumber("W"), 55, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 54, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
@@ -6321,13 +6321,13 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'011'"
         
-        .GetText .ColLetterToNumber("Q"), 56, DSO
+        .GetText .ColLetterToNumber("Q"), 55, DSO
 
         If Trim(DSO) = vbNullString Then
             DSO = "0"
         End If
 
-        .GetText .ColLetterToNumber("W"), 56, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 55, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
@@ -6406,7 +6406,7 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'025'"
         THUEGTGT = "0"
-        .GetText .ColLetterToNumber("Q"), 57, DSO
+        .GetText .ColLetterToNumber("Q"), 56, DSO
 
         If Trim(DSO) = vbNullString Then
             DSO = "0"
@@ -6485,13 +6485,13 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'012'"
         
-        .GetText .ColLetterToNumber("Q"), 58, DSO
+        .GetText .ColLetterToNumber("Q"), 57, DSO
 
         If Trim(DSO) = vbNullString Then
             DSO = "0"
         End If
 
-        .GetText .ColLetterToNumber("W"), 58, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 57, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
@@ -6569,7 +6569,7 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'013'"
         DSO = "0"
-        .GetText .ColLetterToNumber("W"), 59, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 58, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
@@ -6722,7 +6722,7 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'015'"
         DSO = "0"
-        .GetText .ColLetterToNumber("W"), 61, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 60, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
@@ -6800,7 +6800,7 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'016'"
         DSO = "0"
-        .GetText .ColLetterToNumber("W"), 62, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 61, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
@@ -6878,7 +6878,7 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'017'"
         DSO = "0"
-        .GetText .ColLetterToNumber("W"), 63, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 62, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
@@ -7031,7 +7031,7 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'019'"
         
-        .GetText .ColLetterToNumber("W"), 65, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 64, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
@@ -7109,7 +7109,7 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'020'"
         
-        .GetText .ColLetterToNumber("W"), 66, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 65, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
@@ -7265,7 +7265,7 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'021'"
         
-        .GetText .ColLetterToNumber("W"), 68, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 67, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
@@ -7343,7 +7343,7 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'022'"
         
-        .GetText .ColLetterToNumber("W"), 69, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 68, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
@@ -7421,7 +7421,7 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'023'"
         
-        .GetText .ColLetterToNumber("W"), 71, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 70, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
@@ -7557,7 +7557,7 @@ Public Function InsertDTL() As String
         'Chi tieu
         CT_KT = "'024'"
         
-        .GetText .ColLetterToNumber("W"), 73, THUEGTGT
+        .GetText .ColLetterToNumber("W"), 72, THUEGTGT
 
         If Trim(THUEGTGT) = vbNullString Then
             THUEGTGT = "0"
