@@ -876,7 +876,7 @@ Public Function InsertHDR_KHBS() As String
         
         HANNOP = "CTOD('')"
         
-        .GetText .ColLetterToNumber("BI"), .MaxRows - 13, cqt
+        .GetText .ColLetterToNumber("BE"), .MaxRows - 13, cqt
         If Trim(cqt) = vbNullString Then
             cqt = "''"
         Else
