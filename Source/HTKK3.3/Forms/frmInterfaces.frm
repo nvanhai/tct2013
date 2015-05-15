@@ -1197,6 +1197,7 @@ On Error GoTo ErrHandle
 incSession = 0
 
 fpSpread1.EventEnabled(EventAllEvents) = False
+fpSpread1.AutoCalc = False
     ' Truong hop them du lieu va xoa du lieu da ton tai
     If themXoaDuLieu Then
         ResetData
@@ -1465,6 +1466,7 @@ ProgressBar1.value = fpSpread2.Row
     Loop
  ProgressBar1.Visible = False
  Frame2.Enabled = True
+ fpSpread1.AutoCalc = True
  fpSpread1.EventEnabled(EventAllEvents) = True
  If Not objTaxBusiness Is Nothing Then objTaxBusiness.FinishImport
  
@@ -2841,9 +2843,9 @@ Private Sub moveDataToKhai5A()
             If (pRow <= blockRow + 1) Or ((blockRow * stepRow) + 1 > lrowCount) Then
                 'dhdang sua ngay 27/05
                 If mCurrentSheet = 2 Then
-                    ReDim fparray(0, 10) As Variant
+                    ReDim fparray(0, 15) As Variant
                 ElseIf mCurrentSheet = 3 Then
-                    ReDim fparray(0, 5) As Variant
+                    ReDim fparray(0, 8) As Variant
                 ElseIf mCurrentSheet = 4 Then
                     ReDim fparray(0, 22) As Variant
                 End If
@@ -2875,9 +2877,9 @@ Private Sub moveDataToKhai5A()
             ElseIf pRow = (blockRow * stepRow) + 1 Then
                 'dhdang sua ngay 27/05
                 If mCurrentSheet = 2 Then
-                    ReDim fparray(50, 10) As Variant
+                    ReDim fparray(50, 15) As Variant
                 ElseIf mCurrentSheet = 3 Then
-                    ReDim fparray(50, 5) As Variant
+                    ReDim fparray(50, 8) As Variant
                 ElseIf mCurrentSheet = 4 Then
                     ReDim fparray(50, 22) As Variant
                 End If
@@ -4237,6 +4239,11 @@ Private Sub cmdExport_Click()
                         .Formula = ""
                         ' end
                         
+                        ' start
+                        .Col = .ColLetterToNumber("S")
+                        .Formula = ""
+                        ' end
+                        
                         .Col = .ColLetterToNumber("G")
                         .Text = "x"
                         .TypeHAlign = TypeHAlignCenter
@@ -4245,6 +4252,12 @@ Private Sub cmdExport_Click()
                         .Col = .ColLetterToNumber("Q")
                         .Formula = ""
                         ' end
+                        
+                        ' start
+                        .Col = .ColLetterToNumber("S")
+                        .Formula = ""
+                        ' end
+                        
                         .Col = .ColLetterToNumber("G")
                         .Text = ""
                     End If
@@ -15907,7 +15920,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), rowStart + a, .ColLetterToNumber("O"), (rowStart + a + 1)
                     '.CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + a, .ColLetterToNumber("Q"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), rowStart + a, .ColLetterToNumber("S"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), rowStart + a, .ColLetterToNumber("S"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("T"), rowStart, .ColLetterToNumber("BK"), rowStart + a, .ColLetterToNumber("T"), (rowStart + a + 1)
                     
                     a = a + 2
                 ElseIf a <> 0 Then
@@ -15918,7 +15932,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
                     .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), rowStart + a - 1, .ColLetterToNumber("O"), rowStart + a
                     '.CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + a - 1, .ColLetterToNumber("Q"), rowStart + a
-                    .CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), rowStart + a - 1, .ColLetterToNumber("S"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), rowStart + a - 1, .ColLetterToNumber("S"), rowStart + a
+                    .CopyRange .ColLetterToNumber("T"), rowStart, .ColLetterToNumber("BK"), rowStart + a - 1, .ColLetterToNumber("T"), rowStart + a
 
                     a = a * 2
                 End If
@@ -15941,7 +15956,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), 1024 + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
                     .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), 1024 + rowStart - 1, .ColLetterToNumber("O"), rowStart + 1024 * a
                     '.CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), 1024 + rowStart - 1, .ColLetterToNumber("Q"), rowStart + 1024 * a
-                    .CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), 1024 + rowStart - 1, .ColLetterToNumber("S"), rowStart + 1024 * a
+                    '.CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), 1024 + rowStart - 1, .ColLetterToNumber("S"), rowStart + 1024 * a
+                    .CopyRange .ColLetterToNumber("T"), rowStart, .ColLetterToNumber("BK"), 1024 + rowStart - 1, .ColLetterToNumber("T"), rowStart + 1024 * a
                         
                     a = a + 1
                 Loop
@@ -15953,7 +15969,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
                 .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
                 .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), du + rowStart - 1, .ColLetterToNumber("O"), rowStart + 1024 * a
                 '.CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), du + rowStart - 1, .ColLetterToNumber("Q"), rowStart + 1024 * a
-                .CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), du + rowStart - 1, .ColLetterToNumber("S"), rowStart + 1024 * a
+                '.CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), du + rowStart - 1, .ColLetterToNumber("S"), rowStart + 1024 * a
+                .CopyRange .ColLetterToNumber("T"), rowStart, .ColLetterToNumber("BK"), du + rowStart - 1, .ColLetterToNumber("T"), rowStart + 1024 * a
                         
             Else
                 .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), du + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * (a - 1)
@@ -15963,7 +15980,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
                 .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * (a - 1)
                 .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), du + rowStart - 1, .ColLetterToNumber("O"), rowStart + 1024 * (a - 1)
                 '.CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), du + rowStart - 1, .ColLetterToNumber("Q"), rowStart + 1024 * (a - 1)
-                .CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), du + rowStart - 1, .ColLetterToNumber("S"), rowStart + 1024 * (a - 1)
+                '.CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), du + rowStart - 1, .ColLetterToNumber("S"), rowStart + 1024 * (a - 1)
+                .CopyRange .ColLetterToNumber("T"), rowStart, .ColLetterToNumber("BK"), du + rowStart - 1, .ColLetterToNumber("T"), rowStart + 1024 * (a - 1)
                         
             End If
 
@@ -15981,7 +15999,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
                     .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), rowStart + a, .ColLetterToNumber("O"), (rowStart + a + 1)
                 '    .CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + a, .ColLetterToNumber("Q"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), rowStart + a, .ColLetterToNumber("S"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), rowStart + a, .ColLetterToNumber("S"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("T"), rowStart, .ColLetterToNumber("BK"), rowStart + a, .ColLetterToNumber("T"), (rowStart + a + 1)
 
                     a = a + 2
                 ElseIf a <> 0 Then
@@ -15992,7 +16011,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
                     .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
                     .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), rowStart + a - 1, .ColLetterToNumber("O"), rowStart + a
                     '.CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + a - 1, .ColLetterToNumber("Q"), rowStart + a
-                    .CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), rowStart + a - 1, .ColLetterToNumber("S"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), rowStart + a - 1, .ColLetterToNumber("S"), rowStart + a
+                    .CopyRange .ColLetterToNumber("T"), rowStart, .ColLetterToNumber("BK"), rowStart + a - 1, .ColLetterToNumber("T"), rowStart + a
 
                     a = a * 2
                 End If
@@ -16006,7 +16026,8 @@ Public Sub copyFormulasSheet2(numRow As Long, fps As fpSpread, rowStart As Long)
             .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + (numRow - a - 1), .ColLetterToNumber("B"), rowStart + a
             .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("O"), rowStart + (numRow - a - 1), .ColLetterToNumber("O"), rowStart + a
             '.CopyRange .ColLetterToNumber("Q"), rowStart, .ColLetterToNumber("BJ"), rowStart + (numRow - a - 1), .ColLetterToNumber("Q"), rowStart + a
-            .CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), rowStart + (numRow - a - 1), .ColLetterToNumber("S"), rowStart + a
+            '.CopyRange .ColLetterToNumber("S"), rowStart, .ColLetterToNumber("BK"), rowStart + (numRow - a - 1), .ColLetterToNumber("S"), rowStart + a
+            .CopyRange .ColLetterToNumber("T"), rowStart, .ColLetterToNumber("BK"), rowStart + (numRow - a - 1), .ColLetterToNumber("T"), rowStart + a
             
         End If
             
@@ -16242,7 +16263,7 @@ Public Sub copyFormulasSheet4_1(numRow As Long, fps As fpSpread, rowStart As Lon
     With fps
 
         .sheet = 4
-            
+        .AutoCalc = False
         'truong hop so ban ghe len hon 10000
         If numRow >= 10000 Then
 
@@ -16300,6 +16321,7 @@ Public Sub copyFormulasSheet4_1(numRow As Long, fps As fpSpread, rowStart As Lon
             .CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), rowStart + (numRow - a - 1), .ColLetterToNumber("I"), rowStart + a
             .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("W"), rowStart + (numRow - a - 1), .ColLetterToNumber("P"), rowStart + a
         End If
+        .AutoCalc = True
     End With
 End Sub
 
