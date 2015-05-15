@@ -319,22 +319,24 @@ Public Sub Prepare2()
         arrTuThang = Split(tuThang, "/")
         arrDenThang = Split(denThang, "/")
         
-        ' neu den thang < 7/2013
-        If Val(arrDenThang(1)) < 2013 Or (Val(arrDenThang(1)) = 2013 And Val(arrDenThang(0)) < 7) Then
-            .Row = 48
-            .Col = .ColLetterToNumber("K")
-            .value = 4000000 * Val(soThang)
-        ElseIf (Val(arrTuThang(1)) > 2013) Or ((Val(arrTuThang(1)) = 2013) And (Val(arrTuThang(0)) >= 7)) Then
-            .Row = 48
-            .Col = .ColLetterToNumber("K")
-            .value = 9000000 * Val(soThang)
-        Else
-            soThang1 = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy("06/2013")) + 1
-            soThang2 = DateDiff("M", Format_mmyyyy("07/2013"), Format_mmyyyy(CStr(denThang))) + 1
-            .Row = 48
-            .Col = .ColLetterToNumber("K")
-            .value = 4000000 * soThang1 + 9000000 * soThang2
-        End If
+        ' chi tieu giam tru cho ban than cho phep sua -> khong tinh lai doan nay
+        ' 14052015
+'        ' neu den thang < 7/2013
+'        If Val(arrDenThang(1)) < 2013 Or (Val(arrDenThang(1)) = 2013 And Val(arrDenThang(0)) < 7) Then
+'            .Row = 48
+'            .Col = .ColLetterToNumber("K")
+'            .value = 4000000 * Val(soThang)
+'        ElseIf (Val(arrTuThang(1)) > 2013) Or ((Val(arrTuThang(1)) = 2013) And (Val(arrTuThang(0)) >= 7)) Then
+'            .Row = 48
+'            .Col = .ColLetterToNumber("K")
+'            .value = 9000000 * Val(soThang)
+'        Else
+'            soThang1 = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy("06/2013")) + 1
+'            soThang2 = DateDiff("M", Format_mmyyyy("07/2013"), Format_mmyyyy(CStr(denThang))) + 1
+'            .Row = 48
+'            .Col = .ColLetterToNumber("K")
+'            .value = 4000000 * soThang1 + 9000000 * soThang2
+'        End If
         
         'check CT 15 < 0 thi khong cho nhap CT 16 tren PL 09-2
         .Sheet = phuLuc09_2_TNCN
