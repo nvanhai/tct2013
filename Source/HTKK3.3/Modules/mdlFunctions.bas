@@ -2395,12 +2395,24 @@ Public Function CheckPeriod(ByVal strMonth As String, ByVal strYear As String) A
                 DisplayMessage "0188", msOKOnly, miInformation
                 Exit Function
             ElseIf CInt(strYear) = CInt(Year(Date)) Then
-                If CInt(strMonth) = 1 And 1 > CInt(month(Date)) Then
-                    DisplayMessage "0188", msOKOnly, miInformation
-                    Exit Function
-                ElseIf CInt(strMonth) = 2 And 7 > CInt(month(Date)) Then
-                    DisplayMessage "0188", msOKOnly, miInformation
-                    Exit Function
+                If strQuy = "TK_QUY" Then
+                    If CInt(strYear) > CInt(Year(Date)) Then
+                        DisplayMessage "0188", msOKOnly, miInformation
+                        Exit Function
+                    ElseIf CInt(strYear) = CInt(Year(Date)) Then
+                        If GetNgayDauQuy(CInt(strMonth), CInt(strYear), iNgayTaiChinh, iThangTaiChinh) > Date Then
+                            DisplayMessage "0188", msOKOnly, miInformation
+                            Exit Function
+                        End If
+                    End If
+                Else
+                    If CInt(strMonth) = 1 And 1 > CInt(month(Date)) Then
+                        DisplayMessage "0188", msOKOnly, miInformation
+                        Exit Function
+                    ElseIf CInt(strMonth) = 2 And 7 > CInt(month(Date)) Then
+                        DisplayMessage "0188", msOKOnly, miInformation
+                        Exit Function
+                    End If
                 End If
             End If
         Else

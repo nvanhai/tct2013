@@ -14855,11 +14855,11 @@ Private Sub TonghopKHBS()
                     fpSpread1.sheet = fpSpread1.SheetCount - 1
                     fpSpread1.Col = lCol_temp
                     fpSpread1.Row = lRow_temp
-                    temp = lRow_temp - 18
+                    temp = lRow_temp - 21
                     ' kiem tra neu set lai cong thuc
                     ' sua ct tinh
-                    fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 15 + temp, vSoTien
-                    strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 15 + temp, CDbl(vSoNgay))
+                    fpSpread1.GetText fpSpread1.ColLetterToNumber("BH"), 17 + temp, vSoTien
+                    strFormula = getFormulaTienPNC(temp, CDbl(vSoTien), "BH" & 17 + temp, CDbl(vSoNgay))
                     
                     'fpSpread1.Formula = "IF((BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100)>0,ROUND(BH" & 15 + temp & "*BE" & 17 + temp & "*0.05/100,0),0)"
                     fpSpread1.Formula = strFormula
