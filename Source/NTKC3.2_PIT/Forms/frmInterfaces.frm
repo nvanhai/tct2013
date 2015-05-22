@@ -586,7 +586,7 @@ Private Sub cmdSave_Click()
         ' Kiem tra to khai BS'
         If verToKhai = 2 Then
             If isToKhaiCT = False Then
-                If idToKhai <> 1 Then ' neu la to khai 01GTGT thi van cho ghi BS
+                If idToKhai <> 1 Then ' neu la to khai 01GTGT thi van cho ghi BS ndviet
                     MessageBox "0116", msOKOnly, miWarning
                     Exit Sub
                 End If
