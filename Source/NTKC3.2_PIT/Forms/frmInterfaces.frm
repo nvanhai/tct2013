@@ -586,10 +586,8 @@ Private Sub cmdSave_Click()
         ' Kiem tra to khai BS'
         If verToKhai = 2 Then
             If isToKhaiCT = False Then
-                If idToKhai <> 1 Then ' neu la to khai 01GTGT thi van cho ghi BS ndviet
-                    MessageBox "0116", msOKOnly, miWarning
-                    Exit Sub
-                End If
+                MessageBox "0116", msOKOnly, miWarning
+                Exit Sub
             End If
         End If
         
@@ -1552,13 +1550,13 @@ Private Sub Command1_Click()
 'str2 = "aa999012100343639   032015017023002002<S01_7><S>abc~100000000~10100~20~400000~cde~200000000~10303~40~1600000</S></S01_7>"
 'Barcode_Scaned str2
 '
-'str2 = "bs999702100343639   04201500400400100101/0101/01/1900<S01><S></S><S>nop~2222222222~112/01/2015~30000000~10/10/2014~15000000~20~0~2000000000000~2000000~100~10000000~20000000~2000020000000~long~2222222222~112/01/2015~2000000~01/01/2015~20000000~20~0~20000000000000~2000000~30~300000000~200000~20000000200000</S><S>200000~10000000~2000000~20~2000000~12000000</S><S>~X</S><S>~~minh lan~21/04/2015~~1~1~01/04/2015</S></S01>"
-'Barcode_Scaned str2
-
-str2 = "bs999012100343639   04201400200400100101/0114/06/2006<S01><S></S><S>0~2543654~654654~657563~544475~2432546~19088308~6699960~5657750~463463~353430~654645~6346530~12312450~21520854~6699960~6155485~54654~54646~0~3611839~1436464~2175375~0~0~0</S><S>NNT~CT1~Huong Lan~20/05/2015~~1~1~1701~~~</S></S01>"
+str2 = "bs999012100343639   04201400400900100301/0114/06/2006<S01><S></S><S>0~2543654~654654~657563~544475~2432546~19088308~6699960~5657750~463463~353430~654645~6346530~12312450~21520854~6699960~6155485~54654~54646~20~3611819~150000~3461819~0~0~0</S><S>NNT~CT1~Huong Lan~20/05/2015~~1~1~1701~~~</S></S01>"
 Barcode_Scaned str2
 
-
+str2 = "bs999012100343639   042014004009002003<SKHBS><S>~~0~0~0</S><S>~~0~0~0</S><S>28/05/2015~373~312735~10000"
+Barcode_Scaned str2
+str2 = "bs999012100343639   0420140040090030030~~~10100~10101~3~150~~2175375~3461819~1286444~0~0~0</S></SKHBS>"
+Barcode_Scaned str2
 
 'str2 = "bs999012100343639   04201400100100100101/0114/06/2006<S01><S></S><S>0~2543654~654654~657563~544475~2432546~19088308~6699960~5657750~463463~353430~654645~6346530~12312450~21520854~6699960~6155485~54654~54646~0~3611839~1436464~2175375~0~0~0</S><S>NNT~CT1~Huong Lan~20/05/2015~~1~1~1701~~~</S></S01>"
 'Barcode_Scaned str2
@@ -5363,13 +5361,13 @@ Private Function formatMaToKhai(ByVal strID As String) As String
     strCode = Mid$(strID, Len(strID) - 1, 2)
     strItem = Left$(strID, Len(strID) - 2)
     If (strCode = "11") Then
-        strRetValue = "('" & strItem & "','" & strID & "','" & strItem & "13','" & strItem & "14')"
+        strRetValue = "('" & strItem & "','" & strID & "','" & strItem & "13','" & strItem & "14','" & strItem & "15')"
     ElseIf strCode = "13" Then
-        strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "','" & strItem & "14')"
+        strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "','" & strItem & "14','" & strItem & "15')"
     ElseIf strCode = "14" Then
-        strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "','" & strItem & "13')"
+        strRetValue = "('" & strItem & "','" & strItem & "11','" & strID & "','" & strItem & "13','" & strItem & "15')"
     Else
-        strRetValue = "('" & strID & "','" & strID & "11','" & strID & "13','" & strID & "14')"
+        strRetValue = "('" & strID & "','" & strID & "11','" & strID & "13','" & strID & "14','" & strID & "15')"
     End If
     formatMaToKhai = strRetValue
 End Function
