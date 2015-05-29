@@ -33,6 +33,8 @@ Private arrDenThang() As String
 Private soThang As Variant
 Private soThang1 As Long, soThang2 As Long
 
+Private ct28Default As Double
+
 
 Private Const phuLuc09_1_TNCN = 2
 Private Const phuLuc09_2_TNCN = 3
@@ -86,16 +88,19 @@ Public Sub Prepare1()
             .Row = 48
             .Col = .ColLetterToNumber("K")
             .value = 4000000 * Val(soThang)
+            ct28Default = 4000000 * Val(soThang)
         ElseIf (Val(arrTuThang(1)) > 2013) Or ((Val(arrTuThang(1)) = 2013) And (Val(arrTuThang(0)) >= 7)) Then
             .Row = 48
             .Col = .ColLetterToNumber("K")
             .value = 9000000 * Val(soThang)
+            ct28Default = 9000000 * Val(soThang)
         Else
             soThang1 = DateDiff("M", Format_mmyyyy(CStr(tuThang)), Format_mmyyyy("06/2013")) + 1
             soThang2 = DateDiff("M", Format_mmyyyy("07/2013"), Format_mmyyyy(CStr(denThang))) + 1
             .Row = 48
             .Col = .ColLetterToNumber("K")
             .value = 4000000 * soThang1 + 9000000 * soThang2
+            ct28Default = 4000000 * soThang1 + 9000000 * soThang2
         End If
                 
         ' Set format va gia tri cho ngay ky
@@ -1201,7 +1206,14 @@ Private Sub CheckDynamicError()
     Dim MSTDTNT As Variant, tSheet As Integer
     Dim ct12   As Variant, cT40 As Variant, mErrCT12 As Variant, iFlagErrCT12 As Integer
     
+    Dim ct28 As Variant
+    Dim vErCt28 As Variant
+    Dim iflagCt28 As Integer
+    
     With fps
+        .Sheet = .SheetCount
+        .GetText .ColLetterToNumber("E"), 65, vErCt28
+    
         CheckErrorMST
         'check thong tin header
         tSheet = .Sheet
@@ -1215,6 +1227,26 @@ Private Sub CheckDynamicError()
         mangMessage = "E_68~E_69~E_70~E_71~E_72~E_73~E_74~E_75~E_76"
         'check header
         checkErrorHeader fps, viTriHeaderTk, viTriSheetHeader, mangMessage, MSTDTNT
+        
+        
+        ' check chi tieu 28 bang gia tri mac dinh hoac bang 0
+        .Sheet = 1
+        .GetText .ColLetterToNumber("K"), 48, ct28
+        If Val(ct28) <> 0 And Val(ct28) <> ct28Default Then
+            .Col = .ColLetterToNumber("K")
+            .Row = 48
+            .BackColor = mErrorColor
+            .CellNote = vErCt28
+            iflagCt28 = 1
+        Else
+            .Col = .ColLetterToNumber("K")
+            .Row = 48
+            .BackColor = mNonErrorColor
+            .CellNote = ""
+        End If
+        
+        .Sheet = .SheetCount
+        .SetText .ColLetterToNumber("B"), 65, IIf(iflagCt28 = 1, "0", "1")
         
         .Sheet = tSheet
         ' Neu ton tai file data phu luc 09C thi kiem tra tren phu luc 09C
