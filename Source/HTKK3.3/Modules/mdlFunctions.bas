@@ -156,6 +156,8 @@ Public moTaBMauXML As String
 ' CD condensate
 ' KTN khi thien nhien
 Public strLoaiTkDk As String
+Public strLoadDataPl05_3 As Boolean
+Public countRowPL05_3 As Double
 
  
 Public strBarcodeInPDF As String    'Chua chuoi ma vach duoc in ra file PDF cuoi cung (Them vao) dung cho iHTKK
@@ -1311,7 +1313,17 @@ Public Sub SetupData(pGrid As fpSpread)
                     ParserCellID pGrid, vCellID, lCol, lRow
                     If GetAttribute(xmlNodeCell, "FirstCell") = "1" Then
                         lRows = GetDynRowCount(pGrid, xmlNodeCell.parentNode)
-                        InsertRow pGrid, lRow, lRows, True
+                        ' Xu ly rieng cho PL 05-3 vi co combo
+                        If GetAttribute(TAX_Utilities_v2.NodeMenu, "ID") = "17" And mCurrentSheet = 4 Then
+                            InsertRowNotFormat pGrid, lRow, lRows, True
+                            If strLoadDataPl05_3 = False Then
+                                countRowPL05_3 = 0
+                            End If
+                            strLoadDataPl05_3 = True
+                            countRowPL05_3 = countRowPL05_3 + 1
+                        Else
+                            InsertRow pGrid, lRow, lRows, True
+                        End If
                     End If
                     
                     'Xu ly mst phan thong tin header
@@ -4782,3 +4794,91 @@ Public Function getMST() As String
     Set xmlDomHeader = Nothing
     getMST = Trim(mstDN)
 End Function
+
+
+
+
+
+Public Sub InsertRowNotFormat(fpSpread1 As fpSpread, ByVal pRow As Long, lRows As Long, Optional blnFillingData As Boolean = False)
+    On Error GoTo ErrorHandle
+    
+    Dim i As Long, lBgColor As Long
+    Dim lRowCtrl As Long, lColCtrl As Long
+    'Dim mCurrentSheet As Long
+    
+    With fpSpread1
+        '.Visible = False
+        .ReDraw = False
+        '.Sheet = mCurrentSheet
+        .MaxRows = .MaxRows + lRows
+        .InsertRows pRow, lRows
+'        For lRowCtrl = 1 To lRows
+'
+'            .CopyRowRange pRow - lRowCtrl, pRow - lRowCtrl, pRow + lRows - lRowCtrl
+'            .Row = pRow - lRowCtrl
+'            '.RowHeight(pRow - lRowCtrl) = 14
+'            If Not blnFillingData Then
+'                For i = 1 To fpSpread1.MaxCols
+'                    '***************************
+'                    'ThanhDX added
+'                    'Date: 26/12/2005
+'                    .Col = i
+'                    lBgColor = .BackColor
+'                    .Row = pRow + lRows - lRowCtrl
+'                    If Not .Lock Then
+'                        'Set BgColor to inserted cell
+'                        If lBgColor <> &HC0C0FF And lBgColor <> 12713215 Then 'vbRed
+'                            .BackColor = lBgColor
+'                        Else
+'                            .BackColor = vbWhite
+'                        End If
+'                    '***************************
+'                    ' ThanhDX added
+'                    ' Date: 29/04/06
+'                    Else
+'                        If Not TAX_Utilities_v2.Data(mCurrentSheet - 1).nodeFromID( _
+'                           GetCellID(fpSpread1, i, pRow - lRowCtrl)) Is Nothing Then
+'                            If .BackColor = &HC0C0FF Or .BackColor = 12713215 Then
+'                                .BackColor = vbWhite
+'                            End If
+'                        End If
+'                    '***************************
+'                    End If
+'                    '***************************
+'                    ' Reset empty value for new row on grid
+'                    If .Lock = False Then
+'                        Select Case .CellType
+'                            Case CellTypeNumber
+'                                .SetText i, .Row, 0
+'                            Case Else
+'                                .SetText i, .Row, vbNullString
+'                        End Select
+'                        .CellNote = vbNullString
+'                    '***************************
+'                    ' ThanhDX added
+'                    ' Date: 08/04/06
+'                    Else
+'                        If Not TAX_Utilities_v2.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, i, pRow - lRowCtrl)) Is Nothing Then
+'                            Select Case .CellType
+'                                Case CellTypeNumber
+'                                    .SetText i, .Row, 0
+'                                Case Else
+'                                    .SetText i, .Row, vbNullString
+'                            End Select
+'                            .CellNote = vbNullString
+'                        End If
+'                    '***************************
+'                    End If
+'                Next i
+'            End If
+'        Next lRowCtrl
+        '.Visible = True
+.ReDraw = True
+    End With
+    
+    Exit Sub
+    
+ErrorHandle:
+    SaveErrorLog "mdlFunctions", "InsertRowNotFormat", Err.Number, Err.Description
+End Sub
+

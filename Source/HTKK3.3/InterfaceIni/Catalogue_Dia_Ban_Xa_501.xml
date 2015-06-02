@@ -1,0 +1,64 @@
+﻿<Sections Version="330">
+	<Section Dynamic="0" MaxRows="0">
+		<Items>
+			<Item Value ="0###501###50101###5010101###Phường Hải Châu I" />
+			<Item Value ="0###501###50101###5010103###Phường Thạch Thang" />
+			<Item Value ="0###501###50101###5010105###Phường Nam Dương" />
+			<Item Value ="0###501###50101###5010107###Phường Thanh Bình" />
+			<Item Value ="0###501###50101###5010109###Phường Thuận Phước" />
+			<Item Value ="0###501###50101###5010111###Phường Hải Châu II" />
+			<Item Value ="0###501###50101###5010113###Phường Phước Ninh" />
+			<Item Value ="0###501###50101###5010115###Phường Hòa Thuận" />
+			<Item Value ="0###501###50101###5010117###Phường Bình Hiên" />
+			<Item Value ="0###501###50101###5010119###Phường Bình Thuận" />
+			<Item Value ="0###501###50101###5010121###Phường Hòa Cường" />
+			<Item Value ="0###501###50101###5010125###Phường Hòa Thuận Đông" />
+			<Item Value ="0###501###50101###5010127###Phường Hòa Thuận Tây" />
+			<Item Value ="0###501###50101###5010129###Phường Hòa Cường Nam" />
+			<Item Value ="0###501###50101###5010131###Phường Hòa Cường Bắc" />
+			<Item Value ="0###501###50103###5010301###Phường Xuân Hà" />
+			<Item Value ="0###501###50103###5010303###Phường Thạc Gián" />
+			<Item Value ="0###501###50103###5010305###Phường Tam Thuận" />
+			<Item Value ="0###501###50103###5010309###Phường Tân Chính" />
+			<Item Value ="0###501###50103###5010311###Phường Chính Gián" />
+			<Item Value ="0###501###50103###5010313###Phường Vĩnh Trung" />
+			<Item Value ="0###501###50103###5010315###Phường An Khê" />
+			<Item Value ="0###501###50103###5010317###Phường Thanh Khê Đông" />
+			<Item Value ="0###501###50103###5010319###Phường Thanh Khê Tây" />
+			<Item Value ="0###501###50103###5010321###Phường Hòa Khê" />
+			<Item Value ="0###501###50105###5010501###Phường An Hải Tây" />
+			<Item Value ="0###501###50105###5010503###Phường Thọ Quang" />
+			<Item Value ="0###501###50105###5010505###Phường Phước Mỹ" />
+			<Item Value ="0###501###50105###5010507###Phường Nại Hiên Đông" />
+			<Item Value ="0###501###50105###5010509###Phường Mân Thái" />
+			<Item Value ="0###501###50105###5010511###Phường An Hải Bắc" />
+			<Item Value ="0###501###50105###5010513###Phường An Hải Đông" />
+			<Item Value ="0###501###50107###5010701###Phường Hòa Quý" />
+			<Item Value ="0###501###50107###5010703###Phường Mỹ An" />
+			<Item Value ="0###501###50107###5010704###Phường Khuê Mỹ" />
+			<Item Value ="0###501###50107###5010705###Phường Hòa Hải" />
+			<Item Value ="0###501###50109###5010901###Phường Hòa Khánh Bắc" />
+			<Item Value ="0###501###50109###5010903###Phường Hòa Hiệp Bắc" />
+			<Item Value ="0###501###50109###5010905###Phường Hòa Minh" />
+			<Item Value ="0###501###50109###5010907###Phường Hòa Hiệp Nam" />
+			<Item Value ="0###501###50109###5010909###Phường Hòa Khánh Nam" />
+			<Item Value ="0###501###50111###5011101###Xã Hòa Phú" />
+			<Item Value ="0###501###50111###5011103###Xã Hòa Sơn" />
+			<Item Value ="0###501###50111###5011107###Xã Hòa Châu" />
+			<Item Value ="0###501###50111###5011109###Xã Hòa Bắc" />
+			<Item Value ="0###501###50111###5011111###Xã Hòa Liên" />
+			<Item Value ="0###501###50111###5011113###Xã Hòa Ninh" />
+			<Item Value ="0###501###50111###5011117###Xã Hòa Nhơn" />
+			<Item Value ="0###501###50111###5011121###Xã Hòa Phong" />
+			<Item Value ="0###501###50111###5011123###Xã Hòa Tiến" />
+			<Item Value ="0###501###50111###5011125###Xã Hòa Phước" />
+			<Item Value ="0###501###50111###5011127###Xã Hòa Khương" />
+			<Item Value ="0###501###50115###5011501###Phường Khuê Trung" />
+			<Item Value ="0###501###50115###5011503###Phường Hòa Xuân" />
+			<Item Value ="0###501###50115###5011505###Phường Hòa Thọ Đông" />
+			<Item Value ="0###501###50115###5011507###Phường Hòa Thọ Tây" />
+			<Item Value ="0###501###50115###5011509###Phường Hòa An" />
+			<Item Value ="0###501###50115###5011511###Phường Hòa Phát" />
+		</Items>
+	</Section>	
+</Sections>
