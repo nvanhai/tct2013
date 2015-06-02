@@ -1,0 +1,15 @@
+﻿<Sections Version="330">
+	<Section Dynamic="0" MaxRows="0">
+		<Items>
+			<Item Value ="0###411###41101###Thành phố Huế" />
+			<Item Value ="0###411###41103###Huyện Phong Điền" />
+			<Item Value ="0###411###41105###Huyện Quảng Điền" />
+			<Item Value ="0###411###41107###Thị Xã Hương Trà" />
+			<Item Value ="0###411###41109###Huyện Phú Vang" />
+			<Item Value ="0###411###41111###Thị xã Hương Thuỷ" />
+			<Item Value ="0###411###41113###Huyện Phú Lộc" />
+			<Item Value ="0###411###41115###Huyện A Lưới" />
+			<Item Value ="0###411###41117###Huyện Nam Đông" />
+		</Items>
+	</Section>	
+</Sections>

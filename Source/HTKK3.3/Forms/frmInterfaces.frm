@@ -1261,7 +1261,7 @@ ProgressBar1.value = fpSpread2.Row
     fpSpread2.Row = fpSpread2.Row + 1
     value = fpSpread2.value
     fpSpread2.GetText fpSpread2.ColLetterToNumber("B"), fpSpread2.Row, stt
-    If (Trim(value) = "" Or Trim(value) = vbNullString Or IsNumeric(stt) = False) Then
+    If (Trim(value) = "" Or Trim(value) = vbNullString Or IsNumeric(stt) = False Or Trim(stt) = "" Or Trim(stt) = vbNullString) Then
         count = count + 1
         inc = True
         ProgressBar1.value = fpSpread2.MaxRows
@@ -1415,7 +1415,7 @@ ProgressBar1.value = fpSpread2.Row
                      fpSpread2.GetText fpSpread2.ColLetterToNumber("D"), lrowCount, varTemp1
                      fpSpread2.GetText fpSpread2.ColLetterToNumber("E"), lrowCount, varTemp2
                      fpSpread2.GetText fpSpread2.ColLetterToNumber("B"), lrowCount, stt
-                     If (Trim$(varTemp) = "" And Trim$(varTemp1) = "" And Trim$(varTemp2) = "") Or IsNumeric(stt) = False Then
+                     If (Trim$(varTemp) = "" And Trim$(varTemp1) = "" And Trim$(varTemp2) = "") And (Trim(stt) = "" Or Trim(stt) = vbNullString Or IsNumeric(stt) = False) Then
                             Exit For
                      End If
                 Next
@@ -9853,7 +9853,10 @@ Private Sub Form_Load()
     
     Set objTaxBusiness.fps = fpSpread1
     '***************
-    
+    If idMenu = "17" Then
+        objTaxBusiness.flgLoadDataPL05_3 = strLoadDataPl05_3
+        objTaxBusiness.rowFormatPL05_3 = countRowPL05_3
+    End If
     ' 10062011
     ' To khai 01_TTDB va NTNN se co to khai phat sinh hoac thang
     If idMenu = "70" Or idMenu = "06" Or idMenu = "05" Or idMenu = "81" Or idMenu = "73" Or idMenu = "56" Or idMenu = "55" Or idMenu = "90" Then
@@ -10331,7 +10334,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
     If mOnLoad Then Exit Sub
     If GetAttribute(TAX_Utilities_v2.NodeMenu, "ID") = "95" And fpSpread1.ActiveSheet = 1 And fpSpread1.Row = 1 And fpSpread1.Col = fpSpread1.ColLetterToNumber("D") Then
         Dim idx As Long
-        Dim rowstartGroup2 As Long
+        Dim rowStartGroup2 As Long
         
         fpSpread1.EventEnabled(EventAllEvents) = False
         ResetData
@@ -10352,7 +10355,7 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                 Next
             End If
 
-            rowstartGroup2 = .Row + 9
+            rowStartGroup2 = .Row + 9
             .Row = .Row + 9
             If objTaxBusiness.rowGroup2 > 1 Then
                 For idx = 0 To objTaxBusiness.rowGroup2 - 2
@@ -16146,7 +16149,7 @@ Public Sub copyFormulasSheet4(numRow As Long, fps As fpSpread, rowStart As Long)
         .sheet = 4
             
         'truong hop so ban ghe len hon 10000
-        If numRow >= 10000 Then
+        If numRow >= 2000 Then
 
             Do While a * 2 <= 1024
 
@@ -16214,7 +16217,7 @@ Public Sub copyFormulasSheet4(numRow As Long, fps As fpSpread, rowStart As Long)
             End If
 
             ' truong hop nho hon 10000
-        ElseIf numRow < 10000 Then
+        ElseIf numRow < 2000 Then
             a = 0
 
             Do While a * 2 < numRow
@@ -16265,7 +16268,7 @@ Public Sub copyFormulasSheet4_1(numRow As Long, fps As fpSpread, rowStart As Lon
         .sheet = 4
         .AutoCalc = False
         'truong hop so ban ghe len hon 10000
-        If numRow >= 10000 Then
+        If numRow >= 2000 Then
 
             Do While a * 2 <= 1024
 
@@ -16286,9 +16289,8 @@ Public Sub copyFormulasSheet4_1(numRow As Long, fps As fpSpread, rowStart As Lon
             Dim du  As Long
             dem = numRow \ 1024
             du = numRow Mod 1024
-
+            
             If dem > 0 Then
-
                 Do While a < dem
                     .CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), 1024 + rowStart - 1, .ColLetterToNumber("I"), rowStart + 1024 * a
                     .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("W"), 1024 + rowStart - 1, .ColLetterToNumber("P"), rowStart + 1024 * a
@@ -16302,7 +16304,7 @@ Public Sub copyFormulasSheet4_1(numRow As Long, fps As fpSpread, rowStart As Lon
             End If
 
             ' truong hop nho hon 10000
-        ElseIf numRow < 10000 Then
+        ElseIf numRow < 2000 Then
             a = 0
 
             Do While a * 2 < numRow
@@ -16621,7 +16623,7 @@ Public Sub copyFormulas01_NTNN(numRow As Long, fps As fpSpread, rowStart As Long
 End Sub
 
 Public Sub moveDataNKH()
-    Debug.Print "Total Time In: " & Time
+     Debug.Print "Total Time In: " & Time
     Dim xmlDocument     As New MSXML.DOMDocument
     Dim xmlNode         As MSXML.IXMLDOMNode
     Dim varMenuId       As String
@@ -16751,16 +16753,20 @@ Public Sub moveDataNKH()
     ' xu ly bang ke 05-3/TNCN ho tro tai tu temp 05-3, BK 16 TH, TK 16TH
     ElseIf Trim(varMenuId) = "17" And fpSpread1.ActiveSheet = 4 Then
         Dim stt As Variant
-        For lrowCount = 40 To fpSpread2.MaxRows Step 1
-            fpSpread2.GetText fpSpread2.ColLetterToNumber("C"), lrowCount, varTemp
-            fpSpread2.GetText fpSpread2.ColLetterToNumber("D"), lrowCount, varTemp1
-            fpSpread2.GetText fpSpread2.ColLetterToNumber("B"), lrowCount, stt
+        Dim idx As Double
+        lrowCount = 0
+        For idx = 40 To fpSpread2.MaxRows Step 1
+            fpSpread2.GetText fpSpread2.ColLetterToNumber("C"), idx, varTemp
+            fpSpread2.GetText fpSpread2.ColLetterToNumber("D"), idx, varTemp1
+            fpSpread2.GetText fpSpread2.ColLetterToNumber("B"), idx, stt
             
             'fpSpread2.GetText fpSpread2.ColLetterToNumber("E"), lrowCount, varTemp2
-            If ((Trim(varTemp) = vbNullString Or Trim(varTemp) = "") And (Trim(varTemp1) = vbNullString Or Trim(varTemp1) = "")) Or IsNumeric(stt) = False Then
-                    lrowCount = lrowCount - 40
+            
+            If (((Trim(varTemp) = vbNullString Or Trim(varTemp) = "") And (Trim(varTemp1) = vbNullString Or Trim(varTemp1) = "") And (Trim(stt) = "" Or Trim(stt) = vbNullString Or IsNumeric(stt) = False)) Or lrowCount = fpSpread2.MaxRows) Then
+                    'lrowCount = lrowCount - 39
                     Exit For
             End If
+            lrowCount = lrowCount + 1
         Next
     Else
         ' Kiem tra tu dong maxrow len, neu gap bat ky mot dong nao bat dau co du lieu thi se lay do la maxrow luon
@@ -17126,19 +17132,21 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         '2. Set border cho grid
         .SetCellBorder .ColLetterToNumber("B"), rowStartSpread1, .ColLetterToNumber("Z"), (lrowCount + rowStartSpread1), 15, &O0, CellBorderStyleSolid
        
-       ' tesst data
-       If rowStartSpread11 > 22 Then
-            copyFormulasSheet4_1 lrowCount + 1, fpSpread1, rowStartSpread11
-        Else
-            If isFirstRow = False Then
-                copyFormulasSheet4_1 lrowCount + 1, fpSpread1, rowStartSpread11
-            Else
-                If lrowCount > 1 Then
-                    copyFormulasSheet4_1 lrowCount, fpSpread1, rowStartSpread11
-                End If
-            End If
-        End If
-       ' end tesst data
+'       ' tesst data
+'       Debug.Print "Set format tren group 16TH" & Time
+'       If rowStartSpread11 > 22 Then
+'            copyFormulasSheet4_1 lrowCount + 1, fpSpread1, rowStartSpread11
+'        Else
+'            If isFirstRow = False Then
+'                copyFormulasSheet4_1 lrowCount + 1, fpSpread1, rowStartSpread11
+'            Else
+'                If lrowCount > 1 Then
+'                    copyFormulasSheet4_1 lrowCount, fpSpread1, rowStartSpread11
+'                End If
+'            End If
+'        End If
+'        Debug.Print "End set format tren group 16TH" & Time
+'       ' end tesst data
 
         '        3. copy du lieu Text tu spread2 sang spread1
         fpSpread2.Row = rowStartSpread2
@@ -17146,6 +17154,7 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
             rowStartSpread1 = rowStartSpread1 + 1
         End If
         
+        .AutoCalc = False
         For idx = 0 To lrowCount - 1
             DoEvents
             ProgressBar1.value = a
@@ -17206,26 +17215,26 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
             .Col = .ColLetterToNumber("P")
             .Text = fparray(a, 12)
             
-'            .Col = .ColLetterToNumber("Q")
-'            .Text = fparray(a, 13)
+            .Col = .ColLetterToNumber("Q")
+            .Text = fparray(a, 13)
             
             .Col = .ColLetterToNumber("R")
             .Text = fparray(a, 14)
             
-'            .Col = .ColLetterToNumber("S")
-'            .Text = fparray(a, 15)
+            .Col = .ColLetterToNumber("S")
+            .Text = fparray(a, 15)
             
             .Col = .ColLetterToNumber("T")
             .Text = fparray(a, 16)
             
-'            .Col = .ColLetterToNumber("U")
-'            .Text = fparray(a, 17)
+            .Col = .ColLetterToNumber("U")
+            .Text = Trim$(fparray(a, 17))
             
             .Col = .ColLetterToNumber("V")
             .Text = fparray(a, 18)
             
-'            .Col = .ColLetterToNumber("W")
-'            .Text = fparray(a, 19)
+            .Col = .ColLetterToNumber("W")
+            .Text = Trim$(fparray(a, 19))
             
             .Col = .ColLetterToNumber("X")
             .Text = fparray(a, 20)
@@ -17302,26 +17311,26 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
             .Col = .ColLetterToNumber("P")
             .Text = fparray(a, 12)
             
-'            .Col = .ColLetterToNumber("Q")
-'            .Text = fparray(a, 13)
+            .Col = .ColLetterToNumber("Q")
+            .Text = fparray(a, 13)
             
             .Col = .ColLetterToNumber("R")
             .Text = fparray(a, 14)
             
-'            .Col = .ColLetterToNumber("S")
-'            .Text = fparray(a, 15)
+            .Col = .ColLetterToNumber("S")
+            .Text = fparray(a, 15)
             
             .Col = .ColLetterToNumber("T")
             .Text = fparray(a, 16)
             
-'            .Col = .ColLetterToNumber("U")
-'            .Text = fparray(a, 17)
+            .Col = .ColLetterToNumber("U")
+            .Text = Trim$(fparray(a, 17))
             
             .Col = .ColLetterToNumber("V")
             .Text = fparray(a, 18)
             
-'            .Col = .ColLetterToNumber("W")
-'            .Text = fparray(a, 19)
+            .Col = .ColLetterToNumber("W")
+            .Text = Trim$(fparray(a, 19))
             
             .Col = .ColLetterToNumber("X")
             .Text = fparray(a, 20)
@@ -17333,6 +17342,7 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
             rowStartSpread1 = rowStartSpread1 + 1
             rowStartSpread2 = rowStartSpread2 + 1
         End If
+        .AutoCalc = True
         
      
         ' 4. Set format cho Grid
@@ -17399,7 +17409,7 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("N")
         .BlockMode = True
-        .TypeMaxEditLen = 8
+        .TypeMaxEditLen = 50
         .BlockMode = False
         
         'format chi tieu [16],[O]
@@ -17408,7 +17418,7 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("O")
         .BlockMode = True
-        .TypeMaxEditLen = 7
+        .TypeMaxEditLen = 50
         .BlockMode = False
         
         'format chi tieu [21],[X]
@@ -17635,9 +17645,9 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
         .SetCellBorder .ColLetterToNumber("B"), rowStartSpread1, .ColLetterToNumber("Z"), (lrowCount + rowStartSpread1), 15, &O0, CellBorderStyleSolid
        
 
-        '        3. copy du lieu Text tu spread2 sang spread1
+        '3. copy du lieu Text tu spread2 sang spread1
         fpSpread2.Row = rowStartSpread2
-          If isFirstRow = False Then
+        If isFirstRow = False Then
             rowStartSpread1 = rowStartSpread1 + 1
         End If
         
