@@ -10403,7 +10403,8 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
                         ElseIf GetAttribute(TAX_Utilities_v2.NodeMenu, "ID") = "05" Then
                             moveData01TTDB
                         ElseIf GetAttribute(TAX_Utilities_v2.NodeMenu, "ID") = "95" Then
-                            moveData16TH
+                            'moveData16TH
+                            moveData16TH_tuning
                         Else
                             moveData
                         End If
@@ -19882,3 +19883,388 @@ Sub InvisibleXmlButton()
     cmdInsert.Left = cmdInsert.Left + 2680
 End Sub
 
+
+
+
+
+Private Sub moveData16TH_tuning()
+Dim value As String
+Dim xmlDocument As New MSXML.DOMDocument
+Dim xmlNode As MSXML.IXMLDOMNode
+
+Dim i, count, count1, count2 As Long
+Dim inc As Boolean
+Dim isGroupI As Boolean
+Dim colStart As Integer
+Dim varMenuId As String
+
+Dim lRow2s As Long
+Dim incSession As Integer
+Dim stt As Variant
+
+On Error GoTo ErrHandle
+
+incSession = 0
+
+fpSpread1.EventEnabled(EventAllEvents) = False
+fpSpread1.AutoCalc = False
+    ' Truong hop them du lieu va xoa du lieu da ton tai
+    If themXoaDuLieu Then
+        ResetData
+        ResetDataAndForm mCurrentSheet
+    End If
+    
+' Lay ID cua Menu
+varMenuId = GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID")
+
+fpSpread2.Visible = False
+ProgressBar1.Visible = True
+ProgressBar1.max = fpSpread2.MaxRows
+ProgressBar1.value = 0
+If Trim(varMenuId) = "95" And fpSpread1.ActiveSheet = 1 Then
+    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\BK_16_TH_DKNPT.xml"))
+    colStart = 3
+End If
+
+Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
+Set xmlNodeListMap = xmlDocument.getElementsByTagName("cell")
+   fpSpread1.EventEnabled(EventAllEvents) = False
+   fpSpread1.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row1").Item(0).Text)
+   fpSpread2.Row = Conversion.CInt(xmlDocument.getElementsByTagName("Row2").Item(0).Text)
+   fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+   count1 = Conversion.CInt(xmlDocument.getElementsByTagName("count").Item(0).Text)
+   
+    
+    ' Truong hop them tiep du lieu
+    Dim xmlSecionNode As MSXML.IXMLDOMNode
+    Dim currentRow As Long
+    Dim varData1, varData2 As Variant
+    If themDuLieu Then
+        Set xmlSecionNode = TAX_Utilities_v2.Data(mCurrentSheet - 1).getElementsByTagName("Section")(2)
+        'fpSpread1.Visible = False
+        If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
+            currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+            If (xmlSecionNode.childNodes.length = 1) Then
+                fpSpread1.sheet = mCurrentSheet
+                fpSpread1.GetText colStart, fpSpread1.Row, varData1
+                fpSpread1.GetText colStart + 1, fpSpread1.Row, varData2
+                If Trim(varData1) = vbNullString And Trim(varData2) = vbNullString Then
+                    fpSpread1.Row = fpSpread1.Row
+                Else
+                    InsertNode16TH colStart, currentRow - 1
+                    fpSpread1.Row = currentRow
+                End If
+            Else
+                InsertNode16TH colStart, currentRow - 1
+                fpSpread1.Row = currentRow
+            End If
+        End If
+    End If
+    ' Ket thuc truong hop them tiep du lieu
+
+Do While count < count1 And count2 < fpSpread2.MaxRows
+DoEvents
+Frame2.Enabled = False
+ProgressBar1.value = fpSpread2.Row
+'check next row
+    fpSpread1.sheet = mCurrentSheet
+    fpSpread2.Row = fpSpread2.Row + 1
+    value = fpSpread2.value
+    fpSpread2.GetText fpSpread2.ColLetterToNumber("B"), fpSpread2.Row, stt
+    If (Trim(value) = "" Or Trim(value) = vbNullString Or IsNumeric(stt) = False Or Trim(stt) = "" Or Trim(stt) = vbNullString) Then
+        count = count + 1
+        inc = True
+        ProgressBar1.value = fpSpread2.MaxRows
+    ElseIf count = count1 And value = "" Then
+        count = count + 1
+    Else
+        InsertNode16TH colStart, fpSpread1.Row
+        inc = False
+        count2 = count2 + 1
+    End If
+        fpSpread2.Row = fpSpread2.Row - 1
+    'insert cell
+        Dim arrStr() As String
+        Dim sDate As String
+        For Each xmlNode In xmlNodeListMap
+            If isGroupI = True Then
+                If Conversion.CInt(GetAttribute(xmlNode, "c1")) = 6 Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 9 _
+                    Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 10 Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 11 _
+                    Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 13 Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 14 _
+                    Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 15 Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 16 _
+                    Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 17 Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 18 _
+                    Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 19 Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 20 _
+                    Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 21 Or Conversion.CInt(GetAttribute(xmlNode, "c1")) = 22 Then
+                Else
+                    fpSpread2.Col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
+                    value = fpSpread2.Text
+                   If value <> "" Or value <> vbNullString Then
+                    fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
+            'check type of cell
+                    If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
+                        If fpSpread1.CellType = CellTypeNumber Then
+                            fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
+                        End If
+                        fpSpread1.value = value
+                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                    ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 12 Then
+                        fpSpread1.value = value
+                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                    ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 2 Then
+            '            fpSpread2.CellType = CellTypeNumber
+            '            fpSpread2.TypeNumberDecPlaces = 0
+                        fpSpread1.Text = Left(fpSpread2.Text, IIf(InStr(1, fpSpread2.Text, ".") <> 0, InStr(1, fpSpread2.Text, ".") - 1, Len(fpSpread2.Text)))
+                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                    ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 1 Then
+                      If IsDate(fpSpread2.Text) Then
+                        'fpSpread2.CellType = CellTypeDate
+                        'fpSpread2.TypeDateFormat = TypeDateFormatDDMMYY
+                        'Dim objCvt As New DateUtils
+                        'fpSpread2.Text = CStr(objCvt.ToDate(fpSpread2.Text, "DD/MM/YYYY"))
+                        If InStr(1, fpSpread2.Text, "-") <> 0 Then
+                            arrStr = Split(fpSpread2.Text, "-")
+                        Else
+                            arrStr = Split(fpSpread2.Text, "/")
+                        End If
+
+                        sDate = Right("00" & arrStr(0), 2) & "/" & Right("00" & arrStr(1), 2) & "/" & Right("20" & arrStr(2), 4)
+
+                        fpSpread1.Text = sDate
+
+                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                     End If
+                    Else
+                        Select Case strfileFont
+                           Case "TCVN"
+                              fpSpread1.Text = TAX_Utilities_v2.Convert(value, TCVN, UNICODE)
+                           Case "VNI"
+                            fpSpread1.Text = TAX_Utilities_v2.Convert(value, VNI, UNICODE)
+                           Case "VIQR"
+                            fpSpread1.Text = TAX_Utilities_v2.Convert(value, VIQR, UNICODE)
+                           Case "VISCII"
+                            fpSpread1.Text = TAX_Utilities_v2.Convert(value, VISCII, UNICODE)
+                           Case Else
+                            fpSpread1.Text = value
+                        End Select
+                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                    End If
+                  End If
+               End If
+            Else
+                If Conversion.CInt(GetAttribute(xmlNode, "c1")) = 7 Then
+                Else
+                    fpSpread2.Col = Conversion.CInt(GetAttribute(xmlNode, "c2"))
+                    value = fpSpread2.Text
+                   If value <> "" Or value <> vbNullString Then
+                    fpSpread1.Col = Conversion.CInt(GetAttribute(xmlNode, "c1"))
+            'check type of cell
+                    If Conversion.CInt(GetAttribute(xmlNode, "type")) = 13 Then
+                        If fpSpread1.CellType = CellTypeNumber Then
+                            fpSpread1.TypeNumberNegStyle = TypeNumberNegStyle1
+                        End If
+                        fpSpread1.value = value
+                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                    ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 12 Then
+                        fpSpread1.value = value
+                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                    ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 2 Then
+            '            fpSpread2.CellType = CellTypeNumber
+            '            fpSpread2.TypeNumberDecPlaces = 0
+                        fpSpread1.Text = Left(fpSpread2.Text, IIf(InStr(1, fpSpread2.Text, ".") <> 0, InStr(1, fpSpread2.Text, ".") - 1, Len(fpSpread2.Text)))
+                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.value
+                    ElseIf Conversion.CInt(GetAttribute(xmlNode, "type")) = 1 Then
+                      If IsDate(fpSpread2.Text) Then
+
+                        'fpSpread2.CellType = CellTypeDate
+                        'fpSpread2.TypeDateFormat = TypeDateFormatDDMMYY
+                        'Dim objCvt As New DateUtils
+                        'fpSpread2.Text = CStr(objCvt.ToDate(fpSpread2.Text, "DD/MM/YYYY"))
+                        If InStr(1, fpSpread2.Text, "-") <> 0 Then
+                            arrStr = Split(fpSpread2.Text, "-")
+                        Else
+                            arrStr = Split(fpSpread2.Text, "/")
+                        End If
+
+                        sDate = Right("00" & arrStr(0), 2) & "/" & Right("00" & arrStr(1), 2) & "/" & Right("20" & arrStr(2), 4)
+
+                        fpSpread1.Text = sDate
+
+                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                     End If
+                    Else
+                        Select Case strfileFont
+                           Case "TCVN"
+                              fpSpread1.Text = TAX_Utilities_v2.Convert(value, TCVN, UNICODE)
+                           Case "VNI"
+                            fpSpread1.Text = TAX_Utilities_v2.Convert(value, VNI, UNICODE)
+                           Case "VIQR"
+                            fpSpread1.Text = TAX_Utilities_v2.Convert(value, VIQR, UNICODE)
+                           Case "VISCII"
+                            fpSpread1.Text = TAX_Utilities_v2.Convert(value, VISCII, UNICODE)
+                           Case Else
+                            fpSpread1.Text = value
+                        End Select
+                        UpdateCell fpSpread1.Col, fpSpread1.Row, fpSpread1.Text
+                    End If
+                  End If
+               End If
+            End If
+        Next
+    'next row
+        If inc = True Then
+                isGroupI = True
+            'have 2 hidden row
+                Dim temp As Variant
+                Dim temp1 As Double
+                Dim lrowCount As Long
+                Dim varTemp, varTemp1, varTemp2 As Variant
+                
+                ' group 1
+                For lrowCount = 40 To fpSpread2.MaxRows Step 1
+                     fpSpread2.GetText fpSpread2.ColLetterToNumber("C"), lrowCount, varTemp
+                     fpSpread2.GetText fpSpread2.ColLetterToNumber("D"), lrowCount, varTemp1
+                     fpSpread2.GetText fpSpread2.ColLetterToNumber("E"), lrowCount, varTemp2
+                     fpSpread2.GetText fpSpread2.ColLetterToNumber("B"), lrowCount, stt
+                     If (Trim$(varTemp) = "" And Trim$(varTemp1) = "" And Trim$(varTemp2) = "") And (Trim(stt) = "" Or Trim(stt) = vbNullString Or IsNumeric(stt) = False) Then
+                            Exit For
+                     End If
+                Next
+                
+                ' Tim khoang cach group 2
+                Dim stepGroup As Long
+                For lrowCount = lrowCount To fpSpread2.MaxRows Step 1
+                    fpSpread2.GetText fpSpread2.ColLetterToNumber("B"), lrowCount, varTemp
+                    stepGroup = stepGroup + 1
+                    If UCase$(Trim(varTemp)) = "BB" Then
+                        Exit For
+                    End If
+                Next
+                
+                fpSpread1.Row = fpSpread1.Row + 9
+                fpSpread2.Row = fpSpread2.Row + stepGroup + 1
+               
+            'test
+              If themDuLieu Then
+                Set xmlSecionNode = TAX_Utilities_v2.Data(mCurrentSheet - 1).getElementsByTagName("Section")(count + 2)
+                'fpSpread1.Visible = False
+                If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
+                    currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+                    If (xmlSecionNode.childNodes.length = 1) Then
+                        fpSpread1.sheet = mCurrentSheet
+                        fpSpread1.GetText colStart, fpSpread1.Row, varData1
+                        fpSpread1.GetText colStart + 1, fpSpread1.Row, varData2
+                        If Trim(varData1) = vbNullString And Trim(varData2) = vbNullString Then
+                            fpSpread1.Row = fpSpread1.Row
+                        Else
+                            InsertNode16TH colStart, currentRow - 1
+                            fpSpread1.Row = currentRow
+                        End If
+                    Else
+                        InsertNode16TH colStart, currentRow - 1
+                        fpSpread1.Row = currentRow
+                    End If
+                End If
+            End If
+            
+            ' end test
+        Else
+            fpSpread1.Row = fpSpread1.Row + 1
+            fpSpread2.Row = fpSpread2.Row + 1
+        End If
+            fpSpread2.Col = Conversion.CInt(xmlDocument.getElementsByTagName("Col").Item(0).Text)
+            value = fpSpread2.value
+    Loop
+ ProgressBar1.Visible = False
+ Frame2.Enabled = True
+ fpSpread1.AutoCalc = True
+ fpSpread1.EventEnabled(EventAllEvents) = True
+ If Not objTaxBusiness Is Nothing Then objTaxBusiness.FinishImport
+ 
+ Exit Sub
+ErrHandle:
+ DisplayMessage "0122", msOKOnly, miCriticalError
+ ProgressBar1.Visible = False
+ ResetData
+ ResetDataAndForm mCurrentSheet
+ Frame2.Enabled = True
+ fpSpread1.EventEnabled(EventAllEvents) = True
+
+End Sub
+
+
+
+Public Sub InsertNode16TH(ByVal pCol As Long, ByVal pRow As Long)
+    On Error GoTo ErrorHandle
+    
+    Dim xmlNodeCells As MSXML.IXMLDOMNode
+    Dim xmlNodeNewCells As MSXML.IXMLDOMNode
+    Dim xmlNodeNewCell As MSXML.IXMLDOMNode
+    Dim lCol As Long, lRow As Long
+    Dim lLRowBound As Long, lURowBound As Long
+    Dim lRow2s As Long, lRows As Long
+    
+    ' Get cellspan for merge cell on interface templates
+    GetCellSpan fpSpread1, pCol, pRow
+    
+    Set xmlNodeCells = TAX_Utilities_v2.Data(mCurrentSheet - 1).nodeFromID(GetCellID(fpSpread1, pCol, pRow)).parentNode
+    
+    lRows = GetDynRowCount(fpSpread1, xmlNodeCells, lRow2s, lLRowBound, lURowBound)
+    
+    'If Not xmlNodeCells.nextSibling Is Nothing Then GoTo EXIT_SUB
+    If GetAttribute(xmlNodeCells.parentNode, "Dynamic") <> "1" Then GoTo EXIT_SUB
+    If Val(GetAttribute(xmlNodeCells.parentNode, "MaxRows")) = xmlNodeCells.parentNode.childNodes.length Then GoTo EXIT_SUB
+    
+    ' insert new row on grid
+    InsertRowNotFormat fpSpread1, lURowBound + 1, lRows
+    'fpSpread1.SetFocus
+    
+    ' increase value of row in xmlDocument
+    IncreaseRowInDOM fpSpread1, TAX_Utilities_v2.Data(mCurrentSheet - 1), lURowBound + 1, lRows, lRow2s
+    'IncreaseRowInDOM lURowBound + 1, lRows, lRow2s
+
+    Set xmlNodeNewCells = xmlNodeCells.CloneNode(True)
+    For Each xmlNodeNewCell In xmlNodeNewCells.childNodes
+        ' Set new ID for node (CellID)
+        ParserCellID fpSpread1, GetAttribute(xmlNodeNewCell, "CellID"), lCol, lRow
+        SetAttribute xmlNodeNewCell, "CellID", GetCellID(fpSpread1, lCol, lRow + lRows)
+                
+        ' Set first cell = 1
+        SetAttribute xmlNodeNewCell, "FirstCell", "1"
+        
+        ' Reset empty value for new node
+        fpSpread1.Col = lCol
+        fpSpread1.Row = lRow
+        Select Case fpSpread1.CellType
+            Case CellTypeNumber
+                SetAttribute xmlNodeNewCell, "Value", "0"
+            Case Else
+                SetAttribute xmlNodeNewCell, "Value", vbNullString
+        End Select
+        
+        ' Set new ID for node (CellID2)
+        ParserCellID fpSpread1, GetAttribute(xmlNodeNewCell, "CellID2"), lCol, lRow
+        SetAttribute xmlNodeNewCell, "CellID2", GetCellID(fpSpread1, lCol, lRow + lRow2s)
+    Next
+    
+    ' Insert new node to DOM object
+    If Not xmlNodeCells.nextSibling Is Nothing Then
+        xmlNodeCells.parentNode.insertBefore xmlNodeNewCells, xmlNodeCells.nextSibling
+    Else
+        xmlNodeCells.parentNode.insertBefore xmlNodeNewCells, Null
+    End If
+'   **********************************
+'    added
+'   Date: 12/04/06
+    'mAdjustData = True
+    TAX_Utilities_v2.AdjustData(mCurrentSheet - 1) = True
+'   **********************************
+EXIT_SUB:
+    Set xmlNodeNewCell = Nothing
+    Set xmlNodeNewCells = Nothing
+    Set xmlNodeCells = Nothing
+    
+    Exit Sub
+    
+ErrorHandle:
+    SaveErrorLog Me.Name, "InsertNode16TH", Err.Number, Err.Description
+End Sub
