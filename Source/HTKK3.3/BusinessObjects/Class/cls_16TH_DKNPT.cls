@@ -22,6 +22,8 @@ Public StrSolanBosung As String
 
 Public flgLoadToKhai As Boolean
 
+Public flgLoadData16TH As Boolean
+
 Private flgErr As Boolean
 
 ' Const ctieu
@@ -290,6 +292,35 @@ Public Sub Prepare2()
     End With
     
          prepareData05_3
+         
+    ' set lai format PL16TH
+    If flgLoadData16TH = True Then
+        Dim idx As Long
+        Dim countRowG1 As Long
+         ForMatTK16TH
+         
+         With fps
+              .Sheet = 1
+            Debug.Print "Tao node XML " & Time
+            InsertNode16TH 41, .SearchCol(.ColLetterToNumber("B"), 40, -1, "aa", SearchFlagsNone) - 1, 1, True
+            
+            ' tinh so dong group 1
+            .Sheet = 1
+            .Col = .ColLetterToNumber("B")
+            For idx = 40 To .MaxRows Step 1
+                .Row = idx
+                countRowG1 = countRowG1 + 1
+                If .Text = "aa" Then
+                    Exit For
+                End If
+            Next
+    
+            
+            InsertNode16TH 48 + countRowG1, .SearchCol(.ColLetterToNumber("B"), 47 + countRowG1, -1, "aa", SearchFlagsNone) - 1, 1, False
+            Debug.Print "End Tao node XML " & Time
+            UpdateSheets
+        End With
+    End If
 End Sub
 
 Private Function GetValidatedCellIndex(ByVal lSheet As Long, lAnchorRow As Long, ByVal lAnchorCol As Long) As Integer
@@ -865,7 +896,7 @@ Public Sub finish()
 '        prepareMSTCMT
 '
         'kiemTraDuLieuImport
-
+        
 '        .Sheet = 1
 '        InsertNode 41, .SearchCol(.ColLetterToNumber("B"), 40, -1, "aa", SearchFlagsNone) - 1, 1
 '
@@ -1102,157 +1133,192 @@ End Sub
 
 Public Sub FinishImport()
     Dim ASheet As Integer, SSheet As Integer
+    Dim countRowG1 As Long
+    Dim idx As Long
 
     With fps
         .EventEnabled(EventAllEvents) = False
         ASheet = .ActiveSheet
         SSheet = .Sheet
-
+        
         .Sheet = 1
-        ' Lay danh muc quan he voi NNT
-        Dim xmlDocument As New MSXML.DOMDocument
-        Dim xmlNode As MSXML.IXMLDOMNode
-        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_QHNNT.xml"))
-        Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
-        Dim strQuanHeNNTID As String
-        Dim strQuanHeNNT As String
+        Debug.Print "Tao node XML " & Time
+        InsertNode16TH 41, .SearchCol(.ColLetterToNumber("B"), 40, -1, "aa", SearchFlagsNone) - 1, 1, True
         
-        Dim strQuocTich As String
-        Dim strMaQuocTich As String
-        Dim strTenTinh As String
-        Dim strTenHuyen As String
-        Dim strTenXa As String
-        Dim strMaTinh As String
-        Dim strMaHuyen  As String
-        Dim strMaXa As String
-        Dim temValue As String
-        Dim arrValue() As String
-        
-        Dim index As Integer
-        ' Chuoi gia tri ve quan he NNT bao gom:
-        ' 01-Con, 02-Vo, 03-Chong, 04-Cha, 05-Me, 06-Chau Ruot, 07-Ho Hang, 99-Khac
-        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
-        For Each xmlNode In xmlNodeListMap
-            arrValue = Split(GetAttribute(xmlNode, "value"), "###")
-            strQuanHeNNT = strQuanHeNNT + arrValue(1) + Chr$(9)
-            strQuanHeNNTID = strQuanHeNNTID + arrValue(0) + Chr$(9)
-        Next
-        
-        
-        ' lay du lieu danh muc dia ban tinh
-        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Tinh.xml"))
-        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
-        For Each xmlNode In xmlNodeListMap
-            temValue = GetAttribute(xmlNode, "Value")
-            arrValue = Split(temValue, "###")
-            'If arrValue(0) <> "1" Then
-                strTenTinh = strTenTinh + arrValue(2) + Chr$(9)
-                strMaTinh = strMaTinh + arrValue(1) + Chr$(9)
-            'End If
-        Next
-        
-        ' lay danh sach huyen
-        Set xmlDocument = Nothing
-        Set xmlNodeListMap = Nothing
-        ' lay du lieu danh muc dia ban tinh
-        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Huyen.xml"))
-        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
-        For Each xmlNode In xmlNodeListMap
-            temValue = GetAttribute(xmlNode, "Value")
-            arrValue = Split(temValue, "###")
-            'If arrValue(0) <> "1" Then
-                strTenHuyen = strTenHuyen + arrValue(3) + Chr$(9)
-                strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
-            'End If
-        Next
-        
-        ' Lay danh muc xa
-        Set xmlDocument = Nothing
-        Set xmlNodeListMap = Nothing
-        ' lay du lieu danh muc dia ban tinh
-        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Xa.xml"))
-        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
-        For Each xmlNode In xmlNodeListMap
-            temValue = GetAttribute(xmlNode, "Value")
-            arrValue = Split(temValue, "###")
-            'If arrValue(0) <> "1" Then
-                strTenXa = strTenXa + arrValue(4) + Chr$(9)
-                strMaXa = strMaXa + arrValue(3) + Chr$(9)
-            'End If
-        Next
-        
-        ' lay du lieu dia ban
-        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Quoc_Gia.xml"))
-        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
-        For Each xmlNode In xmlNodeListMap
-            temValue = GetAttribute(xmlNode, "Value")
-            arrValue = Split(temValue, "###")
-            strQuocTich = strQuocTich + arrValue(1) + Chr$(9)
-            strMaQuocTich = strMaQuocTich + arrValue(0) + Chr$(9)
-        Next
-        
+        ' tinh so dong group 1
         .Sheet = 1
         .Col = .ColLetterToNumber("B")
-        .Row = 40
-        Do
+        For idx = 40 To .MaxRows Step 1
+            .Row = idx
+            countRowG1 = countRowG1 + 1
+            If .Text = "aa" Then
+                Exit For
+            End If
+        Next
+
+        
+        InsertNode16TH 48 + countRowG1, .SearchCol(.ColLetterToNumber("B"), 47 + countRowG1, -1, "aa", SearchFlagsNone) - 1, 1, False
+        Debug.Print "End Tao node XML " & Time
+        UpdateSheets
+        
+'        .Sheet = 1
+'        ' Lay danh muc quan he voi NNT
+'        Dim xmlDocument As New MSXML.DOMDocument
+'        Dim xmlNode As MSXML.IXMLDOMNode
+'        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_QHNNT.xml"))
+'        Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
+'        Dim strQuanHeNNTID As String
+'        Dim strQuanHeNNT As String
+'
+'        Dim strQuocTich As String
+'        Dim strMaQuocTich As String
+'        Dim strTenTinh As String
+'        Dim strTenHuyen As String
+'        Dim strTenXa As String
+'        Dim strMaTinh As String
+'        Dim strMaHuyen  As String
+'        Dim strMaXa As String
+'        Dim temValue As String
+'        Dim arrValue() As String
+'
+'
+'        Dim maTinh As Variant
+'        Dim maHuyen As Variant
+'        Dim tempArr() As String
+'
+'        Dim index As Integer
+'        ' Chuoi gia tri ve quan he NNT bao gom:
+'        ' 01-Con, 02-Vo, 03-Chong, 04-Cha, 05-Me, 06-Chau Ruot, 07-Ho Hang, 99-Khac
+'        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+'        For Each xmlNode In xmlNodeListMap
+'            arrValue = Split(GetAttribute(xmlNode, "value"), "###")
+'            strQuanHeNNT = strQuanHeNNT + arrValue(1) + Chr$(9)
+'            strQuanHeNNTID = strQuanHeNNTID + arrValue(0) + Chr$(9)
+'        Next
+'
+'
+'        ' lay du lieu danh muc dia ban tinh
+'        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Tinh.xml"))
+'        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+'        For Each xmlNode In xmlNodeListMap
+'            temValue = GetAttribute(xmlNode, "Value")
+'            arrValue = Split(temValue, "###")
+'            'If arrValue(0) <> "1" Then
+'                strTenTinh = strTenTinh + arrValue(2) + Chr$(9)
+'                strMaTinh = strMaTinh + arrValue(1) + Chr$(9)
+'            'End If
+'        Next
+'
+'        ' lay danh sach huyen
+'        Set xmlDocument = Nothing
+'        Set xmlNodeListMap = Nothing
+'        ' lay du lieu danh muc dia ban tinh
+'        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Huyen.xml"))
+'        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+'        For Each xmlNode In xmlNodeListMap
+'            temValue = GetAttribute(xmlNode, "Value")
+'            arrValue = Split(temValue, "###")
+'            'If arrValue(0) <> "1" Then
+'                strTenHuyen = strTenHuyen + arrValue(3) + Chr$(9)
+'                strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
+'            'End If
+'        Next
+'
+'        ' Lay danh muc xa
+'        Set xmlDocument = Nothing
+'        Set xmlNodeListMap = Nothing
+'        ' lay du lieu danh muc dia ban tinh
+'        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Xa.xml"))
+'        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+'        For Each xmlNode In xmlNodeListMap
+'            temValue = GetAttribute(xmlNode, "Value")
+'            arrValue = Split(temValue, "###")
+'            'If arrValue(0) <> "1" Then
+'                strTenXa = strTenXa + arrValue(4) + Chr$(9)
+'                strMaXa = strMaXa + arrValue(3) + Chr$(9)
+'            'End If
+'        Next
+'
+'        ' lay du lieu dia ban
+'        xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Quoc_Gia.xml"))
+'        Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+'        For Each xmlNode In xmlNodeListMap
+'            temValue = GetAttribute(xmlNode, "Value")
+'            arrValue = Split(temValue, "###")
+'            strQuocTich = strQuocTich + arrValue(1) + Chr$(9)
+'            strMaQuocTich = strMaQuocTich + arrValue(0) + Chr$(9)
+'        Next
+        Debug.Print "Format row " & Time
+        ForMatTK16TH
+        Debug.Print "End  Format row " & Time
+'        .Sheet = 1
+'        .Col = .ColLetterToNumber("B")
+'        .Row = 40
+'        Do
 '            .Col = .ColLetterToNumber("K")
 '            .TypeComboBoxList = strQuanHeNNTID
-'            index = .typeComboboxCurSel
+'            'index = .typeComboboxCurSel
 '
 '            .Col = .ColLetterToNumber("L")
 '            .TypeComboBoxList = strQuanHeNNT
-'            .typeComboboxCurSel = index
-            
-                ' set danh sach tinh
-            .Col = .ColLetterToNumber("Q")
-            .TypeComboBoxList = strMaTinh
-            index = .typeComboboxCurSel
-            
-            .Col = .ColLetterToNumber("R")
-            .TypeComboBoxList = strTenTinh
-            .typeComboboxCurSel = index
-            
-            ' set danh sach huyen
-            .Col = .ColLetterToNumber("S")
-            .TypeComboBoxList = strMaHuyen
-            index = .typeComboboxCurSel
-            
-            .Col = .ColLetterToNumber("T")
-            .TypeComboBoxList = strTenHuyen
-            .typeComboboxCurSel = index
-            
-            ' set danh sach xa
-            .Col = .ColLetterToNumber("U")
-            .TypeComboBoxList = strMaXa
-            index = .typeComboboxCurSel
-            
-            .Col = .ColLetterToNumber("V")
-            .TypeComboBoxList = strTenXa
-            .typeComboboxCurSel = index
-            
-'            ' set danh sach quoc tich
+'            '.typeComboboxCurSel = index
+'
+'                ' set danh sach tinh
+'            .Col = .ColLetterToNumber("Q")
+'            .TypeComboBoxList = strMaTinh
+'            'index = .typeComboboxCurSel
+'
+'            .Col = .ColLetterToNumber("R")
+'            .TypeComboBoxList = strTenTinh
+'            '.typeComboboxCurSel = index
+'
+'            ' set danh sach huyen
+'
+'            .GetText .ColLetterToNumber("Q"), .Row, maTinh
+'            tempArr = Split(getHuyenByMaTinh(CStr(maTinh)), "###")
+'
+'            .Col = .ColLetterToNumber("S")
+'            .TypeComboBoxList = tempArr(0) 'strMaHuyen
+'            'index = .typeComboboxCurSel
+'
+'            .Col = .ColLetterToNumber("T")
+'            .TypeComboBoxList = tempArr(1) 'strTenHuyen
+'            '.typeComboboxCurSel = index
+'
+'            ' set danh sach xa
+'            .GetText .ColLetterToNumber("S"), .Row, maHuyen
+'            tempArr = Split(getXaByMaHuyen(CStr(maHuyen)), "###")
+'            .Col = .ColLetterToNumber("U")
+'            .TypeComboBoxList = tempArr(0) ' strMaXa
+'            'index = .typeComboboxCurSel
+'
+'            .Col = .ColLetterToNumber("V")
+'            .TypeComboBoxList = tempArr(1) 'strTenXa
+'            '.typeComboboxCurSel = index
+'
+''            ' set danh sach quoc tich
 '            .Col = .ColLetterToNumber("I")
 '            .TypeComboBoxList = strMaQuocTich
-'            index = .typeComboboxCurSel
+'            'index = .typeComboboxCurSel
 '
 '            .Col = .ColLetterToNumber("J")
 '            .TypeComboBoxList = strQuocTich
-'            .typeComboboxCurSel = index
-            
-
-            ' set danh sach quoc gia
-            .Col = .ColLetterToNumber("O")
-            .TypeComboBoxList = strMaQuocTich
-            index = .typeComboboxCurSel
-            
-            .Col = .ColLetterToNumber("P")
-            .TypeComboBoxList = strQuocTich
-            .typeComboboxCurSel = index
-                        
-
-             .Col = .ColLetterToNumber("B")
-             .Row = .Row + 1
-        Loop Until .Text = "aa"
+'            '.typeComboboxCurSel = index
+'
+'
+'            ' set danh sach quoc gia
+'            .Col = .ColLetterToNumber("O")
+'            .TypeComboBoxList = strMaQuocTich
+'            'index = .typeComboboxCurSel
+'
+'            .Col = .ColLetterToNumber("P")
+'            .TypeComboBoxList = strQuocTich
+'            '.typeComboboxCurSel = index
+'
+'
+'             .Col = .ColLetterToNumber("B")
+'             .Row = .Row + 1
+'        Loop Until .Text = "aa"
 
         
         .ActiveSheet = ASheet
@@ -2583,4 +2649,959 @@ Private Sub updateMSTDL_16TH()
             Exit Sub
         End If
     End With
+End Sub
+
+
+Private Function getHuyenByMaTinh(maTinh As String) As String
+    Dim strHuyen As String
+    Dim strTenHuyen As String
+    Dim strMaHuyen As String
+    Dim xmlDocument As New MSXML.DOMDocument
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
+    Dim temValue As String
+    Dim arrValue() As String
+    Set xmlDocument = Nothing
+    Set xmlNodeListMap = Nothing
+    ' lay du lieu danh muc dia ban tinh
+    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Huyen_" & maTinh & ".xml"))
+    Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+    For Each xmlNode In xmlNodeListMap
+        temValue = GetAttribute(xmlNode, "Value")
+        arrValue = Split(temValue, "###")
+        If arrValue(1) = maTinh Then
+            strTenHuyen = strTenHuyen + arrValue(3) + Chr$(9)
+            strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
+        End If
+    Next
+    strHuyen = strMaHuyen & "###" & strTenHuyen
+    getHuyenByMaTinh = strHuyen
+End Function
+
+
+Private Function getXaByMaHuyen(maHuyen As String) As String
+    Dim strXa As String
+    Dim strTenXa As String
+    Dim strMaXa As String
+    Dim xmlDocument As New MSXML.DOMDocument
+    Dim xmlNode As MSXML.IXMLDOMNode
+    Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
+    Dim temValue As String
+    Dim arrValue() As String
+    Set xmlDocument = Nothing
+    Set xmlNodeListMap = Nothing
+    ' lay du lieu danh muc dia ban tinh
+    xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Xa" & "_" & Left$(maHuyen, 3) & ".xml"))
+    Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+    For Each xmlNode In xmlNodeListMap
+        temValue = GetAttribute(xmlNode, "Value")
+        arrValue = Split(temValue, "###")
+        temValue = GetAttribute(xmlNode, "Value")
+        arrValue = Split(temValue, "###")
+        If arrValue(2) = maHuyen Then
+            strTenXa = strTenXa + arrValue(4) + Chr$(9)
+            strMaXa = strMaXa + arrValue(3) + Chr$(9)
+        End If
+    Next
+    strXa = strMaXa & "###" & strTenXa
+    getXaByMaHuyen = strXa
+End Function
+
+Private Sub ForMatTK16TH()
+    With fps
+        .EventEnabled(EventAllEvents) = False
+            .Sheet = 1
+            ' Lay danh muc quan he voi NNT
+            Dim xmlDocument As New MSXML.DOMDocument
+            Dim xmlNode As MSXML.IXMLDOMNode
+            xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_QHNNT.xml"))
+            Dim xmlNodeListMap As MSXML.IXMLDOMNodeList
+            Dim strQuanHeNNTID As String
+            Dim strQuanHeNNT As String
+            Dim i As Long
+    
+            Dim strQuocTich As String
+            Dim strMaQuocTich As String
+            Dim strTenTinh As String
+            Dim strTenHuyen As String
+            Dim strTenXa As String
+            Dim strMaTinh As String
+            Dim strMaHuyen  As String
+            Dim strMaXa As String
+            Dim temValue As String
+            Dim arrValue() As String
+                
+            Dim maTinh As Variant
+            Dim maHuyen As Variant
+            Dim tempArr() As String
+    
+            Dim index As Integer
+            
+            Dim lrowCount1 As Double
+            Dim lrowCount2 As Double
+            Dim rowStartSpread11 As Double
+            
+            Dim backGroudColor As Variant
+            
+            rowStartSpread11 = 40
+            ' Chuoi gia tri ve quan he NNT bao gom:
+            ' 01-Con, 02-Vo, 03-Chong, 04-Cha, 05-Me, 06-Chau Ruot, 07-Ho Hang, 99-Khac
+            Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListMap
+                arrValue = Split(GetAttribute(xmlNode, "value"), "###")
+                strQuanHeNNT = strQuanHeNNT + arrValue(1) + Chr$(9)
+                strQuanHeNNTID = strQuanHeNNTID + arrValue(0) + Chr$(9)
+            Next
+    
+    
+            ' lay du lieu danh muc dia ban tinh
+            xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Tinh.xml"))
+            Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListMap
+                temValue = GetAttribute(xmlNode, "Value")
+                arrValue = Split(temValue, "###")
+                'If arrValue(0) <> "1" Then
+                    strTenTinh = strTenTinh + arrValue(2) + Chr$(9)
+                    strMaTinh = strMaTinh + arrValue(1) + Chr$(9)
+                'End If
+            Next
+    
+            ' lay danh sach huyen
+            Set xmlDocument = Nothing
+            Set xmlNodeListMap = Nothing
+            ' lay du lieu danh muc dia ban tinh
+            xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Huyen.xml"))
+            Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListMap
+                temValue = GetAttribute(xmlNode, "Value")
+                arrValue = Split(temValue, "###")
+                'If arrValue(0) <> "1" Then
+                    strTenHuyen = strTenHuyen + arrValue(3) + Chr$(9)
+                    strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
+                'End If
+            Next
+    
+            ' Lay danh muc xa
+            Set xmlDocument = Nothing
+            Set xmlNodeListMap = Nothing
+            ' lay du lieu danh muc dia ban tinh
+            xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Dia_Ban_Xa.xml"))
+            Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+            For Each xmlNode In xmlNodeListMap
+                temValue = GetAttribute(xmlNode, "Value")
+                arrValue = Split(temValue, "###")
+                'If arrValue(0) <> "1" Then
+                    strTenXa = strTenXa + arrValue(4) + Chr$(9)
+                    strMaXa = strMaXa + arrValue(3) + Chr$(9)
+                'End If
+            Next
+    
+            ' lay du lieu dia ban
+            xmlDocument.Load (GetAbsolutePath("..\InterfaceIni\Catalogue_Quoc_Gia.xml"))
+            Set xmlNodeListMap = xmlDocument.getElementsByTagName("Item")
+            strMaQuocTich = ""
+            For Each xmlNode In xmlNodeListMap
+                temValue = GetAttribute(xmlNode, "Value")
+                arrValue = Split(temValue, "###")
+                strQuocTich = strQuocTich + arrValue(1) + Chr$(9)
+                strMaQuocTich = strMaQuocTich + arrValue(0) + Chr$(9)
+            Next
+    
+            
+    
+            .Sheet = 1
+            ' tinh so row group1, group2
+            For lrowCount2 = .MaxRows To 40 Step -1
+                .Row = lrowCount2
+                .Col = .ColLetterToNumber("B")
+                If .Text = "aa" Then
+                    Exit For
+                End If
+            Next
+                            
+            For lrowCount1 = lrowCount2 - 1 To 40 Step -1
+                .Row = lrowCount1
+                .Col = .ColLetterToNumber("B")
+                If .Text = "aa" Then
+                    Exit For
+                End If
+            Next
+                            
+         ' set format group 1
+         .SetCellBorder .ColLetterToNumber("B"), 40, .ColLetterToNumber("Y"), lrowCount1 - 1, 15, &O0, CellBorderStyleSolid
+                            
+         .Row = 40
+         .Col = .ColLetterToNumber("G")
+          backGroudColor = .BackColor
+                            
+         .Row = 40
+        .Col = .ColLetterToNumber("B")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("B")
+        .BlockMode = True
+        .TypeHAlign = TypeHAlignCenter
+        .BlockMode = False
+            'format chi tieu [7],[C]
+        .Row = 40
+        .Col = .ColLetterToNumber("C")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("C")
+        .BlockMode = True
+        .TypeMaxEditLen = 100
+        .BlockMode = False
+        
+        'format chi tieu [8],[D]
+        .Row = 40
+        .Col = .ColLetterToNumber("D")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("D")
+        .BlockMode = True
+        .TypeMaxEditLen = 10
+        .BlockMode = False
+        
+        'format chi tieu [9],[E]
+        .Row = 40
+        .Col = .ColLetterToNumber("E")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("E")
+        .BlockMode = True
+        .TypeMaxEditLen = 100
+        .BlockMode = False
+        
+        'format chi tieu [10],[F]
+        .Row = 40
+        .Col = .ColLetterToNumber("F")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("F")
+        .BlockMode = True
+        .TypeMaxEditLen = 10
+        .TypeHAlign = TypeHAlignCenter
+        .BlockMode = False
+        
+        'format chi tieu [10],[G]
+        .Row = 40
+        .Col = .ColLetterToNumber("G")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("G")
+        .BlockMode = True
+        .BackColor = backGroudColor
+        .BlockMode = False
+        
+        'format chi tieu [13],[J]
+        .Row = 40
+        .Col = .ColLetterToNumber("J")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("J")
+        .BlockMode = True
+        .TypeMaxEditLen = 50
+        .BlockMode = False
+        
+        
+        'format chi tieu [15],[M]
+        .Row = 40
+        .Col = .ColLetterToNumber("M")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("M")
+        .BlockMode = True
+        .TypeMaxEditLen = 8
+        .BlockMode = False
+        
+        'format chi tieu [16],[N]
+        .Row = 40
+        .Col = .ColLetterToNumber("N")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("N")
+        .BlockMode = True
+        .TypeMaxEditLen = 7
+        .BlockMode = False
+        
+        'format chi tieu [21],[X]
+        .Row = 40
+        .Col = .ColLetterToNumber("W")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("X")
+        .BlockMode = True
+        .TypeMaxEditLen = 7
+        .TypeHAlign = TypeHAlignCenter
+        .BlockMode = False
+        
+        
+        'format chi tieu [12],[I]
+        .Row = 40
+        .Col = .ColLetterToNumber("I")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("I")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+
+
+        'format chi tieu ma quoc tich [H]
+        .Row = 40
+        .Col = .ColLetterToNumber("H")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("H")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+        
+        'format chi tieu [14],[L]
+        .Row = 40
+        .Col = .ColLetterToNumber("L")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("L")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+        
+        
+        'format chi tieu ma quan he [K]
+        .Row = 40
+        .Col = .ColLetterToNumber("K")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("K")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+        
+        'format chi tieu [14],[P]
+        .Row = 40
+        .Col = .ColLetterToNumber("O")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("V")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+        
+        
+        .Row = 40
+        .Col = .ColLetterToNumber("C")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("X")
+        .BlockMode = True
+        .FontSize = 8
+        .Lock = False
+        .BlockMode = False
+        
+        .Row = 40
+        .Col = .ColLetterToNumber("G")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("G")
+        .BlockMode = True
+        .FontSize = 8
+        .Lock = True
+        .BlockMode = False
+                                
+        .Row = 40
+        .Col = .ColLetterToNumber("B")
+        .Row2 = lrowCount1 - 1
+        .col2 = .ColLetterToNumber("B")
+        .BlockMode = True
+        .FontSize = 8
+        .Lock = True
+        .BlockMode = False
+                                
+         ' end group 1
+         .SetCellBorder .ColLetterToNumber("B"), lrowCount1 + 8, .ColLetterToNumber("Y"), lrowCount2, 15, &O0, CellBorderStyleSolid
+         ' set format group 2
+        .Row = lrowCount1 + 8
+        .Col = .ColLetterToNumber("B")
+        .Row2 = lrowCount2 - 1
+        .col2 = .ColLetterToNumber("B")
+        .BlockMode = True
+        .TypeHAlign = TypeHAlignCenter
+        .BlockMode = False
+'       format chi tieu [7],[C]
+        .Row = lrowCount1 + 8
+        .Col = .ColLetterToNumber("C")
+        .Row2 = lrowCount2 - 1
+        .col2 = .ColLetterToNumber("C")
+        .BlockMode = True
+        .TypeMaxEditLen = 100
+        .BlockMode = False
+'
+'        format chi tieu [8],[D]
+        .Row = lrowCount1 + 8
+        .Col = .ColLetterToNumber("D")
+        .Row2 = lrowCount2 - 1
+        .col2 = .ColLetterToNumber("D")
+        .BlockMode = True
+        .TypeMaxEditLen = 10
+        .BlockMode = False
+'
+'        format chi tieu [9],[E]
+        .Row = lrowCount1 + 8
+        .Col = .ColLetterToNumber("E")
+        .Row2 = lrowCount2 - 1
+        .col2 = .ColLetterToNumber("E")
+        .BlockMode = True
+        .TypeMaxEditLen = 100
+        .BlockMode = False
+        
+        
+'        format chi tieu [9],[F]
+        .Row = lrowCount1 + 8
+        .Col = .ColLetterToNumber("F")
+        .Row2 = lrowCount2 - 1
+        .col2 = .ColLetterToNumber("F")
+        .BlockMode = True
+        .BackColor = backGroudColor
+        .BlockMode = False
+        
+'        format chi tieu [9],[I], [J]
+        .Row = lrowCount1 + 8
+        .Col = .ColLetterToNumber("I")
+        .Row2 = lrowCount2 - 1
+        .col2 = .ColLetterToNumber("J")
+        .BlockMode = True
+        .BackColor = backGroudColor
+        .BlockMode = False
+        
+'        format chi tieu [9],[M], [V]
+        .Row = lrowCount1 + 8
+        .Col = .ColLetterToNumber("M")
+        .Row2 = lrowCount2 - 1
+        .col2 = .ColLetterToNumber("V")
+        .BlockMode = True
+        .BackColor = backGroudColor
+        .BlockMode = False
+        
+        'format chi tieu [10],[G]
+        .Row = lrowCount1 + 8
+        .Col = .ColLetterToNumber("G")
+        .Row2 = lrowCount2 - 1
+        .col2 = .ColLetterToNumber("G")
+        .BlockMode = True
+        .TypeMaxEditLen = 10
+        .TypeHAlign = TypeHAlignCenter
+        .BlockMode = False
+        
+         'format chi tieu [21],[X]
+        .Row = lrowCount1 + 8
+        .Col = .ColLetterToNumber("W")
+        .Row2 = lrowCount2 - 1
+        .col2 = .ColLetterToNumber("X")
+        .BlockMode = True
+        .TypeMaxEditLen = 7
+        .TypeHAlign = TypeHAlignCenter
+        .BlockMode = False
+        
+'        format chi tieu [12],[L]
+        .Row = lrowCount1 + 8
+        .Col = .ColLetterToNumber("L")
+        .Row2 = lrowCount2 - 1
+        .col2 = .ColLetterToNumber("L")
+        .BlockMode = True
+        .CellType = CellTypeComboBox
+        .BlockMode = False
+                
+        .Row = lrowCount1 + 8
+        .Col = .ColLetterToNumber("C")
+        .Row2 = lrowCount2 - 1
+        .col2 = .ColLetterToNumber("E")
+        .BlockMode = True
+        .FontSize = 8
+        .Lock = False
+        .BlockMode = False
+        
+        .Row = lrowCount1 + 8
+        .Col = .ColLetterToNumber("G")
+        .Row2 = lrowCount2 - 1
+        .col2 = .ColLetterToNumber("G")
+        .BlockMode = True
+        .FontSize = 8
+        .Lock = False
+        .BlockMode = False
+        
+        
+        .Row = lrowCount1 + 8
+        .Col = .ColLetterToNumber("L")
+        .Row2 = lrowCount2 - 1
+        .col2 = .ColLetterToNumber("L")
+        .BlockMode = True
+        .FontSize = 8
+        .Lock = False
+        .BlockMode = False
+        
+        .Row = lrowCount1 + 8
+        .Col = .ColLetterToNumber("W")
+        .Row2 = lrowCount2 - 1
+        .col2 = .ColLetterToNumber("X")
+        .BlockMode = True
+        .FontSize = 8
+        .Lock = False
+        .BlockMode = False
+        
+        .Row = lrowCount1 + 8
+        .Col = .ColLetterToNumber("B")
+        .Row2 = lrowCount2 - 1
+        .col2 = .ColLetterToNumber("B")
+        .BlockMode = True
+        .FontSize = 8
+        .Lock = True
+        .BlockMode = False
+        copyFormulasSheet1 lrowCount2 + lrowCount1 + 9, fps, 40
+            
+            ' group 1
+            i = 1
+            .Col = .ColLetterToNumber("B")
+            .Row = 40
+            .EventEnabled(EventAllEvents) = False
+            .AutoCalc = False
+            Do
+                .RowHeight(-2) = 16.5
+
+                .Col = .ColLetterToNumber("K")
+                .TypeComboBoxList = strQuanHeNNTID
+
+                .Col = .ColLetterToNumber("L")
+                .TypeComboBoxList = strQuanHeNNT
+
+                    ' set danh sach tinh
+                .Col = .ColLetterToNumber("Q")
+                .TypeComboBoxList = strMaTinh
+
+                .Col = .ColLetterToNumber("R")
+                .TypeComboBoxList = strTenTinh
+
+                ' set danh sach huyen
+                .GetText .ColLetterToNumber("Q"), .Row, maTinh
+                tempArr = Split(getHuyenByMaTinh(CStr(maTinh)), "###")
+
+                .Col = .ColLetterToNumber("S")
+                .TypeComboBoxList = tempArr(0)
+
+                .Col = .ColLetterToNumber("T")
+                .TypeComboBoxList = tempArr(1)
+
+                ' set danh sach xa
+                .GetText .ColLetterToNumber("S"), .Row, maHuyen
+                tempArr = Split(getXaByMaHuyen(CStr(maHuyen)), "###")
+                .Col = .ColLetterToNumber("U")
+                .TypeComboBoxList = tempArr(0)
+
+                .Col = .ColLetterToNumber("V")
+                .TypeComboBoxList = tempArr(1)
+
+                 'set danh sach quoc tich
+                .Col = .ColLetterToNumber("H")
+                .TypeComboBoxList = strMaQuocTich
+
+                .Col = .ColLetterToNumber("I")
+                .TypeComboBoxList = strQuocTich
+
+
+                ' set danh sach quoc gia
+                .Col = .ColLetterToNumber("O")
+                .TypeComboBoxList = strMaQuocTich
+
+                .Col = .ColLetterToNumber("P")
+                .TypeComboBoxList = strQuocTich
+'
+                 .Col = .ColLetterToNumber("B")
+                 '.Formula = "B" & .Row - 1 & "+1"
+                 .Text = i
+                 i = i + 1
+                 .Row = .Row + 1
+            Loop Until .Text = "aa"
+            
+            ' group 2
+            i = 1
+            .Col = .ColLetterToNumber("B")
+            .Row = lrowCount1 + 8
+            .EventEnabled(EventAllEvents) = False
+            .AutoCalc = False
+            Do
+                .RowHeight(-2) = 16.5
+
+                .Col = .ColLetterToNumber("K")
+                .TypeComboBoxList = strQuanHeNNTID
+
+                .Col = .ColLetterToNumber("L")
+                .TypeComboBoxList = strQuanHeNNT
+
+'                    ' set danh sach tinh
+'                .Col = .ColLetterToNumber("Q")
+'                .TypeComboBoxList = strMaTinh
+'
+'                .Col = .ColLetterToNumber("R")
+'                .TypeComboBoxList = strTenTinh
+'
+'                ' set danh sach huyen
+'                .GetText .ColLetterToNumber("Q"), .Row, maTinh
+'                tempArr = Split(getHuyenByMaTinh(CStr(maTinh)), "###")
+'
+'                .Col = .ColLetterToNumber("S")
+'                .TypeComboBoxList = tempArr(0)
+'
+'                .Col = .ColLetterToNumber("T")
+'                .TypeComboBoxList = tempArr(1)
+'
+'                ' set danh sach xa
+'                .GetText .ColLetterToNumber("S"), .Row, maHuyen
+'                tempArr = Split(getXaByMaHuyen(CStr(maHuyen)), "###")
+'                .Col = .ColLetterToNumber("U")
+'                .TypeComboBoxList = tempArr(0)
+'
+'                .Col = .ColLetterToNumber("V")
+'                .TypeComboBoxList = tempArr(1)
+'
+'                 'set danh sach quoc tich
+'                .Col = .ColLetterToNumber("H")
+'                .TypeComboBoxList = strMaQuocTich
+'
+'                .Col = .ColLetterToNumber("I")
+'                .TypeComboBoxList = strQuocTich
+'
+'
+'                ' set danh sach quoc gia
+'                .Col = .ColLetterToNumber("O")
+'                .TypeComboBoxList = strMaQuocTich
+'
+'                .Col = .ColLetterToNumber("P")
+'                .TypeComboBoxList = strQuocTich
+'
+                 .Col = .ColLetterToNumber("B")
+                 '.Formula = "B" & .Row - 1 & "+1"
+                 .Text = i
+                 i = i + 1
+                 .Row = .Row + 1
+            Loop Until .Text = "aa"
+            
+            
+             .AutoCalc = True
+            .EventEnabled(EventAllEvents) = True
+      End With
+End Sub
+
+
+Private Sub copyFormulasSheet1(numRow As Long, fps As fpSpread, rowStart As Long)
+    Dim a As Long
+    a = 0
+
+    With fps
+
+        .Sheet = 1
+            
+        'truong hop so ban ghe len hon 10000
+        If numRow >= 2000 Then
+
+            Do While a * 2 <= 1024
+
+                If a = 0 Then
+                    .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a, .ColLetterToNumber("A"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), rowStart + a, .ColLetterToNumber("G"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), rowStart + a, .ColLetterToNumber("I"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), rowStart + a, .ColLetterToNumber("P"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("X"), rowStart, .ColLetterToNumber("Y"), rowStart + a, .ColLetterToNumber("X"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + a, .ColLetterToNumber("AH"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), rowStart + a, .ColLetterToNumber("AI"), (rowStart + a + 1)
+                    a = a + 2
+                ElseIf a <> 0 Then
+                    .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a - 1, .ColLetterToNumber("A"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), rowStart + a - 1, .ColLetterToNumber("G"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), rowStart + a - 1, .ColLetterToNumber("I"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), rowStart + a - 1, .ColLetterToNumber("P"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("X"), rowStart, .ColLetterToNumber("Y"), rowStart + a - 1, .ColLetterToNumber("X"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + a - 1, .ColLetterToNumber("AH"), rowStart + a
+                    .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), rowStart + a - 1, .ColLetterToNumber("AI"), rowStart + a
+                    a = a * 2
+                End If
+
+            Loop
+                 
+            a = 1
+            Dim dem As Long
+            Dim du  As Long
+            dem = numRow \ 1024
+            du = numRow Mod 1024
+
+            If dem > 0 Then
+
+                Do While a < dem
+                    .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), 1024 + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * a
+                    '.CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), 1024 + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
+                    '.CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), 1024 + rowStart - 1, .ColLetterToNumber("G"), rowStart + 1024 * a
+                    '.CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), 1024 + rowStart - 1, .ColLetterToNumber("I"), rowStart + 1024 * a
+                    '.CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), 1024 + rowStart - 1, .ColLetterToNumber("P"), rowStart + 1024 * a
+                    '.CopyRange .ColLetterToNumber("X"), rowStart, .ColLetterToNumber("Y"), 1024 + rowStart - 1, .ColLetterToNumber("X"), rowStart + 1024 * a
+                    '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), 1024 + rowStart - 1, .ColLetterToNumber("AH"), rowStart + 1024 * a
+                    .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), 1024 + rowStart - 1, .ColLetterToNumber("AI"), rowStart + 1024 * a
+                    a = a + 1
+                Loop
+
+                .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), du + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * a
+                '.CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
+                '.CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), du + rowStart - 1, .ColLetterToNumber("G"), rowStart + 1024 * a
+                '.CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), du + rowStart - 1, .ColLetterToNumber("I"), rowStart + 1024 * a
+                '.CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), du + rowStart - 1, .ColLetterToNumber("P"), rowStart + 1024 * a
+                '.CopyRange .ColLetterToNumber("X"), rowStart, .ColLetterToNumber("Y"), du + rowStart - 1, .ColLetterToNumber("X"), rowStart + 1024 * a
+                '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), du + rowStart - 1, .ColLetterToNumber("AH"), rowStart + 1024 * a
+                .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), du + rowStart - 1, .ColLetterToNumber("AI"), rowStart + 1024 * a
+            Else
+                .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), du + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * (a - 1)
+                '.CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * (a - 1)
+                '.CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), du + rowStart - 1, .ColLetterToNumber("G"), rowStart + 1024 * (a - 1)
+                '.CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), du + rowStart - 1, .ColLetterToNumber("I"), rowStart + 1024 * (a - 1)
+                '.CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), du + rowStart - 1, .ColLetterToNumber("P"), rowStart + 1024 * (a - 1)
+                '.CopyRange .ColLetterToNumber("X"), rowStart, .ColLetterToNumber("Y"), du + rowStart - 1, .ColLetterToNumber("X"), rowStart + 1024 * (a - 1)
+                '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), du + rowStart - 1, .ColLetterToNumber("AH"), rowStart + 1024 * (a - 1)
+                .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), du + rowStart - 1, .ColLetterToNumber("AI"), rowStart + 1024 * (a - 1)
+            End If
+
+            ' truong hop nho hon 10000
+        ElseIf numRow < 2000 Then
+            a = 0
+
+            Do While a * 2 < numRow
+
+                If a = 0 Then
+                    .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a, .ColLetterToNumber("A"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), rowStart + a, .ColLetterToNumber("G"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), rowStart + a, .ColLetterToNumber("I"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), rowStart + a, .ColLetterToNumber("P"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("X"), rowStart, .ColLetterToNumber("Y"), rowStart + a, .ColLetterToNumber("X"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + a, .ColLetterToNumber("AH"), (rowStart + a + 1)
+                    .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), rowStart + a, .ColLetterToNumber("AI"), (rowStart + a + 1)
+                    a = a + 2
+                ElseIf a <> 0 Then
+                    .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a - 1, .ColLetterToNumber("A"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), rowStart + a - 1, .ColLetterToNumber("G"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), rowStart + a - 1, .ColLetterToNumber("I"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), rowStart + a - 1, .ColLetterToNumber("P"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("X"), rowStart, .ColLetterToNumber("Y"), rowStart + a - 1, .ColLetterToNumber("X"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + a - 1, .ColLetterToNumber("AH"), rowStart + a
+                    .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), rowStart + a - 1, .ColLetterToNumber("AI"), rowStart + a
+                    a = a * 2
+                End If
+
+            Loop
+                
+            .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + (numRow - a - 1), .ColLetterToNumber("A"), rowStart + a
+            '.CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + (numRow - a - 1), .ColLetterToNumber("B"), rowStart + a
+            '.CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), rowStart + (numRow - a - 1), .ColLetterToNumber("G"), rowStart + a
+            '.CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("M"), rowStart + (numRow - a - 1), .ColLetterToNumber("I"), rowStart + a
+            '.CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), rowStart + (numRow - a - 1), .ColLetterToNumber("P"), rowStart + a
+            '.CopyRange .ColLetterToNumber("X"), rowStart, .ColLetterToNumber("Y"), rowStart + (numRow - a - 1), .ColLetterToNumber("X"), rowStart + a
+            '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + (numRow - a - 1), .ColLetterToNumber("AH"), rowStart + a
+            .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), rowStart + (numRow - a - 1), .ColLetterToNumber("AI"), rowStart + a
+        End If
+    End With
+End Sub
+
+
+
+Private Sub InsertNode16TH(ByVal fRow As Long, ByVal lRow As Long, ByVal mSheet As Byte, ByVal isGroupI As Boolean)
+    On Error GoTo ErrorHandle
+    
+    Dim xmlNodeCells As MSXML.IXMLDOMNode
+    Dim xmlNodeCells2 As MSXML.IXMLDOMNode
+    
+    Dim xmlNodeNewCells As MSXML.IXMLDOMNode
+    Dim xmlNodeNewCells2 As MSXML.IXMLDOMNode
+    
+    Dim xmlNodeNewCell As MSXML.IXMLDOMNode
+    Dim xmlNodeNewCell2 As MSXML.IXMLDOMNode
+    
+    Dim arrTemp() As String
+    Dim xmlSecionNode1 As MSXML.IXMLDOMNode
+    Dim xmlSecionNode2 As MSXML.IXMLDOMNode
+    
+    Dim ctlRow As Long
+    Dim cTemplate, cReport As String
+    
+    Dim sumRowDel As Long
+    Dim sumRowDel2 As Long
+    
+    Dim tempRow As Long
+    
+    Dim tempCol As Long
+    
+    If isGroupI = True Then
+    
+        Set xmlSecionNode1 = TAX_Utilities_v2.Data(mSheet - 1).getElementsByTagName("Section")(2)
+        sumRowDel = xmlSecionNode1.childNodes.length
+        
+        Set xmlSecionNode2 = TAX_Utilities_v2.Data(mSheet - 1).getElementsByTagName("Section")(3)
+        sumRowDel2 = xmlSecionNode2.childNodes.length
+        ' del group 1
+        For ctlRow = 1 To sumRowDel - 1
+                Set xmlNodeCells = TAX_Utilities_v2.Data(mSheet - 1).nodeFromID("C" & "_" & 40 + ctlRow & "").parentNode
+                xmlNodeCells.parentNode.removeChild xmlNodeCells
+        Next
+        ' del group 2
+        For ctlRow = 1 To sumRowDel2 - 1
+                Set xmlNodeCells = TAX_Utilities_v2.Data(mSheet - 1).getElementsByTagName("Section")(3).childNodes(1)
+                xmlNodeCells.parentNode.removeChild xmlNodeCells
+                
+                If ctlRow = sumRowDel2 - 1 Then
+                    Set xmlNodeCells = TAX_Utilities_v2.Data(mSheet - 1).getElementsByTagName("Section")(3).childNodes(0)
+                    
+                    For Each xmlNodeNewCell In xmlNodeCells.childNodes
+                        cTemplate = Left$(GetAttribute(xmlNodeNewCell, "CellID"), 2)
+                        arrTemp = Split(GetAttribute(xmlNodeNewCell, "CellID2"), "_")
+                        'cReport = Left$(GetAttribute(xmlNodeNewCell, "CellID2"), 2)
+                        cReport = Trim(arrTemp(0)) & "_"
+                        
+                        SetAttribute xmlNodeNewCell, "CellID", cTemplate & "49"
+                                
+                        ' Set first cell = 1
+                        SetAttribute xmlNodeNewCell, "FirstCell", "0"
+                        SetAttribute xmlNodeNewCell, "Value", vbNullString
+                        SetAttribute xmlNodeNewCell, "CellID2", cReport & "47"
+                    Next
+                End If
+        Next
+        
+        
+        Set xmlNodeCells = TAX_Utilities_v2.Data(mSheet - 1).nodeFromID("C_40").parentNode
+        
+        'Set xmlNodeCells2 = TAX_Utilities_v2.Data(mSheet - 1).getElementsByTagName("Section")(3).firstChild
+        
+    ' set row cua group 2
+        Set xmlNodeCells2 = TAX_Utilities_v2.Data(mSheet - 1).getElementsByTagName("Section")(3).childNodes(0)
+                
+        For Each xmlNodeNewCell In xmlNodeCells2.childNodes
+            cTemplate = Left$(GetAttribute(xmlNodeNewCell, "CellID"), 2)
+            arrTemp = Split(GetAttribute(xmlNodeNewCell, "CellID2"), "_")
+            'cReport = Left$(GetAttribute(xmlNodeNewCell, "CellID2"), 2)
+            cReport = Trim(arrTemp(0)) & "_"
+            
+            SetAttribute xmlNodeNewCell, "CellID", cTemplate & "100002"
+                    
+            ' Set first cell = 1
+            SetAttribute xmlNodeNewCell, "FirstCell", "0"
+            SetAttribute xmlNodeNewCell, "Value", vbNullString
+            SetAttribute xmlNodeNewCell, "CellID2", cReport & "100000"
+        Next
+        ' end set
+        
+        For ctlRow = fRow To lRow
+                                    
+            'IncreaseRowInDOM16TH fps, TAX_Utilities_v2.Data(mSheet - 1), ctlRow, 1, 1
+                        
+            Set xmlNodeNewCells = xmlNodeCells.cloneNode(True)
+            
+            For Each xmlNodeNewCell In xmlNodeNewCells.childNodes
+                cTemplate = Left$(GetAttribute(xmlNodeNewCell, "CellID"), 2)
+                arrTemp = Split(GetAttribute(xmlNodeNewCell, "CellID2"), "_")
+                'cReport = Left$(GetAttribute(xmlNodeNewCell, "CellID2"), 2)
+                cReport = Trim(arrTemp(0)) & "_"
+                
+                SetAttribute xmlNodeNewCell, "CellID", cTemplate & ctlRow
+                        
+                ' Set first cell = 1
+                SetAttribute xmlNodeNewCell, "FirstCell", "1"
+                SetAttribute xmlNodeNewCell, "Value", vbNullString
+                SetAttribute xmlNodeNewCell, "CellID2", cReport & (ctlRow - 2)
+            Next
+            
+            xmlNodeCells.parentNode.insertBefore xmlNodeNewCells, Null
+            
+        
+        Next
+    Else
+'        Set xmlSecionNode1 = TAX_Utilities_v2.Data(mSheet - 1).getElementsByTagName("Section")(3)
+'        sumRowDel = xmlSecionNode1.childNodes.length
+'        ' del group 2
+'        For ctlRow = 1 To sumRowDel - 1
+'                Set xmlNodeCells = TAX_Utilities_v2.Data(mSheet - 1).getElementsByTagName("Section")(3).childNodes(1)
+'                xmlNodeCells.parentNode.removeChild xmlNodeCells
+'        Next
+        ' lay ve row cuoi group 1
+        Set xmlSecionNode1 = TAX_Utilities_v2.Data(mSheet - 1).getElementsByTagName("Section")(2).lastChild
+        ParserCellID fps, GetAttribute(xmlSecionNode1.childNodes(0), "CellID"), tempCol, tempRow
+        
+        ' set row cua group 2 theo gia tri thuc
+        Set xmlNodeCells2 = TAX_Utilities_v2.Data(mSheet - 1).getElementsByTagName("Section")(3).childNodes(0)
+                
+        For Each xmlNodeNewCell In xmlNodeCells2.childNodes
+            cTemplate = Left$(GetAttribute(xmlNodeNewCell, "CellID"), 2)
+            arrTemp = Split(GetAttribute(xmlNodeNewCell, "CellID2"), "_")
+            'cReport = Left$(GetAttribute(xmlNodeNewCell, "CellID2"), 2)
+            cReport = Trim(arrTemp(0)) & "_"
+            
+            SetAttribute xmlNodeNewCell, "CellID", cTemplate & tempRow + 9
+                    
+            ' Set first cell = 1
+            SetAttribute xmlNodeNewCell, "FirstCell", "0"
+            SetAttribute xmlNodeNewCell, "Value", vbNullString
+            SetAttribute xmlNodeNewCell, "CellID2", cReport & tempRow + 7
+        Next
+        ' end set
+        
+        
+        
+        Set xmlNodeCells = TAX_Utilities_v2.Data(mSheet - 1).getElementsByTagName("Section")(3).firstChild
+        
+        For ctlRow = fRow To lRow
+            
+            Set xmlNodeNewCells = xmlNodeCells.cloneNode(True)
+            
+            For Each xmlNodeNewCell In xmlNodeNewCells.childNodes
+                cTemplate = Left$(GetAttribute(xmlNodeNewCell, "CellID"), 2)
+                arrTemp = Split(GetAttribute(xmlNodeNewCell, "CellID2"), "_")
+                'cReport = Left$(GetAttribute(xmlNodeNewCell, "CellID2"), 2)
+                cReport = Trim(arrTemp(0)) & "_"
+                
+                SetAttribute xmlNodeNewCell, "CellID", cTemplate & ctlRow
+                        
+                ' Set first cell = 1
+                SetAttribute xmlNodeNewCell, "FirstCell", "1"
+                SetAttribute xmlNodeNewCell, "Value", vbNullString
+                SetAttribute xmlNodeNewCell, "CellID2", cReport & (ctlRow - 2)
+            Next
+            xmlNodeCells.parentNode.insertBefore xmlNodeNewCells, Null
+        
+        Next
+    End If
+'   **********************************
+'    added
+'   Date: 12/04/06
+    'mAdjustData = True
+    TAX_Utilities_v2.AdjustData(mSheet - 1) = True
+'   **********************************
+EXIT_SUB:
+    Set xmlNodeNewCell = Nothing
+    Set xmlNodeNewCells = Nothing
+    Set xmlNodeCells = Nothing
+    
+    Exit Sub
+    
+ErrorHandle:
+    SaveErrorLog "cls_16TH_DKNPT", "InsertNode16TH", Err.number, Err.Description
+End Sub
+
+
+Private Sub IncreaseRowInDOM16TH(fpSpread1 As fpSpread, xmlDomData As MSXML.DOMDocument, ByVal pRow As Long, ByVal lRows As Long, ByVal lRow2s As Long)
+    On Error GoTo ErrorHandle
+    
+    Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
+    Dim lCol As Long, lRow As Long, i As Long
+        
+    If xmlDomData Is Nothing Then Exit Sub
+    Set xmlNodeListCell = xmlDomData.getElementsByTagName("Cell")
+    
+    For i = xmlNodeListCell.length - 1 To xmlNodeListCell.length - 24 Step -1
+        ParserCellID fpSpread1, GetAttribute(xmlNodeListCell(i), "CellID"), lCol, lRow
+        If lRow >= pRow Then
+            ' Increase value of row attribute + 1 (CellID)
+            SetAttribute xmlNodeListCell(i), "CellID", GetCellID(fpSpread1, lCol, lRow + lRows)
+            
+            ' Increase value of row attribute + 1 (CellID2)
+            ParserCellID fpSpread1, GetAttribute(xmlNodeListCell(i), "CellID2"), lCol, lRow
+            SetAttribute xmlNodeListCell(i), "CellID2", GetCellID(fpSpread1, lCol, lRow + lRow2s)
+        End If
+    Next
+        
+    Set xmlNodeListCell = Nothing
+    
+    Exit Sub
+    
+ErrorHandle:
+    SaveErrorLog "cls_16TH_DKNPT", "IncreaseRowInDOM16TH", Err.number, Err.Description
 End Sub
