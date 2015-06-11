@@ -157,7 +157,9 @@ Public moTaBMauXML As String
 ' KTN khi thien nhien
 Public strLoaiTkDk As String
 Public strLoadDataPl05_3 As Boolean
+Public strLoadData16TH As Boolean
 Public countRowPL05_3 As Double
+Public countRowTK16TH As Double
 
  
 Public strBarcodeInPDF As String    'Chua chuoi ma vach duoc in ra file PDF cuoi cung (Them vao) dung cho iHTKK
@@ -1321,6 +1323,10 @@ Public Sub SetupData(pGrid As fpSpread)
                             End If
                             strLoadDataPl05_3 = True
                             countRowPL05_3 = countRowPL05_3 + 1
+                        ElseIf GetAttribute(TAX_Utilities_v2.NodeMenu, "ID") = "95" And mCurrentSheet = 1 Then
+                            ' xu ly rieng cho Tk 16TH
+                            InsertRowNotFormat pGrid, lRow, lRows, True
+                            strLoadData16TH = True
                         Else
                             InsertRow pGrid, lRow, lRows, True
                         End If
