@@ -10346,31 +10346,56 @@ Private Sub fpSpread1_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal 
         ResetErrorCells
         fpSpread1.EventEnabled(EventAllEvents) = True
         
-        With fpSpread1
-            .Row = 40
-            If objTaxBusiness.rowGroup1 > 1 Then
-                For idx = 0 To objTaxBusiness.rowGroup1 - 2
-                    .EventEnabled(EventAllEvents) = False
-                    .sheet = 1
-                    InsertNode .ColLetterToNumber("C"), .Row
-                    .Row = .Row + 1
-                    .EventEnabled(EventAllEvents) = True
-                    .Refresh
-                Next
-            End If
+                ' chuan bi du lieu
+        Debug.Print "Chuan bi du lieu " & Time
+        objTaxBusiness.prepareData05_3
+        Debug.Print "End Chuan bi du lieu " & Time
 
-            rowStartGroup2 = .Row + 9
-            .Row = .Row + 9
+        
+        With fpSpread1
+            .EventEnabled(EventAllEvents) = False
+            .sheet = 1
+            Debug.Print "Them dong group 1 " & Time
+            If objTaxBusiness.rowGroup1 > 1 Then
+                .MaxRows = objTaxBusiness.rowGroup1 + .MaxRows - 1
+                 ' 1. Insert row them cac dong trong
+                 .InsertRows 41, objTaxBusiness.rowGroup1 - 1
+             End If
+            Debug.Print "End Them dong group 1 " & Time
+             
+             
+            Debug.Print "Them dong group 2 " & Time
             If objTaxBusiness.rowGroup2 > 1 Then
-                For idx = 0 To objTaxBusiness.rowGroup2 - 2
-                    .EventEnabled(EventAllEvents) = False
-                    .sheet = 1
-                    InsertNode .ColLetterToNumber("C"), .Row
-                    .Row = .Row + 1
-                    .EventEnabled(EventAllEvents) = True
-                    .Refresh
-                Next
-            End If
+                .MaxRows = objTaxBusiness.rowGroup2 + .MaxRows - 1
+                 ' 1. Insert row them cac dong trong
+                 .InsertRows 41 + objTaxBusiness.rowGroup1 + 9, objTaxBusiness.rowGroup2 - 1
+             End If
+            Debug.Print "End Them dong group 2 " & Time
+            .EventEnabled(EventAllEvents) = True
+'            .Row = 40
+'            If objTaxBusiness.rowGroup1 > 1 Then
+'                For idx = 0 To objTaxBusiness.rowGroup1 - 2
+'                    .EventEnabled(EventAllEvents) = False
+'                    .sheet = 1
+'                    InsertNode .ColLetterToNumber("C"), .Row
+'                    .Row = .Row + 1
+'                    .EventEnabled(EventAllEvents) = True
+'                    .Refresh
+'                Next
+'            End If
+'
+'            rowStartGroup2 = .Row + 9
+'            .Row = .Row + 9
+'            If objTaxBusiness.rowGroup2 > 1 Then
+'                For idx = 0 To objTaxBusiness.rowGroup2 - 2
+'                    .EventEnabled(EventAllEvents) = False
+'                    .sheet = 1
+'                    InsertNode .ColLetterToNumber("C"), .Row
+'                    .Row = .Row + 1
+'                    .EventEnabled(EventAllEvents) = True
+'                    .Refresh
+'                Next
+'            End If
         End With
         Exit Sub
     End If
@@ -15794,18 +15819,20 @@ Public Function delNullRowOn16TH(sheet As Long)
                     .Col = .ColLetterToNumber("B")
             Loop Until .Text = "aa"
             
-            i = CLng(Mid(cellID, InStr(1, cellID, "_") + 1, Len(cellID)))
-            .Row = i
-            
-            For j = 0 To UBound(colArr)
-                .Col = .ColLetterToNumber(colArr(j))
-                .CellNote = ""
-                .BackColor = vbWhite
-            Next
+'            i = CLng(Mid(cellID, InStr(1, cellID, "_") + 1, Len(cellID)))
+'            .Row = i
+'
+'            For j = 0 To UBound(colArr)
+'                .Col = .ColLetterToNumber(colArr(j))
+'                .CellNote = ""
+'                .BackColor = vbWhite
+'            Next
             
             ' group 2
-            
-            .Row = .Row + 8
+            i = .Row + 9
+            rowStart = i + 1
+            .Row = i + 1
+            .Col = .ColLetterToNumber("B")
             ' group 1
             Do
                 If .Text = "aa" Then
@@ -16486,7 +16513,7 @@ Public Sub copyFormulasSheet16TH(numRow As Long, fps As fpSpread, rowStart As Lo
 
                 If a = 0 Then
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a, .ColLetterToNumber("A"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
 '                    .CopyRange .ColLetterToNumber("I"), rowStart, .ColLetterToNumber("I"), rowStart + a, .ColLetterToNumber("I"), (rowStart + a + 1)
 '                    .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("X"), rowStart + a, .ColLetterToNumber("O"), (rowStart + a + 1)
 '                    '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + a, .ColLetterToNumber("AH"), (rowStart + a + 1)
@@ -16494,7 +16521,7 @@ Public Sub copyFormulasSheet16TH(numRow As Long, fps As fpSpread, rowStart As Lo
                     a = a + 2
                 ElseIf a <> 0 Then
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a - 1, .ColLetterToNumber("A"), rowStart + a
-                    .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
 '                    .CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), rowStart + a - 1, .ColLetterToNumber("G"), rowStart + a
 '                    .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), rowStart + a - 1, .ColLetterToNumber("P"), rowStart + a
 '                    '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + a - 1, .ColLetterToNumber("AH"), rowStart + a
@@ -16514,7 +16541,7 @@ Public Sub copyFormulasSheet16TH(numRow As Long, fps As fpSpread, rowStart As Lo
 
                 Do While a < dem
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), 1024 + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * a
-                    .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), 1024 + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
+                    '.CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), 1024 + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
 '                    .CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), 1024 + rowStart - 1, .ColLetterToNumber("G"), rowStart + 1024 * a
 '                    .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), 1024 + rowStart - 1, .ColLetterToNumber("P"), rowStart + 1024 * a
 '                    '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), 1024 + rowStart - 1, .ColLetterToNumber("AH"), rowStart + 1024 * a
@@ -16523,14 +16550,14 @@ Public Sub copyFormulasSheet16TH(numRow As Long, fps As fpSpread, rowStart As Lo
                 Loop
 
                 .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), du + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * a
-                .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
+                '.CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * a
 '                .CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), du + rowStart - 1, .ColLetterToNumber("G"), rowStart + 1024 * a
 '                .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), du + rowStart - 1, .ColLetterToNumber("P"), rowStart + 1024 * a
 '                '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), du + rowStart - 1, .ColLetterToNumber("AH"), rowStart + 1024 * a
                 .CopyRange .ColLetterToNumber("AI"), rowStart, .ColLetterToNumber("AI"), du + rowStart - 1, .ColLetterToNumber("AI"), rowStart + 1024 * a
             Else
                 .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), du + rowStart - 1, .ColLetterToNumber("A"), rowStart + 1024 * (a - 1)
-                .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * (a - 1)
+                '.CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), du + rowStart - 1, .ColLetterToNumber("B"), rowStart + 1024 * (a - 1)
 '                .CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), du + rowStart - 1, .ColLetterToNumber("G"), rowStart + 1024 * (a - 1)
 '                .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), du + rowStart - 1, .ColLetterToNumber("P"), rowStart + 1024 * (a - 1)
 '                '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), du + rowStart - 1, .ColLetterToNumber("AH"), rowStart + 1024 * (a - 1)
@@ -16545,7 +16572,7 @@ Public Sub copyFormulasSheet16TH(numRow As Long, fps As fpSpread, rowStart As Lo
 
                 If a = 0 Then
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a, .ColLetterToNumber("A"), (rowStart + a + 1)
-                    .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
+                    '.CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a, .ColLetterToNumber("B"), (rowStart + a + 1)
 '                    .CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), rowStart + a, .ColLetterToNumber("G"), (rowStart + a + 1)
 '                    .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), rowStart + a, .ColLetterToNumber("P"), (rowStart + a + 1)
 '                    '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + a, .ColLetterToNumber("AH"), (rowStart + a + 1)
@@ -16553,7 +16580,7 @@ Public Sub copyFormulasSheet16TH(numRow As Long, fps As fpSpread, rowStart As Lo
                     a = a + 2
                 ElseIf a <> 0 Then
                     .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + a - 1, .ColLetterToNumber("A"), rowStart + a
-                    .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
+                    '.CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + a - 1, .ColLetterToNumber("B"), rowStart + a
 '                    .CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), rowStart + a - 1, .ColLetterToNumber("G"), rowStart + a
 '                    .CopyRange .ColLetterToNumber("P"), rowStart, .ColLetterToNumber("Y"), rowStart + a - 1, .ColLetterToNumber("P"), rowStart + a
 '                    '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + a - 1, .ColLetterToNumber("AH"), rowStart + a
@@ -16564,7 +16591,7 @@ Public Sub copyFormulasSheet16TH(numRow As Long, fps As fpSpread, rowStart As Lo
             Loop
                 
             .CopyRange .ColLetterToNumber("A"), rowStart, .ColLetterToNumber("A"), rowStart + (numRow - a - 1), .ColLetterToNumber("A"), rowStart + a
-            .CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + (numRow - a - 1), .ColLetterToNumber("B"), rowStart + a
+            '.CopyRange .ColLetterToNumber("B"), rowStart, .ColLetterToNumber("B"), rowStart + (numRow - a - 1), .ColLetterToNumber("B"), rowStart + a
 '            .CopyRange .ColLetterToNumber("G"), rowStart, .ColLetterToNumber("G"), rowStart + (numRow - a - 1), .ColLetterToNumber("G"), rowStart + a
 '            .CopyRange .ColLetterToNumber("O"), rowStart, .ColLetterToNumber("X"), rowStart + (numRow - a - 1), .ColLetterToNumber("O"), rowStart + a
 '            '.CopyRange .ColLetterToNumber("AH"), rowStart, .ColLetterToNumber("AH"), rowStart + (numRow - a - 1), .ColLetterToNumber("AH"), rowStart + a
@@ -17766,12 +17793,22 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
         .EventEnabled(0) = False
 
         If rowStartSpread1 > 40 Then
-           
-            .MaxRows = lrowCount + .MaxRows
-            ' 1. Insert row them cac dong trong
-            .InsertRows rowStartSpread1 + 1, lrowCount
-           
-            rowStartSpread11 = rowStartSpread1
+           If isGroupI = True Then
+             .MaxRows = lrowCount + .MaxRows
+             ' 1. Insert row them cac dong trong
+             .InsertRows rowStartSpread1 + 1, lrowCount
+            
+             rowStartSpread11 = rowStartSpread1
+           Else
+                ' 1. Insert row them cac dong trong
+                If isFirstRow = True Then
+                    .MaxRows = lrowCount + .MaxRows - 1
+                    .InsertRows rowStartSpread1 + 1, lrowCount - 1
+                Else
+                    .MaxRows = lrowCount + .MaxRows
+                    .InsertRows rowStartSpread1 + 1, lrowCount
+                End If
+           End If
         Else
             .MaxRows = lrowCount + .MaxRows - 1
             ' 1. Insert row them cac dong trong
@@ -17871,19 +17908,19 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
                 .Text = fparray(a, 15)
                 ' set ten tinh
                 .Col = .ColLetterToNumber("R")
-                .Text = fparray(a, 16)
+                .Text = Trim$(fparray(a, 16))
                 ' set ma huyen
                 .Col = .ColLetterToNumber("S")
                 .Text = fparray(a, 17)
                 ' set ten huyen
                 .Col = .ColLetterToNumber("T")
-                .Text = fparray(a, 18)
+                .Text = Trim$(fparray(a, 18))
                 ' set ma xa
                 .Col = .ColLetterToNumber("U")
                 .Text = fparray(a, 19)
                 ' set ten xa
                 .Col = .ColLetterToNumber("V")
-                .Text = fparray(a, 20)
+                .Text = Trim$(fparray(a, 20))
                 ' set tu than
                 .Col = .ColLetterToNumber("W")
                 .Text = fparray(a, 21)
@@ -18056,19 +18093,19 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
                 .Text = fparray(a, 15)
                 ' set ten tinh
                 .Col = .ColLetterToNumber("R")
-                .Text = fparray(a, 16)
+                .Text = Trim$(fparray(a, 16))
                 ' set ma huyen
                 .Col = .ColLetterToNumber("S")
                 .Text = fparray(a, 17)
                 ' set ten huyen
                 .Col = .ColLetterToNumber("T")
-                .Text = fparray(a, 18)
+                .Text = Trim$(fparray(a, 18))
                 ' set ma xa
                 .Col = .ColLetterToNumber("U")
                 .Text = fparray(a, 19)
                 ' set ten xa
                 .Col = .ColLetterToNumber("V")
-                .Text = fparray(a, 20)
+                .Text = Trim$(fparray(a, 20))
                 ' set tu than
                 .Col = .ColLetterToNumber("W")
                 .Text = fparray(a, 21)
@@ -20169,9 +20206,11 @@ Public Sub moveData16TH_tuning()
     
         ' Xu ly truong hop nhap 1 dong ghi sau do tai du lieu
     Dim xmlCellNode As MSXML.IXMLDOMNode
+    Dim xmlCellNode1 As MSXML.IXMLDOMNode
     Dim hasVl  As Integer
     Dim value As Variant
     Dim isFirstRown As Boolean
+    Dim isFirstRown1 As Boolean
     
 
     ' bang tong hop nguoi NPT
@@ -20229,6 +20268,8 @@ Public Sub moveData16TH_tuning()
         ' dong dau tien luon la dong trang
         isFirstRown = True
         
+        isFirstRown1 = True
+        
         ResetData
         
 '        ResetDataAndForm mCurrentSheet
@@ -20236,16 +20277,23 @@ Public Sub moveData16TH_tuning()
     
     ' Truong hop them tiep du lieu
     Dim xmlSecionNode As MSXML.IXMLDOMNode
+    Dim xmlSecionNode1 As MSXML.IXMLDOMNode
     Dim currentRow    As Long
+    Dim currentRow1    As Long
     
     ' 16TH tai tu group 2
     If Trim(varMenuId) = "95" Then
          Set xmlSecionNode = TAX_Utilities_v2.Data(mCurrentSheet - 1).getElementsByTagName("Section")(2)
+         Set xmlSecionNode1 = TAX_Utilities_v2.Data(mCurrentSheet - 1).getElementsByTagName("Section")(3)
     End If
     
     If themDuLieu Then
         If Not xmlSecionNode Is Nothing And GetAttribute(xmlSecionNode, "Dynamic") = "1" Then
                 currentRow = xmlSecionNode.childNodes.length + fpSpread1.Row
+        End If
+        
+        If Not xmlSecionNode1 Is Nothing And GetAttribute(xmlSecionNode1, "Dynamic") = "1" Then
+                currentRow1 = xmlSecionNode1.childNodes.length
         End If
     End If
 
@@ -20272,6 +20320,28 @@ Public Sub moveData16TH_tuning()
                 isFirstRown = True
             End If
         End If
+        
+        
+        ' group 2
+        If xmlSecionNode1.childNodes.length = 1 Then
+            For Each xmlCellNode1 In xmlSecionNode1.childNodes.Item(0).childNodes
+                value = GetAttribute(xmlCellNode1, "Value")
+                If fpSpread1.ActiveSheet = 4 Then
+                    ' xu ly cho PL 05-3/TNCN
+                    If value <> "" And Left(GetAttribute(xmlCellNode1, "CellID"), 1) <> "I" And Left(GetAttribute(xmlCellNode1, "CellID"), 1) <> "J" And Left(GetAttribute(xmlCellNode1, "CellID"), 1) <> "P" And Left(GetAttribute(xmlCellNode1, "CellID"), 1) <> "Q" Then
+                         hasVl = hasVl + 1
+                    End If
+                Else
+                    If (GetAttribute(xmlCellNode1, "FirstCell") <> "" And value <> "") Or (GetAttribute(xmlCellNode1, "FirstCell") = "" And value <> "" And value <> "0") Then
+                          hasVl = hasVl + 1
+                    End If
+                End If
+            Next
+            ' truong hop dong dau tien trang
+            If hasVl = 0 Then
+                isFirstRown1 = True
+            End If
+        End If
     End If
 
     Debug.Print "COPY DATA IN : " & Time
@@ -20285,7 +20355,7 @@ Public Sub moveData16TH_tuning()
     If Trim(varMenuId) = "95" And fpSpread1.ActiveSheet = 1 Then
         gridData16TH rowStartSpread1, rowStartSpread2, lrowCount1, 1, isFirstRown, True
         
-        gridData16TH rowStartSpread1 + 8, rowStartSpread2 + stepGroup + 1, lrowCount3, 1, isFirstRown, False
+        gridData16TH rowStartSpread1 + currentRow1 + 7, rowStartSpread2 + stepGroup + 1, lrowCount3, 1, isFirstRown1, False
     End If
 
     Debug.Print "COPY DATA OUT: " & Time
