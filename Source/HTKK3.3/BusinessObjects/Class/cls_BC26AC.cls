@@ -301,6 +301,20 @@ Public Sub Prepare2()
                 .Col = .ColLetterToNumber("C")
                 .SetText .Col, .Row, arrCellInRow(6)
                 UpdateCell fps, .Col, .Row, .Text
+                'Ton cuoi ky
+                ' tu so
+                .Col = .ColLetterToNumber("X")
+                .SetText .Col, .Row, arrCellInRow(2)
+                UpdateCell fps, .Col, .Row, .Text
+                ' den so
+                .Col = .ColLetterToNumber("Y")
+                .SetText .Col, .Row, arrCellInRow(3)
+                UpdateCell fps, .Col, .Row, .Text
+                ' tong so
+                .Col = .ColLetterToNumber("Z")
+                .SetText .Col, .Row, Val(arrCellInRow(3)) - Val(arrCellInRow(2)) + 1
+                UpdateCell fps, .Col, .Row, .Text
+                
                 'luu trang thai ton
                 .Col = .ColLetterToNumber("AC")
                 .SetText .Col, .Row, "1"
