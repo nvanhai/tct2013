@@ -142,7 +142,7 @@ Public Sub Prepare1()
             temValue = GetAttribute(xmlNode, "Value")
             arrValue = Split(temValue, "###")
             'If arrValue(0) <> "1" Then
-                strTenHuyen = strTenHuyen + arrValue(3) + Chr$(9)
+                strTenHuyen = strTenHuyen + Trim$(arrValue(3)) + Chr$(9)
                 strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
             'End If
         Next
@@ -157,7 +157,7 @@ Public Sub Prepare1()
             temValue = GetAttribute(xmlNode, "Value")
             arrValue = Split(temValue, "###")
             'If arrValue(0) <> "1" Then
-                strTenXa = strTenXa + arrValue(4) + Chr$(9)
+                strTenXa = strTenXa + Trim$(arrValue(4)) + Chr$(9)
                 strMaXa = strMaXa + arrValue(3) + Chr$(9)
             'End If
         Next
@@ -5884,7 +5884,7 @@ Private Function getHuyenByMaTinh(maTinh As String) As String
         temValue = GetAttribute(xmlNode, "Value")
         arrValue = Split(temValue, "###")
         If arrValue(1) = maTinh Then
-            strTenHuyen = strTenHuyen + arrValue(3) + Chr$(9)
+            strTenHuyen = strTenHuyen + Trim$(arrValue(3)) + Chr$(9)
             strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
         End If
     Next
@@ -5913,7 +5913,7 @@ Private Function getXaByMaHuyen(maHuyen As String) As String
         temValue = GetAttribute(xmlNode, "Value")
         arrValue = Split(temValue, "###")
         If arrValue(2) = maHuyen Then
-            strTenXa = strTenXa + arrValue(4) + Chr$(9)
+            strTenXa = strTenXa + Trim$(arrValue(4)) + Chr$(9)
             strMaXa = strMaXa + arrValue(3) + Chr$(9)
         End If
     Next
@@ -5988,7 +5988,7 @@ Private Sub ForMatPL05_3()
                 temValue = GetAttribute(xmlNode, "Value")
                 arrValue = Split(temValue, "###")
                 'If arrValue(0) <> "1" Then
-                    strTenHuyen = strTenHuyen + arrValue(3) + Chr$(9)
+                    strTenHuyen = strTenHuyen + Trim$(arrValue(3)) + Chr$(9)
                     strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
                 'End If
             Next
@@ -6003,7 +6003,7 @@ Private Sub ForMatPL05_3()
                 temValue = GetAttribute(xmlNode, "Value")
                 arrValue = Split(temValue, "###")
                 'If arrValue(0) <> "1" Then
-                    strTenXa = strTenXa + arrValue(4) + Chr$(9)
+                    strTenXa = strTenXa + Trim$(arrValue(4)) + Chr$(9)
                     strMaXa = strMaXa + arrValue(3) + Chr$(9)
                 'End If
             Next

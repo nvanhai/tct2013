@@ -138,7 +138,7 @@ Public Sub Prepare1()
             temValue = GetAttribute(xmlNode, "Value")
             arrValue = Split(temValue, "###")
             'If arrValue(0) <> "1" Then
-                strTenHuyen = strTenHuyen + arrValue(3) + Chr$(9)
+                strTenHuyen = strTenHuyen + Trim$(arrValue(3)) + Chr$(9)
                 strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
             'End If
         Next
@@ -153,7 +153,7 @@ Public Sub Prepare1()
             temValue = GetAttribute(xmlNode, "Value")
             arrValue = Split(temValue, "###")
             'If arrValue(0) <> "1" Then
-                strTenXa = strTenXa + arrValue(4) + Chr$(9)
+                strTenXa = strTenXa + Trim$(arrValue(4)) + Chr$(9)
                 strMaXa = strMaXa + arrValue(3) + Chr$(9)
             'End If
         Next
@@ -291,7 +291,7 @@ Public Sub Prepare2()
         .EventEnabled(EventAllEvents) = True
     End With
     
-         prepareData05_3
+         'prepareData05_3
          
     ' set lai format PL16TH
     If flgLoadData16TH = True Then
@@ -342,8 +342,35 @@ End Function
 Private Sub fps_ButtonClicked(ByVal Col As Long, ByVal Row As Long, ByVal ButtonDown As Integer)
     With fps
         If Col = .ColLetterToNumber("D") And Row = 1 Then
-           fillData
-           UpdateSheets
+             ' set data tu 05-3 sang 16TH
+             fillData
+             Dim idx As Long
+             Dim countRowG1 As Long
+             ' format row
+             ForMatTK16TH
+             
+             With fps
+                .Sheet = 1
+                Debug.Print "Tao node XML " & Time
+                InsertNode16TH 41, .SearchCol(.ColLetterToNumber("B"), 40, -1, "aa", SearchFlagsNone) - 1, 1, True
+                
+                ' tinh so dong group 1
+                .Sheet = 1
+                .Col = .ColLetterToNumber("B")
+                For idx = 40 To .MaxRows Step 1
+                    .Row = idx
+                    countRowG1 = countRowG1 + 1
+                    If .Text = "aa" Then
+                        Exit For
+                    End If
+                Next
+        
+                
+                InsertNode16TH 48 + countRowG1, .SearchCol(.ColLetterToNumber("B"), 47 + countRowG1, -1, "aa", SearchFlagsNone) - 1, 1, False
+                Debug.Print "End Tao node XML " & Time
+                UpdateSheets
+            End With
+'           UpdateSheets
         End If
     End With
     
@@ -879,7 +906,8 @@ End Sub
 'No parameter
 Public Sub finish()
     Dim ASheet As Integer, SSheet As Integer
-            
+    Dim countRowG1 As Long
+    Dim idx As Long
 '    If flgLoadToKhai = False Then
 '        defaultFormula
 '    End If
@@ -897,9 +925,25 @@ Public Sub finish()
 '
         'kiemTraDuLieuImport
         
-'        .Sheet = 1
-'        InsertNode 41, .SearchCol(.ColLetterToNumber("B"), 40, -1, "aa", SearchFlagsNone) - 1, 1
-'
+        .Sheet = 1
+        Debug.Print "Tao node XML " & Time
+        InsertNode16TH 41, .SearchCol(.ColLetterToNumber("B"), 40, -1, "aa", SearchFlagsNone) - 1, 1, True
+        
+        ' tinh so dong group 1
+        .Sheet = 1
+        .Col = .ColLetterToNumber("B")
+        For idx = 40 To .MaxRows Step 1
+            .Row = idx
+            countRowG1 = countRowG1 + 1
+            If .Text = "aa" Then
+                Exit For
+            End If
+        Next
+
+        
+        InsertNode16TH 48 + countRowG1, .SearchCol(.ColLetterToNumber("B"), 47 + countRowG1, -1, "aa", SearchFlagsNone) - 1, 1, False
+        Debug.Print "End Tao node XML " & Time
+        
         UpdateSheets
         CheckDynamicError 'Set Exception Error on cells of interface
 
@@ -2316,7 +2360,7 @@ Sub CellChange(ByVal Col As Long, ByVal Row As Long, Optional ByVal f As Integer
 End Sub
 
 
-Private Sub prepareData05_3()
+Public Sub prepareData05_3()
     Dim xmlDomData As New MSXML.DOMDocument
     Dim xmlNodeListCells As MSXML.IXMLDOMNodeList
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
@@ -2434,6 +2478,7 @@ Private Sub fillData()
         Dim j As Long
         Dim STT As Long
         Dim isGroup1 As Boolean
+        
 
         strCol = "C_D_E_F_G_H_I_J_K_L_M_N_O_P_Q_R_S_T_U_V_W_X"
         ArrCol = Split(strCol, "_")
@@ -2670,7 +2715,7 @@ Private Function getHuyenByMaTinh(maTinh As String) As String
         temValue = GetAttribute(xmlNode, "Value")
         arrValue = Split(temValue, "###")
         If arrValue(1) = maTinh Then
-            strTenHuyen = strTenHuyen + arrValue(3) + Chr$(9)
+            strTenHuyen = strTenHuyen + Trim$(arrValue(3)) + Chr$(9)
             strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
         End If
     Next
@@ -2699,7 +2744,7 @@ Private Function getXaByMaHuyen(maHuyen As String) As String
         temValue = GetAttribute(xmlNode, "Value")
         arrValue = Split(temValue, "###")
         If arrValue(2) = maHuyen Then
-            strTenXa = strTenXa + arrValue(4) + Chr$(9)
+            strTenXa = strTenXa + Trim$(arrValue(4)) + Chr$(9)
             strMaXa = strMaXa + arrValue(3) + Chr$(9)
         End If
     Next
@@ -2761,7 +2806,7 @@ Private Sub ForMatTK16TH()
                 temValue = GetAttribute(xmlNode, "Value")
                 arrValue = Split(temValue, "###")
                 'If arrValue(0) <> "1" Then
-                    strTenTinh = strTenTinh + arrValue(2) + Chr$(9)
+                    strTenTinh = strTenTinh + Trim$(arrValue(2)) + Chr$(9)
                     strMaTinh = strMaTinh + arrValue(1) + Chr$(9)
                 'End If
             Next
@@ -2776,7 +2821,7 @@ Private Sub ForMatTK16TH()
                 temValue = GetAttribute(xmlNode, "Value")
                 arrValue = Split(temValue, "###")
                 'If arrValue(0) <> "1" Then
-                    strTenHuyen = strTenHuyen + arrValue(3) + Chr$(9)
+                    strTenHuyen = strTenHuyen + Trim$(arrValue(3)) + Chr$(9)
                     strMaHuyen = strMaHuyen + arrValue(2) + Chr$(9)
                 'End If
             Next
@@ -2791,7 +2836,7 @@ Private Sub ForMatTK16TH()
                 temValue = GetAttribute(xmlNode, "Value")
                 arrValue = Split(temValue, "###")
                 'If arrValue(0) <> "1" Then
-                    strTenXa = strTenXa + arrValue(4) + Chr$(9)
+                    strTenXa = strTenXa + Trim$(arrValue(4)) + Chr$(9)
                     strMaXa = strMaXa + arrValue(3) + Chr$(9)
                 'End If
             Next
@@ -3140,7 +3185,7 @@ Private Sub ForMatTK16TH()
         .FontSize = 8
         .Lock = True
         .BlockMode = False
-        copyFormulasSheet1 lrowCount2 + lrowCount1 + 9, fps, 40
+        copyFormulasSheet1 lrowCount2 - 41, fps, 40
             
             ' group 1
             i = 1
