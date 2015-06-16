@@ -17351,7 +17351,7 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
             .Text = fparray(a, 2)
 
             .Col = .ColLetterToNumber("G")
-            .Text = fparray(a, 3)
+            .Text = Format_ddmmyyyy(CStr(fparray(a, 3)))
 
             .Col = .ColLetterToNumber("H")
             ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
@@ -17408,10 +17408,10 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
             .Text = Trim$(fparray(a, 19))
             
             .Col = .ColLetterToNumber("X")
-            .Text = fparray(a, 20)
+            .Text = Format_mmyyyy(CStr(fparray(a, 20)))
             
             .Col = .ColLetterToNumber("Y")
-            .Text = fparray(a, 21)
+            .Text = Format_mmyyyy(CStr(fparray(a, 21)))
             
             
             a = a + 1
@@ -17446,7 +17446,7 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
             .Text = fparray(a, 2)
 
             .Col = .ColLetterToNumber("G")
-            .Text = fparray(a, 3)
+            .Text = Format_ddmmyyyy(CStr(fparray(a, 3)))
 
             .Col = .ColLetterToNumber("H")
             ' Replace dau "." doi voi cac truong hop format khong co not comment mau xanh tren file excel
@@ -17504,10 +17504,10 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
             .Text = Trim$(fparray(a, 19))
             
             .Col = .ColLetterToNumber("X")
-            .Text = fparray(a, 20)
+            .Text = Format_mmyyyy(CStr(fparray(a, 20)))
             
             .Col = .ColLetterToNumber("Y")
-            .Text = fparray(a, 21)
+            .Text = Format_mmyyyy(CStr(fparray(a, 21)))
 
             a = a + 1
             rowStartSpread1 = rowStartSpread1 + 1
@@ -17866,7 +17866,7 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
                 
                 ' set ngay sinh NPT
                 .Col = .ColLetterToNumber("F")
-                .Text = fparray(a, 4)
+                .Text = Format_ddmmyyyy(CStr(fparray(a, 4)))
                 
                 ' set MST NPT khong tai
     
@@ -17921,12 +17921,12 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
                 ' set ten xa
                 .Col = .ColLetterToNumber("V")
                 .Text = Trim$(fparray(a, 20))
-                ' set tu than
+                ' set tu thang
                 .Col = .ColLetterToNumber("W")
-                .Text = fparray(a, 21)
+                .Text = Format_mmyyyy(CStr(fparray(a, 21)))
                 ' set den thang
                 .Col = .ColLetterToNumber("X")
-                .Text = fparray(a, 22)
+                .Text = Format_mmyyyy(CStr(fparray(a, 22)))
             Else
                 ProgressBar1.value = countRowTK16TH + a
                 ' set ho ten NNT
@@ -18010,10 +18010,10 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
 '                .Text = fparray(a, 20)
                 ' set tu thang
                 .Col = .ColLetterToNumber("W")
-                .Text = fparray(a, 21)
+                .Text = Format_mmyyyy(CStr(fparray(a, 21)))
                 ' set den thang
                 .Col = .ColLetterToNumber("X")
-                .Text = fparray(a, 22)
+                .Text = Format_mmyyyy(CStr(fparray(a, 22)))
             End If
             
             a = a + 1
@@ -18051,7 +18051,7 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
                 
                 ' set ngay sinh NPT
                 .Col = .ColLetterToNumber("F")
-                .Text = fparray(a, 4)
+                .Text = Format_ddmmyyyy(CStr(fparray(a, 4)))
                 
                 ' set MST NPT khong tai
     
@@ -18106,12 +18106,12 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
                 ' set ten xa
                 .Col = .ColLetterToNumber("V")
                 .Text = Trim$(fparray(a, 20))
-                ' set tu than
+                ' set tu thang
                 .Col = .ColLetterToNumber("W")
-                .Text = fparray(a, 21)
+                .Text = Format_mmyyyy(CStr(fparray(a, 21)))
                 ' set den thang
                 .Col = .ColLetterToNumber("X")
-                .Text = fparray(a, 22)
+                .Text = Format_mmyyyy(CStr(fparray(a, 22)))
             Else
                 ' set ho ten NNT
                 .Col = .ColLetterToNumber("C")
@@ -18194,10 +18194,10 @@ Private Sub gridData16TH(rowStartSpread1 As Long, _
 '                .Text = fparray(a, 20)
                 ' set tu thang
                 .Col = .ColLetterToNumber("W")
-                .Text = fparray(a, 21)
+                .Text = Format_mmyyyy(CStr(fparray(a, 21)))
                 ' set den thang
                 .Col = .ColLetterToNumber("X")
-                .Text = fparray(a, 22)
+                .Text = Format_mmyyyy(CStr(fparray(a, 22)))
             End If
 
             a = a + 1

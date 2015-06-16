@@ -2921,6 +2921,10 @@ Private Sub ForMatTK16TH()
         .BlockMode = True
         .TypeMaxEditLen = 10
         .TypeHAlign = TypeHAlignCenter
+        .CellType = CellTypePic
+        .TypeVAlign = TypeHAlignCenter
+        .TypePicDefaultText = "../../...."
+        .TypePicMask = "99//99//9999"
         .BlockMode = False
         
         'format chi tieu [10],[G]
@@ -2948,7 +2952,7 @@ Private Sub ForMatTK16TH()
         .Row2 = lrowCount1 - 1
         .col2 = .ColLetterToNumber("M")
         .BlockMode = True
-        .TypeMaxEditLen = 8
+        .TypeMaxEditLen = 50
         .BlockMode = False
         
         'format chi tieu [16],[N]
@@ -2957,7 +2961,7 @@ Private Sub ForMatTK16TH()
         .Row2 = lrowCount1 - 1
         .col2 = .ColLetterToNumber("N")
         .BlockMode = True
-        .TypeMaxEditLen = 7
+        .TypeMaxEditLen = 50
         .BlockMode = False
         
         'format chi tieu [21],[X]
@@ -2968,6 +2972,10 @@ Private Sub ForMatTK16TH()
         .BlockMode = True
         .TypeMaxEditLen = 7
         .TypeHAlign = TypeHAlignCenter
+        .CellType = CellTypePic
+        .TypeVAlign = TypeHAlignCenter
+        .TypePicDefaultText = "../...."
+        .TypePicMask = "99//9999"
         .BlockMode = False
         
         
@@ -3129,6 +3137,10 @@ Private Sub ForMatTK16TH()
         .BlockMode = True
         .TypeMaxEditLen = 7
         .TypeHAlign = TypeHAlignCenter
+        .CellType = CellTypePic
+        .TypeVAlign = TypeHAlignCenter
+        .TypePicDefaultText = "../...."
+        .TypePicMask = "99//9999"
         .BlockMode = False
         
 '        format chi tieu [12],[L]
@@ -3174,6 +3186,7 @@ Private Sub ForMatTK16TH()
         .col2 = .ColLetterToNumber("X")
         .BlockMode = True
         .FontSize = 8
+        
         .Lock = False
         .BlockMode = False
         
