@@ -6078,6 +6078,10 @@ Private Sub ForMatPL05_3()
         .BlockMode = True
         .TypeMaxEditLen = 10
         .TypeHAlign = TypeHAlignCenter
+        .CellType = CellTypePic
+        .TypeVAlign = TypeVAlignCenter
+        .TypePicDefaultText = "../../...."
+        .TypePicMask = "99//99//9999"
         .BlockMode = False
         
         'format chi tieu [13],[K]
@@ -6116,6 +6120,10 @@ Private Sub ForMatPL05_3()
         .BlockMode = True
         .TypeMaxEditLen = 7
         .TypeHAlign = TypeHAlignCenter
+        .CellType = CellTypePic
+        .TypeVAlign = TypeVAlignCenter
+        .TypePicDefaultText = "../...."
+        .TypePicMask = "99//9999"
         .BlockMode = False
         
         

@@ -4508,6 +4508,37 @@ e:
     Format_ddmmyyyy = ""
 End Function
 
+'format a month/year string as mm/yyyy
+'if not able to format, out: vbnullstring
+'if able, out a mm/yyyy string
+Public Function Format_mmyyyy(str As String) As String
+    Dim m As String, Y As String
+    
+    On Error GoTo e
+    m = Left(str, InStr(str, "/") - 1)
+    Y = Right(str, Len(str) - InStr(str, "/"))
+    If IsNumeric(m) And IsNumeric(Val(Y)) Then
+        If Val(m) >= 1 And Val(m) <= 12 Then
+            Format_mmyyyy = format(m, "0#")
+        Else
+            GoTo e
+        End If
+        
+        If Val(Y) >= 0 And Val(Y) <= 9999 Then
+            
+            If Val(Y) >= 0 And Val(Y) <= 999 Then Y = CStr(2000 + Val(Y))
+            If Val(Y) < 1900 Then GoTo e
+            Format_mmyyyy = Format_mmyyyy & "/" & format(Y, "####")
+        Else
+            GoTo e
+        End If
+    End If
+    Exit Function
+e:
+    Format_mmyyyy = ""
+End Function
+
+
 Public Function GetHanNopTk() As String
     Dim hannop As String
     Dim dNgayCuoiKy As Date
