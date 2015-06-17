@@ -1632,7 +1632,7 @@ Private Sub CheckDynamicSheet3()
                                         End If
                                    End If
                             Else
-                                 .Col = .ColLetterToNumber("F")
+                                .Col = .ColLetterToNumber("F")
                                 .BackColor = mNonErrorColor
                                 .CellNote = ""
                             End If
