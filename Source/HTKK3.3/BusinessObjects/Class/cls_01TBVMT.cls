@@ -76,7 +76,8 @@ Public Sub Prepare1()
     Dim xmlNode As MSXML.IXMLDOMNode
     Dim i As Integer
     Dim fldList() As String
-    strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_thue_BVMT.xml")
+    'strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_thue_BVMT.xml")
+    strDataFileName = GetDMThueBVMT
     
     With fps
         SetDateFormat fps, 1, 57, .ColLetterToNumber("R"), DDMMYYYY
@@ -1732,7 +1733,8 @@ Public Sub getNhomHH(ByVal maNhom As String, ByRef tenNhom As String)
     Dim xmlNodeListCell As MSXML.IXMLDOMNodeList
     Dim xmlNode As MSXML.IXMLDOMNode
 
-       strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_thue_BVMT.xml")
+       'strDataFileName = GetAbsolutePath("..\InterfaceIni\Catalogue_DM_thue_BVMT.xml")
+       strDataFileName = GetDMThueBVMT
     
        If xmlDomData.Load(GetAbsolutePath(strDataFileName)) Then
             Set xmlNodeListCell = xmlDomData.getElementsByTagName("Item")
@@ -1747,3 +1749,58 @@ Public Sub getNhomHH(ByVal maNhom As String, ByRef tenNhom As String)
             Next
         End If
 End Sub
+
+
+' Lay danh muc bieu thue BVMT theo HL ky ke khai
+Public Function GetDMThueBVMT() As String
+    Dim strReturn As String
+    Dim strCatalogueName As String
+    Dim strFileHLBieuThue As String
+    Dim strMonth As String
+    Dim strYear As String
+    Dim vDateKK As Date
+    Dim vDateHL As Date
+    Dim MaxDate As Date
+    Dim arrDateHL() As String
+    Dim i As Integer
+    Dim strHieuLucBT As String
+    ' list danh sach cac file hieu luc bieu thue
+    strFileHLBieuThue = "052015###022013###011900"
+    arrDateHL = Split(strFileHLBieuThue, "###")
+    ' lay ngay cuoi thang ke khai
+    strMonth = TAX_Utilities_v2.Month
+    strYear = TAX_Utilities_v2.Year
+    If strMonth <> "" Then
+        Select Case strMonth
+            Case "01", "03", "05", "07", "08", "10", "12"
+                vDateKK = Format("31/" & strMonth & "/" & strYear, "dd/mm/yyyy")
+            Case "02"
+                 If CInt(strYear) / 4 = CInt(strYear) \ 4 And CInt(strYear) \ 100 <> CInt(strYear) / 100 Then
+                    vDateKK = Format("29/" & strMonth & "/" & strYear, "dd/mm/yyyy")
+                Else
+                    vDateKK = Format("28/" & strMonth & "/" & strYear, "dd/mm/yyyy")
+                End If
+            Case "04", "06", "09", "11"
+                vDateKK = Format("30/" & strMonth & "/" & strYear, "dd/mm/yyyy")
+        End Select
+    End If
+    
+    ' kiem tra hieu luc voi ky KK
+    For i = 0 To UBound(arrDateHL)
+        vDateHL = Format("01/" & Left$(arrDateHL(i), 2) & "/" & Right$(arrDateHL(i), 4), "dd/mm/yyyy")
+        If vDateKK >= vDateHL Then
+            If vDateHL > MaxDate Then
+                MaxDate = vDateHL
+                strHieuLucBT = arrDateHL(i)
+            End If
+        End If
+    Next
+    ' ghep voi ten file DM
+    strCatalogueName = "Catalogue_DM_thue_BVMT_" & strHieuLucBT
+    
+    strReturn = GetAbsolutePath("..\InterfaceIni\" & _
+        strCatalogueName & ".xml")
+        
+    GetDMThueBVMT = strReturn
+End Function
+
