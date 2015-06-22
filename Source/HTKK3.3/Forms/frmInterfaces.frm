@@ -11801,6 +11801,16 @@ Private Sub fpSpread1_Click(ByVal Col As Long, ByVal Row As Long)
 '                 If .sheet = 2 And .Col = .ColLetterToNumber("C") And .Row = 2 Then
 '                    Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bangke_02_1TNDN.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
 '                End If
+            ElseIf GetAttribute(TAX_Utilities_v2.NodeValidity.childNodes(0), "DataFile") = "BC26_AC" Then
+                If .sheet = 1 And .Col = .ColLetterToNumber("D") And .Row = 5 Then
+                    Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bao_Cao_BC26_AC.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
+                End If
+                If .sheet = 2 And .Col = .ColLetterToNumber("B") And .Row = 3 Then
+                    Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bangke_BC26_Mau_3_12.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
+                End If
+                If .sheet = 3 And .Col = .ColLetterToNumber("B") And .Row = 3 Then
+                    Call ShellExecute(hwnd, "Open", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel\" & "Bangke_BC26_Mau_3_10.xls", "", Mid$(App.path, 1, InStrRev(App.path, "\")) & "InterfaceTemplates\excel", 3)
+                End If
             End If
         End If
         
