@@ -20,7 +20,7 @@
 	
 	<Map MapID="11" MaFile="01A_TNDN" Version ="2.0.7" VersionKHBS ="2.0.7" MaTK="11"/>
 	<Map MapID="12" MaFile="01B_TNDN" Version ="2.0.7" VersionKHBS ="2.0.7" MaTK="12"/>
-	<Map MapID="73" MaFile="02_TNDN" Version ="2.0.7" VersionKHBS ="2.0.7" MaTK="71"/>
+	<Map MapID="73" MaFile="02_TNDN" Version ="2.0.7" VersionKHBS ="2.1.4" MaTK="71"/>
 	<Map MapID="03" MaFile="03_TNDN" Version ="2.0.7" VersionKHBS ="2.0.7" MaTK="03"/>	
 	<Map MapID="55" MaFile="04_TNDN" Version ="2.0.8" VersionKHBS ="2.0.8" MaTK="13"/>
 	<Map MapID="56" MaFile="06_TNDN" Version ="2.0.7" VersionKHBS ="2.0.7" MaTK="304"/>
@@ -45,7 +45,7 @@
 	
 	<Map MapID="101_8" MaFile="" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK=""/>
 	
-	<Map MapID="70" MaFile="01_NTNN" Version ="2.0.7" VersionKHBS ="2.0.7" MaTK="41"/>
+	<Map MapID="70" MaFile="01_NTNN" Version ="2.0.7" VersionKHBS ="2.1.4" MaTK="41"/>
 	<Map MapID="80" MaFile="02_NTNN" Version ="2.0.5" VersionKHBS ="2.0.5" MaTK="74"/>
 	<Map MapID="81" MaFile="03_NTNN" Version ="2.0.2" VersionKHBS ="2.0.4" MaTK="73"/>
 	<Map MapID="82" MaFile="04_NTNN" Version ="2.0.5" VersionKHBS ="2.0.5" MaTK="72"/>
