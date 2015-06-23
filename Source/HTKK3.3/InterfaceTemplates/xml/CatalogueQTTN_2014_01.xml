@@ -45,10 +45,11 @@
 			<Cell CellID="C_26A" CellID2="C_2"  Value="272###020105a###Cát làm thuỷ tinh (11%)###M3###11###0###1"/>
 			<Cell CellID="C_29" CellID2="C_2"  Value="428###020107###Đất làm gạch###M3###10###0###1"/>
 			<Cell CellID="C_27A" CellID2="C_2"  Value="273###020106a###Đất làm gạch (7%)###M3###7###0###1"/>
+			<Cell CellID="C_30" CellID2="C_2"  Value="508###020108###Các loại đất khác###M3###10###0###1"/>
 			<Cell CellID="C_31" CellID2="C_2"  Value="430###020201###Gờ-ra-nít (granite)###M3###10###0###1"/>
 			<Cell CellID="C_29A" CellID2="C_2"  Value="275###020202a###Gờ-ra-nít (granite) (10%)###M3###10###0###1"/>
 			<Cell CellID="C_32" CellID2="C_2"  Value="431###020202###Sét chịu lửa###M3###10###0###1"/>
-			<Cell CellID="C_30" CellID2="C_2"  Value="276###020203a###Sét chịu lửa (10%)###M3###10###0###1"/>
+			<Cell CellID="C_30A" CellID2="C_2"  Value="276###020203a###Sét chịu lửa (10%)###M3###10###0###1"/>
 			<Cell CellID="C_33" CellID2="C_2"  Value="432###020203###Đô-lô-mít (dolomite), quắc-zít (quartzite)###M3###12###0###1"/>
 			<Cell CellID="C_31A" CellID2="C_2"  Value="277###020204a###Đô-lô-mít (dolomite), quắc-zít (quartzite) (12%)###M3###12###0###1"/>
 			<Cell CellID="C_35" CellID2="C_2"  Value="434###020301###Cao lanh###M3###10###0###1"/>
