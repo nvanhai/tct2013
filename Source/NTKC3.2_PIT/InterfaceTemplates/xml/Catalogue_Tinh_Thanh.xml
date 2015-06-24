@@ -1,4 +1,4 @@
-﻿<Sections Version="321">
+﻿<Sections Version="332">
 	<Section Dynamic="0" MaxRows="0">
 		<Items>
 			<Item Value ="1###10100###101###HAN - Cục Thuế Thành phố Hà Nội"/>
@@ -514,6 +514,7 @@
 			<Item Value ="0###60109###601###Chi cục Thuế Huyện Kon Plông"/>
 			<Item Value ="0###60111###601###Chi cục Thuế Huyện Đák Hà"/>
 			<Item Value ="0###60113###601###Chi cục Thuế Huyện Sa Thầy"/>
+			<Item Value ="0###60114###601###Chi cục Thuế Huyện Ia H’Drai"/>
 			<Item Value ="0###60115###601###Chi cục Thuế Huyện Tu Mơ Rông"/>
 			<Item Value ="1###60300###603###GLA - Cục Thuế Tỉnh Gia Lai"/>
 			<Item Value ="0###60300###603###Cục Thuế Tỉnh Gia Lai"/>
