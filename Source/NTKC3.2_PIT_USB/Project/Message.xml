@@ -136,4 +136,5 @@
 	<Infor ID="0140" Msg="Không nhận các tờ khai bổ sung của mẫu cũ"/>
 	<Infor ID="0141" Msg="Không nhận tờ khai từ kỳ kê khai quý IV/2014"/>
 	<Infor ID="0142" Msg="Không nhận tờ khai bổ sung cho mẫu này"/>
+	<Infor ID="0143" Msg="Người nộp thuế phải kê khai tờ khai bằng HTKK phiên bản 3.3.2 trở lên"/>
 </Message>
