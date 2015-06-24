@@ -1,4 +1,4 @@
-﻿<Sections Version="321">
+﻿<Sections Version="332">
 	<Section Dynamic="0" MaxRows="0">
 		<Items>
 			<Item Value ="1###10100###101###HAN - Cục Thuế Thành phố Hà Nội"/>
@@ -217,7 +217,7 @@
 			<Item Value ="0###21705###217###Chi cục Thuế Huyện Đoan Hùng"/>
 			<Item Value ="0###21707###217###Chi cục Thuế Huyện Hạ Hoà"/>
 			<Item Value ="0###21709###217###Chi cục Thuế Huyện Thanh Ba"/>
-			<Item Value ="0###21711###217###Chi cục Thuế Huyện Phù Ninh                        "/>
+			<Item Value ="0###21711###217###Chi cục Thuế Huyện Phù Ninh"/>
 			<Item Value ="0###21713###217###Chi cục Thuế Huyện Cẩm Khê"/>
 			<Item Value ="0###21715###217###Chi cục Thuế Huyện Yên Lập"/>
 			<Item Value ="0###21717###217###Chi cục Thuế Huyện Tam Nông"/>
@@ -289,7 +289,7 @@
 			<Item Value ="1###30200###302###LCH - Cục Thuế Tỉnh Lai Châu"/>
 			<Item Value ="0###30200###302###Cục Thuế Tỉnh Lai Châu"/>
 			<Item Value ="0###30201###302###Chi cục Thuế Huyện Mường Tè"/>
-			<Item Value ="0###30202###302###Chi cục Thuế Thị xã Lai Châu"/>
+			<Item Value ="0###30202###302###Chi cục Thuế Thành phố Lai Châu"/>
 			<Item Value ="0###30203###302###Chi cục Thuế Huyện Phong Thổ"/>
 			<Item Value ="0###30205###302###Chi cục Thuế Huyện Tam Đường"/>
 			<Item Value ="0###30207###302###Chi cục Thuế Huyện Sìn Hồ"/>
@@ -357,7 +357,7 @@
 			<Item Value ="0###40301###403###Chi cục Thuế Thành phố Vinh"/>
 			<Item Value ="0###40303###403###Chi cục Thuế Thị xã Cửa Lò"/>
 			<Item Value ="0###40305###403###Chi cục Thuế Huyện Quế Phong"/>
-			<Item Value ="0###40307###403###Chi cục Thuế Huyện Tân Lạc"/>
+			<Item Value ="0###40307###403###Chi cục Thuế Huyện Quỳ Châu"/>
 			<Item Value ="0###40309###403###Chi cục Thuế Huyện Kỳ Sơn"/>
 			<Item Value ="0###40311###403###Chi cục Thuế Huyện Quỳ Hợp"/>
 			<Item Value ="0###40313###403###Chị Cục thuế Huyện Nghĩa Đàn"/>
@@ -386,7 +386,8 @@
 			<Item Value ="0###40513###405###Chi cục Thuế Huyện Thạch Hà"/>
 			<Item Value ="0###40515###405###Chi cục Thuế Huyện Cẩm Xuyên"/>
 			<Item Value ="0###40517###405###Chi cục Thuế Huyện Hương Khê"/>
-			<Item Value ="0###40519###405###Chi cục Thuế Huyện Kỳ Anh"/>
+			<Item Value ="0###40519###405###Chi cục Thuế Huyện Kỳ Anh"/>			
+			<Item Value ="0###40520###405###Chi cục Thuế Thị xã Kỳ Anh"/>			
 			<Item Value ="0###40521###405###Chi cục thuế Huyện Vũ Quang"/>
 			<Item Value ="0###40523###405###Chi cục Thuế Huyện Lộc Hà"/>
 			<Item Value ="1###40700###407###QBI - Cục Thuế Tỉnh Quảng Bình"/>
@@ -634,7 +635,7 @@
 			<Item Value ="0###70917###709###Chi cục Thuế Huyện Trảng Bàng"/>
 			<Item Value ="1###71100###711###BDU - Cục Thuế Tỉnh Bình Dương"/>
 			<Item Value ="0###71100###711###Cục Thuế Tỉnh Bình Dương"/>
-			<Item Value ="0###71101###711###Chi cục Thuế Thị Xã Thủ Dầu Một"/>
+			<Item Value ="0###71101###711###Chi cục Thuế Thành Phố Thủ Dầu Một"/>
 			<Item Value ="0###71103###711###Chi cục Thuế Thị Xã Bến Cát"/>
 			<Item Value ="0###71105###711###Chi cục Thuế Thị Xã Tân Uyên"/>
 			<Item Value ="0###71107###711###Chi cục Thuế Thị Xã Thuận An"/>
@@ -671,7 +672,7 @@
 			<Item Value ="1###71700###717###BRV - Cục Thuế Tỉnh Bà Rịa - Vũng Tàu"/>
 			<Item Value ="0###71700###717###Cục Thuế Tỉnh Bà Rịa - Vũng Tàu"/>
 			<Item Value ="0###71701###717###Chi cục Thuế Thành phố Vũng Tàu"/>
-			<Item Value ="0###71703###717###Chi cục Thuế Thị xã Bà Rịa"/>
+			<Item Value ="0###71703###717###Chi cục Thuế Thành phố Bà Rịa"/>
 			<Item Value ="0###71705###717###Chi cục Thuế Huyện Châu Đức"/>
 			<Item Value ="0###71707###717###Chi cục Thuế Huyện Xuyên Mộc"/>
 			<Item Value ="0###71709###717###Chi cục Thuế Huyện Tân Thành"/>
