@@ -238,10 +238,10 @@ Dim iCol As Long, iRow As Long
 Dim varID As Variant
 Dim strTenHH As String, strDVT As String, strMucThue  As String
 Dim varMaDM As Variant
-Dim tenDM As String
+Dim TenDM As String
     
     With fps
-        .Sheet = .ActiveSheet
+        .Sheet = 1
         i = 0
         .Row = 45
         Do
@@ -278,7 +278,7 @@ Dim tenDM As String
             strMucThue = ""
             
             'Lay gia tri Ma
-            .GetText .ColLetterToNumber("Z"), i + 35, varID
+            .GetText .ColLetterToNumber("Y"), i + 35, varID
             
             DataDM varID, strTenHH, strDVT, strMucThue
             ' Ten hang hoa
@@ -296,11 +296,11 @@ Dim tenDM As String
         i = 0
         Do
             .GetText .ColLetterToNumber("R"), i + 35, varMaDM
-            DataDMCQ varMaDM, tenDM
-            If Trim(tenDM) <> vbNullString Then
+            DataDMCQ varMaDM, TenDM
+            If Trim(TenDM) <> vbNullString Then
                 .Col = .ColLetterToNumber("O")
                 .Row = 35 + i
-                .Text = tenDM
+                .Text = TenDM
             End If
             UpdateCell fps, .Col, .Row, .Text
              i = i + 1
