@@ -1709,7 +1709,7 @@ Public Function InsertHDR() As String
     Dim MG         As Variant
     Dim THUETN     As Variant
     Dim ROWNUM     As Variant
-    Dim madlt      As Variant
+    Dim MADLT      As Variant
     Dim LanBS      As Variant
     Dim solanBS    As Variant
     Dim TTHTK1     As Variant
@@ -1766,7 +1766,7 @@ Public Function InsertHDR() As String
             'vTemp = ""
             ReDim arrMTMSave(1)
             arrMTMSave(0) = arrMTM(0)
-
+            
             For idx = 1 To UBound(arrMTM) - 1
                 countMTM = 0
                 vTemp = arrMTM(idx)
@@ -1790,12 +1790,12 @@ Public Function InsertHDR() As String
 
         ' end lay ma tieu muc
         ' ma dai ly thue
-        .GetText .ColLetterToNumber(MA_SO_THUE_DL_X), MA_SO_THUE_DL_Y, madlt
+        .GetText .ColLetterToNumber(MA_SO_THUE_DL_X), MA_SO_THUE_DL_Y, MADLT
 
-        If Trim(madlt) = vbNullString Then
-            madlt = "''"
+        If Trim(MADLT) = vbNullString Then
+            MADLT = "''"
         Else
-            madlt = "'" & madlt & "'"
+            MADLT = "'" & MADLT & "'"
         End If
 
         'trang thai to khai
@@ -1929,7 +1929,11 @@ Public Function InsertHDR() As String
         For i = 0 To UBound(arrMTMSave) - 1
             ThueTKy = 0
             GTTinhThue = 0
-            vTemp = arrMTMSave(i)
+            If arrMTMSave(i) <> "" Then
+                vTemp = arrMTMSave(i)
+            Else
+                vTemp = "1599"
+            End If
             maTM = "'" & vTemp & "'"
             .Col = .ColLetterToNumber("B")
             .Row = 51
@@ -1994,7 +1998,7 @@ Public Function InsertHDR() As String
                 sSQLVal = sSQLVal & LoaiTien & "," & MABPQL & "," & SHTEP & "," & TTHTK & "," & kykkhai & ", "
                 sSQLVal = sSQLVal & NgNhap & "," & ThueTKy & "," & GTTinhThue & "," & DaGhi & ", "
                 sSQLVal = sSQLVal & KTTRUOC & "," & DoanhSo & "," & MAPP2 & "," & MaMuc & "," & MaVach & ", "
-                sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & madlt & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & MANNKD & "," & DANHAN & "," & NgayPs & ",'" & TENNV & "','" & CHUNGCHI & "'"
+                sSQLVal = sSQLVal & matkhai & "," & HANNOP & "," & ThueTKy2 & "," & HANNOP2 & "," & TENDA & "," & DAGHI1 & "," & DAGHI2 & "," & AUTO_CAL & ",'" & NGANH & "'," & LAN_QUET & "," & MADLT & "," & LanBS & "," & THUECL & "," & DSoCL & "," & GTTTCL & "," & MANNKD & "," & DANHAN & "," & NgayPs & ",'" & TENNV & "','" & CHUNGCHI & "'"
                    
                 sSQL = "INSERT INTO TMP_TK" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
                 bln = clsDAO.ExecuteDLL(sSQL)
