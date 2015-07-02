@@ -4386,9 +4386,9 @@ fps.EventEnabled(EventAllEvents) = False
                          If tenHD <> "" Then
                             arrTemp = Split(tenHD, "###")
                             If UBound(arrTemp) > 0 Then
-                                .Col = .ColLetterToNumber("C")
-                                .Text = arrTemp(0)
-                                UpdateCell fps, .Col, .Row, .Text
+                                '.Col = .ColLetterToNumber("C")
+                                '.Text = arrTemp(0)
+                                'UpdateCell fps, .Col, .Row, .Text
                                 .Col = .ColLetterToNumber("AI")
                                 .Text = CStr(arrTemp(1))
                                 UpdateCell fps, .Col, .Row, .Text
