@@ -4081,14 +4081,14 @@ fps.EventEnabled(EventAllEvents) = False
                    .Row = 22
                     i = 1
                     Do
-                        .GetText .ColLetterToNumber("E"), .Row, maHD
+                        .GetText .ColLetterToNumber("C"), .Row, maHD
                          GetMaHoaDon maHD, tenHD
                          If tenHD <> "" Then
                             arrTemp = Split(tenHD, "###")
                             If UBound(arrTemp) > 0 Then
-                                .Col = .ColLetterToNumber("C")
-                                .Text = arrTemp(0)
-                                UpdateCell fps, .Col, .Row, .Text
+'                                .Col = .ColLetterToNumber("C")
+'                                .Text = arrTemp(0)
+'                                UpdateCell fps, .Col, .Row, .Text
                                 .Col = .ColLetterToNumber("AA")
                                 .Text = CStr(arrTemp(1))
                                 UpdateCell fps, .Col, .Row, .Text
@@ -4381,7 +4381,7 @@ fps.EventEnabled(EventAllEvents) = False
                     .Row = 46
                     i = 1
                     Do
-                        .GetText .ColLetterToNumber("O"), .Row, maHD
+                        .GetText .ColLetterToNumber("C"), .Row, maHD
                          GetMaHoaDon maHD, tenHD
                          If tenHD <> "" Then
                             arrTemp = Split(tenHD, "###")
@@ -4550,7 +4550,7 @@ fps.EventEnabled(EventAllEvents) = False
                 .Row = 45
                 i = 1
                 Do
-                    .GetText .ColLetterToNumber("O"), .Row, maHD
+                    .GetText .ColLetterToNumber("C"), .Row, maHD
                      GetMaHoaDon maHD, tenHD
                      If tenHD <> "" Then
                         arrTemp = Split(tenHD, "###")
