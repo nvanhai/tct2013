@@ -3289,7 +3289,7 @@
 			<Item Value ="0###215###21501###2150145###Phường Cam Giá" />
 			<Item Value ="0###215###21501###2150147###Phường Tân Thành" />
 			<Item Value ="0###215###21501###2150149###Xã Quyết Thắng" />
-			<Item Value ="0###215###21501###2150151###Xã Lương Sơn" />
+			
 			<Item Value ="0###215###21501###2150153###Xã Đồng Bẩm" />
 			<Item Value ="0###215###21501###2150155###Xã Cao Ngạn" />
 			<Item Value ="0###215###21503###2150301###Phường Lương Châu" />
@@ -3302,6 +3302,8 @@
 			<Item Value ="0###215###21503###2150315###Phường Thắng Lợi" />
 			<Item Value ="0###215###21503###2150317###Xã Bình Sơn" />
 			<Item Value ="0###215###21503###2150319###Phường Bách Quang" />
+			<Item Value ="0###215###21503###2150321###Phường Lương Sơn" />
+			
 			<Item Value ="0###215###21505###2150501###Thị trấn Chợ Chu" />
 			<Item Value ="0###215###21505###2150503###Xã Quy Kỳ" />
 			<Item Value ="0###215###21505###2150505###Xã Tân Thịnh" />
@@ -3426,8 +3428,8 @@
 			<Item Value ="0###215###21515###2151537###Xã Xuân Phương" />
 			<Item Value ="0###215###21515###2151539###Xã Kha Sơn" />
 			<Item Value ="0###215###21515###2151541###Xã Hà Châu" />
-			<Item Value ="0###215###21517###2151701###Thị trấn Bãi Bông" />
-			<Item Value ="0###215###21517###2151703###Thị trấn Bắc Sơn" />
+			<Item Value ="0###215###21517###2151701###Phường Bãi Bông" />
+			<Item Value ="0###215###21517###2151703###Phường Bắc Sơn" />
 			<Item Value ="0###215###21517###2151705###Xã Phúc Tân" />
 			<Item Value ="0###215###21517###2151707###Xã Phúc Thuận" />
 			<Item Value ="0###215###21517###2151709###Xã Hồng Tiến" />
@@ -3439,8 +3441,8 @@
 			<Item Value ="0###215###21517###2151721###Xã Đông Cao" />
 			<Item Value ="0###215###21517###2151723###Xã Tân Phú" />
 			<Item Value ="0###215###21517###2151725###Xã Thuận Thành" />
-			<Item Value ="0###215###21517###2151727###Xã Đồng Tiến" />
-			<Item Value ="0###215###21517###2151729###Thị trấn Ba Hàng" />
+			<Item Value ="0###215###21517###2151727###Phường Đồng Tiến" />
+			<Item Value ="0###215###21517###2151729###Phường Ba Hàng" />
 			<Item Value ="0###215###21517###2151731###Xã Đắc Sơn" />
 			<Item Value ="0###215###21517###2151733###Xã Vạn Phái" />
 			<Item Value ="0###215###21517###2151735###Xã Trung Thành" />
@@ -11098,10 +11100,10 @@
 			<Item Value ="0###821###82106###8210613###Xã Vĩnh Thịnh" />
 			<Item Value ="0###821###82106###8210615###Xã Vĩnh Hậu A" />
 			<Item Value ="0###821###82107###8210701###Xã Tân Phong" />
-			<Item Value ="0###821###82107###8210703###Xã Phong Thạnh Đông A" />
+			<Item Value ="0###821###82107###8210703###Phường Láng Tròn" />
 			<Item Value ="0###821###82107###8210705###Xã Phong Thạnh Tây" />
-			<Item Value ="0###821###82107###8210707###Thị trấn Giá Rai" />
-			<Item Value ="0###821###82107###8210709###Thị trấn Hộ Phòng" />
+			<Item Value ="0###821###82107###8210707###Phường 1" />
+			<Item Value ="0###821###82107###8210709###Phường Hộ Phòng" />
 			<Item Value ="0###821###82107###8210711###Xã Phong Thạnh Đông" />
 			<Item Value ="0###821###82107###8210713###Xã Phong Tân" />
 			<Item Value ="0###821###82107###8210715###Xã Phong Thạnh" />
