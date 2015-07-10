@@ -3841,6 +3841,16 @@ Private Sub cmdDelete_Click()
     Dim lSheet As Integer
     Dim lCol As Long, lRow As Long
     
+    If GetAttribute(TAX_Utilities_v2.NodeMenu, "ID") = "17" Then
+        strLoadDataPl05_3 = False
+    End If
+    
+    If GetAttribute(TAX_Utilities_v2.NodeMenu, "ID") = "95" Then
+        strLoadData16TH = False
+    End If
+    
+    
+    
     If strKHBS = "frmKHBS_BS" Or strKHBS = "TKBS" Then
         lResult = DisplayMessage("0012", msYesNo, miQuestion, , mrNo)
         If lResult = mrYes Then
