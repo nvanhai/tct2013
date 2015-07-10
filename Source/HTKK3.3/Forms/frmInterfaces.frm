@@ -9753,7 +9753,7 @@ Private Sub Form_Load()
     'hien thi combobox tim kiem
     'dhdang
      Cb_seach.ListIndex = 0
-    
+
     If Dir(TAX_Utilities_v2.GetAbsolutePath("..\InterfaceTemplates\Template.xls")) <> "" Then
 '        If fpSpread1.IsExcelFile("..\InterfaceTemplates\Template.xls") Then
 '            fpSpread1.EventEnabled(EventSheetChanged) = False
@@ -17572,6 +17572,10 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         .BlockMode = True
         .TypeMaxEditLen = 10
         .TypeHAlign = TypeHAlignCenter
+        .CellType = CellTypePic
+        .TypeVAlign = TypeVAlignCenter
+        .TypePicDefaultText = "../../...."
+        .TypePicMask = "99//99//9999"
         .BlockMode = False
         
         'format chi tieu [13],[K]
@@ -17580,7 +17584,7 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         .Row2 = lrowCount + rowStartSpread11
         .Col2 = .ColLetterToNumber("K")
         .BlockMode = True
-        .TypeMaxEditLen = 12
+        .TypeMaxEditLen = 50
         .BlockMode = False
         
         
@@ -17610,6 +17614,10 @@ Private Sub gridData05_3(rowStartSpread1 As Long, _
         .BlockMode = True
         .TypeMaxEditLen = 7
         .TypeHAlign = TypeHAlignCenter
+        .CellType = CellTypePic
+        .TypeVAlign = TypeVAlignCenter
+        .TypePicDefaultText = "../...."
+        .TypePicMask = "99//9999"
         .BlockMode = False
         
         
