@@ -6090,7 +6090,7 @@ Private Sub ForMatPL05_3()
         .Row2 = lrowCount + rowStartSpread11
         .col2 = .ColLetterToNumber("K")
         .BlockMode = True
-        .TypeMaxEditLen = 12
+        .TypeMaxEditLen = 50
         .BlockMode = False
         
         
