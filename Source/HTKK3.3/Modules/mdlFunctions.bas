@@ -1326,6 +1326,7 @@ Public Sub SetupData(pGrid As fpSpread)
                         ElseIf GetAttribute(TAX_Utilities_v2.NodeMenu, "ID") = "95" And mCurrentSheet = 1 Then
                             ' xu ly rieng cho Tk 16TH
                             InsertRowNotFormat pGrid, lRow, lRows, True
+                            
                             strLoadData16TH = True
                         Else
                             InsertRow pGrid, lRow, lRows, True
