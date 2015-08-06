@@ -1,4 +1,4 @@
-﻿<Sections Version="332">
+﻿<Sections Version="333">
 	<Section Dynamic="0" MaxRows="0">
 		<Item Value ="010101###Thu từ xăng sản xuất trong nước###Lít###3000###2001"/>
 		<Item Value ="010102###Thu từ nhiên liệu bay sản xuất trong nước###Lít###3000###2009"/>
@@ -11,9 +11,9 @@
 		<Item Value ="010202###Than an - tra - xít (antraxit)###Tấn###20000###2005"/>
 		<Item Value ="010203###Than mỡ###Tấn###10000###2005"/>
 		<Item Value ="010204###Than đá khác###Tấn###10000###2005"/>
-		<Item Value ="0103###Thu từ dung dịch Hydro-chloro-fluoro-carbon (HCFC) sản xuất trong nước###kg###4000###2006"/>
-		<Item Value ="0104###Thu từ túi ni lông sản xuất trong nước###kg###40000###2007"/>
-		<Item Value ="0105###Thu từ thuốc diệt cỏ sản xuất trong nước###kg###500###2008"/>
+		<Item Value ="0103###Thu từ dung dịch Hydro-chloro-fluoro-carbon (HCFC) sản xuất trong nước###Kg###4000###2006"/>
+		<Item Value ="0104###Thu từ túi ni lông sản xuất trong nước###Kg###40000###2007"/>
+		<Item Value ="0105###Thu từ thuốc diệt cỏ sản xuất trong nước###Kg###500###2008"/>
 		<Item Value ="0106###Thu từ các sản phẩm hàng hóa khác sản xuất trong nước###Kg###1000###2019"/>
 		<Item Value ="020101###Thu từ xăng  nhập khẩu###Lít###3000###2001"/>
 		<Item Value ="020102###Thu từ nhiên liệu bay nhập khẩu###Lít###3000###2009"/>
@@ -29,11 +29,11 @@
 		<Item Value ="0203###Thu từ dung dịch hydro, chloro, fluoro, carbon nhập khẩu###Kg###4000###2037"/>
 		<Item Value ="0204###Thu từ túi ni lông nhập khẩu###Kg###40000###2038"/>
 		<Item Value ="0205###Thu từ thuốc diệt cỏ nhập khẩu###Kg###500###2039"/>
-		<Item Value ="0206###Thu từ các sản phẩm, hàng hóa nhập khẩu khác###kg###1000###2049"/>
-		<Item Value ="020111###Thu từ xăng nhập khẩu để bán trong nước###Lít###1000###2041"/>
-		<Item Value ="020112###Thu từ nhiên liệu bay nhập khẩu để bán trong nước###Lít###1000###2042"/>
-		<Item Value ="020113###Thu từ dầu Diezel nhập khẩu để bán trong nước###Lít###500###2043"/>
+		<Item Value ="0206###Thu từ các sản phẩm, hàng hóa nhập khẩu khác###Kg###1000###2049"/>
+		<Item Value ="020111###Thu từ xăng nhập khẩu để bán trong nước###Lít###3000###2041"/>
+		<Item Value ="020112###Thu từ nhiên liệu bay nhập khẩu để bán trong nước###Lít###3000###2042"/>
+		<Item Value ="020113###Thu từ dầu Diezel nhập khẩu để bán trong nước###Lít###1500###2043"/>
 		<Item Value ="020114###Thu từ dầu hỏa nhập khẩu để bán trong nước###Lít###300###2044"/>
-		<Item Value ="020115###Thu từ dầu mazut, dầu mỡ nhờn nhập khẩu để bán trong nước###Lít###300###2045"/>	
+		<Item Value ="020115###Thu từ dầu mazut, dầu mỡ nhờn nhập khẩu để bán trong nước###Lít###900###2045"/>	
 	</Section>	
 </Sections>
