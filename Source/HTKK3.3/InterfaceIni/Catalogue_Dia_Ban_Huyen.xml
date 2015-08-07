@@ -1,4 +1,4 @@
-﻿<Sections Version="330">
+﻿<Sections Version="333">
 	<Section Dynamic="0" MaxRows="0">
 		<Items>
 			<Item Value ="0###101###10101###Quận Ba Đình" />
@@ -533,6 +533,7 @@
 			<Item Value ="0###707###70711###Thị xã Đồng Xoài" />
 			<Item Value ="0###707###70713###Huyện Hớn Quản" />
 			<Item Value ="0###707###70715###Huyện Bù Gia Mập" />
+			<Item Value ="0###707###70716###Huyện Phú Riềng"/>
 			<Item Value ="0###709###70901###Thành phố Tây Ninh" />
 			<Item Value ="0###709###70903###Huyện Tân Biên" />
 			<Item Value ="0###709###70905###Huyện Tân Châu" />
