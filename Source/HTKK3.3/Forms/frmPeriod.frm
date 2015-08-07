@@ -526,7 +526,7 @@ Begin VB.Form frmPeriod
       ProcessTab      =   -1  'True
       RetainSelBlock  =   0   'False
       ScrollBars      =   0
-      SpreadDesigner  =   "frmPeriod.frx":031A
+      SpreadDesigner  =   "frmPeriod.frx":02C8
       UserResize      =   1
       Appearance      =   1
    End
@@ -3764,6 +3764,17 @@ Public Sub cmdOK_Click()
             End If
         End If
     End If
+    
+    ' chan to khai 08B/TNCN tu ky KK 2015 tro di
+    If idToKhai = "76" Then
+        If Val(TAX_Utilities_v2.Year) > 2014 Then
+            DisplayMessage "0341", msOKOnly, miWarning
+            txtYear.SetFocus
+            Exit Sub
+        End If
+    End If
+    
+    
     ' kiem tra trung khoang doi voi to khai QT co ky bo sung tu thang den thang
     If strKHBS = "TKCT" And strKieuKy = KIEU_KY_NAM Then
         If idToKhai = "93" Or idToKhai = "89" Then
