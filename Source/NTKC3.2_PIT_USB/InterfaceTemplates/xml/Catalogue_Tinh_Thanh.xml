@@ -132,7 +132,7 @@
 			<Item Value ="0###20119###201###Chi cục Thuế Huyện Bắc Quang"/>
 			<Item Value ="1###20300###203###CBA - Cục Thuế Tỉnh Cao Bằng"/>
 			<Item Value ="0###20300###203###Cục Thuế Tỉnh Cao Bằng"/>
-			<Item Value ="0###20301###203###Chi cục Thuế Thị xã Cao Bằng"/>
+			<Item Value ="0###20301###203###Chi cục Thuế Thành phố Cao Bằng"/>
 			<Item Value ="0###20303###203###Chi cục Thuế Huyện Bảo Lạc"/>
 			<Item Value ="0###20305###203###Chi cục Thuế Huyện Hà Quảng"/>
 			<Item Value ="0###20307###203###Chi cục Thuế Huyện Thông Nông"/>
@@ -622,7 +622,8 @@
 			<Item Value ="0###70710###707###Chi cục Thuế Huyện Chơn Thành"/>
 			<Item Value ="0###70711###707###Chi cục thuế Thị xã Đồng Xoài"/>
 			<Item Value ="0###70713###707###Chi cục thuế Huyện Hớn Quản"/>
-			<Item Value ="0###70715###707###Chi cục thuế Huyện Bù Gia Mập"/>
+			<Item Value ="0###70715###707###Chi cục thuế Huyện Bù Gia Mập"/>			
+			<Item Value ="0###70716###707###Chi cục thuế Huyện Phú Riềng"/>			
 			<Item Value ="1###70900###709###TNI - Cục Thuế Tỉnh Tây Ninh"/>
 			<Item Value ="0###70900###709###Cục Thuế Tỉnh Tây Ninh"/>
 			<Item Value ="0###70901###709###Chi cục Thuế Thành phố Tây Ninh"/>
