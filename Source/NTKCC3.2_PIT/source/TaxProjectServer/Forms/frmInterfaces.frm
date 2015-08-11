@@ -979,6 +979,10 @@ Private Sub cmdSave_Click()
             .GetText .ColLetterToNumber("M"), 50, NgayPS
         ElseIf menuId = 90 Then
             .GetText .ColLetterToNumber("M"), 33, NgayPS
+        ElseIf menuId = 55 Then
+            .GetText .ColLetterToNumber("S"), 37, NgayPS
+        ElseIf menuId = 56 Then
+             .GetText .ColLetterToNumber("M"), 50, NgayPS
         End If
         
         vNGAY_DAU_KYLBO = "01/" & IIf(Len(Trim(vKYLBO)) = 6, "0" & vKYLBO, vKYLBO)
@@ -2384,13 +2388,31 @@ Private Sub Command1_Click()
 'str2 = "aa999774400108848   002014002003002002898509582~0~0~898509582</S><S>~~0~0~0~0~0~0~0~0</S><S>Nguyen Lan~30/06/2015~~~1~~01/2014~12/2014</S></S01>"
 'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
-str2 = "aa999064400108848   06201500100200100201/0114/06/2006<S01><S></S><S>~~0~0~0~0~0</S><S>~~0~0~0~0~0</S><S>020108~M3~23124~"
+'str2 = "aa999064400108848   06201500100200100201/0114/06/2006<S01><S></S><S>~~0~0~0~0~0</S><S>~~0~0~0~0~0</S><S>020108~M3~23124~"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'str2 = "aa999064400108848   06201500100200200213213~10~0~4242424</S><S>~~Nguyen Quang A~29/06/2015~1~~0~1~29/06/2015</S></S01>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+
+
+
+'str2 = "aa333554400108848   02201400100100100101/0101/01/1900<S01><S></S><S>10000000~5~500000~3400000~2~68000~56456456~1~564565~1132565~2000000~10~200000~3434343~3~103030~6565656~2~131313~434343~1200000~15~180000~4545454~4~181818~4343434~3~130303~492121</S><S>13200000~880000~11379797~352848~67365546~826181~2059029</S><S>~~~10/08/2015~1~~~~</S></S01>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+
+str2 = "aa333554400108848   02201500100100100101/0101/01/1900<S01><S></S><S>0~0~0~0~0~0~0~0~0~0</S><S>0~0~0~0~0~0~0</S><S>~~~10/08/2015~1~~~10/08/2015~1</S></S01>"
 Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
-str2 = "aa999064400108848   06201500100200200213213~10~0~4242424</S><S>~~Nguyen Quang A~29/06/2015~1~~0~1~29/06/2015</S></S01>"
-Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'
+'str2 = "aa333564400108848   02201500100100100101/0101/01/1900<S02><S></S><S>fsdfsd~0102030405~abc~01~01/02/2014~12/03/2014</S><S>1000000~580000~100000~20000~300000~40000~120000~0~420000~0~420000~20~84000</S><S>~~~10/08/2015~1~~~10/06/2015</S></S02>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+
+'str2 = "bs333564400108848   02201500500500100201/0101/01/1900<S02><S></S><S>fdsdf~rewre~?wer~1~01/01/2014~01/01/2015</S><S>1000000~0~0~0~0~0~0~0~1000000~0~1000000~20~200000</S><S>~~~10/08/2015~~1~1~10/06/2015</S></S02>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
+'
+'str2 = "bs333564400108848   022015005005002002<SKHBS><S>ThuÕ TNDN ph¶i nép~37~0~200000~200000</S><S>~~0~0~0</S><S>10/08/2015~49~4900~0~~~~~0~0~~0~0~200000</S></SKHBS>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 
-
+'str2 = "aa333014400108848   07201500000000100101/0114/06/2006<S01><S></S><S>0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0~0</S><S>~~~10/08/2015~1~~~1701~~~0</S></S01>"
+'Barcode_Scaned TAX_Utilities_Svr_New.Convert(str2, UNICODE, TCVN)
 
 End Sub
 
