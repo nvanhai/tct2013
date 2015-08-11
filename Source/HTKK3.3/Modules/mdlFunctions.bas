@@ -3578,18 +3578,28 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                         End If
                    End If
                 ElseIf TAX_Utilities_v2.ThreeMonths <> "" Then
-                    If Val(TAX_Utilities_v2.ThreeMonths) = 4 Then
-                       hannop = "31/" & "01" & "/" & TAX_Utilities_v2.Year + 1
-                    ElseIf Val(TAX_Utilities_v2.ThreeMonths) = 3 Then
-                        hannop = "31/" & "10" & "/" & TAX_Utilities_v2.Year
-                    ElseIf Val(TAX_Utilities_v2.ThreeMonths) = 2 Then
-                        hannop = "31/" & "07" & "/" & TAX_Utilities_v2.Year
-                    ElseIf Val(TAX_Utilities_v2.ThreeMonths) = 1 Then
-                        hannop = "02/" & "05" & "/" & TAX_Utilities_v2.Year
+                    If GetAttribute(TAX_Utilities_v2.NodeMenu, "ID") = "55" Then
+                            If strLoaiTKThang_PS = "TK_LANPS" Then
+                                hannop = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v2.Year), CInt(TAX_Utilities_v2.month), CInt(TAX_Utilities_v2.Day)))
+                            Else
+                                dNgayCuoiKy = DateAdd("D", 90, NgayCuoiNamTaiChinh(TAX_Utilities_v2.Year, iThangTaiChinh, iNgayTaiChinh))
+                                hannop = format(dNgayCuoiKy, "dd/mm/yyyy")
+                            End If
+                    Else
+                
+                        If Val(TAX_Utilities_v2.ThreeMonths) = 4 Then
+                           hannop = "31/" & "01" & "/" & TAX_Utilities_v2.Year + 1
+                        ElseIf Val(TAX_Utilities_v2.ThreeMonths) = 3 Then
+                            hannop = "31/" & "10" & "/" & TAX_Utilities_v2.Year
+                        ElseIf Val(TAX_Utilities_v2.ThreeMonths) = 2 Then
+                            hannop = "31/" & "07" & "/" & TAX_Utilities_v2.Year
+                        ElseIf Val(TAX_Utilities_v2.ThreeMonths) = 1 Then
+                            hannop = "02/" & "05" & "/" & TAX_Utilities_v2.Year
+                        End If
+    '                    dNgayCuoiKy = DateAdd("D", 30, GetNgayCuoiQuy(TAX_Utilities_v2.ThreeMonths, CInt(TAX_Utilities_v2.Year), iNgayTaiChinh, iThangTaiChinh))
+    '                    hannop = format(dNgayCuoiKy, "dd/mm/yyyy")
+                        hannop = format(hannop, "dd/mm/yyyy")
                     End If
-'                    dNgayCuoiKy = DateAdd("D", 30, GetNgayCuoiQuy(TAX_Utilities_v2.ThreeMonths, CInt(TAX_Utilities_v2.Year), iNgayTaiChinh, iThangTaiChinh))
-'                    hannop = format(dNgayCuoiKy, "dd/mm/yyyy")
-                    hannop = format(hannop, "dd/mm/yyyy")
                 Else
                     If GetAttribute(TAX_Utilities_v2.NodeMenu, "ID") = "80" Or GetAttribute(TAX_Utilities_v2.NodeMenu, "ID") = "82" Then
                         strarrdate = Split(TAX_Utilities_v2.LastDay, "/")
@@ -4631,17 +4641,26 @@ Public Function GetHanNopTk() As String
            End If
        End If
     ElseIf TAX_Utilities_v2.ThreeMonths <> "" Then
-        If Val(TAX_Utilities_v2.ThreeMonths) = 4 Then
-           hannop = "31/" & "01" & "/" & TAX_Utilities_v2.Year + 1
-        ElseIf Val(TAX_Utilities_v2.ThreeMonths) = 3 Then
-            hannop = "31/" & "10" & "/" & TAX_Utilities_v2.Year
-        ElseIf Val(TAX_Utilities_v2.ThreeMonths) = 2 Then
-            hannop = "31/" & "07" & "/" & TAX_Utilities_v2.Year
-        ElseIf Val(TAX_Utilities_v2.ThreeMonths) = 1 Then
-            hannop = "02/" & "05" & "/" & TAX_Utilities_v2.Year
+         If GetAttribute(TAX_Utilities_v2.NodeMenu, "ID") = "55" Then
+                If strLoaiTKThang_PS = "TK_LANPS" Then
+                    hannop = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v2.Year), CInt(TAX_Utilities_v2.month), CInt(TAX_Utilities_v2.Day)))
+                Else
+                    dNgayCuoiKy = DateAdd("D", 90, NgayCuoiNamTaiChinh(TAX_Utilities_v2.Year, iThangTaiChinh, iNgayTaiChinh))
+                    hannop = format(dNgayCuoiKy, "dd/mm/yyyy")
+                End If
+        Else
+            If Val(TAX_Utilities_v2.ThreeMonths) = 4 Then
+               hannop = "31/" & "01" & "/" & TAX_Utilities_v2.Year + 1
+            ElseIf Val(TAX_Utilities_v2.ThreeMonths) = 3 Then
+                hannop = "31/" & "10" & "/" & TAX_Utilities_v2.Year
+            ElseIf Val(TAX_Utilities_v2.ThreeMonths) = 2 Then
+                hannop = "31/" & "07" & "/" & TAX_Utilities_v2.Year
+            ElseIf Val(TAX_Utilities_v2.ThreeMonths) = 1 Then
+                hannop = "02/" & "05" & "/" & TAX_Utilities_v2.Year
+            End If
+    '                    dNgayCuoiKy = DateAdd("D", 30, GetNgayCuoiQuy(TAX_Utilities_v2.ThreeMonths, CInt(TAX_Utilities_v2.Year), iNgayTaiChinh, iThangTaiChinh))
+    '                    hannop = format(dNgayCuoiKy, "dd/mm/yyyy")
         End If
-'                    dNgayCuoiKy = DateAdd("D", 30, GetNgayCuoiQuy(TAX_Utilities_v2.ThreeMonths, CInt(TAX_Utilities_v2.Year), iNgayTaiChinh, iThangTaiChinh))
-'                    hannop = format(dNgayCuoiKy, "dd/mm/yyyy")
     Else
         If GetAttribute(TAX_Utilities_v2.NodeMenu, "ID") = "80" Or GetAttribute(TAX_Utilities_v2.NodeMenu, "ID") = "82" Then
             strarrdate = Split(TAX_Utilities_v2.LastDay, "/")
