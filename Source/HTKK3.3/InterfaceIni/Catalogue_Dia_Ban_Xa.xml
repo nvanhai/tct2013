@@ -1,4 +1,4 @@
-﻿<Sections Version="330">
+﻿<Sections Version="333">
 	<Section Dynamic="0" MaxRows="0">
 		<Items>
 			<Item Value ="0###101###10101###1010101###Phường Phúc Xá" />
@@ -10833,22 +10833,24 @@
 			<Item Value ="0###816###81609###8160913###Xã Vĩnh Thuận Tây" />
 			<Item Value ="0###816###81609###8160915###Xã Vĩnh Trung" />
 			<Item Value ="0###816###81609###8160917###Xã Vĩnh Tường" />
-			<Item Value ="0###816###81609###8160919###Xã Vị Bình" />
-			<Item Value ="0###816###81611###8161101###Xã Thuận Hòa" />
-			<Item Value ="0###816###81611###8161103###Xã Long Bình" />
-			<Item Value ="0###816###81611###8161105###Xã Vĩnh Thuận Đông" />
-			<Item Value ="0###816###81611###8161107###Thị trấn Long Mỹ" />
-			<Item Value ="0###816###81611###8161109###Thị trấn Trà Lồng" />
-			<Item Value ="0###816###81611###8161111###Xã Long Trị" />
-			<Item Value ="0###816###81611###8161113###Xã Long Phú" />
-			<Item Value ="0###816###81611###8161115###Xã Tân Phú" />
+			<Item Value ="0###816###81609###8160919###Xã Vị Bình" />			
+			<Item Value ="0###816###81611###8161101###Xã Thuận Hòa" />			
+			<Item Value ="0###816###81611###8161105###Xã Vĩnh Thuận Đông" />															
 			<Item Value ="0###816###81611###8161117###Xã Thuận Hưng" />
 			<Item Value ="0###816###81611###8161119###Xã Vĩnh Viễn" />
 			<Item Value ="0###816###81611###8161121###Xã Lương Tâm" />
 			<Item Value ="0###816###81611###8161123###Xã Xà Phiên" />
 			<Item Value ="0###816###81611###8161125###Xã Lương Nghĩa" />
 			<Item Value ="0###816###81611###8161127###Xã Vĩnh Viễn A" />
-			<Item Value ="0###816###81611###8161129###Xã Long Trị A" />
+			<Item Value ="0###816###81612###8161201###Phường Bình Thạnh" />
+			<Item Value ="0###816###81612###8161203###Phường Thuận An" />
+			<Item Value ="0###816###81612###8161205###Phường Trà Lồng" />
+			<Item Value ="0###816###81612###8161207###Phường Vĩnh Tường" />
+			<Item Value ="0###816###81612###8161209###Xã Long Bình" />			
+			<Item Value ="0###816###81612###8161211###Xã Long Phú" />
+			<Item Value ="0###816###81612###8161213###Xã Long Trị" />						
+			<Item Value ="0###816###81612###8161215###Xã Long Trị A" />
+			<Item Value ="0###816###81612###8161217###Xã Tân Phú" />
 			<Item Value ="0###817###81701###8170101###Xã Long Đức" />
 			<Item Value ="0###817###81701###8170103###Phường 2" />
 			<Item Value ="0###817###81701###8170105###Phường 7" />
