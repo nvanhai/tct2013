@@ -1532,7 +1532,7 @@ Public Function TinhSoLanQuet() As Integer
 '                " AND KYKKHAI = '" & TAX_Utilities_Svr_New.Year & "'"
             
             If TKTHANG = True Then
-                sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM TMP_QT4" & Right(sKyKeKhai, 4) & " WHERE MADTNT = " & "'" & strMST & "' AND NAMQT = '" & TAX_Utilities_Svr_New.Year & "'"
+                sSQL = "SELECT max(LAN_QUET) as LAN_QUET FROM TMP_QT4" & Right(sKyKeKhai, 4) & " WHERE MADTNT = " & "'" & strMST & "' AND NAMQT = " & TAX_Utilities_Svr_New.Year
             Else
                 ' ngay phat sinh
                 Dim NGAY_PS As Variant
