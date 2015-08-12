@@ -2547,6 +2547,7 @@ Private Sub tinhGiamTruNPT(ByVal Col As Long, ByVal Row As Long, Optional ByVal 
     
     With fps
         If .ActiveSheet = phuLuc09_3_TNCN Then
+            .EventEnabled(EventAllEvents) = False
             .Sheet = phuLuc09_3_TNCN
             
             ' kiem tra group
@@ -2603,6 +2604,7 @@ Private Sub tinhGiamTruNPT(ByVal Col As Long, ByVal Row As Long, Optional ByVal 
                     .value = 0
                 End If
             End If
+            .EventEnabled(EventAllEvents) = True
         End If
     End With
 End Sub
