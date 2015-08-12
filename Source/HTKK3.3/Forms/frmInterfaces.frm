@@ -13021,7 +13021,10 @@ nextClear1:
             ParserCellID fpSpread1, GetAttribute(xmlNodeReset, "CellID"), lCol, lRow
             fpSpread1.Col = lCol
             fpSpread1.Row = lRow
-            If ((Trim(GetAttribute(TAX_Utilities_v2.NodeMenu, "ID")) = "41" And countCell <= 3) Or ((idtkhai = "46" Or idtkhai = "47" Or idtkhai = "48" Or idtkhai = "49") And (lRow < 36 Or lRow > 43)) Or ((idtkhai = "15" Or idtkhai = "16") And (lRow < 38 Or lRow > 57)) Or ((idtkhai = "50" Or idtkhai = "51") And (lRow < 36 Or lRow > 56)) Or ((idtkhai = "36") And (lRow < 36 Or lRow > 63)) Or ((idtkhai = "76") And (lRow < 36)) Or ((idtkhai = "59") And (lRow < 27 Or lRow > 60)) Or idtkhai = "42" Or idtkhai = "43") And mCurrentSheet = 1 Then GoTo nextClear
+            
+            'If (((idtkhai = "95") And (lRow < 40))) And mCurrentSheet = 1 Then GoTo nextClear1
+            If ((Trim(GetAttribute(TAX_Utilities_v2.NodeMenu, "ID")) = "41" And countCell <= 3) Or ((idtkhai = "46" Or idtkhai = "47" Or idtkhai = "48" Or idtkhai = "49") And (lRow < 36 Or lRow > 43)) Or ((idtkhai = "15" Or idtkhai = "16") And (lRow < 38 Or lRow > 57)) Or ((idtkhai = "50" Or idtkhai = "51") And (lRow < 36 Or lRow > 56)) Or ((idtkhai = "36") And (lRow < 36 Or lRow > 63)) Or ((idtkhai = "76") And (lRow < 36)) Or ((idtkhai = "59") And (lRow < 27 Or lRow > 60)) Or idtkhai = "42" Or idtkhai = "43" Or ((idtkhai = "95") And (lRow < 40))) And mCurrentSheet = 1 Then GoTo nextClear
+            
             Select Case fpSpread1.CellType
                 Case CellTypeCheckBox
                     fpSpread1.Text = vbNullString
@@ -13049,6 +13052,8 @@ nextClear:
                 If countCell = totalCell - 7 And mCurrentSheet = 1 Then
                     Exit For
                 End If          'end
+            ElseIf Trim(GetAttribute(TAX_Utilities_v2.NodeMenu, "ID")) = "95" Then
+            
             Else
                 If countCell = totalCell - 5 And mCurrentSheet = 1 Then
                     Exit For

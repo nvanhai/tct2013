@@ -3553,7 +3553,7 @@ Public Sub SetupDataKHBS_TT28(pGrid As fpSpread)
                             End If
                         End If
                     Else
-                        If GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "72" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "73" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "56" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "70" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "81" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "06" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "05" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "90" Then
+                        If GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "72" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "73" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "56" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "70" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "81" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "06" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "05" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "90" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "55" Then
                             If strLoaiTKThang_PS = "TK_LANPS" Then
                                 hannop = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v2.Year), CInt(TAX_Utilities_v2.month), CInt(TAX_Utilities_v2.Day)))
                             Else
@@ -4616,7 +4616,7 @@ Public Function GetHanNopTk() As String
                 hannop = DateAdd("D", 35, DateSerial(CInt(TAX_Utilities_v2.Year), CInt(TAX_Utilities_v2.month), CInt(TAX_Utilities_v2.Day)))
             End If
         Else
-           If GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "72" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "73" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "56" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "70" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "81" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "06" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "05" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "90" Then
+           If GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "72" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "73" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "56" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "70" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "81" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "06" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "05" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "90" Or GetAttribute(TAX_Utilities_v2.NodeValidity.parentNode, "ID") = "55" Then
                 If strLoaiTKThang_PS = "TK_LANPS" Then
                     hannop = DateAdd("D", 10, DateSerial(CInt(TAX_Utilities_v2.Year), CInt(TAX_Utilities_v2.month), CInt(TAX_Utilities_v2.Day)))
                 Else
