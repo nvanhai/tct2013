@@ -128,5 +128,5 @@
 	<Map MapID="24" MaFile="01_BCTL_DK" Version ="2.0.3" VersionKHBS ="2.0.3" MaTK="87"/> 
 	<Map MapID="14" MaFile="BC26_AC_BLP" Version ="2.0.0" VersionKHBS ="2.0.0" MaTK="275"/> 
 		
-	<Map MapID="84" MaFile="01_MBAI" Version ="2.1.2" VersionKHBS ="2.1.2" MaTK="55"/> 
+	<Map MapID="84" MaFile="01_MBAI" Version ="2.1.2" VersionKHBS ="2.1.3" MaTK="55"/> 
 </Maps>
