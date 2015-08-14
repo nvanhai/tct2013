@@ -1,4 +1,4 @@
-<Sections Version="330">
+<Sections Version="333">
 	<Section Dynamic="0" MaxRows="0">
 		<Cells>
 			<Cell CellID="C_6"   CellID2="C_2" Value="1###21500000###Phí thuộc lĩnh vực nông nghiệp, lâm nghiệp, thủy sản###Phí thuộc lĩnh vực nông nghiệp, lâm nghiệp, thủy sản###0000" StatusID=""/>
@@ -55,7 +55,7 @@
 			<Cell CellID="C_57"   CellID2="C_2" Value="4###23002323###Phí sử dụng kết cấu hạ tầng đường sắt quốc gia###Phí sử dụng kết cấu hạ tầng đường sắt quốc gia###2323" StatusID=""/>
 			<Cell CellID="C_58"   CellID2="C_2" Value="4###23002324###Phí lưu giữ, bảo quản tang vật, phương tiện###Phí lưu giữ, bảo quản tang vật, phương tiện###2324" StatusID=""/>
 			<Cell CellID="C_59"   CellID2="C_2" Value="5###23500000###Phí thuộc lĩnh vực thông tin, liên lạc###Phí thuộc lĩnh vực thông tin, liên lạc###0000" StatusID=""/>
-			<Cell CellID="C_60"   CellID2="C_2" Value="5###23502351###Phí sử dụng, bảo vệ tần số vô tuyến điện###Phí sử dụng, bảo vệ tần số vô tuyến điện###2351" StatusID=""/>
+			<Cell CellID="C_60"   CellID2="C_2" Value="5###23502351###Phí sử dụng tần số vô tuyến điện###Phí sử dụng tần số vô tuyến điện###2351" StatusID=""/>
 			<Cell CellID="C_61"   CellID2="C_2" Value="5###23502352###Phí cấp tên miền, địa chỉ Internet###Phí cấp tên miền, địa chỉ Internet###2352" StatusID=""/>
 			<Cell CellID="C_62"   CellID2="C_2" Value="5###23502353###Phí sử dụng kho số viễn thông###Phí sử dụng kho số viễn thông###2353" StatusID=""/>
 			<Cell CellID="C_63"   CellID2="C_2" Value="5###23502354###Phí khai thác và sử dụng tài liệu dầu khí###Phí khai thác và sử dụng tài liệu dầu khí###2354" StatusID=""/>
@@ -189,6 +189,7 @@
 			<Cell CellID="C_189"   CellID2="C_2" Value="53###28502856###Lệ phí cấp và dán tem kiểm soát băng, đĩa có chương trình###Lệ phí cấp và dán tem kiểm soát băng, đĩa có chương trình###2856" StatusID=""/>
 			<Cell CellID="C_190"   CellID2="C_2" Value="53###28502857###Lệ phí độc quyền hoạt động trong ngành dầu khí###Lệ phí độc quyền hoạt động trong ngành dầu khí###2857" StatusID=""/>
 			<Cell CellID="C_191"   CellID2="C_2" Value="53###28502858###LP độc quyền HĐ trong một số ngành, nghề TNguyên khoáng sản###LP độc quyền HĐ trong một số ngành, nghề TNguyên khoáng sản###2858" StatusID=""/>
+			<Cell CellID="C_213"   CellID2="C_2" Value="53###28502859###Lệ phí cấp giấy phép sử dụng tần số vô tuyến điện###Lệ phí cấp giấy phép sử dụng tần số vô tuyến điện###2853" StatusID=""/>
 			<Cell CellID="C_192"   CellID2="C_2" Value="54###30000000###Lệ phí quản lý nhà nước đặc biệt về chủ quyền quốc gia###Lệ phí quản lý nhà nước đặc biệt về chủ quyền quốc gia###0000" StatusID=""/>
 			<Cell CellID="C_193"   CellID2="C_2" Value="54###30003001###Lệ phí ra, vào cảng biển###Lệ phí ra, vào cảng biển###3001" StatusID=""/>
 			<Cell CellID="C_194"   CellID2="C_2" Value="54###30003002###Lệ phí ra, vào cảng, bến thủy nội địa###Lệ phí ra, vào cảng, bến thủy nội địa###3002" StatusID=""/>
@@ -207,7 +208,7 @@
 			<Cell CellID="C_207"   CellID2="C_2" Value="55###30503056###Lệ phí cấp văn bằng, chứng chỉ###Lệ phí cấp văn bằng, chứng chỉ###3056" StatusID=""/>
 			<Cell CellID="C_208"   CellID2="C_2" Value="55###30503057###Lệ phí cấp bản sao, chứng thực theo yêu cầu hoặc theo quy định của pháp luật###Lệ phí cấp bản sao, chứng thực theo yêu cầu hoặc theo quy định của pháp luật###3057" StatusID=""/>
 			<Cell CellID="C_209"   CellID2="C_2" Value="55###30503058###Lệ phí hợp pháp hoá và chứng nhận lãnh sự###Lệ phí hợp pháp hoá và chứng nhận lãnh sự###3058" StatusID=""/>
-			<Cell CellID="C_210"   CellID2="C_2" Value="55###30503061###Lệ phí công chứng###Lệ phí công chứng###3061" StatusID=""/>
+			<Cell CellID="C_210"   CellID2="C_2" Value="55###30503061###Lệ phí công chứng###Lệ phí công chứng###3061" StatusID=""/>			
 		</Cells>
 	</Section>
 </Sections>
