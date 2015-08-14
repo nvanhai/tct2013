@@ -617,6 +617,12 @@ Public Function InsertDTL() As String
             NGNOP = "CTOD('" & Format(NGNOP, "mm/dd/yyyy") & "')"
         End If
         
+        
+        If NGAYPS <> vbNullString And NGAYPS <> "CTOD('')" Then
+            NGNOP = NGAYPS
+        End If
+        
+        
         'TTHTK = "''"
          'trang thai to khai
         Dim TTHTK1 As Variant
