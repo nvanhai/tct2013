@@ -793,7 +793,7 @@ Dim MADTNT As Variant
 
     End With
 
-    InsertDTL_KHBS = InsertDTL_KHBS156(fps, MADTNT, "04/TNDN", NGNOP, KYLBO, spathVat, TTHTK, LAN_QUET, False, Right(sKyKeKhai, 4), MaMucKHBS)
+    InsertDTL_KHBS = InsertDTL_KHBS156(fps, MADTNT, "04/TNDN", NGNOP, KYLBO, spathVat, TTHTK, LAN_QUET, False, sKyKeKhai, MaMucKHBS)
     
     InsertHDR_KHBS
     
@@ -942,7 +942,7 @@ Public Function InsertHDR_KHBS() As String
         sSQLVal = MADTNT & "," & KYKKHAI & "," & matkhai & "," & MATHUE & "," & MAMUC & "," & maTM & "," & MAPP & "," & NGNOP & "," & TTHTK & "," & KYLBO & "," & songaycn & "," & sotiencn & "," & tienhoan & "," & _
             lenhhoan & "," & ngayhoan & "," & HANNOP & "," & cqt & "," & songay & "," & SOTIEN & "," & lydokhac & "," & DANHAN & "," & LAN_QUET
         
-        sSQL = "INSERT INTO TMP_ND" & Right(sKyKeKhai, 4) & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
+        sSQL = "INSERT INTO TMP_ND" & sKyKeKhai & "( " & sSQLCol & " ) VALUES( " & sSQLVal & " )"
 
         bln = clsDAO.ExecuteDLL(sSQL)
         
@@ -1250,9 +1250,9 @@ Public Function TKTT() As Boolean
     strFileNameHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_QT4" & Right(sKyKeKhai, 4) & ".DBF"
     strFileNameDTL = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_QT4D" & Right(sKyKeKhai, 4) & ".DBF"
     Dim strFileNameBS As String
-    strFileNameBS = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_BS" & Right(sKyKeKhai, 4) & ".DBF"
+    strFileNameBS = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_BS" & sKyKeKhai & ".DBF"
     Dim strFileNameBSHDR As String
-    strFileNameBSHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_ND" & Right(sKyKeKhai, 4) & ".DBF"
+    strFileNameBSHDR = spathVat & GetAttribute(TAX_Utilities_Svr_New.NodeMenu, "DirFile") & "TMP_ND" & sKyKeKhai & ".DBF"
     'file HDR
     If fso.FileExists(strFileNameHDR) = False Then
         Dim strTepmauHDR As String
