@@ -782,6 +782,10 @@ Dim MADTNT As Variant
             NGNOP = ToDate(Trim(NGNOP), DDMMYYYY)
             NGNOP = "CTOD('" & Format(NGNOP, "mm/dd/yyyy") & "')"
         End If
+        
+        If NGAYPS <> vbNullString And NGAYPS <> "CTOD('')" Then
+            NGNOP = NGAYPS
+        End If
 
         .GetText .ColLetterToNumber("E"), 30, KYLBO
 
@@ -859,6 +863,11 @@ Public Function InsertHDR_KHBS() As String
         Else
             NGNOP = ToDate(Trim(NGNOP), DDMMYYYY)
             NGNOP = "CTOD('" & Format(NGNOP, "mm/dd/yyyy") & "')"
+        End If
+        
+        
+        If NGAYPS <> vbNullString And NGAYPS <> "CTOD('')" Then
+            NGNOP = NGAYPS
         End If
 
         .GetText .ColLetterToNumber("E"), 30, KYLBO
