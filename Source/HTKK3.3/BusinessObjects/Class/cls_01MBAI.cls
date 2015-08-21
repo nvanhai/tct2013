@@ -845,11 +845,11 @@ Private Function convertBacTMB(vonDK As Variant) As String
     result = "0~0"
     If Val(CStr(vonDK)) / 1000 > 10000000 Then
         result = "1~3000000"
-    ElseIf Val(CStr(vonDK)) / 1000 > 5000000 And Val(CStr(vonDK)) / 1000 <= 10000000 Then
+    ElseIf Val(CStr(vonDK)) / 1000 >= 5000000 And Val(CStr(vonDK)) / 1000 <= 10000000 Then
         result = "2~2000000"
-    ElseIf Val(CStr(vonDK)) / 1000 > 2000000 And Val(CStr(vonDK)) / 1000 <= 5000000 Then
+    ElseIf Val(CStr(vonDK)) / 1000 >= 2000000 And Val(CStr(vonDK)) / 1000 < 5000000 Then
         result = "3~1500000"
-    ElseIf Val(CStr(vonDK)) / 1000 <= 2000000 Then
+    ElseIf Val(CStr(vonDK)) / 1000 < 2000000 Then
         result = "4~1000000"
     End If
     convertBacTMB = result
